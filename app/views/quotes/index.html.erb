@@ -1,5 +1,7 @@
 <% if @user.nil? %>
   <h1 class="underline">Hey there stranger!</h1>
+<% elsif @user.email.nil? %>
+  <h1 class="underline">Hey there <%= @user.name %>!</h1>
 <% else %>
   <h1 class="underline">Hey there <%= @user.email %>!</h1>
 <% end %>

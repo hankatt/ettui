@@ -5,26 +5,25 @@
 <% end %>
 
 <div id="quotes-intro">
-  <p>To get started simply drag this link to your bookmarks bar.</p>
-
-  <a href='javascript:function well(){
-
+  <p class="margin-bottom-36">To get started simply drag this link to your bookmarks bar.</p>
+<a href='javascript:(function(){
+    well = function() {
       try {
         if(!document.body)
           throw(0);
 
-        var selection = document.getSelection().toString();
-
-        if(selection === "") {
+        if(document.getSelection().toString() === "") {
           alert("Empty selection.");
           throw(0);
         } else {
-          well    = document.createElement("script");
-          source  = document.location.href.toString();
-          url     = "http://sharp-ocean-1383.herokuapp.com/quotes/add?text=";
-          well.src= url +encodeURIComponent(selection) +"&source=" +source +"&callback=status";
+          well      = document.createElement("script");
+          selection = document.getSelection().toString();
+          source    = document.location.href.toString();
+          url       = "http://sharp-ocean-1383.herokuapp.com/quotes/add?text=";
+          well.src  = url +encodeURIComponent(selection) + "&source=" +source + "&callback=status";
         }
 
+        /* TAKES CARE OF JSONP RESPONSE */
         jsonp = document.createElement("script");
         jsonp.setAttribute("type", "text/javascript");
         callback = "function status(data) { 
@@ -50,7 +49,8 @@
         }";
         jsonp.innerHTML = callback;
         document.body.appendChild(jsonp);
-          
+        
+        /* CREATES POPUP */
         headline = document.createElement("h1");
         headline.id = "well-title";
         headline.style.fontFamily = "Hoefler Text";
@@ -75,17 +75,18 @@
         /* EXECUTE SCRIPT */
         document.body.appendChild(well);
 
-        /* LOG FOR DEBUG */
-        console.log(well.src);
       } catch(e) {
         alert("Please wait until the page has loaded.");
       }
+    };
+
+    if(/Firefox/.test(navigator.userAgent)) {
+      setTimeout(well,0);
+    } else {
+      well();
     }
-
-    well();
-
-    void(0)'><p class="well-said-js">THIS LINK</p></a>
-  <p>Whenver you mark a piece of text that you like, press the link to add it to Well Said.</p>
+  })()' class="well-said-js">Well Said</a>
+  <p class="margin-top-36">Whenver you mark a piece of text that you like, press the link to add it to Well Said.</p>
   <p class="logout"><%= link_to "Logout", logout_path %></p>
 </div>
 <div class="description-column">

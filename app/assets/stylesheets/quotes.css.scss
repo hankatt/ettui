@@ -10,6 +10,9 @@
 	height: auto;
 }
 
+.margin-bottom-36 { margin-bottom: 36px; }
+.margin-top-36 { margin-top: 36px; }
+
 table td {
 	font-family: "Helvetica Neue";
 	font-size: 16px;
@@ -28,11 +31,7 @@ table td a {
 	text-decoration: underline;
 }
 
-a {
-	text-decoration: none;
-}
-
-.well-said-js {
+#quotes-intro a.well-said-js {
 	font-family: Georgia;
 	letter-spacing: 1px;
 	background-color: #000;
@@ -43,6 +42,10 @@ a {
 	word-spacing: 6px;
 	padding: 16px;
 	text-decoration: underline;
+}
+
+a {
+	text-decoration: none;
 }
 
 .button {

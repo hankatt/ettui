@@ -1,19 +1,13 @@
 class User < ActiveRecord::Base
-
 	require 'base64'
 
 	attr_accessible :email, :password, :password_confirmation, :token
 	attr_accessor :password, :password_confirmation
 	
-	validates_uniqueness_of :email
-	validates_presence_of :password
-	validates_presence_of :email
-	validates_confirmation_of :password
-
-
 	before_save :encrypt_password
 	after_save :set_token
 
+	has_many :quotes
 
 	def encrypt_password
 		if password.present?
@@ -37,5 +31,13 @@ class User < ActiveRecord::Base
 		else
 			nil
 		end
+	end
+
+	def self.create_with_omniauth(auth)
+  		create! do |user|
+	   		user.provider = auth["provider"]
+	    	user.uid = auth["uid"]
+	    	user.name = auth["info"]["name"]
+  		end
 	end
 end

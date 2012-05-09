@@ -61,6 +61,20 @@
 	text-decoration: underline;
 }
 
+.signin {
+	display: inline; 
+	position: relative; 
+	bottom: 17px; 
+	left: 9px;
+}
+
+.signin a {
+	text-transform: uppercase;
+	font-size: 14px;
+	padding-left: 2px;
+	text-decoration: underline;
+}
+
 div.error_explanation ul {
 	display: none;
 	-webkit-padding-start: 0px;

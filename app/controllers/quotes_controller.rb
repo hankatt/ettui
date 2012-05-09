@@ -12,7 +12,7 @@ class QuotesController < ApplicationController
       @user = User.find(cookies[:user_id])
     end
 
-    @quotes = Quote.all
+    @quotes = Quote.find_all_by_user_id(@user.id)
     
     respond_to do |format|
       format.html # index.html.erb

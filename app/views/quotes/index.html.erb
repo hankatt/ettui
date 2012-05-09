@@ -91,11 +91,13 @@
 <div class="description-column">
 <h2 class="underline">Your Quotes</h2>
   <table>
-<% @quotes.each do |quote| %>
-  <tr class="<%= cycle("odd", "")%>">
-    <td style="width: 367px;"><%= quote.text %></td>
-    <td><%= link_to "source", quote.source %></td>
-  </tr>
-<% end %>
+	<% if !@quotes.nil? %>
+		<% @quotes.each do |quote| %>
+  		<tr class="<%= cycle("odd", "")%>">
+    		<td style="width: 367px;"><%= quote.text %></td>
+    		<td><%= link_to "source", quote.source %></td>
+  		</tr>
+		<% end %>
+	<% end %>
 </table>
 </div>

@@ -1,0 +1,101 @@
+<% if @user.nil? %>
+  <h1 class="underline">Hey there stranger!</h1>
+<% else %>
+  <h1 class="underline">Hey there <%= @user.email %>!</h1>
+<% end %>
+
+<div id="quotes-intro">
+  <p>To get started simply drag this link to your bookmarks bar.</p>
+
+  <a href='javascript:function well(){
+
+      try {
+        if(!document.body)
+          throw(0);
+
+        var selection = document.getSelection().toString();
+
+        if(selection === "") {
+          alert("Empty selection.");
+          throw(0);
+        } else {
+          well    = document.createElement("script");
+          source  = document.location.href.toString();
+          url     = "http://localhost:3000/quotes/add?text=";
+          well.src= url +encodeURIComponent(selection) +"&source=" +source +"&callback=status";
+        }
+
+        jsonp = document.createElement("script");
+        jsonp.setAttribute("type", "text/javascript");
+        callback = "function status(data) { 
+          console.log(data);
+          headline.innerText = data.message;
+          popup.innerHTML = headline.outerHTML;
+          counter = 0;
+          interval = setInterval(function() {
+            counter += 25;
+            wait = 350;
+            if(counter > wait) {
+              value = counter - wait;
+              popup.style.opacity = popup.style.opacity - (value/1000);
+              document.body.removeChild(popup);
+              document.body.appendChild(popup);
+              if(counter === 1500) {
+                clearInterval(interval);
+                counter = 0;
+                document.body.removeChild(popup);
+              }
+            }
+          }, 50);
+        }";
+        jsonp.innerHTML = callback;
+        document.body.appendChild(jsonp);
+          
+        headline = document.createElement("h1");
+        headline.id = "well-title";
+        headline.style.fontFamily = "Hoefler Text";
+        headline.style.fontSize = "24px";
+        headline.style.textAlign = "center";
+        headline.style.width = "175px";
+        headline.style.color = "#444";
+        headline.innerText = "SAVING..";
+
+        popup = document.createElement("div");
+        popup.style.backgroundColor = "#eee";
+        popup.style.width = "175px";
+        popup.style.padding = "25px";
+        popup.style.zIndex = "20000";
+        popup.style.position = "fixed";
+        popup.style.top = "0";
+        popup.style.left = "25px";
+        popup.style.opacity = "1";
+        popup.innerHTML = headline.outerHTML;
+        document.body.appendChild(popup);
+
+        /* EXECUTE SCRIPT */
+        document.body.appendChild(well);
+
+        /* LOG FOR DEBUG */
+        console.log(well.src);
+      } catch(e) {
+        alert("Please wait until the page has loaded.");
+      }
+    }
+
+    well();
+
+    void(0)'><p class="well-said-js">THIS LINK</p></a>
+  <p>Whenver you mark a piece of text that you like, press the link to add it to Well Said.</p>
+  <p class="logout"><%= link_to "Logout", logout_path %></p>
+</div>
+<div class="description-column">
+<h2 class="underline">Your Quotes</h2>
+  <table>
+<% @quotes.each do |quote| %>
+  <tr class="<%= cycle("odd", "")%>">
+    <td style="width: 367px;"><%= quote.text %></td>
+    <td><%= link_to "source", quote.source %></td>
+  </tr>
+<% end %>
+</table>
+</div>

@@ -1,0 +1,57 @@
+// Place all the styles related to the Quotes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#quotes-intro {
+	width: 256px;
+	margin-right: 32px;
+	float: left;
+	background-color: #ddd;
+	height: auto;
+}
+
+table td {
+	font-family: "Helvetica Neue";
+	font-size: 16px;
+	font-weight: 300;
+	word-spacing: 4px;
+	padding: 10px;
+}
+
+.odd {
+	background-color: #ccc;
+}
+
+table td a {
+	text-transform: uppercase;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+a {
+	text-decoration: none;
+}
+
+.well-said-js {
+	font-family: Georgia;
+	letter-spacing: 1px;
+	background-color: #000;
+	color: #fff;
+	width: 136px;
+	margin-left: 44px;
+	font-size: 24px;
+	word-spacing: 6px;
+	padding: 16px;
+	text-decoration: underline;
+}
+
+.button {
+	font-family: Georgia;
+	text-transform: uppercase;
+	text-decoration: none;
+	background-color: #000;
+	color: #fff;
+	letter-spacing: 1px;
+	word-spacing: 5px;
+	padding: 9px 7px 7px 7px;
+}

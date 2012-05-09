@@ -1,0 +1,121 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+#flash_notice {
+	width: 256px;
+	font-family: "Helvetica Neue";
+	font-style: italic;
+	font-size: 12px;
+	display: inline;
+}
+
+body { background-color: #ddd; }
+
+a {
+	color: #000;
+	text-decoration: none;
+	font-family: "Hoefler Text";
+}
+
+h1 {
+	font-family: "Helvetica Neue";
+	word-spacing: 8px;
+	font-size: 24px;
+	line-height: 36px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-family: "Hoefler Text";
+	word-spacing: 8px;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+h3 {
+	font-family: "Hoefler Text";
+	word-spacing: 8px;
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+h1.underline {
+	padding: 0 0 32px 0;
+	line-height: 0;
+	border-bottom: solid 3px #aaa;
+}
+
+h2.underline {
+	padding: 12px 0 16px 0;
+	line-height: 0;
+	border-bottom: solid 3px #aaa;
+}
+
+p {
+	font-size: 16px;
+	line-height: 24px;
+	word-spacing: 4px;
+	font-family: Georgia;
+	font-weight: 400;
+}
+
+header { 
+	width: 768px; 
+	margin: 32px auto 16px auto; 
+	border-bottom: solid 3px #000; 
+}
+header h1 {
+	padding: 25px 20px 15px 20px; 
+	font-weight: 400; 
+	width: 216px;
+	text-align: center; 
+	background-color: #000; 
+	color: #fff; 
+	font-family: "Hoefler Text"; 
+	text-transform: uppercase; 
+	word-spacing: 8px; 
+	font-size: 30px; 
+	letter-spacing: 2px; 
+}
+
+.logout a {
+	color: #f44;
+	text-decoration: underline;
+}
+
+#site-wrapper {
+	width: 768px;
+	margin: 0 auto;
+	overflow: auto;
+}
+
+.description-column {
+	width: 448px;
+	margin-left: 32px;
+	padding: 0;
+	margin-bottom: 25px;
+	float: left;
+	background-color: #ddd;
+}
+
+.description-column mark {
+	text-decoration: underline;
+	background-color: #ddd;
+	font-weight: bold;
+}

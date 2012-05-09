@@ -1,10 +1,4 @@
 class UsersController < ApplicationController
-  # Used to generate unique cryptic ID for each user
-  require 'base64'
-
-  def after_create
-    update_attributes!(:token => Base64::encode64(id.to_s))
-  end
   # GET /users
   # GET /users.json
   def index
@@ -51,10 +45,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

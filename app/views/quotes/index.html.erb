@@ -21,15 +21,15 @@
           well      = document.createElement("script");
           selection = document.getSelection().toString();
           source    = document.location.href.toString();
-          url       = "http://sharp-ocean-1383.herokuapp.com/quotes/add?text=";
-          well.src  = url +encodeURIComponent(selection) + "&source=" +source + "&callback=status";
+          token     = "<%= @user.token %>";
+          url       = "http://sharp-ocean-1383.herokuapp.com/quotes/add?id=" +token +"&copy=";
+          well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
         }
 
         /* TAKES CARE OF JSONP RESPONSE */
         jsonp = document.createElement("script");
         jsonp.setAttribute("type", "text/javascript");
-        callback = "function status(data) { 
-          console.log(data);
+        callback = "function status(data) {
           headline.innerText = data.message;
           popup.innerHTML = headline.outerHTML;
           counter = 0;

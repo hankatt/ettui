@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-	require 'base64'
 
 	attr_accessible :email, :password, :password_confirmation, :token
 	attr_accessor :password, :password_confirmation
@@ -19,7 +18,14 @@ class User < ActiveRecord::Base
 	private
 	def set_token
 		if self.token.nil?
-			token = Base64::encode64(self.id.to_s)
+			token = SecureRandom.hex(13)
+
+			# Make sure token is unique
+			while User.find_by_token(token)
+				token = SecureRandom.hex(13)
+			end
+
+			# We now have a token, so lets set it
 			self.update_attributes(:token => token)
 		end
 	end

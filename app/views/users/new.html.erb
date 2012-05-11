@@ -11,3 +11,7 @@
 	<p>Well Said keeps track. In a single click.</p>
 	<p>Try the <mark>demo</mark> or get started to your left.</p>
 </div>
+
+<% if !current_user %>
+ 	<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<% end %>

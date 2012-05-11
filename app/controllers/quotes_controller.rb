@@ -27,22 +27,20 @@ class QuotesController < ApplicationController
   end
 
   def remote_create
-    if cookies[:user_id]
-      @quote = Quote.create!(:text => params[:text], :user_id => cookies[:user_id], :source => params[:source])
-      
-      respond_to do |format|
-        if @quote
-          data = { :submit => true, :logged_in => true, :message => "Saved!" }
-          format.json { render json: data, callback: "status" }
-        else
-          data = { :submit => false, :logged_in => true, :message => "Try again." }
-          format.json { render json: data, callback: "status" }
-        end
-      end
-    else
-      respond_to do |format|
-          data = { :submit => false, :logged_in => false, :message => "Please login." }
-          format.json { render json: data, callback: "status" }
+    @user = User.find_by_token(params[:id])
+
+    # Verify that a user exists for the attached id
+    if @user
+      @quote = Quote.create!(:text => params[:copy], :user_id => @user.id, :source => params[:src])
+    end
+
+    respond_to do |format|
+      if @quote
+        data = { :message => "Saved!" }
+        format.json { render json: data, callback: "status" }
+      else
+        data = { :message => "Try again." }
+        format.json { render json: data, callback: "status" }
       end
     end
   end

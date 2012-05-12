@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     if user
       cookies.permanent[:user_id] = user.id
       session[:user_id] = user.id
-      redirect_to root_url, :notice => "Signed in!"
+      redirect_to quotes_path, :notice => "Signed in!"
     else
       redirect_to root_url, :notice => "Failed to authenticate!"
     end

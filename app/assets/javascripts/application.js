@@ -37,6 +37,10 @@ $(document).ready(function() {
   $(".quote").mouseleave(function() {
     $(this).children(".quote-details").hide();
   });
+
+  $("#close-wizard").click(function() {
+    toggle_instructions();
+  });
 });
 
 function toggle_instructions() {

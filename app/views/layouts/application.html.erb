@@ -14,7 +14,7 @@
 	<a href="http://localhost:3000">
 		<h1 style="display: inline;">Well said</h1>
 	</a>
-
+	<p><%= link_to "Logout", logout_path if current_user %></p>
 	<!--
 	<% flash.each do |name, msg| %>
 		<%= content_tag :div, msg, :id => "flash_#{name}" %>

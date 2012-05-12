@@ -20,9 +20,6 @@ class QuotesController < ApplicationController
     end
   end
 
-  def gridindex 
-  end
-
   def get_token
     respond_to do |format|
       format.json { render json: cookies[:user_id] }

@@ -20,6 +20,9 @@ class QuotesController < ApplicationController
     end
   end
 
+  def gridindex 
+  end
+
   def get_token
     respond_to do |format|
       format.json { render json: cookies[:user_id] }
@@ -107,11 +110,13 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1
   # DELETE /quotes/1.json
   def destroy
+    @id = params[:id]
     @quote = Quote.find(params[:id])
     @quote.destroy
 
     respond_to do |format|
-      format.html { redirect_to quotes_url }
+      format.js
+      # format.html { redirect_to quotes_url }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-
+    @quotes = Quote.limit(4)
   end
 
   def create

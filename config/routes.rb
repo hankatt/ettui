@@ -6,6 +6,7 @@ Well::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "quotes/get_token" => "quotes#get_token"
   get 'quotes/add' => "quotes#remote_create"
+  match 'quotes/grid' => "quotes#gridindex"
   
   match "/auth/:provider/callback" => "sessions#create_with_omniauth"
 

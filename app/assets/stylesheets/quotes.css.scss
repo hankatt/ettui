@@ -2,59 +2,147 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#quotes-intro {
-	width: 256px;
-	margin-right: 32px;
+#quotes-intro p {
+	width: 240px;
+}
+
+#quotes-container { margin-top: 15px; }
+
+#wellsaid-wizard { 
+	width: 100%;
+	height: 240px;
+	margin-top: 30px;
+	padding: 0 15px 0 0;
+	&a { 
+		color: #fff;
+		padding: 25px 60px 25px 60px;
+		position: relative;
+		top: 25px;
+		left: 32px;
+		font-weight: 100;
+		background-color: #333;
+		letter-spacing: 1px;
+		text-decoration: underline;
+		text-transform: uppercase;
+		font-size: 24px;
+		&:hover {
+			background-color: #222;
+		}
+	}
+}
+
+.wizard-1, .wizard-2, .wizard-3 {
+	height: 100%;
+	width: 320px;
 	float: left;
-	background-color: #ddd;
-	height: auto;
+	display: inline-block;
+	position: relative;
+	&h1 {
+		line-height: 30px;
+		color: #333;
+	}
+	&p {
+		padding: 0 0 0 40px;
+		color: #999;
+	}
 }
 
-.margin-bottom-36 { margin-bottom: 36px; }
-.margin-top-36 { margin-top: 36px; }
-
-table td {
-	font-family: "Helvetica Neue";
-	font-size: 16px;
-	font-weight: 300;
-	word-spacing: 4px;
-	padding: 10px;
+.wizard-3 {
+	&img {
+		position: absolute;
+		left: 110px;
+	}
 }
 
-.odd {
-	background-color: #ccc;
+.wizard-2 {  
+	&p.markit {
+		font-weight: 300;
+		font-family: "Archer";
+		margin-top: 0;
+		font-size: 18px;
+		line-height: 24px;
+		padding: 0 0 0 0;
+		margin-left: 40px;
+		padding-left: 25px;
+		border-left: solid 2px #bbb;
+		color: #000;
+	}
+}
+.wizard-2, .wizard-3 { margin-left: 45px; }
+
+.quote {
+	background-color: #fff;
+	width: 255px;
+	margin: 15px;
+	padding-bottom: 25px;
+	position: relative;
 }
 
-table td a {
+.pimp {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-webkit-box-shadow: 0 0px 10px #888;
+	-moz-box-shadow: 0 0px 10px #888;
+	-o-box-shadow: 0 0px 10px #888;
+}
+
+.quote-details {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	width: 237px;
+	padding: 8px 0;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-bottom-left-radius: 5px;
+	-o-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-bottom-right-radius: 5px;
+	-o-border-bottom-right-radius: 5px;
+	padding-left: 18px;
+	background-color: #000;
+
 	text-transform: uppercase;
 	font-size: 12px;
-	text-decoration: underline;
+	color: #888;
 }
 
-#quotes-intro a.well-said-js {
-	font-family: Georgia;
+.quote-details a.remove { 
+	color: #f66;
 	letter-spacing: 1px;
-	background-color: #000;
-	color: #fff;
-	width: 136px;
-	margin-left: 44px;
-	font-size: 24px;
-	word-spacing: 6px;
-	padding: 16px;
-	text-decoration: underline;
+	float: right;
+	padding-right: 18px;
+	&:hover { color: #f22; text-decoration: underline; }
 }
 
-a {
-	text-decoration: none;
+.quote h1, .quote p {
+	padding: 0 18px;
+	-webkit-font-smoothing: antialiased;
 }
 
-.button {
-	font-family: Georgia;
-	text-transform: uppercase;
-	text-decoration: none;
-	background-color: #000;
+.color-0 { background-color: #ff0050; }
+.color-1 { background-color: #d12bf5; }
+.color-2 { background-color: #fe00ad; }
+
+.quote p:first-letter { text-transform: uppercase; }
+
+.quote h1 { 
+	line-height: 0; 
+	padding-top: 18px; 
+	padding-left: 18px; 
+	font-size: 14px;
 	color: #fff;
-	letter-spacing: 1px;
-	word-spacing: 5px;
-	padding: 9px 7px 7px 7px;
+	font-family: "Archer";
+	font-weight: bold;
 }
+.quote p { 
+	font-weight: 300; 
+	font-size: 24px; 
+	color: #fff;
+	line-height: 26px; 
+	font-family: "Archer"; 
+	padding-bottom: 18px;
+	&.big { font-size: 36px; line-height: 36px; }
+	&.small { font-size: 16px; line-height: 24px; }
+}
+

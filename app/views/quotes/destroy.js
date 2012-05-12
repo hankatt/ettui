@@ -1,0 +1,4 @@
+temp = $(".q-<%= @id %>");
+console.log("Object to remove: " +temp);
+temp.fadeOut('slow', function() { $(this).remove(); });
+

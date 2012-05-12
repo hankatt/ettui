@@ -26,7 +26,7 @@
             selection = document.getSelection().toString();
             source    = document.location.href.toString();
             token     = "<%= @user.token %>";
-            url       = "http://http://sharp-ocean-1383.herokuapp.com/quotes/add?id=" +token +"&copy=";
+            url       = "http://sharp-ocean-1383.herokuapp.com/quotes/add?id=" +token +"&copy=";
             well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
           }
 

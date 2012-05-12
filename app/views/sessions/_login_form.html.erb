@@ -1,6 +1,4 @@
 <%= form_tag sessions_path do %>
-	<h1 class="underline">Login here</h1>
-    
 	<div class="field">
 		<%= text_field_tag :email, params[:email], :placeholder => "Electronic mail address" %>
 	</div>
@@ -11,5 +9,4 @@
 		<%= submit_tag "Login." %>
 		<h3>or <%= link_to "sign up", signup_path %></a></h3>
 	</div>
-	<p>Once logged in you're ready to use Well Said in a click. That's it, sweet, right.</p>
 <% end %>

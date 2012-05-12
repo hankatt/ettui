@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Well</title>
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %> 
@@ -9,16 +10,18 @@
 <body>
 
 <header>
+	<%= image_tag "well.png", :height => "28" %>
 	<a href="http://localhost:3000">
-		<h1>Well said.</h1>
+		<h1 style="display: inline;">Well said</h1>
 	</a>
+
 	<!--
 	<% flash.each do |name, msg| %>
 		<%= content_tag :div, msg, :id => "flash_#{name}" %>
 	<% end %>
 	!-->
 </header>
-<div id="site-wrapper">
+<div class="container">
 	<%= yield %>
 </div>
 

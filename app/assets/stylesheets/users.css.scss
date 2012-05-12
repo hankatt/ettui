@@ -2,78 +2,111 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.landing-form {
-	width: 256px;
-	margin-right: 32px;
-	padding: 0;
-	float: left;
+#welcome-container {
+	height: 360px;
 }
 
-.landing-form p {
-	font-size: 12px;
-	line-height: 18px;
-	color: #aaa;
-}
-
-.landing-form form input {
-	font-family: "Helvetica Neue";
-	font-size: 16px;
-	padding: 10px;
-	text-align: center;
-	border: none;
-}
-
-.landing-form .field input {
-	width: 236px;
-	border-bottom: solid 3px #000;
-	background-color: #eee;
-}
-
-.landing-form .actions input {
-	background-color: #000;
-	color: #fff;
-	margin-top: 10px;
-	padding-top: 12px;
-	font-family: "Hoefler Text";
-	text-transform: uppercase;
-	word-spacing: 3px;
-	&:active {
-		background-color: #222;
+#signup-twitter {
+	position: relative;
+	&p {
+		position: absolute;
+		top: 0;
+		left: 60px;
+		color: #555;
+		text-decoration: underline;
+		&:hover {
+			color: #000;
+		}
+	}
+	&img {
+		position: absolute;
+		top: 24px;
+		left: 0px;
 	}
 }
 
-.landing-form .field div.field_with_errors input {
-	background-color: #fdd;
+.welcome-1, .welcome-2 {
+	height: 180px;
+	margin: 24px 0;
+	float: left;
+}
+.welcome-1 {
+	width: 480px;
+	&p {
+		font-size: 24px;
+		line-height: 30px;
+		word-spacing: 4px;
+		color: #333;
+	}
 }
 
-.landing-form .actions h3 {
-	display: inline;
-	font-family: "Hoefler Text";
-	font-weight: 300;
-	font-size: 12px;
-	padding-left: 12px;
+.welcome-2 {
+	width: 580px;
+	height: auto;
+	margin-left: 80px;
+	&p {
+		font-size: 24px;
+		line-height: 30px;
+		word-spacing: 4px;
+		color: #333;
+	}
+	&form {
+		margin-left: 60px;
+		&p {
+			font-size: 16px;
+		}
+	}
+	&form input {
+		font-family: "Archer";
+		font-size: 16px;
+		padding: 10px;
+		text-align: center;
+	}
+	&form .field input {
+		width: 236px;
+		border: none;
+		border-bottom: solid 3px #333;
+		background-color: #aaa;
+	}
+	&form .field input::-webkit-input-placeholder, form .field input input::-moz-placeholder {
+		color: #888;
+	}
+	&form .actions input {
+		border: none;
+		background-color: #333;
+		color: #fff;
+		margin-top: 10px;
+		padding-top: 12px;
+		font-family: "Hoefler Text";
+		text-transform: uppercase;
+		word-spacing: 3px;
+		&:active {
+			background-color: #222;
+		}
+	}
+	&form .field div.field_with_errors input {
+		background-color: #fdd;
+	}
+	&form .actions h3 {
+		display: inline;
+		font-family: "Hoefler Text";
+		font-weight: 300;
+		font-size: 12px;
+		padding-left: 12px;
+	}
+	&form .actions h3 a {
+		text-transform: uppercase;
+		font-size: 14px;
+		padding-left: 2px;
+		text-decoration: underline;
+	}
 }
 
-.landing-form .actions h3 a {
-	text-transform: uppercase;
-	font-size: 14px;
-	padding-left: 2px;
-	text-decoration: underline;
-}
+.grey-0 { background-color: #aaa; }
+.grey-1 { background-color: #777; }
+.grey-2 { background-color: #999; }
 
-.signin {
-	display: inline; 
-	position: relative; 
-	bottom: 17px; 
-	left: 9px;
-}
-
-.signin a {
-	text-transform: uppercase;
-	font-size: 14px;
-	padding-left: 2px;
-	text-decoration: underline;
-}
+.grey-0 .quote-details, .grey-1 .quote-details, .grey-2 .quote-details { background-color: #fff; }
 
 div.error_explanation ul {
 	display: none;
@@ -87,7 +120,7 @@ div.error_explanation ul {
 	}
 }
 
-.landing-form ul {
+.welcome-2 ul {
 	-webkit-padding-start: 18px;
 	li {
 	font-family: "Helvetica Neue";
@@ -99,4 +132,4 @@ div.error_explanation ul {
 	}
 }
 
-.landing-form ul li:hover { text-decoration: underline; }
+.welcome-2 ul li:hover { text-decoration: underline; }

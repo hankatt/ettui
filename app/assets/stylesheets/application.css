@@ -12,110 +12,72 @@
  *= require_tree .
 */
 
-#flash_notice {
-	width: 256px;
-	font-family: "Helvetica Neue";
-	font-style: italic;
-	font-size: 12px;
-	display: inline;
-}
+/* ============================== */
+/* ! Layout for desktop version   */
+/* ============================== */
 
-body { background-color: #ddd; }
+	body { 
+		background-color: #bbb; 
+	}
 
-a {
-	color: #000;
-	text-decoration: none;
-	font-family: "Hoefler Text";
-}
+	header { width: 1140px; margin: 25px auto 0 auto; }
+	div.underline { width: 100%; height: 6px; background-color: #333; margin-top: 15px; }
+	header h1 { font-size: 30px; padding-left: 16px; color: #fff; }
 
-h1 {
-	font-family: "Helvetica Neue";
-	word-spacing: 8px;
-	font-size: 24px;
-	line-height: 36px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
+	.container { width: 1140px; max-width: 1140px; margin: 0 auto; }
 
-h2 {
-	font-family: "Hoefler Text";
-	word-spacing: 8px;
-	font-size: 16px;
-	line-height: 24px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
+	#flash_notice {
+		width: 256px;
+		font-family: "Helvetica Neue";
+		font-style: italic;
+		font-size: 12px;
+		display: inline;
+	}
 
-h3 {
-	font-family: "Hoefler Text";
-	word-spacing: 8px;
-	font-size: 12px;
-	line-height: 18px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
+	a {
+		color: #000;
+		text-decoration: none;
+		font-family: "Archer";
+	}
 
-h1.underline {
-	padding: 0 0 32px 0;
-	line-height: 0;
-	border-bottom: solid 3px #aaa;
-}
+	h1 {
+		font-family: "Helvetica Neue";
+		word-spacing: 8px;
+		font-size: 18px;
+		line-height: 24px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		color: #333;
+	}
 
-h2.underline {
-	padding: 12px 0 16px 0;
-	line-height: 0;
-	border-bottom: solid 3px #aaa;
-}
+	h2 {
+		font-family: "Helvetica Neue";
+		word-spacing: 8px;
+		font-size: 18px;
+		line-height: 24px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
 
-p {
-	font-size: 16px;
-	line-height: 24px;
-	word-spacing: 4px;
-	font-family: Georgia;
-	font-weight: 400;
-}
+	p {
+		font-family: "Archer";
+		font-weight: 300;
+		line-height: 24px;
+	}
 
-header { 
-	width: 768px; 
-	margin: 32px auto 16px auto; 
-	border-bottom: solid 3px #000; 
-}
-header h1 {
-	padding: 25px 20px 15px 20px; 
-	font-weight: 400; 
-	width: 216px;
-	text-align: center; 
-	background-color: #000; 
-	color: #fff; 
-	font-family: "Hoefler Text"; 
-	text-transform: uppercase; 
-	word-spacing: 8px; 
-	font-size: 30px; 
-	letter-spacing: 2px; 
-}
+	.logout a {
+		color: #f44;
+		text-decoration: underline;
+	}
 
-.logout a {
-	color: #f44;
-	text-decoration: underline;
-}
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
 
-#site-wrapper {
-	width: 768px;
-	margin: 0 auto;
-	overflow: auto;
-}
+@media handheld, only screen and (max-width: 767px) {
 
-.description-column {
-	width: 448px;
-	margin-left: 32px;
-	padding: 0;
-	margin-bottom: 25px;
-	float: left;
-	background-color: #ddd;
-}
+	body {
+		
+	}
 
-.description-column mark {
-	text-decoration: underline;
-	background-color: #ddd;
-	font-weight: bold;
 }

@@ -1,3 +1,4 @@
+<!--
 <% if @user.nil? %>
   <h1 class="underline">Hey there stranger!</h1>
 <% elsif @user.email.nil? %>
@@ -5,102 +6,126 @@
 <% else %>
   <h1 class="underline">Hey there <%= @user.email %>!</h1>
 <% end %>
+!-->
 
 <div id="quotes-intro">
-  <p class="margin-bottom-36">To get started simply drag this link to your bookmarks bar.</p>
-<a href='javascript:(function(){
-    well = function() {
-      try {
-        if(!document.body)
-          throw(0);
-
-        if(document.getSelection().toString() === "") {
-          alert("Empty selection.");
-          throw(0);
-        } else {
-          well      = document.createElement("script");
-          selection = document.getSelection().toString();
-          source    = document.location.href.toString();
-          token     = "<%= @user.token %>";
-          url       = "http://sharp-ocean-1383.herokuapp.com/quotes/add?id=" +token +"&copy=";
-          well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
-        }
-
-        /* TAKES CARE OF JSONP RESPONSE */
-        jsonp = document.createElement("script");
-        jsonp.setAttribute("type", "text/javascript");
-        callback = "function status(data) {
-          headline.innerText = data.message;
-          popup.innerHTML = headline.outerHTML;
-          counter = 0;
-          interval = setInterval(function() {
-            counter += 25;
-            wait = 350;
-            if(counter > wait) {
-              value = counter - wait;
-              popup.style.opacity = popup.style.opacity - (value/1000);
-              document.body.removeChild(popup);
-              document.body.appendChild(popup);
-              if(counter === 1500) {
-                clearInterval(interval);
-                counter = 0;
-                document.body.removeChild(popup);
-              }
-            }
-          }, 50);
-        }";
-        jsonp.innerHTML = callback;
-        document.body.appendChild(jsonp);
-        
-        /* CREATES POPUP */
-        headline = document.createElement("h1");
-        headline.id = "well-title";
-        headline.style.fontFamily = "Hoefler Text";
-        headline.style.fontSize = "24px";
-        headline.style.textAlign = "center";
-        headline.style.width = "175px";
-        headline.style.color = "#444";
-        headline.innerText = "SAVING..";
-
-        popup = document.createElement("div");
-        popup.style.backgroundColor = "#eee";
-        popup.style.width = "175px";
-        popup.style.padding = "25px";
-        popup.style.zIndex = "20000";
-        popup.style.position = "fixed";
-        popup.style.top = "0";
-        popup.style.left = "25px";
-        popup.style.opacity = "1";
-        popup.innerHTML = headline.outerHTML;
-        document.body.appendChild(popup);
-
-        /* EXECUTE SCRIPT */
-        document.body.appendChild(well);
-
-      } catch(e) {
-        alert("Please wait until the page has loaded.");
-      }
-    };
-
-    if(/Firefox/.test(navigator.userAgent)) {
-      setTimeout(well,0);
-    } else {
-      well();
-    }
-  })()' class="well-said-js">Well Said</a>
-  <p class="margin-top-36">Whenver you mark a piece of text that you like, press the link to add it to Well Said.</p>
-  <p class="logout"><%= link_to "Logout", logout_path %></p>
+  <!--<p class="logout"><%= link_to "Logout", logout_path %></p>!-->
 </div>
-<div class="description-column">
-<h2 class="underline">Your Quotes</h2>
-  <table>
-	<% if !@quotes.nil? %>
-		<% @quotes.each do |quote| %>
-  		<tr class="<%= cycle("odd", "")%>">
-    		<td style="width: 367px;"><%= quote.text %></td>
-    		<td><%= link_to "source", quote.source %></td>
-  		</tr>
-		<% end %>
-	<% end %>
-</table>
+<div id="wellsaid-wizard">
+  <div class="wizard-1">
+      <h1>1. Installing</h1>
+      <p>Drag this link to your bookmarks bar.</p>
+      <a href='javascript:(function(){
+      well = function() {
+        try {
+          if(!document.body)
+            throw(0);
+
+          if(document.getSelection().toString() === "") {
+            alert("Empty selection.");
+            throw(0);
+          } else {
+            well      = document.createElement("script");
+            selection = document.getSelection().toString();
+            source    = document.location.href.toString();
+            token     = "<%= @user.token %>";
+            url       = "http://localhost:3000/quotes/add?id=" +token +"&copy=";
+            well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
+          }
+
+          /* TAKES CARE OF JSONP RESPONSE */
+          jsonp = document.createElement("script");
+          jsonp.setAttribute("type", "text/javascript");
+          callback = "function status(data) {
+            headline.innerText = data.message;
+            popup.innerHTML = headline.outerHTML;
+            counter = 0;
+            interval = setInterval(function() {
+              counter += 25;
+              wait = 350;
+              if(counter > wait) {
+                value = counter - wait;
+                popup.style.opacity = popup.style.opacity - (value/1000);
+                document.body.removeChild(popup);
+                document.body.appendChild(popup);
+                if(counter === 1500) {
+                  clearInterval(interval);
+                  counter = 0;
+                  document.body.removeChild(popup);
+                }
+              }
+            }, 50);
+          }";
+          jsonp.innerHTML = callback;
+          document.body.appendChild(jsonp);
+          
+          /* CREATES POPUP */
+          headline = document.createElement("h1");
+          headline.id = "well-title";
+          headline.style.fontFamily = "Hoefler Text";
+          headline.style.fontSize = "24px";
+          headline.style.textAlign = "center";
+          headline.style.width = "175px";
+          headline.style.color = "#444";
+          headline.innerText = "SAVING..";
+
+          popup = document.createElement("div");
+          popup.style.backgroundColor = "#eee";
+          popup.style.width = "175px";
+          popup.style.padding = "25px";
+          popup.style.zIndex = "20000";
+          popup.style.position = "fixed";
+          popup.style.top = "0";
+          popup.style.left = "25px";
+          popup.style.opacity = "1";
+          popup.innerHTML = headline.outerHTML;
+          document.body.appendChild(popup);
+
+          /* EXECUTE SCRIPT */
+          document.body.appendChild(well);
+
+        } catch(e) {
+          alert("Please wait until the page has loaded.");
+        }
+      };
+
+      if(/Firefox/.test(navigator.userAgent)) {
+        setTimeout(well,0);
+      } else {
+        well();
+      }})()' class="pimp">Well Said</a>
+  </div>
+  <div class="wizard-2">
+      <h1>2. Testing</h1>
+      <p>Simply select the text below.</p>
+      <p class="markit">Unpack your sense of humor, and get on with living and ENJOY IT.</p>
+  </div>
+  <div class="wizard-3">
+      <h1>3. Using</h1>
+      <p>Click your new Well Said bookmark.</p>
+      <%= image_tag "reload.svg", :height => "84" %>
+  </div>
+  <div class="underline" style="clear: both;"></div>
+</div>
+<div id="quotes-container">
+  <% if !@quotes.nil? %>
+  	<% @quotes.each do |quote| %>
+  		<div class="quote pimp color-<%= quote.id % 3 %> q-<%= quote.id %>">
+        <h1>12.04.17</h1>
+        <% if quote.text.length < 67 %>
+          <p class="big"><%= quote.text %></p>
+        <% elsif quote.text.length > 313 %>
+          <p class="small"><%= quote.text %></p>
+        <% else %>
+          <p><%= quote.text %></p>
+        <% end %>
+        
+  		  <%= link_to quote.source do %>
+          <div class="quote-details">
+            <%= link_to 'Remove', quote, confirm: 'Are you sure?', method: :delete, :remote => true, :class => 'remove' %>
+          </div>
+        <% end %>
+  		</div>
+  	<% end %>
+  <% end %>
 </div>

@@ -14,39 +14,31 @@
 //= require jquery_ujs
 //= require_tree .
 
-function getSession() {
-  token_request = new XMLHttpRequest();
-  var url = "http://localhost:3000/quotes/get_token";
-  session_id = false;
+$(document).ready(function() {
+  $(function(){
+    $("#quotes-container").vgrid({
+        easeing: "easeOutQuint",
+        time: 250,
+        delay: 20,
+        selRefGrid: "#quotes-container div.quote",
+        selFitWidth: ".container",
+        gridDefWidth: 225 + 15 + 15 + 15 + 15,
+        fadeIn: {
+            time: 500,
+            delay: 75
+        }
+    });
+  });
 
-  token_request.open("GET", url, true);
-  token_request.onreadystatechange = sessionState;
-  token_request.send(null);
-}
+  $(".quote").hover(function() {
+    $(this).children(".quote-details").show();
+  });
 
-function sessionState() {
-  //console.log("request.readyState: " +request.readyState);
-  if (token_request.readyState == 4) {
-    console.log(token_request.responseText);
-  }
-}
+  $(".quote").mouseleave(function() {
+    $(this).children(".quote-details").hide();
+  });
+});
 
-function getXML() {
-	request = new XMLHttpRequest();
-    var url = "http://localhost:3000/quotes/add?text=Hello&source=http";
-    request.open("GET", url, true);
-    request.onreadystatechange = updateState;
-    request.send(null);
-}
-
-function updateState() {
-	//console.log("request.readyState: " +request.readyState);
-	if (request.readyState == 4) {
-		console.log("# # # # # # # # # \n\nReponse: " +request.responseText +"\n\n");
-		console.log("# # # # # # # # # \n" +request.getAllResponseHeaders() +"# # # # # # # # # \n");
-	}
-}
-
-function done() {
-	alert("Done.");
+function toggle_instructions() {
+  $("#wellsaid-wizard").slideToggle()
 }

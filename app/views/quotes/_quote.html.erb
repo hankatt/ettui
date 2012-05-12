@@ -1,0 +1,14 @@
+<div class="quote pimp color-<%= quote.id % 3 %> q-<%= quote.id %>">
+	<h1>12.04.17</h1>
+	<% if quote.text.length < 67 %>
+	  <p class="big"><%= quote.text %></p>
+	<% elsif quote.text.length > 313 %>
+	  <p class="small"><%= quote.text %></p>
+	<% else %>
+	  <p><%= quote.text %></p>
+	<% end %>
+	<div class="quote-details">
+	  <%= link_to 'Source', quote.source, :class => 'source' %>
+	  <%= link_to 'Remove', quote, confirm: 'Are you sure?', method: :delete, :remote => true, :class => 'remove' %>
+	</div>
+</div>

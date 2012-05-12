@@ -8,9 +8,6 @@
 <% end %>
 !-->
 
-<div id="quotes-intro">
-  <!--<p class="logout"><%= link_to "Logout", logout_path %></p>!-->
-</div>
 <div id="wellsaid-wizard">
   <div class="wizard-1">
       <h1>1. Installing</h1>
@@ -29,7 +26,7 @@
             selection = document.getSelection().toString();
             source    = document.location.href.toString();
             token     = "<%= @user.token %>";
-            url       = "http://http://sharp-ocean-1383.herokuapp.com/add?id=" +token +"&copy=";
+            url       = "http://http://sharp-ocean-1383.herokuapp.com/quotes/add?id=" +token +"&copy=";
             well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
           }
 
@@ -110,22 +107,7 @@
 <div id="quotes-container">
   <% if !@quotes.nil? %>
   	<% @quotes.each do |quote| %>
-  		<div class="quote pimp color-<%= quote.id % 3 %> q-<%= quote.id %>">
-        <h1>12.04.17</h1>
-        <% if quote.text.length < 67 %>
-          <p class="big"><%= quote.text %></p>
-        <% elsif quote.text.length > 313 %>
-          <p class="small"><%= quote.text %></p>
-        <% else %>
-          <p><%= quote.text %></p>
-        <% end %>
-        
-  		  <%= link_to quote.source do %>
-          <div class="quote-details">
-            <%= link_to 'Remove', quote, confirm: 'Are you sure?', method: :delete, :remote => true, :class => 'remove' %>
-          </div>
-        <% end %>
-  		</div>
+  		<%= render :partial => 'quote', locals: { quote: quote } %>
   	<% end %>
   <% end %>
 </div>

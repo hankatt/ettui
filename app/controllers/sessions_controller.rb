@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @quotes = Quote.limit(4)
+    @quotes = Quote.limit(4).reverse_order
   end
 
   def create

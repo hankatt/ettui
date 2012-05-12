@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     end
 
     # Get four latest quotes
-    @quotes = Quote.limit(4)
+    @quotes = Quote.limit(4).reverse_order
 
     respond_to do |format|
       format.html # new.html.erb

@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 
 	has_many :quotes
 
+	validates_uniqueness_of :email, :unless => :uid
+	validates_presence_of :email, :password, :password_confirmation, :unless => :provider
+	validates_confirmation_of :password, :unless => :provider
+
 	def encrypt_password
 		if password.present?
 			self.password_salt = BCrypt::Engine.generate_salt

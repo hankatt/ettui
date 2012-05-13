@@ -1,38 +1,8 @@
 <div id="welcome-container">
-	<div class="welcome-1">
-		<p>Well Said helps you gather and share quotes you love.</p>
-		<div id="signup-twitter" style="height: 64px;">
-		  <%= link_to "/auth/twitter" do %>
-		    <%= image_tag "twitter-bird.png", :height => "32px", :style => "float: left;" %>
-		    <p style="float: left;">Sign up using Twitter</p>
-		  <% end %>
-		</div>
-		<p>Or sign up manually to the right.</p>
-	</div>
-	<div class="welcome-2">
-		<%= render 'login_form' %>
-	</div>
+  <%= render 'shared/welcome' %>
+  <div class="welcome-2">
+    <%= render 'login_form' %>
+  </div>
 </div>
 <div class="underline"></div>
-<div id="quotes-container">
-  <% if !@quotes.nil? %>
-  	<% @quotes.each do |quote| %>
-  		<div class="quote pimp grey-<%= quote.id % 3 %> q-<%= quote.id %>">
-        <h1>12.04.17</h1>
-        <% if quote.text.length < 67 %>
-          <p class="big"><%= quote.text %></p>
-        <% elsif quote.text.length > 313 %>
-          <p class="small"><%= quote.text %></p>
-        <% else %>
-          <p><%= quote.text %></p>
-        <% end %>
-        
-  		  <%= link_to quote.source do %>
-          <div class="quote-details">
-            <%= link_to 'Remove', quote, confirm: 'Are you sure?', method: :delete, :remote => true, :class => 'remove' %>
-          </div>
-        <% end %>
-  		</div>
-  	<% end %>
-  <% end %>
-</div>
+<%= render 'shared/quotes' %>

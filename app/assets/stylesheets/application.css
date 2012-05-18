@@ -66,6 +66,7 @@
 	.spacer-65 { width: 65px; position: relative; float: left; height: 188px; }
 	.spacer-65 img { position: absolute; bottom: 0px; }
 	.white { color: white; }
+	.red { color: #f44; }
 
 	header { width: 1140px; margin: 24px auto 0 auto; }
 	header h1 { font-weight: bold; line-height: 0; color: #444; padding-left: 24px; text-transform: uppercase; }

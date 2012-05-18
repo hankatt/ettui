@@ -1,8 +1,14 @@
 <div id="welcome-container">
-  <%= render 'shared/welcome' %>
-  <div class="welcome-2">
-    <%= render 'login_form' %>
-  </div>
+	<div class="spacer-65">
+		<%= image_tag "twitter-bird-color.png" %>
+	</div>
+		<div class="welcome-1 mbottom mtop">
+		<%= render 'shared/welcome' %>
+  	</div>
+  	<div class="v_divider"></div>
+  	<div class="welcome-2 mtop mleft">
+  		<%= render 'login_form' %>
+  	</div>
 </div>
-<div class="underline"></div>
+<div class="divider"></div>
 <%= render 'shared/quotes' %>

@@ -3,24 +3,49 @@
 <head>
   <title>Well</title>
   <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %> 
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31860470-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </head>
 <body>
 
 <header>
 	<%= image_tag "well.png", :height => "28" %>
-	<a href="http://tiny.cc/wellwell">
+	<a href="<%= root_path %>">
 		<h1 style="display: inline;">Well said</h1>
 	</a>
-	<p><%= link_to "Logout", logout_path if current_user %></p>
-	<!--
-	<% flash.each do |name, msg| %>
-		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
-	!-->
+  <div id="login-container">
+    <% if current_user %>
+      <p>Hey there, <%= @user.email || @user.name %>!</p>
+      <%= link_to "Logout", logout_path, :class => "mleft-s" %>
+    <% else %>
+      <p>Been here before?</p>
+      <%= link_to "Login here ", login_path, :class => "mleft-s" %>
+      <p class="mleft-s">or through</p>
+      <%= link_to "Twitter", "/auth/twitter", :class => "mleft-s" %>
+    <% end %>
+
+  	<!--
+  	<% flash.each do |name, msg| %>
+  		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+  	<% end %>
+  	!-->
+  </div>
 </header>
+<div class="divider"></div>
 <div class="container">
 	<%= yield %>
 </div>

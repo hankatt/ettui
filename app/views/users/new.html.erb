@@ -1,16 +1,14 @@
 <div id="welcome-container">
-	<div class="welcome-1">
+	<div class="spacer-65">
+		<%= image_tag "twitter-bird-color.png" %>
+	</div>
+		<div class="welcome-1 mbottom mtop">
 		<%= render 'shared/welcome' %>
   	</div>
-  	<div class="welcome-2">
+  	<div class="v_divider"></div>
+  	<div class="welcome-2 mtop mleft">
   		<%= render 'form' %>
   	</div>
-	<div class="welcome-3">
-		<h2>Notice</h2>
-		<p>Well Said is under construction. Data might get lost.</p>
-		<p>If you enjoy using Well Said, your feedback is welcome.</p>
-		<p>If so, send it to <a href="https://twitter.com/#!/daggfukt" target="_blank">@daggfukt</a>.</p>
-	</div>
 </div>
-	<div class="underline"></div>
-	<%= render 'shared/quotes' %>
+<div class="divider"></div>
+<%= render 'shared/quotes' %>

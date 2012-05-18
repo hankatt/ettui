@@ -33,7 +33,7 @@
       <p>Hey there, </p>
       <%= link_to (@user.email || @user.name), quotes_path, :style => "padding-left: 5px;" %>
       <p>!</p>
-      <%= link_to "Logout", logout_path, :class => "mleft-s" %>
+      <%= link_to "Logout", logout_path, :class => "mleft-s red" %>
     <% else %>
       <p>Been here before?</p>
       <%= link_to "Login here ", login_path, :class => "mleft-s" %>

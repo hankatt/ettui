@@ -3,147 +3,69 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #welcome-container {
-	overflow: auto;
+	overflow: hidden;
+	height: 224px;
+	width: 780px;
+	position: relative;
+	left: -65px;
 }
 
 #signup-twitter {
 	position: relative;
-	height: 38px;
+	height: 27px;
 	&p {
-		position: absolute;
-		top: 0;
-		left: 60px;
-		line-height: 0;
+		font-size: 27px;
 		font-weight: bold;
-		color: #333;
-		text-decoration: underline;
+		line-height: 13px;
+		color: #fff;
 		&:hover {
-			color: #000;
+			color: #fff;
+			text-decoration: underline;
+		};
+	}
+}
+
+.welcome-1, .welcome-2 { float: left; height: 192px; }
+.welcome-1 { width: 400px; line-height: 0; }
+.welcome-2 form { height: 192px; }
+.welcome-2 {
+	&form .field {
+		height: 34px;
+		margin-bottom: 16px;
+		&input {
+			height: 34px;
+			width: 240px;
+			&:hover {
+				background-image: url("/assets/striped-bg.png");
+				border-bottom: solid 2px #444;
+			}
+			&:focus {
+				background-image: url("/assets/striped-bg.png");
+				border-bottom: solid 2px #444;
+			};
 		}
 	}
-	&img {
-		position: absolute;
-		top: 6px;
-		left: 0px;
+	&form .actions {
+		&input {
+			float: left;
+			height: 34px;
+			width: 80px;
+			color: #fff;
+			border-bottom: solid 2px #888;
+			&:hover {
+				border-bottom: solid 2px #444;
+			};
+		}
 	}
 }
 
-.welcome-1, .welcome-2, .welcome-3 {
-	height: auto;
-	float: left;
-}
-.welcome-1 {
-	width: 480px;
-	&p {
-		font-family: "Helvetica Neue";
-		font-size: 20px;
-		line-height: 30px;
-		font-weight: light;
-		word-spacing: 2px;
-		color: #333;
-	}
-}
-
-.welcome-3 {
-	width: 180px;
-	margin-left: 20px;
-	&p { font-family: "Helvetica Neue"; font-weight: 400; font-size: 12px; color: #666; line-height: 20px; }
-	&h2 { color: #666; margin-top: 20px; }
-	&a { color: #222; text-decoration: underline; font-family: "Helvetica Neue";
-		&:hover { color: #000; }
-	}
-}
-
-.welcome-2 {
-	float: left;
-	height: auto;
-	margin-left: 105px;
-	&p {
-		font-size: 24px;
-		line-height: 30px;
-		word-spacing: 4px;
-		color: #222;
-	}
-	&form { width: 269px; margin-top: 15px; }
-	&form p {
-		font-size: 16px;
-	}
-	&form .validation {
-		float: left;
-		padding-left: 12px;
-		line-height: 10px;
-		color: #888;
-		font-family: "Helvetica Neue";
-		&:first-letter { text-transform: capitalize; };
-	}
-	&form input {
-		float: left;
-		font-family: "Archer";
-		font-size: 16px;
-		padding: 10px;
-		text-align: center;
-	}
-	&form .field input {
-		width: 235px;
-		border: none;
-		margin-bottom: 6px;
-		margin-left: 2px;
-		border-bottom: solid 3px #666;
-		background-color: #bbb;
-		&:hover { 
-			border-bottom: solid 3px #444;
-			background-color: #ccc;
-		 }
-	}
-	&form .field input::-webkit-input-placeholder, form .field input input::-moz-placeholder {
-		color: #666;
-	}
-	&form .actions { clear: both; }
-	&form .actions input {
-		border: none;
-		background-color: #333;
-		color: #fff;
-		margin-top: 10px;
-		padding-top: 12px;
-		font-family: "Helvetica Neue";
-		text-transform: uppercase;
-		&:active { background-color: #000; }
-		&:hover { background-color: #222; }
-	}
-	&form .field div.field_with_errors input {
-		background-color: #fdd;
-	}
-	&form .actions h3 {
-		display: inline;
-		font-family: "Helvetica Neue";
-		font-weight: 300;
-		text-transform: uppercase;
-		font-size: 12px;
-		padding-left: 8px;
-		line-height: 58px;
-	}
-	&form .actions h3 a {
-		font-family: "Helvetica Neue";
-		font-weight: 400;
-		color: #666;
-		text-transform: uppercase;
-		font-size: 14px;
-		padding-left: 8px;
-		text-decoration: underline;
-		&:hover { color: #222; }
-		&:active { color: #000; }
-	}
-}
-
-.grey-0 { background-color: #222; }
-.grey-1 { background-color: #444; }
-.grey-2 { background-color: #666; }	
+.field input::-webkit-input-placeholder { color: #888; }
+.field input:-moz-placeholder { color: #888; }
 
 div.error_explanation ul {
 	display: none;
 	-webkit-padding-start: 0px;
 	li {
-	font-family: "Helvetica Neue";
 	font-size: 12px;
 	font-style: italic;
 	color: #000;
@@ -153,8 +75,7 @@ div.error_explanation ul {
 
 .welcome-2 ul {
 	-webkit-padding-start: 18px;
-	li {
-	font-family: "Helvetica Neue";
+	&li {
 	font-size: 16px;
 	padding-bottom: 6px;
 	word-spacing: 4px;
@@ -163,4 +84,6 @@ div.error_explanation ul {
 	}
 }
 
-.welcome-2 ul li:hover { text-decoration: underline; }
+.grey-0 { background-color: #222; }
+.grey-1 { background-color: #444; }
+.grey-2 { background-color: #666; }	

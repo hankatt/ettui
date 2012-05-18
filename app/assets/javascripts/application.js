@@ -14,22 +14,23 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function() {
-  $(function(){
-    $("#quotes-container").vgrid({
-        easeing: "easeOutQuint",
-        time: 250,
-        delay: 20,
-        selRefGrid: "#quotes-container div.quote",
-        selFitWidth: ".container",
-        gridDefWidth: 225 + 15 + 15 + 15 + 15,
-        fadeIn: {
-            time: 500,
-            delay: 75
-        }
-    });
+$(window).load(function() {
+  $('#quotes-container').masonry({
+    // options
+    itemSelector : '.quote',
+    columnWidth : 285,
+    isAnimated : true
   });
+});
 
+$(document).ready(function() {
+});
+
+function reload() {
+  window.location.reload();
+}
+
+/*  
   $(".quote").hover(function() {
     $(this).children(".quote-details").show();
   });
@@ -46,3 +47,4 @@ $(document).ready(function() {
 function toggle_instructions() {
   $("#wellsaid-wizard").slideToggle()
 }
+*/

@@ -11,9 +11,12 @@
     <%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
-  <div class="actions">
+  <div class="actions mtop">
     <%= f.submit "Sign up" %>
-    <h3>or <%= link_to "login", login_path %></h3>
+    <div class="sidenote">
+      <p>Have an account?</p> 
+      <%= link_to "Login here", login_path %>
+    </div>
   </div>
 
 <% end %>

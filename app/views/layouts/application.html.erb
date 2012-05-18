@@ -30,7 +30,9 @@
 	</a>
   <div id="login-container">
     <% if current_user %>
-      <p>Hey there, <%= @user.email || @user.name %>!</p>
+      <p>Hey there, </p>
+      <%= link_to (@user.email || @user.name), quotes_path, :style => "padding-left: 5px;" %>
+      <p>!</p>
       <%= link_to "Logout", logout_path, :class => "mleft-s" %>
     <% else %>
       <p>Been here before?</p>

@@ -1,7 +1,7 @@
 <div id="quotes-container">
   <% if !@quotes.nil? %>
   	<% @quotes.each do |quote| %>
-  		<div class="quote pimp lively-<%= quote.id % 3 %> q-<%= quote.id %>">
+  		<div class="quote pimp grey-<%= quote.id % 3 %> q-<%= quote.id %>">
         <h1>12.04.17</h1>
         <% if quote.text.length < 67 %>
           <p class="big"><%= quote.text %></p>

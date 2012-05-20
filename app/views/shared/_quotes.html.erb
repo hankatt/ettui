@@ -5,11 +5,14 @@
         <h1>12.04.17</h1>
         <% if quote.text.length < 67 %>
           <p class="big"><%= quote.text %></p>
-        <% elsif quote.text.length > 313 %>
+        <% elsif quote.text.length > 269 %>
           <p class="small"><%= quote.text %></p>
         <% else %>
           <p><%= quote.text %></p>
         <% end %>
+        <div class="quote-details">
+          <p class="tiny">Quoted by <%= quote.user.email || quote.user.name %></p>
+        </div>
   		</div>
   	<% end %>
   <% end %>

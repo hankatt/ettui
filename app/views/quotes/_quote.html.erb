@@ -1,5 +1,5 @@
 <div class="quote pimp color-<%= quote.id % 3 %> q-<%= quote.id %>">
-	<h1>12.04.17</h1>
+	<h1><%= quote.updated_at.year.to_s.last(2) %>.<%= sprintf '%02d', quote.updated_at.month %>.<%= sprintf '%02d', quote.updated_at.day %></h1>
 	<%= link_to 'X', quote, confirm: 'Remove this? Are you sure?', method: :delete, :remote => true, :class => 'remove', :alt => "Remove" %>
 	<% if quote.text.length < 67 %>
 	  <p class="big"><%= quote.text %></p>

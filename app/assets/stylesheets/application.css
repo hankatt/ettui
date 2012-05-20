@@ -40,6 +40,7 @@
 	}
 
 	p.note { font-weight: 300; margin-top: 18px; }
+
 	div.sidenote {
 		margin-left: 12px;
 		float: left; 
@@ -47,10 +48,12 @@
 		padding-top: 3px;
 
 	}
+
 	.sidenote p { 
 		color: #888; 
 		font-size: 12px; 
 	}
+	
 	.sidenote a { 
 		color: #888; 
 		font-size: 12px; 

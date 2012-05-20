@@ -17,7 +17,8 @@
 /* ============================== */
 
 	body { 
-		background-color: #bbb; 
+		background-color: #bbb;
+		background-image: url('/assets/noise-bg.png'); 
 	}
 
 	@-moz-document url-prefix() {
@@ -137,14 +138,13 @@
 	}
 
 	form .actions input {
-		background-image: url("/assets/striped-bg.png");
-		background-color: #aaa;
+		/*background-image: url("/assets/striped-bg.png");*/
+		background-color: #a2e374;
 		border: none;
 		text-transform: uppercase;
 		font-size: 16px;
 		line-height: 30px;
 		font-weight: bold;
-		text-decoration: underline;
 		text-align: center;
 	}
 }

@@ -35,13 +35,17 @@
 		&input {
 			height: 34px;
 			width: 240px;
+			background-color: #f6f6f6;
+			color: #444;
 			&:hover {
-				background-image: url("/assets/striped-bg.png");
-				border-bottom: solid 2px #444;
+				/*background-image: url("/assets/striped-bg.png");*/
+				border-bottom: solid 2px #222;
+				background-color: #fff;
 			}
 			&:focus {
-				background-image: url("/assets/striped-bg.png");
-				border-bottom: solid 2px #444;
+				/*background-image: url("/assets/striped-bg.png");*/
+				border-bottom: solid 2px #222;
+				background-color: #fff;
 			};
 		}
 	}
@@ -49,18 +53,18 @@
 		&input {
 			float: left;
 			height: 34px;
-			width: 80px;
+			width: 100px;
 			color: #fff;
-			border-bottom: solid 2px #888;
 			&:hover {
-				border-bottom: solid 2px #444;
+				border-bottom: solid 2px #fff;
+				cursor: pointer;
 			};
 		}
 	}
 }
 
-.field input::-webkit-input-placeholder { color: #888; }
-.field input:-moz-placeholder { color: #888; }
+.field input::-webkit-input-placeholder { color: #bbb; }
+.field input:-moz-placeholder { color: #bbb; }
 
 div.error_explanation ul {
 	display: none;
@@ -84,9 +88,24 @@ div.error_explanation ul {
 	}
 }
 
-.grey-0 { background-color: #222; }
-.grey-1 { background-color: #444; }
-.grey-2 { background-color: #666; }
+.grey-0 { 
+	background-color: #222;
+	&div.quote-details {
+		background-color: #000;
+	}
+}
+.grey-1 { 
+	background-color: #444;
+	&div.quote-details {
+		background-color: #222;
+	}
+}
+.grey-2 { 
+	background-color: #666;
+	&div.quote-details {
+		background-color: #444;
+	}
+}
 
 .lively-0 { background-color: #a2e374; &p { color: #333; } }
 .lively-1 { background-color: #c1e373; &p { color: #333; } }

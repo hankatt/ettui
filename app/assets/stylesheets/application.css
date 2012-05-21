@@ -63,7 +63,7 @@
 	}
 
 	.mleft { margin-left: 24px; }
-	.mleft-s { margin-left: 12px; }
+	.mleft-s { margin-left: 6px; }
 	.mright { margin-right: 24px; }
 	.mtop { margin-top: 24px; }
 	.mbottom { margin-bottom: 24px; }
@@ -71,9 +71,10 @@
 	.spacer-65 img { position: absolute; bottom: 0px; }
 	.white { color: white; }
 	.red { color: #f44; }
-
+	.bold { font-weight: bold; }
+	
 	header { width: 1140px; margin: 24px auto 0 auto; }
-	header h1 { font-weight: bold; line-height: 0; color: #444; padding-left: 24px; text-transform: uppercase; }
+	header h1 { font-weight: bold; line-height: 0; color: #fff; padding-left: 24px; text-transform: uppercase; }
 	header #login-container {
 		float: right;
 		width: auto;
@@ -82,7 +83,8 @@
 	}
 
 	header #login-container p, header #login-container a { font-size: 18px; float: left; padding-top: 14px; }
-	header #login-container a { font-weight: bold; text-decoration: underline; }
+	header #login-container a { text-decoration: underline; }
+	header #login-container p { color: #666; }
 
 	div.divider { width: 1140px; height: 1px; background-color: #fff; margin: 24px auto 24px auto; }
 	div.v_divider { height: 192px; width: 1px; background-color: #fff; float: left; margin: 24px; }

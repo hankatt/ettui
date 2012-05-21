@@ -9,7 +9,7 @@
 	  <p><%= quote.text %></p>
 	<% end %>
 	<div class="quote-details">
-	  <p class="tiny">From </p>
-	  <%= link_to quote.source.split('/')[2], quote.source, :class => 'source' %>
+	  <p class="tiny bold">From </p>
+	  <%= link_to quote.source.split('/')[2].truncate(26), quote.source, :class => 'source' %>
 	</div>
 </div>

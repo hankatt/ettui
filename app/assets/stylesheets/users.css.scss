@@ -26,12 +26,12 @@
 }
 
 .welcome-1, .welcome-2 { float: left; height: 192px; }
-.welcome-1 { width: 400px; line-height: 0; margin-right: 25px; }
-.welcome-2 form { height: 192px; float: right; margin-left: 24px; }
+.welcome-1 { width: 480px; line-height: 0; margin-right: 25px; }
+.welcome-2 form { height: 192px; float: left; }
 .welcome-2 {
 	&form .field {
 		height: 34px;
-		margin-bottom: 16px;
+		margin-bottom: 18px;
 		&input {
 			height: 34px;
 			width: 240px;
@@ -67,6 +67,7 @@
 			color: #fff;
 			font-weight: bold;
 			display: inline;
+			font-size: 16px;
 			&.overline {
 				text-decoration: line-through;
 				color: #f44;
@@ -74,8 +75,8 @@
 		}
 		&p {
 			color: #fff;
+			font-size: 16px;
 			line-height: 24px;
-			padding-top: 6px;
 			&+ p {
 				padding-top: 12px;
 			}

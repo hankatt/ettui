@@ -24,21 +24,20 @@
 <body>
 
 <header>
-	<%= image_tag "well.png", :height => "28" %>
+	<%= image_tag "well-w.png", :height => "28" %>
 	<a href="<%= root_path %>">
 		<h1 style="display: inline;">Well said</h1>
 	</a>
   <div id="login-container">
     <% if current_user %>
       <p>Hey there, </p>
-      <%= link_to (@user.email || @user.name), quotes_path, :style => "padding-left: 5px;" %>
-      <p>!</p>
+      <%= link_to (@user.email || @user.name), quotes_path, :class => "white mleft-s" %>
       <%= link_to "Logout", logout_path, :class => "mleft-s red" %>
     <% else %>
       <p>Been here before?</p>
-      <%= link_to "Login here ", login_path, :class => "mleft-s" %>
-      <p class="mleft-s">or through</p>
-      <%= link_to "Twitter", "/auth/twitter", :class => "mleft-s" %>
+      <%= link_to "Login here ", login_path, :class => "mleft-s white" %>
+      <p class="mleft-s">or </p>
+      <%= link_to "through Twitter", "/auth/twitter", :class => "mleft-s" %>
     <% end %>
 
   	<!--

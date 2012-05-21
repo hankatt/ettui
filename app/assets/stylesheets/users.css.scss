@@ -5,7 +5,7 @@
 #welcome-container {
 	overflow: hidden;
 	height: 224px;
-	width: 780px;
+	width: 1205px;
 	position: relative;
 	left: -65px;
 }
@@ -26,8 +26,8 @@
 }
 
 .welcome-1, .welcome-2 { float: left; height: 192px; }
-.welcome-1 { width: 400px; line-height: 0; }
-.welcome-2 form { height: 192px; }
+.welcome-1 { width: 400px; line-height: 0; margin-right: 25px; }
+.welcome-2 form { height: 192px; float: right; margin-left: 24px; }
 .welcome-2 {
 	&form .field {
 		height: 34px;
@@ -35,17 +35,14 @@
 		&input {
 			height: 34px;
 			width: 240px;
-			background-color: #f6f6f6;
-			color: #444;
+			background-image: url("/assets/noise-dark-bg.png");
+			background-color: #888;
+			color: #fff;
 			&:hover {
-				/*background-image: url("/assets/striped-bg.png");*/
-				border-bottom: solid 2px #222;
-				background-color: #fff;
+				border-bottom: solid 2px #666;
 			}
 			&:focus {
-				/*background-image: url("/assets/striped-bg.png");*/
 				border-bottom: solid 2px #222;
-				background-color: #fff;
 			};
 		}
 	}
@@ -56,15 +53,38 @@
 			width: 100px;
 			color: #fff;
 			&:hover {
-				border-bottom: solid 2px #fff;
+				background-color: #4b4;
 				cursor: pointer;
 			};
 		}
 	}
+	&div.signup-description {
+		width: 320px;
+		padding-right: 32px;
+		padding-left: 24px;
+		float: left;
+		&h1 {
+			color: #fff;
+			font-weight: bold;
+			display: inline;
+			&.overline {
+				text-decoration: line-through;
+				color: #f44;
+			}
+		}
+		&p {
+			color: #fff;
+			line-height: 24px;
+			padding-top: 6px;
+			&+ p {
+				padding-top: 12px;
+			}
+		}
+	}
 }
 
-.field input::-webkit-input-placeholder { color: #bbb; }
-.field input:-moz-placeholder { color: #bbb; }
+.field input::-webkit-input-placeholder { color: #666; }
+.field input:-moz-placeholder { color: #666; }
 
 div.error_explanation ul {
 	display: none;

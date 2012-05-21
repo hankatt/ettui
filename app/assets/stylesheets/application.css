@@ -67,12 +67,12 @@
 	.mright { margin-right: 24px; }
 	.mtop { margin-top: 24px; }
 	.mbottom { margin-bottom: 24px; }
-	.spacer-65 { width: 65px; position: relative; float: left; height: 188px; }
+	.spacer-65 { width: 65px; position: relative; float: left; height: 152px; }
 	.spacer-65 img { position: absolute; bottom: 0px; }
 	.white { color: white; }
 	.red { color: #f44; }
 	.bold { font-weight: bold; }
-	
+
 	header { width: 1140px; margin: 24px auto 0 auto; }
 	header h1 { font-weight: bold; line-height: 0; color: #fff; padding-left: 24px; text-transform: uppercase; }
 	header #login-container {
@@ -82,7 +82,7 @@
 		position: relative;
 	}
 
-	header #login-container p, header #login-container a { font-size: 18px; float: left; padding-top: 14px; }
+	header #login-container p, header #login-container a { font-size: 16px; float: left; padding-top: 14px; }
 	header #login-container a { text-decoration: underline; }
 	header #login-container p { color: #666; }
 

@@ -19,7 +19,7 @@ $(window).load(function() {
     // options
     itemSelector : '.quote',
     columnWidth : 280,
-    gutterWidth : 40,
+    gutterWidth : 60,
     isAnimated : true
   });
 });

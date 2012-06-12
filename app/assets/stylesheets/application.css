@@ -17,8 +17,8 @@
 /* ============================== */
 
 	body { 
+		background-image: url('/assets/noise-bg.png');
 		background-color: #bbb;
-		background-image: url('/assets/noise-bg.png'); 
 	}
 
 	@-moz-document url-prefix() {
@@ -28,12 +28,9 @@
     	}
 
 		#login-container a { text-decoration: underline; }
-		#login-container p { position: relative; bottom: 19px;}
+		#login-container p { position: relative; bottom: 19px; }
 
 		#wellsaid-wizard { line-height: 0; }
-		#welcome-container { line-height: 0; }
-		.welcome-1 h1, .welcome-1 p { position: relative; top: -18px;}
-		.welcome-1, .welcome-2, .v_divider { position: relative; top: 0px; }
 		.wizard-1 a.pimp { position: relative; top: 24px; }
 
 		.quote h1 { line-height: 0; }
@@ -42,11 +39,9 @@
 	p.note { font-weight: 300; margin-top: 18px; }
 
 	div.sidenote {
-		margin-left: 12px;
+		margin-left: 18px;
 		float: left; 
 		height: 34px; 
-		padding-top: 3px;
-
 	}
 
 	.sidenote p { 
@@ -56,10 +51,12 @@
 	
 	.sidenote a { 
 		color: #888; 
-		font-size: 12px; 
 		line-height: 0; 
 		font-weight: bold;
-		text-decoration: underline;
+	}
+
+	p.description {
+		color: #444;
 	}
 
 	.mleft { margin-left: 24px; }
@@ -71,10 +68,10 @@
 	.spacer-65 img { position: absolute; bottom: 0px; }
 	.white { color: white; }
 	.red { color: #f44; }
-	.bold { font-weight: bold; }
+	.bold { font-weight: 600; }
+	.float { float: left; }
 
-	header { width: 1140px; margin: 24px auto 0 auto; }
-	header h1 { font-weight: bold; line-height: 0; color: #fff; padding-left: 24px; text-transform: uppercase; }
+	header h1 { font-weight: bold; line-height: 0; color: #444; padding-left: 24px; text-transform: uppercase; }
 	header #login-container {
 		float: right;
 		width: auto;
@@ -82,13 +79,96 @@
 		position: relative;
 	}
 
-	header #login-container p, header #login-container a { font-size: 16px; float: left; padding-top: 14px; }
+	header #login-container p, header #login-container a { font-size: 16px; float: left; padding-top: 14px; color: #999; }
 	header #login-container a { text-decoration: underline; }
-	header #login-container p { color: #666; }
 
-	div.divider { width: 1140px; height: 1px; background-color: #fff; margin: 24px auto 24px auto; }
-	div.v_divider { height: 192px; width: 1px; background-color: #fff; float: left; margin: 24px; }
-	.container { max-width: 1140px; margin: 0 auto 0 auto; }
+	div.v_divider { height: 338px; width: 1px; background-color: #ccc; float: left; margin: 48px 80px; }
+	.container, header { max-width: 960px; min-width: 960px; margin: 0 auto 0 auto; }
+	header { margin-top: 64px; }
+	.container { margin-top: 48px; }
+
+	#introduction {
+		width: 520px;
+		margin-top: 48px;
+		float: left;
+	}
+
+	#introduction h2 { word-spacing: 2px; line-height: 27px; }
+	#introduction h2 + h2 { padding: 18px 0; }
+	#introduction a, #introduction a + h2 { display: inline; }
+	#introduction a { font-size: 18px; text-decoration: underline; }
+
+	#sign_up {
+		margin-top: 24px;
+		float: left;
+		width: 266px;
+	}
+
+	#sign_up h1 { line-height: 27px; margin-bottom: 18px; }
+	#sign_up p { font-size: 16px; line-height: 21px;}
+	#sign_up img + p { position:relative; bottom: 4px; padding-left: 64px; width: 184px; }
+
+	#sign_up form input { 
+		width: 100%;
+		border: 0;
+		height: 42px;
+		background-color: ;
+		background-image: url('/assets/textfield-bg.png');
+		text-align: center;
+		font-family: "Proxima Nova Condensed";
+	    font-size: 16px;
+	    font-weight: 100;
+	    letter-spacing: 1px;
+	}
+
+	#sign_up form .field { margin-top: 18px; }
+
+	#sign_up form input[type="submit"] {
+		background-image: url('/assets/signup-bg.png');
+		width: 114px;
+		color: #888;
+		float: left;
+	}
+
+	#sign_up form input[type="submit"]#submit_login {
+		background-image: url('/assets/signin-bg.png');
+		width: 114px;
+		color: #888;
+		margin-top: 18px;
+		float: left;
+	}
+
+	#sign_up form input[type="submit"]:hover {
+		cursor: pointer;
+	}
+
+	#sign_up form input[type="submit"]:active {
+		color: #222;
+	}
+
+	#sign_up form input { margin-bottom: 18px; }
+	#sign_up form input:last-of-type { margin-bottom: 0px; }
+
+	#sign_up form input:hover {
+		background-color: #fcfcfc;
+		color: #222;
+	}
+
+	input::-webkit-input-placeholder {  
+	    color: #aaa;
+	    font-family: "Proxima Nova Condensed";
+	    font-size: 16px;
+	    font-weight: 100;
+	    letter-spacing: 1px;
+	}
+
+	input:-moz-input-placeholder {  
+		color: #aaa;
+	    font-family: "Proxima Nova Condensed";
+	    font-size: 16px;
+	    font-weight: 100;
+	    letter-spacing: 1px; 
+	}
 
 	#flash_notice {
 		width: 256px;
@@ -98,7 +178,8 @@
 	}
 
 	a, p, h1, h2, h3, ul, li, input { 
-		font-family: "Proxima Nova", "Muli", sans-serif; 
+		font-family: "Proxima Nova", sans-serif;
+		color: #000;
 		-webkit-font-smoothing: antialiased; 
 		-webkit-margin-before: 0;
 		-webkit-margin-after: 0;
@@ -106,7 +187,6 @@
 
 	a {
 		text-decoration: none;
-		color: #444;
 	}
 
 	h1 {
@@ -116,7 +196,8 @@
 	}
 
 	h2 {
-		
+		font-weight: 200;
+		font-size: 18px;
 	}
 
 	p {
@@ -143,7 +224,6 @@
 	}
 
 	form .actions input {
-		/*background-image: url("/assets/striped-bg.png");*/
 		background-color: #a2e374;
 		border: none;
 		text-transform: uppercase;
@@ -153,8 +233,6 @@
 		text-align: center;
 	}
 }
-
-.striped-bg { background-image: url("/assets/striped-bg.png"); }
 
 /* ============================= */
 /* ! Layout for mobile version   */

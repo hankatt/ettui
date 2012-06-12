@@ -18,7 +18,7 @@ $(window).load(function() {
   $('#quotes-container').masonry({
     // options
     itemSelector : '.quote',
-    columnWidth : 255,
+    columnWidth : 280,
     gutterWidth : 40,
     isAnimated : true
   });

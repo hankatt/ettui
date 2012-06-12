@@ -6,7 +6,7 @@
 
 .quote {
 	background-color: #fff;
-	width: 255px;
+	width: 280px;
 	float: left;
 	margin-bottom: 40px;
 	padding-bottom: 30px;
@@ -48,7 +48,7 @@
 }
 
 .quote a.remove {
-	font-family: "Archer", "Josefin Slab", sans-serif;
+	font-family: sans-serif;
 	font-size: 14px;
 	font-weight: bold;
 	float: right;
@@ -82,7 +82,7 @@
 
 .quote-details p.tiny {
 	font-weight: 400;
-	font-family: "Proxima Nova", "Muli", sans-serif;
+	font-family: sans-serif;
 	font-size: 12px;
 	line-height: 0;
 	padding: 0;
@@ -120,7 +120,7 @@
 	display: inline;
 	font-size: 14px;
 	color: #fff;
-	font-family: "Archer", "Josefin Slab", sans-serif;
+	font-family: sans-serif;
 	font-weight: bold;
 }
 .quote p { 
@@ -128,20 +128,22 @@
 	font-size: 21px; 
 	color: #fff;
 	line-height: 28px; 
-	font-family: "Archer", "Josefin Slab", sans-serif;
+	font-family: sans-serif;
 	padding-bottom: 24px;
 	padding-top: 8px;
 	&.big { font-size: 27px; line-height: 36px; }
 	&.small { font-size: 16px; line-height: 24px; }
 }
 
-#wellsaid-wizard { 
-	width: 1140px;
+#wellsaid-wizard {
+	width: 960px;
+	min-width: 960px;
 	height: 225px;
 	&h2 {
 		text-transform: uppercase;
 		font-size: 18px;
-		color: #fff;
+		color: #444;
+		font-weight: bold;
 		display: inline-block;
 		&.digit {
 			width: 24px;
@@ -152,7 +154,7 @@
 		height: 48px;
 		line-height: 24px;
 		font-size: 16px;
-		margin: 24px auto;
+		margin: 12px 48px 12px 0;
 	}
 }
 
@@ -161,19 +163,19 @@
 	float: left;
 	display: inline-block;
 	position: relative;
+	&p + a { display: inline; }
+	&a + p { display: inline; }
 }
 
 .wizard-1 a {
 	margin: 0 0 0 64px;
 	position: relative;
 	top: 18px;
-	background-color: #888;
-	background-image: url("/assets/striped-bg-dark.png");
+	background-color: #fff;
 	padding: 18px 64px;
-	color: #fff;
+	color: #444;
 	font-weight: bold;
 	text-transform: uppercase;
-	font-family: "Archer", "Josefin Slab", sans-serif;
 	-webkit-opacity: .8;
 	-moz-opacity: .8;
 	-o-opacity: .8;
@@ -193,8 +195,6 @@
 		transition: opacity .15s ease-in;  
 	};
 }
-
-.wizard-2, .wizard-3 { margin-left: 80px; }
 
 .wizard-3 {
 	&img {
@@ -222,34 +222,9 @@
 }
 
 h3.selected {
-	font-family: "Archer", "Josefin Slab", sans-serif;
 	font-weight: 400;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 24px;
-	color: #fff;
-}
-
-.wizard-2 .selected {
-	width: 224px;
-	margin: 0 auto;
-	padding: 12px 24px;
-	background-image: url("/assets/striped-bg-dark.png");
-	-webkit-opacity: .8;
-	-moz-opacity: .8;
-	-o-opacity: .8;
-	opacity: .8;
-	-webkit-transition: opacity .15s ease-in;  
-	-moz-transition: opacity .15s ease-in;  
-	-o-transition: opacity .15s ease-in;  
-	transition: opacity .15s ease-in;
-	&:hover {
-		-webkit-opacity: 1;
-		-moz-opacity: 1;
-		-o-opacity: 1;
-		opacity: 1;
-		-webkit-transition: opacity .15s ease-in;  
-		-moz-transition: opacity .15s ease-in;  
-		-o-transition: opacity .15s ease-in;  
-		transition: opacity .15s ease-in;  
-	};
+	color: #444;
+	margin: 0 24px;
 }

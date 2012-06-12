@@ -20,12 +20,6 @@ class QuotesController < ApplicationController
     end
   end
 
-  def get_token
-    respond_to do |format|
-      format.json { render json: cookies[:user_id] }
-    end
-  end
-
   def remote_create
     @user = User.find_by_token(params[:id])
 

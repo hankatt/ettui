@@ -1,6 +1,13 @@
 <div class="welcome-1 mtop">
 	<%= render 'shared/welcome' %>
 </div>
-<div id="sign_up">
-	<%= render 'form' %>
-</div>
+<% if !current_user %>
+	<div id="sign_up">
+		<%= render 'form' %>
+	</div>
+<% else %>
+	<div id="sign_up">
+		<h1 class="bold">Welcome back!</h1>
+		<a href="/quotes/">Click here to go to your quotes.</a>
+	</div>
+<% end %>

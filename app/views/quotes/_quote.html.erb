@@ -11,7 +11,6 @@
 	  <p><%= quote.text %></p>
 	<% end %>
 	<div class="quote-details">
-	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%=u quote.source.to_s %>" data-lang="en" data-size="small" data-count="none">Tweet</a>
-	  <p class="tiny">Tweet this</p>
+		<a href="http://twitter.com/share?url=<%= quote.source %>&text=<%= '"' << quote.text.truncate(99) << '"' << ' read at' %>&count=none" target="_blank" rel="nofollow" class="tiny">Tweet this</a>
 	</div>
 </div>

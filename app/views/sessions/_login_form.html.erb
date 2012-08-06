@@ -1,5 +1,5 @@
 
-<h1 class="bold">Sign in here</h1>
+<h2>SIGN IN HERE</h2>
 <%= form_tag sessions_path do %>
 	<div class="field">
 		<%= text_field_tag :email, params[:email], :placeholder => "Electronic mail address" %>
@@ -8,6 +8,6 @@
 		<%= password_field_tag :password, params[:id], :placeholder => "Password" %>
 	</div>
 	<div class="actions">
-		<%= submit_tag "", :id => "submit_login" %>
+		<%= submit_tag "Login", :id => "submit_login" %>
 	</div>
 <% end %>

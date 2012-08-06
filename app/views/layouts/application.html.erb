@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Well</title>
-  <link rel="shortcut icon" href="/assets/favicon.ico" />
   <link href='http://fonts.googleapis.com/css?family=Muli:300,400' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -20,29 +19,16 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+<script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+  </script>
 </head>
 <body>
-
-<header>
-	<%= link_to (image_tag "well.png"), root_path %>
-  <div id="login-container">
-    <% if current_user %>
-      <p>Hey there, </p>
-      <%= link_to (@user.email || @user.name), quotes_path, :class => "mleft-s" %>
-      <%= link_to "Logout", logout_path, :class => "mleft-s red" %>
-    <% else %>
-      <%= link_to "Login with Twitter", "/auth/twitter", :class => "mleft-s" %>
-      <p class="mleft-s">or </p>
-      <%= link_to "Sign in", login_path, :class => "mleft-s" %>
-    <% end %>
-
-  	<!--
-  	<% flash.each do |name, msg| %>
-  		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-  	<% end %>
-  	!-->
-  </div>
-</header>
+<!--
+<% flash.each do |name, msg| %>
+	<%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+!-->
 
 <div class="container">
 	<%= yield %>

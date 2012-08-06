@@ -36,7 +36,7 @@
                 selection = document.getSelection().toString();
                 source    = document.location.href.toString();
                 token     = "<%= @user.token %>";
-                url       = "http://localhost:3000/quotes/add?id=" +token +"&copy=";
+                url       = "http://wellsaid.herokuapp.com/quotes/add?id=" +token +"&copy=";
                 well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
               }
 

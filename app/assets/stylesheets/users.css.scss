@@ -12,25 +12,95 @@ div.error_explanation ul {
 	list-style: none;
 	}
 }
-.grey-0 { 
-	background-color: #222;
-	&div.quote-details {
-		background-color: #000;
-	}
+
+header {
+	&h1 { font-size: 48px; padding-bottom: 16px; }
+	&p { font-size: 22px; padding-bottom: 12px; }
+	&em { font-size: 22px; }
+	&a { color: #333; }
 }
-.grey-1 { 
-	background-color: #444;
-	&div.quote-details {
-		background-color: #222;
-	}
+
+nav {
+	&a { color: #333; text-transform: uppercase; font-size: 13px; }
+	&p { font-style: italic; padding: 0 3px; }
+	&a.logout { color: #f44; }
 }
-.grey-2 { 
-	background-color: #666;
-	&div.quote-details {
-		background-color: #444;
+
+.inline, p + em { display: inline; }
+
+#demo {
+	&div#wellsaid-btn {
+		padding: 12px 0;
+		margin-top: 16px;
+		background-color: rgba(255, 255, 255, .6);
+		text-align: center;
+		font-family: 'Adobe Garamond Pro';
+		font-size: 22px;
+		font-style: italic;
+	}
+	&a { color: #000; }
+	&p, em { font-size: 18px; }
+	&em { font-weight: bold; }
+	&p.example {
+		color: #fff;
+		margin-top: 16px;
+		padding: 24px;
+		background-color: rgba(0, 0, 0, .7);
 	}
 }
 
-.lively-0 { background-color: #a2e374; &p { color: #333; } }
-.lively-1 { background-color: #c1e373; &p { color: #333; } }
-.lively-2 { background-color: #e2df73; &p { color: #333; } }
+#demo, #signup {
+	&h2 { font-size: 28px; }
+}
+
+#signup, #login {
+	&form { margin-top: 15px; }
+	&form .field input { 
+		width: 281px;
+		height: 40px;
+		margin-bottom: 12px;
+		background-color: rgba(0, 0, 0, .7);
+		border: none;
+		text-align: center;
+		font-size: 18px;
+		color: #fff;
+	}
+	&form .actions input {
+		padding: 12px 0;
+		margin-top: 4px;	
+		width: 281px;
+		border: none;
+		background-color: rgba(255, 255, 255, .7);
+		text-align: center;
+		font-family: 'Adobe Garamond Pro';
+		font-size: 22px;
+	}
+}
+
+#login { text-align: center; }
+
+#signup form .actions input:hover, #demo #wellsaid-btn:hover {
+	background-color: #fff;
+}
+
+#twitter-login {
+	margin-bottom: 9px;
+	&a { font-size: 22px; text-decoration: underline; position: relative; bottom: 13px; color: #333; }
+	&img { position: relative; right: 26px; }
+}
+
+#quote-banner {
+	background-color: rgba(0, 0, 0, .8);
+	padding: 24px 0;
+	overflow: auto;
+	color: #fff;
+	margin-bottom: 48px;
+	&div#latest {
+		&h3 { font-style: italic; font-size: 22px; padding: 0 0 6px 0; }
+		&p { line-height: 28px; }
+		&div.right p { font-size: 24px; }
+		&p.caps { text-transform: uppercase; font-size: 12px; }
+		&p.user { display: inline; text-decoration: underline; }
+		&img { margin-top: 6px; }
+	}
+}

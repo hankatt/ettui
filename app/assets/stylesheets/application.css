@@ -16,10 +16,54 @@
 /* ! Layout for desktop version   */
 /* ============================== */
 
+	body, html {
+		padding: 0;
+		margin: 0;
+		height: 100%;
+		width: 100%;
+	}
+
 	body { 
-		background-image: url('/assets/noise-bg.png');
+		background-image: url('/assets/forest-bg.png');
+		background-size: cover;
+		background-attachment: fixed;
 		background-color: #bbb;
 	}
+
+	* { 
+		-webkit-margin-before: 0;
+		-webkit-margin-after: 0;
+	}
+
+	h1, h3, p, em, a, input {
+		font-family: 'Adobe Garamond Pro';
+		font-weight: normal;
+		text-decoration: none;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	h2 { font-family: 'Futura'; padding-bottom: 16px; }
+
+	p, em { line-height: 140%; word-spacing: 1px; }
+
+	.container { width: 100%; }
+
+	header { 
+		text-align: center;
+		margin: 0 auto 48px auto;
+	}
+
+	nav {
+		width: 790px;
+		margin: 0 auto 16px auto;
+		padding-top: 48px;
+		text-align: right;
+	}
+
+	#latest { width: 790px; margin: 0 auto; clear: both; float: none; overflow: auto; }
+	#latest .left { width: 166px; float: left; }
+	#latest .right { width: 624px; float: left; }
+	#quote-banner { width: 100%; clear: both; }
 
 	@-moz-document url-prefix() {
     	div.sidenote {
@@ -35,203 +79,6 @@
 
 		.quote h1 { line-height: 0; }
 	}
-
-	p.note { font-weight: 300; margin-top: 18px; }
-
-	div.sidenote {
-		margin-left: 18px;
-		float: left; 
-		height: 34px; 
-	}
-
-	.sidenote p { 
-		color: #888; 
-		font-size: 12px; 
-	}
-	
-	.sidenote a { 
-		color: #888; 
-		line-height: 0; 
-		font-weight: bold;
-	}
-
-	p.description {
-		color: #444;
-	}
-
-	.mleft { margin-left: 24px; }
-	.mleft-s { margin-left: 6px; }
-	.mright { margin-right: 24px; }
-	.mtop { margin-top: 24px; }
-	.mbottom { margin-bottom: 24px; }
-	.spacer-65 { width: 65px; position: relative; float: left; height: 152px; }
-	.spacer-65 img { position: absolute; bottom: 0px; }
-	.white { color: white; }
-	.red { color: #f44; }
-	.bold { font-weight: 600; }
-	.float { float: left; }
-
-	header h1 { font-weight: bold; line-height: 0; color: #444; padding-left: 24px; text-transform: uppercase; }
-	header #login-container {
-		float: right;
-		width: auto;
-		height: 28px;
-		position: relative;
-	}
-
-	header #login-container p, header #login-container a { font-size: 16px; float: left; padding-top: 14px; color: #999; }
-	header #login-container a { text-decoration: underline; }
-
-	div.v_divider { height: 338px; width: 1px; background-color: #ccc; float: left; margin: 48px 80px; }
-	.container, header { max-width: 960px; min-width: 960px; margin: 0 auto 0 auto; }
-	header { margin-top: 64px; }
-	.container { margin-top: 48px; }
-
-	#introduction {
-		width: 520px;
-		margin-top: 48px;
-		float: left;
-	}
-
-	#introduction h2 { word-spacing: 2px; line-height: 27px; }
-	#introduction h2 + h2 { padding: 18px 0; }
-	#introduction a, #introduction a + h2 { display: inline; }
-	#introduction a { font-size: 18px; text-decoration: underline; }
-
-	#sign_up {
-		margin-top: 24px;
-		float: left;
-		width: 266px;
-	}
-
-	#sign_up h1 { line-height: 27px; margin-bottom: 18px; }
-	#sign_up p { font-size: 16px; line-height: 21px;}
-	#sign_up img + p { position:relative; bottom: 4px; padding-left: 64px; width: 184px; }
-
-	#sign_up form input { 
-		width: 100%;
-		border: 0;
-		height: 42px;
-		background-color: ;
-		background-image: url('/assets/textfield-bg.png');
-		text-align: center;
-		font-family: "Proxima Nova Condensed";
-	    font-size: 16px;
-	    font-weight: 100;
-	    letter-spacing: 1px;
-	}
-
-	#sign_up form .field { margin-top: 18px; }
-
-	#sign_up form input[type="submit"] {
-		background-image: url('/assets/signup-bg.png');
-		width: 114px;
-		color: #888;
-		float: left;
-	}
-
-	#sign_up form input[type="submit"]#submit_login {
-		background-image: url('/assets/signin-bg.png');
-		width: 114px;
-		color: #888;
-		margin-top: 18px;
-		float: left;
-	}
-
-	#sign_up form input[type="submit"]:hover {
-		cursor: pointer;
-	}
-
-	#sign_up form input[type="submit"]:active {
-		color: #222;
-	}
-
-	#sign_up form input { margin-bottom: 18px; }
-	#sign_up form input:last-of-type { margin-bottom: 0px; }
-
-	#sign_up form input:hover {
-		background-color: #fcfcfc;
-		color: #222;
-	}
-
-	input::-webkit-input-placeholder {  
-	    color: #bbb;
-	    font-family: sans-serif;
-	    font-size: 14px;
-	    font-weight: 100;
-	    letter-spacing: 1px;
-	}
-
-	input:-moz-input-placeholder {  
-		color: #bbb;
-	    font-family: sans-serif;
-	    font-size: 14px;
-	    font-weight: 100;
-	    letter-spacing: 1px; 
-	}
-
-	#flash_notice {
-		width: 256px;
-		font-style: italic;
-		font-size: 12px;
-		display: inline;
-	}
-
-	a, p, h1, h2, h3, ul, li, input { 
-		font-family: "Proxima Nova", sans-serif;
-		color: #000;
-		-webkit-font-smoothing: antialiased; 
-		-webkit-margin-before: 0;
-		-webkit-margin-after: 0;
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	h1 {
-		font-size: 27px;
-		line-height: 36px;
-		font-weight: 300;
-	}
-
-	h2 {
-		font-weight: 200;
-		font-size: 18px;
-	}
-
-	p {
-		font-size: 18px;
-		-webkit-margin-after: 0;
-		-webkit-margin-before: 0;
-		color: #444;
-	}
-
-	.logout a {
-		color: #f44;
-		text-decoration: underline;
-	}
-
-	form .field input {
-		background-color: #fff;
-		border-top: none;
-		border-left: none;
-		border-right: none;
-		color: #444;
-		font-size: 16px;
-		text-align: center;
-	}
-
-	form .actions input {
-		background-color: #a2e374;
-		border: none;
-		text-transform: uppercase;
-		font-size: 16px;
-		line-height: 30px;
-		font-weight: bold;
-		text-align: center;
-	}
-}
 
 /* ============================= */
 /* ! Layout for mobile version   */

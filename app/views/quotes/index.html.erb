@@ -1,109 +1,112 @@
-<!--
-<% if @user.nil? %>
-  <h1 class="underline">Hey there stranger!</h1>
-<% elsif @user.email.nil? %>
-  <h1 class="underline">Hey there <%= @user.name %>!</h1>
+
+<% if !current_user %>
+  <!-- Render sign up form !-->
 <% else %>
-  <h1 class="underline">Hey there <%= @user.email %>!</h1>
+  <!-- Render welcome {user} !-->
 <% end %>
-!-->
 
-<div id="wellsaid-wizard">
-  <div class="wizard-1">
-      <h2 class="digit">1.</h2><h2>Installing</h2>
-      <p>Drag the link below to your bookmarks bar</p>
-      <a href='javascript:(function(){
-      well = function() {
-        try {
-          if(!document.body)
-            throw(0);
+<nav>
+  <% if current_user %>
+    <%= link_to "Hello " << (@user.email || @user.name) << ",", quotes_path %>
+    <%= link_to "Logout?", logout_path, :class => "logout" %>
+  <% else %>
+    <%= link_to "Login with Twitter", "/auth/twitter" %>
+    <p style="display: inline;"> or</p>
+    <%= link_to "Sign in", login_path %>
+  <% end %>
+</nav>
 
-          if(document.getSelection().toString() === "") {
-            alert("Empty selection.");
-            throw(0);
-          } else {
-            well      = document.createElement("script");
-            selection = document.getSelection().toString();
-            source    = document.location.href.toString();
-            token     = "<%= @user.token %>";
-            url       = "http://wellsaid.herokuapp.com/quotes/add?id=" +token +"&copy=";
-            well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
-          }
+<div id="gridset-wrapper">
+  <div class="d-all" id="intro">
+    <div id="wellsaid-wizard">
+      <div class="wizard-1">
+          <h2>Installing Well Said</h2>
+          <p>Drag the link below to your bookmarks bar to install <em>your</em> bookmarklet.</p>
+          <a href='javascript:(function(){
+          well = function() {
+            try {
+              if(!document.body)
+                throw(0);
 
-          /* TAKES CARE OF JSONP RESPONSE */
-          jsonp = document.createElement("script");
-          jsonp.setAttribute("type", "text/javascript");
-          callback = "function status(data) {
-            headline.innerText = data.message;
-            popup.innerHTML = headline.outerHTML;
-            counter = 0;
-            interval = setInterval(function() {
-              counter += 25;
-              wait = 350;
-              if(counter > wait) {
-                value = counter - wait;
-                popup.style.opacity = popup.style.opacity - (value/1000);
-                document.body.removeChild(popup);
-                document.body.appendChild(popup);
-                if(counter === 1500) {
-                  clearInterval(interval);
-                  counter = 0;
-                  document.body.removeChild(popup);
-                }
+              if(document.getSelection().toString() === "") {
+                alert("Empty selection.");
+                throw(0);
+              } else {
+                well      = document.createElement("script");
+                selection = document.getSelection().toString();
+                source    = document.location.href.toString();
+                token     = "<%= @user.token %>";
+                url       = "http://localhost:3000/quotes/add?id=" +token +"&copy=";
+                well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
               }
-            }, 50);
-          }";
-          jsonp.innerHTML = callback;
-          document.body.appendChild(jsonp);
-          
-          /* CREATES POPUP */
-          headline = document.createElement("h1");
-          headline.id = "well-title";
-          headline.style.fontFamily = "Georgia";
-          headline.style.fontSize = "24px";
-          headline.style.textAlign = "center";
-          headline.style.width = "175px";
-          headline.style.color = "#444";
-          headline.innerText = "SAVING..";
 
-          popup = document.createElement("div");
-          popup.style.backgroundColor = "#eee";
-          popup.style.width = "175px";
-          popup.style.padding = "25px";
-          popup.style.zIndex = "20000";
-          popup.style.position = "fixed";
-          popup.style.top = "0";
-          popup.style.left = "25px";
-          popup.style.opacity = "1";
-          popup.innerHTML = headline.outerHTML;
-          document.body.appendChild(popup);
+              /* TAKES CARE OF JSONP RESPONSE */
+              jsonp = document.createElement("script");
+              jsonp.setAttribute("type", "text/javascript");
+              callback = "function status(data) {
+                headline.innerText = data.message;
+                popup.innerHTML = headline.outerHTML;
+                counter = 0;
+                interval = setInterval(function() {
+                  counter += 25;
+                  wait = 350;
+                  if(counter > wait) {
+                    value = counter - wait;
+                    popup.style.opacity = popup.style.opacity - (value/1000);
+                    document.body.removeChild(popup);
+                    document.body.appendChild(popup);
+                    if(counter === 1500) {
+                      clearInterval(interval);
+                      counter = 0;
+                      document.body.removeChild(popup);
+                    }
+                  }
+                }, 50);
+              }";
+              jsonp.innerHTML = callback;
+              document.body.appendChild(jsonp);
+              
+              /* CREATES POPUP */
+              headline = document.createElement("h1");
+              headline.id = "well-title";
+              headline.style.fontFamily = "Georgia";
+              headline.style.fontSize = "24px";
+              headline.style.textAlign = "center";
+              headline.style.width = "175px";
+              headline.style.color = "#444";
+              headline.innerText = "SAVING..";
 
-          /* EXECUTE SCRIPT */
-          document.body.appendChild(well);
+              popup = document.createElement("div");
+              popup.style.backgroundColor = "#eee";
+              popup.style.width = "175px";
+              popup.style.padding = "25px";
+              popup.style.zIndex = "20000";
+              popup.style.position = "fixed";
+              popup.style.top = "0";
+              popup.style.left = "25px";
+              popup.style.opacity = "1";
+              popup.innerHTML = headline.outerHTML;
+              document.body.appendChild(popup);
 
-        } catch(e) {
-          alert("Please wait until the page has loaded.");
-        }
-      };
+              /* EXECUTE SCRIPT */
+              document.body.appendChild(well);
 
-      if(/Firefox/.test(navigator.userAgent)) {
-        setTimeout(well,0);
-      } else {
-        well();
-      }})()' class="pimp">Well Said</a>
+            } catch(e) {
+              alert("Please wait until the page has loaded.");
+            }
+          };
+
+          if(/Firefox/.test(navigator.userAgent)) {
+            setTimeout(well,0);
+          } else {
+            well();
+          }})()'>Well Said</a>
+      </div>
+      <a href="#" onclick="toggle_install()"><em class="close">close this guide</em></a>
+    </div>
   </div>
-  <div class="wizard-2">
-      <h2 class="digit">2.</h2><h2>Testing</h2>
-      <p>Select the text below</p>
-      <h3 class="selected">"Unpack your sense of humor, and get on with living and enjoy it."</h3>
-  </div>
-  <div class="wizard-3">
-      <h2 class="digit">3.</h2><h2>Using</h2>
-      <p>Click the bookmark you added and then reload the page</p>
-  </div>
-  <div id="close-wizard" class="underline" style="clear: both;"></div>
 </div>
-<div class="divider"></div>
+
 <div id="quotes-container">
   <% if !@quotes.nil? %>
   	<% @quotes.each do |quote| %>

@@ -1,6 +1,43 @@
-<div class="welcome-1 mtop">
-	<%= render 'shared/welcome' %>
+
+<% if !current_user %>
+	<!-- Render sign up form !-->
+<% else %>
+	<!-- Render welcome {user} !-->
+<% end %>
+
+<nav>
+	<% if current_user %>
+	  <%= link_to (@user.email || @user.name), quotes_path %>
+	  <%= link_to "Logout", logout_path %>
+	<% else %>
+	  <%= link_to "Login with Twitter", "/auth/twitter" %>
+	  <p style="display: inline;"> or</p>
+	  <%= link_to "Sign in", login_path %>
+	<% end %>
+</nav>
+<header>
+	<a href="/"><h1>Collect, store & share memorable quotes.</h1></a>
+	<p>Well Said is a bookmarklet that does all of this, in one click.</p>
+</header>
+
+<div id="gridset-wrapper">
+	<div class="d-all" id="login">
+		<%= render 'login_form' %>
+	</div>
 </div>
-<div id="sign_up">
-	<%= render 'login_form' %>
+<div id="quote-banner">
+	<div class="d-all" id="latest">
+		<div class="left">
+			<h3>latest quote</h3>
+			<em class="inline">by</em>
+			<p class="user">
+				<%= "Anonymous" %>
+			</p>
+			<p class="caps">3 hours ago</p>
+			<%= image_tag "heart.png" %>
+		</div>
+		<div class="right">
+			<p id="latest-quote">"He who learns but does not think, is lost. He who thinks but does not learn is in great danger." - Confucius</p>
+		</div>
+	</div>
 </div>

@@ -18,14 +18,29 @@ $(window).load(function() {
   $('#quotes-container').masonry({
     // options
     itemSelector : '.quote',
-    columnWidth : 280,
-    gutterWidth : 60,
-    isAnimated : true
+    columnWidth : 340,
+    gutterWidth : 80,
+    isAnimated : true,
+    isFitWidth: true
   });
 });
 
 $(document).ready(function() {
+  center_vertically();
 });
+
+function toggle_install() {
+  $("#gridset-wrapper").slideToggle();
+}
+
+function center_vertically() {
+  parent = $("#latest");
+  p = $("#latest-quote");
+
+  offset = (parent.height() - p.height()) / 2 | 0;
+
+  p.css('margin-top', offset);
+}
 
 function reload() {
   window.location.reload();

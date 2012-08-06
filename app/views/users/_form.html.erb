@@ -1,6 +1,10 @@
-<h1 class="bold">Sign up here</h1>
-<%= image_tag "cloud.png", :class =>" float" %>
-<p>Start saving quotes from anywhere.</p>
+<h2>SIGNING UP</h2>
+<div id="twitter-login">
+  <%= image_tag "twitter-bird.png" %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+</div>
+
+<em>or fill in the form below</em>
 
 <%= form_for(@user) do |f| %>
   <div class="field">
@@ -16,11 +20,6 @@
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="actions mtop">
-    <%= f.submit "" %>
-    <div class="sidenote">
-      <p>Have an account?</p> 
-      <%= link_to "Login here", login_path %>
-    </div>
+    <%= f.submit "Sign up" %>
   </div>
-
 <% end %>

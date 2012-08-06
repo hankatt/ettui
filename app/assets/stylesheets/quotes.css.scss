@@ -2,21 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#quotes-container { width: auto; margin: 15px auto 0 auto; }
+#quotes-container { width: auto; margin: 72px auto 0 auto; }
 
 .quote {
-	background-color: #fff;
-	width: 280px;
+	background-color: rgba(0, 0, 0, .67);
+	width: 320px;
+	margin: 24px 0;
 	float: left;
-	margin-bottom: 60px;
 	padding-bottom: 30px;
 	padding-top: 8px;
 }
 
 .pimp {
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-o-border-radius: 5px;
 	-webkit-box-shadow: 0 0px 10px #888;
 	-moz-box-shadow: 0 0px 10px #888;
 	-o-box-shadow: 0 0px 10px #888;
@@ -29,22 +26,16 @@
 .quote-details {
 	position: absolute;
 	display: none;
+	text-align: right;
+	background-color: #333;
 	bottom: 0;
-	width: 262px;
+	width: 296px;
 	height: 34px;
 	line-height: 34px;
-	padding: 0 0 0px 18px;
+	padding: 0 0 0px 24px;
 	text-transform: uppercase;
 	font-size: 12px;
 	color: #888;
-	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	-moz-border-bottom-left-radius: 5px;
-	-moz-border-bottom-right-radius: 5px;
-	-o-border-bottom-left-radius: 5px;
-	-o-border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
 }
 
 .quote a.remove {
@@ -52,28 +43,35 @@
 	font-size: 14px;
 	font-weight: bold;
 	float: right;
-	color: #fff;
+	color: #f66;
 	letter-spacing: 1px;
-	padding-right: 18px;
-	padding-top: 11px;
+	padding-right: 24px;
 	&:hover { 
 		color: #fff; 
 		text-decoration: underline; 
 	}
 }
 
+.quote a.source {
+	color: #ccc;
+	padding: 4px 0 0 24px;
+	font-size: 12px;
+	line-height: 19px;
+	&:hover {
+		text-decoration: underline;
+		color: #fff;
+	};
+}
+
 .quote-details a {
 	letter-spacing: 1px;
 	text-transform: none;
 	line-height: 12px;
-	padding-right: 18px;
+	padding-right: 24px;
 	&:hover { color: #fff; text-decoration: underline; }
 }
 
-.quote h1, .quote p {
-	padding: 0 18px;
-	-webkit-font-smoothing: antialiased;
-}
+.quote h3, .quote p { padding: 0 24px; }
 
 .quote-details a, .quote-details p.tiny {
 	display: inline;
@@ -81,14 +79,12 @@
 }
 
 .quote-details p.tiny {
-	font-weight: 400;
-	font-family: sans-serif;
-	font-size: 12px;
+	font-size: 10px;
 	line-height: 0;
-	padding: 0;
-	text-transform: none;
-	&.bold {
-		font-weight: bold;
+	padding-right: 24px;
+	text-transform: uppercase;
+	&:hover {
+		text-decoration: underline;
 	}
 }
 
@@ -113,118 +109,70 @@
 
 .quote p:first-letter { text-transform: uppercase; }
 
-.quote h1 { 
+.quote h3 { 
 	padding-top: 12px; 
-	padding-left: 18px;
+	padding-left: 24px;
 	width: 64px;
 	display: inline;
 	font-size: 14px;
-	color: #fff;
+	color: #ccc;
 	font-family: sans-serif;
 	font-weight: bold;
 }
 .quote p { 
 	font-weight: 300; 
-	font-size: 21px; 
+	font-size: 22px; 
 	color: #fff;
 	line-height: 28px; 
-	font-family: sans-serif;
 	padding-bottom: 24px;
 	padding-top: 8px;
-	&.big { font-size: 27px; line-height: 36px; }
-	&.small { font-size: 16px; line-height: 24px; }
+	&.big { font-size: 18px; line-height: 25px; }
+	&.small { font-size: 14px; line-height: 22px; }
 }
 
 #wellsaid-wizard {
-	width: 960px;
-	min-width: 960px;
-	height: 225px;
+	width: 100%;
+	text-align: center;
+	&a .close { color: #333; }
+	&em.close { margin-top: 24px; font-style: normal; text-transform: uppercase; font-size: 12px; display: block; text-decoration: underline; }
 	&h2 {
 		text-transform: uppercase;
 		font-size: 18px;
 		color: #444;
-		font-weight: bold;
-		display: inline-block;
-		&.digit {
-			width: 24px;
-		}
 	}
 	&p { 
-		width: 272px;
-		height: 48px;
 		line-height: 24px;
 		font-size: 16px;
-		margin: 12px 48px 12px 0;
 	}
 }
 
-.wizard-1, .wizard-2, .wizard-3 {
-	width: 320px;
-	float: left;
-	display: inline-block;
-	position: relative;
-	&p + a { display: inline; }
-	&a + p { display: inline; }
+.wizard-1 {
+	text-align: center;
 }
 
 .wizard-1 a {
-	margin: 0 0 0 64px;
-	position: relative;
-	top: 18px;
-	background-color: #fff;
-	padding: 18px 64px;
-	color: #444;
-	font-weight: bold;
+	$opacity : .67;
+	background-color: rgba(0, 0, 0, .85);
+	padding: 24px 84px;
+	width: 158px;
+	color: #fff;
+	display: block;
+	margin: 24px auto 0 auto;
+	box-shadow: 0 3px 5px #888;
 	text-transform: uppercase;
-	-webkit-opacity: .8;
-	-moz-opacity: .8;
-	-o-opacity: .8;
-	opacity: .8;
-	-webkit-transition: opacity .15s ease-in;  
-	-moz-transition: opacity .15s ease-in;  
-	-o-transition: opacity .15s ease-in;  
-	transition: opacity .15s ease-in;  
+	-webkit-opacity: $opacity;
+	-moz-opacity: $opacity;
+	-o-opacity: $opacity;
+	opacity: $opacity;
+	-webkit-transition: opacity .05s ease-in;  
+	-moz-transition: opacity .05s ease-in;  
+	-o-transition: opacity .05s ease-in;  
+	transition: opacity .05s ease-in;  
 	&:hover {
-		-webkit-opacity: 1;
-		-moz-opacity: 1;
-		-o-opacity: 1;
-		opacity: 1;
-		-webkit-transition: opacity .15s ease-in;  
-		-moz-transition: opacity .15s ease-in;  
-		-o-transition: opacity .15s ease-in;  
-		transition: opacity .15s ease-in;  
+		$newopacity : .8;
+		-webkit-opacity: $newopacity;
+		-moz-opacity: $newopacity;
+		-o-opacity: $newopacity;
+		opacity: $newopacity;
 	};
-}
-
-.wizard-3 {
-	&img {
-		position: absolute;
-		left: 110px;
-		-webkit-opacity: .8;
-		-moz-opacity: .8;
-		-o-opacity: .8;
-		opacity: .8;
-		-webkit-transition: opacity .15s ease-in;  
-		-moz-transition: opacity .15s ease-in;  
-		-o-transition: opacity .15s ease-in;  
-		transition: opacity .15s ease-in;
-		&:hover {
-			-webkit-opacity: 1;
-			-moz-opacity: 1;
-			-o-opacity: 1;
-			opacity: 1;
-			-webkit-transition: opacity .15s ease-in;  
-			-moz-transition: opacity .15s ease-in;  
-			-o-transition: opacity .15s ease-in;  
-			transition: opacity .15s ease-in;  
-		};
-	}
-}
-
-h3.selected {
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
-	color: #444;
-	margin: 0 24px;
 }

@@ -1,6 +1,8 @@
-<div class="quote pimp color-<%= quote.id % 3 %> q-<%= quote.id %>">
-	<h1><%= quote.updated_at.year.to_s.last(2) %>.<%= sprintf '%02d', quote.updated_at.month %>.<%= sprintf '%02d', quote.updated_at.day %></h1>
+<div class="quote pimp style-<%= quote.id % 3 %> q-<%= quote.id %>">
+	<h3><%= quote.updated_at.year.to_s.last(2) %>.<%= sprintf '%02d', quote.updated_at.month %>.<%= sprintf '%02d', quote.updated_at.day %></h3>
 	<%= link_to 'X', quote, confirm: 'Remove this? Are you sure?', method: :delete, :remote => true, :class => 'remove', :alt => "Remove" %>
+	<br/>
+	<%= link_to quote.source.split('/')[2].truncate(26), quote.source, :class => 'source' %>
 	<% if quote.text.length < 67 %>
 	  <p class="big"><%= quote.text %></p>
 	<% elsif quote.text.length > 269 %>
@@ -9,7 +11,7 @@
 	  <p><%= quote.text %></p>
 	<% end %>
 	<div class="quote-details">
-	  <p class="tiny bold">From </p>
-	  <%= link_to quote.source.split('/')[2].truncate(26), quote.source, :class => 'source' %>
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%=u quote.source.to_s %>" data-lang="en" data-size="small" data-count="none">Tweet</a>
+	  <p class="tiny">Tweet this</p>
 	</div>
 </div>

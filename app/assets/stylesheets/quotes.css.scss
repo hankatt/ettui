@@ -25,7 +25,7 @@
 
 .quote-details {
 	position: absolute;
-	display: none;
+	display: block;
 	text-align: right;
 	background-color: #333;
 	bottom: 0;
@@ -64,8 +64,8 @@
 }
 
 .quote-details a {
-	letter-spacing: 1px;
-	text-transform: none;
+	font-size: 10px;
+	text-transform: uppercase;
 	line-height: 12px;
 	padding-right: 24px;
 	&:hover { color: #fff; text-decoration: underline; }

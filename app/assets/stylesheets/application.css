@@ -24,7 +24,7 @@
 	}
 
 	body { 
-		background-image: url('/assets/forest-bg.png');
+		background-image: url('/assets/bg.png');
 		background-size: cover;
 		background-attachment: fixed;
 		background-color: #bbb;
@@ -35,18 +35,20 @@
 		-webkit-margin-after: 0;
 	}
 
-	h1, h3, p, em, a, input {
-		font-family: 'Adobe Garamond Pro';
+	h1 { font-family: "Archer"; }
+
+	h3, p, em, a, input {
+		font-family: 'Proxima Nova';
 		font-weight: normal;
 		text-decoration: none;
 		-webkit-font-smoothing: antialiased;
 	}
 
-	h2 { font-family: 'Futura'; padding-bottom: 16px; }
+	h2 { font-family: 'Proxima Nova'; padding-bottom: 16px; letter-spacing: 1px; }
 
-	p, em { line-height: 140%; word-spacing: 1px; }
+	p, em { line-height: 167%; word-spacing: 1px; }
 
-	.container { width: 100%; }
+	.container { width: 100%; color: white; }
 
 	header { 
 		text-align: center;
@@ -54,30 +56,33 @@
 	}
 
 	nav {
-		width: 790px;
-		margin: 0 auto 16px auto;
-		padding-top: 48px;
+		width: 100%;
+		margin: 0 auto 0 auto;
 		text-align: right;
+		padding: 16px 0 22px 0;
+		background-color: #fff;
 	}
 
-	#latest { width: 790px; margin: 0 auto; clear: both; float: none; overflow: auto; }
-	#latest .left { width: 166px; float: left; }
-	#latest .right { width: 624px; float: left; }
-	#quote-banner { width: 100%; clear: both; }
+	nav div {
+		width: 790px;
+		margin: 0 auto;
+		color: #515151;
+	}
+
+	nav div img { float: left; }
+	nav div h3 { float: left; font-size: 24px; font-weight: lighter; padding-left: 16px; }
+	nav div a { color: #515151; text-decoration: underline; position: relative; top: 2px; }
 
 	@-moz-document url-prefix() {
-    	div.sidenote {
-        	line-height: 0;
-        	padding-top: 0;
-    	}
-
-		#login-container a { text-decoration: underline; }
-		#login-container p { position: relative; bottom: 19px; }
-
-		#wellsaid-wizard { line-height: 0; }
-		.wizard-1 a.pimp { position: relative; top: 24px; }
-
 		.quote h1 { line-height: 0; }
+		#signup input { margin-bottom: 0 !important; }
+		#signup input.sec { position: relative; bottom: 3px; }
+		#signup input.thi { position: relative; bottom: 4px; }
+		#signup .actions input { position: relative; bottom: 7px; }
+		nav div h3 { position:relative; bottom: 22px; font-weight: lighter; }
+		#signup form, #login form { margin-top: 1px !important; position: relative; bottom: 4px; }
+		#demo h2, #signup h2 { margin-bottom: 0 !important; }
+
 	}
 
 /* ============================= */

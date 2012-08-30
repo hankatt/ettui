@@ -18,8 +18,8 @@ $(window).load(function() {
   $('#quotes-container').masonry({
     // options
     itemSelector : '.quote',
-    columnWidth : 340,
-    gutterWidth : 80,
+    columnWidth : 356,
+    gutterWidth : 64,
     isAnimated : true,
     isFitWidth: true
   });
@@ -30,7 +30,7 @@ $(document).ready(function() {
 });
 
 function toggle_install() {
-  $("#gridset-wrapper").slideToggle();
+  $("#intro").slideToggle();
 }
 
 function center_vertically() {

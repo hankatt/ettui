@@ -6,38 +6,24 @@
 <% end %>
 
 <nav>
-	<% if current_user %>
-	  <%= link_to (@user.email || @user.name), quotes_path %>
-	  <%= link_to "Logout", logout_path %>
-	<% else %>
-	  <%= link_to "Login with Twitter", "/auth/twitter" %>
-	  <p style="display: inline;"> or</p>
-	  <%= link_to "Sign in", login_path %>
-	<% end %>
+	<div>
+		<%= link_to (image_tag "logo.png"), '/' %>
+		<h3 id="logo">WRTTN</h3>
+	 	<% if current_user %>
+			 <%= link_to "Hello " << (@user.email || @user.name) << ",", quotes_path %>
+			 <%= link_to "Logout?", logout_path, :class => "logout" %>
+	 	<% else %>
+	 		<%= link_to "Login", login_path %>
+			<p style="display: inline;"> / </p>
+			<%= link_to "with Twitter", "/auth/twitter" %>
+	 	<% end %>
+	</div>
 </nav>
 <header>
-	<a href="/"><h1>Collect, store & share memorable quotes.</h1></a>
-	<p>Well Said is a bookmarklet that does all of this, in one click.</p>
 </header>
 
 <div id="gridset-wrapper">
 	<div class="d-all" id="login">
 		<%= render 'login_form' %>
-	</div>
-</div>
-<div id="quote-banner">
-	<div class="d-all" id="latest">
-		<div class="left">
-			<h3>latest quote</h3>
-			<em class="inline">by</em>
-			<p class="user">
-				<%= "Anonymous" %>
-			</p>
-			<p class="caps">3 hours ago</p>
-			<%= image_tag "heart.png" %>
-		</div>
-		<div class="right">
-			<p id="latest-quote">"He who learns but does not think, is lost. He who thinks but does not learn is in great danger." - Confucius</p>
-		</div>
 	</div>
 </div>

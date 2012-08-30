@@ -6,21 +6,23 @@
 <% end %>
 
 <nav>
-  <% if current_user %>
-    <%= link_to "Hello " << (@user.email || @user.name) << ",", quotes_path %>
-    <%= link_to "Logout?", logout_path, :class => "logout" %>
-  <% else %>
-    <%= link_to "Login with Twitter", "/auth/twitter" %>
-    <p style="display: inline;"> or</p>
-    <%= link_to "Sign in", login_path %>
-  <% end %>
+  <div>
+    <%= link_to (image_tag "logo.png"), '/' %>
+    <h3 style="padding-left: 16px;"><%= link_to "Hello " << (@user.email || @user.name), quotes_path, :style => "text-decoration: none;" %></h3>
+    <% if current_user %>
+      <%= link_to "Logout", logout_path, :class => "logout" %>
+    <% else %>
+      <%= link_to "Login with Twitter", "/auth/twitter" %>
+      <p style="display: inline;"> or</p>
+      <%= link_to "Sign in", login_path %>
+    <% end %>
+  </div>
 </nav>
 
-<div id="gridset-wrapper">
-  <div class="d-all" id="intro">
+<div id="intro">
     <div id="wellsaid-wizard">
       <div class="wizard-1">
-          <h2>Installing Well Said</h2>
+          <h2>Installing WRTTN</h2>
           <p>Drag the link below to your bookmarks bar to install <em>your</em> bookmarklet.</p>
           <a href='javascript:(function(){
           well = function() {
@@ -100,12 +102,12 @@
             setTimeout(well,0);
           } else {
             well();
-          }})()'>Well Said</a>
+          }})()'>WRTTN</a>
       </div>
       <a href="#" onclick="toggle_install()"><em class="close">close this guide</em></a>
     </div>
-  </div>
 </div>
+
 
 <div id="quotes-container">
   <% if !@quotes.nil? %>

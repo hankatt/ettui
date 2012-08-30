@@ -1,10 +1,10 @@
 <h2>SIGNING UP</h2>
 <div id="twitter-login">
   <%= image_tag "twitter-bird.png" %>
-  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+  <%= link_to "Sign up with Twitter", "/auth/twitter" %>
 </div>
 
-<em>or fill in the form below</em>
+<p>or fill in the form below</p>
 
 <%= form_for(@user) do |f| %>
   <div class="field">
@@ -12,11 +12,11 @@
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="field">
-    <%= f.password_field :password, :placeholder => "Password" %>
+    <%= f.password_field :password, :placeholder => "Password", :class => 'sec' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="field">
-    <%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %>
+    <%= f.password_field :password_confirmation, :placeholder => "Password confirmation", :class => 'thi' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="actions mtop">

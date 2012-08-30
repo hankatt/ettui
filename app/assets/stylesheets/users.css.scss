@@ -5,7 +5,7 @@
 div.error_explanation ul {
 	display: none;
 	-webkit-padding-start: 0px;
-	li {
+	&li {
 	font-size: 12px;
 	font-style: italic;
 	color: #000;
@@ -14,32 +14,25 @@ div.error_explanation ul {
 }
 
 header {
-	&h1 { font-size: 48px; padding-bottom: 16px; }
-	&p { font-size: 22px; padding-bottom: 12px; }
-	&em { font-size: 22px; }
-	&a { color: #333; }
-}
-
-nav {
-	&a { color: #333; text-transform: uppercase; font-size: 13px; }
-	&p { font-style: italic; padding: 0 3px; }
-	&a.logout { color: #f44; }
+	width: 964px;
+	&h1 { font-size: 48px; padding-bottom: 32px; padding-top: 64px; }
 }
 
 .inline, p + em { display: inline; }
 
 #demo {
 	&div#wellsaid-btn {
-		padding: 12px 0;
+		padding: 16px 0;
 		margin-top: 16px;
-		background-color: rgba(255, 255, 255, .6);
+		background-color: rgba(255, 255, 255, .0);
 		text-align: center;
-		font-family: 'Adobe Garamond Pro';
-		font-size: 22px;
-		font-style: italic;
+		font-family: 'Proxima Nova';
+		font-weight: bold;
+		font-size: 24px;
+		border: solid 1px #fff;
 	}
-	&a { color: #000; }
-	&p, em { font-size: 18px; }
+	&a { color: #fff; }
+	&p, em { font-size: 16px; line-height: 167%; }
 	&em { font-weight: bold; }
 	&p.example {
 		color: #fff;
@@ -50,42 +43,46 @@ nav {
 }
 
 #demo, #signup {
-	&h2 { font-size: 28px; }
+	&h2 { font-size: 24px; }
 }
 
 #signup, #login {
-	&form { margin-top: 15px; }
+	&form { margin-top: 19px; }
 	&form .field input { 
 		width: 281px;
 		height: 40px;
-		margin-bottom: 12px;
+		margin-bottom: 13px;
 		background-color: rgba(0, 0, 0, .7);
 		border: none;
 		text-align: center;
-		font-size: 18px;
+		font-size: 16px;
 		color: #fff;
 	}
 	&form .actions input {
-		padding: 12px 0;
+		padding: 16px 0;
 		margin-top: 4px;	
 		width: 281px;
 		border: none;
-		background-color: rgba(255, 255, 255, .7);
+		background-color: rgba(255, 255, 255, .0);
 		text-align: center;
-		font-family: 'Adobe Garamond Pro';
-		font-size: 22px;
+		border: solid 1px #fff;
+		color: #fff;
+		font-family: 'Proxima Nova';
+		font-weight: bold;
+		font-size: 24px;
 	}
 }
 
 #login { text-align: center; }
 
-#signup form .actions input:hover, #demo #wellsaid-btn:hover {
-	background-color: #fff;
+#signup form .actions input:hover, #demo #wellsaid-btn:hover, #login form .actions input:hover {
+	background-color: rgba(255, 255, 255, .1);
+	cursor: pointer;
 }
 
 #twitter-login {
 	margin-bottom: 9px;
-	&a { font-size: 22px; text-decoration: underline; position: relative; bottom: 13px; color: #333; }
+	&a { font-size: 22px; text-decoration: underline; position: relative; bottom: 13px; color: #fff; letter-spacing: 1px; }
 	&img { position: relative; right: 26px; }
 }
 

@@ -6,26 +6,27 @@
 <% end %>
 
 <nav>
-  <% if current_user %>
-    <%= link_to "Hello " << (@user.email || @user.name) << ",", quotes_path %>
-    <%= link_to "Logout?", logout_path, :class => "logout" %>
-  <% else %>
-    <%= link_to "Login with Twitter", "/auth/twitter" %>
-    <p style="display: inline;"> or</p>
-    <%= link_to "Sign in", login_path %>
-  <% end %>
+	<div>
+		<%= link_to (image_tag "logo.png"), '/' %>
+		<h3 id="logo">WRTTN</h3>
+	 	<% if current_user %>
+			 <%= link_to "Hello " << (@user.email || @user.name) << ",", quotes_path %>
+			 <%= link_to "Logout?", logout_path, :class => "logout" %>
+	 	<% else %>
+	 		<%= link_to "Login", login_path %>
+			<p style="display: inline;"> / </p>
+			<%= link_to "with Twitter", "/auth/twitter" %>
+	 	<% end %>
+	</div>
 </nav>
 <header>
-	<a href="/"><h1>Collect, store & share memorable quotes.</h1></a>
-	<p>Well Said is a bookmarklet that does all of this, in one click.</p>
-	<em>Try the demo below.</em>
+	<h1>Welcome to a bookmarklet that helps collect, store and share memorable reads.</h1>
 </header>
 
 <div id="gridset-wrapper">
 	<div class="d1" id="demo">
 		<h2>DEMO</h2>
-		<p class="inline">Our bookmarklet stores & shares highlighted text along with the site you're on. To try, highlight the quote below and click </p>
-		<em>Well Said.</em>
+		<p class="inline">WRTTN detects highlighted text and captures it, so try and highlight the quote below and press Well Said. That's how Well Said works.</p>
 		<p class="example">
 			The best index to a person's character is how he treats people who can't do him any good, and how he treats people who can't fight back. <br/>- Abigail Van Buren
 		</p>
@@ -35,21 +36,5 @@
 	</div>
 	<div class="d2" id="signup">
 		<%= render 'form' %>
-	</div>
-</div>
-<div id="quote-banner">
-	<div class="d-all" id="latest">
-		<div class="left">
-			<h3>latest quote</h3>
-			<em class="inline">by</em>
-			<p class="user">
-				<%= "Anonymous" %>
-			</p>
-			<p class="caps">3 hours ago</p>
-			<%= image_tag "heart.png" %>
-		</div>
-		<div class="right">
-			<p id="latest-quote">"He who learns but does not think, is lost. He who thinks but does not learn is in great danger." - Confucius</p>
-		</div>
 	</div>
 </div>

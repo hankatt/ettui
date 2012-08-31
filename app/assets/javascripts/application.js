@@ -27,6 +27,10 @@ $(window).load(function() {
 
 $(document).ready(function() {
   center_vertically();
+
+  $("#wellsaid-btn").click(function() {
+    alert("Demo is under development.");
+  });
 });
 
 function toggle_install() {

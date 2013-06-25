@@ -11,7 +11,7 @@
       <h3 class="date">
       	<%= sprintf '%02d', quote.updated_at.day %>.<%= sprintf '%02d', quote.updated_at.month %>.<%= quote.updated_at.year.to_s.last(2) %>
       </h3>
-      <%= link_to quote.source.hostname, quote.url, :class => 'source' %>
+      <%= link_to quote.source.hostname, quote.url, :class => 'source' unless quote.nil? %>
       <img src="<%= quote.source.favicon %>" class="favicon"/>
     </div>
     <p class="text">

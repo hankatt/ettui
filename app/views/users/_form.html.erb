@@ -1,11 +1,3 @@
-<h2>SIGNING UP</h2>
-<div id="twitter-login">
-  <%= image_tag "twitter-bird.png" %>
-  <%= link_to "Sign up with Twitter", "/auth/twitter" %>
-</div>
-
-<p>or fill in the form below</p>
-
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.text_field :email, :placeholder => "Electronic mail address" %>
@@ -19,7 +11,7 @@
     <%= f.password_field :password_confirmation, :placeholder => "Password confirmation", :class => 'thi' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
-  <div class="actions mtop">
+  <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>

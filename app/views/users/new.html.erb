@@ -1,10 +1,9 @@
-
 <% if !current_user %>
 	<!-- Render sign up form !-->
 <% else %>
 	<!-- Render welcome {user} !-->
 <% end %>
-
+<!--
 <nav>
 	<div>
 		<%= link_to (image_tag "logo.png"), '/' %>
@@ -19,22 +18,18 @@
 	 	<% end %>
 	</div>
 </nav>
-<header>
-	<h1>Welcome to a bookmarklet that helps collect, store and share memorable reads.</h1>
-</header>
+!-->
+<h3 class="title">noted</h1>
+<h1>Remember what you read</h1>
+<h2><em>noted</em> is a tool for collecting and organizing reads worth saving.</h2>
 
-<div id="gridset-wrapper">
-	<div class="d1" id="demo">
-		<h2>DEMO</h2>
-		<p class="inline">WRTTN detects highlighted text and captures it, so try and highlight the quote below and press Well Said. That's how Well Said works.</p>
-		<p class="example">
-			The best index to a person's character is how he treats people who can't do him any good, and how he treats people who can't fight back. <br/>- Abigail Van Buren
-		</p>
-		<a href="#" onclick="">
-			<div id="wellsaid-btn">Well Said</div>
-		</a>
-	</div>
-	<div class="d2" id="signup">
-		<%= render 'form' %>
-	</div>
+<div id="signup">
+	<%= link_to "Sign up with Twitter", "/auth/twitter", :class => "button twitter" %>
+	<%= link_to "Sign up with your e-mail", "#!", :class => "button toggle-form" %>
+	<%= render 'form' %>
 </div>
+
+<h3>After signing up <em>noted</em> will create your bookmarklet.</h3>
+
+<a href="#!" class="button bookmark">My noted bookmarklet</a>
+<h2><em class="grey">Drag and drop it on your Bookmarks bar.</em></h2>

@@ -14,57 +14,47 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(window).load(function() {
-  $('#quotes-container').masonry({
-    // options
-    itemSelector : '.quote',
-    columnWidth : 356,
-    gutterWidth : 64,
-    isAnimated : true,
-    isFitWidth: true
-  });
-});
-
 $(document).ready(function() {
-  center_vertically();
+  $('.quotes-container').gridalicious();
 
-  $("#wellsaid-btn").click(function() {
-    alert("Demo is under development.");
+  $("#quotes-search").keypress(function(press) {
+
+    /* Using a regular get won't trigger the RJS,
+       specifying the dataType as 'script' in the 
+       .ajax call makes it trigger though. */
+
+    $.ajax({
+      type: 'GET',
+      data: $("#quotes-search").serialize(),
+      dataType: 'script',
+      url: '/quotes'
+    });
+
+    /*
+    //Get character
+    var character = String.fromCharCode(press.which);
+    $(".search-bar .search").append(character);
+
+    //Get search string
+    var search_string = $(".search-bar .search").html();
+
+    if(search_string.length === 1) { //Highlight everything matching the first char
+      matching = $(".text:contains('" +search_string +"')").parent();
+      matching.addClass('match');
+    } else { //Remove .match for each letter added
+      no_longer_matching = $(".match .text").not(':contains(' +search_string +')').parent();
+      no_longer_matching.removeClass('match');
+    }
+    return false;
+    */
   });
 });
+
 
 function toggle_install() {
   $("#intro").slideToggle();
 }
 
-function center_vertically() {
-  parent = $("#latest");
-  p = $("#latest-quote");
-
-  offset = (parent.height() - p.height()) / 2 | 0;
-
-  p.css('margin-top', offset);
-}
-
 function reload() {
   window.location.reload();
 }
-
-/*  
-  $(".quote").hover(function() {
-    $(this).children(".quote-details").show();
-  });
-
-  $(".quote").mouseleave(function() {
-    $(this).children(".quote-details").hide();
-  });
-
-  $("#close-wizard").click(function() {
-    toggle_instructions();
-  });
-});
-
-function toggle_instructions() {
-  $("#wellsaid-wizard").slideToggle()
-}
-*/

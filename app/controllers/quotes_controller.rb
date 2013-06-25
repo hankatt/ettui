@@ -1,9 +1,6 @@
 class QuotesController < ApplicationController
-  # before_filter :allow_cors
 
-  def allow_cors 
-    headers["Access-Control-Allow-Origin"] = "*"
-  end
+  include QuotesHelper
 
   # GET /quotes
   # GET /quotes.json
@@ -12,20 +9,28 @@ class QuotesController < ApplicationController
       @user = User.find(cookies[:user_id])
     end
 
-    @quotes = Quote.find_all_by_user_id(@user.id)
+    @quotes = Quote.search(params[:search])
+    @source_ids = Quote.select(:source_id).uniq.where(:user_id => @user.id)
+    @sources = Source.find_all_by_id(@source_ids)
     
     respond_to do |format|
       format.html # index.html.erb
+      format.js # index.js.erb
       format.json { render json: @quotes }
     end
   end
 
   def remote_create
-    @user = User.find_by_token(params[:id])
 
-    # Verify that a user exists for the attached id
-    if @user
-      @quote = Quote.create!(:text => params[:copy], :user_id => @user.id, :source => params[:src])
+    # Find user
+    @user = User.find_by_token(params[:user_token])
+
+    # Set, or if non existing, create, a source for the quote
+    @source = Source.find_by_hostname(get_host(params[:url])) || Source.create!(:hostname => get_host(params[:url]), :favicon => params[:favicon])
+
+    # Create a quote and connect it to the created source
+    if @user && @source
+      @quote = Quote.create!(:text => params[:text], :user_id => @user.id, :url => params[:url], :source_id => @source.id)
     end
 
     respond_to do |format|
@@ -95,6 +100,15 @@ class QuotesController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def search
+    @quotes = Quote.search(params[:search])
+
+    respond_to do |format|
+        format.js
+        format.json { head :no_content }
     end
   end
 

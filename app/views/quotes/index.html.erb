@@ -5,111 +5,118 @@
   <!-- Render welcome {user} !-->
 <% end %>
 
-<nav>
-  <div>
-    <%= link_to (image_tag "logo.png"), '/' %>
-    <h3 style="padding-left: 16px;"><%= link_to "Hello " << (@user.email || @user.name), quotes_path, :style => "text-decoration: none;" %></h3>
-    <% if current_user %>
-      <%= link_to "Logout", logout_path, :class => "logout" %>
-    <% else %>
-      <%= link_to "Login with Twitter", "/auth/twitter" %>
-      <p style="display: inline;"> or</p>
-      <%= link_to "Sign in", login_path %>
+<a class="bookmarklet" href='javascript:(function(){
+    well = function() {
+      log = true;
+
+      if(log) console.log("r: Try section");
+      try {
+        if(!document.body)
+          throw(0);
+
+        if(document.getSelection().toString() === "") {
+          alert("Empty selection.");
+          throw(0);
+        } else {
+          
+          text      = encodeURIComponent(document.getSelection().toString());
+          url       = encodeURIComponent(document.location.href.toString());
+          token     = "<%= @user.token %>";
+          rel       = "icon";
+          fi        = function() {
+                      if(document.querySelectorAll("link[rel~=" +rel +"]").length > 0)
+                        return encodeURIComponent(document.querySelectorAll("link[rel~=" +rel +"]")[0].href);
+                      else
+                        return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
+                    };
+
+          query     = "http://localhost:3000/quotes/add?user_token=" +token +"&text=";
+
+          script    = document.createElement("script");
+          script.src  = query + text + "&url=" + url + "&favicon=" + fi() + "&callback=status";
+        }
+
+        /* TAKES CARE OF JSONP RESPONSE */
+        jsonp = document.createElement("script");
+        jsonp.setAttribute("type", "text/javascript");
+
+        callback = "function status(data) {
+          headline.innerText = data.message;
+          popup.innerHTML = headline.outerHTML;
+          counter = 0;
+          interval = setInterval(function() {
+            counter += 25;
+            wait = 350;
+            if(counter > wait) {
+              value = counter - wait;
+              popup.style.opacity = popup.style.opacity - (value/1000);
+              document.body.removeChild(popup);
+              document.body.appendChild(popup);
+              if(counter === 1500) {
+                clearInterval(interval);
+                counter = 0;
+                document.body.removeChild(popup);
+              }
+            }
+          }, 50);
+        }";
+
+        jsonp.innerHTML = callback;
+        document.body.appendChild(jsonp);
+        
+        /* CREATES POPUP */
+        headline = document.createElement("h1");
+        headline.id = "well-title";
+        headline.style.textAlign = "center";
+        headline.style.width = "175px";
+        headline.innerText = "SAVING..";
+
+        popup = document.createElement("div");
+        popup.style.width = "175px";
+        popup.style.padding = "25px";
+        popup.style.zIndex = "20000";
+        popup.style.position = "fixed";
+        popup.style.top = "0";
+        popup.style.opacity = "1";
+        popup.innerHTML = headline.outerHTML;
+        document.body.appendChild(popup);
+
+        /* EXECUTE SCRIPT */
+        document.body.appendChild(script);
+
+      } catch(e) {
+        alert("Please wait until the page has loaded.");
+      }
+    };
+
+    if(/Firefox/.test(navigator.userAgent)) {
+      setTimeout(well,0);
+    } else {
+      well();
+    }})()'>
+    NOTED
+  </a>
+
+<div class="filters-container">
+  <div class="search-bar">
+    <%= form_tag quotes_path, :method => 'get', :remote => true, :id => "quotes-search" do %>
+      <p>
+        <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for?", :class => "search-field" %>
+        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+      </p>
     <% end %>
   </div>
-</nav>
-
-<div id="intro">
-    <div id="wellsaid-wizard">
-      <div class="wizard-1">
-          <h2>Installing WRTTN</h2>
-          <p>Drag the link below to your bookmarks bar to install <em>your</em> bookmarklet.</p>
-          <a href='javascript:(function(){
-          well = function() {
-            try {
-              if(!document.body)
-                throw(0);
-
-              if(document.getSelection().toString() === "") {
-                alert("Empty selection.");
-                throw(0);
-              } else {
-                well      = document.createElement("script");
-                selection = document.getSelection().toString();
-                source    = document.location.href.toString();
-                token     = "<%= @user.token %>";
-                url       = "http://wellsaid.herokuapp.com/quotes/add?id=" +token +"&copy=";
-                well.src  = url +encodeURIComponent(selection) + "&src=" +source + "&callback=status";
-              }
-
-              /* TAKES CARE OF JSONP RESPONSE */
-              jsonp = document.createElement("script");
-              jsonp.setAttribute("type", "text/javascript");
-              callback = "function status(data) {
-                headline.innerText = data.message;
-                popup.innerHTML = headline.outerHTML;
-                counter = 0;
-                interval = setInterval(function() {
-                  counter += 25;
-                  wait = 350;
-                  if(counter > wait) {
-                    value = counter - wait;
-                    popup.style.opacity = popup.style.opacity - (value/1000);
-                    document.body.removeChild(popup);
-                    document.body.appendChild(popup);
-                    if(counter === 1500) {
-                      clearInterval(interval);
-                      counter = 0;
-                      document.body.removeChild(popup);
-                    }
-                  }
-                }, 50);
-              }";
-              jsonp.innerHTML = callback;
-              document.body.appendChild(jsonp);
-              
-              /* CREATES POPUP */
-              headline = document.createElement("h1");
-              headline.id = "well-title";
-              headline.style.fontFamily = "Georgia";
-              headline.style.fontSize = "24px";
-              headline.style.textAlign = "center";
-              headline.style.width = "175px";
-              headline.style.color = "#444";
-              headline.innerText = "SAVING..";
-
-              popup = document.createElement("div");
-              popup.style.backgroundColor = "#eee";
-              popup.style.width = "175px";
-              popup.style.padding = "25px";
-              popup.style.zIndex = "20000";
-              popup.style.position = "fixed";
-              popup.style.top = "0";
-              popup.style.left = "25px";
-              popup.style.opacity = "1";
-              popup.innerHTML = headline.outerHTML;
-              document.body.appendChild(popup);
-
-              /* EXECUTE SCRIPT */
-              document.body.appendChild(well);
-
-            } catch(e) {
-              alert("Please wait until the page has loaded.");
-            }
-          };
-
-          if(/Firefox/.test(navigator.userAgent)) {
-            setTimeout(well,0);
-          } else {
-            well();
-          }})()'>WRTTN</a>
-      </div>
-      <a href="#" onclick="toggle_install()"><em class="close">close this guide</em></a>
-    </div>
+  <ol class="filters-list">
+    <% @sources.each do |source| %>
+      <%= render :partial => 'source', locals: { source: source } %>
+    <% end %>
+  </ol>
 </div>
 
+</div>
 
-<div id="quotes-container">
+<div class="quotes-container">
+  <h2>Latest additions</h2>
   <% if !@quotes.nil? %>
   	<% @quotes.each do |quote| %>
   		<%= render :partial => 'quote', locals: { quote: quote } %>

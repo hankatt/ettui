@@ -21,69 +21,93 @@
 		margin: 0;
 		height: 100%;
 		width: 100%;
-	}
-
-	body { 
-		background-image: url('/assets/bg.png');
-		background-size: cover;
-		background-attachment: fixed;
-		background-color: #bbb;
+		background-color: #f9f9f9;
 	}
 
 	* { 
 		-webkit-margin-before: 0;
 		-webkit-margin-after: 0;
-	}
-
-	h1 { font-family: "Archer"; }
-
-	h3, p, em, a, input {
-		font-family: 'Proxima Nova';
-		font-weight: normal;
-		text-decoration: none;
 		-webkit-font-smoothing: antialiased;
+		box-sizing: border-box;
+		font-family: "Helvetica Neue", "Brandon Grotesque";
+		font-weight: 400;
+		line-height: 127%;
 	}
 
-	h2 { font-family: 'Proxima Nova'; padding-bottom: 16px; letter-spacing: 1px; }
-
-	p, em { line-height: 167%; word-spacing: 1px; }
-
-	.container { width: 100%; color: white; }
-
-	header { 
-		text-align: center;
-		margin: 0 auto 48px auto;
+	.button, input {
+		display: block;
+		width: 251px;
+		height: 38px;
+		line-height: 38px;
+		margin: 7px auto 0;
+		border-radius: 2px;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 500;
+		border: none;
 	}
 
-	nav {
-		width: 100%;
-		margin: 0 auto 0 auto;
-		text-align: right;
-		padding: 16px 0 22px 0;
+	.button {
+		background-color: #232323;
+	}
+
+	input {
 		background-color: #fff;
+		text-align: center;
 	}
 
-	nav div {
-		width: 790px;
+	.actions input {
+		background-color: #4ea845;
+		color: #eee;
+	}
+
+	p, li {
+		font-family: "Chaparral Pro", serif;
+		font-size: 18px;
+		line-height: 1.3;
+	}
+
+	.title { 
+		font-weight: bold; 
+		letter-spacing: 2px;
+		border-bottom: solid 1px #aaa;
+		width: 173px;
 		margin: 0 auto;
-		color: #515151;
 	}
 
-	nav div img { float: left; }
-	nav div h3 { float: left; font-size: 24px; font-weight: lighter; padding-left: 16px; }
-	nav div a { color: #515151; text-decoration: underline; position: relative; top: 2px; }
-
-	@-moz-document url-prefix() {
-		.quote h1 { line-height: 0; }
-		#signup input { margin-bottom: 0 !important; }
-		#signup input.sec { position: relative; bottom: 3px; }
-		#signup input.thi { position: relative; bottom: 4px; }
-		#signup .actions input { position: relative; bottom: 7px; }
-		nav div h3 { position:relative; bottom: 22px; font-weight: lighter; }
-		#signup form, #login form { margin-top: 1px !important; position: relative; bottom: 4px; }
-		#demo h2, #signup h2 { margin-bottom: 0 !important; }
-
+	.slogan {
+		font-style: italic;
+		padding-top: 11px;
 	}
+
+	a {
+		text-decoration: none;
+	}
+
+	h1 {
+		font-size: 31px;
+		letter-spacing: 1px;
+	}
+
+	h2 {
+		font-size: 17px;
+		letter-spacing: 1px;
+	}
+
+	h3 { 
+		font-size: 15px;
+		letter-spacing: 1px;
+	}
+
+	h4 {
+		font-size: 12px;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
+
+	.grey { color: #6d6d6d; }
+
 
 /* ============================= */
 /* ! Layout for mobile version   */

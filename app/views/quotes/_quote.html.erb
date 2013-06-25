@@ -1,16 +1,23 @@
-<div class="quote pimp style-<%= quote.id % 3 %> q-<%= quote.id %>">
-	<h3><%= quote.updated_at.year.to_s.last(2) %>.<%= sprintf '%02d', quote.updated_at.month %>.<%= sprintf '%02d', quote.updated_at.day %></h3>
-	<%= link_to 'X', quote, confirm: 'Remove this? Are you sure?', method: :delete, :remote => true, :class => 'remove', :alt => "Remove" %>
-	<br/>
-	<%= link_to quote.source.split('/')[2].truncate(26), quote.source, :class => 'source' %>
-	<% if quote.text.length < 67 %>
-	  <p class="big"><%= quote.text %></p>
-	<% elsif quote.text.length > 269 %>
-	  <p class="small"><%= quote.text %></p>
-	<% else %>
-	  <p><%= quote.text %></p>
-	<% end %>
-	<div class="quote-details">
-		<a href="http://twitter.com/share?url=<%= quote.source %>&text=<%= '"' << quote.text.truncate(99) << '"' << ' read at' %>&count=none" target="_blank" rel="nofollow" class="tiny">Tweet this</a>
-	</div>
+<!--<% if quote.text.length < 111 %>
+  <div class="clearfix small blue box size11 q-<%= quote.id %>">
+<% elsif quote.text.length < 213 %>
+  <div class="clearfix blue box size11 q-<%= quote.id %>">
+<% else %>
+  <div class="clearfix blue box size11 q-<%= quote.id %>">
+<% end %>
+!-->
+<div class="clearfix white box size11 q-<%= quote.id %>">
+    <div class="source">
+      <h3 class="date">
+      	<%= sprintf '%02d', quote.updated_at.day %>.<%= sprintf '%02d', quote.updated_at.month %>.<%= quote.updated_at.year.to_s.last(2) %>
+      </h3>
+      <%= link_to quote.source.hostname, quote.url, :class => 'source' %>
+      <img src="<%= quote.source.favicon %>" class="favicon"/>
+    </div>
+    <p class="text">
+    	<%= quote.text %>
+    </p>
+    <a href="http://twitter.com/share?url=&text=&count=none" target="_blank" rel="nofollow" class="share tweet">
+    	Tweet
+    </a>
 </div>

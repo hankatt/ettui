@@ -60,5 +60,8 @@ module Well
 
     # Use JSONP Rack gem
     config.middleware.use Rack::JSONP
+
+    # Support SSL
+    config.force_ssl = false
   end
 end

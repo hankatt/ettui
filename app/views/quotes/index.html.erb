@@ -30,7 +30,7 @@
                         return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
                     };
 
-          query     = "http://localhost:3000/quotes/add?user_token=" +token +"&text=";
+          query     = "http://wellsaid.herokuapp.com:3000/quotes/add?user_token=" +token +"&text=";
 
           script    = document.createElement("script");
           script.src  = query + text + "&url=" + url + "&favicon=" + fi() + "&callback=status";

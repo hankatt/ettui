@@ -1,17 +1,17 @@
-<!--<% if quote.text.length < 111 %>
-  <div class="clearfix small blue box size11 q-<%= quote.id %>">
-<% elsif quote.text.length < 213 %>
-  <div class="clearfix blue box size11 q-<%= quote.id %>">
+<% if quote.text.length < 132 %>
+  <div class="clearfix small white box size11 q-<%= quote.id %>">
+<% elsif quote.text.length < 240 %>
+  <div class="clearfix white box size11 q-<%= quote.id %>">
 <% else %>
-  <div class="clearfix blue box size11 q-<%= quote.id %>">
+  <div class="clearfix big white box size11 q-<%= quote.id %>">
 <% end %>
-!-->
-<div class="clearfix white box size11 q-<%= quote.id %>">
+
+<!--<div class="clearfix white box size11 q-<%= quote.id %>">!-->
     <div class="source">
       <h3 class="date">
       	<%= sprintf '%02d', quote.updated_at.day %>.<%= sprintf '%02d', quote.updated_at.month %>.<%= quote.updated_at.year.to_s.last(2) %>
       </h3>
-      <%= (link_to quote.source.hostname, quote.url, :class => 'source') unless quote.nil? %>
+      <%= (link_to quote.source.hostname, quote.url, :class => 'source') unless quote.source.nil? %>
       <img src="<%= quote.source.favicon %>" class="favicon"/>
     </div>
     <p class="text">

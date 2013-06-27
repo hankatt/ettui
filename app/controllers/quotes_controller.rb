@@ -9,9 +9,11 @@ class QuotesController < ApplicationController
       @user = User.find(cookies[:user_id])
     end
 
-    @quotes = Quote.search(params[:search])
-    @source_ids = Quote.select(:source_id).uniq.where(:user_id => @user.id)
-    @sources = Source.find_all_by_id(@source_ids)
+    @quotes = Quote.where("user_id" => @user.id).search(params[:search])
+    @source_counts = Quote.group("source_id").where("user_id" => @user.id).count
+    @sources = Source.find_all_by_id(@source_counts.keys)
+    # Sorted DESC based on count 
+    # @source_counts = Quote.group("source_id").where("user_id" => 21).order("count_source_id DESC").count(:source_id)
     
     respond_to do |format|
       format.html # index.html.erb

@@ -50,6 +50,12 @@ $(document).ready(function() {
   });
 });
 
+function getTweet() {
+  $.getJSON('https://api.twitter.com/1.1/users/show.json?screen_name=daggfukt?callback=?', function(data) {
+    console.log(data);
+  });
+}
+
 
 function toggle_install() {
   $("#intro").slideToggle();

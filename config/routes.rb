@@ -4,7 +4,6 @@ Well::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  get "quotes/get_token" => "quotes#get_token"
   get 'quotes/add' => "quotes#remote_create"
   
   match "/auth/:provider/callback" => "sessions#create_with_omniauth"

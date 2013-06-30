@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-    @quotes = Quote.limit(4).reverse_order
-  end
 
   def create
   	user = User.authenticate(params[:email], params[:password])
@@ -17,10 +14,18 @@ class SessionsController < ApplicationController
   def create_with_omniauth
     auth = request.env["omniauth.auth"]
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+
+    # Setting the Twitter user
+    Twitter::Client.new(
+      oauth_token: auth.credentials.token,
+      oauth_token_secret: auth.credentials.secret,
+    )
+
+    # Create session if the authentication was successful
     if user
       cookies.permanent[:user_id] = user.id
       session[:user_id] = user.id
-      redirect_to quotes_path, :notice => "Signed in!"
+      redirect_to root_url
     else
       redirect_to root_url, :notice => "Failed to authenticate!"
     end

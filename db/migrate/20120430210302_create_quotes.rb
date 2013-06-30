@@ -5,7 +5,6 @@ class CreateQuotes < ActiveRecord::Migration
       t.string :url
       t.integer :user_id
       t.integer :source_id
-      t.string :source
       t.timestamps
     end
   end

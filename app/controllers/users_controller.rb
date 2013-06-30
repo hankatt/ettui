@@ -29,10 +29,7 @@ class UsersController < ApplicationController
     else
       @user = User.new
     end
-
-    # Get four latest quotes
-    @quotes = Quote.limit(4).reverse_order
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }

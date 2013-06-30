@@ -3,7 +3,6 @@ class CreateSources < ActiveRecord::Migration
     create_table :sources do |t|
       t.string :hostname
       t.string :favicon
-      t.string :url
 
       t.timestamps
     end

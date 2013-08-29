@@ -3,7 +3,7 @@ class Quote < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :source
 
-	def self.search(search)
+	def self.containing(search)
 		if search
 			where('text LIKE ?', "%#{search}%")
 		else
@@ -11,7 +11,19 @@ class Quote < ActiveRecord::Base
 		end
 	end
 
-	def self.get_sources(quotes)
-		# a
+	def self.range(from, til)
+		where("created_at > ? AND created_at < ?", from, til)
+	end
+
+	def self.from_past_week
+		where("created_at >= ?", Date.today.prev_week)
+	end
+
+	def self.from_past_month
+		where("created_at >= ?", Date.today.prev_month)
+	end
+
+	def self.foreign_keys(column, user_id)
+		where(:user_id => user_id).group(column).count.keys
 	end
 end

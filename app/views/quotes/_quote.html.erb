@@ -1,9 +1,9 @@
 <% if quote.text.length < 132 %>
-  <div class="clearfix small white box size11 q-<%= quote.id %>">
+  <li class="clearfix small white box size11 q-<%= quote.id %>">
 <% elsif quote.text.length < 240 %>
-  <div class="clearfix white box size11 q-<%= quote.id %>">
+  <li class="clearfix white box size11 q-<%= quote.id %>">
 <% else %>
-  <div class="clearfix big white box size11 q-<%= quote.id %>">
+  <li class="clearfix big white box size11 q-<%= quote.id %>">
 <% end %>
 
 <!--<div class="clearfix white box size11 q-<%= quote.id %>">!-->
@@ -20,4 +20,4 @@
     <a href="http://twitter.com/share?url=&text=&count=none" target="_blank" rel="nofollow" class="share tweet">
     	Tweet
     </a>
-</div>
+</li>

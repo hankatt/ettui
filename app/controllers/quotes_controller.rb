@@ -9,11 +9,19 @@ class QuotesController < ApplicationController
       @user = User.find(cookies[:user_id])
     end
 
-    @quotes = Quote.where("user_id" => @user.id).search(params[:search])
-    @source_counts = Quote.group("source_id").where("user_id" => @user.id).count
-    @sources = Source.find_all_by_id(@source_counts.keys)
-    # Sorted DESC based on count 
-    # @source_counts = Quote.group("source_id").where("user_id" => 21).order("count_source_id DESC").count(:source_id)
+    # Filter out quotes depending.
+    #   Differs between queries involving source filtering and ones that don't
+    if params[:source_ids]
+      # @quotes = Quote.where(:user_id => @user.id).where(:source_id => params[:source_ids]).range(Date.today.prev_month, Date.today).containing(params[:search])
+      @quotes = Quote.where(:user_id => @user.id).where(:source_id => params[:source_ids]).containing(params[:search])
+    else
+      # @quotes = Quote.where(:user_id => @user.id).range(Date.today.prev_month, Date.today).containing("#{params[:search]}")
+      @quotes = Quote.where(:user_id => @user.id).containing("#{params[:search]}")
+    end
+
+    # Get a list of all sources for this users quotes
+    @sources = Source.find_all_by_id(Quote.foreign_keys("source_id", @user.id))
+    # Sorted DESC based on count @source_counts = Quote.group("source_id").where("user_id" => 21).order("count_source_id DESC").count(:source_id)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -23,7 +31,6 @@ class QuotesController < ApplicationController
   end
 
   def remote_create
-
     # Find user
     @user = User.find_by_token(params[:user_token])
 
@@ -37,10 +44,10 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote
-        data = { :message => "Saved!" }
+        data = { :message => "Saved." }
         format.json { render json: data, callback: "status" }
       else
-        data = { :message => "Try again." }
+        data = { :message => "Service down." }
         format.json { render json: data, callback: "status" }
       end
     end
@@ -57,38 +64,6 @@ class QuotesController < ApplicationController
     end
   end
 
-  # GET /quotes/new
-  # GET /quotes/new.json
-  def new
-    @quote = Quote.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @quote }
-    end
-  end
-
-  # GET /quotes/1/edit
-  def edit
-    @quote = Quote.find(params[:id])
-  end
-
-  # POST /quotes
-  # POST /quotes.json
-  def create
-    @quote = Quote.new(params[:quote])
-
-    respond_to do |format|
-      if @quote.save
-        format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
-        format.json { render json: @quote, status: :created, location: @quote }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PUT /quotes/1
   # PUT /quotes/1.json
   def update
@@ -102,15 +77,6 @@ class QuotesController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def search
-    @quotes = Quote.search(params[:search])
-
-    respond_to do |format|
-        format.js
-        format.json { head :no_content }
     end
   end
 

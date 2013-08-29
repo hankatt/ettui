@@ -1,3 +1,5 @@
 <li>
-	<img src="<%= source.favicon %>"/><a href="#" class="s-<%= source.id %>" alt=""><%= source.hostname %></a>
+	<%= check_box_tag "source_ids[]", source.id, false, :id => "source_ids_#{source.id}" %>
+	<%= label_tag "source_checkbox", source.hostname, :class => :hostname %>
+	<%= image_tag source.favicon, :class => :favicon %>
 </li>

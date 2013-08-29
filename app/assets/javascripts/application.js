@@ -17,7 +17,7 @@
 $(document).ready(function() {
   $('.quotes-container').gridalicious();
 
-  $("#quotes-search").keypress(function(press) {
+  $("#quotes-filter").keypress(function(press) {
 
     /* Using a regular get won't trigger the RJS,
        specifying the dataType as 'script' in the 
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
     $.ajax({
       type: 'GET',
-      data: $("#quotes-search").serialize(),
+      data: $("#quotes-filter").serialize(),
       dataType: 'script',
       url: '/quotes'
     });
@@ -48,19 +48,22 @@ $(document).ready(function() {
     return false;
     */
   });
+
+  $(".filters-list label").click(function() {
+    // Mark selection as active
+    $(this).toggleClass('active');
+
+    // Set checkbox to: Checked
+    checkbox = $(this).siblings('[type="checkbox"]');
+    checkbox.prop('checked', !checkbox.prop('checked'));
+
+    // Group selections and query server
+    $.ajax({
+      type: 'GET',
+      data: $("#quotes-filter").serialize(),
+      dataType: 'script',
+      url: '/quotes'
+    });
+
+  })
 });
-
-function getTweet() {
-  $.getJSON('https://api.twitter.com/1.1/users/show.json?screen_name=daggfukt?callback=?', function(data) {
-    console.log(data);
-  });
-}
-
-
-function toggle_install() {
-  $("#intro").slideToggle();
-}
-
-function reload() {
-  window.location.reload();
-}

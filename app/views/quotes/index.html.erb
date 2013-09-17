@@ -134,7 +134,7 @@
 <% end %>
 <!-- END OF FORM !-->
 
-<ol class="quotes-container not-responsive">
+<ol class="quotes-container">
   <% if !@quotes.nil? %>
   	<% @quotes.each do |quote| %>
   		<%= render :partial => 'quote', locals: { quote: quote } %>

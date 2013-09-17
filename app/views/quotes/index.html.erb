@@ -95,49 +95,43 @@
 <!-- The form wraps all of the content control features to simplify AJAX query !-->
 <%= form_tag quotes_path, :method => 'get', :remote => true, :id => "quotes-filter" do %>
 
-  <!-- Includes all of the filter controls !-->
-  <div class="filters-container">
+     <!-- Includes all of the filter controls !-->
+     <div class="topbar">
 
-    <div class="topbar">
-      <h2>Filters</h2>
-      <button class="reset" type="reset">Reset</button>
-    </div>
+          <div class="filters-container">
+               <h2>Filters</h2>
+               <button class="reset" type="reset">Reset</button>
+          </div>
 
-    <div class="sidebar">
-      <div class="filters-list">
-        <ol>
-          <% @sources.each do |source| %>
-            <%= render :partial => 'source', locals: { source: source } %>
-          <% end %>
-        </ol>
-      </div>
-    </div>
+          <div class="search-container">
+               <span class="topbar">
+                    <%= image_tag "search.png" %>
+               </span>
+               <span class="search">
+                    <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for?", :class => "search" %>
+                    <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+               </span>
+         </div>
 
-  </div>
-  <!-- END OF FILTER CONTROLS !-->
+     </div>
 
-  <!-- Includes the search bar w/ icon !-->
-  <div class="search-container">
+     <div class="sidebar">
+          <div class="filters-list">
+               <ol>
+                    <% @sources.each do |source| %>
+                         <%= render :partial => 'source', locals: { source: source } %>
+                    <% end %>
+               </ol>
+          </div>
+     </div>
 
-    <span class="topbar">
-        <%= image_tag "search.png" %>
-    </span>
-
-    <span class="search">
-      <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for?", :class => "search" %>
-      <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-    </span>
-
-  </div>
-  <!-- END OF SEARCH BAR !-->
-  
 <% end %>
 <!-- END OF FORM !-->
 
 <ol class="quotes-container">
-  <% if !@quotes.nil? %>
-  	<% @quotes.each do |quote| %>
-  		<%= render :partial => 'quote', locals: { quote: quote } %>
-  	<% end %>
-  <% end %>
+     <% if !@quotes.nil? %>
+          <% @quotes.each do |quote| %>
+               <%= render :partial => 'quote', locals: { quote: quote } %>
+          <% end %>
+     <% end %>
 </ol>

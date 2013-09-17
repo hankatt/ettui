@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	# Establish relation to quotes
 	has_many :quotes
 
-	attr_accessor :password, :password_confirmation, :token
+	attr_accessor :password, :password_confirmation
 	
 	# Encrypt password before saving it to the database
 	before_save :encrypt_password
@@ -25,6 +25,25 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	# Create method for users signing in using an Omniauth service (i.e. Twitter)
+	def self.create_with_omniauth(auth)
+  		create! do |user|
+	   		user.provider = auth["provider"]
+	    	user.uid = auth["uid"]
+	    	user.name = auth["info"]["name"]
+  		end
+	end
+
+	# Authenticates the user
+	def self.authenticate(email, password)
+		user = find_by_email(email)
+		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+			user
+		else
+			nil
+		end
+	end
+
 	# Generates and sets a token for the new user
 	private
 	def set_token
@@ -37,26 +56,7 @@ class User < ActiveRecord::Base
 			end
 
 			# We now have a token, so lets set it
-			self.update_attributes(:token => token)
+			self.update(token: token)
 		end
-	end
-	
-	# Authenticates the user
-	def self.authenticate(email, password)
-		user = find_by_email(email)
-		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-			user
-		else
-			nil
-		end
-	end
-
-	# Create method for users signing in using an Omniauth service (i.e. Twitter)
-	def self.create_with_omniauth(auth)
-  		create! do |user|
-	   		user.provider = auth["provider"]
-	    	user.uid = auth["uid"]
-	    	user.name = auth["info"]["name"]
-  		end
 	end
 end

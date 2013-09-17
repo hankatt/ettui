@@ -1,17 +1,23 @@
 class User < ActiveRecord::Base
 
-	attr_accessible :email, :password, :password_confirmation, :token
-	attr_accessor :password, :password_confirmation
-	
-	before_save :encrypt_password
-	after_save :set_token
-
+	# Establish relation to quotes
 	has_many :quotes
 
+	attr_accessor :password, :password_confirmation
+	
+	# Encrypt password before saving it to the database
+	before_save :encrypt_password
+
+	# If save was successful, set a token for the user
+	after_save :set_token
+
+	# Form validations
 	validates_uniqueness_of :email, :unless => :uid
 	validates_presence_of :email, :password, :password_confirmation, :unless => :provider
 	validates_confirmation_of :password, :unless => :provider
 
+
+	# Encrypts and stores the provided password
 	def encrypt_password
 		if password.present?
 			self.password_salt = BCrypt::Engine.generate_salt
@@ -19,6 +25,7 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	# Generates and sets a token for the new user
 	private
 	def set_token
 		if self.token.nil?
@@ -34,6 +41,7 @@ class User < ActiveRecord::Base
 		end
 	end
 	
+	# Authenticates the user
 	def self.authenticate(email, password)
 		user = find_by_email(email)
 		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
@@ -43,6 +51,7 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	# Create method for users signing in using an Omniauth service (i.e. Twitter)
 	def self.create_with_omniauth(auth)
   		create! do |user|
 	   		user.provider = auth["provider"]

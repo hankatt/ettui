@@ -34,68 +34,6 @@
 		font-family: sans-serif;
 	}
 
-	.button, input {
-		display: block;
-		width: 251px;
-		height: 38px;
-		line-height: 38px;
-		margin: 7px auto 0;
-		border-radius: 2px;
-		font-size: 12px;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-weight: 500;
-		border: none;
-	}
-
-	input {
-		background-color: #fff;
-		text-align: center;
-	}
-
-	.actions input {
-		background-color: #4ea845;
-		color: #eee;
-	}
-
-	p, li {
-		font-family: "Chaparral Pro";
-	}
-
-	.title { 
-		font-weight: bold; 
-		letter-spacing: 2px;
-		border-bottom: solid 1px #aaa;
-		width: 173px;
-		margin: 0 auto;
-	}
-
-	.slogan {
-		font-style: italic;
-		padding-top: 11px;
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	h1 {
-		font-size: 31px;
-		letter-spacing: 1px;
-	}
-
-	h2 {
-		font-size: 17px;
-		letter-spacing: 1px;
-	}
-
-	h3 { 
-		font-size: 14px;
-		letter-spacing: 1px;
-	}
-
-	.grey { color: #6d6d6d; }
-
 
 /* ============================= */
 /* ! Layout for mobile version   */

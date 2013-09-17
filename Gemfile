@@ -12,7 +12,6 @@ gem 'rails', '4.0.0'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  gem 'uglifier', '>= 1.3.0'
 end
 
 group :development, :test do
@@ -45,7 +44,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.3.0'
 end
 
 gem "jquery-rails"

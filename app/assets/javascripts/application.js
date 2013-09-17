@@ -15,38 +15,17 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $('.quotes-container').gridalicious();
+  //$('.quotes-container').gridalicious();
 
   $("#quotes-filter").keypress(function(press) {
 
-    /* Using a regular get won't trigger the RJS,
-       specifying the dataType as 'script' in the 
-       .ajax call makes it trigger though. */
-
+    /* Specifying the dataType as 'script' in the $.ajax call to trigger RJS. */
     $.ajax({
       type: 'GET',
       data: $("#quotes-filter").serialize(),
       dataType: 'script',
       url: '/quotes'
     });
-
-    /*
-    //Get character
-    var character = String.fromCharCode(press.which);
-    $(".search-bar .search").append(character);
-
-    //Get search string
-    var search_string = $(".search-bar .search").html();
-
-    if(search_string.length === 1) { //Highlight everything matching the first char
-      matching = $(".text:contains('" +search_string +"')").parent();
-      matching.addClass('match');
-    } else { //Remove .match for each letter added
-      no_longer_matching = $(".match .text").not(':contains(' +search_string +')').parent();
-      no_longer_matching.removeClass('match');
-    }
-    return false;
-    */
   });
 
   $(".filters-list label").click(function() {

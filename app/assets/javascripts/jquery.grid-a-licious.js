@@ -46,11 +46,10 @@
 
     $.Gal.settings = {
         selector: '.box',
-        width: 381,
+        width: 471,
         gutter: 0,
-        animate: false,
+        animate: true,
         animationOptions: {
-            speed: 200,
             duration: 250,
             effect: 'fadeInOnAppear',
             queue: false,
@@ -183,12 +182,21 @@
             $.each(boxes, function (index, value) {
                 var item = $(value);
                 var width = '100%';
-            
-                // if you want something not to be "responsive", add the class "not-responsive" to the selector container            
+                
+                console.log(item);
+                // if you want something not to be "responsive", add the class "not-responsive" to the selector container           
                 if (item.hasClass('not-responsive')) {
                   width = 'auto';
                 }
                 
+                item.css({
+                    'marginBottom': gutter,
+                    'zoom': '1',
+                    'filter': 'alpha(opacity=0)',
+                    'opacity': '0'
+                });
+
+                /*
                 item.css({
                     'marginBottom': gutter,
                     'zoom': '1',
@@ -200,7 +208,7 @@
                     'display': 'block',
                     'margin-left': 'auto',
                     'margin-right': 'auto'
-                });
+                });*/
                 
                 // prepend on append to column
                 if (method == 'prepend') {

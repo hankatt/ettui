@@ -11,12 +11,17 @@ gem 'rails', '4.0.0'
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
   gem 'sqlite3'
 end
 
+# Support for attr_accessor removed in Rails 4.0.0, this gem adds support.
+gem 'protected_attributes'
+
+# Used for encrypting the users password
 gem 'bcrypt-ruby', :require => "bcrypt"
 
 # App specific Rack gem to handle JSONP callbacks

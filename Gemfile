@@ -12,14 +12,17 @@ gem 'rails', '4.0.0'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'uglifier', '>= 1.3.0'
 end
 
 group :development, :test do
   gem 'sqlite3'
 end
 
-# Support for attr_accessor removed in Rails 4.0.0, this gem adds support.
+# Support for attr_accessor removed in Rails 4.0.0, this gem adds support. Other gems ease the transition to 4.0.0.
 gem 'protected_attributes'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
 
 # Used for encrypting the users password
 gem 'bcrypt-ruby', :require => "bcrypt"

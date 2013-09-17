@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	# Establish relation to quotes
 	has_many :quotes
 
-	attr_accessor :password, :password_confirmation
+	attr_accessor :password, :password_confirmation, :token
 	
 	# Encrypt password before saving it to the database
 	before_save :encrypt_password

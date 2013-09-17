@@ -19,7 +19,6 @@ group :development, :test do
 end
 
 # Support for attr_accessor removed in Rails 4.0.0, this gem adds support. Other gems ease the transition to 4.0.0.
-gem 'protected_attributes'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 

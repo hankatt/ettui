@@ -102,15 +102,12 @@
                <h2>Filters</h2>
                <button class="reset" type="reset">Reset</button>
           </div>
-
           <div class="search-container">
-               <span class="topbar">
                     <%= image_tag "search.png" %>
-               </span>
-               <span class="search">
+               <div>
                     <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for?", :class => "search" %>
                     <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-               </span>
+               </div>
          </div>
 
      </div>

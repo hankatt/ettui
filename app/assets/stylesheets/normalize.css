@@ -312,7 +312,7 @@ legend {
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
 
-button,
+/*button,*/
 input,
 select,
 textarea {

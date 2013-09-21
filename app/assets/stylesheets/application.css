@@ -21,7 +21,7 @@
 		margin: 0;
 		height: 100%;
 		width: 100%;
-		background-color: #f9f9f9;
+		background-color: #fff;
 		font-size: 16px;
 	}
 
@@ -50,6 +50,19 @@
 		background-color: transparent;
 	}
 
+	.sidebar-container {
+		/* Styling */
+		background-color: #f9f9f9;
+
+		/* Positioning */
+		width: 260px;
+		float: left;
+	}
+
+	.content-container {
+		overflow: hidden;
+	}
+
 	.topbar * {
 		color: #fff;
 	}
@@ -57,6 +70,10 @@
 	.topbar {
 		/* Styling */
 		background-color: #000;
+		height: 70px;
+
+		padding: 18px 0 18px 30px;
+		margin-bottom: 30px;
 	}
 
 	.topbar button {
@@ -75,14 +92,23 @@
 		font-size: 28px;
 	}
 
-	.filters-container, .search-container {
-		/* Positioning */
-		display: inline-block;
+	.filters-container, .filters-list {
+		width: 100%;
 	}
 
 	.filters-container h2 {
 		/* Styling */
 		letter-spacing: 1px;
+	}
+
+	.filters-container, .search-container {
+		/* Positioning */
+		display: inline-block;
+	}
+
+	.filters-list {
+		padding: 0 30px 0 30px;
+
 	}
 
 	.filters-list .source-favicon {
@@ -118,7 +144,6 @@
 	}
 
 	.search-container * {
-
 		/* Positioning */
 		display: inline-block;
 	}
@@ -147,18 +172,6 @@
 	}
 
 @media (min-width: 480px) {
-	.topbar {
-		/* Styling */
-		background-color: #000;
-
-		/* Positioning */
-		width: 		100%;
-		height: 	64px;
-
-		padding: 		18px 0 18px;
-		margin-bottom: 	26px;
-	}
-
 	.menu-button {
 		border: solid 2px #fff;
 
@@ -171,18 +184,6 @@
 		padding-top: 5px;
 	}
 
-	.sidebar {
-		float: 		left;
-
-		width: 		260px;
-		height: 	100%;
-	}
-
-	.filters-container, .sidebar {
-		width: 	260px;
-		padding: 0 30px;
-	}
-
 	.filters-container h2 {
 		float: left;
 	}
@@ -192,14 +193,14 @@
 		vertical-align: bottom;
 	}
 
-	.sidebar, .filters-container {
+	.sidebar-container {
 		margin-left: -260px;
 
 		/* Transitions */
 		-webkit-transition: margin .3s ease;
 	}
 
-	.sidebar.active, .filters-container.active {
+	.sidebar-container.active {
 		margin-left: 0;
 
 		/* Transitions */
@@ -219,27 +220,20 @@
 }
 
 
-@media (min-width: 800px) {
+@media (min-width: 820px) {
 	.sidebar {
 		float: 		left;
 
 		width: 		260px;
 		height: 	100%;
-		padding: 	0 30px;
 	}
 
 	.menu-button {
 		display: none;
 	}
 
-	.filters-container, .sidebar {
-		width: 		260px;
+	.sidebar-container {
 		margin-left: 0;
-	}
-
-	.filters-container {
-		display: inline-block;
-		padding-right: 30px;
 	}
 
 	.filters-container h2 {
@@ -263,8 +257,6 @@
 		margin: 		-8px 0 0 5px;
 		line-height: 	32px;
 	}
-
-	.quotes-container { padding: 0; }
 }
 
 

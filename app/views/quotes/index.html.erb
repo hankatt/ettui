@@ -96,32 +96,33 @@
 <%= form_tag quotes_path, :method => 'get', :remote => true, :id => "search-filter" do %>
 
      <!-- Includes all of the filter controls !-->
-     <div class="topbar">
-          <div class="filters-container">
-               <h2>Filters</h2>
-               <button class="reset" type="reset">Reset</button>
-          </div>
-          <button class="menu-button"></button>
-          <div class="search-container">
-                    <%= image_tag "search.png" %>
-               <div>
-                    <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for?", :class => "search" %>
-                    <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+     <div class="sidebar-container">
+          <div class="topbar">
+               <div class="filters-container">
+                    <h2>Filters</h2>
+                    <button class="reset" type="reset">Reset</button>
                </div>
-         </div>
-
-     </div>
-
-
-<!-- END OF FORM !-->
-
-<div class="sidebar">
+               <button class="menu-button"></button>
+          </div>
           <ol class="filters-list">
                <% @sources.each do |source| %>
                     <%= render :partial => 'source', locals: { source: source } %>
                <% end %>
           </ol>
-</div>
+     </div>
+
+     <div class="content-container">
+          <div class="topbar">
+               <div class="search-container">
+                    <%= image_tag "search.png" %>
+                    <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for?", :class => "search" %>
+                    <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+               </div>
+          </div>
+     </div>
+
+
+<!-- END OF FORM !-->
 <% end %>
 
 <div class="quotes-container">

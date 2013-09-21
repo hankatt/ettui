@@ -14,7 +14,20 @@
 	}
 }
 .quote {
-	margin-bottom: 57px;
+	&:first-of-type { 
+		padding: 0 0 30px 0px; 
+	}
+
+	padding: 30px 0 30px 0;
+	border-bottom: solid 1px #fff;
+
+	&:hover .quote-content p {
+		color: #323232;
+	}
+
+	&:hover .quote-share {
+		opacity: 1;
+	}
 }
 
 .quote-metadata {
@@ -44,12 +57,32 @@
 	font-family: "ff-tisa-web-pro";
 	font-size: 1.25em;
 	line-height: 1.33em;
+	color: #a0a0a0;
 
 	&.small { 
-		font-size: 1.125em; 
+		font-size: 1em; 
 	}
 
 	&.big {
 		font-size: 1.5em;
 	}
+
+	/* Transitions */
+	-webkit-transition: all .2s ease;
+}
+
+.quote-share {
+	opacity: 0;
+
+	/* Transitions */
+	-webkit-transition: all .2s ease;
+}
+
+.quote-share a {
+	/* Styling */
+	color: #00b893;
+	font-size: .875em;
+
+	/* Positioning */
+	float: right;
 }

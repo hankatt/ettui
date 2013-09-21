@@ -9,18 +9,21 @@ class QuotesController < ApplicationController
       @user = User.find(cookies[:user_id])
     end
 
-    # Filter out quotes depending.
     #   Differs between queries involving source filtering and ones that don't
-    if params[:source_ids]
+    if params[:search] && params[:source_ids]
       # @quotes = Quote.where(:user_id => @user.id).where(:source_id => params[:source_ids]).range(Date.today.prev_month, Date.today).containing(params[:search])
-      @quotes = Quote.where(:user_id => @user.id).where(:source_id => params[:source_ids]).containing(params[:search])
-    else
+      @quotes = Quote.where("user_id = ? AND source_id IN (?) AND text LIKE ?", @user.id, params[:source_ids].to_a, "%#{params[:search]}%")
+    elsif params[:search]
+      @quotes = Quote.where("user_id = ? AND text LIKE ?", @user.id, "%#{params[:search]}%")
       # @quotes = Quote.where(:user_id => @user.id).range(Date.today.prev_month, Date.today).containing("#{params[:search]}")
-      @quotes = Quote.where(:user_id => @user.id).containing("#{params[:search]}")
+    elsif params[:source_ids]
+        @quotes = Quote.where("user_id = ? AND source_id IN (?)", @user.id, params[:source_ids])
+    else
+        @quotes = Quote.where("user_id = ?", @user.id)
     end
 
     # Get a list of all sources for this users quotes
-    @sources = Source.find_all_by_id(Quote.foreign_keys("source_id", @user.id))
+    @sources = Source.where(:id => Quote.where(:user_id => @user.id).pluck(:source_id))
     # Sorted DESC based on count @source_counts = Quote.group("source_id").where("user_id" => 21).order("count_source_id DESC").count(:source_id)
     
     respond_to do |format|

@@ -24,7 +24,7 @@
                         return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
                     };
 
-          query     = "//young-escarpment-4689.herokuapp.com/quotes/add?user_token=" +token +"&text=";
+          query     = "//localhost:3000/quotes/add?user_token=" +token +"&text=";
 
           script    = document.createElement("script");
           script.src  = query + text + "&url=" + url + "&favicon=" + fi() + "&callback=status";
@@ -93,15 +93,15 @@
 !-->
 
 <!-- The form wraps all of the content control features to simplify AJAX query !-->
-<%= form_tag quotes_path, :method => 'get', :remote => true, :id => "quotes-filter" do %>
+<%= form_tag quotes_path, :method => 'get', :remote => true, :id => "search-filter" do %>
 
      <!-- Includes all of the filter controls !-->
      <div class="topbar">
-
           <div class="filters-container">
                <h2>Filters</h2>
                <button class="reset" type="reset">Reset</button>
           </div>
+          <button class="menu-button"></button>
           <div class="search-container">
                     <%= image_tag "search.png" %>
                <div>
@@ -112,23 +112,24 @@
 
      </div>
 
-     <div class="sidebar">
-          <div class="filters-list">
-               <ol>
-                    <% @sources.each do |source| %>
-                         <%= render :partial => 'source', locals: { source: source } %>
-                    <% end %>
-               </ol>
-          </div>
-     </div>
 
-<% end %>
 <!-- END OF FORM !-->
 
-<ol class="quotes-container">
-     <% if !@quotes.nil? %>
-          <% @quotes.each do |quote| %>
-               <%= render :partial => 'quote', locals: { quote: quote } %>
+<div class="sidebar">
+          <ol class="filters-list">
+               <% @sources.each do |source| %>
+                    <%= render :partial => 'source', locals: { source: source } %>
+               <% end %>
+          </ol>
+</div>
+<% end %>
+
+<div class="quotes-container">
+     <ol>
+          <% if !@quotes.nil? %>
+               <% @quotes.each do |quote| %>
+                    <%= render :partial => 'quote', locals: { quote: quote } %>
+               <% end %>
           <% end %>
-     <% end %>
-</ol>
+     </ol>
+</div>

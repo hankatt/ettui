@@ -2,3 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@media (min-width: 480px) {
+	.quote {
+		width: 100%;
+	}
+}
+
+@media (min-width: 560px) {
+	.quote {
+		width: 500px;
+	}
+}
+.quote {
+	margin-bottom: 57px;
+}
+
+.quote-metadata {
+	margin-bottom: 8px;
+	& * {
+		display: inline-block;
+	}
+
+	& img {
+		height: 32px;
+		width: 32px;
+
+		margin-right: 8px;
+	}
+
+	& a {
+		/* Styling */
+		color: #a0a0a0;
+		font-weight: 600;
+
+		/* Positioning */
+		line-height: 29px;
+	}
+}
+
+.quote-content p {
+	font-family: "ff-tisa-web-pro";
+	font-size: 1.25em;
+	line-height: 1.33em;
+
+	&.small { 
+		font-size: 1.125em; 
+	}
+
+	&.big {
+		font-size: 1.5em;
+	}
+}

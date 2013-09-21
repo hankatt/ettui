@@ -1,23 +1,20 @@
+<li class="quote clearfix q-<%= quote.id %>">
+
+<!-- Dynamically size quotes text depending on content size !-->
 <% if quote.text.length < 132 %>
-  <li class="clearfix small q-<%= quote.id %>">
-<% elsif quote.text.length < 240 %>
-  <li class="clearfix q-<%= quote.id %>">
-<% else %>
-  <li class="clearfix big q-<%= quote.id %>">
+  <% font_size = "big" %>
+<% elsif quote.text.length > 240 %>
+  <% font_size = "small" %>
 <% end %>
 
     <div class="quote-metadata">
       <div class="source">
-        <span>
           <%= image_tag quote.source.favicon, :class => "favicon" %>
-        </span>
-        <span>
           <%= link_to quote.source.hostname, quote.url %>
-        </span>
       </div>
     </div>
     <div class="quote-content">
-      <p class="text"><%= quote.text %></p>
+      <p class="<%= font_size %>"><%= quote.text %></p>
     </div>
     <div class="quote-share">
       <%= link_to "Share", "http://www.twitter.com" %>

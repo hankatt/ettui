@@ -14,11 +14,10 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on('ready', function() {
   //$('.quotes-container').gridalicious();
 
-
-  $("#search-filter").submit(function(event) {
+  $("#search-filter").keypress(function(event) {
     search();
   });
 
@@ -29,15 +28,16 @@ $(document).ready(function() {
     // Set checkbox to: Checked
     checkbox = $(this).siblings('[type="checkbox"]');
     checkbox.prop('checked', !checkbox.prop('checked'));
-
-    //Perform the search
-    search();
   })
 
   $(".menu-button").on('click', function() {
     $(".sidebar, .filters-container").toggleClass('active');
   });
 });
+
+ $(document).on('ready load resize change', function() {
+    $(".sidebar-container").css('height', $(window).height());
+ }); 
 
 function search() {
     /* Get data from #search-filter by copy */

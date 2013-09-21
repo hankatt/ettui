@@ -17,18 +17,12 @@
 $(document).ready(function() {
   //$('.quotes-container').gridalicious();
 
-  $("#quotes-filter").keypress(function(press) {
 
-    /* Specifying the dataType as 'script' in the $.ajax call to trigger RJS. */
-    $.ajax({
-      type: 'GET',
-      data: $("#quotes-filter").serialize(),
-      dataType: 'script',
-      url: '/quotes'
-    });
+  $("#search-filter").submit(function(event) {
+    search();
   });
 
-  $(".filters-list label").click(function() {
+  $(".filters-list button").click(function() {
     // Mark selection as active
     $(this).toggleClass('active');
 
@@ -36,13 +30,27 @@ $(document).ready(function() {
     checkbox = $(this).siblings('[type="checkbox"]');
     checkbox.prop('checked', !checkbox.prop('checked'));
 
-    // Group selections and query server
-    $.ajax({
-      type: 'GET',
-      data: $("#quotes-filter").serialize(),
-      dataType: 'script',
-      url: '/quotes'
-    });
-
+    //Perform the search
+    search();
   })
+
+  $(".menu-button").on('click', function() {
+    $(".sidebar, .filters-container").toggleClass('active');
+  });
 });
+
+function search() {
+    /* Get data from #search-filter by copy */
+
+        data = $("#search-filter").serialize();
+
+        // Specifying the dataType as 'script' in the $.ajax call to trigger RJS.
+        $.ajax({
+            type: 'GET',
+            data: data,
+            dataType: 'script',
+            url: '/quotes'
+        });
+
+    /* END OF SEARCH */
+}

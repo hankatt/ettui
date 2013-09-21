@@ -26,9 +26,4 @@ class Quote < ActiveRecord::Base
 	def self.from_past_month
 		where("created_at >= ?", Date.today.prev_month)
 	end
-
-	# Return a set of unique keys for the user 'user_id':s column 'column'
-	def self.foreign_keys(column, user_id)
-		where(:user_id => user_id).group(column).count.keys
-	end
 end

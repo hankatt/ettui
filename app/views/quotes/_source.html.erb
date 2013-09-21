@@ -1,5 +1,5 @@
 <li>
 	<%= check_box_tag "source_ids[]", source.id, false, :id => "source_ids_#{source.id}" %>
-	<%= label_tag "source_checkbox", source.hostname, :class => :hostname %>
-	<%= image_tag source.favicon, :class => :favicon %>
+	<div class="source-favicon" style="background-image: url('<%= source.favicon %>');"></div>
+	<button><%= source.hostname %></button>
 </li>

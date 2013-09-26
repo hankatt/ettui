@@ -1,3 +1,16 @@
 //Rebuild grid with new elements
-$(".quotes-container ol").html("<%= escape_javascript(render(@quotes)) %>");
+var $new_items = "<%= escape_javascript(render(@quotes)) %>";
+var $existing_items = $(".quotes-container .quote");
+var $container = $(".quotes-container");
+
+$container.html('');
+
+$container.masonry('destroy');
+
+$container.append($new_items);
+
+var $container = $('.quotes-container');
+    // initialize
+    $container.masonry();
+
 

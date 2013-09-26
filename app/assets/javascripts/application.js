@@ -15,42 +15,66 @@
 //= require_tree .
 
 $(document).on('ready', function() {
-  //$('.quotes-container').gridalicious();
 
-  $("#search-filter").keypress(function(event) {
-    search();
-  });
+    /* 
+      Initialize Masonry 
+    */
 
-  $(".filters-list button").click(function() {
-    // Mark selection as active
-    $(this).toggleClass('active');
+    var $container = $('.quotes-container');
+    // initialize
+    $container.masonry({
+        columnWidth: 520,
+        itemSelector: '.quote'
+    });
 
-    // Set checkbox to: Checked
-    checkbox = $(this).siblings('[type="checkbox"]');
-    checkbox.prop('checked', !checkbox.prop('checked'));
-  })
+    /*  
+        Whenever the user start to write, it should go into the search field. 
+    */
+    $(window).on('keypress', function(event) {
+        $("#search").focus();
+    });
 
-  $(".menu-button").on('click', function() {
-    $(".sidebar, .filters-container").toggleClass('active');
-  });
-});
+    /*  
+        Use keydown event to trigger backspace's, so the results updates
+        as the search query is shortened. 
+    */
+    $("#search-filter").on('keydown', function(event) {
+        search();
+    });
 
- $(document).on('ready load resize change', function() {
-    $(".sidebar-container").css('height', $(window).height());
- }); 
+    /* 
+        Checkbox functionality for the source filters 
+    */
+    $(".filters-list button").click(function() {
+        // Mark selection as active
+        $(this).toggleClass('active');
 
-function search() {
-    /* Get data from #search-filter by copy */
-
-        data = $("#search-filter").serialize();
-
-        // Specifying the dataType as 'script' in the $.ajax call to trigger RJS.
-        $.ajax({
-            type: 'GET',
-            data: data,
-            dataType: 'script',
-            url: '/quotes'
+        // Set checkbox to: Checked
+        checkbox = $(this).siblings('[type="checkbox"]');
+        checkbox.prop('checked', !checkbox.prop('checked'));
         });
 
-    /* END OF SEARCH */
+        /* In responsive mode, this reveals the menu. */
+        $(".menu-button").on('click', function() {
+        $(".sidebar, .filters-container").toggleClass('active');
+    });
+});
+
+/*  Makes sure the sidebar container has full height 
+    (can't set height due to being floated) */
+$(document).on('ready load resize change', function() {
+  $(".sidebar-container").css('height', $(window).height());
+}); 
+
+/* Performs the AJAX search. */
+function search() {
+  data = $("#search-filter").serialize();
+
+  // Specifying the dataType as 'script' in the $.ajax call to trigger RJS.
+  $.ajax({
+      type: 'GET',
+      data: data,
+      dataType: 'script',
+      url: '/quotes'
+  });
 }

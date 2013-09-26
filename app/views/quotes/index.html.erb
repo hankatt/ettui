@@ -125,12 +125,10 @@
 <!-- END OF FORM !-->
 <% end %>
 
-<div class="quotes-container">
-     <ol>
-          <% if !@quotes.nil? %>
-               <% @quotes.each do |quote| %>
-                    <%= render :partial => 'quote', locals: { quote: quote } %>
-               <% end %>
-          <% end %>
-     </ol>
-</div>
+<ol class="quotes-container js-masonry">
+      <% if !@quotes.nil? %>
+           <% @quotes.each do |quote| %>
+                <%= render :partial => 'quote', locals: { quote: quote } %>
+           <% end %>
+      <% end %>
+</ol>

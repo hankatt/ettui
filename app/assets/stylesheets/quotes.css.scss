@@ -2,23 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@media (min-width: 480px) {
+@media (min-width: 320px) {
 	.quote {
 		width: 100%;
 	}
 }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
 	.quote {
-		width: 500px;
+		width: 520px;
 	}
 }
 .quote {
-	&:first-of-type { 
-		padding: 0 0 30px 0px; 
-	}
 
-	padding: 30px 0 30px 0;
+	padding: 30px;
 	border-bottom: solid 1px #fff;
 
 	&:hover .quote-content p {
@@ -72,6 +69,7 @@
 }
 
 .quote-share {
+	padding-top: 15px;
 	opacity: 0;
 
 	/* Transitions */

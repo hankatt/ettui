@@ -1,30 +1,29 @@
 class QuotesController < ApplicationController
 
-  include QuotesHelper
-
   # GET /quotes
   # GET /quotes.json
   def index
-    if cookies[:user_id]
-      @user = User.find(cookies[:user_id])
+    if session[:user_id]
+      @user = User.find(session[:user_id])
     end
+
+    @quotes = @user.boards.first.quotes.where("source_id IN (?)", params[:source_ids])
 
     #   Differs between queries involving source filtering and ones that don't
     if params[:search] && params[:source_ids]
-      # @quotes = Quote.where(:user_id => @user.id).where(:source_id => params[:source_ids]).range(Date.today.prev_month, Date.today).containing(params[:search])
-      @quotes = Quote.where("user_id = ? AND source_id IN (?) AND text LIKE ?", @user.id, params[:source_ids].to_a, "%#{params[:search]}%")
+        @quotes = @user.boards.first.quotes.where("source_id IN (?) AND text LIKE ?", params[:source_ids], "%#{params[:search]}%")
+        @search = params[:search] # For highlighting on the results
     elsif params[:search]
-      @quotes = Quote.where("user_id = ? AND text LIKE ?", @user.id, "%#{params[:search]}%")
-      # @quotes = Quote.where(:user_id => @user.id).range(Date.today.prev_month, Date.today).containing("#{params[:search]}")
+        @quotes = @user.boards.first.quotes.where("text LIKE ?", "%#{params[:search]}%")
+        @search = params[:search] # For highlighting on the results
     elsif params[:source_ids]
-        @quotes = Quote.where("user_id = ? AND source_id IN (?)", @user.id, params[:source_ids])
+        @quotes = @user.boards.first.quotes.where("source_id IN (?)", params[:source_ids])
     else
-        @quotes = Quote.where("user_id = ?", @user.id)
+        @quotes = @user.boards.first.quotes.all
     end
 
     # Get a list of all sources for this users quotes
-    @sources = Source.where(:id => Quote.where(:user_id => @user.id).pluck(:source_id))
-    # Sorted DESC based on count @source_counts = Quote.group("source_id").where("user_id" => 21).order("count_source_id DESC").count(:source_id)
+    @sources = Source.where(:id => @user.boards.first.quotes.pluck(:source_id))
     
     respond_to do |format|
       format.html # index.html.erb
@@ -38,11 +37,13 @@ class QuotesController < ApplicationController
     @user = User.find_by_token(params[:user_token])
 
     # Set, or if non existing, create, a source for the quote
-    @source = Source.find_by_hostname(get_host(params[:url])) || Source.create!(:hostname => get_host(params[:url]), :favicon => params[:favicon])
+    @source = Source.find_by_hostname(get_host(params[:url])) || Source.create!(:hostname => url_to_host(params[:url]), :favicon => params[:favicon])
 
     # Create a quote and connect it to the created source
     if @user && @source
-      @quote = Quote.create!(:text => params[:text], :user_id => @user.id, :url => params[:url], :source_id => @source.id)
+      @quote = Quote.new(:text => params[:text], :user_id => @user.id, :url => params[:url], :source_id => @source.id)
+      @quote.boards << @user.boards.first
+      @quote.save
     end
 
     respond_to do |format|

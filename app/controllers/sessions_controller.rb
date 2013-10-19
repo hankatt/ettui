@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   def create
   	user = User.authenticate(params[:email], params[:password])
   	if user
-      cookies.permanent[:user_id] = user.id
       session[:user_id] = user.id
   		redirect_to quotes_path, :notice => "Logged in!"
   	else
@@ -23,7 +22,6 @@ class SessionsController < ApplicationController
 
     # Create session if the authentication was successful
     if user
-      cookies.permanent[:user_id] = user.id
       session[:user_id] = user.id
       redirect_to root_url
     else
@@ -33,7 +31,6 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:user_id] = nil
-    cookies.delete :user_id
     redirect_to root_url, :notice => "Logged out!"
   end
 

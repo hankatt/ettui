@@ -22,11 +22,16 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        cookies.permanent[:user_id] = @user.id
+        # Establish a session
         session[:user_id] = @user.id
+
+        # Initiate a board for the user
+        @user.boards << Board.create({ user_id: @user.id })
+
+        # What happens after the save is complete
         format.html { redirect_to quotes_path, :notice => "Signed in!" }
       else
         format.html { render action: "new" }
@@ -69,7 +74,7 @@ class UsersController < ApplicationController
   # list between create and update. Also, you can specialize this method
   # with per-user checking of permissible attributes.
   def user_params
-    params.require(:user).permit(:password, :password_confirmation, :token)
+    params.require(:user).permit(:email, :password, :password_confirmation, :token)
   end
 
 end

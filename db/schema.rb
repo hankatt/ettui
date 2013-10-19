@@ -9,33 +9,51 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130616150034) do
+ActiveRecord::Schema.define(version: 20130929144602) do
 
-  create_table "quotes", :force => true do |t|
-    t.text     "text"
+  create_table "boards", force: true do |t|
+    t.string   "name"
+    t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "source_id"
-    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "sources", :force => true do |t|
+  create_table "boards_quotes", id: false, force: true do |t|
+    t.integer "board_id", null: false
+    t.integer "quote_id", null: false
+  end
+
+  create_table "quotes", force: true do |t|
+    t.text     "text"
+    t.string   "url"
+    t.integer  "user_id"
+    t.integer  "source_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sources", force: true do |t|
     t.string   "hostname"
     t.string   "favicon"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "users", :force => true do |t|
+  create_table "subscriptions", id: false, force: true do |t|
+    t.integer "board_id"
+    t.integer "user_id"
+  end
+
+  create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "token"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "uid"
     t.string   "provider"
     t.string   "name"

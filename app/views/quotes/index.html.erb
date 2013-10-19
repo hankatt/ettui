@@ -94,33 +94,33 @@
 
 <!-- The form wraps all of the content control features to simplify AJAX query !-->
 <%= form_tag quotes_path, :method => 'get', :remote => true, :id => "search-filter" do %>
+    
+    <div class="header">
+        <div class="header-logo"><h1>Noted</h1></div>
+        <ul class="header-boards-navigation">
+            <% current_user.boards.each do |board| %>
+                <li class="active"><%= link_to board.name, "/" %></li>
+            <% end %>
+            <li class="new-board"><a href="#">New board</a></li>
+        </ul>
+    </div>
 
-     <!-- Includes all of the filter controls !-->
-     <div class="sidebar-container">
-          <div class="topbar">
-               <div class="filters-container">
-                    <h2>Filters</h2>
-                    <button class="reset" type="reset">Reset</button>
-               </div>
-               <button class="menu-button"></button>
-          </div>
-          <ol class="filters-list">
-               <% @sources.each do |source| %>
-                    <%= render :partial => 'source', locals: { source: source } %>
-               <% end %>
-          </ol>
+    <!-- Includes all of the filter controls !-->
+    <div class="sidebar-container">
+        <h2 class="filters-title">Filters</h2>
+        <button class="filters-reset" type="reset">Reset</button>
+        <ol class="filters-list">
+           <% @sources.each do |source| %>
+                <%= render :partial => 'source', locals: { source: source } %>
+           <% end %>
+        </ol>
+    </div>
+
+    <div class="search-container">
+        <%= image_tag "search.png" %>
+        <%= text_field_tag :search, params[:search], :placeholder => "Search for something within #{current_user.boards.first.name.downcase}?", :class => "search" %>
+        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
      </div>
-
-     <div class="content-container">
-          <div class="topbar">
-               <div class="search-container">
-                    <%= image_tag "search.png" %>
-                    <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for?", :class => "search" %>
-                    <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-               </div>
-          </div>
-     </div>
-
 
 <!-- END OF FORM !-->
 <% end %>

@@ -32,6 +32,7 @@ $(document).on('ready', function() {
     */
     $(window).on('keypress', function(event) {
         $("#search").focus();
+
     });
 
     /*  
@@ -45,25 +46,25 @@ $(document).on('ready', function() {
     /* 
         Checkbox functionality for the source filters 
     */
-    $(".filters-list button").click(function() {
+    $(".filters-list li").click(function() {
         // Mark selection as active
         $(this).toggleClass('active');
 
         // Set checkbox to: Checked
-        checkbox = $(this).siblings('[type="checkbox"]');
+        checkbox = $(this).children('[type="checkbox"]');
         checkbox.prop('checked', !checkbox.prop('checked'));
         });
 
         /* In responsive mode, this reveals the menu. */
         $(".menu-button").on('click', function() {
-        $(".sidebar, .filters-container").toggleClass('active');
-    });
+            $(".sidebar, .filters-container").toggleClass('active');
+        });
 });
 
 /*  Makes sure the sidebar container has full height 
     (can't set height due to being floated) */
 $(document).on('ready load resize change', function() {
-  $(".sidebar-container").css('height', $(window).height());
+    $(".sidebar-container").css('height', $(window).height());
 }); 
 
 /* Performs the AJAX search. */

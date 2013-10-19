@@ -1,16 +1,7 @@
 class Quote < ActiveRecord::Base
 
-	belongs_to :user
+	has_and_belongs_to_many :boards
 	belongs_to :source
-
-	# Returns quotes with content equal to 'search'
-	def self.containing(search)
-		if search
-			where('text LIKE ?', "%#{search}%")
-		else
-			all
-		end
-	end
 
 	# Returns quotes created inbetween a given datetime range
 	def self.range(from, til)

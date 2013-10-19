@@ -38,6 +38,7 @@
 
 	a {
 		text-decoration: none;
+		color: #000;
 	}
 
 	button {
@@ -50,46 +51,119 @@
 		background-color: transparent;
 	}
 
+	/*
+		####
+
+		Layout sizing
+
+		####
+	*/
+
+	.header-logo, .sidebar-container {
+		width: 260px;
+	}
+
 	.sidebar-container {
 		/* Styling */
 		background-color: #f9f9f9;
 
 		/* Positioning */
-		width: 260px;
 		float: left;
 	}
 
-	.content-container {
-		overflow: hidden;
+	/*
+		####
+
+		Header
+
+		####
+	*/
+
+	.header {
+		width: 100%;
+		height: 88px;
+		font-size: 0; /* Remove inline-block horizontal white-space spacing */
+
+		background-color: #000;
 	}
 
-	.topbar * {
+	.header-logo, .header-boards-navigation, .header-boards-navigation li {
+		display: inline-block;
+	}
+
+	.header-logo h1 {
+		margin: 0;
+		line-height: 88px;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 14px;
+		letter-spacing: 2px;
+		font-weight: 600;
+
+		background-color: #000;
+		color: #555;
+	}
+
+	.header-boards-navigation {
+		padding: 0; /* Remove automatic <ul> left side padding */
+		font-size: 0; /* Removes space between horizontal li elements. */
+	}
+
+	.header-boards-navigation li {
+		height: 100%;
+		padding: 0 44px;
+		text-align: center;
+
+		background-color: #333;
+	}
+
+	.header-boards-navigation li a {
+		color: #aaa;
+	}
+
+	.header-boards-navigation li.active {
+		background-color: #00b893;
+	}
+
+	.header-boards-navigation li.active a {
 		color: #fff;
 	}
 
-	.topbar {
-		/* Styling */
-		background-color: #000;
-		height: 70px;
-
-		padding: 18px 0 18px 30px;
-		margin-bottom: 30px;
+	.header-boards-navigation a {
+		line-height: 88px;
+		font-size: 18px;
 	}
 
-	.topbar button {
-		/* Styling */
-		color: 		#25eec6;
-		font-size: 	.875em;
+
+
+
+	/*
+		####
+
+		Filters container
+
+		####
+	*/
+
+	.filters-title, .filters-reset {
+		display: inline-block;
 	}
 
-	/* Align different sized element to the baseline in the topbar */
-	.topbar button, .topbar h2 {
-		/* Positioning */
-		line-height: 26px;
+	.filters-title {
+		padding: 23px 30px;
 	}
 
-	.topbar h2, .topbar input.search {
-		font-size: 28px;
+	.filters-reset {
+		padding: 36px 30px 23px 0;
+		color: #00b893;
+	}
+
+	.filters-title {
+		width: 160px;
+	}
+
+	.filters-reset {
+		float: right;
 	}
 
 	.filters-container, .filters-list {
@@ -101,14 +175,9 @@
 		letter-spacing: 1px;
 	}
 
-	.filters-container, .search-container {
+	.filters-container, .search-container, .boards-navigation-container {
 		/* Positioning */
 		display: inline-block;
-	}
-
-	.filters-list {
-		padding: 0 30px 0 30px;
-
 	}
 
 	.filters-list .source-favicon {
@@ -127,9 +196,13 @@
 	}
 
 	.filters-list li {
-		margin-bottom: 11px;
+		padding: 7px 30px;
 	}
-	.filters-list input 	{ 	display: none; }
+
+	.filters-list input { 
+		display: none; 
+	}
+
 	.filters-list button { 	
 		/* Positioning */
 		padding-left: 0;
@@ -139,18 +212,41 @@
 		color: #9f9f9f;
 	}
 
-	.filters-list button.active {
+	.filters-list li.active {
+		background-color: #eee;
+	}
+
+	.filters-list li.active button {
 		color: #000;
 	}
+
+
+
+
+	/*
+		####
+
+		Search container
+
+		####
+	*/
 
 	.search-container * {
 		/* Positioning */
 		display: inline-block;
 	}
 
+	.search-container {
+		padding: 23px 0 0 30px;
+		width: 640px;
+	}
+
 	.search-container input.search {
 		/* Styling */
 		font-weight: 200;
+		font-size: 28px;
+
+		width: 560px;
 
 		/* Positioning */
 		margin: 		-8px 0 0 5px;
@@ -166,111 +262,3 @@
 	.search-container input.submit {
 		display: none;
 	}
-
-	.quotes-container {
-		overflow: hidden;
-	}
-
-	#search-filter:focus { border: solid 1px red; }
-
-@media (min-width: 460px) {
-	.menu-button {
-		border: solid 2px #fff;
-
-		height: 28px;
-		width: 28px;
-		margin-left: 30px;
-	}
-
-	.topbar button {
-		padding-top: 5px;
-	}
-
-	.filters-container h2 {
-		float: left;
-	}
-
-	.filters-container button {
-		float: right;
-		vertical-align: bottom;
-	}
-
-	.sidebar-container {
-		margin-left: -260px;
-
-		/* Transitions */
-		-webkit-transition: margin .3s ease;
-	}
-
-	.sidebar-container.active {
-		margin-left: 0;
-
-		/* Transitions */
-		-webkit-transition: margin .3s ease;
-	}
-
-	.search-container {
-		width: 370px;
-	}
-
-	.search-container input.search {
-		margin: 		-8px 0 0 5px;
-		line-height: 	32px;
-	}
-
-	.quotes-container { /* padding: 0 30px; */ }
-}
-
-
-@media (min-width: 768px) {
-	.sidebar {
-		float: 		left;
-
-		width: 		260px;
-		height: 	100%;
-	}
-
-	.menu-button {
-		display: none;
-	}
-
-	.sidebar-container {
-		margin-left: 0;
-	}
-
-	.filters-container h2 {
-		float: left;
-	}
-
-	.filters-container button {
-		float: right;
-		vertical-align: bottom;
-	}
-
-	.filters-container .reset {
-		display: block;
-	}
-
-	.search-container {
-		width: 370px;
-	}
-
-	.search-container input.search {
-		margin: 		-8px 0 0 5px;
-		line-height: 	32px;
-	}
-}
-
-
-/* ============================= */
-/* ! Layout for iPad portrait   */
-/* ============================= */
-
-@media (min-width: 768px) {
-
-}
-
-
-
-
-

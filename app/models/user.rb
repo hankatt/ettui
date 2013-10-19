@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
 	# Establish relation to quotes
-	has_many :quotes
+	has_and_belongs_to_many :boards, :join_table => :subscriptions
 
 	attr_accessor :password, :password_confirmation
 	
@@ -9,13 +9,13 @@ class User < ActiveRecord::Base
 	before_save :encrypt_password
 
 	# If save was successful, set a token for the user
-	after_save :set_token
+	after_save :initialize_user
 
+	
 	# Form validations
 	validates_uniqueness_of :email, :unless => :uid
 	validates_presence_of :email, :password, :password_confirmation, :unless => :provider
 	validates_confirmation_of :password, :unless => :provider
-
 
 	# Encrypts and stores the provided password
 	def encrypt_password
@@ -27,11 +27,19 @@ class User < ActiveRecord::Base
 
 	# Create method for users signing in using an Omniauth service (i.e. Twitter)
 	def self.create_with_omniauth(auth)
-  		create! do |user|
-	   		user.provider = auth["provider"]
-	    	user.uid = auth["uid"]
-	    	user.name = auth["info"]["name"]
-  		end
+
+		# Create the new user
+  		@user = User.new({ :provider => auth["provider"], :uid => auth["uid"], :name => auth["info"]["name"] })
+	    
+	    # Create a board and associate it to the new user
+	    @board = Board.create!
+	    @user.boards << @board
+
+	    # Saving the user to database
+	    @user.save!		
+
+	    # Update the new board with the new user id
+	    @board.update(user_id: @user.id)
 	end
 
 	# Authenticates the user
@@ -46,7 +54,8 @@ class User < ActiveRecord::Base
 
 	# Generates and sets a token for the new user
 	private
-	def set_token
+	def initialize_user
+		# Give the new user a token
 		if self.token.nil?
 			token = SecureRandom.hex(13)
 

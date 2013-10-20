@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require_tree .
 
+var active_board;
+
 $(document).on('ready', function() {
 
     /* 
@@ -31,16 +33,18 @@ $(document).on('ready', function() {
         Whenever the user start to write, it should go into the search field. 
     */
     $(window).on('keypress', function(event) {
-        $("#search").focus();
-
+        //$("#search").focus();
     });
 
     /*  
         Use keydown event to trigger backspace's, so the results updates
         as the search query is shortened. 
     */
-    $("#search-filter").on('keydown', function(event) {
-        search();
+    $("#search-filter").on('keyup', function(event) {
+        search_query = $("#search").val();
+        quotes = $(".quote .quote-content");
+
+        quotes.unhighlight().highlight(search_query);
     });
 
     /* 
@@ -59,6 +63,9 @@ $(document).on('ready', function() {
         $(".menu-button").on('click', function() {
             $(".sidebar, .filters-container").toggleClass('active');
         });
+
+        // Initiate variable to track active board for the new board toggle feature
+        active_board = $(".header-boards-navigation li.active");
 });
 
 /*  Makes sure the sidebar container has full height 
@@ -67,7 +74,7 @@ $(document).on('ready load resize change', function() {
     $(".sidebar-container").css('height', $(window).height());
 }); 
 
-/* Performs the AJAX search. */
+/* Performs the AJAX search. 
 function search() {
   data = $("#search-filter").serialize();
 
@@ -76,6 +83,12 @@ function search() {
       type: 'GET',
       data: data,
       dataType: 'script',
-      url: '/quotes'
+      url: window.location.pathname
   });
+}
+*/
+
+function toggle_new_board() {
+    active_board.toggleClass('active');
+    $("li.new-board").toggleClass('inactive');
 }

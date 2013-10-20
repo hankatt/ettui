@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 	    @user.boards << @board
 
 	    # Saving the user to database
-	    @user.save!		
+	    @user.save!
 
 	    # Update the new board with the new user id
 	    @board.update(user_id: @user.id)

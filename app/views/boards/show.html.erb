@@ -97,7 +97,11 @@
     <div class="header-logo"><h1>Noted</h1></div>
     <ul class="header-boards-navigation">
         <% @user.boards.each do |board| %>
-            <%= content_tag(:li, (link_to board.name, board), :class => (:active if (@board.id.eql?(board.id)))) %>
+        	<% active = @board.id.eql?(board.id) ? 'active' : '' %>
+            <li class="<%= active %>">
+            	<button class="update-board-button" data-role="edit" type="button" name="rename">EDIT</button>
+            	<%= link_to board.name, board, :data => { id: board.id } %>
+            </li>
         <% end %>
         <li class="new-board inactive">
             <%= form_tag boards_path do %>
@@ -109,23 +113,23 @@
     </ul>
 </div>
 <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
+    <% if @board.quotes.count > 1 %>
+	    <div class="sidebar-container">
+	        <h2 class="filters-title">Filters</h2>
+	        <button class="filters-reset" type="reset">Reset</button>
+	        <ol class="filters-list">
+	           <% @sources.each do |source| %>
+	                <%= render :partial => 'source', locals: { source: source } %>
+	           <% end %>
+	        </ol>
+	    </div>
 
-    <!-- Includes all of the filter controls !-->
-    <div class="sidebar-container">
-        <h2 class="filters-title">Filters</h2>
-        <button class="filters-reset" type="reset">Reset</button>
-        <ol class="filters-list">
-           <% @sources.each do |source| %>
-                <%= render :partial => 'source', locals: { source: source } %>
-           <% end %>
-        </ol>
-    </div>
-
-    <div class="search-container">
-        <%= image_tag "search.png" %>
-        <%= text_field_tag :search, params[:search], :placeholder => "Search for something within #{@board.name.downcase}?", :class => "search" %>
-        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-     </div>
+	    <div class="search-container">
+	        <%= image_tag "search.png" %>
+	        <%= text_field_tag :search, params[:search], :placeholder => "Search for something within #{@board.name.downcase}?", :class => "search" %>
+	        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+	     </div>
+	<% end %>
 
 <!-- END OF FORM !-->
 <% end %>

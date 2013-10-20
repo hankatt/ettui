@@ -59,6 +59,14 @@
 		####
 	*/
 
+	.notice {
+		width: 100%; 
+		background-color: #00b83d; 
+		padding: 10px 0; 
+		text-align: center; 
+		color: #fff;
+	}
+
 	.header-logo, .sidebar-container {
 		width: 260px;
 	}
@@ -109,12 +117,30 @@
 		font-size: 0; /* Removes space between horizontal li elements. */
 	}
 
+	.header-boards-navigation .update-board-button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: #00856a;
+		color: #005040;
+		padding: 4px 6px;
+		margin: 0;
+		opacity: 0;
+		-webkit-transition: opacity .2s ease;
+	}
+
+	.header-boards-navigation li:hover .update-board-button {
+		opacity: 1;
+		-webkit-transition: opacity .2s ease;
+	}
+
 	.header-boards-navigation li {
 		height: 100%;
 		padding: 0 44px;
 		text-align: center;
 
 		background-color: #333;
+		position: relative;
 	}
 
 	.header-boards-navigation li a {

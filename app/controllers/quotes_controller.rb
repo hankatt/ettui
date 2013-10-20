@@ -1,38 +1,6 @@
 class QuotesController < ApplicationController
 
-  # GET /quotes
-  # GET /quotes.json
-  def index
-    if session[:user_id]
-      @user = User.find(session[:user_id])
-    end
-
-    @quotes = @user.boards.first.quotes.where("source_id IN (?)", params[:source_ids])
-
-    #   Differs between queries involving source filtering and ones that don't
-    if params[:search] && params[:source_ids]
-        @quotes = @user.boards.first.quotes.where("source_id IN (?) AND text LIKE ?", params[:source_ids], "%#{params[:search]}%")
-        @search = params[:search] # For highlighting on the results
-    elsif params[:search]
-        @quotes = @user.boards.first.quotes.where("text LIKE ?", "%#{params[:search]}%")
-        @search = params[:search] # For highlighting on the results
-    elsif params[:source_ids]
-        @quotes = @user.boards.first.quotes.where("source_id IN (?)", params[:source_ids])
-    else
-        @quotes = @user.boards.first.quotes.all
-    end
-
-    # Get a list of all sources for this users quotes
-    @sources = Source.where(:id => @user.boards.first.quotes.pluck(:source_id))
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
-      format.json { render json: @quotes }
-    end
-  end
-
-  def remote_create
+    def remote_create
     # Find user
     @user = User.find_by_token(params[:user_token])
 
@@ -54,17 +22,6 @@ class QuotesController < ApplicationController
         data = { :message => "Service down." }
         format.json { render json: data, callback: "status" }
       end
-    end
-  end
-
-  # GET /quotes/1
-  # GET /quotes/1.json
-  def show
-    @quote = Quote.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @quote }
     end
   end
 

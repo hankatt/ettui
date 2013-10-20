@@ -55,10 +55,13 @@
 	}
 }
 
-.quote-content p {
+.quote-content p, .quote-content .highlight {
 	font-family: "ff-tisa-web-pro";
 	font-size: 1.25em;
 	line-height: 1.33em;
+}
+
+.quote-content p {
 	color: #a0a0a0;
 
 	&.small { 
@@ -71,6 +74,12 @@
 
 	/* Transitions */
 	-webkit-transition: all .2s ease;
+}
+
+.quote-content .highlight {
+	background-color: #00b893;
+	color: #fff;
+	font-size: 1em;
 }
 
 .quote-share {

@@ -66,6 +66,22 @@ $(document).on('ready', function() {
 
         // Initiate variable to track active board for the new board toggle feature
         active_board = $(".header-boards-navigation li.active");
+
+        $(".update-board-button").click(function() {
+            console.log($(this).data('role'));
+            if($(this).data('role') === 'edit') {
+                parent = $(this).siblings('a');
+                parent.attr('contenteditable', true);
+
+                $(this).data('role', 'save');
+                $(this).text('SAVE');
+            } else if($(this).data('role') === 'save') {
+                update_board_name();
+
+                $(this).data('role', 'edit');
+                $(this).text('EDIT');
+            }
+        });
 });
 
 /*  Makes sure the sidebar container has full height 
@@ -87,6 +103,18 @@ function search() {
   });
 }
 */
+
+function update_board_name() {
+    name = $("[contenteditable]").text();
+    id = $("[contenteditable]").data('id');
+
+    $.ajax({
+        type: 'PUT',
+        data: { name: name },
+        dataType: 'script',
+        url: "/boards/" + id
+    })
+}
 
 function toggle_new_board() {
     active_board.toggleClass('active');

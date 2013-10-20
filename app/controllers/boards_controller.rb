@@ -1,12 +1,19 @@
 class BoardsController < ApplicationController
 
     def index
-
+        if session[:user_id]
+            @user = User.find(session[:user_id])
+            redirect_to @user.board.first
+        else
+            redirect_to root_url
+        end
     end
 
     def show
         if session[:user_id]
             @user = User.find(session[:user_id])
+        else
+            redirect_to root_url
         end
 
         @board = Board.find(params[:id])
@@ -28,8 +35,17 @@ class BoardsController < ApplicationController
 
         if @board.save
             current_user.boards << @board # Connect the new board to the current users boards.
-            redirect_to board_path(@board.id)
+            redirect_to @board
         end
     end
 
+    def update
+        @board = Board.find(params[:id])
+        
+        if @board.update_attributes(:name => params[:name])
+            respond_to do |format|
+                format.js # update.js.erb
+            end
+        end
+    end
 end

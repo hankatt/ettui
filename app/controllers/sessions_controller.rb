@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
 
   def create
-  	user = User.authenticate(params[:email], params[:password])
+  	@user = User.authenticate(params[:email], params[:password])
   	if user
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
   		redirect_to quotes_path, :notice => "Logged in!"
   	else
       redirect_to root_url, :notice => "Failed to authenticate!"
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
   def create_with_omniauth
     auth = request.env["omniauth.auth"]
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+    @user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
 
     # Setting the Twitter user
     Twitter::Client.new(
@@ -21,9 +21,9 @@ class SessionsController < ApplicationController
     )
 
     # Create session if the authentication was successful
-    if user
-      session[:user_id] = user.id
-      redirect_to root_url
+    if @user
+      session[:user_id] = @user.id
+      redirect_to board_path(@user.boards.first.id)
     else
       redirect_to root_url, :notice => "Failed to authenticate!"
     end

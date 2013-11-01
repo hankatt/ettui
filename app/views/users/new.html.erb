@@ -1,23 +1,8 @@
-<% if !current_user %>
-	<!-- Render sign up form !-->
-	Not signed in
-<% else %>
-	<!-- Render welcome {user} !-->
-	<%= current_user_details.name %>
-	<%= image_tag current_user_details.profile_image_url(size = :bigger) %>
-<% end %>
-
-<h3 class="title">noted</h1>
-<h1>Remember what you read</h1>
-<h2><em>noted</em> is a tool for collecting and organizing reads worth saving.</h2>
-
-<div id="signup">
-	<%= link_to "Sign up with Twitter", "/auth/twitter?image_size=original", :class => "button twitter" %>
-	<%= link_to "Sign up with your e-mail", "#!", :class => "button toggle-form" %>
-	<%= render 'form' %>
+<div class="signup-wrapper">
+	<div class="signup-container">
+		<h1>A tool for people who hate losing track of memorable reads.</h1>
+		<p class="one-liner"></p>
+		<%= link_to "I wanna give it a try", "/auth/twitter?image_size=original", class: "signup-twitter" %>
+		<!--<%= render 'form' %>!-->
+	</div>
 </div>
-
-<h3>After signing up <em>noted</em> will create your bookmarklet.</h3>
-
-<a href="#!" class="button bookmark">My noted bookmarklet</a>
-<h2><em class="grey">Drag and drop it on your Bookmarks bar.</em></h2>

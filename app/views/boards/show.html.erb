@@ -1,5 +1,4 @@
-<!--
-<a class="bookmarklet" href='javascript:(function(){
+<!--<a class="bookmarklet" href='javascript:(function(){
     well = function() {
       log = true;
 
@@ -35,24 +34,26 @@
         jsonp.setAttribute("type", "text/javascript");
 
         callback = "function status(data) {
-          headline.innerText = data.message;
-          popup.innerHTML = headline.outerHTML;
-          counter = 0;
-          interval = setInterval(function() {
-            counter += 25;
-            wait = 350;
-            if(counter > wait) {
-              value = counter - wait;
-              popup.style.opacity = popup.style.opacity - (value/1000);
-              document.body.removeChild(popup);
-              document.body.appendChild(popup);
-              if(counter === 1500) {
-                clearInterval(interval);
-                counter = 0;
+          if(data && data.message) {
+            headline.innerText = data.message;
+            popup.innerHTML = headline.outerHTML;
+            counter = 0;
+            interval = setInterval(function() {
+              counter += 25;
+              wait = 350;
+              if(counter > wait) {
+                value = counter - wait;
+                popup.style.opacity = popup.style.opacity - (value/1000);
                 document.body.removeChild(popup);
+                document.body.appendChild(popup);
+                if(counter === 1500) {
+                  clearInterval(interval);
+                  counter = 0;
+                  document.body.removeChild(popup);
+                }
               }
-            }
-          }, 50);
+            }, 50);
+          }
         }";
 
         jsonp.innerHTML = callback;
@@ -62,12 +63,13 @@
         headline = document.createElement("h1");
         headline.id = "well-title";
         headline.style.textAlign = "center";
-        headline.style.width = "175px";
-        headline.innerText = "SAVING..";
+        headline.style.fontSize = "1em";
+        headline.innerText = "Saving..";
 
         popup = document.createElement("div");
         popup.style.width = "175px";
         popup.style.padding = "25px";
+        popup.style.backgroundColor = "#fff";
         popup.style.zIndex = "20000";
         popup.style.position = "fixed";
         popup.style.top = "0";
@@ -89,8 +91,7 @@
       well();
     }})()'>
     NOTED
-</a>
-!-->
+</a>!-->
 
 <!-- The form wraps all of the content control features to simplify AJAX query !-->
 <div class="header">
@@ -98,10 +99,9 @@
     <ul class="header-boards-navigation">
         <% @user.boards.each do |board| %>
         	<% active = @board.id.eql?(board.id) ? 'active' : '' %>
-            <li class="<%= active %>">
-            	<button class="update-board-button" data-role="edit" type="button" name="rename">EDIT</button>
-            	<%= link_to board.name, board, :data => { id: board.id } %>
-            </li>
+            	<%= link_to board do %>
+                <li class="active"> <%= board.name %></li>
+              <% end %>
         <% end %>
         <li class="new-board inactive">
             <%= form_tag boards_path do %>
@@ -113,7 +113,7 @@
     </ul>
 </div>
 <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
-    <% if @board.quotes.count > 1 %>
+
 	    <div class="sidebar-container">
 	        <h2 class="filters-title">Filters</h2>
 	        <button class="filters-reset" type="reset">Reset</button>
@@ -123,13 +123,13 @@
 	           <% end %>
 	        </ol>
 	    </div>
-
-	    <div class="search-container">
-	        <%= image_tag "search.png" %>
-	        <%= text_field_tag :search, params[:search], :placeholder => "Search for something within #{@board.name.downcase}?", :class => "search" %>
-	        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-	     </div>
-	<% end %>
+      <% if @board.quotes.count > 1 %>
+  	    <div class="search-container">
+  	        <%= image_tag "search.png" %>
+  	        <%= text_field_tag :search, params[:search], :placeholder => "Search for something within #{@board.name.downcase}?", :class => "search" %>
+  	        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+  	     </div>
+  	   <% end %>
 
 <!-- END OF FORM !-->
 <% end %>

@@ -10,7 +10,7 @@ class Board < ActiveRecord::Base
         elsif params[:source_ids]
             self.quotes.where("source_id IN (?)", params[:source_ids])
         else
-            self.quotes.all
+            self.quotes.to_a
         end
 	end
 end

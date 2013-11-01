@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def current_user
+		find(session[:user_id])
+	end
+
 	# Generates and sets a token for the new user
 	private
 	def initialize_user

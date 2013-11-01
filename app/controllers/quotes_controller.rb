@@ -1,11 +1,13 @@
 class QuotesController < ApplicationController
 
+    include QuotesHelper
+
     def remote_create
     # Find user
     @user = User.find_by_token(params[:user_token])
 
     # Set, or if non existing, create, a source for the quote
-    @source = Source.find_by_hostname(get_host(params[:url])) || Source.create!(:hostname => url_to_host(params[:url]), :favicon => params[:favicon])
+    @source = Source.find_by_hostname(url_to_hostname(params[:url])) || Source.create!(:hostname => url_to_hostname(params[:url]), :favicon => params[:favicon])
 
     # Create a quote and connect it to the created source
     if @user && @source

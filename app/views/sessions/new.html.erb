@@ -10,14 +10,7 @@
 	<div>
 		<%= link_to (image_tag "logo.png"), '/' %>
 		<h3 id="logo">WRTTN</h3>
-	 	<% if current_user %>
-			 <%= link_to "Hello " << (@user.email || @user.name) << ",", quotes_path %>
-			 <%= link_to "Logout?", logout_path, :class => "logout" %>
-	 	<% else %>
-	 		<%= link_to "Login", login_path %>
-			<p style="display: inline;"> / </p>
-			<%= link_to "with Twitter", "/auth/twitter" %>
-	 	<% end %>
+	 	
 	</div>
 </nav>
 <header>

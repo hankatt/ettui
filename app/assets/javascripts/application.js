@@ -90,7 +90,8 @@ $(document).on('ready load resize change', function() {
     $(".sidebar-container").css('height', $(window).height());
 }); 
 
-/* Performs the AJAX search. 
+/* Performs the AJAX search.
+
 function search() {
   data = $("#search-filter").serialize();
 
@@ -102,7 +103,10 @@ function search() {
       url: window.location.pathname
   });
 }
+
 */
+
+/* Update a contenteditable field.
 
 function update_board_name() {
     name = $("[contenteditable]").text();
@@ -115,6 +119,8 @@ function update_board_name() {
         url: "/boards/" + id
     })
 }
+
+*/
 
 function toggle_new_board() {
     active_board.toggleClass('active');

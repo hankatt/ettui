@@ -5,6 +5,8 @@ Well::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   get 'quotes/add' => "quotes#remote_create"
+
+  get 'boards/intro' => "boards#intro", :as => "introduction"
   
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 

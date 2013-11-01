@@ -23,13 +23,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+
     respond_to do |format|
       if @user.save
         # Establish a session
         session[:user_id] = @user.id
 
         # Initiate a board for the user
-        @user.boards << Board.create({ user_id: @user.id })
+        @user.boards << Board.create({ user_id: @user.id, name: "My board" })
 
         # What happens after the save is complete
         format.html { redirect_to quotes_path, :notice => "Signed in!" }

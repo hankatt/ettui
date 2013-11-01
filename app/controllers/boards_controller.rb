@@ -3,9 +3,20 @@ class BoardsController < ApplicationController
     def index
         if session[:user_id]
             @user = User.find(session[:user_id])
-            redirect_to @user.board.first
+            redirect_to @user.boards.first
         else
             redirect_to root_url
+        end
+    end
+
+    def intro
+
+        @user = User.find(session[:user_id])
+
+        respond_to do |format|
+            format.html # show.html.erb
+            format.js # show.js.erb
+            format.json { render json: @quotes }
         end
     end
 

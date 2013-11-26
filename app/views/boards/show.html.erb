@@ -100,7 +100,7 @@
         <% @user.boards.each do |board| %>
         	<% active = @board.id.eql?(board.id) ? 'active' : '' %>
             	<%= link_to board do %>
-                <li class="active"> <%= board.name %></li>
+                <li class="<%= active %>"> <%= board.name %></li>
               <% end %>
         <% end %>
         <li class="new-board inactive">

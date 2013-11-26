@@ -37,6 +37,21 @@ $(document).on('ready', function() {
     });
 
     /*  
+        Introduction page 
+    */
+    $(".tutorial-steps-controls.next").on('click', function() {
+        $(".tutorial-steps-wrapper").animate({
+            right: 460
+        }, 330, function() {
+            $(".tutorial-steps-controls.next").attr('href', '/boards');
+        });
+
+        $(".tutorial-steps-list li.active").removeClass('active');
+        $(".tutorial-steps-list li.inactive").addClass('active').removeClass('inactive');
+        $(".tutorial-steps-controls.next").text('Done');
+    });
+
+    /*  
         Use keydown event to trigger backspace's, so the results updates
         as the search query is shortened. 
     */

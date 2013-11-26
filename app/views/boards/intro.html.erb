@@ -1,116 +1,125 @@
 <div class="intro-container">
 	<div class="intro-wrapper">
 		<h1>Hello and welcome Henrik.</h1>
-
+		<p>This is a short introduction to Noted.</p>
 		<ol class="tutorial-steps-list">
-			<li class="active">Installing the bookmarklet</li>
+			<li class="active">1. Installing your bookmarklet</li>
 			–
-			<li>Trying it out</li>
+			<li class="inactive">2. Trying it out</li>
 		</ol>
-		<div class="tutorial-step">
-			<div class="bookmarklet-wrapper">
-				<a class="bookmarklet" href='javascript:(function(){
-			    well = function() {
-			      log = true;
+		<div class="tutorial-steps-viewport">
+			<div class="tutorial-steps-wrapper">
+				<div class="tutorial-step one">
+					<div class="bookmarklet-wrapper">
+						<a class="bookmarklet" href='javascript:(function(){
+					    well = function() {
+					      log = true;
 
-			      if(log) console.log("r: Try section");
-			      try {
-			        if(!document.body)
-			          throw(0);
+					      if(log) console.log("r: Try section");
+					      try {
+					        if(!document.body)
+					          throw(0);
 
-			        if(document.getSelection().toString() === "") {
-			          alert("Empty selection.");
-			          throw(0);
-			        } else {
-			          
-			          text      = encodeURIComponent(document.getSelection().toString());
-			          url       = encodeURIComponent(document.location.href.toString());
-			          token     = "<%= @user.token %>";
-			          rel       = "icon";
-			          fi        = function() {
-			                      if(document.querySelectorAll("link[rel~=" +rel +"]").length > 0)
-			                        return encodeURIComponent(document.querySelectorAll("link[rel~=" +rel +"]")[0].href);
-			                      else
-			                        return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
-			                    };
+					        if(document.getSelection().toString() === "") {
+					          alert("Empty selection.");
+					          throw(0);
+					        } else {
+					          
+					          text      = encodeURIComponent(document.getSelection().toString());
+					          url       = encodeURIComponent(document.location.href.toString());
+					          token     = "<%= @user.token %>";
+					          rel       = "icon";
+					          fi        = function() {
+					                      if(document.querySelectorAll("link[rel~=" +rel +"]").length > 0)
+					                        return encodeURIComponent(document.querySelectorAll("link[rel~=" +rel +"]")[0].href);
+					                      else
+					                        return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
+					                    };
 
-			          query     = "//localhost:3000/quotes/add?user_token=" +token +"&text=";
+					          query     = "//localhost:3000/quotes/add?user_token=" +token +"&text=";
 
-			          script    = document.createElement("script");
-			          script.src  = query + text + "&url=" + url + "&favicon=" + fi() + "&callback=status";
-			        }
+					          script    = document.createElement("script");
+					          script.src  = query + text + "&url=" + url + "&favicon=" + fi() + "&callback=status";
+					        }
 
-			        /* TAKES CARE OF JSONP RESPONSE */
-			        jsonp = document.createElement("script");
-			        jsonp.setAttribute("type", "text/javascript");
+					        /* TAKES CARE OF JSONP RESPONSE */
+					        jsonp = document.createElement("script");
+					        jsonp.setAttribute("type", "text/javascript");
 
-			        callback = "function status(data) {
-			          if(data && data.message) {
-			            headline.innerText = data.message;
-			            popup.innerHTML = headline.outerHTML;
-			            counter = 0;
-			            interval = setInterval(function() {
-			              counter += 25;
-			              wait = 350;
-			              if(counter > wait) {
-			                value = counter - wait;
-			                popup.style.opacity = popup.style.opacity - (value/1000);
-			                document.body.removeChild(popup);
-			                document.body.appendChild(popup);
-			                if(counter === 1500) {
-			                  clearInterval(interval);
-			                  counter = 0;
-			                  document.body.removeChild(popup);
-			                }
-			              }
-			            }, 50);
-			          }
-			        }";
+					        callback = "function status(data) {
+					          if(data && data.message) {
+					            headline.innerText = data.message;
+					            popup.innerHTML = headline.outerHTML;
+					            counter = 0;
+					            interval = setInterval(function() {
+					              counter += 25;
+					              wait = 350;
+					              if(counter > wait) {
+					                value = counter - wait;
+					                popup.style.opacity = popup.style.opacity - (value/1000);
+					                document.body.removeChild(popup);
+					                document.body.appendChild(popup);
+					                if(counter === 1500) {
+					                  clearInterval(interval);
+					                  counter = 0;
+					                  document.body.removeChild(popup);
+					                }
+					              }
+					            }, 50);
+					          }
+					        }";
 
-			        jsonp.innerHTML = callback;
-			        document.body.appendChild(jsonp);
-			        
-			        /* CREATES POPUP */
-			        headline = document.createElement("h1");
-			        headline.id = "well-title";
-			        headline.style.textAlign = "center";
-			        headline.style.fontSize = "1em";
-			        headline.innerText = "Saving..";
+					        jsonp.innerHTML = callback;
+					        document.body.appendChild(jsonp);
+					        
+					        /* CREATES POPUP */
+					        headline = document.createElement("h1");
+					        headline.id = "well-title";
+					        headline.style.textAlign = "center";
+					        headline.style.fontSize = "1em";
+					        headline.innerText = "Saving..";
 
-			        popup = document.createElement("div");
-			        popup.style.width = "175px";
-			        popup.style.padding = "25px";
-			        popup.style.backgroundColor = "#fff";
-			        popup.style.zIndex = "20000";
-			        popup.style.position = "fixed";
-			        popup.style.top = "0";
-			        popup.style.opacity = "1";
-			        popup.innerHTML = headline.outerHTML;
-			        document.body.appendChild(popup);
+					        popup = document.createElement("div");
+					        popup.style.width = "175px";
+					        popup.style.padding = "25px";
+					        popup.style.backgroundColor = "#fff";
+					        popup.style.zIndex = "20000";
+					        popup.style.position = "fixed";
+					        popup.style.top = "0";
+					        popup.style.opacity = "1";
+					        popup.innerHTML = headline.outerHTML;
+					        document.body.appendChild(popup);
 
-			        /* EXECUTE SCRIPT */
-			        document.body.appendChild(script);
+					        /* EXECUTE SCRIPT */
+					        document.body.appendChild(script);
 
-			      } catch(e) {
-			        alert("Please wait until the page has loaded.");
-			      }
-			    };
+					      } catch(e) {
+					        alert("Please wait until the page has loaded.");
+					      }
+					    };
 
-			    if(/Firefox/.test(navigator.userAgent)) {
-			      setTimeout(well,0);
-			    } else {
-			      well();
-			    }})()'>
-			    NOTED BOOKMARKLET
-				</a>
-				<p class="caption">Drag it to your bookmarks bar</p>
+					    if(/Firefox/.test(navigator.userAgent)) {
+					      setTimeout(well,0);
+					    } else {
+					      well();
+					    }})()'>
+					    NOTED BOOKMARKLET
+						</a>
+					</div>
+					<p class="caption">Drag the bookmarklet to the bookmarks bar, you will find the bookmarks bar below the browsers address bar.</p>
+				</div>
+
+				<div class="tutorial-step two">
+					<div class="quote-sample">
+						<p>Perfection is unattainable, in fact, so is the notion that we’ve ever “arrived” in anything. If that is the standard, you’ll get frustrated, doubt yourself and quit. This is true in your job, your dreams, your relationships.
+						</p>
+					</div>
+					<p class="caption">Highlight the quote and click the bookmarklet.</p>
+				</div>
 			</div>
 		</div>
-
-		<div class="quote-sample">
-			<p>Perfection is unattainable, in fact, so is the notion that we’ve ever “arrived” in anything. If that is the standard, you’ll get frustrated, doubt yourself and quit. This is true in your job, your dreams, your relationships.
-			</p>
+		<div class="tutorial-steps-controls">
+			<a class="tutorial-steps-controls next">Continue</a>
 		</div>
-		
  	</div>
 </div>

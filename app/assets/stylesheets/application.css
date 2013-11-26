@@ -287,7 +287,6 @@
 		display: inline-block;
 
 		/* Experimental blend mode */
-		background-color: #f9f9f9;
 		background-blend-mode: multiply, normal; /* Chrome Canary */
 		-webkit-background-blend-mode: multiply, normal; /* WebKit Nightly */
 	}

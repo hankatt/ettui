@@ -43,9 +43,10 @@ $(document).on('ready', function() {
         $(".tutorial-steps-wrapper").animate({
             right: 460
         }, 330, function() {
-            $(".tutorial-steps-controls.next").attr('href', '/boards');
+            $(".tutorial-steps-controls.next").attr('href', '/users/done');
         });
 
+        //Switch active state to from step 1 to step 2
         $(".tutorial-steps-list li.active").removeClass('active');
         $(".tutorial-steps-list li.inactive").addClass('active').removeClass('inactive');
         $(".tutorial-steps-controls.next").text('Done');

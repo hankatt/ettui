@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 	def self.create_with_omniauth(auth)
 
 		# Create the new user
-  		@user = User.new({ :provider => auth["provider"], :uid => auth["uid"], :name => auth["info"]["name"] })
+  		@user = User.new({ :provider => auth["provider"], :uid => auth["uid"], :name => auth["info"]["name"], :new_user => true })
 	    
 	    # Create a board and associate it to the new user
 	    @board = Board.create!(name: "My board")

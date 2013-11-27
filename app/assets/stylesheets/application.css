@@ -28,6 +28,11 @@
 	.container {
 		width: 100%;
 		height: 100%;
+
+		/* 3D Skew */
+		-webkit-perspective: 400;
+		-webkit-perspective-origin: 72% 8%;
+		background-color: #444;
 	}
 
 	* { 
@@ -545,9 +550,30 @@
 
 	*/
 
+	.notedapp-splash {
+		background-color: #000;
+		background-image: url('/assets/notedapp@2x.png');
+		width: 164%;
+		height: 164%;
+		background-size: cover;
+		background-repeat: no-repeat;
+
+		-webkit-transform-style: preserve-3d;
+		-webkit-transform: rotateY(-7deg) translateZ(-370px);
+
+		z-index: 0;
+
+		box-shadow: 6px 2px 38px #000;
+	}
+
 	.signup-wrapper {
 		width: 100%;
 		height: 100%;
+
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 1;
 	}
 
 	.signup-container {

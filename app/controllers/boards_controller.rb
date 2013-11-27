@@ -10,7 +10,6 @@ class BoardsController < ApplicationController
     end
 
     def intro
-
         @user = User.find(session[:user_id])
 
         respond_to do |format|

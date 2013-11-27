@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
   	@user = User.authenticate(params[:email], params[:password])
   	if @user
       session[:user_id] = @user.id
-      redirect_to introduction_path
+      if @user.new_user
+        redirect_to introduction_path
+      else
+        redirect_to boards_path
+      end
   	else
       redirect_to root_url, :notice => "Failed to authenticate!"
     end
@@ -27,7 +31,11 @@ class SessionsController < ApplicationController
     # Create session if the authentication was successful
     if @user
       session[:user_id] = @user.id
-      redirect_to introduction_path
+      if @user.new_user
+        redirect_to introduction_path
+      else
+        redirect_to boards_path
+      end
     else
       redirect_to root_url, :notice => "Failed to authenticate!"
     end

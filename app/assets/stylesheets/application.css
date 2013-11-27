@@ -47,8 +47,12 @@
 	}
 
 	h1 {
-		font-size: 1.5em;
+		font-size: 1.7em;
 		font-weight: bold;
+	}
+
+	h2 {
+		font-size: 1.4em;
 	}
 
 	h3, h4 {
@@ -386,14 +390,14 @@
 		color: #fff;
 		text-align: center;
 		margin: 0 auto;
-		padding: 60px 30px 0 30px;
+		padding: 90px 30px 0 30px;
 	}
 
 	.intro-wrapper h1 {
 		margin-bottom: 0px;
 	}
 
-	.intro-wrapper h1 + p {
+	.intro-wrapper h1 + h2 {
 		margin-bottom: 60px;
 	}
 
@@ -418,11 +422,22 @@
 		margin: 30px auto 0 auto;
 	}
 
-	.tutorial-steps-viewport {
+	.tutorial-header {
+		width: 640px;
+	}
+
+	.tutorial-wrapper {
 		width: 400px;
-		margin: 0 auto 30px auto;
-		padding: 0;
-		position: relative;
+		margin: 0 auto;
+		padding-top: 10px;
+	}
+
+	.tutorial-wrapper h4 {
+		color: #555;
+	}
+
+	.tutorial-steps-viewport {
+		margin-bottom: 30px;
 		overflow: hidden;
 	}
 
@@ -431,14 +446,9 @@
 		position: relative;
 	}
 
-	.tutorial-steps-controls {
-		width: 400px;
-		margin: 0 auto;
-	}
-
 	.tutorial-steps-controls.next {
-		border: solid 2px #00b893;
-		padding: 20px 20px 17px 20px;
+		border: solid 1px #00b893;
+		padding: 17px 20px 20px 20px;
 		font-size: 16px;
 		float: right;
 		width: 130px;
@@ -450,6 +460,10 @@
 		cursor: pointer;
 	}
 
+	.tutorial-steps-controls.next:active {
+		background-color: #222;
+	}
+
 	.tutorial-step {
 		width: 400px;
 		margin: 30px 0 0;
@@ -458,6 +472,10 @@
 
 	.tutorial-step.two {
 		margin-left: 60px;
+	}
+
+	.tutorial-steps-list {
+		margin-top: 60px;
 	}
 
 	.tutorial-steps-list li {
@@ -486,7 +504,7 @@
 	.bookmarklet {
 		display: block;
 		width: 280px;
-		padding: 19px 15px 15px 15px;
+		padding: 17px 15px 17px 15px;
 		margin: 0 auto;
 
 		background-color: #00b893;
@@ -500,7 +518,7 @@
 
 	.bookmarklet:active {
 		background-color: #009773;
-		padding: 20px 15px 14px 15px;
+		padding: 18px 15px 16px 15px;
 		box-shadow: inset 0px 0px 6px #222;
 	}
 

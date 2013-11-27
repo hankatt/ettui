@@ -41,6 +41,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def done
+    @user = User.find(session[:user_id])
+
+    respond_to do |format|
+      if @user.update_attributes(:new_user => false)
+        format.html { redirect_to boards_path }
+      end
+    end
+  end
+
   # PUT /users/1
   # PUT /users/1.json
   def update

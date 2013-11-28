@@ -12,3 +12,19 @@ div.error_explanation ul {
 	list-style: none;
 	}
 }
+
+.notedapp-splash {
+	background-color: #000;
+	background-image: image-url('notedapp@2x.png');
+	width: 164%;
+	height: 164%;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: rotateY(-7deg) translateZ(-370px);
+
+	z-index: 0;
+
+	box-shadow: 6px 2px 38px #000;
+}

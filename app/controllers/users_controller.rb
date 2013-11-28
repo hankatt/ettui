@@ -44,10 +44,9 @@ class UsersController < ApplicationController
   def done
     @user = User.find(session[:user_id])
 
-    respond_to do |format|
-      if @user.update_attributes(:new_user => false)
-        format.html { redirect_to boards_path }
-      end
+    if @user.update_attributes(:new_user => false)
+      flash[:partial] = "welcome"
+      redirect_to boards_path
     end
   end
 

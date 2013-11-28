@@ -93,14 +93,17 @@
     NOTED
 </a>!-->
 
-<!-- The form wraps all of the content control features to simplify AJAX query !-->
+<% if flash[:partial] %>
+    <%= render flash[:partial] %>
+<% end %>
+
 <div class="header">
     <div class="header-logo"><h1>Noted</h1></div>
     <ul class="header-boards-navigation">
         <% @user.boards.each do |board| %>
         	<% active = @board.id.eql?(board.id) ? 'active' : '' %>
             	<%= link_to board do %>
-                <li class="<%= active %>"> <%= board.name %></li>
+                <li class="<%= active %> board-<%= board.id %>"> <%= board.name %></li>
               <% end %>
         <% end %>
         <li class="new-board inactive">
@@ -126,7 +129,7 @@
       <% if @board.quotes.count > 1 %>
   	    <div class="search-container">
   	        <%= image_tag "search.png" %>
-  	        <%= text_field_tag :search, params[:search], :placeholder => "Search for something within #{@board.name.downcase}?", :class => "search" %>
+  	        <%= text_field_tag :search, params[:search], :placeholder => "Search within #{@board.name.downcase}?", :class => "search" %>
   	        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
   	     </div>
   	   <% end %>

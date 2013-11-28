@@ -1,0 +1,8 @@
+<div class="welcome-splash">
+	<h3 class="heading">Perhaps take a second to name your first board?</h3>
+	<p>
+    <%= form_for @board, :remote => true, method: :put do |f| %>
+        <%= f.text_field :name, value: '', placeholder: "i.e. Quotes, Design…" %>
+        <%= f.submit "Update" %>
+    <% end %>
+</div>

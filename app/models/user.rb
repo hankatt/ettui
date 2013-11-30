@@ -13,8 +13,9 @@ class User < ActiveRecord::Base
 
 	
 	# Form validations
-	validates_uniqueness_of :email, :unless => :uid
-	validates_presence_of :email, :password, :password_confirmation, :unless => :provider
+	validates_uniqueness_of :email
+	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :create
+	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :update, allow_blank: true
 	validates_confirmation_of :password, :unless => :provider
 
 	# Encrypts and stores the provided password

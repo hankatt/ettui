@@ -10,12 +10,17 @@ class BoardsController < ApplicationController
     end
 
     def intro
-        @user = User.find(session[:user_id])
+        @user = User.find(session[:user_id]) unless session[:user_id].nil?
 
         respond_to do |format|
-            format.html # show.html.erb
-            format.js # show.js.erb
-            format.json { render json: @quotes }
+            if @user && @user.new_user
+                format.html # show.html.erb
+                flash[:notice] = "Logged in."
+            elsif @user
+                format.html { redirect_to boards_path }
+            else
+                format.html { redirect_to root_url }
+            end
         end
     end
 

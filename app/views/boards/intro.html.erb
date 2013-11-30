@@ -1,6 +1,6 @@
 <div class="intro-container">
 	<div class="intro-wrapper">
-		<h1>Hello and welcome <%= current_user.name %>.</h1>
+		<h1>Hello and welcome <%= current_user.name || current_user.email %>.</h1>
 		<div class="tutorial-wrapper">
 			<h4>This introduction will help you setup Noted.</h4>
 			<ol class="tutorial-steps-list">

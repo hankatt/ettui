@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   	if @user
       session[:user_id] = @user.id
       if @user.new_user
-        redirect_to introduction_path
+        redirect_to boards_intro_path
       else
         redirect_to boards_path
       end

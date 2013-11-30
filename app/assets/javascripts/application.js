@@ -36,6 +36,11 @@ $(document).on('ready', function() {
         //$("#search").focus();
     });
 
+    $(".email.signup.button").on('click', function() {
+        $(this).toggleClass('active');
+        $(".signup-with-email").fadeToggle('fast');
+    });
+
     /*  
         Introduction page 
     */

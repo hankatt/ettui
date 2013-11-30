@@ -1,23 +1,14 @@
-<% if !current_user %>
-	<!-- Render sign up form !-->
-	Lolo
-<% else %>
-	<!-- Render welcome {user} !-->
-	Lele
-<% end %>
-
-<nav>
-	<div>
-		<%= link_to (image_tag "logo.png"), '/' %>
-		<h3 id="logo">WRTTN</h3>
-	 	
-	</div>
-</nav>
-<header>
-</header>
-
-<div id="gridset-wrapper">
-	<div class="d-all" id="login">
+<div class="signup-wrapper">
+	<div class="signup-container">
+		<h1>A simple tool that helps you keep track of memorable reads.</h1>
+		<%= link_to "Sign in with Twitter", "/auth/twitter?image_size=original", class: "twitter signup button" %>
+		<p class="supportive">Or using your email address</p>
 		<%= render 'login_form' %>
+		<footer>
+			<a href="#">About</a>
+			<a href="#">Press</a>
+		</footer>
 	</div>
+</div>
+<div class="notedapp-splash">
 </div>

@@ -5,6 +5,7 @@
 		<%= link_to "Sign up using your email", "#!", class: "email signup button" %>
 		<div class="signup-with-email">
 			<%= form_for @user do |f| %>
+				<%= f.hidden_field :new_user, :value => true %>
 				<div class="field">
 					<%= f.text_field :email, :placeholder => "Electronic mail address" %>
 				</div>

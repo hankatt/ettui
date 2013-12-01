@@ -484,8 +484,9 @@
 	}
 
 	.tutorial-steps-viewport {
-		margin-bottom: 30px;
+		margin: 28px 0;
 		overflow: hidden;
+		border-top: solid 1px #222;
 	}
 
 	.tutorial-steps-wrapper {
@@ -513,7 +514,6 @@
 
 	.tutorial-step {
 		width: 400px;
-		margin: 30px 0 0;
 		float: left;
 	}
 
@@ -522,30 +522,42 @@
 	}
 
 	.tutorial-steps-list {
-		margin-top: 60px;
+		margin-top: 42px;
+		font-size: 0;
 	}
 
 	.tutorial-steps-list li {
 		display: inline-block;
 		color: #555;
-		padding-left: 15px;
-	}
-
-	.tutorial-steps-list li.active {
-		color: #00b893;
+		width: 200px;
+		border: solid 1px #222;
+		padding: 10px;
+		font-size: 12px;
+		text-transform: uppercase;
 		font-weight: bold;
 	}
 
-	.tutorial-steps-list li:first-of-type {
-		padding-right: 15px;
-		padding-left: 0;
+	.tutorial-steps-list li.done {
+		color: #fff;
+		font-weight: bold;
+		text-decoration: line-through;
+		color: #555;
+	}
+
+	.tutorial-steps-list li.active {
+		color: #fff;
+		font-weight: bold;
+		background-color: #222;
 	}
 
 	.bookmarklet-wrapper {
-		padding: 30px 0;
+		padding: 28px 0;
 		margin: 0 auto 0;
 		width: 400px;
-		border: dashed 2px #222;
+	}
+
+	.bookmarklet-wrapper p {
+		margin-bottom: 28px;
 	}
 
 	.bookmarklet {
@@ -556,7 +568,8 @@
 
 		background-color: #00b893;
 		color: #fff;
-		border-radius: 2px;
+		font-weight: 600;
+		letter-spacing: 1px;
 	}
 
 	.bookmarklet:hover {
@@ -573,6 +586,7 @@
 		width: 400px;
 		margin: 0 auto 30px auto;
 		text-align: justify;
+		padding: 28px 0;
 	}
 
 	.quote-sample p {
@@ -682,7 +696,7 @@
 	.button.signup {
 		background-color: #00b893;
 		color: #fff;
-		padding: 17px 20px 15px 20px;
+		padding: 16px 20px 16px 20px;
 		display: block;
 		text-align: center;
 		text-transform: uppercase;

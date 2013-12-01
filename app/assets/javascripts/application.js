@@ -52,7 +52,7 @@ $(document).on('ready', function() {
         });
 
         //Switch active state to from step 1 to step 2
-        $(".tutorial-steps-list li.active").removeClass('active');
+        $(".tutorial-steps-list li.active").removeClass('active').addClass('done');
         $(".tutorial-steps-list li.inactive").addClass('active').removeClass('inactive');
         $(".tutorial-steps-controls.next").text('Done');
     });

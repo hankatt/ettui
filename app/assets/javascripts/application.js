@@ -45,16 +45,24 @@ $(document).on('ready', function() {
         Introduction page 
     */
     $(".tutorial-steps-controls.next").on('click', function() {
+
+        //If final step
+        if($(this).hasClass('close')) {
+            $(".intro-container").fadeOut().remove();
+            $(".boards-wrapper").removeClass('blurred');
+        }
+
+        //Else
         $(".tutorial-steps-wrapper").animate({
             right: 460
         }, 330, function() {
-            $(".tutorial-steps-controls.next").attr('href', '/users/done');
+            $(".tutorial-steps-controls.next").addClass('close');
         });
 
         //Switch active state to from step 1 to step 2
         $(".tutorial-steps-list li.active").removeClass('active').addClass('done');
         $(".tutorial-steps-list li.inactive").addClass('active').removeClass('inactive');
-        $(".tutorial-steps-controls.next").text('Done');
+        $(".tutorial-steps-controls.next").text('Continue');
     });
 
     /*  

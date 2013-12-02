@@ -48,16 +48,18 @@ $(document).on('ready', function() {
 
         //If final step
         if($(this).hasClass('close')) {
-            $(".intro-container").fadeOut().remove();
+            $(".intro-container").fadeOut('slow').remove();
             $(".boards-wrapper").removeClass('blurred');
         }
 
         //Else
         $(".tutorial-steps-wrapper").animate({
             right: 460
-        }, 330, function() {
+        }, 670, $.easie(.33,.61,.58,1), function() {
             $(".tutorial-steps-controls.next").addClass('close');
         });
+
+        $(".tutorial-steps-triangle").addClass('two')
 
         //Switch active state to from step 1 to step 2
         $(".tutorial-steps-list li.active").removeClass('active').addClass('done');

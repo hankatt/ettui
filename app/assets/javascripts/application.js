@@ -48,7 +48,7 @@ $(document).on('ready', function() {
 
         //If final step
         if($(this).hasClass('close')) {
-            $(".intro-container").fadeOut('slow').remove();
+            $(".intro-container").animate({ opacity: 0 }, 700, function() { $(this).remove(); });
             $(".boards-wrapper").removeClass('blurred');
         }
 

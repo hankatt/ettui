@@ -557,7 +557,7 @@
 	}
 
 	.tutorial-steps-triangle {
-		background: url('/assets/arrow-down.png') no-repeat;
+		/* Background image defined in boards.css.scss for correct production image asset path using image-url('..') syntax */
 		width: 28px;
 		height: 14px;
 		position: relative;

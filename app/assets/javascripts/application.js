@@ -46,17 +46,11 @@ $(document).on('ready', function() {
     */
     $(".tutorial-steps-controls.next").on('click', function() {
 
-        //If final step
-        if($(this).hasClass('close')) {
-            $(".intro-container").animate({ opacity: 0 }, 700, function() { $(this).remove(); });
-            $(".boards-wrapper").removeClass('blurred');
-        }
-
         //Else
         $(".tutorial-steps-wrapper").animate({
             right: 460
         }, 670, $.easie(.33,.61,.58,1), function() {
-            $(".tutorial-steps-controls.next").addClass('close');
+            $(".tutorial-steps-controls.next").attr('href', '/users/done').attr('data-remote', 'true');
         });
 
         $(".tutorial-steps-triangle").addClass('two')

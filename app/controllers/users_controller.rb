@@ -44,11 +44,12 @@ class UsersController < ApplicationController
   def done
     @user = User.find(session[:user_id])
 
-    if @user.update_attributes!(:new_user => false)
-      flash[:partial] = "welcome"
-      redirect_to boards_path
-    else
-      redirect_to login_path
+    respond_to do |format|
+      if @user.update_attributes!(:new_user => false)
+        format.js # users/done.js.erb
+      else
+        format.html { redirect_to login_path }
+      end
     end
   end
 

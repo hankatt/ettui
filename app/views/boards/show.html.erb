@@ -139,13 +139,15 @@
                   <li class="<%= active %> board-<%= board.id %>"> <%= board.name %></li>
                 <% end %>
           <% end %>
+          <!--
           <li class="new-board inactive">
               <%= form_tag boards_path do %>
                   <%= text_field_tag :name, params[:name], :placeholder => "Name your board" %>
                   <%= submit_tag %>
               <% end %>
           </li>
-          <li class="add-board"><a href="#!" onclick="toggle_new_board()">New board</a></li>
+          !-->
+          <li class="add-board"><a href="#!" onclick="toggle_new_board()">Create a new board</a></li>
       </ul>
   </div>
   <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>

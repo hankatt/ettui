@@ -107,10 +107,8 @@
 
 	.header {
 		width: 100%;
-		height: 88px;
+		height: 72px;
 		font-size: 0; /* Remove inline-block horizontal white-space spacing */
-
-		background-color: #000;
 	}
 
 	.header-logo, .header-boards-navigation, .header-boards-navigation li {
@@ -119,15 +117,15 @@
 
 	.header-logo h1 {
 		margin: 0;
-		line-height: 88px;
+		line-height: 72px;
 		text-align: center;
 		text-transform: uppercase;
 		font-size: 14px;
 		letter-spacing: 2px;
 		font-weight: 600;
 
-		background-color: #000;
-		color: #555;
+		background-color: #00B871;
+		color: #fff;
 	}
 
 	.welcome-splash {
@@ -201,12 +199,10 @@
 
 	.header-boards-navigation li {
 		height: 100%;
-		padding: 0 44px;
+		padding: 0 36px;
 		text-align: center;
-
-		background-color: #333;
 		position: relative;
-		line-height: 88px;
+		line-height: 72px;
 		font-size: 18px;
 	}
 
@@ -216,24 +212,18 @@
 	}
 
 	.header-boards-navigation li.active {
-		background-color: #00b893;
-	}
-
-	.header-boards-navigation li.active {
-		color: #fff;
+		background-color: #fff;
+		color: #00B871;
 	}
 
 	.header-boards-navigation li.add-board {
-		background-color: #000;
-	}
-
-	.header-boards-navigation li.add-board {
-		color: #00b893;
+		color: #555;
+		border-left: solid 1px #e6e6e6;
 	}
 
 
 	.header-boards-navigation li.new-board {
-		height: 88px;
+		height: 72px;
 	}
 
 	.header-boards-navigation li.new-board input[type="text"] {
@@ -278,7 +268,7 @@
 	}
 
 	.header-boards-navigation li a {
-		line-height: 88px;
+		line-height: 72px;
 		font-size: 18px;
 	}
 
@@ -695,6 +685,7 @@
 		padding: 120px 60px 60px 60px;
 		background-color: #000;
 		position: relative;
+		box-shadow: 20px 0 80px #060606;
 	}
 
 	.signup-container h1 {

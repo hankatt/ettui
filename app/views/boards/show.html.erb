@@ -131,8 +131,10 @@
     <div class="boards-wrapper">
 <% end %>
   <div class="header">
-      <div class="header-logo"><h1>Noted</h1></div>
       <ul class="header-boards-navigation">
+          <li class="header-logo">
+            Noted.
+          </li>
           <% @user.boards.each do |board| %>
           	<% active = @board.id.eql?(board.id) ? 'active' : '' %>
               	<%= link_to board do %>
@@ -147,7 +149,7 @@
               <% end %>
           </li>
           !-->
-          <li class="add-board"><a href="#!" onclick="toggle_new_board()">Create a new board</a></li>
+          <a href="#!" onclick="toggle_new_board()"><li class="add-board">Create a new board</li></a>
       </ul>
   </div>
   <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
@@ -160,6 +162,11 @@
   	                <%= render :partial => 'source', locals: { source: source } %>
   	           <% end %>
   	        </ol>
+            <div class="sidebar-profile">
+              <%= image_tag current_user_details.profile_image_url %>
+              <%= link_to current_user_details.name, "/" %></h2>
+              <p class="description"><%= current_user_details.description %></p>
+            </div>
   	    </div>
         <% if @board.quotes.count > 1 %>
     	    <div class="search-container">

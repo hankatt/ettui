@@ -91,10 +91,12 @@
 
 	.sidebar-container {
 		/* Styling */
-		background-color: #f9f9f9;
+		background-color: #fff;
 
 		/* Positioning */
 		float: left;
+
+		position: relative;
 	}
 
 	/*
@@ -108,6 +110,7 @@
 	.header {
 		width: 100%;
 		height: 72px;
+		border-bottom: solid 1px #eee;
 		font-size: 0; /* Remove inline-block horizontal white-space spacing */
 	}
 
@@ -123,9 +126,8 @@
 		font-size: 14px;
 		letter-spacing: 2px;
 		font-weight: 600;
-
-		background-color: #00B871;
-		color: #fff;
+		color: #ccc;
+		text-shadow: 0 0 4px #eee;
 	}
 
 	.welcome-splash {
@@ -202,23 +204,30 @@
 		padding: 0 36px;
 		text-align: center;
 		position: relative;
-		line-height: 72px;
-		font-size: 18px;
+		line-height: 71px;
+		font-size: 15px;
+		border-right: solid 1px #eee;
+		text-transform: uppercase;
+		font-weight: bolder;
+	}
+
+	.header-boards-navigation a:active li {
+		box-shadow: inset 0 0 7px #ccc;
+		background-color: #fafafa;
 	}
 
 	.header-boards-navigation a {
-		color: #aaa;
+		color: #555;
 		font-size: 0; /* Removes space between horizontal li elements. */
 	}
 
 	.header-boards-navigation li.active {
-		background-color: #fff;
+		background-color: #fafafa;
 		color: #00B871;
 	}
 
 	.header-boards-navigation li.add-board {
-		color: #555;
-		border-left: solid 1px #e6e6e6;
+		color: #aaa;
 	}
 
 
@@ -268,7 +277,7 @@
 	}
 
 	.header-boards-navigation li a {
-		line-height: 72px;
+		line-height: 71px;
 		font-size: 18px;
 	}
 
@@ -350,14 +359,41 @@
 	}
 
 	.filters-list li.active {
-		background-color: #eee;
+		background-color: #fafafa;
 	}
 
 	.filters-list li.active button {
 		color: #000;
 	}
 
+	.sidebar-profile {
+		padding: 0 30px;
+		position: absolute;
+		bottom: 60px;
+	}
 
+	.sidebar-profile img {
+		border-radius: 24px;
+	}
+
+	.sidebar-profile img, .sidebar-profile a {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.sidebar-profile a {
+		text-align: center;
+		width: 100%;
+		padding-top: 10px;
+	}
+
+	.sidebar-profile .description {
+		color: #999;
+		font-size: 12px;
+		text-align: center;
+		font-family: "ff-tisa-web-pro";
+		font-style: italic;
+	}
 
 
 	/*

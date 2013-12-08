@@ -21,10 +21,11 @@
 .quote {
 
 	padding: 36px;
-	border-bottom: solid 1px #fff;
+	border: solid 1px #fff;
 
+	&:hover { background-color: #fafafa; border: solid 1px #fafafa; }
 	&:hover .quote-content p {
-		color: #323232;
+		color: #222;
 	}
 
 	&:hover .quote-share {
@@ -62,7 +63,7 @@
 }
 
 .quote-content p {
-	color: #a0a0a0;
+	color: #323232;
 
 	&.small { 
 		font-size: 1em; 

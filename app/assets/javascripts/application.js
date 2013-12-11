@@ -112,7 +112,7 @@ $(document).on('ready', function() {
 /*  Makes sure the sidebar container has full height 
     (can't set height due to being floated) */
 $(document).on('ready load resize change', function() {
-    $(".sidebar-container").css('height', $(window).height() - $(".header").height());
+    $(".sidebar-container").css('height', $(window).height());
 }); 
 
 /* Performs the AJAX search.

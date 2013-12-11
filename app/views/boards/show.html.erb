@@ -130,31 +130,11 @@
 <% else %>
     <div class="boards-wrapper">
 <% end %>
-  <div class="header">
-      <ul class="header-boards-navigation">
-          <li class="header-logo">
-            Noted.
-          </li>
-          <% @user.boards.each do |board| %>
-          	<% active = @board.id.eql?(board.id) ? 'active' : '' %>
-              	<%= link_to board do %>
-                  <li class="<%= active %> board-<%= board.id %>"> <%= board.name %></li>
-                <% end %>
-          <% end %>
-          <!--
-          <li class="new-board inactive">
-              <%= form_tag boards_path do %>
-                  <%= text_field_tag :name, params[:name], :placeholder => "Name your board" %>
-                  <%= submit_tag %>
-              <% end %>
-          </li>
-          !-->
-          <a href="#!" onclick="toggle_new_board()"><li class="add-board">Create a new board</li></a>
-      </ul>
-  </div>
-  <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
-
+<%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
   	    <div class="sidebar-container">
+            <li class="header-logo">
+              <h1>Noted</h1>
+            </li>
   	        <h2 class="filters-title">Filters</h2>
   	        <button class="filters-reset" type="reset">Reset</button>
   	        <ol class="filters-list">
@@ -168,6 +148,25 @@
               <p class="description"><%= current_user_details.description %></p>
             </div>
   	    </div>
+        <div class="header">
+          <ul class="header-boards-navigation">
+            <% @user.boards.each do |board| %>
+              <% active = @board.id.eql?(board.id) ? 'active' : '' %>
+                  <%= link_to board do %>
+                    <li class="<%= active %> board-<%= board.id %>"> <%= board.name %></li>
+                  <% end %>
+            <% end %>
+            <!--
+            <li class="new-board inactive">
+                <%= form_tag boards_path do %>
+                    <%= text_field_tag :name, params[:name], :placeholder => "Name your board" %>
+                    <%= submit_tag %>
+                <% end %>
+            </li>
+            !-->
+            <a href="#!" onclick="toggle_new_board()"><li class="add-board">Create a new board</li></a>
+          </ul>
+        </div>
         <% if @board.quotes.count > 1 %>
     	    <div class="search-container">
     	        <%= image_tag "search.png" %>

@@ -234,11 +234,14 @@
 	}
 
 	.header-boards-navigation li.active {
-		color: #00B871;
+		color: #fff;
+		background-color: #00b893;
+		border-right: solid 1px #00b893;
 	}
 
 	.header-boards-navigation li.add-board {
 		color: #aaa;
+		border: none;
 	}
 
 

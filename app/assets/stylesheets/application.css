@@ -43,7 +43,7 @@
 
 	a {
 		text-decoration: none;
-		color: #00b893;
+		color: #333;
 	}
 
 	h1 {
@@ -130,13 +130,14 @@
 
 	.header-logo h1 {
 		margin: 0;
-		line-height: 72px;
+		line-height: 71px;
 		text-align: center;
 		text-transform: uppercase;
 		font-size: 14px;
 		letter-spacing: 2px;
 		font-weight: 600;
 		color: #333;
+		background-color: #eee;
 	}
 
 	.welcome-splash {
@@ -229,7 +230,7 @@
 	}
 
 	.header-boards-navigation a {
-		color: #555;
+		color: #333;
 		font-size: 0; /* Removes space between horizontal li elements. */
 	}
 
@@ -237,6 +238,10 @@
 		color: #fff;
 		background-color: #00b893;
 		border-right: solid 1px #00b893;
+	}
+
+	.header-boards-navigation a:hover li.active {
+		background-color: #00b893;
 	}
 
 	.header-boards-navigation li.add-board {

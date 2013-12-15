@@ -99,7 +99,7 @@
 
 		position: relative;
 
-		margin-left: -230px;
+		margin-left: 0;
 
 		transition: margin-left .3s cubic-bezier(.16,.62,.43,.97);
 	}

@@ -225,12 +225,16 @@
 		background-color: #f8f8f8;
 	}
 
+	.header-boards-navigation a:hover {
+		color: #333;
+	}
+
 	.header-boards-navigation a:active li {
 		background-color: #f0f0f0;
 	}
 
 	.header-boards-navigation a {
-		color: #333;
+		color: #aaa;
 		font-size: 0; /* Removes space between horizontal li elements. */
 	}
 

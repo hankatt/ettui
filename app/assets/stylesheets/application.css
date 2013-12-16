@@ -385,12 +385,11 @@
 	}
 
 	.filters-list li.active {
-		background-color: #00b893;
-
+		
 	}
 
 	.filters-list li.active button {
-		color: #fff;
+		color: #00b893;
 	}
 
 	.sidebar-profile {

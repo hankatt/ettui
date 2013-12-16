@@ -90,6 +90,7 @@
 	}
 
 	.sidebar-container {
+		height: 100%;
 		/* Styling */
 		box-shadow: inset -2px 0 6px #d6d6d6;
 		background-color: #f8f8f8;
@@ -259,15 +260,17 @@
 	}
 
 	.header-boards-navigation li.new-board input[type="text"] {
-		height: 38px;
-		margin-top: 25px;
-		font-size: 18px;
+		height: 36px;
+		margin-top: 18px;
+		font-size: 14px;
 		background: none;
 		border: dashed 2px #009275;
 		line-height: 18px;
 		text-align: center;
 		color: #fff;
 		outline: none;
+		text-transform: uppercase;
+		font-weight: 600;
 	}
 
 	.header-boards-navigation li.new-board.inactive, li.new-board.inactive input {
@@ -382,11 +385,12 @@
 	}
 
 	.filters-list li.active {
-		background-color: #fafafa;
+		background-color: #00b893;
+
 	}
 
 	.filters-list li.active button {
-		color: #000;
+		color: #fff;
 	}
 
 	.sidebar-profile {
@@ -426,6 +430,10 @@
 
 		####
 	*/
+
+	#search-filter {
+		height: 100%;
+	}
 
 	.search-container * {
 		/* Positioning */
@@ -485,6 +493,7 @@
 	}
 
 	.boards-wrapper {
+		height: 100%;
 		-webkit-filter: blur(0px);
 		-moz-filter: blur(0px);
 		-o-filter: blur(0px);
@@ -717,11 +726,11 @@
 
 	.field input {
 		outline: 0;
-		border: solid 2px #00b893;
+		border: solid 1px #333;
 		padding: 17px 20px 15px 20px;
-		background-color: #000;
+		background-color: transparent;
 		color: #fff;
-		line-height: 14px;
+		line-height: 11px;
 	}
 
 	.actions input {

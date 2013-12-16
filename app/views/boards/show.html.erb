@@ -1,131 +1,5 @@
 <% if current_user.new_user %>
-    <div class="intro-container overlay">
-    <div class="intro-wrapper">
-      <h1>Hello and welcome <%= current_user.name || current_user.email %>.</h1>
-      <div class="tutorial-wrapper">
-        <h4>After this introduction you are ready to use Noted.</h4>
-        <ol class="tutorial-steps-list">
-          <li class="active">Install bookmarklet</li>
-          <li class="inactive">Try it out</li>
-        </ol>
-        <div class="tutorial-steps-triangle"></div>
-        <div class="tutorial-steps-viewport">
-          <div class="tutorial-steps-wrapper">
-            <div class="tutorial-step one">
-              <div class="bookmarklet-wrapper">
-                <p>Drag the bookmarklet to the bookmarks bar below your browsers address bar.</p>
-                <a class="bookmarklet" href='javascript:(function(){
-                  well = function() {
-                    log = true;
-
-                    if(log) console.log("r: Try section");
-                    try {
-                      if(!document.body)
-                        throw(0);
-
-                      if(document.getSelection().toString() === "") {
-                        alert("Empty selection.");
-                        throw(0);
-                      } else {
-                        
-                        text      = encodeURIComponent(document.getSelection().toString());
-                        url       = encodeURIComponent(document.location.href.toString());
-                        token     = "<%= @user.token %>";
-                        rel       = "icon";
-                        fi        = function() {
-                                    if(document.querySelectorAll("link[rel~=" +rel +"]").length > 0)
-                                      return encodeURIComponent(document.querySelectorAll("link[rel~=" +rel +"]")[0].href);
-                                    else
-                                      return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
-                                  };
-
-                        query     = "//localhost:3000/quotes/add?user_token=" +token +"&text=";
-
-                        script    = document.createElement("script");
-                        script.src  = query + text + "&url=" + url + "&favicon=" + fi() + "&callback=status";
-                      }
-
-                      /* TAKES CARE OF JSONP RESPONSE */
-                      jsonp = document.createElement("script");
-                      jsonp.setAttribute("type", "text/javascript");
-
-                      callback = "function status(data) {
-                        if(data && data.message) {
-                          headline.innerText = data.message;
-                          popup.innerHTML = headline.outerHTML;
-                          counter = 0;
-                          interval = setInterval(function() {
-                            counter += 25;
-                            wait = 350;
-                            if(counter > wait) {
-                              value = counter - wait;
-                              popup.style.opacity = popup.style.opacity - (value/1000);
-                              document.body.removeChild(popup);
-                              document.body.appendChild(popup);
-                              if(counter === 1500) {
-                                clearInterval(interval);
-                                counter = 0;
-                                document.body.removeChild(popup);
-                              }
-                            }
-                          }, 50);
-                        }
-                      }";
-
-                      jsonp.innerHTML = callback;
-                      document.body.appendChild(jsonp);
-                      
-                      /* CREATES POPUP */
-                      headline = document.createElement("h1");
-                      headline.id = "well-title";
-                      headline.style.textAlign = "center";
-                      headline.style.fontSize = "1em";
-                      headline.innerText = "Saving..";
-
-                      popup = document.createElement("div");
-                      popup.style.width = "175px";
-                      popup.style.padding = "25px";
-                      popup.style.backgroundColor = "#fff";
-                      popup.style.zIndex = "20000";
-                      popup.style.position = "fixed";
-                      popup.style.top = "0";
-                      popup.style.opacity = "1";
-                      popup.innerHTML = headline.outerHTML;
-                      document.body.appendChild(popup);
-
-                      /* EXECUTE SCRIPT */
-                      document.body.appendChild(script);
-
-                    } catch(e) {
-                      alert("Please wait until the page has loaded.");
-                    }
-                  };
-
-                  if(/Firefox/.test(navigator.userAgent)) {
-                    setTimeout(well,0);
-                  } else {
-                    well();
-                  }})()'>
-                  NOTED BOOKMARKLET
-                </a>
-              </div>
-            </div>
-
-            <div class="tutorial-step two">
-              <p>Highlight the quote click your new bookmarklet.</p>
-              <div class="quote-sample">
-                <p>Perfection is unattainable, in fact, so is the notion that we’ve ever “arrived” in anything. If that is the standard, you’ll get frustrated, doubt yourself and quit.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tutorial-steps-controls">
-          <a class="tutorial-steps-controls next">Try it out</a>
-        </div>
-      </div>
-    </div>
-    </div>
+    <%= render "intro", current_user: current_user %>
     <div class="boards-wrapper blurred">
 <% else %>
     <div class="boards-wrapper">
@@ -136,35 +10,29 @@
               <h1>Noted</h1>
             </li>
   	        <h2 class="filters-title">Filters</h2>
-  	        <button class="filters-reset" type="reset">Reset</button>
+  	        <!--<button class="filters-reset" type="reset">Reset</button>!-->
   	        <ol class="filters-list">
   	           <% @sources.each do |source| %>
   	                <%= render :partial => 'source', locals: { source: source } %>
   	           <% end %>
   	        </ol>
-            <div class="sidebar-profile">
-              <%= image_tag current_user_details.profile_image_url %>
-              <%= link_to current_user_details.name, "/" %></h2>
-              <p class="description"><%= current_user_details.description %></p>
-            </div>
+            <% if !current_user_details.nil? %>
+                <%= render "current_user_details" %>
+            <% end %>
   	    </div>
         <div class="header">
           <ul class="header-boards-navigation">
             <% @user.boards.each do |board| %>
-              <% active = @board.id.eql?(board.id) ? 'active' : '' %>
-                  <%= link_to board do %>
-                    <li class="<%= active %> board-<%= board.id %>"> <%= board.name %></li>
-                  <% end %>
+              <%= render "board_link", active_board: @board, this_board: board %> 
             <% end %>
             <!--
-            <li class="new-board inactive">
-                <%= form_tag boards_path do %>
-                    <%= text_field_tag :name, params[:name], :placeholder => "Name your board" %>
-                    <%= submit_tag %>
-                <% end %>
-            </li>
-            !-->
             <a href="#!" onclick="toggle_new_board()"><li class="add-board">Create a new board</li></a>
+
+            <% form_tag boards_path do %>
+              <%= text_field_tag :name, params[:name], :placeholder => "Name your board.." %>
+              <%= submit_tag %>
+            <% end %>
+            !-->
           </ul>
         </div>
         <% if @board.quotes.count > 1 %>
@@ -174,15 +42,13 @@
     	        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
     	     </div>
     	   <% end %>
-
+          <ol class="quotes-container js-masonry">
+                <% if !@quotes.nil? %>
+                     <% @quotes.each do |quote| %>
+                          <%= render :partial => 'quote', locals: { quote: quote } %>
+                     <% end %>
+                <% end %>
+          </ol>
   <!-- END OF FORM !-->
   <% end %>
-
-  <ol class="quotes-container js-masonry">
-        <% if !@quotes.nil? %>
-             <% @quotes.each do |quote| %>
-                  <%= render :partial => 'quote', locals: { quote: quote } %>
-             <% end %>
-        <% end %>
-  </ol>
 </div>

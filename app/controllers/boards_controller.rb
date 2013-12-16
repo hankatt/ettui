@@ -34,14 +34,11 @@ class BoardsController < ApplicationController
         @board = Board.find(params[:id])
         @quotes = @board.complex_find_by(params)
 
-        
-
          # Get a list of all sources for this users quotes
         @sources = Source.where(:id => @board.quotes.pluck(:source_id))
 
         respond_to do |format|
             format.html # show.html.erb
-            format.js # show.js.erb
             format.json { render json: @quotes }
         end
     end

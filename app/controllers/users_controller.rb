@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         @user.boards << Board.create({ user_id: @user.id, name: "My board" })
 
         # What happens after the save is complete
-        format.html { redirect_to boards_intro_path, :notice => "You successfully signed up." }
+        format.html { redirect_to boards_path, :notice => "You successfully signed up." }
       else
         format.html { render action: "new", :notice => "A user with that email address already exists. If it's you, please try the login page." }
         format.json { render json: @user.errors, status: :unprocessable_entity }

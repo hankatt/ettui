@@ -29,13 +29,6 @@ $(document).on('ready', function() {
         itemSelector: '.quote'
     });
 
-    /*  
-        Whenever the user start to write, it should go into the search field. 
-    */
-    $(window).on('keypress', function(event) {
-        //$("#search").focus();
-    });
-
     $(".email.signup.button").on('click', function() {
         $(this).toggleClass('active');
         $(".signup-with-email").fadeToggle('fast');
@@ -65,8 +58,8 @@ $(document).on('ready', function() {
         Use keydown event to trigger backspace's, so the results updates
         as the search query is shortened. 
     */
-    $("#search-filter").on('keyup', function(event) {
-        search_query = $("#search").val();
+    $("#search-filter .search").on('keyup', function(event) {
+        search_query = $(this).val();
         quotes = $(".quote .quote-content");
 
         quotes.unhighlight().highlight(search_query);
@@ -91,29 +84,7 @@ $(document).on('ready', function() {
 
         // Initiate variable to track active board for the new board toggle feature
         active_board = $(".header-boards-navigation li.active");
-
-        $(".update-board-button").click(function() {
-            console.log($(this).data('role'));
-            if($(this).data('role') === 'edit') {
-                parent = $(this).siblings('a');
-                parent.attr('contenteditable', true);
-
-                $(this).data('role', 'save');
-                $(this).text('SAVE');
-            } else if($(this).data('role') === 'save') {
-                update_board_name();
-
-                $(this).data('role', 'edit');
-                $(this).text('EDIT');
-            }
-        });
 });
-
-/*  Makes sure the sidebar container has full height 
-    (can't set height due to being floated) */
-$(document).on('ready load resize change', function() {
-    $(".sidebar-container").css('height', $(window).height());
-}); 
 
 /* Performs the AJAX search.
 

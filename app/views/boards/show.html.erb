@@ -3,24 +3,86 @@
     <div class="boards-wrapper blurred">
 <% else %>
     <div class="boards-wrapper">
-<% end %>
-<%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
+<% end %> 
+    <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
+
+
+
+        <!--    
+        ############
+
+        SIDEBAR
+
+        ############
+        !-->
   	    <div class="sidebar-container">
-            <li class="header-logo">
-              <h1>Noted</h1>
-            </li>
-  	        <h2 class="filters-title">Filters</h2>
-  	        <!--<button class="filters-reset" type="reset">Reset</button>!-->
-  	        <ol class="filters-list">
-  	           <% @sources.each do |source| %>
-  	                <%= render :partial => 'source', locals: { source: source } %>
-  	           <% end %>
-  	        </ol>
-            <% if !current_user_details.nil? %>
-                <%= render "current_user_details" %>
-            <% end %>
+            <div class="sidebar-content">
+                <button class="menu-icon"></button>
+                <div class="filters-container">
+          	        <h4 class="filters-title">Filters</h4>
+                    <ol class="filters-list">
+          	           <% @sources.each do |source| %>
+          	                <%= render :partial => 'source', locals: { source: source } %>
+          	           <% end %>
+          	        </ol>
+                </div>
+
+                <!--    
+                USER DETAILS
+                                      
+                <% if !current_user_details.nil? %>
+                    <%= render "current_user_details" %>
+                <% end %>
+                !-->
+            </div>
   	    </div>
-        <div class="header">
+
+
+
+        <!--    
+        ############
+
+        CONTENT W/ QUOTES
+
+        ############
+        !-->
+        <div class="content-container">
+            <!-- 
+                    SEARCH
+                                !-->
+            <div class="quote-options">
+              <div class="search-container">
+                  <%= image_tag "search-white.png" %>
+                  <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for…?", :class => "search" %>
+                  <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+              </div>
+            </div>
+
+
+
+            <!-- 
+                    QUOTES
+                                !-->
+            <ol class="quotes-container">
+              <% if !@quotes.nil? %>
+                  <% @quotes.each do |quote| %>
+                      <%= render :partial => 'quotes/quote', locals: { quote: quote } %>
+                  <% end %>
+              <% end %>
+            </ol>
+        </div>
+
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
+<!--
           <ul class="header-boards-navigation">
             <% @user.boards.each do |board| %>
               <%= render "board_link", active_board: @board, this_board: board %> 
@@ -32,23 +94,5 @@
               <%= text_field_tag :name, params[:name], :placeholder => "Name your board.." %>
               <%= submit_tag %>
             <% end %>
-            !-->
           </ul>
-        </div>
-        <% if @board.quotes.count > 1 %>
-    	    <div class="search-container">
-    	        <%= image_tag "search.png" %>
-    	        <%= text_field_tag :search, params[:search], :placeholder => "Search within #{@board.name.downcase}?", :class => "search" %>
-    	        <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-    	     </div>
-    	   <% end %>
-          <ol class="quotes-container js-masonry">
-                <% if !@quotes.nil? %>
-                     <% @quotes.each do |quote| %>
-                          <%= render :partial => 'quote', locals: { quote: quote } %>
-                     <% end %>
-                <% end %>
-          </ol>
-  <!-- END OF FORM !-->
-  <% end %>
-</div>
+          !-->

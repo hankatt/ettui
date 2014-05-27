@@ -1,20 +1,23 @@
 <li class="quote clearfix q-<%= quote.id %>">
 
 <!-- Dynamically size quotes text depending on content size !-->
-<% if quote.text.length < 132 %>
+<% if quote.text.length < 111 %>
   <% font_size = "big" %>
-<% elsif quote.text.length > 243 %>
+<% elsif quote.text.length > 193 %>
   <% font_size = "small" %>
 <% end %>
 
     <div class="quote-metadata">
-      <div class="source">
-          <%= image_tag quote.source.favicon, :class => "favicon" %>
-          <%= link_to quote.source.hostname, quote.url %>
-      </div>
+        <div class="quote-source">
+            <%= image_tag quote.source.favicon, :class => "source-favicon" %>
+            <h4 class="source-url"><%= link_to quote.source.hostname, quote.url %></h4>
+        </div>
+        <div class="quote-date">
+            <%= quote.created_at.strftime("%F") %>
+        </div>
     </div>
-    <div class="quote-content">
-      <p class="<%= font_size %>"><%= quote.text %></p>
+    <div class="quote-content <%= font_size %>">
+      <p><%= quote.text %></p>
     </div>
     <!--
     <div class="quote-share">

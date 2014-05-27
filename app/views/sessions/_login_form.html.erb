@@ -5,7 +5,5 @@
 	<div class="field">
 		<%= password_field_tag :password, params[:id], :placeholder => "Password" %>
 	</div>
-	<div class="actions">
-		<%= submit_tag "Login to Noted", :id => "submit_login" %>
-	</div>
+		<%= submit_tag "Login using email", :id => "submit_login", :class => "button" %>
 <% end %>

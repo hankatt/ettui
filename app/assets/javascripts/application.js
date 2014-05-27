@@ -22,17 +22,34 @@ $(document).on('ready', function() {
       Initialize Masonry 
     */
 
-    var $container = $('.quotes-container');
-    // initialize
-    $container.masonry({
-        columnWidth: 520,
-        itemSelector: '.quote'
+    if($(".content-container").outerHeight() > $(window).height())
+        $(".sidebar-container").height($(".content-container").outerHeight());
+
+    $(".sidebar-container").mouseenter(function() {
+        if(!$("#search-filter").hasClass('active'))
+            $("#search-filter").addClass('active');
     });
 
-    $(".email.signup.button").on('click', function() {
-        $(this).toggleClass('active');
-        $(".signup-with-email").fadeToggle('fast');
+    $(".sidebar-container").mouseleave(function() {
+        if($("#search-filter").hasClass('active'))
+            $("#search-filter").removeClass('active');
     });
+
+    /*
+        NEXT STEP IN INTRODUCTION STEPS
+    */
+
+    $(".tutorial-btn").on('click', function() {
+        if($(this).hasClass('next')) {
+            $(".tutorial-viewport").scrollLeft(400);
+            $(".tutorial-btn.next p").html('Continue to the app');
+            $(this).removeClass('next');
+        } else {
+            $(this).attr('href', '/users/done').attr('data-remote', 'true');
+            $(".intro-container").addClass('complete').delay(670).remove();
+            $(".boards-wrapper").removeClass('blurred');
+        }
+    })
 
     /*  
         Introduction page 
@@ -57,7 +74,7 @@ $(document).on('ready', function() {
     /*  
         Use keydown event to trigger backspace's, so the results updates
         as the search query is shortened. 
-    */
+    
     $("#search-filter .search").on('keyup', function(event) {
         search_query = $(this).val();
         quotes = $(".quote .quote-content");
@@ -81,10 +98,11 @@ $(document).on('ready', function() {
         $(".menu-button").on('click', function() {
             $(".sidebar, .filters-container").toggleClass('active');
         });
-
-        // Initiate variable to track active board for the new board toggle feature
-        active_board = $(".header-boards-navigation li.active");
 });
+
+$(window).scroll(function() {
+    $(".sidebar-content").css('margin-top', $(window).scrollTop());
+})
 
 /* Performs the AJAX search.
 
@@ -117,8 +135,3 @@ function update_board_name() {
 }
 
 */
-
-function toggle_new_board() {
-    active_board.toggleClass('active');
-    $("li.new-board").toggleClass('inactive');
-}

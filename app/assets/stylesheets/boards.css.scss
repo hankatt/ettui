@@ -1,3 +1,332 @@
-.tutorial-steps-triangle {
-	background: image-url('arrow-down.png') no-repeat;
+$color-red: #70142a;
+$color-red-dark: #4d0f1e;
+$color-black: #333;
+$color-gray: #999;
+$color-white: #fff;
+$color-border-gray: #ddd;
+
+
+
+/*    
+############
+
+GENERAL LAYOUT
+
+############
+*/
+
+#search-filter {
+	height: 100%;
+	font-size: 0; /* To remove spacings added by inline-block attrib. */
+
+	margin-left: 80px;
+	transition: margin-left 0.23s;
 }
+
+#search-filter.active {
+	margin-left: 320px;
+}
+
+.sidebar-container, .content-container {
+	display: inline-block;
+}
+
+.sidebar-container {
+	width: 320px;
+	height: 100%;
+	margin-left: -320px;
+	padding: 40px 44px;
+	background-color: $color-white;
+}
+
+.content-container {
+	width: 100%;
+	background-color: $color-red;
+	padding: 30px 70px 140px 70px;
+}
+
+/*    
+############
+
+SIDEBAR SPECIFICS
+
+############
+*/
+
+.sidebar-container:hover .menu-icon {
+	opacity: 0;
+	transition: opacity .23s;
+}
+
+.menu-icon {
+	background: image-url('menu-icon-red.png') no-repeat;
+	width: 18px;
+	height: 15px;
+	border: none;
+	background-size: 100%;
+	float: right;
+	margin-bottom: 40px;
+	position: fixed;
+	left: 31px;
+	opacity: 1;
+	transition: opacity .23s;
+}
+
+.sidebar-container:hover .filters-container {
+	opacity: 1;
+	transition: opacity	.23s;
+}
+
+.filters-container {
+	opacity: 0;
+	transition: opacity .23s;
+}
+
+.filters-title {
+	margin-bottom: 11px;
+	color: $color-black;
+	font-size: 22px;
+	line-height: 24px;
+	letter-spacing: 1px;
+}
+
+.filters-list-button {
+	background: none;
+	border: none;
+	padding: 0;
+	color: $color-gray;
+	font-size: 16px;
+	line-height: 26px;
+	margin-left: 7px;
+}
+
+.filters-list {
+	border-top: solid 1px $color-border-gray;
+	padding-top: 20px;
+}
+
+.filters-list li {
+	font-size: 0;
+}
+
+.filters-list li.active .filters-list-button {
+	color: #70142a;
+}
+
+.filters-list li + li {
+	margin-top: 10px;
+}
+
+
+.filters-list .source-favicon {
+	/* Styling */
+	width: 24px;
+	height: 24px;
+	background-size: contain;
+
+	/* Positioning */
+	display: inline-block;
+
+	/* Experimental blend mode */
+	background-blend-mode: multiply, normal; /* Chrome Canary */
+	-webkit-background-blend-mode: multiply, normal; /* WebKit Nightly */
+}
+
+.filters-list input { 
+	display: none; 
+}
+
+
+
+/*    
+############
+
+SEARCH SPECIFICS
+
+############
+*/
+
+.search-container {
+	border-bottom: solid 1px $color-red-dark;
+	margin: 0 0 20px 0;
+	padding: 0 0 6px 0;
+	max-width: 548px;
+	width: 100%;
+}
+
+.search-container > img {
+	width: 24px;
+	vertical-align: baseline;
+	position: relative;
+	top: 4px
+}
+
+.search-container .search {
+	border: none;
+	background: transparent;
+	padding: 2px 10px 0 10px;
+	width: 300px;
+	color: $color-white;
+	font-size: 22px;
+}
+
+.search-container .search::-webkit-input-placeholder {
+	color: $color-red-dark;
+}
+
+.search-container .submit {
+	display: none;
+}
+
+/*    
+############
+
+INTRO SPECIFICS
+
+############
+*/
+
+
+	.intro-container {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		z-index: 1;
+		overflow-y: scroll;
+	}
+
+	.intro-container.complete {
+		opacity: 0;
+		transition: opacity .67s;
+	}
+
+	.intro-container.overlay {
+		background-color: rgba(0, 0, 0, .7);
+	}
+
+	.tutorial-wrapper .button {
+		background-color: #fff;
+		color: #70142a;
+		width: 304px;
+		margin: 32px auto 0 auto;
+	}
+
+	.boards-wrapper {
+		height: 100%;
+		-webkit-filter: blur(0px);
+		-moz-filter: blur(0px);
+		-o-filter: blur(0px);
+		-ms-filter: blur(0px);
+		filter: blur(0px);
+		opacity: 1;
+		-webkit-transform: scale(1) translateY(0px);
+
+		-webkit-transition: all .67s cubic-bezier(.33,.61,.58,1);
+	}
+
+	.boards-wrapper.blurred {
+		-webkit-filter: blur(2px);
+		-moz-filter: blur(2px);
+		-o-filter: blur(2px);
+		-ms-filter: blur(2px);
+		filter: blur(2px);
+		opacity: 0.6;
+		-webkit-transform: scale(0.97) translateY(42px);
+	}
+
+	.intro-wrapper {
+		width: 720px;
+		height: 100%;
+		background-color: $color-red;
+		color: $color-white;
+		text-align: center;
+		margin: 0 auto;
+		padding: 64px 160px 0 160px;
+		box-shadow: 0 0 140px #000;
+	}
+
+	.intro-title {
+		margin-bottom: 50px;
+		line-height: 1.8em;
+	}
+
+	.tutorial-wrapper {
+		width: 400px;
+		margin: 0 auto;
+		border-top: solid 4px #4d0f1e;
+		border-bottom: solid 4px #fff;
+		padding-bottom: 32px;
+	}
+
+	.tutorial-btn {
+		color: #fff;
+		margin: 32px 0 0 0;
+		padding: 0;
+		border: none;
+		border-bottom: solid 4px #4d0f1e;
+		float: right;
+		background-color: transparent;
+		font-size: 1.4375em;
+	}
+
+	.tutorial-btn img {
+		position: relative;
+		top: 8px;
+		margin-left: 8px;
+	}
+
+	.tutorial-btn p {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 1em;
+	}
+
+	.tutorial-wrapper h3 {
+		width: 400px;
+		margin: 0 auto;
+		padding-top: 32px;
+	}
+
+	.tutorial-viewport {
+		width: 400px;
+		overflow: hidden;
+	}
+
+	.tutorial-content div {
+		float: left;
+		width: 400px;
+	}
+
+	.tutorial-content {
+		width: 800px;
+	}
+
+	.tutorial-wrapper .button + h3 {
+		margin-top: 64px;
+	}
+
+	.tutorial-wrapper p {
+		color: #ef9bb9;
+	}
+
+	.tutorial-wrapper h3 + p {
+		margin-top: 20px;
+	}
+
+	.quote-sample {
+		width: 400px;
+		margin: 0 auto 30px auto;
+		text-align: justify;
+		padding: 28px 0;
+	}
+
+	blockquote {
+		background-color: $color-red-dark;
+		padding: 32px;
+		color: white;
+		text-align: left;
+		margin: 32px 0 0 0;
+		font-size: 1.2em;
+		line-height: 1.619em;
+	}

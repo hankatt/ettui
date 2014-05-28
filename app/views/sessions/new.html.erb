@@ -1,14 +1,13 @@
-<div class="signup-wrapper">
-	<div class="signup-container">
-		<h1>Hey there, welcome back.</h1>
-		<%= link_to "Login using Twitter", "/auth/twitter?image_size=original", class: "twitter button" %>
-		<p class="supportive">Or using email</p>
-		<%= render 'login_form' %>
-		<footer>
-			<a href="#">About</a>
-			<a href="#">Press</a>
-		</footer>
-	</div>
-</div>
-<div class="notedapp-splash">
-</div>
+<%= render "shared/header" %>
+  <div class="content-column">
+    <div class="content-wrapper yellow">
+      <h1>Hey there, welcome back.</h1>
+      <h3>You can log in through Twitter or using your e-mail address.</h3>
+      <%= link_to "/auth/twitter?image_size=original", class: "twitter button" do %>
+        <span class="socicon">a</span>Log in using Twitter
+      <% end %>
+      <h3 class="supportive">Log in using e-mail</h3>
+      <%= render 'login_form' %>
+    </div>
+  </div>
+<!--<%= render "shared/footer" %>!-->

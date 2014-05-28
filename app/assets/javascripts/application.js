@@ -22,8 +22,11 @@ $(document).on('ready', function() {
       Initialize Masonry 
     */
 
-    if($(".content-container").outerHeight() > $(window).height())
+    if($(".content-container").outerHeight() > $(window).height()) {
         $(".sidebar-container").height($(".content-container").outerHeight());
+        $(".content-container").height($(window).height());
+    }
+
 
     $(".sidebar-container").mouseenter(function() {
         if(!$("#search-filter").hasClass('active'))

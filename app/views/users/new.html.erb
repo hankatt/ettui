@@ -1,29 +1,29 @@
-<div class="signup-wrapper">
-  <div class="signup-container">
-    <h1>Signing up.</h1>
-    <%= link_to "Sign up with Twitter", "/auth/twitter?image_size=original", class: "twitter button" %>
-    <p class="supportive">Or using email</p>
-    <div class="signup-with-email">
-      <%= form_for @user do |f| %>
-        <%= f.hidden_field :new_user, :value => true %>
-        <div class="field">
-          <%= f.text_field :email, :placeholder => "Electronic mail address" %>
-        </div>
-        <div class="field">
-          <%= f.password_field :password, :placeholder => "Password" %>
-        </div>
-        <div class="field">
-          <%= f.password_field :password_confirmation, :placeholder => "Password again" %>
-        </div>
-        <div class="actions">
-          <%= f.submit "Create my account", :class => "button", :id => "submit_signup" %>
-        </div>
+<%= render "shared/header" %>
+  <div class="content-column">
+    <div class="content-wrapper yellow">
+      <h1>Signing up.</h1>
+      <h3>You can sign up through Twitter or using your e-mail address.</h3>
+      <%= link_to "/auth/twitter?image_size=original", class: "twitter button" do %>
+        <span class="socicon">a</span>Sign up using Twitter
       <% end %>
+      <h3 class="supportive">Sign up using e-mail</h3>
+      <div class="user-form">
+        <%= form_for @user do |f| %>
+          <%= f.hidden_field :new_user, :value => true %>
+          <div class="field">
+            <%= f.text_field :email, :placeholder => "Electronic mail address" %>
+          </div>
+          <div class="field">
+            <%= f.password_field :password, :placeholder => "Password" %>
+          </div>
+          <div class="field">
+            <%= f.password_field :password_confirmation, :placeholder => "Password again" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Create your account", :class => "signup button" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <%= link_to "Existing user? Login here.", login_path, :class => "login" %>
-    <footer>
-      <a href="#">About</a>
-      <a href="#">Press</a>
-    </footer>
   </div>
-</div>
+<!--<%= render "shared/footer" %>!-->

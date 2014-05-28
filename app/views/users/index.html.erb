@@ -1,12 +1,11 @@
-<div class="signup-wrapper">
-  <div class="signup-container">
-    <h1>A simple tool that helps you keep track of memorable reads.</h1>
-    <%= link_to "Sign up using Twitter", "/auth/twitter?image_size=original", class: "twitter button" %>
-    <%= link_to "Sign up using your email", signup_path, class: "email button" %>
-    <%= link_to "Already have an account? Login here.", login_path, :class => "login" %>
-    <footer>
-      <a href="#">About</a>
-      <a href="#">Press</a>
-    </footer>
-  </div>
+<%= render "shared/header" %>
+<div id="introduction">
+    <div class="content-wrapper">
+        <h1>Organize and keep track of memorable reads.</h1>
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper orci eget enim sodales, et faucibus libero tempus.</h3>
+        <%= link_to "Get started", signup_path, :class => "button" %>
+        <br/>
+        <p>Already have an account? </p><%= link_to "Login here.", login_path, :class => "login" %>
+    </div>
 </div>
+<%= render "shared/footer" %>

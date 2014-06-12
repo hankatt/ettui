@@ -1,4 +1,19 @@
 <footer>
-    <a href="#">About</a>
-    <a href="#">Press</a>
+	<div class="row">
+	    <div class="col span_10">
+	        <p>Designed and developed by <%= link_to "Henrik Wiberg", "http://www.henrikwiberg.com" %> (2014)</p>
+		</div>
+	     <div class="col span_1">
+	        <%= link_to "Log in", login_path %>
+	    </div>
+	    <div class="col span_1">
+	        <%= link_to "Sign up", signup_path %>
+	    </div>
+	    <div class="col span_1">
+	        <%= link_to "About", signup_path %>
+	    </div>
+	    <div class="col span_1">
+	        <%= link_to "Help", signup_path %>
+	    </div>
+	</div>
 </footer>

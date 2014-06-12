@@ -44,160 +44,205 @@ div.error_explanation ul {
 
 */
 
-.content-wrapper {
-	width: 70%;
-	min-width: 296px;
-	max-width: 768px;
-	margin: 0 auto;
+$color-red: #97496a;
+$color-red-2: #682944;
+$color-logo: #fff;
+$primary-text-color-on-red: #fff;
+$secondary-text-color-on-red: #e2bccc;
+$primary-text-color-on-white: #333;
+$secondary-text-color-on-white: #8d8d8d;
+$link-color-on-white: #893c5c;
+$link-color-on-red: #fff;
+
+@mixin linear-gradient($angle, $color-1, $color-2) {
+	background: $color-1; /* Old browsers */
+	background: -moz-linear-gradient($angle,  $color-1 0%, $color-2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,$color-1), color-stop(100%,$color-2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient($angle,  $color-1 0%,$color-2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient($angle,  $color-1 0%,$color-2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient($angle,  $color-1 0%,$color-2 100%); /* IE10+ */
+	background: linear-gradient($angle,  $color-1 0%,$color-2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-1', endColorstr='$color-2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.content-wrapper h1 + h3 {
-	width: 70%;
-	color: #7d7d7d;
+$gradient-color-1: #8a3d5d;
+$gradient-color-2: #79274a;
+header + .background {
+	padding-top: 65px; /* Same as header height */
+
+	@include linear-gradient(225deg, $gradient-color-1, $gradient-color-2);
+
+	/* Receive shadow from header */
+	position: relative;
+	z-index: 0;
+
+	/* Cast own shadow inside */
+	box-shadow: inset 0 -5px 23px #542135;
 }
 
-.content-column {
-	width: 70%;
-	height: 100%;
-	min-width: 296px;
-	max-width: 768px;
-	margin: 0 auto;
-	padding: 72px 0;
-	background-color: #faf5e8;
+.background.splash-container {
+	height: 466px;
 }
 
-header, #introduction, footer, .content-column {
-	text-align: center;
+.background.signup {
+	height: 643px;
+}
+
+.background.signin {
+	height: 543px;
+}
+
+.background.white {
+	background-color: #fffcf5;
 }
 
 header {
-	height: 96px;
-	width: 100%;
-	padding: 24px 0 24px 0;
-	border-bottom: solid 1px #4a0d1b;
-	display: inline-block;
-	background-color: #70142a;
+	background: image-url('header-bg.jpg');
+	background-color: #5e223a; /* If background image does not work */
+	height: 65px;
+
+	/* Shadow */
+	box-shadow: 0 2px 7px #542135;
+	border-bottom: solid 1px #4d1e31;
+	position: relative;
+	z-index: 1;
 }
 
-header .header-links-container a {
-	color: #fff;
-	line-height: 58px;
+footer a, footer p {
+	font-size: 15px;
+	vertical-align: top;
 }
 
-
-header .header-links-container a.primary {
-	border: solid 3px #4a0d1b;
-	padding: 12px 20px 7px 20px;
-	border-radius: 25px;
+footer p {
+	color: $secondary-text-color-on-white;
 }
 
-header .logo-container a {
-	float: left;
-	margin-left: 0;
+footer a {
+	color: $link-color-on-white;
 }
 
-header .header-links-container {
-	float: right;
+footer > .row {
+	border-top: solid 1px #ddd;
+	padding-top: 23px;
+	margin-top: 65px;
+	padding-bottom: 23px;
+	margin-bottom: 65px;
 }
 
-#introduction {
-	width: 100%;
-	background-color: #faf5e8;
-	padding: 72px 0;
+.logo-container { padding-top: 15px; }
+.logo-container svg { width: 69px; }
+.logo-container path { fill: $color-logo; }
+
+.splash h2, .splash p, .login-signup h2 {
+	color: $secondary-text-color-on-red;
+}
+
+.header-link a, .splash h1, .splash a, .login-signup h1 {
+	color: $primary-text-color-on-red;
+}
+
+.header-link a {
+	line-height: 72px;
+}
+
+.splash h2 {
+	font-size: 19px;
+	margin-top: 11px;
+}
+
+.call-to-action, .form-container {
+	margin-top: 65px;
+}
+
+.button, .actions input {
+	border-radius: 8px;
+	border: solid 4px #5a1e37;
+	padding: 14px 24px !important;
+}
+
+.call-to-action a {
+	border-bottom: solid 4px #5a1e37;
+	padding-bottom: 6px;
+}
+
+.call-to-action p {
+	font-style: italic;
+	margin: 0 16px;
+}
+
+.usps {
+	padding: 63px 0;
+	overflow: auto;
+}
+
+.usps .vertical-line {
+	height: 104px !important;
+	padding: 23px 0;
+}
+
+.usp {
 	text-align: center;
 }
 
-#introduction .button {
-	margin: 24px auto;
-	height: auto;
-	color: #fff;
-	background-color: #70142a;
-	border: solid 4px #70142a;
-	border-radius: 30px;
+.usp p {
+	color: $secondary-text-color-on-white;
+	margin-top: 13px;
+	font-size: 15px;
 }
 
-#introduction p, #introduction a {
-	display: inline;
+.login-signup {
+	text-align: center;
 }
 
-header a, footer a, #introduction a {
-	margin-left: 16px;
+.login-signup-container .vertical-line {
+	height: 284px;
+	background-color: #5a1c35;
 }
 
-#introduction a, footer a {
-	border-bottom: solid 3px rgba(0, 0, 0, .1);
+.login-signup > .col {
+	margin-bottom: 65px;
 }
 
-footer {
-	margin-top: 24px;
-}
-
-form#new_post {
-	width: 90%;
-	max-width: 480px;
-	min-width: 248px;
-}
-.signup-container form input {
+.login-signup .field input {
 	width: 100%;
-	text-align: center;
-	height: 52px;
-}
-
-.user-form .field input {
-	padding: 8px 16px 2px 16px;
-	font-size: 1.4375em;
-	text-align: center;
+	outline: none;
 	border: none;
-	background: #e7e0cb;
-	box-shadow: inset 0 1px 5px #c6b995;
-	border-radius: 3px;
-	width: 100%;
-}
-
-.field + .field, .field + .actions {
-	margin-top: 16px;
-}
-
-.button {
-	background-color: rgba(112, 20, 42, 0.7);;
-	color: #fff;
-	font-family: "Soleil";
-	padding: 16px 32px 15px 32px;
+	padding: 12px 13px 12px 13px;
+	background-color: #5a1e37;
 	text-align: center;
-	text-transform: uppercase;
-	font-size: 14px !important;
-	font-weight: bold;
-	border-radius: 2px;
-	border: none;
-	border-bottom: solid 3px rgba(112, 20, 42, 1);;
-}
-
-.button.twitter {
-	background-color: #55acee;
-	border-bottom: solid 3px #3a74a1;
-}
-
-h3.supportive {
-	margin: 72px 0 24px;
+	margin-bottom: 11px;
 	font-weight: 400;
 }
 
-@media (min-width: 320px) {
-	header {
-		padding: 24px;
-	}
-
-	header .header-links-container {
-		margin-right: 24px; 
-	}
+.login-signup .actions input {
+	margin-bottom: 31px;
 }
 
-@media (min-width: 344px) {
-	header {
-		padding: 24px 0;
-	}
+.input-container p, .input-container a {
+	vertical-align: top;
+	font-size: 15px;
+}
+.input-container p {
+	color: $secondary-text-color-on-red;
+}
+.input-container a {
+	color: $link-color-on-red;
+}
 
-	header .header-links-container {
-		margin-right: 0; 
-	}
+.input-container h3 {
+	font-size: 22px;
+	margin-bottom: 24px;
+	color: white;
+}
+
+.login-signup .actions input {
+	color: $primary-text-color-on-red;
+}
+
+.login-signup .twitter.button {
+	font-size: 19px;
+	font-weight: 600;
+	border: solid 4px #55acee;
+	background-color: #55acee;
+	width: 100%;
 }

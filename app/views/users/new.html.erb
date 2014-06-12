@@ -1,29 +1,27 @@
 <%= render "shared/header" %>
-  <div class="content-column">
-    <div class="content-wrapper yellow">
-      <h1>Signing up.</h1>
-      <h3>You can sign up through Twitter or using your e-mail address.</h3>
-      <%= link_to "/auth/twitter?image_size=original", class: "twitter button" do %>
-        <span class="socicon">a</span>Sign up using Twitter
-      <% end %>
-      <h3 class="supportive">Sign up using e-mail</h3>
-      <div class="user-form">
-        <%= form_for @user do |f| %>
-          <%= f.hidden_field :new_user, :value => true %>
-          <div class="field">
-            <%= f.text_field :email, :placeholder => "Electronic mail address" %>
-          </div>
-          <div class="field">
-            <%= f.password_field :password, :placeholder => "Password" %>
-          </div>
-          <div class="field">
-            <%= f.password_field :password_confirmation, :placeholder => "Password again" %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Create your account", :class => "signup button" %>
-          </div>
-        <% end %>
+<div class="background signup login-signup-container">
+    <div class="row login-signup">
+      <div class="col span_14">
+        <h1>Hello and welcome.</h1>
+        <h2>Sign up to get your personal bookmarklet.</h2>
+      </div>
+      <div class="login-signup-container">
+        <div class="col span_2">&nbsp;</div>
+        <div class="col input-container">
+          <h3>Sign up using email:</h3>
+          <%= render "form" %>
+        </div>
+        <div class="col span_2">
+          <div class="vertical-line">&nbsp;</div>
+        </div>
+        <div class="col input-container">
+          <h3>Sign up using Twitter:</h3>
+          <%= link_to "/auth/twitter?image_size=original", class: "twitter button" do %>
+            <span class="socicon">a</span>Connect with Twitter
+          <% end %>
+        </div>
+        <div class="col span_2">&nbsp;</div>
       </div>
     </div>
-  </div>
-<!--<%= render "shared/footer" %>!-->
+</div>
+<%= render "shared/footer" %>

@@ -12,6 +12,7 @@
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Create my account", :class => "button" %>
   </div>
+  <p>Looking to sign up? <%= link_to "Sign up here", signup_path %></p>
 <% end %>

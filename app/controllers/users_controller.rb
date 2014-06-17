@@ -1,4 +1,20 @@
 class UsersController < ApplicationController
+
+  def intro
+      @user = User.find(session[:user_id]) unless session[:user_id].nil?
+
+      respond_to do |format|
+          if @user && @user.new_user
+              format.html # show.html.erb
+              flash[:notice] = "Logged in."
+          elsif @user
+              format.html { redirect_to boards_path }
+          else
+              format.html { redirect_to root_url }
+          end
+      end
+  end
+
   # GET /users/new
   # GET /users/new.json
   def new
@@ -33,7 +49,7 @@ class UsersController < ApplicationController
         @user.boards << Board.create({ user_id: @user.id, name: "My board" })
 
         # What happens after the save is complete
-        format.html { redirect_to boards_path, :notice => "You successfully signed up." }
+        format.html { redirect_to intro_path, :notice => "You successfully signed up." }
       else
         format.html { render action: "new", :notice => "A user with that email address already exists. If it's you, please try the login page." }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -46,7 +62,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes!(:new_user => false)
-        format.js # users/done.js.erb
+        format.html { redirect_to boards_path }
       else
         format.html { redirect_to login_path }
       end

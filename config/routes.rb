@@ -4,9 +4,10 @@ Well::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  get "users/intro" => "users#intro", :as => "intro"
   get 'quotes/add' => "quotes#remote_create"
 
-  get 'users/done' => "users#done"
+  get 'users/done' => "users#done", :as => "continue"
   
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 

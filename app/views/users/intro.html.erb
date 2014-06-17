@@ -1,14 +1,15 @@
-<div class="intro-container overlay">
-    <div class="intro-wrapper">
-      <h1 class="intro-title">Welcome.<br/>Let’s get you started.</h1>
-        <div class="tutorial-wrapper">
-          <div class="tutorial-viewport">
-            <div class="tutorial-content">
-              <div>
-                <h3>
-                  Start by dragging the bookmarklet into your bookmarks bar.
-                </h3>
-                <a class="button bookmarklet" href='javascript:(function(){
+<%= render "shared/header" %>
+<div class="background intro login-signup-container">
+    <div class="row login-signup">
+      <div class="col span_14">
+        <h1>Hello <%= current_user.name %>.</h1>
+        <h2>Let's get you started.</h2>
+      </div>
+      <div class="login-signup-container">
+        <div class="col input-container">
+          <h3>First install your bookmarklet</h3>
+          <p>Drag the bookmarklet button below into your bookmarks bar above.</p>
+          <a class="button bookmarklet" href='javascript:(function(){
                   well = function() {
                     log = true;
 
@@ -100,20 +101,26 @@
                   } else {
                     well();
                   }})()'>
-                  NOTED BOOKMARKLET
-                </a>
-              </div>
-              <div>
-                <h3>
-                  Highlight the quote below and click on your bookmarklet to give it a try.
-                </h3>
-                <blockquote>
-                  Perfection is unattainable, in fact, so is the notion that we’ve ever “arrived” in anything. If that is the standard, you’ll get frustrated, doubt yourself and quit.
-                </blockquote>
-              </div>
-          </div>
+                  NOTED BOOKMARKLET</a>
         </div>
+        <div class="col span_1">
+          <div class="vertical-line">&nbsp;</div>
+        </div>
+        <div class="col input-container">
+          <h3>Give it a try</h3>
+          <p>Highlight the quote below then click on your bookmarklet to try it out.</p>
+          <blockquote>
+            Perfection is unattainable, in fact, so is the notion that we’ve ever “arrived” in anything. If that is the standard, you’ll get frustrated, doubt yourself and quit.
+          </blockquote>
+        </div>
+        <div class="col span_1">
+          <div class="vertical-line">&nbsp;</div>
+        </div>
+        <div class="col input-container">
+          <h3>Continue to your dashboard</h3>
+          <%= link_to "Continue to my board", continue_path, :class => "button" %>
       </div>
-      <a href="#!" class="tutorial-btn next"><p>Try bookmarklet</p><%= image_tag "arrow-16px.png" %></a>
     </div>
+  </div>
 </div>
+<%= render "shared/footer" %>

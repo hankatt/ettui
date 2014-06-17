@@ -1,9 +1,5 @@
-<% if current_user.new_user %>
-    <%= render "intro", current_user: current_user %>
-    <div class="boards-wrapper blurred">
-<% else %>
-    <div class="boards-wrapper">
-<% end %> 
+
+  <div class="boards-wrapper">
     <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
 
 

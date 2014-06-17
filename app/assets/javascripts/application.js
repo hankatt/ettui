@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-var active_board;
-
 $(document).on('ready', function() {
 
     /* 

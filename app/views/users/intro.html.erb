@@ -2,7 +2,7 @@
 <div class="background intro login-signup-container">
     <div class="row login-signup">
       <div class="col span_14">
-        <h1>Hello <%= current_user.name %>.</h1>
+        <h1>Hello <%= current_user.name || current_user.email %>.</h1>
         <h2>Let's get you started.</h2>
       </div>
       <div class="login-signup-container">

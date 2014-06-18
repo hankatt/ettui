@@ -1,4 +1,5 @@
 <%= form_for(@user) do |f| %>
+  <%= f.hidden_field :new_user, :value => true %>
   <div class="field">
     <%= f.text_field :email, :placeholder => "Electronic mail address" %>
     <p class="validation"><%= @user.errors[:email].first %></p>
@@ -14,5 +15,5 @@
   <div class="actions">
     <%= f.submit "Create my account", :class => "button" %>
   </div>
-  <p>Looking to sign up? <%= link_to "Sign up here", signup_path %></p>
+  <p>Looking to sign in? <%= link_to "Sign in here", login_path %></p>
 <% end %>

@@ -173,6 +173,21 @@ footer > .row {
 	padding: 14px 24px !important;
 }
 
+.button.bookmarklet {
+	background-color: #fff;
+	border-color: #fff;
+	color: $primary-text-color-on-white;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.button.primary {
+	background-color: rgb(150, 159, 70);
+	border-color: rgb(150, 159, 70);
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
 .call-to-action a {
 	border-bottom: solid 4px #5a1e37;
 	padding-bottom: 6px;

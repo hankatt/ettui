@@ -34,7 +34,7 @@
                                       return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
                                   };
 
-                        query     = "//notedapp.herokuapp.com/quotes/add?user_token=" +token +"&text=";
+                        query     = "//localhost:3000/quotes/add?user_token=" +token +"&text=";
 
                         script    = document.createElement("script");
                         script.src  = query + text + "&url=" + url + "&favicon=" + fi() + "&callback=status";
@@ -117,8 +117,10 @@
           <div class="vertical-line">&nbsp;</div>
         </div>
         <div class="col input-container">
-          <h3>Continue to your dashboard</h3>
-          <%= link_to "Continue to my board", continue_path, :class => "button" %>
+          <h3>You're good to go</h3>
+          <%= link_to continue_path, class: "primary button" do %>
+            CONTINUE TO MY DASHBOARD
+          <% end %>
       </div>
     </div>
   </div>

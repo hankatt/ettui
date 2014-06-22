@@ -21,7 +21,7 @@ javascript:(function(){
 		                  return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
 		              };
 
-		    query     = "//" +window.location.host +"/quotes/add?user_token=" +token +"&text=";
+		    query     = "//localhost:3000/quotes/add?user_token=" +token +"&text=";
 
 		    script    = document.createElement("script");
 		    script.src  = query + text + "&url=" + url + "&favicon=" + favicon() + "&callback=status";

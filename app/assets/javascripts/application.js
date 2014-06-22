@@ -20,12 +20,6 @@ $(document).on('ready', function() {
       Initialize Masonry 
     */
 
-    if($(".content-container").outerHeight() > $(window).height()) {
-        $(".sidebar-container").height($(".content-container").outerHeight());
-        $(".content-container").height($(window).height());
-    }
-
-
     $(".sidebar-container").mouseenter(function() {
         if(!$("#search-filter").hasClass('active'))
             $("#search-filter").addClass('active');
@@ -34,42 +28,6 @@ $(document).on('ready', function() {
     $(".sidebar-container").mouseleave(function() {
         if($("#search-filter").hasClass('active'))
             $("#search-filter").removeClass('active');
-    });
-
-    /*
-        NEXT STEP IN INTRODUCTION STEPS
-    */
-
-    $(".tutorial-btn").on('click', function() {
-        if($(this).hasClass('next')) {
-            $(".tutorial-viewport").scrollLeft(400);
-            $(".tutorial-btn.next p").html('Continue to the app');
-            $(this).removeClass('next');
-        } else {
-            $(this).attr('href', '/users/done').attr('data-remote', 'true');
-            $(".intro-container").addClass('complete').delay(670).remove();
-            $(".boards-wrapper").removeClass('blurred');
-        }
-    })
-
-    /*  
-        Introduction page 
-    */
-    $(".tutorial-steps-controls.next").on('click', function() {
-
-        //Else
-        $(".tutorial-steps-wrapper").animate({
-            right: 460
-        }, 670, $.easie(.33,.61,.58,1), function() {
-            $(".tutorial-steps-controls.next").attr('href', '/users/done').attr('data-remote', 'true');
-        });
-
-        $(".tutorial-steps-triangle").addClass('two')
-
-        //Switch active state to from step 1 to step 2
-        $(".tutorial-steps-list li.active").removeClass('active').addClass('done');
-        $(".tutorial-steps-list li.inactive").addClass('active').removeClass('inactive');
-        $(".tutorial-steps-controls.next").text('Continue');
     });
 
     /*  

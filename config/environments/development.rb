@@ -27,7 +27,7 @@ Well::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5 :: Remove when updating to Rails 4.0.0
 
   # Serve static assets
-  config.serve_static_assets = false
+  config.serve_static_assets = true
   
   # Do not compress assets
   # config.assets.compress = false :: Remove when updating to Rails 4.0.0

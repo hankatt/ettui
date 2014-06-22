@@ -13,7 +13,7 @@
             <h4 class="source-url"><%= link_to quote.source.hostname, quote.url %></h4>
         </div>
         <div class="quote-date">
-            <%= quote.created_at.strftime("%F") %>
+            <%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %>
         </div>
     </div>
     <div class="quote-content <%= font_size %>">

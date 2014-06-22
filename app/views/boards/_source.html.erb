@@ -1,5 +1,6 @@
-<li>
+<li class="sidebar-padding">
 	<%= check_box_tag "source_ids[]", source.id, false, :id => "source_ids_#{source.id}" %>
 	<div class="source-favicon" style="background-image: url('<%= source.favicon %>');"></div>
 	<button class="filters-list-button"><%= source.hostname.truncate(20) %></button>
+	<div class="source-count"><p><%= count_occurrences(source.id) %></p></div>
 </li>

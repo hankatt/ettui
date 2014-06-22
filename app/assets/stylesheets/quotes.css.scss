@@ -2,9 +2,20 @@
 	QUOTE COLORS
 */
 
-$color-alt-1: #bd4664;
-$color-alt-2: #bc5e75;
-$color-alt-3: #bc7788;
+$board-background: #8a3d5d;
+$sidebar-background: #fff;
+$color-red-2: #682944;
+$color-logo: #fff;
+$primary-text-color-on-red: #fff;
+$secondary-text-color-on-red: #e2bccc;
+$primary-text-color-on-white: #333;
+$secondary-text-color-on-white: #8d8d8d;
+$link-color-on-white: #893c5c;
+$link-color-on-red: #fff;
+$color-border-gray: #ddd;
+$color-alt-1: #bf5a84;
+$color-alt-2: #bf839d;
+$color-alt-3: #c06f91;
 
 .quote-content.small {
 	background-color: $color-alt-1;
@@ -26,7 +37,7 @@ $color-alt-3: #bc7788;
 	background-color: $color-alt-3;
 	& p {
 		font-size: 1.8125em; /* 29/16 */
-		font-size: 1.25em;
+		line-height: 1.25em;
 	}
 }
 
@@ -36,7 +47,7 @@ $color-alt-3: #bc7788;
 	color: #f2dae0;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
-	box-shadow: 0 0 7px #4d0f1e;
+	box-shadow: 0 0 7px #57273b;
 }
 
 .quote + .quote {
@@ -53,6 +64,8 @@ $color-alt-3: #bc7788;
 
 .quote-content {
 	padding: 27px 32px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 }
 
 .quote-source {
@@ -76,11 +89,15 @@ $color-alt-3: #bc7788;
 }
 
 .source-url a, .quote-date {
-	color: #999;
+	color: $secondary-text-color-on-white;
+	font-family: "karmina-sans", sans-serif;
+	font-size: 15px;
+	text-transform: lowercase;
 }
 
 .quote-date {
 	float: right;
-	vertical-align: bottom;
-	line-height: 32px;
+	vertical-align: sub;
+	line-height: 26px;
+
 }

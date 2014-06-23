@@ -38,6 +38,14 @@ $(document).on('ready', function() {
 
         quotes.unhighlight().highlight(search_query);
     });
+    
+    */
+
+    $(".quote").hover(function() {
+        $(".quote-actions").slideDown('fast'); 
+    }, function() {
+        $(this).children('.quote-content').children('.quote-actions').slideUp('fast');
+    })
 
     /* 
         Checkbox functionality for the source filters 

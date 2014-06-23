@@ -46,13 +46,10 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1
   # DELETE /quotes/1.json
   def destroy
-    @id = params[:id]
     @quote = Quote.find(params[:id])
     @quote.destroy
-
     respond_to do |format|
-      format.js
-      # format.html { redirect_to quotes_url }
+      format.html { redirect_to boards_url }
       format.json { head :no_content }
     end
   end

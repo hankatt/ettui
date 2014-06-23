@@ -18,10 +18,15 @@
     </div>
     <div class="quote-content <%= font_size %>">
       <p><%= quote.text %></p>
+      <div class="quote-actions">
+        <%= link_to "Delete", quote, method: :delete %>
+        <!--
+        <div class="quote-options">
+          <a href="#!">#design</a>
+          <a href="#!">#product</a>
+          <%= link_to "Share", "http://www.twitter.com" %>
+        </div>
+        !-->
+      </div>
     </div>
-    <!--
-    <div class="quote-share">
-      <%= link_to "Share", "http://www.twitter.com" %>
-    </div>
-    !-->
 </li>

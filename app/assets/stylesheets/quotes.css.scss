@@ -54,6 +54,25 @@ $color-alt-3: #c06f91;
 	float: left;
 }
 
+.quote:hover .quote-actions {
+	display: block;
+}
+
+.quote-actions {
+	padding-top: 24px;
+	display: none;
+}
+
+.quote-options {
+	float: right;
+}
+
+.quote-actions a {
+	color: #662943;
+	font-family: "karmina-sans", sans-serif;
+	font-size: 15px;
+}
+
 .quote-metadata {
 	padding: 16px 32px 12px 32px;
 	background-color: #fff;

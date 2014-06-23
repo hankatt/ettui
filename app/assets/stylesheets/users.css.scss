@@ -80,20 +80,16 @@ header + .background {
 	box-shadow: inset 0 -5px 23px #542135;
 }
 
-.background.signup {
-	height: 643px;
-}
-
-.background.signin {
-	height: 543px;
-}
-
-.background.intro {
-	height: 603px;
+header + .login-signup-container {
+	padding-bottom: 65px;
 }
 
 .background.white {
 	background-color: #fffcf5;
+}
+
+.background.dark {
+	background-color: #393939;
 }
 
 blockquote {
@@ -131,11 +127,10 @@ footer a {
 }
 
 footer > .row {
-	border-top: solid 1px #ddd;
 	padding-top: 23px;
-	margin-top: 65px;
+	margin-top: 24px;
 	padding-bottom: 23px;
-	margin-bottom: 65px;
+	margin-bottom: 72px;
 }
 
 .logo-container { padding-top: 15px; }
@@ -210,6 +205,10 @@ footer > .row {
 
 .usp {
 	text-align: center;
+}
+
+.usp h3 {
+	color: $primary-text-color-on-red;
 }
 
 .usp p {

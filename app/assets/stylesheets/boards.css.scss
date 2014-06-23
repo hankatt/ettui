@@ -184,16 +184,19 @@ SIDEBAR SPECIFICS
 	color: $primary-text-color-on-white;
 }
 
-.profile-description {
+.sidebar-profile p {
+	font-family: "karmina-sans", sans-serif;
 	font-size: 13px;
 	color: $secondary-text-color-on-white;
+}
+
+.profile-description {
 	line-height: 19px;
 	margin-top: 13px;
 	margin-bottom: 16px;
-	font-family: "karmina-sans", sans-serif;
 }
 
-.sidebar-profile .profile-logout {
+.sidebar-profile .profile-link {
 	font-size: 13px;
 	color: $link-color-on-white;
 	font-family: "karmina-sans", sans-serif;

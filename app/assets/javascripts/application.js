@@ -16,10 +16,7 @@
 
 $(document).on('ready', function() {
 
-    /* 
-      Initialize Masonry 
-    */
-
+    /*
     $(".sidebar-container").mouseenter(function() {
         if(!$("#search-filter").hasClass('active'))
             $("#search-filter").addClass('active');
@@ -29,6 +26,7 @@ $(document).on('ready', function() {
         if($("#search-filter").hasClass('active'))
             $("#search-filter").removeClass('active');
     });
+    */
 
     /*  
         Use keydown event to trigger backspace's, so the results updates

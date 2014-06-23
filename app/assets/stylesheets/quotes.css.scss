@@ -43,15 +43,15 @@ $color-alt-3: #c06f91;
 
 .quote {
 	width: 100%;
+	min-width: 400px;
 	max-width: 548px;
 	color: #f2dae0;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 	box-shadow: 0 0 7px #57273b;
-}
-
-.quote + .quote {
-	margin-top: 35px;
+	margin-bottom: 48px;
+	margin-right: 48px;
+	float: left;
 }
 
 .quote-metadata {

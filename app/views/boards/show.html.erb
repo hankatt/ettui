@@ -24,10 +24,12 @@
                 <div class="bottom-fix">
                     <div class="sidebar-profile">
                         <div class="sidebar-padding">
-                            
-                            <%= image_tag current_user_details.profile_image_url, :class => "profile-photo" %>
-                            <%= link_to current_user_details.name, current_user, :class => "profile-name" %></h2>
-                            <p class="profile-description"><%= current_user_details.description %></p>
+                            <% if current_user_details %>
+                                <%= image_tag current_user_details.profile_image_url, :class => "profile-photo" %>
+                                <%= link_to current_user_details.name, current_user, :class => "profile-name" %></h2>
+                                
+                                <p class="profile-description"><%= current_user_details.description %></p>
+                            <% end %>
                             <a href="/logout" class="profile-link">Logout </a>
                             <p class="inline"> – </p>
                             <a class="profile-link" href="javascript:(function() {

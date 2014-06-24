@@ -42,7 +42,7 @@ $(document).on('ready', function() {
     */
     
     $(".quote").hover(function() {
-        $(".quote-actions").slideDown('fast'); 
+        $(this).children('.quote-content').children('.quote-actions').slideDown('fast'); 
     }, function() {
         $(this).children('.quote-content').children('.quote-actions').slideUp('fast');
     })

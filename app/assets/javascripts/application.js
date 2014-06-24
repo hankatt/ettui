@@ -40,12 +40,14 @@ $(document).on('ready', function() {
     });
     
     */
-    
+
+    /*
     $(".quote").hover(function() {
         $(this).children('.quote-content').children('.quote-actions').slideDown('fast'); 
     }, function() {
         $(this).children('.quote-content').children('.quote-actions').slideUp('fast');
     })
+    */
 
     /* 
         Checkbox functionality for the source filters 

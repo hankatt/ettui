@@ -40,7 +40,7 @@ GENERAL LAYOUT
 	width: 336px;
 	height: 100%;
 	margin-left: -336px;
-	padding: 40px 0;
+	padding: 39px 0;
 	background-color: $sidebar-background;
 }
 
@@ -90,7 +90,6 @@ SIDEBAR SPECIFICS
 	margin-bottom: 11px;
 	color: $primary-text-color-on-white;
 	font-size: 24px;
-	font-family: "karmina-sans", sans-serif;
 	line-height: 24px;
 }
 
@@ -229,7 +228,7 @@ SEARCH SPECIFICS
 .search-container {
 	border-bottom: solid 1px $color-border-red;
 	margin: 0 0 24px 0;
-	padding: 0 0 11px 0;
+	padding: 0 0 1px 0;
 	width: 100%;
 }
 
@@ -247,8 +246,9 @@ SEARCH SPECIFICS
 	width: 300px;
 	color: $primary-text-color-on-red;
 	font-size: 24px;
-	line-height: 30px;
+	line-height: 40px;
 	font-weight: 400;
+	font-family: "adobe-caslon-pro", serif !important;
 }
 
 .search-container .search::-webkit-input-placeholder {

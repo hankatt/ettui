@@ -17,6 +17,20 @@ $color-alt-1: #bf5a84;
 $color-alt-2: #bf839d;
 $color-alt-3: #c06f91;
 
+.quote-metadata {
+	padding: 24px 48px;
+	background-color: #fff;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	overflow-y: auto;
+}
+
+.quote-content {
+	padding: 32px 48px 18px 42px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
 .quote-content.small {
 	background-color: $color-alt-1;
 	& p {
@@ -44,43 +58,48 @@ $color-alt-3: #c06f91;
 .quote {
 	width: 100%;
 	min-width: 400px;
-	max-width: 548px;
+	max-width: 632px;
 	color: #f2dae0;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
 	box-shadow: 0 0 7px #57273b;
 	margin-bottom: 48px;
 	margin-right: 48px;
 	float: left;
 }
 
+.quote:hover .quote-actions {
+	opacity: 1;
+}
+
 .quote-actions {
-	padding-top: 24px;
-	display: none;
+	padding-top: 6px;
+	opacity: 0;
+	transition: opacity .09s ease-out;
 }
 
 .quote-options {
 	float: right;
 }
 
+.quote-options .socicon {
+	font-size: 26px;
+	position: relative;
+	top: -5px;
+}
+
+.quote-actions a:hover {
+	color: #fff;
+}
+
 .quote-actions a {
 	color: #662943;
 	font-family: "karmina-sans", sans-serif;
-	font-size: 15px;
-}
-
-.quote-metadata {
-	padding: 16px 32px 12px 32px;
-	background-color: #fff;
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
-	height: 56px;
-}
-
-.quote-content {
-	padding: 27px 32px;
-	border-bottom-left-radius: 6px;
-	border-bottom-right-radius: 6px;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 1px;
+	transition: color .09s ease-out
 }
 
 .quote-source {

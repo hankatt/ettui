@@ -40,7 +40,7 @@ $(document).on('ready', function() {
     });
     
     */
-
+    
     $(".quote").hover(function() {
         $(".quote-actions").slideDown('fast'); 
     }, function() {

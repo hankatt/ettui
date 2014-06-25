@@ -20,8 +20,11 @@ GENERAL LAYOUT
 ############
 */
 
-#search-filter {
+.boards-wrapper, #search-filter {
 	height: 100%;
+}
+
+#search-filter {
 	font-size: 0; /* To remove spacings added by inline-block attrib. */
 
 	margin-left: 336px;
@@ -42,6 +45,7 @@ GENERAL LAYOUT
 	margin-left: -336px;
 	padding: 39px 0;
 	background-color: $sidebar-background;
+	position: fixed;
 }
 
 .sidebar-padding {
@@ -223,6 +227,9 @@ SEARCH SPECIFICS
 .quotes-container {
 	padding-left: 48px;
 	padding-bottom: 192px;
+	overflow-y: auto;
+	position: relative;
+	margin-top: -48px;
 }
 
 .search-container {
@@ -292,19 +299,6 @@ INTRO SPECIFICS
 		color: #70142a;
 		width: 304px;
 		margin: 32px auto 0 auto;
-	}
-
-	.boards-wrapper {
-		height: 100%;
-		-webkit-filter: blur(-0.1px);
-		-moz-filter: blur(-0.1px);
-		-o-filter: blur(-0.1px);
-		-ms-filter: blur(-0.1px);
-		filter: blur(-0.1px);
-		opacity: 1;
-		-webkit-transform: scale(1) translateY(0px);
-
-		-webkit-transition: all .67s cubic-bezier(.33,.61,.58,1);
 	}
 
 	.boards-wrapper.blurred {

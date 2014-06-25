@@ -16,6 +16,12 @@
 
 $(document).on('ready', function() {
 
+    ini();
+
+    $(window).resize(function () {
+        ini();
+    });
+    
     /*
     $(".sidebar-container").mouseenter(function() {
         if(!$("#search-filter").hasClass('active'))
@@ -67,9 +73,11 @@ $(document).on('ready', function() {
         });
 });
 
+/*
 $(window).scroll(function() {
     $(".sidebar-content").css('margin-top', $(window).scrollTop());
-})
+});
+*/
 
 /* Performs the AJAX search.
 

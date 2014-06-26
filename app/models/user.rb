@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
 	
 	# Form validations
-	validates_uniqueness_of :email
+	validates_uniqueness_of :email, :unless => :provider
 	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :create
 	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :update, allow_blank: true
 	validates_confirmation_of :password, :unless => :provider
@@ -30,7 +30,12 @@ class User < ActiveRecord::Base
 	def self.create_with_omniauth(auth)
 
 		# Create the new user
-  		@user = User.new({ :provider => auth["provider"], :uid => auth["uid"], :name => auth["info"]["name"], :new_user => true })
+  		@user = User.new({
+  			:provider => auth["provider"], 
+  			:uid => auth["uid"], 
+  			:name => auth["info"]["name"], 
+  			:new_user => true 
+  		})
 	    
 	    # Create a board and associate it to the new user
 	    @board = Board.create!(name: "My board")

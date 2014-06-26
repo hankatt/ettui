@@ -160,6 +160,7 @@ footer > .row {
 .splash h2 {
 	font-size: 19px;
 	margin-top: 11px;
+	font-weight: 300;
 }
 
 .call-to-action, .form-container {
@@ -216,9 +217,10 @@ footer > .row {
 }
 
 .usp p {
-	color: $secondary-text-color-on-white;
+	color: #aaa;
 	margin-top: 13px;
 	font-size: 15px;
+	font-weight: 300;
 }
 
 .login-signup {

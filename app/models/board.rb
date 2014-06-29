@@ -1,4 +1,6 @@
 class Board < ActiveRecord::Base
+
+    acts_as_tagger
 	has_and_belongs_to_many :quotes
 	has_and_belongs_to_many :users, :join_table => :subscriptions
 

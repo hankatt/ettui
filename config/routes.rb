@@ -5,7 +5,8 @@ Well::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   get "users/intro" => "users#intro", :as => "intro"
-  get 'quotes/add' => "quotes#remote_create"
+  get 'add/quote' => "quotes#add_quote"
+  get 'add/tag' => "quotes#add_tag"
 
   get 'users/done' => "users#done", :as => "continue"
   

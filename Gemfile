@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 require 'rubygems'
 
+# Tagging gem
+gem 'acts-as-taggable-on'
+
 # Ruby version
 ruby '2.0.0'
 

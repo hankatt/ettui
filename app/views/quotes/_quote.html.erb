@@ -22,10 +22,9 @@
         
         <%= link_to "Remove", quote, method: :delete %>
         <div class="quote-options">
-          <!--
-          <a href="#!">#design</a>
-          <a href="#!">#product</a>
-          !-->
+          <% quote.tags.each do |t| %>
+            <%= link_to t.name, "#!", :class => "tag" %>
+          <% end %>
           <%= link_to "#!" do %>
             <span class="socicon">a</span>
           <% end %>

@@ -87,6 +87,15 @@ $color-alt-3: #c06f91;
 	font-size: 26px;
 	position: relative;
 	top: -5px;
+	margin-left: 19px;
+}
+
+.quote-options .tag {
+	text-transform: lowercase;
+}
+
+.quote-options .tag:before {
+	content: '#';
 }
 
 .quote-actions a:hover {
@@ -99,7 +108,6 @@ $color-alt-3: #c06f91;
 	font-size: 13px;
 	text-transform: uppercase;
 	font-weight: 600;
-	letter-spacing: 1px;
 	transition: color .09s ease-out
 }
 

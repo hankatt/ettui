@@ -3,7 +3,7 @@ jquery.src = "https://code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
 css = document.createElement("link");
-css.href = "http://notedapp.herokuapp.com/bookmarklet.css";
+css.href = "https://notedapp.herokuapp.com/bookmarklet.css";
 css.type = "text/css";
 css.rel = "stylesheet";
 document.body.appendChild(css);

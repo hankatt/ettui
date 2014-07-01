@@ -51,7 +51,6 @@ jquery.onload = function() {
 
 		/* Defines the look of the popup being created when you click the bookmarklet. */
 		createAndAppendBookmarkletContainer();
-		notedBookmarklet = $(".noted-bookmarklet");
 
 
 		/* Define function that deals with JSONP callback */
@@ -69,21 +68,14 @@ jquery.onload = function() {
 					$(".sub-message").html(data.submessage);
 
 					/* Add HTML semantics for the tags */
-					notedBookmarklet.append("<div class='noted-content-container'></div>");
-					ncc = $(".noted-content-container");
-					ncc.append("<div class='tag-container'></div>");
-					ncc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
-					ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
+					$(".noted-bookmarklet").append("<div class='tag-container'></div>");
+					$(".noted-bookmarklet").append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
+					$(".noted-bookmarklet").append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
 					$("#noted-new-tag").focus();
 
 					/* Append tags to popup */
 					for(i = 0; i < data.tags.length; i++)
 						$(".tag-container").append(createElementWithClass("li", "noted-tag", data.tags[i].name));
-
-					notedBookmarklet.css('max-height', $(this).height() + ncc.height());
-					ncc.show().animate({
-						opacity: 1
-					}, 670);
 
 					/* Save q.id for later access */
 					session_data.qid = data.qid;

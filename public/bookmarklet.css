@@ -1,3 +1,32 @@
+.spinner {
+  width: 30px;
+  height: 30px;
+  background-color: #e2bccc;
+
+  margin: 100px auto;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
 li.noted-tag:before {
 	content: '#';
 }
@@ -32,8 +61,15 @@ li.noted-tag.selected {
 	color: #fff;
 }
 
+.noted-content-container {
+	overflow: auto;
+	display: none;
+	opacity: 0;
+}
+
 .noted-bookmarklet {
 	width: 380px;
+	max-height: 147px;
 	background-color: #8a3d5d;
 	z-index: 20000;
 	position: fixed;
@@ -42,10 +78,11 @@ li.noted-tag.selected {
 	padding-bottom: 40px;
 	box-shadow: 0 0 61px rgba(0, 0, 0, 0.23);
 	-webkit-font-smoothing: antialiased;
+	transition: max-height .67s ease-out;
 }
 
 .status-message {
-	padding-top: 48px;
+	padding-top: 40px;
 	font-size: 26px;
 }
 
@@ -59,19 +96,20 @@ li.noted-tag.selected {
 }
 
 .sub-message {
-	padding-bottom: 32px;
+	padding-bottom: 40px;
 	color: #e2bccc;
 	line-height: 32px;
 	font-size: 16px;
 }
 
 #noted-new-tag {
+	padding: 17px 0;
 	width: 284px;
 	height: 54px;
-	line-height: 54px;
+	line-height: 20px;
 	font-size: 16px;
 	font-family: "Open Sans", sans-serif !important;
-	border: solid 1px #fff;
+	border: solid 1px #B67892;
 	background-color: transparent;
 	padding: 0px 16px;
 	box-sizing: border-box;
@@ -80,7 +118,15 @@ li.noted-tag.selected {
 	border-radius: 2px;
 	color: #fff;
 	outline: #fff;
-	letter-spacing: 1px
+}
+
+#noted-new-tag:hover {
+	border-color: #fff;
+}
+
+#noted-new-tag::-webkit-input-placeholder {  
+   font-style: italic;
+   color: #B67892;
 }
 
 #noted-close-btn {

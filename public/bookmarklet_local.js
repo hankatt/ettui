@@ -15,12 +15,12 @@ WebFontConfig = {
 })();
 
 jquery = document.createElement("script");
-jquery.id ="noted-jquery-script";
+jquery.className = "noted-function";
 jquery.src = "https://code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
 css = document.createElement("link");
-css.id = "noted-stylesheet";
+css.className = "noted-temporary-function-tbr";
 css.href = "http://localhost:3000/bookmarklet.css";
 css.type = "text/css";
 css.rel = "stylesheet";
@@ -44,7 +44,7 @@ jquery.onload = function() {
 
 			/* Execute JSONP call using script tag. */
 			jsonpScript = document.createElement("script");
-			jsonpScript.id = "noted-add-script";
+			jsonpScript.className = jsonpScript.className + "noted-temporary-function-tbr";
 			jsonpScript.src =  "//localhost:3000/add/quote/?" + jQuery.param(params);
 			document.body.appendChild(jsonpScript);
 		}
@@ -56,17 +56,10 @@ jquery.onload = function() {
 
 		/* Define function that deals with JSONP callback */
 		quoteCallback = function status(data) {
-			/* Remove script so it doesnt lay around */
-			$("#noted-add-script").remove();
-			$(".noted-spinner").remove();
 
 			/* Deal with response */
 			if(data && data.message) {
 				if(data.action === "tags") {
-
-					/* Check if quote was saved or not */
-					$(".status-message").html(data.message);
-					$(".sub-message").html(data.submessage);
 
 					/* Add HTML semantics for the tags */
 					notedBookmarklet.append("<div class='noted-content-container'></div>");
@@ -80,12 +73,21 @@ jquery.onload = function() {
 					for(i = 0; i < data.tags.length; i++)
 						$(".tag-container").append(createElementWithClass("li", "noted-tag", data.tags[i].name));
 
-					notedBookmarklet.css('max-height', $(this).height() + ncc.height());
-					ncc.show().animate({
-						opacity: 1
-					}, 670, function() {
-						$("#noted-new-tag").focus();
-					});
+					setTimeout(function() {
+						/* Remove loading spinner */
+						$(".noted-spinner").remove();
+
+						/* Output callback status messages */
+						$(".status-message").html(data.message);
+						$(".sub-message").html(data.submessage);
+
+						notedBookmarklet.css('max-height', $(this).height() + ncc.height());
+						ncc.show().animate({
+							opacity: 1
+						}, 670, function() {
+							$("#noted-new-tag").focus();
+						});
+					}, 500);
 
 					/* Save q.id for later access */
 					session_data.qid = data.qid;
@@ -104,7 +106,7 @@ jquery.onload = function() {
 
 						/* Execute JSONP call using script tag. */
 						jsonpScript = document.createElement("script");
-						jsonpScript.id = "noted-add-script";
+						jsonpScript.className = "noted-temporary-function-tbr";
 						jsonpScript.src =  "//localhost:3000/add/tag/?" + jQuery.param(params);
 						document.body.appendChild(jsonpScript);
 					});
@@ -134,7 +136,7 @@ jquery.onload = function() {
 
 								/* Execute JSONP call using script tag. */
 								jsonpScript = document.createElement("script");
-								jsonpScript.id = "noted-add-script";
+								jsonpScript.className = "noted-temporary-function-tbr";
 								jsonpScript.src =  "//localhost:3000/add/tag/?" + jQuery.param(params);
 								document.body.appendChild(jsonpScript);
 							}
@@ -146,12 +148,11 @@ jquery.onload = function() {
 
 		addQuoteResponse = document.createElement("script");
 		addQuoteResponse.setAttribute("type", "text/javascript");
+		addQuoteResponse.className = "noted-temporary-function-tbr";
 		addQuoteResponse.innerHTML = quoteCallback;
 		document.body.appendChild(addQuoteResponse);
 
 		tagCallback = function added(data) {
-			/* Remove script so it doesnt lay around */
-			$("#noted-add-script").remove();
 
 			if(data && data.message) {
 				console.log(data.tag);
@@ -165,6 +166,7 @@ jquery.onload = function() {
 
 		/* addTagResponse */
 		addTagResponse = document.createElement("script");
+		addTagResponse.className = "noted-temporary-function-tbr";
 		addTagResponse.setAttribute("type", "text/javascript");
 		addTagResponse.innerHTML = tagCallback;
 		document.body.appendChild(addTagResponse);
@@ -197,6 +199,5 @@ getFavicon = function() {
 
 closeNoted = function() {
 	$(".noted-bookmarklet").remove();
-	$("#noted-stylesheet").remove();
-	$("#noted-jquery-script").remove();
+	$(".noted-temporary-function-tbr").remove();
 }

@@ -3,7 +3,7 @@
   height: 30px;
   background-color: #e2bccc;
 
-  margin: 100px auto;
+  margin: 58px auto 0 auto;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
   animation: rotateplane 1.2s infinite ease-in-out;
 }
@@ -145,5 +145,7 @@ li.noted-tag.selected {
 
 #noted-close-btn:hover {
 	color: #fff;
+	text-decoration: none;
+	border-bottom: solid 4px #fff;
 }
 

@@ -15,11 +15,13 @@ WebFontConfig = {
 })();
 
 jquery = document.createElement("script");
+jquery.id ="noted-jquery-script";
 jquery.src = "https://code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
 css = document.createElement("link");
-css.href = "https://notedapp.herokuapp.com/bookmarklet.css";
+css.id = "noted-stylesheet";
+css.href = "http://notedapp.herokuapp.com/bookmarklet.css";
 css.type = "text/css";
 css.rel = "stylesheet";
 document.body.appendChild(css);
@@ -49,12 +51,14 @@ jquery.onload = function() {
 
 		/* Defines the look of the popup being created when you click the bookmarklet. */
 		createAndAppendBookmarkletContainer();
+		notedBookmarklet = $(".noted-bookmarklet");
 
 
 		/* Define function that deals with JSONP callback */
 		quoteCallback = function status(data) {
 			/* Remove script so it doesnt lay around */
 			$("#noted-add-script").remove();
+			$(".noted-spinner").remove();
 
 			/* Deal with response */
 			if(data && data.message) {
@@ -65,14 +69,21 @@ jquery.onload = function() {
 					$(".sub-message").html(data.submessage);
 
 					/* Add HTML semantics for the tags */
-					$(".noted-bookmarklet").append("<div class='tag-container'></div>");
-					$(".noted-bookmarklet").append("<input type='text' id='noted-new-tag'>");
-					$(".noted-bookmarklet").append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
+					notedBookmarklet.append("<div class='noted-content-container'></div>");
+					ncc = $(".noted-content-container");
+					ncc.append("<div class='tag-container'></div>");
+					ncc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
+					ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
 					$("#noted-new-tag").focus();
 
 					/* Append tags to popup */
 					for(i = 0; i < data.tags.length; i++)
 						$(".tag-container").append(createElementWithClass("li", "noted-tag", data.tags[i].name));
+
+					notedBookmarklet.css('max-height', $(this).height() + ncc.height());
+					ncc.show().animate({
+						opacity: 1
+					}, 670);
 
 					/* Save q.id for later access */
 					session_data.qid = data.qid;
@@ -168,7 +179,8 @@ createElementWithClass = function(element_type, element_class, element_text) {
 createAndAppendBookmarkletContainer = function() {
 	popup = document.createElement("div");
 	popup.className = popup.className + "noted-bookmarklet";
-	$(popup).append('<h1 class="status-message">Saving...</h1>');
+	$(popup).append('<div class="noted-spinner"></div>');
+	$(popup).append('<h1 class="status-message"></h1>');
 	$(popup).append('<h1 class="sub-message"></h1>');
 	document.body.appendChild(popup);
 }
@@ -183,4 +195,6 @@ getFavicon = function() {
 
 closeNoted = function() {
 	$(".noted-bookmarklet").remove();
+	$("#noted-stylesheet").remove();
+	$("#noted-jquery-script").remove();
 }

@@ -74,7 +74,6 @@ jquery.onload = function() {
 					ncc.append("<div class='tag-container'></div>");
 					ncc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
 					ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
-					$("#noted-new-tag").focus();
 
 					/* Append tags to popup */
 					for(i = 0; i < data.tags.length; i++)
@@ -83,7 +82,9 @@ jquery.onload = function() {
 					notedBookmarklet.css('max-height', $(this).height() + ncc.height());
 					ncc.show().animate({
 						opacity: 1
-					}, 670);
+					}, 670, function() {
+						$("#noted-new-tag").focus();
+					});
 
 					/* Save q.id for later access */
 					session_data.qid = data.qid;

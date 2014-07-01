@@ -83,7 +83,9 @@ jquery.onload = function() {
 					notedBookmarklet.css('max-height', $(this).height() + ncc.height());
 					ncc.show().animate({
 						opacity: 1
-					}, 670);
+					}, 670, function() {
+						$("#noted-new-tag").focus();
+					});
 
 					/* Save q.id for later access */
 					session_data.qid = data.qid;

@@ -124,7 +124,7 @@
 				display: inline-block;
 				height: 20px;
 				margin-top: 14px;
-				margin-right: 4px;
+				margin-right: 3px;
 				line-height: 0.5em;
 				padding-bottom: 10px;
 				height: 40px;
@@ -165,6 +165,21 @@
 				text-transform: uppercase;
 			}
 		}
+	}
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+	.content-container.list .quote .quote-content.small p.dc2:first-child:first-letter {
+		font-size: 1.5em;
+		float: left;
+		font-weight: bold;
+		display: inline-block;
+		height: 20px;
+		margin-top: 12px;
+		margin-right: 3px;
+		line-height: 0.5em;
+		padding-bottom: 5px;
+		border-bottom: solid 9px #e6e6e6;
 	}
 }
 

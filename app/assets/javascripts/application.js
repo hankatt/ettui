@@ -59,7 +59,7 @@ $(document).on('ready', function() {
         Checkbox functionality for the source filters 
     */
 
-    $(".filters-list li").bind('mouseup touchend', function() {
+    $(".filters-list li").bind('mouseup', function() {
         // Mark selection as active
         $(this).toggleClass('active');
 

@@ -1,4 +1,4 @@
-<li class="quote clearfix q-<%= quote.id %>">
+<li class="quote clearfix rows q-<%= quote.id %>">
 
 <!-- Dynamically size quotes text depending on content size !-->
 <% if quote.text.length < 111 %>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="quote-content <%= font_size %>">
-      <p><%= quote.text %></p>
+      <p class="dc2"><%= quote.text %></p>
       <div class="quote-actions">
         
         <%= link_to "Remove", quote, method: :delete %>

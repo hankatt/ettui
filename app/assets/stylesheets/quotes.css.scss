@@ -1,3 +1,174 @@
+/* LIST VIEW */
+
+.sidebar-container.list {
+	background-color: #8a3d5d;
+
+	.sidebar-logo svg {
+		border-color: #6B2743;
+
+		& path {
+			fill: white;
+		}
+	}
+
+	& .filters-title, .source-count, .sidebar-profile {
+		border-color: #6B2743 !important;
+	}
+
+	& .filters-list {
+		border-top: none;
+	}
+
+	& .filters-title {
+		font-size: 18px;
+		border-bottom: solid 1px #dddddd;
+		padding-bottom: 11px;
+		margin-bottom: 0;
+	}
+
+	& .profile-name, .filters-title {
+		color: #fff;
+	}
+
+	& .profile-link, .profile-link + p.inline {
+		color: #4B1D30;
+	}
+
+	& .filters-list-button, .profile-description {
+		color: #D3A1B5;
+	}
+
+	& .sidebar-padding.active {
+		& .filters-list-button {
+			color: #fff;
+		}
+		& .source-count {
+			border-color: #fff;
+			background-color: #fff;
+			& p { 
+				color: #333; 
+			}
+		}
+	}
+
+	& .source-favicon {
+		background-color: #e6e6e6;
+		background-size: 20px;
+		background-repeat: no-repeat;
+		background-position: 50%;
+		border-radius: 4px;
+		box-sizing: content-box;
+	}
+
+	& .source-count > p {
+		color: #D3A1B5;
+	}
+}
+
+.content-container.list {
+
+	background-color: rgb(255, 255, 255);
+
+	& .search-container {
+		border-bottom: solid 1px #e6e6e6;
+
+		& .search {
+			color: #333;
+		}
+
+		& .search::-webkit-input-placeholder {
+			color: #bbb;
+		}
+	}
+
+	& .quotes-container {
+		margin-top: 0;
+	}
+
+	& .quote {
+		box-shadow: none;
+		background-color: white;
+		border-radius: 0;
+		max-width: 732px;
+		border-bottom: solid 10px #e6e6e6;
+		padding-right: 4px;
+		padding-bottom: 12px;
+		margin-bottom: 48px;
+		position: relative;
+
+		& .quote-content.small p {
+			font-size: 1em;
+			line-height: 1.619em;
+		}
+
+		& .quote-content {
+			padding: 20px 0;
+			background-color: transparent;
+			color: #333;
+			border-radius: 0;
+
+			&.small > p.dc1:first-child:first-letter {
+				font-size: 3.238em; /* 1.619x2 */
+				float: left;
+				display: inline-block;
+				height: 20px;
+				margin-top: 26px;
+				margin-right: 8px;
+				line-height: 0.5em;
+				height: 40px;
+			}
+
+			&.small > p.dc2:first-child:first-letter {
+				font-size: 1.5em;
+				float: left;
+				display: inline-block;
+				height: 20px;
+				margin-top: 14px;
+				margin-right: 4px;
+				line-height: 0.5em;
+				padding-bottom: 10px;
+				height: 40px;
+				border-bottom: solid 10px #e6e6e6;
+			}
+		}
+
+		& .quote-metadata {
+			padding: 20px 0;
+			background-color: #fff;
+			overflow-y: auto;
+			border-bottom: solid 1px #e6e6e6;
+			border-radius: 0;
+		}
+
+		& .source-url a, .quote-date {
+			color: #999;
+			font-family: "adobe-caslon-pro", serif;
+			font-size: 16px;
+			text-transform: lowercase;
+		}
+
+		& .quote-actions {
+			padding-top: 0px;
+
+			& a {
+				color: #999;
+				font-size: 13px;
+				font-weight: 400;
+				text-transform: uppercase;
+
+				&:hover {
+					color: #893c5c;
+				};
+			}
+
+			& .quote-options .tag {
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+
 /*
 	QUOTE COLORS
 */

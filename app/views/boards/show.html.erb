@@ -11,7 +11,7 @@
 
         ############
         !-->
-  	    <div class="sidebar-container">
+  	    <div class="sidebar-container list">
             <div class="sidebar-content">
                 <div class="filters-container">
           	        <h4 class="filters-title sidebar-padding">Filters</h4>
@@ -100,19 +100,17 @@
 
         ############
         !-->
-        <div class="content-container">
+        <div class="content-container list">
             <!-- 
                     SEARCH
                                 !-->
             <div class="quote-search">
               <div class="search-container">
-                  <%= image_tag "search-white.png", :class => "content-padding" %>
+                  <%= image_tag "search-black.png", :class => "content-padding" %>
                   <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for…?", :class => "search" %>
                   <%= submit_tag "Search", :name => nil, :class => 'submit' %>
               </div>
             </div>
-
-
 
             <!-- 
                     QUOTES

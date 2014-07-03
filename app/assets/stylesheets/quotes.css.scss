@@ -130,6 +130,30 @@
 				height: 40px;
 				border-bottom: solid 10px #e6e6e6;
 			}
+
+			&.small > p.dc2 > span:first-child:first-letter {
+				font-size: 1.5em;
+				float: left;
+				display: inline-block;
+				height: 31px;
+				margin-top: -1px;
+				padding-right: 3px;
+				margin-right: 0px;
+				line-height: 1.3em;
+				padding-top: 3px;
+				padding-bottom: 0px;
+				vertical-align: super;
+				background-color: #8a3d5d;
+				color: #fff;
+				border-bottom: solid 10px #e6e6e6;
+			}
+
+			& .highlight {
+				font-size: inherit;
+				vertical-align: baseline;
+				background-color: #8a3d5d;
+				color: #fff;
+			}
 		}
 
 		& .quote-metadata {

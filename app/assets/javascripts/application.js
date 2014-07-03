@@ -55,37 +55,24 @@ $(document).on('ready', function() {
     
     */
 
-    /*
-    $(".quote").hover(function() {
-        $(this).children('.quote-content').children('.quote-actions').slideDown('fast'); 
-    }, function() {
-        $(this).children('.quote-content').children('.quote-actions').slideUp('fast');
-    })
-    */
-
     /* 
         Checkbox functionality for the source filters 
     */
-    $(".filters-list li").click(function() {
+
+    $(".filters-list li").bind('mouseup touchend', function() {
         // Mark selection as active
         $(this).toggleClass('active');
 
         // Set checkbox to: Checked
         checkbox = $(this).children('[type="checkbox"]');
         checkbox.prop('checked', !checkbox.prop('checked'));
-        });
+    });
 
-        /* In responsive mode, this reveals the menu. */
-        $(".menu-button").on('click', function() {
-            $(".sidebar, .filters-container").toggleClass('active');
-        });
+    /* In responsive mode, this reveals the menu. */
+    $(".menu-button").on('click', function() {
+        $(".sidebar, .filters-container").toggleClass('active');
+    });
 });
-
-/*
-$(window).scroll(function() {
-    $(".sidebar-content").css('margin-top', $(window).scrollTop());
-});
-*/
 
 /* Performs the AJAX search.
 

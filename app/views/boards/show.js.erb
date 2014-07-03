@@ -8,6 +8,10 @@ $container.html('');
 
 $container.append($new_items);
 
+search_query = $("#search-filter .search").val();
+quotes = $(".quote .quote-content p");
+quotes.unhighlight().highlight(search_query);
+
 //ini();
 
 // initialize

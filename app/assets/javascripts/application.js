@@ -16,11 +16,19 @@
 
 $(document).on('ready', function() {
 
-    ini();
+    //ini();
 
     $(window).resize(function () {
-        ini();
+        //ini();
     });
+
+    /*
+    $(".sidebar-logo").click(function(e) {
+        e.preventDefault();
+        $(".content-container").toggleClass('list');
+        $(".sidebar-container").toggleClass('list');
+    });
+    */
     
     /*
     $(".sidebar-container").mouseenter(function() {

@@ -1,5 +1,5 @@
 function ini() {
-    iso(".quotes-container", ".quote", 48); //number is gutter
+    iso(".quotes-container", ".quote", 0); //number is gutter
 }
 
 function iso(c, d, e) {

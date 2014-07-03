@@ -87,7 +87,7 @@ jquery.onload = function() {
 						}, 670, function() {
 							$("#noted-new-tag").focus();
 						});
-					}, 500);
+					}, 2000);
 
 					/* Save q.id for later access */
 					session_data.qid = data.qid;

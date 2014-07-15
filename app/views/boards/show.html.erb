@@ -13,14 +13,27 @@
         !-->
   	    <div class="sidebar-container list">
             <div class="sidebar-content">
+                <div class="search-container">
+                    <%= image_tag "search-white.png", :class => "content-padding" %>
+                    <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for…?", :class => "search" %>
+                    <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+                </div>
                 <div class="filters-container">
-          	        <h4 class="filters-title sidebar-padding">Filters</h4>
-                    <ol class="filters-list">
+          	        <h4 class="sidebar-title sidebar-padding">Filters</h4>
+                    <ol class="sidebar-list filters-list">
           	           <% @sources.each do |source| %>
           	                <%= render :partial => 'source', locals: { source: source } %>
           	           <% end %>
           	        </ol>
                 </div>
+                <!--
+                <div class="tags-container">
+                  <h4 class="sidebar-title sidebar-padding">Tags</h4>
+                  <ol class="sidebar-list tags-list">
+                    <li>design</li>
+                  </ol>
+                </div>
+                !-->
                 <div class="bottom-fix">
                     <div class="sidebar-profile">
                         <div class="sidebar-padding">
@@ -101,17 +114,7 @@
         ############
         !-->
         <div class="content-container list">
-            <!-- 
-                    SEARCH
-                                !-->
-            <div class="quote-search">
-              <div class="search-container">
-                  <%= image_tag "search-black.png", :class => "content-padding" %>
-                  <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for…?", :class => "search" %>
-                  <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-              </div>
-            </div>
-
+            <h2 class="quotes-title">Recent quotes</h2>
             <!-- 
                     QUOTES
                                 !-->

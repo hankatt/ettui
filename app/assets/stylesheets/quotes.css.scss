@@ -11,7 +11,7 @@
 		}
 	}
 
-	& .filters-title, .source-count, .sidebar-profile {
+	& .sidebar-title, .source-count, .sidebar-profile {
 		border-color: #6B2743 !important;
 	}
 
@@ -19,14 +19,14 @@
 		border-top: none;
 	}
 
-	& .filters-title {
+	& .sidebar-title {
 		font-size: 18px;
 		border-bottom: solid 1px #dddddd;
 		padding-bottom: 11px;
 		margin-bottom: 0;
 	}
 
-	& .profile-name, .filters-title {
+	& .profile-name, .sidebar-title {
 		color: #fff;
 	}
 
@@ -157,7 +157,7 @@
 		}
 
 		& .quote-metadata {
-			padding: 20px 0;
+			padding: 20px 0 17px 0;
 			background-color: #fff;
 			overflow-y: auto;
 			border-bottom: solid 1px #e6e6e6;
@@ -355,5 +355,6 @@ $color-alt-3: #c06f91;
 	float: right;
 	vertical-align: sub;
 	line-height: 26px;
+	padding-top: 3px;
 
 }

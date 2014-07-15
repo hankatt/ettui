@@ -4,7 +4,7 @@ $color-red: #8a3d5d;
 $color-logo: #fff;
 $primary-text-color-on-red: #fff;
 $secondary-text-color-on-red: #e2bccc;
-$placeholder-text-color-on-red: #4e142d;
+$placeholder-text-color-on-red: rgb(56, 9, 28);
 $primary-text-color-on-white: #333;
 $secondary-text-color-on-white: #8d8d8d;
 $link-color-on-white: #893c5c;
@@ -43,7 +43,7 @@ GENERAL LAYOUT
 	width: 336px;
 	height: 100%;
 	margin-left: -336px;
-	padding: 39px 0;
+	padding: 0;
 	background-color: $sidebar-background;
 	position: fixed;
 }
@@ -90,7 +90,7 @@ SIDEBAR SPECIFICS
 	transition: opacity .23s;
 }
 
-.filters-title {
+.sidebar-title {
 	margin-bottom: 11px;
 	color: $primary-text-color-on-white;
 	font-size: 24px;
@@ -102,18 +102,20 @@ SIDEBAR SPECIFICS
 	border: none;
 	padding: 0;
 	color: $secondary-text-color-on-white;
-	font-size: 15px;
+	font-size: 13px;
 	line-height: 26px;
 	margin-left: 7px;
-	font-family: "karmina-sans", sans-serif;
 }
 
-.filters-list {
-	border-top: solid 1px $color-border-gray;
+.sidebar-list {
 	padding-top: 20px;
 }
 
-.filters-list li {
+.tags-container {
+	margin-top: 40px;
+}
+
+.sidebar-list li {
 	font-size: 0;
 }
 
@@ -156,7 +158,6 @@ SIDEBAR SPECIFICS
 
 	& > p {
 		font-size: 13px;
-		font-family: "karmina-sans", sans-serif;
 		line-height: 13px;
 		color: $secondary-text-color-on-white;
 	}
@@ -189,7 +190,6 @@ SIDEBAR SPECIFICS
 }
 
 .sidebar-profile p {
-	font-family: "karmina-sans", sans-serif;
 	font-size: 13px;
 	color: $secondary-text-color-on-white;
 }
@@ -203,7 +203,6 @@ SIDEBAR SPECIFICS
 .sidebar-profile .profile-link {
 	font-size: 13px;
 	color: $link-color-on-white;
-	font-family: "karmina-sans", sans-serif;
 }
 
 .bottom-fix {
@@ -224,6 +223,16 @@ SEARCH SPECIFICS
 	margin-left: 48px;
 }
 
+.quotes-title {
+	font-size: 30px;
+	color: #333;
+	padding-left: 48px;
+	padding-top: 30px;
+	padding-bottom: 27px;
+	letter-spacing: -1px;
+	text-transform: uppercase;
+}
+
 .quotes-container {
 	padding-left: 48px;
 	padding-bottom: 192px;
@@ -233,10 +242,10 @@ SEARCH SPECIFICS
 }
 
 .search-container {
-	border-bottom: solid 1px $color-border-red;
-	margin: 0 0 24px 0;
-	padding: 29px 0 2px 0;
+	margin: 0 0 32px 0;
+	padding: 29px 48px 16px 48px;
 	width: 100%;
+	background-color: #6B2743;
 }
 
 .search-container > img {
@@ -250,9 +259,8 @@ SEARCH SPECIFICS
 	border: none;
 	background: transparent;
 	padding: 0px 0px 0px 10px;
-	width: 300px;
 	color: $primary-text-color-on-red;
-	font-size: 24px;
+	font-size: 18px;
 	line-height: 40px;
 	height: 30px;
 	margin-bottom: 11px;

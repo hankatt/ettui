@@ -4,7 +4,7 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id]) unless session[:user_id].nil?
 
       respond_to do |format|
-          if @user && @user.new_user
+          if @user && !@user.new_user
               format.html # show.html.erb
               flash[:notice] = "Logged in."
           elsif @user

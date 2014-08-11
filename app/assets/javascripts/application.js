@@ -30,22 +30,6 @@ $(document).on('ready', function() {
     });
     */
     
-    
-    $(".sidebar-toggle").click(function() {
-        if(!$("#search-filter").hasClass('active')) {
-            $("#search-filter").addClass('active');
-            $(".sidebar-toggle").fadeOut('fast');
-        }
-    });
-
-    $(".sidebar-container").mouseleave(function() {
-        if($("#search-filter").hasClass('active')) {
-            $("#search-filter").removeClass('active');
-            $(".sidebar-toggle").fadeIn('fast');
-        }
-    });
-    
-
     /*  
         Use keydown event to trigger backspace's, so the results updates
         as the search query is shortened. 
@@ -58,6 +42,25 @@ $(document).on('ready', function() {
     });
     
     */
+
+    $(".sidebar-toggle-column, .sidebar-toggle").on('click', function(event) {
+        if(!$("#search-filter").hasClass('active')) {
+            $("#search-filter").addClass('active');
+            $(".sidebar-toggle-column").hide();
+            $(".sidebar-toggle").fadeOut(70);
+        } else if($("#search-filter").hasClass('active')) {
+            $(".sidebar-toggle").fadeIn(70);
+            $("#search-filter").removeClass('active');
+        }
+    });
+
+    $(document).on('click', function(event) {
+        if($("#search-filter").hasClass('active') && $(event.target).hasClass('content-container')) {
+            $(".sidebar-toggle").fadeIn(70);
+            $(".sidebar-toggle-column").fadeIn();
+            $("#search-filter").removeClass('active');
+        }
+    })
 
     /* 
         Checkbox functionality for the source filters 
@@ -76,16 +79,6 @@ $(document).on('ready', function() {
     $(".menu-button").on('click', function() {
         $(".sidebar, .filters-container").toggleClass('active');
     });
-});
-
-$(document).on('mousemove', function(event) {
-    if(event.pageX < 112 && !$("#search-filter").hasClass('active')) {
-        $("#search-filter").addClass('active');
-        $(".sidebar-toggle").fadeOut(70);
-    } else if(event.pageX > $(".sidebar-container").width() && $("#search-filter").hasClass('active')) {
-        $(".sidebar-toggle").fadeIn(70);
-        $("#search-filter").removeClass('active');
-    }
 });
 
 /* Performs the AJAX search.

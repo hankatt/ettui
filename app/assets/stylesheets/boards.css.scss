@@ -82,10 +82,23 @@ SIDEBAR SPECIFICS
 */
 
 .sidebar-toggle {
+	margin-left: 44px;
+	margin-top: 44px;
+}
+
+.sidebar-toggle-column {
+	width: 112px;
+	height: 100%;
 	position: fixed;
-	top: 44px;
-	left: 44px;
-	width: 22px;
+	top: 0;
+	left: 0;
+	border-right: solid 1px rgba(0, 0, 0, .05);
+
+	&:hover {
+		background-color: rgba(0, 0, 0, .05);
+		border-right: solid 1px rgba(0, 0, 0, .01);
+		cursor: pointer;
+	}
 }
 
 .sidebar-container:hover .filters-container {
@@ -240,14 +253,6 @@ SEARCH SPECIFICS
 	padding-bottom: 27px;
 	letter-spacing: -1px;
 	text-transform: uppercase;
-}
-
-.quotes-container {
-	padding-left: 44px;
-	padding-bottom: 192px;
-	overflow-y: auto;
-	position: relative;
-	margin-top: -44px;
 }
 
 .search-container {

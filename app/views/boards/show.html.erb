@@ -41,14 +41,16 @@
                                 <%= image_tag current_user_details.profile_image_url, :class => "profile-photo" %>
                                 <%= link_to current_user_details.name, current_user, :class => "profile-name" %></h2>
                                 
-                                <p class="profile-description"><%= current_user_details.description %></p>
+                                <!--<p class="profile-description"><%= current_user_details.description %></p>!-->
                             <% end %>
-                            <a href="/logout" class="profile-link">Logout </a>
-                            <p class="inline"> – </p>
-                            <a class="profile-link" href="javascript:(function() {
-                                document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
-                                current_user_token = '<%= current_user.token %>';
-                              })();"> Your bookmarklet</a>
+                            <div class="sidebar-profile-links">
+                                <a href="/logout" class="profile-link">Logout </a>
+                                <p class="inline"> – </p>
+                                <a class="profile-link" href="javascript:(function() {
+                                    document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+                                    current_user_token = '<%= current_user.token %>';
+                                  })();"> Your bookmarklet</a>
+                          </div>
                         </div>
                     </div>
                     <a href="/">
@@ -114,7 +116,6 @@
         ############
         !-->
         <div class="content-container list">
-            <h2 class="quotes-title">Recent quotes</h2>
             <!-- 
                     QUOTES
                                 !-->

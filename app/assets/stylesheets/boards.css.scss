@@ -4,7 +4,7 @@ $color-red: #8a3d5d;
 $color-logo: #fff;
 $primary-text-color-on-red: #fff;
 $secondary-text-color-on-red: #e2bccc;
-$placeholder-text-color-on-red: rgb(56, 9, 28);
+$placeholder-text-color-on-red: rgba(255, 255, 255, .33);
 $primary-text-color-on-white: #333;
 $secondary-text-color-on-white: #8d8d8d;
 $link-color-on-white: #893c5c;
@@ -53,15 +53,16 @@ GENERAL LAYOUT
 }
 
 .sidebar-logo {
-	margin: 32px 0;
+	margin: 11px 0;
 	text-align: center;
 
 	& > svg {
-		width: 70px;
-		border-bottom: solid 4px #e6e6e6;
-		padding-bottom: 6px;
+		width: 52px;
+		border-bottom: solid 3px #e6e6e6;
+		padding-bottom: 0px;
 		box-sizing: content-box;
 		text-align: center;
+		margin-bottom: 11px;
 	}
 }
 
@@ -173,20 +174,21 @@ SIDEBAR SPECIFICS
 
 .sidebar-profile {
 	margin-top: 0;
-	padding: 32px 0;
+	padding: 22px 0;
 	border-top: solid 1px $color-border-gray;
-	border-bottom: solid 1px $color-border-gray;
 }
 
 .profile-photo {
-	width: 40px;
-	border-radius: 20px;
-	margin-right: 16px;
+	width: 44px;
+	border-radius: 22px;
+	margin-left: 100px;
 }
 
 .profile-name {
-	line-height: 42px;
+	line-height: 44px;
 	color: $primary-text-color-on-white;
+	text-align: center;
+	display: block;
 }
 
 .sidebar-profile p {
@@ -245,7 +247,7 @@ SEARCH SPECIFICS
 	margin: 0 0 32px 0;
 	padding: 29px 48px 16px 48px;
 	width: 100%;
-	background-color: #6B2743;
+	background-color: rgba(0, 0, 0, .17);
 }
 
 .search-container > img {
@@ -262,8 +264,8 @@ SEARCH SPECIFICS
 	color: $primary-text-color-on-red;
 	font-size: 18px;
 	line-height: 40px;
-	height: 30px;
-	margin-bottom: 11px;
+	height: 40px;
+	margin-bottom: 1px;
 	font-weight: 400;
 	font-family: "adobe-caslon-pro", serif !important;
 }

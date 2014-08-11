@@ -30,17 +30,21 @@ $(document).on('ready', function() {
     });
     */
     
-    /*
-    $(".sidebar-container").mouseenter(function() {
-        if(!$("#search-filter").hasClass('active'))
+    
+    $(".sidebar-toggle").click(function() {
+        if(!$("#search-filter").hasClass('active')) {
             $("#search-filter").addClass('active');
+            $(".sidebar-toggle").fadeOut('fast');
+        }
     });
 
     $(".sidebar-container").mouseleave(function() {
-        if($("#search-filter").hasClass('active'))
+        if($("#search-filter").hasClass('active')) {
             $("#search-filter").removeClass('active');
+            $(".sidebar-toggle").fadeIn('fast');
+        }
     });
-    */
+    
 
     /*  
         Use keydown event to trigger backspace's, so the results updates
@@ -72,6 +76,16 @@ $(document).on('ready', function() {
     $(".menu-button").on('click', function() {
         $(".sidebar, .filters-container").toggleClass('active');
     });
+});
+
+$(document).on('mousemove', function(event) {
+    if(event.pageX < 112 && !$("#search-filter").hasClass('active')) {
+        $("#search-filter").addClass('active');
+        $(".sidebar-toggle").fadeOut(70);
+    } else if(event.pageX > $(".sidebar-container").width() && $("#search-filter").hasClass('active')) {
+        $(".sidebar-toggle").fadeIn(70);
+        $("#search-filter").removeClass('active');
+    }
 });
 
 /* Performs the AJAX search.

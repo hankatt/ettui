@@ -76,6 +76,7 @@
 		margin-top: 0;
 		padding-right: 44px;
 		padding-top: 44px;
+		padding-left: 112px;
 		width: 100%;
 	}
 
@@ -84,7 +85,6 @@
 		background-color: white;
 		border-radius: 0;
 		max-width: 732px;
-		padding-right: 4px;
 		margin-bottom: 16px;
 		position: relative;
 		padding: 34px 40px 6px 40px;
@@ -272,8 +272,6 @@ $color-alt-3: #c06f91;
 	border-bottom-right-radius: 4px;
 	border-bottom-left-radius: 4px;
 	box-shadow: 0 0 7px #57273b;
-	margin-bottom: 48px;
-	margin-right: 48px;
 	float: left;
 	position: absolute; /* FOR ISO LAYOUT */
 }

@@ -27,7 +27,7 @@ GENERAL LAYOUT
 #search-filter {
 	font-size: 0; /* To remove spacings added by inline-block attrib. */
 
-	margin-left: 336px;
+	margin-left: 0px;
 	transition: margin-left 0.13s;
 }
 
@@ -80,6 +80,13 @@ SIDEBAR SPECIFICS
 
 ############
 */
+
+.sidebar-toggle {
+	position: fixed;
+	top: 44px;
+	left: 44px;
+	width: 22px;
+}
 
 .sidebar-container:hover .filters-container {
 	opacity: 1;
@@ -222,13 +229,13 @@ SEARCH SPECIFICS
 */
 
 .content-container .content-padding {
-	margin-left: 48px;
+	margin-left: 44px;
 }
 
 .quotes-title {
 	font-size: 30px;
 	color: #333;
-	padding-left: 48px;
+	padding-left: 44px;
 	padding-top: 30px;
 	padding-bottom: 27px;
 	letter-spacing: -1px;
@@ -236,16 +243,16 @@ SEARCH SPECIFICS
 }
 
 .quotes-container {
-	padding-left: 48px;
+	padding-left: 44px;
 	padding-bottom: 192px;
 	overflow-y: auto;
 	position: relative;
-	margin-top: -48px;
+	margin-top: -44px;
 }
 
 .search-container {
 	margin: 0 0 32px 0;
-	padding: 29px 48px 16px 48px;
+	padding: 29px 44px 16px 44px;
 	width: 100%;
 	background-color: rgba(0, 0, 0, .17);
 }

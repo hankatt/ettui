@@ -13,11 +13,6 @@
         !-->
   	    <div class="sidebar-container list">
             <div class="sidebar-content">
-                <div class="search-container">
-                    <%= image_tag "search-white.png", :class => "content-padding" %>
-                    <%= text_field_tag :search, params[:search], :placeholder => "What are you looking for…?", :class => "search" %>
-                    <%= submit_tag "Search", :name => nil, :class => 'submit' %>
-                </div>
                 <div class="filters-container">
           	        <h4 class="sidebar-title sidebar-padding">Filters</h4>
                     <ol class="sidebar-list filters-list">
@@ -52,9 +47,8 @@
                                   })();"> Your bookmarklet</a>
                           </div>
                         </div>
-                    </div>
-                    <a href="/">
-                      <div class="sidebar-logo">
+                        <a href="/">
+                        <div class="sidebar-logo">
                           <!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In  -->
                           <svg version="1.1"
                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -98,10 +92,11 @@
                                   c0,1.502-0.728,3.05-1.456,3.734c-1.322,1.274-3.37,1.866-4.144,1.822C63.093,17.31,65.049,13.166,66.781,13.166z M84.767,22.273
                                   c-1.684,2.414-3.642,5.282-4.554,5.282c-0.636,0-1.092-0.5-1.092-1.594c0-3.46,3.824-13.432,6.238-13.432
                                   c1.548,0,2.276,1.321,2.276,3.005C87.635,17.31,86.041,20.497,84.767,22.273z"/>
-                          </g>
-                          </svg>
-                      </div>
+                            </g>
+                            </svg>
+                        </div>
                     </a>
+                    </div>
                 </div>
             </div>
   	    </div>
@@ -121,15 +116,22 @@
             <!-- 
                     QUOTES
                                 !-->
+            <div class="search-container">
+                <%= image_tag "search-grey.png" %>
+                <%= text_field_tag :search, params[:search], :placeholder => "", :class => "search" %>
+                <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+            </div>
             <ol class="quotes-container">
-              <% if !@quotes.nil? %>
-                  <% @quotes.each do |quote| %>
-                      <%= render :partial => 'quotes/quote', locals: { quote: quote } %>
-                  <% end %>
-              <% end %>
+                <!--
+                <p class="quotes-metadata">Showing <em>3</em> quotes from <em>1</em> source.</p>
+                !-->
+                    <% if !@quotes.nil? %>
+                        <% @quotes.each do |quote| %>
+                            <%= render :partial => 'quotes/quote', locals: { quote: quote } %>
+                        <% end %>
+                    <% end %>
             </ol>
         </div>
-
     <% end %>
   </div>
 

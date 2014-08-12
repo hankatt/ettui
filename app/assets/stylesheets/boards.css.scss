@@ -84,7 +84,7 @@ SIDEBAR SPECIFICS
 
 .sidebar-toggle {
 	margin-left: 44px;
-	margin-top: 90px;
+	margin-top: 66px;
 }
 
 .sidebar-toggle-column {
@@ -93,10 +93,10 @@ SIDEBAR SPECIFICS
 	position: fixed;
 	top: 0;
 	left: 0;
+	background-color: rgba(0, 0, 0, .03);
 
 	&:hover {
 		background-color: rgba(0, 0, 0, .05);
-		border-right: solid 1px rgba(0, 0, 0, .01);
 		cursor: pointer;
 	}
 }
@@ -254,12 +254,12 @@ SEARCH SPECIFICS
 .search-container {
 	background-color: transparent;
 	position: relative;
-	padding: 85px 0 0 0;
+	padding: 61px 0 0 0;
 }
 
 .search-container > img {
 	position: absolute;
-	bottom: 10px;
+	bottom: 12px;
 }
 
 .search-container .search {
@@ -270,8 +270,9 @@ SEARCH SPECIFICS
 	font-size: 24px;
 	font-weight: 400;
 	font-family: "adobe-caslon-pro", serif !important;
-	border-bottom: solid 2px rgba(0, 0, 0, .23);
+	border-bottom: solid 1px rgba(0, 0, 0, .13);
 	width: 100%;
+	line-height: 44px;
 }
 
 .search-container .search::-webkit-input-placeholder {

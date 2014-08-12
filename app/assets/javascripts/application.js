@@ -48,9 +48,6 @@ $(document).on('ready', function() {
             $("#search-filter").addClass('active');
             $(".sidebar-toggle-column").hide();
             $(".sidebar-toggle").fadeOut(70);
-        } else if($("#search-filter").hasClass('active')) {
-            $(".sidebar-toggle").fadeIn(70);
-            $("#search-filter").removeClass('active');
         }
     });
 

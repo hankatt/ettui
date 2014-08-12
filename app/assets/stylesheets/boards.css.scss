@@ -54,7 +54,10 @@ GENERAL LAYOUT
 
 .sidebar-logo {
 	text-align: center;
-	margin-top: 22px;
+	position: fixed;
+	bottom: 21px;
+	right: 21px;
+
 
 	& > svg {
 		padding: 3px 12px 6px 12px;

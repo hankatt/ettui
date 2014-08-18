@@ -49,6 +49,10 @@ $(document).on('ready DOMChange', function() {
             $(".sidebar-toggle-column").fadeIn();
             $("#search-filter").removeClass('active');
         }
+
+        if($(".popup.active").length > 0 && $(event.target).hasClass('content-container')) {
+            $(".popup.active").removeClass('active');
+        }
     });
 
     $("li.existing-tag").unbind('click').on('click', function() {

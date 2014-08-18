@@ -114,16 +114,23 @@ class QuotesController < ApplicationController
     # Fetch the tag object
     @tag = @quote.tags.find(params[:tag_id])
 
-    # If it is the last instance of the tag, remove it completely from the board, else only from this specific quote
-    if(@tag.taggings_count == 2)
-      @tag.destroy
-      @tag_destroyed = true 
-    else
-      @quote.tag_list.remove(@quote.tags.find(params[:tag_id]).name)
-    end
+    # Remove the tag from the quotes tag list (has to be done before the taggings count method below)
+    @quote.tag_list.remove(@quote.tags.find(params[:tag_id]).name)
 
-    respond_to do |format|
-      if @quote.save
+    # Save tag list changes
+    if @quote.save 
+      @tag.reload # Reload @tag to get latest tag count
+
+      # If it is the last instance of the tag, remove it completely from the board, else only from this specific quote
+      if(@tag.taggings_count <= 2)
+        @tag.destroy
+        @tag_destroyed = true 
+      else
+        @tag_destroyed = false
+      end
+
+      # Render remove_tag.js.erb
+      respond_to do |format|
         format.js
       end
     end

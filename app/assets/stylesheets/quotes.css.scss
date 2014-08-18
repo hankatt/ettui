@@ -1,5 +1,109 @@
 /* LIST VIEW */
 
+.popup {
+	box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+	background-color: #358860;
+	position: absolute;
+	padding-top: 22px;
+	padding-bottom: 22px;
+	width: 284px;
+	bottom: 68px;
+	right: -72px;
+	display: none;
+}
+
+.popup.active {
+	display: block;
+}
+
+.popup > ul {
+	padding: 0;
+}
+
+.popup > ul li {
+	border-bottom: solid 1px rgba(0, 0, 0, .11);
+	padding: 9px 0 6px 0;
+	text-align: center;
+	color: rgba(255, 255, 255, .6);
+	font-family: "karmina-sans" !important;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.popup > ul li:hover {
+	background-color: rgba(0, 0, 0, .05);
+}
+
+.popup > ul li:active {
+	background-color: #358860;
+	color: white;
+}
+
+.popup > ul li:first-of-type {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.popup > ul li:last-of-type {
+	margin-bottom: 22px;
+}
+
+.popup > ul li.selected {
+	background-color: #66AA8A;
+	border-color: #357557;
+}
+
+.popup > .popup-new-tag {
+	margin: 0 22px;
+	font-family: "karmina-sans" !important;
+	font-weight: normal;
+	font-size: 14px;
+	width: 240px;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: transparent;
+	border: none;
+	padding: 9px 0 6px 0;
+	background-color: rgba(0, 0, 0, .1);
+	color: white;
+}
+
+.popup > .popup-new-tag:hover {
+	background: rgba(0, 0, 0, .15);
+}
+
+.popup-new-tag-submit {
+	border: none;
+	background: rgba(255, 255, 255, .63);
+	padding: 8px 0 7px 0;
+	color: rgba(0, 44, 0, .7);
+	font-family: "karmina-sans" !important;
+	font-size: 14px !important;
+	text-transform: uppercase;
+	margin: 0px 0 0 22px;
+	width: 240px;
+}
+
+.popup-new-tag-submit:hover {
+	background-color: rgba(255, 255, 255, .8);
+}
+
+.popup-new-tag-submit:active {
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.popup-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 14px 22px 0 22px;
+	border-color: #358860 transparent transparent transparent;
+	position: absolute;
+	bottom: -14px;
+	left: 117px;
+}
+
 .sidebar-container.list {
 	background-color: #358860; /* old: 8a3d5d */
 
@@ -15,11 +119,11 @@
 		padding-top: 44px;
 	}
 
-	& .sidebar-title, .source-count, .sidebar-profile {
+	& .sidebar-title, .sidebar-item-count, .sidebar-profile {
 		border-color: rgba(0, 0, 0, .19) !important;
 	}
 
-	& .filters-list {
+	& .sidebar-list {
 		border-top: solid 1px rgba(0, 0, 0, .19);
 	}
 
@@ -41,15 +145,15 @@
 		padding-left: 41px;
 	}
 
-	& .filters-list-button, .profile-description, .source-count > p {
+	& .sidebar-list-button, .profile-description, .sidebar-item-count > p {
 		color: rgba(255, 255, 255, .37);
 	}
 
 	& .sidebar-padding.active {
-		& .filters-list-button {
+		& .sidebar-list-button {
 			color: #fff;
 		}
-		& .source-count {
+		& .sidebar-item-count {
 			border-color: #fff !important;
 			background-color: #fff;
 			& p { 
@@ -70,6 +174,10 @@
 	& .sidebar-profile-links {
 		margin-top: -7px;
 	}
+}
+
+.tags-list .sidebar-list-button {
+	text-transform: uppercase;
 }
 
 .content-container.list {
@@ -189,6 +297,19 @@
 				font-size: 13px;
 				font-weight: 400;
 				text-transform: uppercase;
+				padding: 2px 0px 1px 0px;
+
+				&.button {
+					border: 1px solid rgba(0, 0, 0, 0.12);
+					border-radius: 3px;
+					padding: 2px 4px 1px 4px;
+				}
+
+				&.add-tag.button {
+					float: right;
+					margin-left: 8px;
+					margin-top: 3px;
+				}
 
 				&:hover {
 					color: #893c5c;
@@ -197,6 +318,19 @@
 
 			& .quote-options .tag {
 				text-transform: uppercase;
+			}
+
+			& .quote-options .quote-tag {
+				float: right;
+				margin-left: 5px;
+				color: #999;
+				& .remove-tag {
+					color: transparent;
+				}
+				&:hover .remove-tag {
+					color: #999;
+					&:hover { color: #893c5c; }
+				}
 			}
 		}
 	}
@@ -303,13 +437,16 @@ $color-alt-3: #c06f91;
 
 .quote-options {
 	float: right;
+	line-height: 24px;
 }
 
 .quote-options .socicon {
-	font-size: 26px;
+	font-size: 17px;
 	position: relative;
-	top: -5px;
-	margin-left: 19px;
+	margin-left: 22px;
+	border: solid 1px rgba(0, 0, 0, .17);
+	border-radius: 15px;
+	padding: 5px;
 }
 
 .quote-options .tag {

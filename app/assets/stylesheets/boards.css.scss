@@ -121,7 +121,7 @@ SIDEBAR SPECIFICS
 	line-height: 24px;
 }
 
-.filters-list-button {
+.sidebar-list-button {
 	background: none;
 	border: none;
 	padding: 0;
@@ -141,10 +141,6 @@ SIDEBAR SPECIFICS
 
 .sidebar-list li {
 	font-size: 0;
-}
-
-.filters-list li.active .filters-list-button {
-	color: #70142a;
 }
 
 .filters-list li + li {
@@ -170,7 +166,7 @@ SIDEBAR SPECIFICS
 	display: none; 
 }
 
-.source-count {
+.sidebar-item-count {
 	position: relative;
 	top: 3px;
 	display: inline-block;
@@ -187,7 +183,21 @@ SIDEBAR SPECIFICS
 	}
 }
 
-.sidebar-padding.active .source-count {
+.tags-list {
+	& .sidebar-list-button {
+		margin: 0;
+
+		&::before {
+			content: '#';
+		}
+	}
+
+	& input[type='checkbox'] {
+		display: none;
+	}
+}
+
+.sidebar-padding.active .sidebar-item-count {
 	border: solid 1px $board-background;
 	background-color: $board-background;
 	& > p {

@@ -1,0 +1,10 @@
+<div class="popup">
+	<ul>
+		<% tags.each do |tag| %>
+			<li class="existing-tag t-<%= tag.id %>"><%= tag.name %></li>
+		<% end %>
+	</ul>
+	<div class="popup-triangle"></div>
+	<input type='text' class='popup-new-tag' data-qid="<%= quote.id %>" placeholder='Create a new tag'>
+	<input type="submit" value="Add new tag" class="popup-new-tag-submit">
+</div>

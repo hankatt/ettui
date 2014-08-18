@@ -7,7 +7,7 @@ module QuotesHelper
 		URI.parse(url).host.sub(/\Awww\./, '')
 	end
 
-	def mergeTags(tags, new_tag)
+	def merge_tags(tags, new_tag)
 		@tags = ""
 		if tags.empty?
 			@tags << new_tag
@@ -16,9 +16,9 @@ module QuotesHelper
 				# STRINGIFY EXISTING TAGS
 				@quote.tags.each do |tag|
 					if tag.eql?(tags.first)
-					@tags << tag.to_s
+						@tags << tag.to_s
 					else
-					@tags << ", " << tag.to_s
+						@tags << ", " << tag.to_s
 					end
 				end
 
@@ -26,6 +26,10 @@ module QuotesHelper
 				@tags << ", " << new_tag
 			end
 		end
+
+		# ADD NEW TAG TO QUOTE @quote.tag_list
+		@quote.tag_list.add(new_tag)
+		@quote.save
 
 		# RETURN @tags STRING
 		@tags

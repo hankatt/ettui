@@ -6,7 +6,9 @@ Well::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "users/intro" => "users#intro", :as => "intro"
   get 'add/quote' => "quotes#add_quote"
-  get 'add/tag' => "quotes#add_tag"
+  get 'add/tag' => "quotes#remote_add_tag"
+  get 'add/ltag' => "quotes#local_add_tag"
+  delete '/quotes/:id/:tag_id' => "quotes#remove_tag", :as => "remove_tag"
 
   get 'users/done' => "users#done", :as => "continue"
   

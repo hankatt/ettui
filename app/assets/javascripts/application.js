@@ -14,21 +14,13 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).on('ready', function() {
+$(document).on('ready DOMChange', function() {
 
     //ini();
 
     $(window).resize(function () {
         //ini();
     });
-
-    /*
-    $(".sidebar-logo").click(function(e) {
-        e.preventDefault();
-        $(".content-container").toggleClass('list');
-        $(".sidebar-container").toggleClass('list');
-    });
-    */
     
     /*  
         Use keydown event to trigger backspace's, so the results updates
@@ -57,25 +49,100 @@ $(document).on('ready', function() {
             $(".sidebar-toggle-column").fadeIn();
             $("#search-filter").removeClass('active');
         }
-    })
+    });
+
+    $("li.existing-tag").unbind('click').on('click', function() {
+        quote = $(this).parent().parent().parent();
+
+        aaa = $(this);
+
+        tag_exists = false;
+        clicked_tag = $(this).text();
+        $(".quote-options.q-" +quote.data('qid') +" .quote-tag").each(function() {
+            if(clicked_tag === $(this).children('.tag').text())
+                tag_exists = true;
+        });
+
+        if(!tag_exists) {
+
+            // Show the clicked tag as selected in the popup
+            $(this).addClass('selected');
+
+            // Params for the AJAX query
+            var params = {
+                qid: quote.data('qid'),
+                tag: $(this).text(),
+                is_new: false
+            }
+
+            $.ajax({
+                url: "//localhost:3000/add/ltag",
+                dataType: "script",
+                data: jQuery.param(params)
+            });
+        }
+
+    });
+
+    $(".popup-new-tag-submit").unbind('click').on('click', function (e) {
+        e.preventDefault();
+        new_tag = $(this).siblings(".popup-new-tag");
+
+        console.log(".popup-new-tag-submit");
+
+        tag_exists = false;
+        $(".popup.active ul li").each(function() {
+            if(new_tag.val() === $(this).text())
+                tag_exists = true;
+        });
+
+        if(tag_exists) {
+            new_tag.val(''); //Reset input field
+        } else {
+            var params = {
+                qid: new_tag.data('qid'),
+                tag: new_tag.val(),
+                is_new: true
+            }
+
+            $.ajax({
+                url: "//localhost:3000/add/ltag",
+                dataType: "script",
+                data: jQuery.param(params)
+            });
+
+        }
+    });
 
     /* 
         Checkbox functionality for the source filters 
     */
 
-    $(".filters-list li").bind('mouseup', function() {
+    $(".filters-list li, .tags-list li").on('click', function(e) {
+
         // Mark selection as active
         $(this).toggleClass('active');
 
         // Set checkbox to: Checked
         checkbox = $(this).children('[type="checkbox"]');
         checkbox.prop('checked', !checkbox.prop('checked'));
+        $(".filters-list li, .tags-list li").unbind('click');
     });
 
-    /* In responsive mode, this reveals the menu. */
-    $(".menu-button").on('click', function() {
-        $(".sidebar, .filters-container").toggleClass('active');
-    });
+});
+
+$(document).on('click', '.add-tag.button', function() {
+    popup = $(this).parent().parent().parent().children('.popup');
+    setTimeout(function(){
+        popup.children('.popup-new-tag').focus();
+    }, 0);
+
+    if(popup.hasClass('active'))
+        popup.removeClass('active')
+    else {
+        $(".popup.active").removeClass('active');
+        popup.addClass('active');
+    }
 });
 
 /* Performs the AJAX search.

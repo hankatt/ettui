@@ -1,0 +1,5 @@
+<li class="sidebar-padding">
+	<%= check_box_tag "tag_ids[]", tag.id, false, :id => "tag_ids_#{tag.id}" %>
+	<button class="sidebar-list-button"><%= tag.name.truncate(20) %></button>
+	<div class="sidebar-item-count"><p><%= tag.taggings_count / 2 %></p></div>
+</li>

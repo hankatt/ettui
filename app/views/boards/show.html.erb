@@ -21,23 +21,27 @@
           	           <% end %>
           	        </ol>
                 </div>
-                <!--
+                
                 <div class="tags-container">
                   <h4 class="sidebar-title sidebar-padding">Tags</h4>
                   <ol class="sidebar-list tags-list">
-                    <li>design</li>
+                    <% @board.owned_tags.each do |tag| %>
+                        <%= render :partial => 'tag', locals: { tag: tag } %>
+                    <% end %>
                   </ol>
                 </div>
-                !-->
+
                 <div class="bottom-fix">
                     <div class="sidebar-profile">
                         <div class="sidebar-padding">
+                            <!--
                             <% if current_user_details %>
                                 <%= image_tag current_user_details.profile_image_url, :class => "profile-photo" %>
                                 <%= link_to current_user_details.name, current_user, :class => "profile-name" %></h2>
                                 
-                                <!--<p class="profile-description"><%= current_user_details.description %></p>!-->
+                                <p class="profile-description"><%= current_user_details.description %></p>
                             <% end %>
+                            !-->
                             <div class="sidebar-profile-links">
                                 <a href="/logout" class="profile-link">Logout </a>
                                 <p class="inline"> – </p>
@@ -73,14 +77,11 @@
                 <%= submit_tag "Search", :name => nil, :class => 'submit' %>
             </div>
             <ol class="quotes-container">
-                <!--
-                <p class="quotes-metadata">Showing <em>3</em> quotes from <em>1</em> source.</p>
-                !-->
-                    <% if !@quotes.nil? %>
-                        <% @quotes.each do |quote| %>
-                            <%= render :partial => 'quotes/quote', locals: { quote: quote } %>
-                        <% end %>
+                <% if !@quotes.nil? %>
+                    <% @quotes.each do |quote| %>
+                        <%= render :partial => 'quotes/quote', locals: { quote: quote } %>
                     <% end %>
+                <% end %>
             </ol>
         </div>
         <a href="/">

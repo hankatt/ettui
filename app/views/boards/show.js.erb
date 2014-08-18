@@ -6,11 +6,13 @@ $container.html('');
 
 //$container.masonry('destroy');
 
-$container.append($new_items);
+$container.prepend($new_items);
 
 search_query = $("#search-filter .search").val();
 quotes = $(".quote .quote-content p");
 quotes.unhighlight().highlight(search_query);
+
+$(document).trigger('DOMChange');
 
 //ini();
 

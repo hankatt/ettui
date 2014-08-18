@@ -1,4 +1,4 @@
-<li class="quote clearfix rows q-<%= quote.id %>">
+<li class="quote clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
 
 <!-- Dynamically size quotes text depending on content size !-->
 <% if quote.text.length < 111 %>
@@ -20,16 +20,19 @@
       <p class="dc2"><%= quote.text %></p>
       <div class="quote-actions">
         
-        <%= link_to "Remove", quote, method: :delete %>
-        <div class="quote-options">
-          <% quote.tags.each do |t| %>
-            <%= link_to t.name, "#!", :class => "tag" %>
+        <%= link_to "Remove", quote, method: :delete, :class => "remove-quote button" %>
+        <%= link_to "+ Add tag", "#!", :class => "add-tag button", :title => "Add tag" %>
+        <div class="quote-options q-<%= quote.id %>">
+          <% quote.tag_list.each do |tag| %>
+            <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
           <% end %>
-          <%= link_to "#!" do %>
+          <!--<%= link_to "#!" do %>
             <span class="socicon">a</span>
           <% end %>
+          !-->
         </div>
         
       </div>
     </div>
+    <%= render :partial => 'quotes/popup', locals: { quote: quote, tags: @board.owned_tags } %>
 </li>

@@ -27,12 +27,45 @@ class QuotesController < ApplicationController
     end
   end
 
-  def add_tag
-    @board = User.find_by_token(params[:user_token]).boards.first
+  def local_add_tag
+    if session[:user_id]
+      # Find users board through user session
+      @board = User.find(session[:user_id]).boards.first
+
+      # Find the quote we are adding tags to
+      @quote = Quote.find(params[:qid])
+
+      # Extract the tag
+      @new_tag = URI.unescape(params[:tag])
+      @quote.tag_list.add(@new_tag)
+      # @tags = merge_tags(@quote.tags, @new_tag)
+
+      # Add the tag to the quote, owned by the board
+      @board.tag(@quote, :with => @quote.tag_list, :on => "tags")
+    end
+
+    respond_to do |format|
+      if @board.save
+        @is_new = params[:is_new]
+        @tag = @quote.tags.find_by_name(@quote.tag_list.last)
+        format.js
+      else
+        data = { :message => "Tagging failed." }
+        format.js
+      end
+    end
+
+  end
+
+  def remote_add_tag
+    if params[:user_token]
+      @board = User.find_by_token(params[:user_token]).boards.first
+    end
+
     @quote = Quote.find(params[:qid])
 
     @tag = URI.unescape(params[:tag])
-    @tags = mergeTags(@quote.tags, @tag)
+    @tags = merge_tags(@quote.tags, @tag)
 
     @board.tag(@quote, :with => @tags, :on => "tags")
 
@@ -71,6 +104,28 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to boards_url }
       format.json { head :no_content }
+    end
+  end
+
+  def remove_tag
+    @quote = Quote.find(params[:id])
+    @tag_id = params[:tag_id]
+
+    # Fetch the tag object
+    @tag = @quote.tags.find(params[:tag_id])
+
+    # If it is the last instance of the tag, remove it completely from the board, else only from this specific quote
+    if(@tag.taggings_count == 2)
+      @tag.destroy
+      @tag_destroyed = true 
+    else
+      @quote.tag_list.remove(@quote.tags.find(params[:tag_id]).name)
+    end
+
+    respond_to do |format|
+      if @quote.save
+        format.js
+      end
     end
   end
 end

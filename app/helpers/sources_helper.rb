@@ -4,7 +4,7 @@ module SourcesHelper
 		URI.parse(url).host.sub(/\Awww\./, '')
 	end
 
-	def count_occurrences(id)
+	def count_source_occurrences(id)
 		current_user.boards.first.quotes.where(:source_id => id).count
 	end
 

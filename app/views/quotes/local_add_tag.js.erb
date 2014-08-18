@@ -1,0 +1,15 @@
+// Render a new #tag (x) based on the _tag.html.erb partial
+tag_container = $(".quote-options.q-<%= @quote.id %>")[0];
+$(tag_container).append("<%= escape_javascript(render :partial => 'quotes/tag', locals: { quote: @quote, tag: @tag.name }) %>");
+
+if(<%= @is_new %>) {
+	// Render the tag in all existing popup tag lists as it is a new tag
+	$(".popup ul").append('<li class="existing-tag t-<%= @tag.id %>"><%= @tag.name %></li>');
+}
+
+// Reset the input textfield value
+$(".popup.active .popup-new-tag").val('');
+$(".popup.active .popup-new-tag").focus();
+
+// Trigger DOMChange to assure jQuery events trigger on newly appended tag
+$(document).trigger('DOMChange');

@@ -1,0 +1,8 @@
+// Fade out and remove the removed tag
+deletedTag = $(".quote-options.q-" +<%= @quote.id %>).children('.t-' +<%= @tag_id %>)[0];
+$(deletedTag).fadeOut("fast", function() { $(deletedTag).remove(); });
+
+if(<%= @tag_destroyed %>) {
+	popupTag = $(".popup.active ul li.t-" +<%= @tag_id %>)[0];
+	$(popupTag).fadeOut("fast", function() { $(popupTag).remove(); });
+}

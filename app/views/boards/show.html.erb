@@ -14,7 +14,12 @@
   	    <div class="sidebar-container list">
             <div class="sidebar-content">
                 <div class="filters-container">
-          	        <h4 class="sidebar-title sidebar-padding">Filters</h4>
+                    <div class="sidebar-title-toggle">
+                        <h4 class="sidebar-title">Filters</h4>
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
+                        <polygon id="arrow-24-icon" points="263.25,251.829 268.806,246.247 279.25,256.643 289.695,246.247 295.25,251.829 279.25,267.753 "/>
+                        </svg>
+                    </div>
                     <ol class="sidebar-list filters-list">
           	           <% @sources.each do |source| %>
           	                <%= render :partial => 'source', locals: { source: source } %>
@@ -23,8 +28,13 @@
                 </div>
                 
                 <div class="tags-container">
-                  <h4 class="sidebar-title sidebar-padding">Tags</h4>
-                  <ol class="sidebar-list tags-list">
+                    <div class="sidebar-title-toggle">
+                        <h4 class="sidebar-title">Tags</h4>
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
+                        <polygon id="arrow-24-icon" points="263.25,251.829 268.806,246.247 279.25,256.643 289.695,246.247 295.25,251.829 279.25,267.753 "/>
+                        </svg>
+                    </div>
+                    <ol class="sidebar-list tags-list">
                     <% @board.owned_tags.each do |tag| %>
                         <%= render :partial => 'tag', locals: { tag: tag } %>
                     <% end %>
@@ -34,14 +44,13 @@
                 <div class="bottom-fix">
                     <div class="sidebar-profile">
                         <div class="sidebar-padding">
-                            <!--
+                            
                             <% if current_user_details %>
                                 <%= image_tag current_user_details.profile_image_url, :class => "profile-photo" %>
                                 <%= link_to current_user_details.name, current_user, :class => "profile-name" %></h2>
-                                
                                 <p class="profile-description"><%= current_user_details.description %></p>
                             <% end %>
-                            !-->
+                            
                             <div class="sidebar-profile-links">
                                 <a href="/logout" class="profile-link">Logout </a>
                                 <p class="inline"> – </p>

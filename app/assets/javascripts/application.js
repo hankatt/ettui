@@ -55,11 +55,14 @@ $(document).on('ready DOMChange', function() {
         }
     });
 
+    $(".sidebar-title-toggle").on('click', function() {
+        $(this).toggleClass('active');
+        list_to_toggle = $(this).siblings('.sidebar-list');
+        list_to_toggle.slideToggle(100);
+    });
+
     $("li.existing-tag").unbind('click').on('click', function() {
         quote = $(this).parent().parent().parent();
-
-        aaa = $(this);
-
         tag_exists = false;
         clicked_tag = $(this).text();
         $(".quote-options.q-" +quote.data('qid') +" .quote-tag").each(function() {
@@ -85,7 +88,6 @@ $(document).on('ready DOMChange', function() {
                 data: jQuery.param(params)
             });
         }
-
     });
 
     $(".popup-new-tag-submit").unbind('click').on('click', function (e) {

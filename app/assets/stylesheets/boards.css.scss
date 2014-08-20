@@ -117,8 +117,9 @@ SIDEBAR SPECIFICS
 .sidebar-title {
 	margin-bottom: 11px;
 	color: $primary-text-color-on-white;
-	font-size: 24px;
 	line-height: 24px;
+	font-size: 16px;
+	margin-bottom: 0;
 }
 
 .sidebar-list-button {
@@ -126,18 +127,13 @@ SIDEBAR SPECIFICS
 	border: none;
 	padding: 0;
 	color: $secondary-text-color-on-white;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 26px;
 	margin-left: 7px;
 }
 
 .sidebar-list {
 	padding-top: 11px;
-}
-
-.sidebar-title {
-	font-size: 17px;
-	margin-bottom: 0;
 }
 
 .sidebar-title-toggle {
@@ -148,12 +144,15 @@ SIDEBAR SPECIFICS
 	position: relative;
 	&:hover {
 		cursor: pointer;
-		background-color: rgba(0, 0, 0, .05);
+		& svg {
+			fill: #fff;
+		}
 	};
 	&.active svg {
 		-ms-transform: rotate(180deg); /* IE 9 */
 	    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
 	    transform: rotate(180deg);
+	    fill: rgba(0, 0, 0, .22);
 	}
 }
 
@@ -165,7 +164,7 @@ SIDEBAR SPECIFICS
 	position: absolute;
 	right: 0;
 	top: 2px;
-	fill: #fff;
+	fill: rgba(0, 0, 0, .22);
 }
 
 .tags-container {
@@ -219,8 +218,7 @@ SIDEBAR SPECIFICS
 .tags-list {
 	& .sidebar-list-button {
 		margin: 0;
-		font-family: "karmina-sans" !important;
-		font-size: 14px;
+		font-size: 13px;
 
 		&::before {
 			content: '#';
@@ -260,16 +258,17 @@ SIDEBAR SPECIFICS
 }
 
 .sidebar-profile p {
-	font-size: 13px;
+	font-size: 12px;
 	color: $secondary-text-color-on-white;
 	margin-top: 0;
 	margin-bottom: 22px;
 }
 
 .profile-description {
-	line-height: 19px;
+	line-height: 18px;
 	margin-top: 13px;
 	margin-bottom: 16px;
+	text-align: center;
 }
 
 .sidebar-profile .profile-link {

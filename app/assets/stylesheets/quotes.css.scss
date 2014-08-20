@@ -26,7 +26,6 @@
 	padding: 9px 0 6px 0;
 	text-align: center;
 	color: rgba(255, 255, 255, .6);
-	font-family: "karmina-sans" !important;
 	font-size: 14px;
 	text-transform: uppercase;
 }
@@ -56,7 +55,6 @@
 
 .popup > .popup-new-tag {
 	margin: 0 22px;
-	font-family: "karmina-sans" !important;
 	font-weight: normal;
 	font-size: 14px;
 	width: 240px;
@@ -78,7 +76,6 @@
 	background: rgba(255, 255, 255, .63);
 	padding: 8px 0 7px 0;
 	color: rgba(0, 44, 0, .7);
-	font-family: "karmina-sans" !important;
 	font-size: 14px !important;
 	text-transform: uppercase;
 	margin: 0px 0 0 22px;
@@ -274,7 +271,6 @@
 
 		& .source-url a, .quote-date {
 			color: #999;
-			font-family: "jaf-bernino-sans", "karmina-sans", Helvetica, sans-serif !important;
 			font-size: 14px;
 			text-transform: lowercase;
 		}
@@ -453,7 +449,6 @@ $color-alt-3: #c06f91;
 
 .quote-actions a {
 	color: #662943;
-	font-family: "karmina-sans", sans-serif;
 	font-size: 13px;
 	font-weight: 600;
 	transition: color .09s ease-out
@@ -479,7 +474,6 @@ $color-alt-3: #c06f91;
 
 .source-url a, .quote-date {
 	color: $secondary-text-color-on-white;
-	font-family: "karmina-sans", sans-serif;
 	font-size: 15px;
 	text-transform: lowercase;
 }

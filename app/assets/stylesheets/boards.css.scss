@@ -118,8 +118,11 @@ SIDEBAR SPECIFICS
 	margin-bottom: 11px;
 	color: $primary-text-color-on-white;
 	line-height: 24px;
-	font-size: 16px;
+	font-size: 14px;
 	margin-bottom: 0;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 600;
 }
 
 .sidebar-list-button {
@@ -148,6 +151,12 @@ SIDEBAR SPECIFICS
 			fill: #fff;
 		}
 	};
+	&.active:hover {
+		cursor: pointer;
+		& svg {
+			fill: #fff;
+		}
+	}
 	&.active svg {
 		-ms-transform: rotate(180deg); /* IE 9 */
 	    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */

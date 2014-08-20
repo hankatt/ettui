@@ -47,8 +47,8 @@
 		vertical-align: top; /* Positions inline-block elements aligned to the elements top. */
 	}
 
-	.header-link a, .splash a, .splash h2, .sidebar-profile p, .sidebar-profile .profile-link, .sidebar-list-button, .sidebar-item-count p, footer a, footer p, .usp p, input, .input-container p, .input-container a, .sidebar-container.list .sidebar-title {
-		font-family: "jaf-bernino-sans", "karmina-sans", Helvetica, sans-serif !important;
+	.header-link a, .splash a, .splash h2, .sidebar-profile p, .source-url a, .popup > ul li, .quote-date, .quote-actions a, .sidebar-list-button, .popup-new-tag, .popup-new-tag-submit, .sidebar-profile .profile-link, .sidebar-list-button, .sidebar-item-count p, footer a, footer p, .usp p, input, .input-container p, .input-container a, .sidebar-container.list .sidebar-title {
+		font-family: "karmina-sans", Helvetica, sans-serif !important;
 	}
 
 	/*

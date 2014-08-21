@@ -55,6 +55,13 @@ $(document).on('ready DOMChange', function() {
         }
     });
 
+    $("#search").on('keypress', function(e) {
+        if(e.keyCode === 13) {
+            e.preventDefault();
+            $("#search-filter").submit();
+        }
+    });
+
     $(".sidebar-title-toggle").unbind('click').on('click', function() {
         $(this).toggleClass('active');
         list_to_toggle = $(this).siblings('.sidebar-list');

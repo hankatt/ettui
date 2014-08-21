@@ -55,7 +55,7 @@ $(document).on('ready DOMChange', function() {
         }
     });
 
-    $(".sidebar-title-toggle").on('click', function() {
+    $(".sidebar-title-toggle").unbind('click').on('click', function() {
         $(this).toggleClass('active');
         list_to_toggle = $(this).siblings('.sidebar-list');
         list_to_toggle.slideToggle(100);

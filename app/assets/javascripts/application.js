@@ -83,7 +83,7 @@ $(document).on('ready DOMChange', function() {
             }
 
             $.ajax({
-                url: "//localhost:3000/add/ltag",
+                url: "//notedapp.herokuapp.com/add/ltag",
                 dataType: "script",
                 data: jQuery.param(params)
             });
@@ -112,7 +112,7 @@ $(document).on('ready DOMChange', function() {
             }
 
             $.ajax({
-                url: "//localhost:3000/add/ltag",
+                url: "//notedapp.herokuapp.com/add/ltag",
                 dataType: "script",
                 data: jQuery.param(params)
             });

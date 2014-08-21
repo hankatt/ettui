@@ -43,23 +43,19 @@
 
                 <div class="bottom-fix">
                     <div class="sidebar-profile">
-                        <div class="sidebar-padding">
-                            
                             <% if current_user_details %>
                                 <%= image_tag current_user_details.profile_image_url, :class => "profile-photo" %>
-                                <%= link_to current_user_details.name, current_user, :class => "profile-name" %></h2>
-                                <p class="profile-description"><%= current_user_details.description %></p>
+                                <%= link_to current_user_details.name, current_user, :class => "profile-name sidebar-padding" %></h2>
+                                <p class="profile-description sidebar-padding"><%= current_user_details.description %></p>
                             <% end %>
                             
                             <div class="sidebar-profile-links">
-                                <a href="/logout" class="profile-link">Logout </a>
-                                <p class="inline"> – </p>
+                                <a href="/logout" class="profile-link">Logout</a>
                                 <a class="profile-link" href="javascript:(function() {
                                     document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
                                     current_user_token = '<%= current_user.token %>';
-                                  })();"> Your bookmarklet</a>
+                                  })();">Your bookmarklet</a>
                           </div>
-                        </div>
                     </div>
                 </div>
             </div>

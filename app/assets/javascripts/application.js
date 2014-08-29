@@ -55,11 +55,9 @@ $(document).on('ready DOMChange', function() {
         }
     });
 
-    $("#search").on('keypress', function(e) {
-        if(e.keyCode === 13) {
-            e.preventDefault();
-            $("#search-filter").submit();
-        }
+    $("#search-filter").on('keypress', function(e) {
+        if(e.keyCode === 13)
+            console.log(e);
     });
 
     $(".sidebar-title-toggle").unbind('click').on('click', function() {

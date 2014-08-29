@@ -102,7 +102,7 @@
 }
 
 .sidebar-container.list {
-	background-color: #358860; /* old: 8a3d5d */
+	background-color: #343434; /* old 2: #358860 */ /* old: 8a3d5d */
 
 	.sidebar-logo svg {
 		border-color: rgba(0, 0, 0, .19);
@@ -323,7 +323,7 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 2) {
-	.content-container.list .quote .quote-content.small p.dc2:first-child:first-letter {
+	/*.content-container.list .quote .quote-content.small p.dc2:first-child:first-letter {
 		font-size: 1.5em;
 		float: left;
 		font-weight: bold;
@@ -334,10 +334,11 @@
 		line-height: 0.5em;
 		padding-bottom: 5px;
 		border-bottom: solid 9px #e6e6e6;
-	}
+	}*/
 
 	.quote-actions {
-		opacity: 1 !important;
+		opacity: 0 !important;
+		display: none;
 	}
 }
 
@@ -484,4 +485,91 @@ $color-alt-3: #c06f91;
 	line-height: 26px;
 	padding-top: 3px;
 
+}
+
+@media only screen and (max-width : 624px) {
+
+	.sidebar-toggle-column {
+		display: none;
+	}
+
+	.search-container > img {
+		left: 28px;
+	}
+
+	.sidebar-logo {
+		top: 14px;
+		right: 28px;
+		position: absolute;
+	}
+
+	.content-container.list {
+
+	background-color: #f6f3f0;
+
+		& .quotes-container, .search-container {
+			margin: 0 auto;
+			width: 100%;
+			max-width: 956px;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		& .quotes-container {
+			padding-top: 28px;
+		}
+
+		& .quote {
+			border-radius: 0;
+			padding: 20px 28px 6px 28px;
+			margin-bottom: 28px;
+			min-width: 320px;
+		}
+
+		& .add-tag.button {
+			display: none !important;
+		}
+	}
+
+	.quote-actions {
+		opacity: 0 !important;
+		display: none;
+	}
+
+	.search-container .search {
+		padding-left: 64px;
+	}
+
+}
+
+@media only screen and (min-width : 480px) and (max-width : 624px) {
+	.content-container.list .quote {
+		& .quote-content.small p {
+			font-size: .9em;
+		}
+
+		& .quote-content.big p {
+			font-size: 1.54em;
+		}
+
+		& .quote-content p {
+			font-size: 1.24em;
+		}
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 479px) {
+	.content-container.list .quote {
+		& .quote-content.small p {
+			font-size: 0.95em;
+		}
+
+		& .quote-content.big p {
+			font-size: 1.35em;
+		}
+
+		& .quote-content p {
+			font-size: 1.15em;
+		}
+	}
 }

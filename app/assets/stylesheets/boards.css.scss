@@ -23,7 +23,7 @@
 		height: 24px;
 		background-size: contain;
 		background-blend-mode: multiply, normal;
-		background-color: $main-background-color;
+		background-color: white;
 		background-repeat: no-repeat;
 		background-position: 50%;
 		box-sizing: content-box;
@@ -147,7 +147,7 @@
 	}
 
 	.sidebar-list.filters li .source-favicon {
-		border: solid 3px $main-background-color;
+		border: solid 2px white;
 		box-sizing: border-box;
 	}
 

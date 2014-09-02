@@ -60,7 +60,7 @@ $(document).on('ready DOMChange', function() {
             console.log(e);
     });
 
-    $(".sidebar-title-toggle").unbind('click').on('click', function() {
+    $(".sidebar-section-title").unbind('click').on('click', function() {
         $(this).toggleClass('active');
         list_to_toggle = $(this).siblings('.sidebar-list');
         list_to_toggle.slideToggle(100);
@@ -70,7 +70,7 @@ $(document).on('ready DOMChange', function() {
         quote = $(this).parent().parent().parent();
         tag_exists = false;
         clicked_tag = $(this).text();
-        $(".quote-options.q-" +quote.data('qid') +" .quote-tag").each(function() {
+        $(".quote-tags.q-" +quote.data('qid') +" .quote-tag").each(function() {
             if(clicked_tag === $(this).children('.tag').text())
                 tag_exists = true;
         });
@@ -98,8 +98,6 @@ $(document).on('ready DOMChange', function() {
     $(".popup-new-tag-submit").unbind('click').on('click', function (e) {
         e.preventDefault();
         new_tag = $(this).siblings(".popup-new-tag");
-
-        console.log(".popup-new-tag-submit");
 
         tag_exists = false;
         $(".popup.active ul li").each(function() {
@@ -129,15 +127,14 @@ $(document).on('ready DOMChange', function() {
         Checkbox functionality for the source filters 
     */
 
-    $(".filters-list li, .tags-list li").on('click', function(e) {
-
+    $(".sidebar-list li").unbind('click').on('click', function(e) {
+        console.log('clicked');
         // Mark selection as active
         $(this).toggleClass('active');
 
         // Set checkbox to: Checked
         checkbox = $(this).children('[type="checkbox"]');
         checkbox.prop('checked', !checkbox.prop('checked'));
-        $(".filters-list li, .tags-list li").unbind('click');
     });
 
 });

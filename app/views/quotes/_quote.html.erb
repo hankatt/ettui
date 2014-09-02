@@ -10,7 +10,7 @@
     <div class="quote-metadata">
         <div class="quote-source">
             <%= image_tag quote.source.favicon, :class => "source-favicon" %>
-            <h4 class="source-url"><%= link_to quote.source.hostname, quote.url %></h4>
+            <%= link_to quote.source.hostname, quote.url, :class => "source-url" %>
         </div>
         <div class="quote-date">
             <%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %>
@@ -22,7 +22,7 @@
         
         <%= link_to "Remove", quote, method: :delete, :class => "remove-quote button" %>
         <%= link_to "+ Add tag", "#!", :class => "add-tag button", :title => "Add tag" %>
-        <div class="quote-options q-<%= quote.id %>">
+        <div class="quote-tags q-<%= quote.id %>">
           <% quote.tag_list.each do |tag| %>
             <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
           <% end %>

@@ -1,5 +1,5 @@
 // Fade out and remove the removed tag
-deletedTag = $(".quote-options.q-<%= @quote.id %> .t-<%= @tag_id %>");
+deletedTag = $(".quote-tags.q-<%= @quote.id %> .t-<%= @tag_id %>");
 console.log(deletedTag);
 $(deletedTag).remove();
 

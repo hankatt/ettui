@@ -41,7 +41,7 @@
 
 	.sidebar-toggle {
 		margin-left: 44px;
-		margin-top: 66px;
+		margin-top: 44px;
 	}
 
 	.sidebar-toggle-column {
@@ -50,7 +50,8 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		background-color: rgba(0, 0, 0, .03);
+		background-color: transparent;
+		z-index: 1; /* To place it above it all so it always works. */
 
 		&:hover {
 			background-color: rgba(0, 0, 0, .05);
@@ -185,7 +186,7 @@
 
 		.filter-count {
 			position: relative;
-			top: 3px;
+			top: 2px;
 			display: inline-block;
 			padding: 1px 5px 4px 7px;
 			border: $sidebar-stroke;

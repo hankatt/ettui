@@ -19,7 +19,8 @@ $(document).on('ready DOMChange', function() {
     //ini();
 
     $(window).resize(function () {
-        //ini();
+        if($(document).outerWidth() < 936 && $("#search-filter").hasClass('active'))
+            $("#search-filter").removeClass('active');
     });
     
     /*  

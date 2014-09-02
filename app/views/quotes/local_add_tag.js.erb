@@ -1,5 +1,5 @@
 // Render a new #tag (x) based on the _tag.html.erb partial
-tag_container = $(".quote-options.q-<%= @quote.id %>")[0];
+tag_container = $(".quote-tags.q-<%= @quote.id %>")[0];
 $(tag_container).append("<%= escape_javascript(render :partial => 'quotes/tag', locals: { quote: @quote, tag: @tag.name }) %>");
 
 if(<%= @is_new %>) {

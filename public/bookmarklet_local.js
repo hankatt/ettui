@@ -71,7 +71,7 @@ jquery.onload = function() {
 
 					/* Append tags to popup */
 					for(i = 0; i < data.tags.length; i++)
-						$(".tag-container").append(createElementWithClass("li", "noted-tag", data.tags[i].name));
+						$(".tag-container").append(createElementWithClass("li", "noted-tag tid-" +data.tags[i].id, data.tags[i].name));
 
 					setTimeout(function() {
 						/* Remove loading spinner */
@@ -100,7 +100,6 @@ jquery.onload = function() {
 							user_token: current_user_token,
 							qid: session_data.qid,
 							tag: $(this).text(),
-							is_new: false,
 							callback: "added"
 						}
 
@@ -115,31 +114,18 @@ jquery.onload = function() {
 					    if (e.keyCode == 13) {
 							new_tag = $(this);
 
-							tag_exists = false;
-							$(".noted-tag").each(function() {
-								if(new_tag.val() === $(this).text())
-									tag_exists = true;
-							});
-
-							if(tag_exists) {
-								$(".status-message").html("Tag already exist.");
-								$(".sub-message").html("Try adding a new tag.");
-								new_tag.val(''); //Reset input field
-							} else {
-								var params = {
-									user_token: current_user_token,
-									qid: session_data.qid,
-									tag: new_tag.val(),
-									is_new: true,
-									callback: "added"
-								}
-
-								/* Execute JSONP call using script tag. */
-								jsonpScript = document.createElement("script");
-								jsonpScript.className = "noted-temporary-function-tbr";
-								jsonpScript.src =  "//localhost:3000/add/tag/?" + jQuery.param(params);
-								document.body.appendChild(jsonpScript);
+							var params = {
+								user_token: current_user_token,
+								qid: session_data.qid,
+								tag: new_tag.val(),
+								callback: "added"
 							}
+
+							/* Execute JSONP call using script tag. */
+							jsonpScript = document.createElement("script");
+							jsonpScript.className = "noted-temporary-function-tbr";
+							jsonpScript.src =  "//localhost:3000/add/tag/?" + jQuery.param(params);
+							document.body.appendChild(jsonpScript);
 						}
 					});
 				}
@@ -155,11 +141,16 @@ jquery.onload = function() {
 		tagCallback = function added(data) {
 
 			if(data && data.message) {
-				console.log(data.tag);
-				if(data.is_new === "true")
-					$(".tag-container").append(createElementWithClass("li", "noted-tag selected", data.tag));
-				$(".status-message").html("#" +data.tag +" " +data.message);
+				$(".status-message").html("#" +data.tag.name +" " +data.message);
 				$(".sub-message").html(data.submessage);
+
+				if(data.add === true)
+					$(".tag-container").append(createElementWithClass("li", "noted-tag selected tid-" +data.tag.name, data.tag.name));
+				
+				if(data.update === true)
+					$(".tag-container > .tid-" +data.tag.id).addClass('selected');
+					
+				// Reset input field
 				$("#noted-new-tag").val('');
 			}
 		};

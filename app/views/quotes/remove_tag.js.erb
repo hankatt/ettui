@@ -1,10 +1,27 @@
-// Fade out and remove the removed tag
-deletedTag = $(".quote-tags.q-<%= @quote.id %> .t-<%= @tag_id %>");
-console.log(deletedTag);
-$(deletedTag).remove();
+quote_tags_container = $(".quote-tags.q-<%= @quote.id %>");
+sidebar_tags_container = $(".sidebar-list.tags");
 
-if(<%= @tag_destroyed %>) {
-	popupTag = $(".popup ul .t-<%= @tag_id %>");
-	console.log(popupTag);
-	$(popupTag).remove();
-}
+// Remove @tag from @quote
+quote_tags_container.children(".t-<%= @tag.id %>").remove();
+
+<% if @flags[:tags_remain] %>
+	unused_tags_container = $(".unused-tags.q-<%= @quote.id %>");
+
+	// Add it back to the 'Add tag popup'-list
+	unused_tags_container.append("<%= escape_javascript(render :partial => 'quotes/popup_tag', locals: { quote: @quote, tag: @tag }) %>");
+
+	// Fetch the sidebar tag and update count
+	sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
+	sidebar_tag.find(".filter-count p").text(<%= @board.occurrences_of(@tag) %>);
+<% else %>
+	unused_tags_containers = $(".unused-tags");
+
+	// Remove all instances of the tag in 'Add tag popup'-lists
+	unused_tags_containers.children(".t-<%= @tag.id %>").remove();
+
+	// Remove from the tags list on the sidebar
+	sidebar_tags_container.children(".t-<%= @tag.id %>").remove();
+<% end %>
+
+// Trigger DOMChange to assure jQuery events trigger on newly appended tag
+$(document).trigger('DOMChange');

@@ -1,19 +1,20 @@
-$stroke-color:					rgba(0, 0, 0, .17);
+$stroke-color:					rgba(0, 0, 0, .11);
 
-$sidebar-background-color:		rgb(51, 51, 51);
-$sidebar-primary-text-color:	rgb(255, 255, 255);
-$sidebar-secondary-text-color:	rgba(255, 255, 255, .5);
+$sidebar-background-color:		white;
+$sidebar-primary-text-color:	rgba(0, 0, 0, .65);
+$sidebar-secondary-text-color:	rgba(0, 0, 0, .4);
+$sidebar-stroke-inactive:		solid 1px transparent;
 $sidebar-stroke:				solid 1px $stroke-color;
 
 $main-background-color:			rgb(246, 243, 240);
 $quote-primary-text-color:		rgb(51, 51, 51);
-$quote-secondary-text-color:	rgba(0, 0, 0, .5);
+$quote-secondary-text-color:	rgba(0, 0, 0, .4);
 $quote-stroke:					$sidebar-stroke;
-$quote-hover-text-color:		#893c5c;
+$quote-hover-text-color:		#6CDAB7;
 
-$popup-background-color:		$sidebar-background-color;
-$popup-primary-text-color:		$sidebar-primary-text-color;
-$popup-secondary-text-color:	$sidebar-secondary-text-color;
+$popup-background-color:		#c872d0;
+$popup-primary-text-color:		#fff;
+$popup-secondary-text-color:	#fff;
 $popup-stroke:					$sidebar-stroke;
 $popup-shadow-color:			0 1px 3px 0px $stroke-color;
 

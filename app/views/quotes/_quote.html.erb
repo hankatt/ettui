@@ -1,4 +1,8 @@
-<li class="quote clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
+<% if quote.created_at > current_user.last_active_at %>
+  <li class="quote unread clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
+<% else %>
+  <li class="quote clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
+<% end %>
 
 <!-- Dynamically size quotes text depending on content size !-->
 <% if quote.text.length < 111 %>
@@ -15,24 +19,20 @@
         <div class="quote-date">
             <%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %>
         </div>
+        <div class="symbol-new"></div>
+        <%= link_to "x", quote, method: :delete, :class => "remove-quote" %>
     </div>
     <div class="quote-content <%= font_size %>">
       <p class="dc2"><%= quote.text %></p>
       <div class="quote-actions">
-        
-        <%= link_to "Remove", quote, method: :delete, :class => "remove-quote button" %>
-        <%= link_to "+ Add tag", "#!", :class => "add-tag button", :title => "Add tag" %>
-        <div class="quote-tags q-<%= quote.id %>">
-          <% quote.tag_list.each do |tag| %>
-            <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
+        <%= link_to "+", tag_popup_path(quote.id), :remote => true, :class => "add-tag button", :title => "Add tag" %>
+        <ul class="quote-tags q-<%= quote.id %>">
+          <% if quote.tags.any? %>
+            <% quote.tags.each do |tag| %>
+              <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
+            <% end %>
           <% end %>
-          <!--<%= link_to "#!" do %>
-            <span class="socicon">a</span>
-          <% end %>
-          !-->
-        </div>
-        
+        </ul>
       </div>
     </div>
-    <%= render :partial => 'quotes/popup', locals: { quote: quote, tags: @board.owned_tags } %>
 </li>

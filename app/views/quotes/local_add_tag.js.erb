@@ -1,15 +1,33 @@
 // Render a new #tag (x) based on the _tag.html.erb partial
-tag_container = $(".quote-tags.q-<%= @quote.id %>")[0];
-$(tag_container).append("<%= escape_javascript(render :partial => 'quotes/tag', locals: { quote: @quote, tag: @tag.name }) %>");
+quote_tags_container	= $(".quote-tags.q-<%= @quote.id %>");
+unused_tags_container	= $(".unused-tags.q-<%= @quote.id %>");
 
-if(<%= @is_new %>) {
-	// Render the tag in all existing popup tag lists as it is a new tag
-	$(".popup ul").append('<li class="existing-tag t-<%= @tag.id %>"><%= @tag.name %></li>');
-}
+<% if @flags[:flash] %>
+	// Flash shit.
+	quote_tags_container.children('.t-<%= @tag.id %>').fadeOut(100, function() {
+		$(this).fadeIn(100);
+	});
 
-// Reset the input textfield value
-$(".popup.active .popup-new-tag").val('');
-$(".popup.active .popup-new-tag").focus();
+	// Reset the input textfield value
+	$(".popup .popup-new-tag").val('');
+	$(".popup .popup-new-tag").focus();
+<% elsif @flags[:add] %>
+	sidebar_tags_container = $(".sidebar-list.tags");
+
+	// Add it to the quote
+	quote_tags_container.append("<%= escape_javascript(render :partial => 'quotes/tag', locals: { quote: @quote, tag: @tag }) %>");
+
+	// Remove from popup list of unused tags
+	unused_tags_container.children(".t-<%= @tag.id %>").remove();
+
+	// Fetch the sidebar tag and update count
+	<% if @board.occurrences_of(@tag) == 1 %>
+		sidebar_tags_container.append("<%= escape_javascript(render :partial => 'boards/tag', locals: { tag: @tag }) %>");
+	<% else %>
+		sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
+		sidebar_tag.find(".filter-count p").text(<%= @board.occurrences_of(@tag) %>);
+	<% end %>
+<% end %>
 
 // Trigger DOMChange to assure jQuery events trigger on newly appended tag
 $(document).trigger('DOMChange');

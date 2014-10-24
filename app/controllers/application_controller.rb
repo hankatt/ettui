@@ -18,8 +18,11 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def get_tag_id(name)
-		current_user.boards.first.owned_tags.where(:name => name).first.id
-		# current_user.boards.first.owned_tags.where(:name => name)[0].id
+	private
+
+	def record_user_activity
+		if current_user
+			current_user.touch :last_active_at
+		end
 	end
 end

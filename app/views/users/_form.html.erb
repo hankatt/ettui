@@ -1,6 +1,6 @@
 <%= form_for(@user) do |f| %>
   <%= f.hidden_field :new_user, :value => true %>
-  <div class="field">
+  <div class="first field">
     <%= f.text_field :email, :placeholder => "Electronic mail address" %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
@@ -8,12 +8,11 @@
     <%= f.password_field :password, :placeholder => "Password", :class => 'sec' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
-  <div class="field">
+  <div class="last field">
     <%= f.password_field :password_confirmation, :placeholder => "Password confirmation", :class => 'thi' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="actions">
-    <%= f.submit "Create my account", :class => "button" %>
+    <%= f.submit "Sign up using email", :class => "small button" %>
   </div>
-  <p>Looking to sign in? <%= link_to "Sign in here", login_path %></p>
 <% end %>

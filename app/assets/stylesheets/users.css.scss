@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "fonts.css.scss";
+@import	"colors.css.scss";
+@import	"properties.css.scss";
+
 div.error_explanation ul {
 	display: none;
 	-webkit-padding-start: 0px;
@@ -33,30 +37,264 @@ div.error_explanation ul {
 
 */
 
-.splash h1, .login-signup h1, .login-signup h2 {
-		font-size: 42px;
-		letter-spacing: -1px;
-		line-height: 54px;
-	}
+.splash-container {
+	min-height: 100%;
+	position: relative;
+	max-width: 720px;
+	margin: 0 auto;
+}
 
-	.button {
-		display: inline-block !important;
-	}
+header {
+	overflow: auto;
+	position: relative;
+	margin: 0 0 $spacing-big 0;
+	padding-top: $spacing-big;
+}
 
-	.button .socicon {
-		margin-right: 8px;
-	}
+header p, .splash-container p, .splash-container h2 {
+	color: $quote-secondary-text-color;
+}
 
-	.header-link a, .splash a, input {
-		font-weight: 500;
-	}
+#logo-container {
+	display: block;
+	float: left;
+}
 
-	.inline {
-		display: inline !important;
-	}
+#logo-container > div {
+	width: 128px;
+	height: 63px;
+	box-sizing: content-box;
+	background: #fff image-url('logo.jpg') no-repeat 50% 50%;
+}
 
-	.vertical-line {
-		margin: 0 auto;
-		width: 1px;
-		background-color: #282828;
+.inline.link {
+	text-align: center;
+}
+
+header .inline.link {
+	position: absolute;
+	bottom: 15px;
+	right: 0;
+}
+
+.inline p, .inline a {
+	display: inline-block;
+}
+
+.inline p + a {
+	margin-left: 2px;
+}
+
+.splash-container a:hover {
+	color: $quote-hover-text-color;
+	border-color: $quote-hover-text-color;
+}
+
+.splash-container h1, .splash-container h2 {
+	text-align: center;
+}
+
+.splash-container h1 {
+	font-weight: bold;
+	letter-spacing: -1px;
+	width: 530px;
+	margin: 0 auto $spacing-normal;
+}
+
+.splash-container h2 {
+	letter-spacing: -1px;
+	font-weight: 300;
+}
+
+.button.big {
+	border: solid 1px;
+	border-radius: 6px;
+	padding: $spacing 0;
+	display: block;
+	text-align: center;
+	font-weight: 600;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.splash-container .big.button {
+	border-color: $quote-hover-text-color;
+	color: #3ec79b;
+	margin: $spacing-small auto;
+	width: 270px;
+	transition: color .13s;
+}
+
+.splash-container a.button:hover {
+	background-color: $quote-hover-text-color;
+	color: white;
+	border-color: $quote-hover-text-color;
+}
+
+.learn-more-container {
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	bottom: $spacing-normal;
+}
+
+.learn-more-container a {
+	font-size: $font-size-2;
+	font-weight: 300;
+	text-decoration: none;
+	border-bottom: solid 1px $stroke-color;
+}
+
+.learn-more-container a:hover {
+	color: inherit;
+	border-color: $quote-primary-text-color;
+}
+
+.twitter-container {
+	text-align: center;
+	border-bottom: solid 1px #ddd;
+	width: 320px;
+	margin: 0 auto;
+}
+
+.twitter-container .socicon {
+	position: relative;
+	top: -4px;
+	right: 8px;
+	font-size: 22px;
+	vertical-align: top;
+}
+
+.small.button {
+	width: 320px;
+	border-color: #ddd;
+	border-radius: 6px;
+	background-color: #f3f3f3;
+	padding: 16px 0 7px;
+	font-size: $font-size-1;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	display: block;
+}
+
+.twitter-container .small.button {
+	background-color: #55ACEE;
+	color: #fff;
+	margin-bottom: $spacing-small;
+}
+
+.email-container {
+	margin-top: $spacing-small;
+}
+
+.email-container form .first.field {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+.email-container form .last.field {
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+.email-container .field {
+	width: 320px;
+	margin: 0 auto 2px;
+	padding: $spacing;
+	background-color: #f3f3f3;
+}
+
+.email-container .actions {
+	margin-top: $spacing-milli;
+	margin-bottom: $spacing-small;
+	& .small.button {
+		padding: $spacing 0;
+		background-color: $quote-hover-text-color;
+		color: #fff;
 	}
+}
+
+.email-container input {
+	width: 100%;
+	text-align: center;
+}
+
+.intro-container h2 {
+	width: 100%;
+	max-width: 480px;
+	margin: 0 auto $spacing-big;
+}
+
+.intro-container h2 > em {
+	font-weight: 300;
+	font-size: inherit;
+	vertical-align: inherit;
+}
+
+.intro-container h4 {
+	margin: $spacing-small auto;
+	width: 320px;
+	text-align: center;
+}
+
+.intro-container {
+	padding-bottom: $spacing-bigger;
+}
+
+.progress-item {
+	text-align: center;
+	font-size: $font-size-2;
+	width: $spacing-normal;
+	height: $spacing-normal;
+	border-radius: $spacing-normal / 2;
+	border: solid 1px $stroke-color;
+	margin: 0 auto $spacing-small; 
+	display: block;
+}
+
+.bookmarklet-container {
+	overflow: auto;
+	background-color: $quote-hover-text-color;
+	border-radius: 6px;
+	width: 480px;
+	padding: $spacing-small 105px;
+	margin: $spacing-small auto $spacing-big;
+}
+
+.bookmarklet-container .big.button {
+	background-color: $quote-hover-text-color;
+	color: white;
+	width: 260px;
+	transform: scale(1.0);
+	border-style: dashed;
+	border-color: rgb(58, 166, 141);
+	font-weight: 500;
+	font-size: $font-size-1;
+	margin: 0 0 $spacing-small;
+	text-transform: none;
+	outline: none;
+	transition: scale .11s, box-shadow .11s, border-color .11s, background-color .11s;
+}
+
+.bookmarklet-container .big.button:hover {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .11);
+	background-color: #91ECCF;
+	border-color: transparent;
+	color: #fff;
+	transform: scale(1.01);
+	cursor: move !important;
+}
+
+.bookmarklet-container p {
+	margin: 0;
+}
+
+.intro-container blockquote {
+	width: 480px;
+	margin: $spacing-normal auto $spacing-bigger;
+	border-left: solid 4px $quote-hover-text-color;
+	padding-left: $spacing-small;
+	font-family: "adriane";
+	line-height: 1.619em;
+}

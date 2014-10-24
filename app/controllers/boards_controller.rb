@@ -17,12 +17,20 @@ class BoardsController < ApplicationController
         end
 
         @board = Board.find(params[:id])
-        @quotes = @board.complex_find_by(params)
+
+        # complex_find_by(parameters, only new quotes (true/false), when user was last seen)
+        if params && params[:unread] == "true"
+            @quotes = @board.unread(@user.last_active_at)
+        else
+            @unread = @board.unread(@user.last_active_at)
+            @quotes = @board.complex_find_by(params)
+        end
 
          # Get a list of all sources for this users quotes
         @sources = Source.where(:id => @board.quotes.pluck(:source_id))
 
         respond_to do |format|
+            record_user_activity
             format.html # show.html.erb
             format.js # show.js.erb
             format.json { render json: @quotes }

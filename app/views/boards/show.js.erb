@@ -1,17 +1,15 @@
 //Rebuild grid with new elements
-var $new_items = "<%= escape_javascript(render(@quotes)) %>";
-var $container = $(".quotes-container");
-
+var $container = $(".quotes-list");
 $container.html('');
 
-//$container.masonry('destroy');
+var $new_quotes = "<%= escape_javascript(render(@quotes)) %>";
+$container.prepend($new_quotes);
 
-$container.prepend($new_items);
-
-search_query = $("#search-filter .search").val();
+search_query = $("#search").val();
 quotes = $(".quote .quote-content p");
 quotes.unhighlight().highlight(search_query);
 
+// Trigger DOMChange to assure jQuery events trigger on newly appended tag
 $(document).trigger('DOMChange');
 
 //ini();

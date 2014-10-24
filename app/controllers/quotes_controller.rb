@@ -36,47 +36,117 @@ class QuotesController < ApplicationController
       @quote = Quote.find(params[:qid])
 
       # Extract the tag
-      @new_tag = URI.unescape(params[:tag])
-      @quote.tag_list.add(@new_tag)
-      # @tags = merge_tags(@quote.tags, @new_tag)
+      tag = URI.unescape(params[:tag])
 
-      # Add the tag to the quote, owned by the board
-      @board.tag(@quote, :with => @quote.tag_list, :on => "tags")
+      # Flags used in local_add_tag.js.erb, to decide what to do with the UI
+      @flags = { :flash => false, :add => false }
+
+      if @quote.has_tag(tag)
+        # Flash existing tag on quote and on popup
+        @flags[:flash] = true
+
+      else
+        # Attach tag to the quote owned by the user's board
+        tags = @quote.append_tag(tag)
+
+        # Board
+        @board.tag(@quote, :with => tags, :on => "tags" )
+        @quote.reload
+
+        # Add tag on on quote and in popup
+        @flags[:add] = true
+      end
     end
 
     respond_to do |format|
       if @board.save
-        @is_new = params[:is_new]
-        @tag = @quote.tags.find_by_name(@quote.tag_list.last)
+        # Set @tag to represent the Tag object (for local_add_tag.js.erb)
+        @tag = @quote.tags.find_by_name(URI.unescape(params[:tag]))
         format.js
       else
         data = { :message => "Tagging failed." }
         format.js
       end
     end
-
   end
 
   def remote_add_tag
     if params[:user_token]
       @board = User.find_by_token(params[:user_token]).boards.first
+
+      # Find the quote we are adding tags to
+      @quote = Quote.find(params[:qid])
+
+      # Extract the tag
+      tag = URI.unescape(params[:tag])
+
+      # Flags used in local_add_tag.js.erb, to decide what to do with the UI
+      @flags = { :update => false, :add => false }
+
+      if @board.owns_tag(tag)
+        @flags[:update] = true # If it exists:   Update its status to 'selected'
+      else
+        @flags[:add] = true # If it is new:   Append it to the list
+      end
+
+      # If the tag does not already have the tag: Add it.
+      if !@quote.has_tag(tag)
+        # Attach tag to the quote owned by the user's board
+        tags = @quote.append_tag(tag)
+
+        # Update tags on the quote
+        @board.tag(@quote, :with => tags, :on => "tags")
+      end
     end
-
-    @quote = Quote.find(params[:qid])
-
-    @tag = URI.unescape(params[:tag])
-    @tags = merge_tags(@quote.tags, @tag)
-
-    @board.tag(@quote, :with => @tags, :on => "tags")
 
     respond_to do |format|
       if @board.save
-        data = { :message => "added!", :submessage => "Close this popup when done.", :tag => @tag, :is_new => params[:is_new] }
+
+        @quote.reload # Update quote when tag is saved
+        @tag = @quote.tags.find_by_name(URI.unescape(params[:tag])) # Retrieve the actual tag
+
+        # General callback data set
+        data = { 
+          :message => "exists.", 
+          :submessage => "It is already selected.", 
+          :tag => @tag, 
+          :add => @flags[:add], 
+          :update => @flags[:update]
+        }
+
+        # Case dependent callback data
+        if @flags[:update]
+          data[:message] = "exists."
+          data[:submessage] = "It has been selected below."
+        elsif @flags[:add]
+          data[:message] = "added!"
+          data[:submessage] = "Close this popup when done."
+        end
+
+        # Do the callback
         format.json { render json: data, callback: "added" }
+
       else
-        data = { :message => "Tagging failed." }
+
+        data = { :message => "Tagging failed.", :submessage => "Could not update your board." }
         format.json { render json: data, callback: "added"}
+
       end
+    end
+  end
+
+  def local_add_tag_popup
+    if session[:user_id]
+      # Find the quote we are adding tags to
+      @quote = Quote.find(params[:id])
+
+      # Parse out unused tags
+      all_tags = User.find(session[:user_id]).boards.first.owned_tags
+      @unused_tags = all_tags.reject{|x| (@quote.tags.pluck(:id).uniq).include? x.id} # Filter out used tags
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -109,30 +179,26 @@ class QuotesController < ApplicationController
 
   def remove_tag
     @quote = Quote.find(params[:id])
-    @tag_id = params[:tag_id]
-
-    # Fetch the tag object
     @tag = @quote.tags.find(params[:tag_id])
+    @board = @quote.boards.first
+    
+    # Variables for remove_tag.js.erb
+    @flags = { :tags_remain => false }
+    if(@tag.taggings_count > 1)
+      @flags[:tags_remain] = true
+    end
 
-    # Remove the tag from the quotes tag list (has to be done before the taggings count method below)
-    @quote.tag_list.remove(@quote.tags.find(params[:tag_id]).name)
+     # Remove tag from quote
+    tags = @quote.remove_tag(@tag)
 
-    # Save tag list changes
-    if @quote.save 
-      @tag.reload # Reload @tag to get latest tag count
+    # Apply the new tags list to @quote and board
+    @board.tag(@quote, :with => tags, :on => "tags")
 
-      # If it is the last instance of the tag, remove it completely from the board, else only from this specific quote
-      if(@tag.taggings_count <= 2)
-        @tag.destroy
-        @tag_destroyed = true 
-      else
-        @tag_destroyed = false
-      end
+    @tag.reload # Reload @tag to get latest tag count
 
-      # Render remove_tag.js.erb
-      respond_to do |format|
-        format.js
-      end
+    # Render remove_tag.js.erb
+    respond_to do |format|
+      format.js
     end
   end
 end

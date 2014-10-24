@@ -1,39 +1,26 @@
+<div class="splash-container">
 <%= render "shared/header" %>
-<div class="background intro login-signup-container">
-    <div class="row login-signup">
-      <div class="col span_14">
-        <h1>Hello <%= current_user.name || current_user.email %>.</h1>
-        <h2>Let's get you started.</h2>
-      </div>
-      <div class="login-signup-container">
-        <div class="col input-container">
-          <h3>First install your bookmarklet</h3>
-          <p>Drag the bookmarklet button below into your bookmarks bar above.</p>
-          <a class="button bookmarklet" href="javascript:(function() {
+  <div class="intro-container">
+        <h1>Installing the bookmarklet.</h1>
+        <h2>The bookmarklet is essential in order to use noted.<br/>Here's how you install it.</h2>
+        <h3 class="progress-item">1</h3>
+        <div class="bookmarklet-container">
+            <a class="big button" href="javascript:(function() {
             document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
             current_user_token = '<%= current_user.token %>';
-          })();">NOTED BOOKMARKLET</a>
+            })();">Drag me to your bookmarks bar</a>
+            <p>
+              The bookmarks bar is located below the address bar.
+            </p>
         </div>
-        <div class="col span_1">
-          <div class="vertical-line">&nbsp;</div>
-        </div>
-        <div class="col input-container">
-          <h3>Give it a try</h3>
-          <p>Highlight the quote below then click on your bookmarklet to try it out.</p>
-          <blockquote>
-            Perfection is unattainable, in fact, so is the notion that we’ve ever “arrived” in anything. If that is the standard, you’ll get frustrated, doubt yourself and quit.
-          </blockquote>
-        </div>
-        <div class="col span_1">
-          <div class="vertical-line">&nbsp;</div>
-        </div>
-        <div class="col input-container">
-          <h3>You're good to go</h3>
-          <%= link_to continue_path, class: "primary button" do %>
-            CONTINUE TO MY DASHBOARD
-          <% end %>
+        <h3 class="progress-item">2</h3>
+        <h2>Let us try your new bookmarklet!<br/>Highlight the text below and click the bookmarklet.</h2>
+        <blockquote>
+          Talent is Overrated by Geoffrey Colvin. It has nothing to do with design, but rather teaches them about work ethic and purpose. The real path to great perfomance is a matter of choice.
+        </blockquote>
+        <%= link_to continue_path, class: "big button" do %>
+          Continue to my board
+        <% end %>
       </div>
-    </div>
   </div>
 </div>
-<%= render "shared/footer" %>

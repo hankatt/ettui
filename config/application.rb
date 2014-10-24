@@ -57,5 +57,9 @@ module Well
 
     # Support SSL
     config.force_ssl = false
+
+    # Automagically remove unused tags
+    ActsAsTaggableOn.remove_unused_tags = true
+    ActsAsTaggableOn.force_lowercase = true
   end
 end

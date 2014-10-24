@@ -8,7 +8,9 @@ Well::Application.routes.draw do
   get 'add/quote' => "quotes#add_quote"
   get 'add/tag' => "quotes#remote_add_tag"
   get 'add/ltag' => "quotes#local_add_tag"
-  delete '/quotes/:id/:tag_id' => "quotes#remove_tag", :as => "remove_tag"
+  get '/quotes/:id/popup' => "quotes#local_add_tag_popup", :as => "tag_popup"
+    get 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"
+
 
   get 'users/done' => "users#done", :as => "continue"
   

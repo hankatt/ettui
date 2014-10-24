@@ -72,12 +72,45 @@
 */
 
 	.sidebar-container {
-		width: 336px;
+		width: 380px;
 		height: 100%;
-		margin-left: -336px;
-		padding: $spacing-small 0 0 0;
+		margin-left: -380px;
+		padding: 0;
 		background-color: $sidebar-background-color;
 		position: fixed;
+	}
+
+	.sidebar-list.status {
+		margin-bottom: 21px;
+	}
+
+	.sidebar-list.status button {
+		font-weight: 600;
+	}
+
+	.sidebar-list.status li.active button {
+		color: #c872d0;
+	}
+
+	.sidebar-list.status .filter-count {
+		float: right;
+		width: 21px;
+		height: 21px;
+		border-radius: 3px;
+		margin-top: -1px;
+	}
+
+	.sidebar-list.status li.active .filter-count {
+		border-color: transparent;
+		background-color: #c872d0;
+		& p { color: white; }
+	}
+
+	.sidebar-list.status li .filter-count > p {
+		color: #c872d0;
+		font-weight: 600;
+		line-height: 16px;
+		margin: 0;
 	}
 
 	.sidebar-list li, .sidebar-section-title, .profile-name, .profile-description {
@@ -93,6 +126,7 @@
 		right: $spacing-normal;
 		top: 2px;
 		fill: $stroke-color;
+		display: none;
 	}
 
 	.sidebar-section-title:hover, .sidebar-section-title.active:hover {
@@ -112,8 +146,27 @@
 		margin-top: $spacing;
 	}
 
+	.search-container {
+		background-color: transparent;
+		position: relative;
+		margin: 35px auto 29px;
+		width: 100%;
+		padding: 0 $spacing-normal;
+	}
 
+	.search-container > img {
+		position: absolute;
+		top: 5px;
+	}
 
+	.search-field {
+		padding: 0px 0px 8px 29px;
+		margin-top: -3px;
+		font-size: $font-size-2;
+		font-weight: 300;
+		border-bottom: $quote-stroke;
+		width: 100%;
+	}
 
 /* 	
 	# # # # # # # # # # # # # # # # # # # #
@@ -125,22 +178,21 @@
 */
 
 	.sidebar-section-title {
-		border-bottom: $quote-stroke;
 		position: relative;
 	}
 
 	.section-title {
 		line-height: 24px;
-		margin-bottom: 8px;
-		text-transform: uppercase;
+		clear: both;
+		margin-bottom: 0;
 	}
 
 	.sidebar-list.tags {
-		padding-top: 9px;
+		padding-top: $spacing-milli;
 	}
 
 	.sidebar-list.filters {
-		padding: $spacing 0;
+		padding: $spacing-milli 0;
 	}
 
 	.sidebar-list.filters li {
@@ -157,8 +209,8 @@
 			LIST HOVER STATE 
 		*/
 
-		.sidebar-list li:hover .filter-count {
-			border-color: $sidebar-secondary-text-color;
+		.sidebar-list li:hover button {
+			color: $sidebar-primary-text-color;
 		}
 
 
@@ -171,32 +223,36 @@
 		}
 
 		.sidebar-list li.active .filter-count {
-			border-color: $sidebar-primary-text-color;
-			background-color: $sidebar-primary-text-color;
+			border-color: $stroke-color;
 		}
-
-		.sidebar-list li.active p {
-			color: $quote-primary-text-color;
-		}
-
 
 		/*
 			LIST ITEM COUNT
 		*/
 
+		.sidebar-list-button {
+			line-height: 26px;
+		}
+
 		.filter-count {
 			position: relative;
-			top: 2px;
+			top: 1px;
 			display: inline-block;
-			padding: 1px 5px 4px 7px;
-			border: $sidebar-stroke;
+			border: $sidebar-stroke-inactive;
+			padding: 3px 5px 2px 6px;
 			float: right;
 			min-width: 20px;
+			margin: 0;
+
+			&:hover {
+				border: $sidebar-stroke;
+			};
 
 			& > p {
-				font-size: 13px;
-				line-height: 13px;
+				line-height: 14px;
+				font-size: 15px;
 				color: $sidebar-secondary-text-color;
+				margin: 0;
 			}
 		}
 
@@ -218,27 +274,38 @@
 	
 	.bottom-fix {
 		position: absolute;
-		width: 336px;
+		width: 380px;
+		padding: 0;
 		bottom: 0;
 	}
 
 	.sidebar-section {
 		margin-top: 0;
-		padding: $spacing-small 0 0;
+		padding: $spacing-small $spacing-normal;
 		border-top: $sidebar-stroke;
 	}
 
 	.profile-photo {
-		width: 44px;
-		border-radius: 22px;
-		margin-left: 146px;
+		width: 32px;
+		border-radius: 16px;
+		float: left;
 	}
 
-	.profile-name {
+	.profile-container {
+		padding-bottom: $spacing-milli;
+		border-bottom: solid 1px $stroke-color;
+		margin-bottom: $spacing-milli;
+		overflow: auto;
+	}
+
+	.bottom-fix h4.profile-name {
 		color: $sidebar-primary-text-color;
-		text-align: center;
 		display: block;
-		margin-top: 5px;
+		margin-left: 10px;
+		float: left;
+		padding: 0;
+		margin-top: 3px;
+		font-weight: 600;
 	}
 
 	.profile-description {
@@ -247,6 +314,31 @@
 		margin-bottom: $spacing-small;
 		line-height: 18px;
 		text-align: center;
+	}
+
+	.bottom-fix a {
+		color: $sidebar-primary-text-color;
+		text-decoration: underline;
+	}
+
+	.bottom-fix h4 em {
+		font-style: initial;
+		color: $sidebar-primary-text-color;
+		font-weight: 500;
+	}
+
+	.bottom-fix h4 {
+		color: $sidebar-secondary-text-color;
+		font-weight: 400;
+		&.underline {
+			padding-bottom: $spacing-milli;
+			border-bottom: solid 1px $stroke-color;
+			margin-bottom: $spacing-milli;
+		}
+	}
+
+	.sidebar-section .logout {
+		float: right;
 	}
 
 	.sidebar-section .profile-link {
@@ -285,12 +377,12 @@ GENERAL LAYOUT
 }
 
 #search-filter.active {
-	margin-left: 336px;
+	margin-left: 380px;
 }
 
 .content-container {
 	width: 100%;
 	min-height: 100%;
 	background-color: $main-background-color;
-	padding: $spacing-normal 0 $spacing-big;
+	padding: 0 0 $spacing-big;
 }

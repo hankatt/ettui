@@ -4,10 +4,10 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id]) unless session[:user_id].nil?
 
       respond_to do |format|
-          if @user && !@user.new_user
-              format.html # show.html.erb
+          if @user && @user.new_user
+              format.html # intro.html.erb
               flash[:notice] = "Logged in."
-          elsif @user
+          elsif @user && !@user.new_user
               format.html { redirect_to boards_path }
           else
               format.html { redirect_to root_url }
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-      @user = User.new
+    @user = User.new
 
     respond_to do |format|
       if session[:user_id]

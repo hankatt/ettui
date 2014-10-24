@@ -1,7 +1,7 @@
 <div class="popup">
-	<ul>
+	<ul class="unused-tags q-<%= quote.id %>">
 		<% tags.each do |tag| %>
-			<li class="existing-tag t-<%= tag.id %>"><%= tag.name %></li>
+			<%= render :partial => 'quotes/popup_tag', locals: { quote: quote, tag: tag } %>
 		<% end %>
 	</ul>
 	<div class="popup-triangle"></div>

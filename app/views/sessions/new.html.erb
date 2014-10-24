@@ -1,27 +1,20 @@
-<%= render "shared/header" %>
-<div class="background signin login-signup-container">
-    <div class="row login-signup">
-      <div class="col span_14">
-        <h1>Hey there, welcome back!</h1>
-        <h2>Sign in to continue to your dashboard.</h2>
-      </div>
-      <div class="login-signup-container">
-        <div class="col span_2">&nbsp;</div>
-        <div class="col input-container">
-          <h3>Sign in using email:</h3>
-          <%= render "login_form" %>
+<div class="splash-container">
+  <%= render "shared/header" %>
+  <div class="login-signup-container">
+          <h1>Welcome back.</h1>
         </div>
-        <div class="col span_2">
-          <div class="vertical-line">&nbsp;</div>
-        </div>
-        <div class="col input-container">
-          <h3>Sign in using Twitter:</h3>
-          <%= link_to "/auth/twitter?image_size=original", class: "twitter button" do %>
-            <span class="socicon">a</span>Connect with Twitter
+        <div class="twitter-container">
+          <%= link_to "/auth/twitter?image_size=original", class: "twitter small button" do %>
+            <span class="socicon">a</span>Sign up using Twitter
           <% end %>
         </div>
-        <div class="col span_2">&nbsp;</div>
+        <div class="email-container">
+          <%= render "login_form" %>
+        </div>
+        <div class="inline link">
+            <p>Create an account?</p><%= link_to " Sign up", signup_path %>
+        </div>
       </div>
-    </div>
+  </div>
 </div>
-<%= render "shared/footer" %>
+<!--<%= render "shared/footer" %>!-->

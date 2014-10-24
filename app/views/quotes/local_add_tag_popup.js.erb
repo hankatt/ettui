@@ -1,0 +1,19 @@
+/* Remove existing popups */
+$(".popup").fadeOut('fast', function() {
+	$(".popup").remove();
+});
+
+// Append popup to the quote
+quote_container = $(".quote.q-<%= @quote.id %>");
+quote_container.append("<%= escape_javascript(render :partial => 'quotes/popup', locals: { quote: @quote, tags: @unused_tags }) %>");
+
+// Position popup
+popup = $(".popup");
+popup.css('bottom', 67);
+popup.css('left', -90);
+
+// Reveal popup
+$(".popup").fadeIn('fast');
+
+// Trigger DOMChange to assure jQuery events trigger on newly appended tag
+$(document).trigger('DOMChange');

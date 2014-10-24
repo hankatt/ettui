@@ -22,19 +22,6 @@ $(document).on('ready DOMChange', function() {
         if($(document).outerWidth() < 936 && $("#search-filter").hasClass('active'))
             $("#search-filter").removeClass('active');
     });
-    
-    /*  
-        Use keydown event to trigger backspace's, so the results updates
-        as the search query is shortened. 
-    
-    $("#search-filter .search").on('keyup', function(event) {
-        search_query = $(this).val();
-        quotes = $(".quote .quote-content");
-
-        quotes.unhighlight().highlight(search_query);
-    });
-    
-    */
 
     $(".sidebar-toggle-column, .sidebar-toggle").on('click', function(event) {
         if(!$("#search-filter").hasClass('active')) {
@@ -45,20 +32,23 @@ $(document).on('ready DOMChange', function() {
     });
 
     $(document).on('click', function(event) {
-        if($("#search-filter").hasClass('active') && $(event.target).hasClass('content-container')) {
+        if($("#search-filter").hasClass('active') && $(".popup").length == 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container'))) {
             $(".sidebar-toggle").fadeIn(70);
             $(".sidebar-toggle-column").fadeIn();
             $("#search-filter").removeClass('active');
         }
 
-        if($(".popup.active").length > 0 && $(event.target).hasClass('content-container')) {
-            $(".popup.active").removeClass('active');
+        if($(".popup").length > 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container'))) {
+            $(".popup").fadeOut('fast', function() {
+                $(".popup").remove();
+            });
         }
     });
 
-    $("#search-filter").on('keypress', function(e) {
-        if(e.keyCode === 13)
-            console.log(e);
+    $(".quote.unread").mouseenter(function() {
+        $(this).find('.symbol-new').fadeOut(200, function() {
+            $(this).parents(".quote.unread").removeClass("unread");
+        });
     });
 
     $(".sidebar-section-title").unbind('click').on('click', function() {
@@ -67,69 +57,46 @@ $(document).on('ready DOMChange', function() {
         list_to_toggle.slideToggle(100);
     });
 
-    $("li.existing-tag").unbind('click').on('click', function() {
-        quote = $(this).parent().parent().parent();
-        tag_exists = false;
-        clicked_tag = $(this).text();
-        $(".quote-tags.q-" +quote.data('qid') +" .quote-tag").each(function() {
-            if(clicked_tag === $(this).children('.tag').text())
-                tag_exists = true;
+    $(".unused-tags > li").unbind('click').on('click', function(e) {
+        e.preventDefault();
+
+        tag = $(this);
+
+        updateTag({
+            qid: tag.data('qid'),
+            tag: tag.text()
         });
 
-        if(!tag_exists) {
-
-            // Show the clicked tag as selected in the popup
-            $(this).addClass('selected');
-
-            // Params for the AJAX query
-            var params = {
-                qid: quote.data('qid'),
-                tag: $(this).text(),
-                is_new: false
-            }
-
-            $.ajax({
-                url: "//notedapp.herokuapp.com/add/ltag",
-                dataType: "script",
-                data: jQuery.param(params)
-            });
-        }
+        // Show the clicked tag as selected in the popup
+        $(this).addClass('selected');
     });
+
+
+    /* 
+        ADD new custom tag,
+        BUT make sure it's not already used on the current quote. (server-side)
+    */
 
     $(".popup-new-tag-submit").unbind('click').on('click', function (e) {
         e.preventDefault();
-        new_tag = $(this).siblings(".popup-new-tag");
+        inputfield = $(this).siblings(".popup-new-tag");
 
-        tag_exists = false;
-        $(".popup.active ul li").each(function() {
-            if(new_tag.val() === $(this).text())
-                tag_exists = true;
+        updateTag({
+            qid: inputfield.data('qid'),
+            tag: inputfield.val()
         });
 
-        if(tag_exists) {
-            new_tag.val(''); //Reset input field
-        } else {
-            var params = {
-                qid: new_tag.data('qid'),
-                tag: new_tag.val(),
-                is_new: true
-            }
-
-            $.ajax({
-                url: "//notedapp.herokuapp.com/add/ltag",
-                dataType: "script",
-                data: jQuery.param(params)
-            });
-
-        }
+        //if(tag_exists)
+            //Reset input field
+            //Flash the tag on the quote to highlight its presence
     });
+
 
     /* 
         Checkbox functionality for the source filters 
     */
 
     $(".sidebar-list li").unbind('click').on('click', function(e) {
-        console.log('clicked');
         // Mark selection as active
         $(this).toggleClass('active');
 
@@ -140,19 +107,13 @@ $(document).on('ready DOMChange', function() {
 
 });
 
-$(document).on('click', '.add-tag.button', function() {
-    popup = $(this).parent().parent().parent().children('.popup');
-    setTimeout(function(){
-        popup.children('.popup-new-tag').focus();
-    }, 0);
-
-    if(popup.hasClass('active'))
-        popup.removeClass('active')
-    else {
-        $(".popup.active").removeClass('active');
-        popup.addClass('active');
-    }
-});
+function updateTag(params) {
+    $.ajax({
+        url: "//localhost:3000/add/ltag",
+        dataType: "script",
+        data: jQuery.param(params)
+    });
+}
 
 /* Performs the AJAX search.
 

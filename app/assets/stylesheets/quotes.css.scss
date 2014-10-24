@@ -13,24 +13,13 @@
 	# # # # # # # # # # # # # # # # # # # #
 */
 
-.quotes-container, .search-container {
+.quotes-container {
 	background-color: transparent;
 	position: relative;
 	margin: 0 auto;
 	width: 100%;
 	max-width: 956px;
-	padding: 0 $spacing-big;
-}
-
-.search-container > img {
-	position: absolute;
-}
-
-.search-field {
-	padding: 0px 0px 8px $spacing-normal;
-	font-size: $font-size-2;
-	border-bottom: $quote-stroke;
-	width: 100%;
+	padding: 14px $spacing-big 0;
 }
 
 
@@ -65,13 +54,19 @@
 .quote {
 	background-color: white;
 	max-width: 732px;
-	margin-top: $spacing-small;
+	margin: $spacing-small auto;
 	padding: $spacing-small $spacing-normal 0px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .09);
 	position: relative;
 }
 
-
+.new-quotes-title {
+	margin: $spacing-small 0;
+	font-weight: lighter;
+	color: $quote-secondary-text-color;
+	padding: $spacing-milli 0 $spacing-milli 0;
+	display: none;
+}
 
 /* 	
 	# # # # # # # # # # # # # # # # # # # #
@@ -82,13 +77,18 @@
 	# # # # # # # # # # # # # # # # # # # #
 */
 
+.quote .source-favicon {
+	margin-right: 9px;
+	width: 32px;
+	height: 32px;
+}
+
 .quote-metadata {
-	padding: 0 0 $spacing 0;
 	margin-bottom: $spacing;
 	font-size: $base-font-size;
 	text-align: right;
-	border-bottom: $quote-stroke;
 	overflow-y: auto;
+	position: relative;
 }
 
 .quote-source {
@@ -100,8 +100,8 @@
 	display: inline-block;
 }
 
-.source-favicon + .source-url, .quote-date {
-	margin-top: 1px;
+.source-favicon + .source-url, .quote-date, .symbol-new {
+	margin-top: 7px;
 }
 
 .source-url, .quote-date {
@@ -110,12 +110,58 @@
 	text-transform: lowercase;
 }
 
-.quote-date {
-	float: right;
-	vertical-align: sub;
+.quote-date::before {
+	content: '·';
+	font-weight: 400;
+	margin: 0 3px 0 8px;
 }
 
+.quote-date {
+	float: left;
+	vertical-align: sub;
+	font-weight: lighter;
+}
 
+.quote.unread .symbol-new {
+	background-color: #c872d0;
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	float: right;
+	opacity: 1;
+}
+
+.quote .quote-metadata .remove-quote {
+	position: absolute;
+	top: 7px;
+	right: 0px;
+	opacity: 1;
+	transition: opacity .20s;
+	border: solid 1px;
+	border-radius: 10px;
+	width: 16px;
+	height: 16px;
+	line-height: 13px;
+	text-align: center;
+	font-size: 11px;
+	border-color: #e6e6e6;
+	color: #e6e6e6;
+	font-weight: bold;
+}
+
+.quote .quote-metadata .remove-quote:hover {
+	color: #fff;
+	background-color: red;
+	border-color: red;
+}
+
+.quote.unread .quote-metadata .remove-quote {
+	opacity: 0;
+}
+
+.quote:hover .quote-metadata .remove-quote {
+	opacity: 1;
+}
 
 /* 	
 	# # # # # # # # # # # # # # # # # # # #
@@ -128,19 +174,18 @@
 
 
 .quote-content {
-	padding: 0 0 $spacing;
+	padding: 0 0 $spacing-small;
 	color: $quote-primary-text-color;
 
 	& .highlight {
 		font-size: inherit;
 		vertical-align: baseline;
-		background-color: $sidebar-background-color;
-		color: $sidebar-primary-text-color;
+		background-color: #ddd;
 	}
 }
 
 .quote-content.small p {
-	font-size: 1em;
+	font-size: 15px;
 	line-height: 1.75em;
 }
 
@@ -165,18 +210,18 @@
 
 
 .quote-actions {
-	margin-top: 5px;
-	opacity: 0;
+	margin-top: 15px;
+	padding-top: 3px;
+	opacity: 1;
 	transition: opacity .09s ease-out;
+	overflow: auto;
 }
 
-.quote:hover .quote-actions {
+.quote-actions:hover .button {
 	opacity: 1;
 }
 
 .quote-actions a {
-	font-size: 13px;
-	text-transform: uppercase;
 	transition: color .09s ease-out;
 	&:hover {
 		color: $quote-hover-text-color;
@@ -185,20 +230,34 @@
 
 .quote-actions .button {
 	border: $quote-stroke;
-	padding: $padding-small-button;
+	padding: 0;
+	opacity: 1;
+	width: 24px;
+	height: 24px;
+	line-height: 19px;
+	border-radius: 12px;
+	text-align: center;
+	opacity: 1;
 }
 
 .quote-actions .add-tag {
-	float: right;
-	margin-left: 8px;
-	margin-top: 3px;
+	float: left;
+	margin-right: 8px;
+	margin-top: -1px;
+}
+
+.add-tag:hover {
+	background-color: $quote-hover-text-color;
+	border-color: $quote-hover-text-color;
+	color: white !important;
 }
 
 .quote-tags .quote-tag {
 	float: right;
-	margin-left: 5px;
+	margin-left: 8px;
+	&:last-of-type { margin-left: 0; }
 	& .remove-tag {
-		color: transparent;
+		margin-left: 3px;
 	}
 	&:hover .remove-tag {
 		color: $quote-secondary-text-color;
@@ -209,7 +268,7 @@
 }
 
 .quote-tags {
-	float: right;
+	float: left;
 }
 
 .quote-tags .socicon {
@@ -316,13 +375,12 @@
 
 .popup {
 	box-shadow: $popup-shadow-color;
-	background-color: $popup-background-color;
+	background-color: $quote-hover-text-color;
 	padding: $spacing-small 0;
-	position: absolute;
 	width: 284px;
-	bottom: 68px;
-	right: -72px;
+	position: absolute;
 	display: none;
+	z-index: 1000;
 }
 
 .popup.active {
@@ -335,7 +393,8 @@
 	padding: 8px 0 7px 0;
 	font-size: $font-size-1;
 	text-align: center;
-	text-transform: uppercase;
+	text-transform: lowercase;
+	cursor: pointer;
 }
 
 .popup > ul li:hover {
@@ -355,15 +414,21 @@
 	background-color: $background-selected-color;
 }
 
+.popup > ul li::before {
+	content: "#";
+}
+
 .popup > .popup-new-tag {
 	margin: 0 $spacing-small;
-	width: 240px;
+	width: 233px;
 	text-align: center;
 	padding: 9px 0;
 	font-size: 13px;
 	font-family: $font-stack;
 	background-color: $background-hover-color;
 	color: $popup-primary-text-color;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
 .popup > .popup-new-tag:hover {
@@ -371,22 +436,24 @@
 }
 
 .popup-new-tag-submit {
-	background: rgba(255, 255, 255, .8);
+	background: #fff;
 	padding: 8px 0;
 	color: $quote-secondary-text-color;
 	font-size: $base-font-size;
 	font-weight: 600;
 	text-transform: uppercase;
 	margin: 0px 0 0 $spacing-small;
-	width: 240px;
+	width: 233px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 .popup-new-tag-submit:hover {
-	color: $quote-primary-text-color;
+	color: #3ec79b;
 }
 
 .popup-new-tag-submit:active {
-	background-color: $popup-primary-text-color;
+	background-color: #eee;
 }
 
 .popup-triangle {
@@ -394,7 +461,7 @@
 	height: 0;
 	border-style: solid;
 	border-width: $spacing $spacing-small 0;
-	border-color: $popup-background-color transparent transparent transparent;
+	border-color: $quote-hover-text-color transparent transparent transparent;
 	position: absolute;
 	bottom: -$spacing;
 	left: 117px;

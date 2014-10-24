@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626150413) do
+ActiveRecord::Schema.define(version: 20141001075826) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140626150413) do
     t.string   "provider"
     t.string   "name"
     t.boolean  "new_user"
+    t.datetime "last_active_at"
   end
 
 end

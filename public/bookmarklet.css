@@ -1,7 +1,7 @@
 .noted-spinner {
   width: 30px;
   height: 30px;
-  background-color: #e2bccc;
+  background-color: #6CDAB7;
 
   margin: 58px auto 0 auto;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
@@ -34,31 +34,40 @@ li.noted-tag:before {
 li.noted-tag {
 	width: 100%;
 	height: 54px;
-	background-color: #8a3d5d;
-	color: #e2bccc;
+	background-color: transparent;
+	color: #999;
 	text-align: center;
 	text-transform: lowercase;
 	line-height: 54px;
 	font-size: 16px;
 	list-style-type: none;
 	font-family: Helvetica, Arial, sans-serif;
-	border-bottom: solid 1px #70314c;
+	border-bottom: solid 1px #ccc;
 	transition: color .06s ease-out;
 	font-weight: bold;
 	font-family: "Open Sans", sans-serif !important;
 }
 
 li.noted-tag:first-of-type {
-	border-top: solid 1px #70314c;
+	border-top: solid 1px #ccc;
 }
 
 li.noted-tag:hover {
-	color: #fff;
+	color: #333;
 }
 
 li.noted-tag.selected {
-	background-color: #70314c;
+	background-color: #6CDAB7;
 	color: #fff;
+	border-color: #42C79C;
+}
+
+li.noted-tag.selected:first-of-type {
+	border-top: none;
+}
+
+li.noted-tag.selected:last-of-type {
+	border-bottom: none;
 }
 
 .noted-content-container {
@@ -70,7 +79,7 @@ li.noted-tag.selected {
 .noted-bookmarklet {
 	width: 380px;
 	max-height: 147px;
-	background-color: #8a3d5d;
+	background-color: #f6f3f0;
 	z-index: 20000;
 	position: fixed;
 	top: 48px;
@@ -89,7 +98,7 @@ li.noted-tag.selected {
 .status-message, .sub-message {
 	text-align: center;
 	margin-bottom: 0;
-	color: #fff;
+	color: #333;
 	font-family: 'Crimson Text', serif;
 	font-weight: 400;
 	font-style: normal;
@@ -98,7 +107,7 @@ li.noted-tag.selected {
 
 .sub-message {
 	padding-bottom: 40px;
-	color: #e2bccc;
+	color: #999;
 	line-height: 32px;
 	font-size: 16px;
 }
@@ -110,24 +119,24 @@ li.noted-tag.selected {
 	line-height: 20px;
 	font-size: 16px;
 	font-family: "Open Sans", sans-serif !important;
-	border: solid 1px #B67892;
+	border: solid 1px #ccc;
 	background-color: transparent;
 	padding: 0px 16px;
 	box-sizing: border-box;
 	text-align: center;
 	margin: 32px 0 0 48px;
 	border-radius: 2px;
-	color: #fff;
-	outline: #fff;
+	color: #333;
+	outline: transparent;
 }
 
 #noted-new-tag:hover {
-	border-color: #fff;
+	border-color: #333;
 }
 
 #noted-new-tag::-webkit-input-placeholder {  
    font-style: italic;
-   color: #B67892;
+   color: #aaa;
 }
 
 #noted-close-btn {
@@ -135,8 +144,8 @@ li.noted-tag.selected {
 	text-align: center;
 	font-family: "Open Sans", sans-serif !important;
 	font-size: 16px;
-	color: #e2bccc;
-	border-bottom: solid 4px #70314c;
+	color: #333;
+	border-bottom: solid 4px #ccc;
 	width: 108px;
 	font-weight: 600;
 	padding-bottom: 4px;
@@ -144,8 +153,7 @@ li.noted-tag.selected {
 }
 
 #noted-close-btn:hover {
-	color: #fff;
 	text-decoration: none;
-	border-bottom: solid 4px #fff;
+	border-bottom: solid 4px #333;
 }
 

@@ -24,7 +24,13 @@ css.className = "noted-temporary-function-tbr";
 css.href = "https://notedapp.herokuapp.com/bookmarklet.css";
 css.type = "text/css";
 css.rel = "stylesheet";
-document.body.appendChild(css);
+try {
+	document.body.appendChild(css);
+} catch(e) {
+	console.log(e);
+	err__ = e;
+	alert("This page does not allow noted to load its stylesheet.")
+}
 
 jquery.onload = function() {
 	popup = "", jsonpScript = "";

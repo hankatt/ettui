@@ -178,10 +178,14 @@ header .inline.link {
 	display: block;
 }
 
-.twitter-container .small.button {
+.twitter-container a.small.button {
 	background-color: #55ACEE;
 	color: #fff;
 	margin-bottom: $spacing-small;
+}
+
+.twitter-container a.small.button:hover {
+	background-color: #4398D8;
 }
 
 .email-container {
@@ -212,6 +216,9 @@ header .inline.link {
 		padding: $spacing 0;
 		background-color: $quote-hover-text-color;
 		color: #fff;
+		&:hover {
+			background-color: #5DC8A6;
+		}
 	}
 }
 

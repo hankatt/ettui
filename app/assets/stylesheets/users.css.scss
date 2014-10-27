@@ -40,8 +40,35 @@ div.error_explanation ul {
 .splash-container {
 	min-height: 100%;
 	position: relative;
-	max-width: 720px;
+	max-width: 840px;
+	min-width: 580px;
 	margin: 0 auto;
+	padding: 0 $spacing-small;
+}
+
+.splash-container h1, .splash-container h2 {
+	text-align: center;
+}
+
+.splash-container h1 {
+	font-weight: bold;
+	letter-spacing: -1px;
+	margin: 0 auto $spacing-normal;
+	font-size: 45px;
+	line-height: 51px;
+}
+
+.splash-container h2 {
+	letter-spacing: -1px;
+	font-weight: 300;
+}
+
+.splash-content-container {
+	width: 100%;
+	max-width: 480px;
+	background-color: #fff;
+	margin: 0 auto;
+	text-align: center;
 }
 
 header {
@@ -90,22 +117,6 @@ header .inline.link {
 	border-color: $quote-hover-text-color;
 }
 
-.splash-container h1, .splash-container h2 {
-	text-align: center;
-}
-
-.splash-container h1 {
-	font-weight: bold;
-	letter-spacing: -1px;
-	width: 530px;
-	margin: 0 auto $spacing-normal;
-}
-
-.splash-container h2 {
-	letter-spacing: -1px;
-	font-weight: 300;
-}
-
 .button.big {
 	border: solid 1px;
 	border-radius: 6px;
@@ -133,9 +144,9 @@ header .inline.link {
 }
 
 .learn-more-container {
-	text-align: center;
 	width: 100%;
 	position: absolute;
+	left: 0;
 	bottom: $spacing-normal;
 }
 
@@ -154,7 +165,8 @@ header .inline.link {
 .twitter-container {
 	text-align: center;
 	border-bottom: solid 1px #ddd;
-	width: 320px;
+	width: 100%;
+	max-width: 320px;
 	margin: 0 auto;
 }
 
@@ -167,7 +179,8 @@ header .inline.link {
 }
 
 .small.button {
-	width: 320px;
+	width: 100%;
+	max-width: 320px;
 	border-color: #ddd;
 	border-radius: 6px;
 	background-color: #f3f3f3;
@@ -203,7 +216,8 @@ header .inline.link {
 }
 
 .email-container .field {
-	width: 320px;
+	width: 100%;
+	max-width: 320px;
 	margin: 0 auto 2px;
 	padding: $spacing;
 	background-color: #f3f3f3;
@@ -246,7 +260,7 @@ header .inline.link {
 }
 
 .intro-container {
-	padding-bottom: $spacing-bigger;
+	padding: 0 $spacing-small $spacing-bigger;
 }
 
 .progress-item {
@@ -264,7 +278,8 @@ header .inline.link {
 	overflow: auto;
 	background-color: $quote-hover-text-color;
 	border-radius: 6px;
-	width: 480px;
+	width: 100%;
+	max-width: 480px;
 	padding: $spacing-small 105px;
 	margin: $spacing-small auto $spacing-big;
 }
@@ -304,4 +319,86 @@ header .inline.link {
 	padding-left: $spacing-small;
 	font-family: "adriane";
 	line-height: 1.619em;
+}
+
+
+@media only screen and (max-width: 410px) {
+	h1.splash-title > br {
+		display: none;
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 630px) {
+
+	.splash-container {
+		min-height: 100%;
+		position: relative;
+		max-width: 580px;
+		min-width: 320px;
+		margin: 0 auto;
+		padding: 0 $spacing;
+	}
+
+	.splash-container h1 {
+		font-size: 32px;
+		margin: 0 auto $spacing-small;
+		line-height: 37px;
+	}
+
+	.splash-container h2 {
+		font-size: 19px;
+	}
+
+	.splash-container a.big.button {
+		width: 200px;
+		font-size: 16px;
+	}
+
+	.splash-container header {
+		padding-top: $spacing-small;
+		margin-bottom: $spacing-normal;
+	}
+
+	header .inline p, header .inline a {
+		display: block;
+	}
+
+	div.learn-more-container {
+		bottom: $spacing-small;
+	}
+
+	.learn-more-container a#learn-more {
+		font-size: 19px;
+	}
+
+	.intro-container h2 {
+		margin-bottom: $spacing-normal;
+	}
+
+	.intro-container blockquote {
+		width: 100%;
+		max-width: 320px;
+		margin-bottom: $spacing-big;
+	}
+
+	.bookmarklet-container {
+		padding: $spacing-small;
+		max-width: 320px;
+	}
+
+	.bookmarklet-container a.big.button, .bookmarklet-container p {
+		font-size: 14px;
+	}
+
+	.bookmarklet-container a.big.button {
+		width: 100%;
+		min-width: 190px;
+		margin-bottom: $spacing;
+	}
+
+	.intro-container a.big.button {
+		width: 100%;
+		max-width: 280px;
+	}
+
 }

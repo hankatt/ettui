@@ -38,7 +38,7 @@ $(document).on('ready DOMChange', function() {
             $("#search-filter").removeClass('active');
         }
 
-        if($(".popup").length > 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container'))) {
+        if($(".popup").length > 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container') || $(event.target).hasClass('quote') || $(event.target).hasClass('sidebar-container') || $(event.target).hasClass('quote-content'))) {
             $(".popup").fadeOut('fast', function() {
                 $(".popup").remove();
             });

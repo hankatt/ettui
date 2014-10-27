@@ -70,6 +70,7 @@ jquery.onload = function() {
 					$("#noted-new-tag").focus();
 
 					/* Append tags to popup */
+					
 					for(i = 0; i < data.tags.length; i++)
 						$(".tag-container").append(createElementWithClass("li", "noted-tag tid-" +data.tags[i].id, data.tags[i].name));
 

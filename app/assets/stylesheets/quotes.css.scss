@@ -19,7 +19,7 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: 956px;
-	padding: 14px $spacing-big 0;
+	padding: $spacing $spacing-big 0;
 }
 
 
@@ -133,20 +133,24 @@
 
 .quote .quote-metadata .remove-quote {
 	position: absolute;
-	top: 7px;
+	top: 4px;
 	right: 0px;
 	opacity: 1;
 	transition: opacity .20s;
 	border: solid 1px;
-	border-radius: 10px;
-	width: 16px;
-	height: 16px;
-	line-height: 13px;
+	border-radius: 12px;
+	width: 24px;
+	height: 24px;
+	line-height: 19px;
 	text-align: center;
-	font-size: 11px;
+	font-size: $font-size-1;
 	border-color: #e6e6e6;
 	color: #e6e6e6;
-	font-weight: bold;
+	visibility: hidden;
+}
+
+.quote:hover .remove-quote {
+	visibility: visible;
 }
 
 .quote .quote-metadata .remove-quote:hover {
@@ -423,8 +427,7 @@
 	width: 233px;
 	text-align: center;
 	padding: 9px 0;
-	font-size: 13px;
-	font-family: $font-stack;
+	font-size: 16px;
 	background-color: $background-hover-color;
 	color: $popup-primary-text-color;
 	border-top-left-radius: 3px;

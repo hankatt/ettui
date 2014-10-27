@@ -9,11 +9,12 @@ quote_container.append("<%= escape_javascript(render :partial => 'quotes/popup',
 
 // Position popup
 popup = $(".popup");
-popup.css('bottom', 67);
-popup.css('left', -90);
+popup.css('bottom', 70);
+popup.css('left', -89);
 
 // Reveal popup
 $(".popup").fadeIn('fast');
+$(".popup .popup-new-tag").focus();
 
 // Trigger DOMChange to assure jQuery events trigger on newly appended tag
 $(document).trigger('DOMChange');

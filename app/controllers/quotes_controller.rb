@@ -18,7 +18,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote
-        data = { :message => "Saved.", :submessage => "Add some tags?", :action => "tags", :qid => @quote.id, :tags => @user.boards.first.owned_tags }
+        data = { :message => "Saved.", :submessage => "Add some tags?", :action => "tags", :qid => @quote.id, :tags => "" }
         format.json { render json: data, callback: "status" }
       else
         data = { :message => "Service down.", :submessage => "Update bookmarklet or try later.", :action => "tags" }

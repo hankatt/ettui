@@ -94,8 +94,7 @@
 
 	.sidebar-list.status .filter-count {
 		float: right;
-		width: 21px;
-		height: 21px;
+		padding: 2px 4px 4px 5px;
 		border-radius: 3px;
 		margin-top: -1px;
 	}
@@ -108,8 +107,7 @@
 
 	.sidebar-list.status li .filter-count > p {
 		color: #c872d0;
-		font-weight: 600;
-		line-height: 16px;
+		line-height: 12px;
 		margin: 0;
 	}
 
@@ -218,12 +216,23 @@
 			LIST ACTIVE STATE 
 		*/
 
+		.sidebar-list li:hover {
+			cursor: pointer;
+		}
+
+		.sidebar-list.status li.disabled {
+			& .filter-count p {
+				color: $sidebar-secondary-text-color;
+			}
+		}
+
 		.sidebar-list li.active .sidebar-list-button {
 			color: $sidebar-primary-text-color;
 		}
 
 		.sidebar-list li.active .filter-count {
-			border-color: $stroke-color;
+			background-color: $sidebar-secondary-text-color;
+			& > p { color: #fff; }
 		}
 
 		/*
@@ -239,7 +248,7 @@
 			top: 1px;
 			display: inline-block;
 			border: $sidebar-stroke-inactive;
-			padding: 3px 5px 2px 6px;
+			padding: 3px 5px 5px 5px;
 			float: right;
 			min-width: 20px;
 			margin: 0;
@@ -249,10 +258,11 @@
 			};
 
 			& > p {
-				line-height: 14px;
-				font-size: 15px;
+				line-height: 10px;
+				font-size: 18px;
 				color: $sidebar-secondary-text-color;
 				margin: 0;
+				font-weight: 300;
 			}
 		}
 
@@ -277,12 +287,13 @@
 		width: 380px;
 		padding: 0;
 		bottom: 0;
+		box-shadow: -2px -1px 4px rgba(0, 0, 0, .07);
 	}
 
 	.sidebar-section {
 		margin-top: 0;
 		padding: $spacing-small $spacing-normal;
-		border-top: $sidebar-stroke;
+		border-top: solid 1px rgba(0, 0, 0, .09);
 	}
 
 	.profile-photo {

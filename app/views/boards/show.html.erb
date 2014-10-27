@@ -10,9 +10,13 @@
                 <%= submit_tag "Search", :name => nil, :class => 'submit' %>
               </div>
               <ol class="sidebar-list status">
-                <li>
+                <% if @unread.count > 0 %>
+                  <li>
+                <% else %>
+                  <li class="disabled">
+                <% end %>
                   <%= check_box_tag "unread", true, false, :id => "filter-unread" %>
-                  <button class="section-title">Unread texts</button>
+                  <button class="section-title">Unread quotes</button>
                   <div class="filter-count"><p><%= @unread.count %></p></div>
                 </li>
               </ol>

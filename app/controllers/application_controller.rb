@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
  	protect_from_forgery
 
- 	helper_method :current_user, :current_user_details, :get_tag_id
+ 	helper_method :current_user, :current_user_details, :get_tag_id, :record_user_activity
 
 	private
 
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	private
-
+	
 	def record_user_activity
 		if current_user
 			current_user.touch :last_active_at

@@ -1,0 +1,57 @@
+console.log("append_tag_input.js.erb");
+
+tags_container = $(".quote.q-<%= @quote.id %>").find('.quote-tags');
+tags_container.append("<%= escape_javascript(render :partial => 'quotes/tag_input', locals: { quote: @quote, tags: @unused_tags }) %>");
+
+console.log(tags_container);
+// Interface details for the appended tag input
+tag_input = tags_container.find('input.new-tag');
+tag_input.val('#');
+tag_input.focus();
+
+
+// INTERACTION EVENTS:
+
+/*
+	Turn the (+) button into a close button that removes the
+	tag_input and resets the button.
+*/
+
+$(window).on('keyup', function(e) {
+
+	// Pressing Esc should remove tag_input and reset the button
+	if(e.keyCode === 27) {
+		tag_input.remove();
+	}
+
+	// Pressing Enter should add the tag
+	if(e.keyCode === 13) {
+		tag = tag_input.val().replace('#', '');
+		
+		// Necessary param for the query
+        params = { 
+            qid: <%= @quote.id %>,
+            tag: tag
+        };
+
+        // Add the new tag
+        $.ajax({
+            url: "//localhost:3000/add/tag_locally",
+            dataType: "script",
+            data: jQuery.param(params)
+        });
+	}
+});
+
+$(window).mouseup(function(e) {
+    var container = tag_input;
+
+    if (!container.is(e.target) && container.find(e.target).length === 0)
+        tag_input.remove();
+});
+
+// Deal with feedback if the tag exists/could not be added
+
+
+// Trigger DOMChange to assure jQuery events trigger on newly appended tag
+$(document).trigger('DOMChange');

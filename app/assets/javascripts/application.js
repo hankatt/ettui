@@ -31,18 +31,44 @@ $(document).on('ready DOMChange', function() {
         }
     });
 
-    $(document).on('click', function(event) {
-        if($("#search-filter").hasClass('active') && $(".popup").length == 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container'))) {
-            $(".sidebar-toggle").fadeIn(70);
-            $(".sidebar-toggle-column").fadeIn();
-            $("#search-filter").removeClass('active');
+    $(window).mouseup(function(e) {
+        if($("#search-filter").hasClass('active')) {
+            var container = $(".sidebar-container");
+            var exceptions = $(".quote");
+            if (!container.is(e.target) && container.find(e.target).length === 0 && exceptions.find(e.target).length === 0) {
+                console.log("hehe");
+                $(".sidebar-toggle").fadeIn(70);
+                $(".sidebar-toggle-column").fadeIn();
+                $("#search-filter").removeClass('active');
+            }
         }
+    });
+
+    $(document).on('click', function(event) {
 
         if($(".popup").length > 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container') || $(event.target).hasClass('quote') || $(event.target).hasClass('sidebar-container') || $(event.target).hasClass('quote-content'))) {
             $(".popup").fadeOut('fast', function() {
                 $(".popup").remove();
             });
         }
+    });
+
+    $("a.append-tag").unbind('click').bind('click', function(event) {
+        // Don't follow through on the link
+        event.stopPropagation();
+        event.preventDefault();
+
+        // Necessary param for the query
+        params = { 
+            id: $(this).parents('.quote').data('qid')
+        };
+
+        $.ajax({
+            url: "//localhost:3000/add/tag_input",
+            dataType: "script",
+            data: jQuery.param(params)
+        });
+
     });
 
     $(".quote.unread").mouseenter(function() {
@@ -109,7 +135,7 @@ $(document).on('ready DOMChange', function() {
 
 function updateTag(params) {
     $.ajax({
-        url: "//localhost:3000/add/ltag",
+        url: "//localhost:3000/add/tag_locally",
         dataType: "script",
         data: jQuery.param(params)
     });

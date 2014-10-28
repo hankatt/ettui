@@ -6,10 +6,10 @@ Well::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "users/intro" => "users#intro", :as => "intro"
   get 'add/quote' => "quotes#add_quote"
-  get 'add/tag' => "quotes#remote_add_tag"
-  get 'add/ltag' => "quotes#local_add_tag"
-  get '/quotes/:id/popup' => "quotes#local_add_tag_popup", :as => "tag_popup"
-    get 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"
+  get 'add/tag_remotely' => "quotes#add_tag_remote"
+  get 'add/tag_locally' => "quotes#add_tag_local"
+  get 'add/tag_input' => "quotes#append_tag_input"
+  get 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"
 
 
   get 'users/done' => "users#done", :as => "continue"

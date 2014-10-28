@@ -18,7 +18,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote
-        data = { :message => "Saved.", :submessage => "Add some tags?", :action => "tags", :qid => @quote.id, :tags => "" }
+        data = { :message => "Saved.", :submessage => "Add some tags?", :action => "tags", :qid => @quote.id, :tags => @user.boards.first.owned_tags }
         format.json { render json: data, callback: "status" }
       else
         data = { :message => "Service down.", :submessage => "Update bookmarklet or try later.", :action => "tags" }
@@ -27,7 +27,7 @@ class QuotesController < ApplicationController
     end
   end
 
-  def local_add_tag
+  def add_tag_local
     if session[:user_id]
       # Find users board through user session
       @board = User.find(session[:user_id]).boards.first
@@ -70,7 +70,7 @@ class QuotesController < ApplicationController
     end
   end
 
-  def remote_add_tag
+  def add_tag_remote
     if params[:user_token]
       @board = User.find_by_token(params[:user_token]).boards.first
 
@@ -84,9 +84,9 @@ class QuotesController < ApplicationController
       @flags = { :update => false, :add => false }
 
       if @board.owns_tag(tag)
-        @flags[:update] = true # If it exists:   Update its status to 'selected'
+        @flags[:update] = true  # If it exists:   Update its status to 'selected'
       else
-        @flags[:add] = true # If it is new:   Append it to the list
+        @flags[:add] = true     # If it is new:   Append it to the list
       end
 
       # If the tag does not already have the tag: Add it.
@@ -135,18 +135,18 @@ class QuotesController < ApplicationController
     end
   end
 
-  def local_add_tag_popup
+  def append_tag_input
     if session[:user_id]
       # Find the quote we are adding tags to
       @quote = Quote.find(params[:id])
 
-      # Parse out unused tags
+      # Parse out unused tags (used to suggest tags based on previous taggings)
       all_tags = User.find(session[:user_id]).boards.first.owned_tags
       @unused_tags = all_tags.reject{|x| (@quote.tags.pluck(:id).uniq).include? x.id} # Filter out used tags
     end
 
     respond_to do |format|
-      format.js
+      format.js # local_add_tag_popup
     end
   end
 

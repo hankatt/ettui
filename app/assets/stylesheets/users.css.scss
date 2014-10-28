@@ -120,7 +120,7 @@ header .inline.link {
 .button.big {
 	border: solid 1px;
 	border-radius: 6px;
-	padding: $spacing 0;
+	padding: 18px 0 14px 0;
 	display: block;
 	text-align: center;
 	font-weight: 600;
@@ -133,7 +133,7 @@ header .inline.link {
 	border-color: $quote-hover-text-color;
 	color: #3ec79b;
 	margin: $spacing-small auto;
-	width: 270px;
+	width: 300px;
 	transition: color .13s;
 }
 
@@ -272,6 +272,7 @@ header .inline.link {
 	border: solid 1px $stroke-color;
 	margin: 0 auto $spacing-small; 
 	display: block;
+	line-height: 40px;
 }
 
 .bookmarklet-container {

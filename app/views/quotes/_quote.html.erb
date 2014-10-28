@@ -25,7 +25,6 @@
     <div class="quote-content <%= font_size %>">
       <p class="dc2"><%= quote.text %></p>
       <div class="quote-actions">
-        <%= link_to "+", tag_popup_path(quote.id), :remote => true, :class => "add-tag button", :title => "Add tag" %>
         <ul class="quote-tags q-<%= quote.id %>">
           <% if quote.tags.any? %>
             <% quote.tags.each do |tag| %>
@@ -33,6 +32,7 @@
             <% end %>
           <% end %>
         </ul>
+        <%= link_to "+", "/tag/#new", :class => "append-tag button", :title => "Add tag" %>
       </div>
     </div>
 </li>

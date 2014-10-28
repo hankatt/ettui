@@ -112,7 +112,7 @@ jquery.onload = function() {
 						/* Execute JSONP call using script tag. */
 						jsonpScript = document.createElement("script");
 						jsonpScript.className = "noted-temporary-function-tbr";
-						jsonpScript.src =  "//notedapp.herokuapp.com/add/tag/?" + jQuery.param(params);
+						jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
 						document.body.appendChild(jsonpScript);
 					});
 
@@ -130,7 +130,7 @@ jquery.onload = function() {
 							/* Execute JSONP call using script tag. */
 							jsonpScript = document.createElement("script");
 							jsonpScript.className = "noted-temporary-function-tbr";
-							jsonpScript.src =  "//notedapp.herokuapp.com/add/tag/?" + jQuery.param(params);
+							jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
 							document.body.appendChild(jsonpScript);
 						}
 					});

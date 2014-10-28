@@ -101,7 +101,7 @@
 }
 
 .source-favicon + .source-url, .quote-date, .symbol-new {
-	margin-top: 7px;
+	margin-top: 6px;
 }
 
 .source-url, .quote-date {
@@ -131,7 +131,7 @@
 
 .quote .quote-metadata .remove-quote {
 	position: absolute;
-	top: 4px;
+	top: 2px;
 	right: 0px;
 	opacity: 1;
 	transition: opacity .20s;
@@ -139,7 +139,7 @@
 	border-radius: 12px;
 	width: 24px;
 	height: 24px;
-	line-height: 19px;
+	line-height: 21px;
 	text-align: center;
 	font-size: $font-size-1;
 	border-color: $stroke-color;
@@ -236,28 +236,43 @@
 	opacity: 1;
 	width: 24px;
 	height: 24px;
-	line-height: 19px;
+	line-height: 21px;
 	border-radius: 12px;
 	text-align: center;
 	opacity: 1;
 }
 
-.quote-actions .add-tag {
-	float: left;
-	margin-right: 8px;
-	margin-top: -1px;
+.quote-actions:hover .append-tag {
+	visibility: visible;
 }
 
-.add-tag:hover {
+.quote-actions .append-tag {
+	visibility: hidden;
+	float: left;
+}
+
+.quote-actions .append-tag, .quote-actions input.new-tag {
+	margin-top: -2px;
+}
+
+.quote-actions input.new-tag {
+	border: solid 1px#bbb;
+	border-radius: 3px;
+	padding: 2px 6px 1px 6px;
+	float: right;
+	width: 140px;
+	margin-right: 6px;
+}
+
+.append-tag:hover {
 	background-color: $quote-hover-text-color;
 	border-color: $quote-hover-text-color;
 	color: white !important;
 }
 
 .quote-tags .quote-tag {
-	float: right;
-	margin-left: 8px;
-	&:last-of-type { margin-left: 0; }
+	float: left;
+	margin-right: 6px;
 	& .remove-tag {
 		margin-left: 3px;
 	}
@@ -371,9 +386,8 @@
 		& .quote-date {
 			clear: both;
 			float: left;
-			margin-top: -19px;
-			margin-left: 39px;
-			font-size: 16px;
+			margin-top: -16px;
+			margin-left: 38px;
 			width: 190px;
 			text-align: left;
 
@@ -388,111 +402,8 @@
 		}
 
 		& .source-favicon + .source-url {
-			margin-top: -4px;
+			margin-top: -1px;
+			text-decoration: underline;
 		}
 	}
-
-
-}
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	POPUP
-	SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-.popup {
-	box-shadow: $popup-shadow-color;
-	background-color: $quote-hover-text-color;
-	padding: $spacing-small 0;
-	width: 284px;
-	position: absolute;
-	display: none;
-	z-index: 1000;
-}
-
-.popup.active {
-	display: block;
-}
-
-.popup > ul li {
-	border-bottom: $popup-stroke;
-	color: $popup-secondary-text-color;
-	padding: 8px 0 7px 0;
-	font-size: $font-size-1;
-	text-align: center;
-	text-transform: lowercase;
-	cursor: pointer;
-}
-
-.popup > ul li:hover {
-	background-color: $background-hover-color;
-	color: $popup-primary-text-color;
-}
-
-.popup > ul li:active {
-	background-color: $background-active-color;
-}
-
-.popup > ul li:last-of-type {
-	margin-bottom: $spacing-small;
-}
-
-.popup > ul li.selected {
-	background-color: $background-selected-color;
-}
-
-.popup > ul li::before {
-	content: "#";
-}
-
-.popup > .popup-new-tag {
-	margin: 0 $spacing-small;
-	width: 233px;
-	text-align: center;
-	padding: 9px 0;
-	font-size: 16px;
-	background-color: $background-hover-color;
-	color: $popup-primary-text-color;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-}
-
-.popup > .popup-new-tag:hover {
-	background: $background-active-color;
-}
-
-.popup-new-tag-submit {
-	background: #fff;
-	padding: 8px 0;
-	color: $quote-secondary-text-color;
-	font-size: $base-font-size;
-	font-weight: 600;
-	text-transform: uppercase;
-	margin: 0px 0 0 $spacing-small;
-	width: 233px;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-}
-
-.popup-new-tag-submit:hover {
-	color: #3ec79b;
-}
-
-.popup-new-tag-submit:active {
-	background-color: #eee;
-}
-
-.popup-triangle {
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: $spacing $spacing-small 0;
-	border-color: $quote-hover-text-color transparent transparent transparent;
-	position: absolute;
-	bottom: -$spacing;
-	left: 117px;
 }

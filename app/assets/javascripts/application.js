@@ -64,7 +64,7 @@ $(document).on('ready DOMChange', function() {
         };
 
         $.ajax({
-            url: "//localhost:3000/add/tag_input",
+            url: "//notedapp.herokuapp.com/add/tag_input",
             dataType: "script",
             data: jQuery.param(params)
         });

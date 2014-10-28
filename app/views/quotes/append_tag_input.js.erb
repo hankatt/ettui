@@ -1,9 +1,6 @@
-console.log("append_tag_input.js.erb");
-
 tags_container = $(".quote.q-<%= @quote.id %>").find('.quote-tags');
 tags_container.append("<%= escape_javascript(render :partial => 'quotes/tag_input', locals: { quote: @quote, tags: @unused_tags }) %>");
 
-console.log(tags_container);
 // Interface details for the appended tag input
 tag_input = tags_container.find('input.new-tag');
 tag_input.val('#');
@@ -49,9 +46,6 @@ $(window).mouseup(function(e) {
     if (!container.is(e.target) && container.find(e.target).length === 0)
         tag_input.remove();
 });
-
-// Deal with feedback if the tag exists/could not be added
-
 
 // Trigger DOMChange to assure jQuery events trigger on newly appended tag
 $(document).trigger('DOMChange');

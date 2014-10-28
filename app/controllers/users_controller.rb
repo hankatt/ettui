@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   def intro
       @user = User.find(session[:user_id]) unless session[:user_id].nil?
-      record_user_acitivity
-      
+      record_user_activity
+
       respond_to do |format|
           if @user && @user.new_user
               format.html # intro.html.erb

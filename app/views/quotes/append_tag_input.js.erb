@@ -14,7 +14,7 @@ tag_input.focus();
 	tag_input and resets the button.
 */
 
-$(window).on('keyup', function(e) {
+$(window).unbind('keyup').bind('keyup', function(e) {
 
 	// Pressing Esc should remove tag_input and reset the button
 	if(e.keyCode === 27) {
@@ -23,6 +23,8 @@ $(window).on('keyup', function(e) {
 
 	// Pressing Enter should add the tag
 	if(e.keyCode === 13) {
+		e.preventDefault(); // Might avoid triggering checkbox
+
 		tag = tag_input.val().replace('#', '');
 		
 		// Necessary param for the query

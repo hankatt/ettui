@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
 	def current_user_details
 		if session[:user_id] && !current_user.uid.blank?
-			# Twitter.user(current_user.uid.to_i)
+			Twitter.user(current_user.uid.to_i)
 		else
 			nil
 		end

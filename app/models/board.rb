@@ -38,7 +38,7 @@ class Board < ActiveRecord::Base
         end
     end
 
-    def occurrences_of(tag)
+    def tag_count(tag)
         owned_taggings.where(:tag_id => tag.id).count
     end
 end

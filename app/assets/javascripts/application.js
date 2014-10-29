@@ -125,35 +125,3 @@ function updateTag(params) {
         data: jQuery.param(params)
     });
 }
-
-/* Performs the AJAX search.
-
-function search() {
-  data = $("#search-filter").serialize();
-
-  // Specifying the dataType as 'script' in the $.ajax call to trigger RJS.
-  $.ajax({
-      type: 'GET',
-      data: data,
-      dataType: 'script',
-      url: window.location.pathname
-  });
-}
-
-*/
-
-/* Update a contenteditable field.
-
-function update_board_name() {
-    name = $("[contenteditable]").text();
-    id = $("[contenteditable]").data('id');
-
-    $.ajax({
-        type: 'PUT',
-        data: { name: name },
-        dataType: 'script',
-        url: "/boards/" + id
-    })
-}
-
-*/

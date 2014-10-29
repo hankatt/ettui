@@ -15,13 +15,13 @@ quote_tags_container	= $(".quote-tags.q-<%= @quote.id %>");
 
 	// UPDATE SIDEBAR:
 	sidebar_tags_container = $(".sidebar-list.tags");
-	taggings_count = <%= @board.occurrences_of(@tag) %>
+	tag_count = <%= @tag.context_count %>
 
-	if (taggings_count == 1)
+	if (tag_count == 1)
 		sidebar_tags_container.append("<%= escape_javascript(render :partial => 'boards/tag', locals: { tag: @tag }) %>");
 	else {
 		sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
-		sidebar_tag.find(".filter-count p").text(taggings_count);
+		sidebar_tag.find(".filter-count p").text(tag_count);
 	}
 	
 <% end %>

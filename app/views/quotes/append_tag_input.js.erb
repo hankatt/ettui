@@ -16,6 +16,9 @@ tag_input.focus();
 
 $(window).unbind('keyup').bind('keyup', function(e) {
 
+	// Prevent sidebar checkbox'es from toggling on Enter(13) click
+	$(".sidebar-list li").unbind('click');
+
 	// Pressing Esc should remove tag_input and reset the button
 	if(e.keyCode === 27) {
 		tag_input.remove();
@@ -23,8 +26,8 @@ $(window).unbind('keyup').bind('keyup', function(e) {
 
 	// Pressing Enter should add the tag
 	if(e.keyCode === 13) {
-		e.preventDefault(); // Might avoid triggering checkbox
 
+		// Remove # from input field, if any
 		tag = tag_input.val().replace('#', '');
 		
 		// Necessary param for the query

@@ -12,7 +12,7 @@ quote_tags_container.children(".t-<%= @tag.id %>").remove();
 
 	// Fetch the sidebar tag and update count
 	sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
-	sidebar_tag.find(".filter-count p").text(<%= @tag.taggings_count %>);
+	sidebar_tag.find(".filter-count p").text(<%= @tag.context_count %>);
 <% else %>
 	unused_tags_containers = $(".unused-tags");
 

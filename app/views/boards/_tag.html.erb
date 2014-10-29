@@ -1,5 +1,5 @@
 <li class="t-<%= tag.id %>">
 	<%= check_box_tag "tag_ids[]", tag.id, false, :id => "tag_ids_#{tag.id}" %>
 	<button class="sidebar-list-button"><%= tag.name.truncate(30) %></button>
-	<div class="filter-count"><p><%= @board.occurrences_of(tag) %></p></div>
+	<div class="filter-count"><p><%= tag.context_count %></p></div>
 </li>

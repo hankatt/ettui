@@ -62,6 +62,7 @@ class QuotesController < ApplicationController
       if @board.save
         # Set @tag to represent the Tag object (for local_add_tag.js.erb)
         @tag = @quote.tags.find_by_name(URI.unescape(params[:tag]))
+        @tag.set_context_count(@board)
         format.js
       else
         data = { :message => "Tagging failed." }
@@ -198,6 +199,7 @@ class QuotesController < ApplicationController
 
     # Render remove_tag.js.erb
     respond_to do |format|
+      @tag.set_context_count(@board)
       format.js
     end
   end

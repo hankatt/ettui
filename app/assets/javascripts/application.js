@@ -36,7 +36,6 @@ $(document).on('ready DOMChange', function() {
             var container = $(".sidebar-container");
             var exceptions = $(".quote");
             if (!container.is(e.target) && container.find(e.target).length === 0 && exceptions.find(e.target).length === 0) {
-                console.log("hehe");
                 $(".sidebar-toggle").fadeIn(70);
                 $(".sidebar-toggle-column").fadeIn();
                 $("#search-filter").removeClass('active');
@@ -64,7 +63,7 @@ $(document).on('ready DOMChange', function() {
         };
 
         $.ajax({
-            url: "//notedapp.herokuapp.com/add/tag_input",
+            url: "//localhost:3000/add/tag_input",
             dataType: "script",
             data: jQuery.param(params)
         });
@@ -77,24 +76,10 @@ $(document).on('ready DOMChange', function() {
         });
     });
 
-    $(".sidebar-section-title").unbind('click').on('click', function() {
+    $(".sidebar-section-title").unbind('click').bind('click', function() {
         $(this).toggleClass('active');
         list_to_toggle = $(this).siblings('.sidebar-list');
         list_to_toggle.slideToggle(100);
-    });
-
-    $(".unused-tags > li").unbind('click').on('click', function(e) {
-        e.preventDefault();
-
-        tag = $(this);
-
-        updateTag({
-            qid: tag.data('qid'),
-            tag: tag.text()
-        });
-
-        // Show the clicked tag as selected in the popup
-        $(this).addClass('selected');
     });
 
 
@@ -103,7 +88,7 @@ $(document).on('ready DOMChange', function() {
         BUT make sure it's not already used on the current quote. (server-side)
     */
 
-    $(".popup-new-tag-submit").unbind('click').on('click', function (e) {
+    $(".popup-new-tag-submit").unbind('click').bind('click', function (e) {
         e.preventDefault();
         inputfield = $(this).siblings(".popup-new-tag");
 
@@ -122,7 +107,7 @@ $(document).on('ready DOMChange', function() {
         Checkbox functionality for the source filters 
     */
 
-    $(".sidebar-list li").unbind('click').on('click', function(e) {
+    $(".sidebar-list li").unbind('click').bind('click', function(e) {
         // Mark selection as active
         $(this).toggleClass('active');
 
@@ -135,7 +120,7 @@ $(document).on('ready DOMChange', function() {
 
 function updateTag(params) {
     $.ajax({
-        url: "//localhost:3000/add/tag_locally",
+        url: "//notedapp.herokuapp.com/add/tag_locally",
         dataType: "script",
         data: jQuery.param(params)
     });

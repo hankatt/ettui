@@ -232,11 +232,10 @@
 
 .quote-actions .button {
 	border: $quote-stroke;
-	padding: 0;
+	padding: 4px 7px 2px 7px;
 	opacity: 1;
-	width: 24px;
-	height: 24px;
-	line-height: 21px;
+	max-height: 24px;
+	line-height: 16px;
 	border-radius: 12px;
 	text-align: center;
 	opacity: 1;

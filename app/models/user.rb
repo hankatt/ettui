@@ -33,7 +33,9 @@ class User < ActiveRecord::Base
   		@user = User.new({
   			:provider => auth["provider"], 
   			:uid => auth["uid"], 
-  			:name => auth["info"]["name"], 
+  			:name => auth["info"]["name"],
+  			:twitter_image_url => auth["info"]["image"],
+  			:twitter_description => auth["info"]["description"],
   			:new_user => true 
   		})
 	    

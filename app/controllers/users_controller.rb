@@ -86,6 +86,33 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_user_omniauth_data
+    if current_user && !current_user.uid.blank?
+      @user = current_user
+
+      auth = Twitter.user(current_user.uid.to_i)
+      user_params = {
+        :name => auth.name,
+        :twitter_image_url => auth.profile_image_url,
+        :twitter_description => auth.description
+      }
+
+    end
+
+    respond_to do |format|
+      if @user.update_attributes(user_params)
+        puts("user_params\n\n")
+        puts(user_params)
+        puts("\n\n")
+        format.html { redirect_to boards_path, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
@@ -104,7 +131,7 @@ class UsersController < ApplicationController
   # list between create and update. Also, you can specialize this method
   # with per-user checking of permissible attributes.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :new_user)
+    params.require(:user).permit(:email, :password, :password_confirmation, :token, :uid, :provider, :name, :new_user, :twitter_image_url, :twitter_description)
   end
 
 end

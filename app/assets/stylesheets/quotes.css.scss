@@ -331,7 +331,7 @@
 		}
 
 		& .quote {
-			padding: $spacing-small $spacing-small 11px;
+			padding: $spacing-small $spacing 0;
 			margin-bottom: $spacing-small;
 			min-width: 320px;
 		}
@@ -339,11 +339,10 @@
 		& .add-tag.button {
 			display: none !important;
 		}
-	}
 
-	.quote-actions {
-		opacity: 0 !important;
-		display: none;
+		& .quote-tags .remove-tag, .quote-actions .append-tag {
+			display: none;
+		}
 	}
 
 }
@@ -371,7 +370,7 @@
 @media only screen and (min-width : 320px) and (max-width : 479px) {
 	.content-container .quote {
 		& .quote-content.small p {
-			font-size: 0.8125em;
+			font-size: 0.85em;
 		}
 
 		& .quote-content.big p {

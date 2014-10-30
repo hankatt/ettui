@@ -52,12 +52,11 @@
             <!-- PROFILE SECTION !-->
             <div class="bottom-fix">
                 <div class="sidebar-section">
-                    <% if current_user_details %>
+                    <% if current_user.name && current_user.twitter_image_url %>
                         <div class="profile-container">
-                          <%= image_tag current_user_details.profile_image_url, :class => "profile-photo" %>
-                          <h4 class="profile-name"><%= current_user_details.name %></h4>
+                          <%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>
+                          <h4 class="profile-name"><%= current_user.name %></h4>
                         </div>
-                        <!--<p class="profile-description tertiary"><%= current_user_details.description %></p>!-->
                         <%= link_to "Logout", logout_path, :class => "logout" %>
                       <a href="javascript:(function() {
                         document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
  	protect_from_forgery
 
- 	helper_method :current_user, :current_user_details, :get_tag_id, :record_user_activity
+ 	helper_method :current_user, :current_user_details, :record_user_activity
 
 	private
 
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
 	def current_user_details
 		if session[:user_id] && !current_user.uid.blank?
-			Twitter.user(current_user.uid.to_i)
+			# Twitter.user(current_user.uid.to_i)
 		else
 			nil
 		end

@@ -52,7 +52,7 @@
             <!-- PROFILE SECTION !-->
             <div class="bottom-fix">
                 <div class="sidebar-section">
-                    <% if current_user.name && current_user.twitter_image_url %>
+                    <% if !current_user.uid.blank? %>
                         <div class="profile-container">
                           <%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>
                           <h4 class="profile-name"><%= current_user.name %></h4>

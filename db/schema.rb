@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001075826) do
+ActiveRecord::Schema.define(version: 20141030091250) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20141001075826) do
     t.string   "name"
     t.boolean  "new_user"
     t.datetime "last_active_at"
+    t.string   "twitter_image_url"
+    t.string   "twitter_description"
   end
 
 end

@@ -301,10 +301,10 @@
 	.bottom-fix h4.profile-name {
 		color: $sidebar-primary-text-color;
 		display: block;
-		margin-left: 10px;
+		margin-left: $spacing-milli;
 		float: left;
 		padding: 0;
-		margin-top: 3px;
+		line-height: 32px;
 		font-weight: 600;
 	}
 
@@ -318,13 +318,12 @@
 
 	.bottom-fix a {
 		color: $sidebar-primary-text-color;
-		text-decoration: underline;
 	}
 
 	.bottom-fix h4 em {
 		font-style: initial;
 		color: $sidebar-primary-text-color;
-		font-weight: 500;
+		font-weight: 600;
 	}
 
 	.bottom-fix h4 {

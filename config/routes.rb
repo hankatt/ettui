@@ -10,7 +10,7 @@ Well::Application.routes.draw do
   get 'add/tag_locally' => "quotes#add_tag_local"
   get 'add/tag_input' => "quotes#append_tag_input"
   get 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"
-
+  get 'users/omniauth/update' => "users#update_user_omniauth_data", :as => "omniauth_update"
 
   get 'users/done' => "users#done", :as => "continue"
   

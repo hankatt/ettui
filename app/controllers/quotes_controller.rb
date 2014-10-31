@@ -32,7 +32,7 @@ class QuotesController < ApplicationController
         :user_id => @user.id, 
         :url => URI.unescape(params[:url]), 
         :source_id => @source.id,
-        :readability_title => parsed["title"] unless !parsed.defined?
+        :readability_title => parsed["title"] || ""
       })
 
       @quote.boards << @user.boards.first

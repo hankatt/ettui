@@ -23,9 +23,9 @@ class QuotesController < ApplicationController
         
         # Readability Parser response
         response = Net::HTTP.get_response(uri)
-        parsed = ActiveSupport::JSON.decode(response.body)
+        @parsed = ActiveSupport::JSON.decode(response.body)
       else
-        parsed["title"] = "Noted: Installing the Bookmarklet"
+        @parsed["title"] = "Noted: Installing the Bookmarklet"
       end
 
       @quote = Quote.new({
@@ -33,7 +33,7 @@ class QuotesController < ApplicationController
         :user_id => @user.id, 
         :url => URI.unescape(params[:url]), 
         :source_id => @source.id,
-        :readability_title => parsed["title"] || ""
+        :readability_title => @parsed["title"]
       })
 
       @quote.boards << @user.boards.first

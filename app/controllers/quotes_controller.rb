@@ -25,6 +25,7 @@ class QuotesController < ApplicationController
         response = Net::HTTP.get_response(uri)
         @parsed = ActiveSupport::JSON.decode(response.body)
       else
+        @parsed = {}
         @parsed["title"] = "Noted: Installing the Bookmarklet"
       end
 

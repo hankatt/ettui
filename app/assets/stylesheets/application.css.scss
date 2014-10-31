@@ -100,6 +100,11 @@
 
 	a {
 		text-decoration: none;
+		color: $quote-primary-text-color;
+	}
+
+	a.secondary {
+		color: $quote-secondary-text-color;
 	}
 
 	a:hover {

@@ -1,15 +1,55 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Text:</b>
-  <%= @quote.text %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @quote.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_quote_path(@quote) %> |
-<%= link_to 'Back', quotes_path %>
+<div class="content-container">
+	<li class="quote">
+		<div class="quote-metadata">
+		    <div class="quote-source">
+		        <%= image_tag @quote.source.favicon, :class => "source-favicon" %>
+		        <%= link_to @quote.source.hostname, @quote.url, :class => "source-url" %>
+		    </div>
+		    <div class="quote-date">
+		        <%= @quote.created_at.day.to_s << ". " << @quote.created_at.strftime("%B") %>
+		    </div>
+		</div>
+		<div class="quote-content">
+		  <p class="dc2"><%= @quote.text %></p>
+		  <div class="quote-actions">
+		    <ul class="quote-tags">
+		      <% if @quote.tags.any? %>
+		        <% @quote.tags.each do |tag| %>
+		          <%= render :partial => 'quotes/tag', locals: { quote: @quote, tag: tag } %>
+		        <% end %>
+		      <% end %>
+		    </ul>
+		  </div>
+		</div>
+	</li>
+	<hr/>
+	<li class="quote v2">
+		<div class="quote-metadata">
+		    <div class="quote-source">
+		        <%= image_tag @quote.source.favicon, :class => "source-favicon" %>
+		        <%= link_to @parsed["title"], @quote.url, :class => "source-url" %>
+		        <div class="quote-date">
+		        	<%= @quote.created_at.day.to_s << ". " << @quote.created_at.strftime("%B") %>
+		    	</div>
+		    	<div class="symbol-new"></div>
+        		<%= link_to "x", @quote, method: :delete, :class => "remove-quote" %>
+		        <div class="metadata">
+		        	<%= link_to @quote.url, @quote.url %>
+		        </div>
+		    </div>
+		</div>
+		<div class="quote-content">
+		  <p class="dc2"><%= @quote.text %></p>
+		  <div class="quote-actions">
+		    <ul class="quote-tags">
+		      <% if @quote.tags.any? %>
+		        <% @quote.tags.each do |tag| %>
+		          <%= render :partial => 'quotes/tag', locals: { quote: @quote, tag: tag } %>
+		        <% end %>
+		      <% end %>
+		    </ul>
+		    <%= link_to "Add a tag", "/tag/#new", :class => "append-tag button secondary", :title => "Add tag" %>
+		  </div>
+		</div>
+	</li>
+</div>

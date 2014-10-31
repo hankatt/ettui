@@ -2,6 +2,10 @@
 @import	"colors.css.scss";
 @import	"properties.css.scss";
 
+	#search-filter a {
+		font-weight: 300;
+	}
+
 	.source-favicon, .filter-count, .sidebar-container, .content-container {
 		display: inline-block;
 	}
@@ -89,7 +93,7 @@
 	}
 
 	.sidebar-list.status li.active button {
-		color: #c872d0;
+		color: $quote-hover-text-color;
 	}
 
 	.sidebar-list.status .filter-count {
@@ -97,12 +101,12 @@
 
 	.sidebar-list.status li.active .filter-count {
 		border-color: transparent;
-		background-color: #c872d0;
+		background-color: $quote-hover-text-color;
 		& p { color: white; }
 	}
 
 	.sidebar-list.status li .filter-count > p {
-		color: #c872d0;
+		color: $quote-hover-text-color;
 		margin: 0;
 	}
 
@@ -276,7 +280,6 @@
 		width: 380px;
 		padding: 0;
 		bottom: 0;
-		box-shadow: -2px -1px 4px rgba(0, 0, 0, .07);
 	}
 
 	.sidebar-section {
@@ -292,9 +295,6 @@
 	}
 
 	.profile-container {
-		padding-bottom: $spacing-milli;
-		border-bottom: solid 1px $stroke-color;
-		margin-bottom: $spacing-milli;
 		overflow: auto;
 	}
 
@@ -316,10 +316,6 @@
 		text-align: center;
 	}
 
-	.bottom-fix a {
-		color: $sidebar-primary-text-color;
-	}
-
 	.bottom-fix h4 em {
 		font-style: initial;
 		color: $sidebar-primary-text-color;
@@ -336,8 +332,14 @@
 		}
 	}
 
-	.sidebar-section .logout {
-		float: right;
+	.bottom-fix a.bookmarklet {
+		margin-left: $spacing-normal;
+	}
+
+	.sidebar-section .logout::before {
+		content: '·';
+		margin: 0 7px 0 3px;
+		color: $quote-primary-text-color;
 	}
 
 	.sidebar-section .profile-link {

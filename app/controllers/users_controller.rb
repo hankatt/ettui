@@ -86,30 +86,29 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_user_omniauth_data
-    if current_user && !current_user.uid.blank?
-      @user = current_user
+  def update_all_user_omniauth_data
 
-      auth = Twitter.user(current_user.uid.to_i)
-      user_params = {
-        :name => auth.name,
-        :twitter_image_url => auth.profile_image_url,
-        :twitter_description => auth.description
-      }
+    # Update all users before this was implemented
+    User.where(["updated_at < ?", "2014-10-31 12:00:00"]).each do |user|
+      if !user.uid.blank?
 
+        # Fetch user's Twitter data
+        auth = Twitter.user(user.uid.to_i)
+
+        # Define params we want to update
+        user_params = {
+          :name => auth.name,
+          :twitter_image_url => auth.profile_image_url,
+          :twitter_description => auth.description
+        }
+
+        # Update user attributes
+        user.update_attributes(user_params)
+      end
     end
 
     respond_to do |format|
-      if @user.update_attributes(user_params)
-        puts("user_params\n\n")
-        puts(user_params)
-        puts("\n\n")
         format.html { redirect_to boards_path, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
     end
   end
 

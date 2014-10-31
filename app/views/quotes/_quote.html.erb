@@ -1,7 +1,7 @@
 <% if quote.created_at > current_user.last_active_at %>
-  <li class="quote unread clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
+  <li class="quote v2 unread clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
 <% else %>
-  <li class="quote clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
+  <li class="quote v2 clearfix rows q-<%= quote.id %>" data-qid="<%= quote.id %>">
 <% end %>
 
 <!-- Dynamically size quotes text depending on content size !-->
@@ -14,25 +14,28 @@
     <div class="quote-metadata">
         <div class="quote-source">
             <%= image_tag quote.source.favicon, :class => "source-favicon" %>
-            <%= link_to quote.source.hostname, quote.url, :class => "source-url" %>
+            <%= link_to quote.readability_title.truncate(61), quote.url, :class => "source-url" %>
+            <div class="quote-date">
+              <%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %>
+          </div>
+          <div class="symbol-new"></div>
+            <%= link_to "x", quote, method: :delete, :class => "remove-quote" %>
+            <div class="metadata">
+              <%= link_to quote.url, quote.url %>
+            </div>
         </div>
-        <div class="quote-date">
-            <%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %>
-        </div>
-        <div class="symbol-new"></div>
-        <%= link_to "x", quote, method: :delete, :class => "remove-quote" %>
     </div>
     <div class="quote-content <%= font_size %>">
       <p class="dc2"><%= quote.text %></p>
       <div class="quote-actions">
-        <ul class="quote-tags q-<%= quote.id %>">
+        <ul class="quote-tags">
           <% if quote.tags.any? %>
             <% quote.tags.each do |tag| %>
               <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
             <% end %>
           <% end %>
         </ul>
-        <%= link_to "Add a tag", "/tag/#new", :class => "append-tag button", :title => "Add tag" %>
+        <%= link_to "Add a tag", "/tag/#new", :class => "append-tag button secondary", :title => "Add tag" %>
       </div>
     </div>
-</li>
+  </li>

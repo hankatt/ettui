@@ -10,8 +10,8 @@ Well::Application.routes.draw do
   get 'add/tag_locally' => "quotes#add_tag_local"
   get 'add/tag_input' => "quotes#append_tag_input"
   get 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"
-  get 'users/omniauth/update' => "users#update_user_omniauth_data", :as => "omniauth_update"
-
+  get 'users/omniauth/update' => "users#update_all_user_omniauth_data", :as => "omniauth_update"
+  get 'quotes/readability/update' => 'quotes#update_quotes_with_readability_parse_data'
   get 'users/done' => "users#done", :as => "continue"
   
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"

@@ -11,7 +11,25 @@ class QuotesController < ApplicationController
 
     # Create a quote and connect it to the created source
     if @user && @source
-      @quote = Quote.new(:text => URI.unescape(params[:text]), :user_id => @user.id, :url => URI.unescape(params[:url]), :source_id => @source.id)
+
+      # URL to Readability's Parser API
+      uri = URI('http://www.readability.com/api/content/v1/parser')
+      token = '34831792edfc0cf8e42b3e82086f00970a53407b'
+
+      uri.query = URI.encode_www_form({:url => URI.unescape(params[:url]), :token => token })
+
+      # Readability Parser response
+      response = Net::HTTP.get_response(uri)
+      parsed = ActiveSupport::JSON.decode(response.body)
+
+      @quote = Quote.new({
+        :text => URI.unescape(params[:text]), 
+        :user_id => @user.id, 
+        :url => URI.unescape(params[:url]), 
+        :source_id => @source.id,
+        :readability_title => parsed["title"]
+      })
+      
       @quote.boards << @user.boards.first
       @quote.save
     end
@@ -178,6 +196,33 @@ class QuotesController < ApplicationController
     end
   end
 
+  def show
+
+    @user = current_user
+    @quote = Quote.find(params[:id])
+
+    # URL to Readability's Parser API
+    uri = URI('http://www.readability.com/api/content/v1/parser')
+
+    # Our query to the Parser API
+    params = {
+      :url => @quote.url,
+      :token => '34831792edfc0cf8e42b3e82086f00970a53407b'
+    }
+
+    # Format params for web encoding
+    uri.query = URI.encode_www_form(params)
+
+    # Readability Parser response
+    response = Net::HTTP.get_response(uri)
+    @parsed = ActiveSupport::JSON.decode(response.body)
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def remove_tag
     @quote = Quote.find(params[:id])
     @tag = @quote.tags.find(params[:tag_id])
@@ -203,4 +248,30 @@ class QuotesController < ApplicationController
       format.js
     end
   end
+
+  def update_quotes_with_readability_parse_data
+    
+    # URL to Readability's Parser API
+    uri = URI('http://www.readability.com/api/content/v1/parser')
+    token = '34831792edfc0cf8e42b3e82086f00970a53407b'
+
+    Quote.all.each do |quote|
+      if quote.readability_title.nil?
+        # Format params for web encoding
+        uri.query = URI.encode_www_form({:url => quote.url, :token => token })
+
+        # Readability Parser response
+        response = Net::HTTP.get_response(uri)
+        parsed = ActiveSupport::JSON.decode(response.body)
+
+        # Update attributes
+        quote.update_attributes(:readability_title => parsed["title"])
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to boards_path, notice: 'All quotes successfully updated.' }
+    end
+  end
+
 end

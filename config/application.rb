@@ -61,5 +61,6 @@ module Well
     # Automagically remove unused tags
     ActsAsTaggableOn.remove_unused_tags = true
     ActsAsTaggableOn.force_lowercase = true
+
   end
 end

@@ -57,15 +57,15 @@
                           <%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>
                           <h4 class="profile-name"><%= current_user.name %></h4>
                         </div>
-                        <%= link_to "Logout", logout_path, :class => "logout" %>
-                      <a href="javascript:(function() {
+                        <a class="bookmarklet secondary" href="javascript:(function() {
                         document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
                         current_user_token = '<%= current_user.token %>';
-                      })();">Bookmarklet</a>
+                        })();">Your bookmarklet</a>
+                        <%= link_to "Logout", logout_path, :class => "logout secondary" %>
                     <% else %>
                       <h4 class="underline">Signed in as <em><%= current_user.email %></em></h4>
                       <%= link_to "Logout", logout_path, :class => "logout" %>
-                      <a href="javascript:(function() {
+                      <a class="bookmarklet" href="javascript:(function() {
                         document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
                         current_user_token = '<%= current_user.token %>';
                       })();">Bookmarklet</a>

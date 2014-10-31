@@ -37,7 +37,7 @@
 }
 
 .content-container, .content-container a {
-	color: $quote-secondary-text-color
+
 }
 
 
@@ -79,8 +79,8 @@
 
 .quote .source-favicon {
 	margin-right: 9px;
-	width: 32px;
-	height: 32px;
+	width: 24px;
+	height: 24px;
 }
 
 .quote-metadata {
@@ -100,38 +100,43 @@
 	display: inline-block;
 }
 
-.source-favicon + .source-url, .quote-date, .symbol-new {
-	margin-top: 6px;
+.source-favicon + .source-url, .quote-date {
+	margin-top: 3px;
 }
 
 .source-url, .quote-date {
-	color: $quote-secondary-text-color;
 	font-size: $base-font-size;
 	text-transform: lowercase;
+	color: $quote-secondary-text-color;
+}
+
+#search-filter a.source-url {
+	font-weight: 600;
 }
 
 .quote-date::before {
 	content: '·';
-	margin: 0 3px 0 8px;
+	margin: 0 3px 0 7px;
 }
 
 .quote-date {
 	float: left;
 	vertical-align: sub;
+	font-weight: 300;
 }
 
 .quote.unread .symbol-new {
-	background-color: #c872d0;
-	width: 16px;
-	height: 16px;
-	border-radius: 8px;
+	background-color: $quote-hover-text-color;
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
 	float: right;
 	opacity: 1;
+	margin-top: 0;
 }
 
 .quote .quote-metadata .remove-quote {
 	position: absolute;
-	top: 2px;
 	right: 0px;
 	opacity: 1;
 	transition: opacity .20s;
@@ -187,17 +192,17 @@
 }
 
 .quote-content.small p {
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.75em;
 }
 
 .quote-content p {
-	font-size: 1.3em; /* 19.5px */
+	font-size: 20px; /* 19.5px */
 	line-height: 1.8em;
 }
 
 .quote-content.big p {
-	font-size: 1.69em; /* 25.35px */
+	font-size: 27px; /* 25.35px */
 	line-height: 1.7em;
 }
 
@@ -212,7 +217,7 @@
 
 
 .quote-actions {
-	margin-top: 15px;
+	margin-top: $spacing;
 	padding-top: 3px;
 	opacity: 1;
 	transition: opacity .09s ease-out;
@@ -280,6 +285,10 @@
 	}
 	&:hover .remove-tag:hover {
 		color: $quote-hover-text-color;
+	}
+	& a {
+		color: $quote-secondary-text-color;
+		font-weight: 300;
 	}
 }
 
@@ -403,5 +412,69 @@
 			margin-top: -1px;
 			text-decoration: underline;
 		}
+	}
+}
+
+.quote.v2 {
+	& .source-favicon {
+		width: 24px;
+		height: 24px;
+		float: left;
+	}
+
+	& .quote-source {
+		text-align: left;
+		width: 100%;
+	}
+
+	& .metadata {
+		padding: 0 34px;
+		overflow: auto;
+		margin-top: -2px;
+		max-width: 648px;
+		display: block;
+		clear: both;
+		& a {
+			color: $quote-secondary-text-color;
+			font-weight: 300;
+			font-size: 13px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			display: block;
+			margin-top: 2px;
+		}
+
+	}
+
+	& .source-url { 
+		text-transform: none;
+		color: $quote-secondary-text-color;
+		line-height: 16px;
+		float: left;
+		font-weight: 600;
+	}
+	& .source-url + a {
+		margin-left: 42px;
+		display: block;
+		text-align: left;
+		color: #afafaf;
+		float: left;
+	}
+
+	& .source-url, .quote-date {
+		margin-top: 4px;
+		font-size: 16px;
+	}
+
+	& .quote-date {
+		float: left;
+		line-height: 16px;
+		margin-left: 6px;
+		text-transform: none;
+		&::before {
+			content: "· ";
+			margin: 0;
+		};
 	}
 }

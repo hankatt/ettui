@@ -14,7 +14,11 @@
     <div class="quote-metadata">
         <div class="quote-source">
             <%= image_tag quote.source.favicon, :class => "source-favicon" %>
-            <%= link_to quote.readability_title.truncate(61), quote.url, :class => "source-url" %>
+            <% if quote.readability_title.nil? %>
+              <%= link_to quote.source.hostname, quote.url, :class => "source-url" %>
+            <% else %>
+              <%= link_to quote.readability_title.truncate(61), quote.url, :class => "source-url" %>
+            <% end %>
             <div class="quote-date">
               <%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %>
           </div>

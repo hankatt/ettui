@@ -102,6 +102,9 @@ $(document).on('ready DOMChange', function() {
             //Flash the tag on the quote to highlight its presence
     });
 
+    $("#search").keypress(function() {
+        $(".sidebar-list li").unbind('click');
+    });
 
     /* 
         Checkbox functionality for the source filters 

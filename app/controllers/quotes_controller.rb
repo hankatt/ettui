@@ -15,21 +15,26 @@ class QuotesController < ApplicationController
       # URL to Readability's Parser API
       uri = URI('http://www.readability.com/api/content/v1/parser')
       token = '34831792edfc0cf8e42b3e82086f00970a53407b'
+      url = URI.unescape(params[:url])
 
-      uri.query = URI.encode_www_form({:url => URI.unescape(params[:url]), :token => token })
+      if(!url.include? "notedapp.herokuapp.com")
 
-      # Readability Parser response
-      response = Net::HTTP.get_response(uri)
-      parsed = ActiveSupport::JSON.decode(response.body)
+        # Format params to web form format
+        uri.query = URI.encode_www_form({:url => url, :token => token })
+        
+        # Readability Parser response
+        response = Net::HTTP.get_response(uri)
+        parsed = ActiveSupport::JSON.decode(response.body)
+      end
 
       @quote = Quote.new({
         :text => URI.unescape(params[:text]), 
         :user_id => @user.id, 
         :url => URI.unescape(params[:url]), 
         :source_id => @source.id,
-        :readability_title => parsed["title"]
+        :readability_title => parsed["title"] unless !parsed.defined?
       })
-      
+
       @quote.boards << @user.boards.first
       @quote.save
     end

@@ -18,13 +18,14 @@ class QuotesController < ApplicationController
       url = URI.unescape(params[:url])
 
       if(!url.include? "notedapp.herokuapp.com")
-
         # Format params to web form format
         uri.query = URI.encode_www_form({:url => url, :token => token })
         
         # Readability Parser response
         response = Net::HTTP.get_response(uri)
         parsed = ActiveSupport::JSON.decode(response.body)
+      else
+        parsed["title"] = "Noted: Installing the Bookmarklet"
       end
 
       @quote = Quote.new({

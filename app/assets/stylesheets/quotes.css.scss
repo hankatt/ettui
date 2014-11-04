@@ -75,14 +75,13 @@
 		right: 0;
 	}
 
-	&.unread:hover {}
-
 	/* ACTIONS */
 
 	.quote-actions {
 		margin: $spacing-1 0 0;
 		padding-top: 3px;
 		overflow-y: auto;
+		float: left;
 	}
 
 	.quote-actions .append-tag {
@@ -96,9 +95,30 @@
 		opacity: 1;
 	}
 
+	&:hover .quote-actions + .button.view {
+		opacity: 1;
+	}
+	.quote-actions + .button.view {
+		display: inline-block;
+		margin-top: $spacing-1 + 1;
+		float: right;
+		font-weight: bold;
+		font-size: 19px;
+		line-height: 17px;
+		padding: 3px 7px 2px;
+		opacity: 0;
+		transition: opacity .09s ease-out;
+		&:hover {
+			background-color: $w-signature-color;
+			color: $quote-background-color;
+			border-color: transparent;
+		}
+	}
+
 	.append-tag:hover {
-		color: $w-signature-color;
+		color: $quote-background-color;
 		border-color: $w-signature-color;
+		background-color: $w-signature-color;
 	}
 
 	& .quote-actions .new-tag {
@@ -250,5 +270,52 @@
 		float: left;
 		clear: both;
 		margin-top: -2px;
+	}
+}
+
+
+/*
+
+	##############################
+
+	SHOW PAGE
+
+	##############################
+
+*/
+
+.quotes-container .options {
+	margin: 0 auto;
+	padding: 0 $spacing-3 0 0;
+	max-width: 720px;
+	&:first-of-type {
+		padding-bottom: $spacing-2;
+		border-bottom: solid 1px $w-stroke-color;
+		& .small.button {
+			background-color: $w-secondary-color;
+			border-color: transparent;
+			color: white;
+		}
+	}
+	& p {
+		padding-left: $spacing-3;
+		float: left;
+		color: $w-secondary-color;
+	}
+	& .small.button:hover {
+		background-color: $w-signature-color;
+		color: white;
+		border-color: transparent;
+	}
+	& .small.button.remove {
+		color: red;
+		float: right;
+		min-height: 26px;
+		line-height: 20px;
+		margin-top: -3px;
+	}
+	& .small.button.remove:hover {
+		background-color: red;
+		color: white;
 	}
 }

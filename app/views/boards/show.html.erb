@@ -59,7 +59,7 @@
                     <% if !current_user.uid.blank? %>
                         <div class="profile-container">
                           <%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>
-                          <h4 class="profile-name"><%= current_user.name %></h4>
+                          <h5 class="profile-name"><%= current_user.name %></h5>
                         </div>
                         <a class="bookmarklet secondary" href="javascript:(function() {
                         document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
@@ -91,7 +91,7 @@
 
     ############
     !-->
-    <div class="content-container list">
+    <div class="content-container">
         <!-- 
                 QUOTES
                             !-->

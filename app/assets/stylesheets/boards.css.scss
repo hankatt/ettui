@@ -34,7 +34,23 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: 956px;
-	padding: $spacing-3 $spacing-3 0;
+	padding: $spacing-2 $spacing-3 0;
+}
+
+.profile-mainpage-container {
+	width: 100%;
+	text-align: center;
+	& .profile-photo {
+		width: 32px;
+		height: 32px;
+		border-radius: 16px;
+		margin: 0 auto;
+	}
+	& p {
+		color: $w-secondary-color;
+		font-weight: 300;
+		font-style: italic;
+	}
 }
 
 #search-filter {
@@ -207,13 +223,10 @@
 
 @media only screen and (min-width : 320px) and (max-width : 640px) {
 	.quotes-container {
-		padding: $spacing-3 0 0;
+		padding: $spacing-2 0 0;
 	}
 
 	.quotes-container .quote {
 		padding: $spacing-2 $spacing-1 $spacing-2; 
-	}
-	.quote-source-title-container {
-		max-width: 540px;
 	}
 }

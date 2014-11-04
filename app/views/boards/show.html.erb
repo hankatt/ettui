@@ -95,7 +95,13 @@
         <!-- 
                 QUOTES
                             !-->
-        <ol class="quotes-container">         
+        <ol class="quotes-container">   
+          <div class="profile-mainpage-container">
+            <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
+            <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %>'s</h4>
+            <p>collection of <%= pluralize(@board.quotes.count, 'quote') %>
+              from <%= pluralize(@sources.count, 'site') %>.</p>
+          </div>    
             <% if !@quotes.empty? %>
                 <div class="quotes-list">
                   <%= render(@quotes) %>

@@ -64,15 +64,14 @@
 
 		&:hover {
 			& .quote-source-date { opacity: 1; }
-			& .quote-source-status-new { opacity: 0; }
+			& .quote-source-status-new { opacity: 0; display: none; }
 		}
 	}
 
 	&.unread .quote-source-status-new {
+		display: block;
 		opacity: 1;
-		position: absolute;
-		top: 4px;
-		right: 0;
+		margin-top: 2px;
 	}
 
 	/* ACTIONS */

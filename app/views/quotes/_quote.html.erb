@@ -24,9 +24,9 @@
                   <%= quote.readability_title.truncate(64) %>
                 <% end %>
               <% end %>
+              <div class="quote-source-status-new hidden"></div>
               <div class="quote-source-data-container">
                 <p class="quote-source-date visible"><%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %></p>
-                <div class="quote-source-status-new hidden"></div>
               </div>
             </div>
         </div>

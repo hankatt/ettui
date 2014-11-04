@@ -5,11 +5,11 @@
 }
 
 .small.button {
-	padding: 4px 7px 2px;
+	padding: 3px 5px 2px;
 	opacity: 1;
 	max-height: 24px;
-	line-height: 16px;
-	border-radius: 12px;
+	line-height: 15px;
+	border-radius: 2px;
 	text-align: center;
 }
 
@@ -25,7 +25,7 @@
 
 	& > p {
 		font-family: "fira-mono";
-		line-height: 16px;
+		line-height: 18px;
 		margin: 0;
 	}
 }

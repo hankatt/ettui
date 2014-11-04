@@ -17,9 +17,10 @@
 	/* General look and attributes of metadata */
 	& .quote-metadata {
 		color: $w-secondary-color;
-		overflow-y: auto;
+		overflow-y: hidden;
 		& h4, p, a {
-			font-size: 14px;	
+			font-size: 14px;
+			margin: 0;	
 		}
 	}
 
@@ -137,6 +138,7 @@
 .quote-content p {
 	font-family: $font-family-serif;
 	margin-top: $spacing-1;
+	margin-bottom: 0;
 }
 
 .quote-content .highlight {
@@ -146,35 +148,83 @@
 	background-color: #ddd;
 }
 
-@media only screen and (min-width : 320px) and (max-width : 479px) {
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+	.quote .quote-metadata h4,
+	.quote .quote-metadata p,
+	.quote .quote-metadata a {
+		font-size: 13px;
+	}
+
+	.quote .quote-metadata {
+		overflow: visible;
+	}
+
+	.quote .quote-content {
+		clear: both;
+		padding-top: $spacing-0;
+		& p {
+			margin-top: 0;
+		}
+	}
+
+	.quote .quote-source-date {
+		display: none;
+	}
+
+	.quote .quote-source-title {
+		top: 4px;
+	}
+
+	.quote .quote-source-title-container {
+		line-height: 18px;
+	}
+
+	.quote .quote-source-data-container {
+		float: left;
+		padding-left: 34px;
+		clear: left;
+	}
+
 	.quote-content.small p {
-		font-size: 0.85em;
+		font-size: 0.9em;
+		line-height: 1.619em;
 	}
 
 	.quote-content.big p {
 		font-size: 1.39em;
+		line-height: 1.619em;
 	}
 
 	.quote-content p {
 		font-size: 1.07em;
+		line-height: 1.619em;
 	}
 }
 
-@media only screen and (min-width : 480px) and (max-width : 624px) {
+@media only screen and (min-width : 481px) and (max-width : 640px) {
+
+	.quote .quote-source-date {
+		display: none;
+	}
+
 	.quote-content.small p {
-		font-size: .9em;
+		font-size: .95em;
+		line-height: 1.619em;
 	}
 
 	.quote-content.big p {
 		font-size: 1.52em; /* 1.17 * 1.3 */
+		line-height: 1.619em;
 	}
 
 	.quote-content p {
 		font-size: 1.17em; /* 0.9 * 1.3 */
+		line-height: 1.619em;
 	}
 }
 
-@media only screen and (min-width : 624px) {
+@media only screen and (min-width : 641px) {
+
 	.quote-content.small p {
 		font-size: 16px;
 		line-height: 1.75em;

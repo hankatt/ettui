@@ -2,6 +2,9 @@
     <ol class="quotes-container">
     	<div class="options">
         	<%= link_to "< Back to the board", boards_path, :class => "small button" %>
+        	<% if @quote.boards.first.user_id.eql?(current_user.id) %>
+	    		<%= link_to "Delete this quote", @quote, method: :delete, :class => "small button remove" %>
+	    	<% end %>
 		</div>        
         <% if !@quote.nil? %>
             <div class="quotes-list">
@@ -9,10 +12,11 @@
             </div>
         <% end %>
         <div class="options">
-        	<p>Added by <%= current_user.name || current_user.email %></p>
-        	<% if @quote.boards.first.user_id.eql?(current_user.id) %>
-	    		<%= link_to "Delete this quote", @quote, method: :delete, :class => "small button remove" %>
-	    	<% end %>
+        	<div class="profile-container">
+	        	<%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>
+	        	<h5 class="profile-name"><%= current_user.name || current_user.email %></h5>
+	        	<p class="profile-name">added this on <%= @quote.created_at.day.to_s << ". " << @quote.created_at.strftime("%B") %></p>
+	        </div>
 		</div>
     </ol>
 </div>

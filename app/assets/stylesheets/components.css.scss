@@ -42,16 +42,42 @@
 
 /* Sidebar arrow */
 
+.sidebar-section-title {
+	overflow-y: auto;
+	&:hover {
+		cursor: pointer;
+		& svg {
+			display: block;
+		}
+	}
+}
+.sidebar-section-title h4.section-title {
+	float: left;
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+.sidebar-list {
+	clear: both;
+}
+
 .sidebar-section-title svg {
-	background-size: 18px;
+	background-size: 16px;
 	border: none;
-	width: 18px;
-	height: 18px;
-	position: absolute;
-	right: $spacing-1;
-	top: 2px;
-	fill: $w-stroke-color;
+	width: 16px;
+	height: 16px;
+	margin-right: 3px;
+	float: right;
+	fill: $w-secondary-color;
 	display: none;
+}
+
+.sidebar-section-title.open svg {
+	transform: rotate(180deg);
+	fill: $w-primary-color;
+	display: block;
 }
 
 /* New quote symbol */

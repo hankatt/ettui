@@ -205,24 +205,7 @@ class QuotesController < ApplicationController
 
   def show
 
-    @user = current_user
     @quote = Quote.find(params[:id])
-
-    # URL to Readability's Parser API
-    uri = URI('http://www.readability.com/api/content/v1/parser')
-
-    # Our query to the Parser API
-    params = {
-      :url => @quote.url,
-      :token => '34831792edfc0cf8e42b3e82086f00970a53407b'
-    }
-
-    # Format params for web encoding
-    uri.query = URI.encode_www_form(params)
-
-    # Readability Parser response
-    response = Net::HTTP.get_response(uri)
-    @parsed = ActiveSupport::JSON.decode(response.body)
 
     respond_to do |format|
       format.html

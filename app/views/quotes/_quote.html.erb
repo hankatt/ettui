@@ -27,7 +27,6 @@
               <div class="quote-source-data-container">
                 <p class="quote-source-date visible"><%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %></p>
                 <div class="quote-source-status-new hidden"></div>
-                <!--<%= link_to "x", quote, method: :delete, :class => "quote-remove hidden" %>!-->
               </div>
             </div>
         </div>
@@ -46,5 +45,6 @@
           </ul>
           <%= link_to "Add a tag", "/tag/#new", :class => "append-tag small button", :title => "Add tag" %>
         </div>
+        <%= link_to "· · ·", quote, :class => "small button view" %>
       </div>
   </li>

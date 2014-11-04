@@ -286,15 +286,21 @@
 
 .quotes-container .options {
 	margin: 0 auto;
-	padding: 0 $spacing-3 0 0;
+	padding: 0 0 0 0;
 	max-width: 720px;
 	&:first-of-type {
 		padding-bottom: $spacing-2;
 		border-bottom: solid 1px $w-stroke-color;
 		& .small.button {
-			background-color: $w-secondary-color;
+			background-color: $w-signature-color;
 			border-color: transparent;
 			color: white;
+		}
+
+		& .small.button.remove {
+			background-color: transparent;
+			border-color: $w-stroke-color;
+			color: red;
 		}
 	}
 	& p {
@@ -312,10 +318,22 @@
 		float: right;
 		min-height: 26px;
 		line-height: 20px;
-		margin-top: -3px;
+		margin-top: 1px;
 	}
 	& .small.button.remove:hover {
 		background-color: red;
+		border-color: transparent;
 		color: white;
+	}
+	& .profile-container {
+		float: left;
+		padding-left: $spacing-3;
+	}
+	& .profile-name {
+		padding-left: 0;
+	}
+
+	& p.profile-name {
+		margin-left: 4px;
 	}
 }

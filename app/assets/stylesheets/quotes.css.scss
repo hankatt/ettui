@@ -358,7 +358,8 @@
 	}
 	& a {
 		padding-bottom: 1px;
-		border-bottom: solid 3px $w-stroke-color;
+		color: $w-secondary-color;
+		border-bottom: solid 1px $w-stroke-color;
 		&:hover {
 			color: $w-primary-color;
 			border-color: $w-signature-color;

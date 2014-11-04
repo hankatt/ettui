@@ -1,10 +1,10 @@
 // Render a new #tag (x) based on the _tag.html.erb partial
-quote_tags_container	= $(".quote-tags.q-<%= @quote.id %>");
+quote_tags_container	= $(".quote.q-<%= @quote.id %>").find('.quote-tags');
 
 <% if @flags[:flash] %>
 
 	// Flash shit.
-	quote_tags_container.children('.t-<%= @tag.id %>').fadeOut(100, function() {
+	quote_tags_container.children('.quote-tag.t-<%= @tag.id %>').fadeOut(100, function() {
 		$(this).fadeIn(100);
 	});
 

@@ -220,7 +220,7 @@ class QuotesController < ApplicationController
     
     # Variables for remove_tag.js.erb
     @flags = { :tags_remain => false }
-    if(@tag.taggings_count > 1)
+    if(@tag.context_count > 1)
       @flags[:tags_remain] = true
     end
 

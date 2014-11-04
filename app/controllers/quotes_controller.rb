@@ -217,12 +217,6 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:id])
     @tag = @quote.tags.find(params[:tag_id])
     @board = @quote.boards.first
-    
-    # Variables for remove_tag.js.erb
-    @flags = { :tags_remain => false }
-    if(@tag.context_count > 1)
-      @flags[:tags_remain] = true
-    end
 
      # Remove tag from quote
     tags = @quote.remove_tag(@tag)
@@ -230,11 +224,21 @@ class QuotesController < ApplicationController
     # Apply the new tags list to @quote and board
     @board.tag(@quote, :with => tags, :on => "tags")
 
+    @board.save
     @tag.reload # Reload @tag to get latest tag count
 
     # Render remove_tag.js.erb
     respond_to do |format|
+
+      # Set context count
       @tag.set_context_count(@board)
+
+      # Variables for remove_tag.js.erb
+      @flags = { :tags_remain => false }
+      if(@tag.context_count > 1)
+        @flags[:tags_remain] = true
+      end
+      
       format.js
     end
   end

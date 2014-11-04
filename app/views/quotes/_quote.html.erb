@@ -14,20 +14,22 @@
     <div class="quote-metadata">
         <div class="quote-source-title-container">
             <%= image_tag quote.source.favicon, :class => "source-favicon" %>
-            <% if quote.readability_title.nil? %>
-              <%= link_to quote.url, :class => "quote-source-title" do %>
-                <%= quote.url %>
+            <div class="quote-source-title-data-wrapper">
+              <% if quote.readability_title.nil? %>
+                <%= link_to quote.url, :class => "quote-source-title" do %>
+                  <%= quote.url %>
+                <% end %>
+              <% else %>
+                <%= link_to quote.url, :class => "quote-source-title" do %>
+                  <%= quote.readability_title.truncate(64) %>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to quote.url, :class => "quote-source-title" do %>
-                <%= quote.readability_title.truncate(64) %>
-              <% end %>
-            <% end %>
-        </div>
-        <div class="quote-source-data-container">
-            <p class="quote-source-date visible"><%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %></p>
-            <div class="quote-source-status-new hidden"></div>
-            <!--<%= link_to "x", quote, method: :delete, :class => "quote-remove hidden" %>!-->
+              <div class="quote-source-data-container">
+                <p class="quote-source-date visible"><%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B") %></p>
+                <div class="quote-source-status-new hidden"></div>
+                <!--<%= link_to "x", quote, method: :delete, :class => "quote-remove hidden" %>!-->
+              </div>
+            </div>
         </div>
     </div>
     <div class="quote-content <%= font_size %>">

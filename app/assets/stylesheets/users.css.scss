@@ -50,11 +50,11 @@ div.error_explanation ul {
 }
 
 .splash-container h1 {
-	font-weight: bold;
-	letter-spacing: -2px;
-	margin: 0 auto $spacing-3;
-	font-size: 45px;
-	line-height: 51px;
+	font-weight: 300;
+	letter-spacing: -1px;
+	margin: 0 auto $spacing-2;
+	font-size: 41px;
+	line-height: 49px;
 }
 
 .splash-container h2 {
@@ -141,7 +141,7 @@ header .inline.link img {
 .splash-container .big.button {
 	border-color: $w-signature-color;
 	color: #3ec79b;
-	margin: $spacing-2 auto;
+	margin: $spacing-3 auto 0;
 	width: 300px;
 	transition: color .13s;
 }

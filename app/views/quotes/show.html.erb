@@ -13,8 +13,8 @@
         <% end %>
         <div class="options">
         	<div class="profile-container">
-	        	<%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>
-	        	<h5 class="profile-name"><%= current_user.name || current_user.email %></h5>
+	        	<%= image_tag @quote.boards.first.users.first.twitter_image_url, :class => "profile-photo" %>
+	        	<h5 class="profile-name"><%= @quote.boards.first.users.first.name || @quote.boards.first.users.first.email %></h5>
 	        	<p class="profile-name">added this on <%= @quote.created_at.day.to_s << ". " << @quote.created_at.strftime("%B") %></p>
 	        </div>
 		</div>

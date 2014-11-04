@@ -1,4 +1,4 @@
-<li>
+<li class="sidebar-list-item">
 	<%= check_box_tag "source_ids[]", source.id, false, :id => "source_ids_#{source.id}" %>
 	<div class="source-favicon" style="background-image: url('<%= source.favicon %>');"></div>
 	<button class="sidebar-list-button"><%= source.hostname.truncate(30) %></button>

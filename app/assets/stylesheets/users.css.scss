@@ -3,8 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "fonts.css.scss";
-@import	"colors.css.scss";
-@import	"properties.css.scss";
+@import	"variables.css.scss";
 
 div.error_explanation ul {
 	display: none;
@@ -43,7 +42,7 @@ div.error_explanation ul {
 	max-width: 840px;
 	min-width: 580px;
 	margin: 0 auto;
-	padding: 0 $spacing-small;
+	padding: 0 $spacing-2;
 }
 
 .splash-container h1, .splash-container h2 {
@@ -53,7 +52,7 @@ div.error_explanation ul {
 .splash-container h1 {
 	font-weight: bold;
 	letter-spacing: -2px;
-	margin: 0 auto $spacing-normal;
+	margin: 0 auto $spacing-3;
 	font-size: 45px;
 	line-height: 51px;
 }
@@ -74,12 +73,12 @@ div.error_explanation ul {
 header {
 	overflow: auto;
 	position: relative;
-	margin: 0 0 $spacing-big 0;
-	padding-top: $spacing-big;
+	margin: 0 0 $spacing-4 0;
+	padding-top: $spacing-4;
 }
 
 header p, .splash-container p, .splash-container h2 {
-	color: $quote-secondary-text-color;
+	color: $w-secondary-color;
 }
 
 #logo-container {
@@ -88,10 +87,11 @@ header p, .splash-container p, .splash-container h2 {
 }
 
 #logo-container > div {
-	width: 128px;
-	height: 63px;
+	width: 112px;
+	height: 56px;
 	box-sizing: content-box;
-	background: #fff image-url('logo.jpg') no-repeat 50% 50%;
+	background: #fff image-url('logo.jpg') no-repeat;
+	background-size: 100%;
 }
 
 .inline.link {
@@ -104,6 +104,15 @@ header .inline.link {
 	right: 0;
 }
 
+header .inline.link img {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	position: relative;
+	top: 14px;
+	margin-right: 10px;
+}
+
 .inline p, .inline a {
 	display: inline-block;
 }
@@ -113,8 +122,8 @@ header .inline.link {
 }
 
 .splash-container a:hover {
-	color: $quote-hover-text-color;
-	border-color: $quote-hover-text-color;
+	color: $w-signature-color;
+	border-color: $w-signature-color;
 }
 
 .button.big {
@@ -130,41 +139,41 @@ header .inline.link {
 }
 
 .splash-container .big.button {
-	border-color: $quote-hover-text-color;
+	border-color: $w-signature-color;
 	color: #3ec79b;
-	margin: $spacing-small auto;
+	margin: $spacing-2 auto;
 	width: 300px;
 	transition: color .13s;
 }
 
 .splash-container a.button:hover {
-	background-color: $quote-hover-text-color;
+	background-color: $w-signature-color;
 	color: white;
-	border-color: $quote-hover-text-color;
+	border-color: $w-signature-color;
 }
 
 .learn-more-container {
 	width: 100%;
 	position: absolute;
 	left: 0;
-	bottom: $spacing-normal;
+	bottom: $spacing-3;
 }
 
 .learn-more-container a {
-	font-size: $font-size-2;
+	font-size: $font-size-sans-2;
 	font-weight: 300;
 	text-decoration: none;
-	border-bottom: solid 1px $stroke-color;
+	border-bottom: solid 1px $w-stroke-color;
 }
 
 .learn-more-container a:hover {
 	color: inherit;
-	border-color: $quote-primary-text-color;
+	border-color: $w-primary-color;
 }
 
 .twitter-container {
 	text-align: center;
-	border-bottom: solid 1px #ddd;
+	border-bottom: solid 1px $w-stroke-color;
 	width: 100%;
 	max-width: 320px;
 	margin: 0 auto;
@@ -178,31 +187,31 @@ header .inline.link {
 	vertical-align: top;
 }
 
-.small.button {
+.primary.button {
 	width: 100%;
 	max-width: 320px;
-	border-color: #ddd;
+	border: none;
 	border-radius: 6px;
 	background-color: #f3f3f3;
 	padding: 16px 0 7px;
-	font-size: $font-size-1;
+	font-size: $font-size-sans-1;
 	letter-spacing: 1px;
 	margin: 0 auto;
 	display: block;
 }
 
-.twitter-container a.small.button {
+.twitter-container a.primary.button {
 	background-color: #55ACEE;
 	color: #fff;
-	margin-bottom: $spacing-small;
+	margin-bottom: $spacing-2;
 }
 
-.twitter-container a.small.button:hover {
+.twitter-container a.primary.button:hover {
 	background-color: #4398D8;
 }
 
 .email-container {
-	margin-top: $spacing-small;
+	margin-top: $spacing-2;
 }
 
 .email-container form .first.field {
@@ -219,16 +228,16 @@ header .inline.link {
 	width: 100%;
 	max-width: 320px;
 	margin: 0 auto 2px;
-	padding: $spacing;
+	padding: $spacing-1;
 	background-color: #f3f3f3;
 }
 
 .email-container .actions {
-	margin-top: $spacing-milli;
-	margin-bottom: $spacing-small;
-	& .small.button {
-		padding: $spacing 0;
-		background-color: $quote-hover-text-color;
+	margin-top: $spacing-0;
+	margin-bottom: $spacing-2;
+	& .primary.button {
+		padding: $spacing-1 0;
+		background-color: $w-signature-color;
 		color: #fff;
 		&:hover {
 			background-color: #5DC8A6;
@@ -244,7 +253,7 @@ header .inline.link {
 .intro-container h2 {
 	width: 100%;
 	max-width: 480px;
-	margin: 0 auto $spacing-big;
+	margin: 0 auto $spacing-4;
 }
 
 .intro-container h2 > em {
@@ -254,47 +263,47 @@ header .inline.link {
 }
 
 .intro-container h4 {
-	margin: $spacing-small auto;
+	margin: $spacing-2 auto;
 	width: 320px;
 	text-align: center;
 }
 
 .intro-container {
-	padding: 0 $spacing-small $spacing-bigger;
+	padding: 0 $spacing-2 $spacing-4;
 }
 
 .progress-item {
 	text-align: center;
-	font-size: $font-size-2;
-	width: $spacing-normal;
-	height: $spacing-normal;
-	border-radius: $spacing-normal / 2;
-	border: solid 1px $stroke-color;
-	margin: 0 auto $spacing-small; 
+	font-size: $font-size-sans-2;
+	width: $spacing-3;
+	height: $spacing-3;
+	border-radius: $spacing-3 / 2;
+	border: solid 1px $w-stroke-color;
+	margin: 0 auto $spacing-2; 
 	display: block;
 	line-height: 40px;
 }
 
 .bookmarklet-container {
 	overflow: auto;
-	background-color: $quote-hover-text-color;
+	background-color: $w-signature-color;
 	border-radius: 6px;
 	width: 100%;
 	max-width: 480px;
-	padding: $spacing-small 105px;
-	margin: $spacing-small auto $spacing-big;
+	padding: $spacing-2 105px;
+	margin: $spacing-2 auto $spacing-4;
 }
 
 .bookmarklet-container .big.button {
-	background-color: $quote-hover-text-color;
+	background-color: $w-signature-color;
 	color: white;
 	width: 260px;
 	transform: scale(1.0);
 	border-style: dashed;
 	border-color: rgb(58, 166, 141);
 	font-weight: 500;
-	font-size: $font-size-1;
-	margin: 0 0 $spacing-small;
+	font-size: $font-size-sans-1;
+	margin: 0 0 $spacing-2;
 	text-transform: none;
 	outline: none;
 	transition: scale .11s, box-shadow .11s, border-color .11s, background-color .11s;
@@ -315,9 +324,9 @@ header .inline.link {
 
 .intro-container blockquote {
 	width: 480px;
-	margin: $spacing-normal auto $spacing-bigger;
-	border-left: solid 4px $quote-hover-text-color;
-	padding-left: $spacing-small;
+	margin: $spacing-3 auto $spacing-4;
+	border-left: solid 4px $w-signature-color;
+	padding-left: $spacing-2;
 	font-family: "adriane";
 	line-height: 1.619em;
 }
@@ -337,12 +346,12 @@ header .inline.link {
 		max-width: 580px;
 		min-width: 320px;
 		margin: 0 auto;
-		padding: 0 $spacing;
+		padding: 0 $spacing-1;
 	}
 
 	.splash-container h1 {
 		font-size: 32px;
-		margin: 0 auto $spacing-small;
+		margin: 0 auto $spacing-2;
 		line-height: 37px;
 	}
 
@@ -356,8 +365,8 @@ header .inline.link {
 	}
 
 	.splash-container header {
-		padding-top: $spacing-small;
-		margin-bottom: $spacing-normal;
+		padding-top: $spacing-2;
+		margin-bottom: $spacing-3;
 	}
 
 	header .inline p, header .inline a {
@@ -365,7 +374,7 @@ header .inline.link {
 	}
 
 	div.learn-more-container {
-		bottom: $spacing-small;
+		bottom: $spacing-2;
 	}
 
 	.learn-more-container a#learn-more {
@@ -373,17 +382,17 @@ header .inline.link {
 	}
 
 	.intro-container h2 {
-		margin-bottom: $spacing-normal;
+		margin-bottom: $spacing-3;
 	}
 
 	.intro-container blockquote {
 		width: 100%;
 		max-width: 320px;
-		margin-bottom: $spacing-big;
+		margin-bottom: $spacing-4;
 	}
 
 	.bookmarklet-container {
-		padding: $spacing-small;
+		padding: $spacing-2;
 		max-width: 320px;
 	}
 
@@ -394,7 +403,7 @@ header .inline.link {
 	.bookmarklet-container a.big.button {
 		width: 100%;
 		min-width: 190px;
-		margin-bottom: $spacing;
+		margin-bottom: $spacing-1;
 	}
 
 	.intro-container a.big.button {

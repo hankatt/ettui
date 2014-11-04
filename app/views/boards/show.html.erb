@@ -4,23 +4,27 @@
         <div class="sidebar-content">
             <h2>
             <!-- SOURCES FILTER !-->
-            <div class="search-container">
+            <div class="search-field-container">
                 <%= image_tag "search-small.png" %>
                 <%= text_field_tag :search, params[:search], :placeholder => "Type to search", :class => "search-field" %>
                 <%= submit_tag "Search", :name => nil, :class => 'submit' %>
               </div>
-              <ol class="sidebar-list status">
-                <% if @unread.count > 0 %>
-                  <li>
-                <% else %>
-                  <li class="disabled">
-                <% end %>
-                  <%= check_box_tag "unread", true, false, :id => "filter-unread" %>
-                  <button class="section-title">Unread quotes</button>
-                  <div class="filter-count"><p><%= @unread.count %></p></div>
-                </li>
-              </ol>
-            <div class="filters-container sources">
+              <div class="sidebar-list-container">
+                <ol class="sidebar-list status">
+                  <% if @unread.count > 0 %>
+                    <li class="sidebar-list-item">
+                  <% else %>
+                    <li class="sidebar-list-item disabled">
+                  <% end %>
+                    <%= check_box_tag "unread", true, false, :id => "filter-unread" %>
+                    <button class="section-title">
+                      <h4>Unread quotes</h4>
+                    </button>
+                    <div class="filter-count"><p><%= @unread.count %></p></div>
+                  </li>
+                </ol>
+              </div>
+            <div class="sidebar-list-container sources">
               <div class="sidebar-section-title">
                   <h4 class="section-title">Sites</h4>
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
@@ -35,7 +39,7 @@
             </div>
             
             <!-- TAGS FILTER !-->
-            <div class="filters-container tags">
+            <div class="sidebar-list-container tags">
                 <div class="sidebar-section-title">
                     <h4 class="section-title">Tags</h4>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
@@ -50,8 +54,8 @@
             </div>
 
             <!-- PROFILE SECTION !-->
-            <div class="bottom-fix">
-                <div class="sidebar-section">
+            <div class="profile-section-container">
+                <div class="profile-section">
                     <% if !current_user.uid.blank? %>
                         <div class="profile-container">
                           <%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>

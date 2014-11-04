@@ -1,0 +1,41 @@
+/*
+	###	
+	CONSTANTS: On white prefix 'w-'
+	###
+*/
+
+$proportional-constant: 1.619;
+
+/*
+	###	
+	COLORS: On white prefix 'w-'
+	###
+*/
+
+$main-background-color:		rgb(246, 243, 240);
+$quote-background-color:	rgb(255, 255, 255);
+$sidebar-background-color:	$quote-background-color;
+
+/* ON WHITE: prefix: w- */
+
+$w-stroke-color:		rgba(0, 0, 0, .11);
+$w-primary-color:		rgba(0, 0, 0, .79);
+$w-secondary-color:		rgba(0, 0, 0, .39);
+$w-signature-color:		#43DAB2;
+
+/*
+	###	
+	VARIABLES: Multiples of 1.619
+	###
+*/
+
+$spacing-0:			10px;		
+$spacing-1:			$spacing-0 * $proportional-constant;
+$spacing-2:			$spacing-1 * $proportional-constant;
+$spacing-3:			$spacing-2 * $proportional-constant;
+$spacing-4:			$spacing-3 * $proportional-constant;
+$spacing-5:			$spacing-4 * $proportional-constant;
+
+$border-radius:				2px;
+$padding-button-secondary:	2px 5px 2px 6px;
+$padding-button-primary: 	0px;	

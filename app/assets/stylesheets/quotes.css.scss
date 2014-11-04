@@ -1,480 +1,179 @@
 /* LIST VIEW */
 
 @import "fonts.css.scss";
-@import	"colors.css.scss";
-@import	"properties.css.scss";
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	SEARCH
-	SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-.quotes-container {
-	background-color: transparent;
-	position: relative;
-	margin: 0 auto;
-	width: 100%;
-	max-width: 956px;
-	padding: $spacing $spacing-big 0;
-}
-
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	CONTAINER
-	SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-.content-container {
-	background-color: $main-background-color;
-}
-
-.content-container, .content-container a {
-
-}
-
-
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	CONTAINER
-	SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
+@import	"variables.css.scss";
+@import "components.css.scss";
 
 .quote {
+
+	/* General size and look of a quote */
 	background-color: white;
-	max-width: 732px;
-	margin: $spacing-small auto;
-	padding: $spacing-small $spacing-normal 0px;
+	max-width: 720px;
+	margin: $spacing-2 auto;
+	padding: $spacing-2 $spacing-3 $spacing-2;
+	color: $w-primary-color;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .09);
-	position: relative;
-}
 
-.new-quotes-title {
-	margin: $spacing-small 0;
-	font-weight: lighter;
-	color: $quote-secondary-text-color;
-	padding: $spacing-milli 0 $spacing-milli 0;
-	display: none;
-}
+	/* General look and attributes of metadata */
+	& .quote-metadata {
+		color: $w-secondary-color;
+		overflow-y: auto;
+		& h4, p, a {
+			font-size: 14px;	
+		}
+	}
 
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
+	/* SOURCE */
 
-	METADATA
-	SPECIFICS 
+	& .quote-source-title-container {
+		max-width: 540px;
+		float: left;
+	}
 
-	# # # # # # # # # # # # # # # # # # # #
-*/
+	& .quote-source-data-container {
+		float: right;
+		position: relative;
+	}
 
-.quote .source-favicon {
-	margin-right: 9px;
-	width: 24px;
-	height: 24px;
-}
+	.quote-source-title,
+	.quote-source-date {
+		position: relative;
+		top: 4px;
+	}
 
-.quote-metadata {
-	margin-bottom: $spacing;
-	font-size: $base-font-size;
-	text-align: right;
-	overflow-y: auto;
-	position: relative;
-}
+	& .quote-source-date {
+		width: 100%;
+		text-align: right;
+		text-transform: none;
+	}
 
-.quote-source {
-	float: left;
-	font-size: 0;
-}
+	&.unread {
 
-.quote-source .source-url, .qoute-source .source-favicon {
-	display: inline-block;
-}
+		& .quote-source-data-container * {
+			transition: opacity .13s ease-out;
+			display: block;
+		}
 
-.source-favicon + .source-url, .quote-date {
-	margin-top: 3px;
-}
+		& .quote-source-date { opacity: 0; }
+		& .quote-source-status-new { opacity: 1; }
 
-.source-url, .quote-date {
-	font-size: $base-font-size;
-	text-transform: lowercase;
-	color: $quote-secondary-text-color;
-}
+		&:hover {
+			& .quote-source-date { opacity: 1; }
+			& .quote-source-status-new { opacity: 0; }
+		}
+	}
 
-#search-filter a.source-url {
-	font-weight: 600;
-}
+	&.unread .quote-source-status-new {
+		opacity: 1;
+		position: absolute;
+		top: 4px;
+		right: 0;
+	}
 
-.quote-date::before {
-	content: '·';
-	margin: 0 3px 0 7px;
-}
+	&.unread:hover {}
 
-.quote-date {
-	float: left;
-	vertical-align: sub;
-	font-weight: 300;
-}
+	/* ACTIONS */
 
-.quote.unread .symbol-new {
-	background-color: $quote-hover-text-color;
-	width: 24px;
-	height: 24px;
-	border-radius: 12px;
-	float: right;
-	opacity: 1;
-	margin-top: 0;
-}
+	.quote-actions {
+		margin: $spacing-1 0 0;
+		padding-top: 3px;
+		overflow-y: auto;
+	}
 
-.quote .quote-metadata .remove-quote {
-	position: absolute;
-	right: 0px;
-	opacity: 1;
-	transition: opacity .20s;
-	border: solid 1px;
-	border-radius: 12px;
-	width: 24px;
-	height: 24px;
-	line-height: 21px;
-	text-align: center;
-	font-size: $font-size-1;
-	border-color: $stroke-color;
-	color: $stroke-color;
-	visibility: hidden;
-}
+	.quote-actions .append-tag {
+		margin-top: -2px;
+		opacity: 0;
+		float: left;
+		transition: opacity 0.09s ease-out;
+	}
 
-.quote:hover .remove-quote {
-	visibility: visible;
-}
+	.quote-actions:hover .append-tag {
+		opacity: 1;
+	}
 
-.quote .quote-metadata .remove-quote:hover {
-	color: #fff;
-	background-color: red;
-	border-color: red;
-}
+	.append-tag:hover {
+		color: $w-signature-color;
+		border-color: $w-signature-color;
+	}
 
-.quote.unread .quote-metadata .remove-quote {
-	opacity: 0;
-}
+	/* TAGS */
 
-.quote:hover .quote-metadata .remove-quote {
-	opacity: 1;
-}
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	CONTENT
-	SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-
-.quote-content {
-	padding: 0 0 $spacing-small;
-	color: $quote-primary-text-color;
-
-	& .highlight {
-		font-size: inherit;
-		vertical-align: baseline;
-		background-color: #ddd;
+	& .quote-tags .quote-tag {
+		float: left;
+		margin-right: 6px;
+		& .remove-tag {
+			margin-left: 3px;
+		}
+		&:hover a {
+			color: $w-signature-color;
+		};
+		&:hover .remove-tag {
+			color: $w-secondary-color;
+		}
+		&:hover .remove-tag:hover {
+			color: $w-signature-color;
+		}
+		& a {
+			color: $w-secondary-color;
+		}
 	}
 }
 
-.quote-content.small p {
-	font-size: 16px;
-	line-height: 1.75em;
-}
+/* ACTUAL QUOTE */
 
 .quote-content p {
-	font-size: 20px; /* 19.5px */
-	line-height: 1.8em;
+	font-family: $font-family-serif;
+	margin-top: $spacing-1;
 }
 
-.quote-content.big p {
-	font-size: 27px; /* 25.35px */
-	line-height: 1.7em;
-}
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	ACTIONS
-	SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-
-.quote-actions {
-	margin-top: $spacing;
-	padding-top: 3px;
-	opacity: 1;
-	transition: opacity .09s ease-out;
-	overflow: auto;
-}
-
-.quote-actions:hover .button {
-	opacity: 1;
-}
-
-.quote-actions a {
-	transition: color .09s ease-out;
-	&:hover {
-		color: $quote-hover-text-color;
-	}
-}
-
-.quote-actions .button {
-	border: $quote-stroke;
-	padding: 4px 7px 2px 7px;
-	opacity: 1;
-	max-height: 24px;
-	line-height: 16px;
-	border-radius: 12px;
-	text-align: center;
-	opacity: 1;
-}
-
-.quote-actions:hover .append-tag {
-	visibility: visible;
-}
-
-.quote-actions .append-tag {
-	visibility: hidden;
-	float: left;
-}
-
-.quote-actions .append-tag, .quote-actions input.new-tag {
-	margin-top: -2px;
-}
-
-.quote-actions input.new-tag {
-	border: solid 1px#bbb;
-	border-radius: 3px;
-	padding: 2px 6px 1px 6px;
-	float: right;
-	width: 140px;
-	margin-right: 6px;
-}
-
-.append-tag:hover {
-	background-color: $quote-hover-text-color;
-	border-color: $quote-hover-text-color;
-	color: white !important;
-}
-
-.quote-tags .quote-tag {
-	float: left;
-	margin-right: 6px;
-	& .remove-tag {
-		margin-left: 3px;
-	}
-	&:hover .remove-tag {
-		color: $quote-secondary-text-color;
-	}
-	&:hover .remove-tag:hover {
-		color: $quote-hover-text-color;
-	}
-	& a {
-		color: $quote-secondary-text-color;
-		font-weight: 300;
-	}
-}
-
-.quote-tags {
-	float: left;
-}
-
-.quote-tags .socicon {
-	font-size: $font-size-1;
-	position: relative;
-	margin-left: $spacing-normal;
-	border: $quote-stroke;
-	border-radius: 15px;
-	padding: 5px;
-}
-
-@media only screen and (max-width : 624px) {
-
-	.sidebar-toggle-column, .sidebar-container {
-		display: none !important;
-	}
-
-	.search-field {
-		padding-left: $spacing-normal + $spacing-small;
-	}
-
-	.search-container > img {
-		left: $spacing-small;
-	}
-
-	.sidebar-logo {
-		top: $spacing;
-		right: $spacing-small;
-		position: absolute;
-	}
-
-	.content-container {
-
-		& .quotes-container, .search-container {
-			margin: 0 auto;
-			width: 100%;
-			max-width: 956px;
-			padding-left: 0;
-			padding-right: 0;
-		}
-
-		& .quotes-container {
-			padding-top: 28px;
-		}
-
-		& .quote {
-			padding: $spacing-small $spacing 0;
-			margin-bottom: $spacing-small;
-			min-width: 320px;
-		}
-
-		& .add-tag.button {
-			display: none !important;
-		}
-
-		& .quote-tags .remove-tag, .quote-actions .append-tag {
-			display: none;
-		}
-	}
-
-}
-
-@media only screen and (min-width : 480px) and (max-width : 624px) {
-	.content-container .quote {
-		& .quote-content.small p {
-			font-size: .9em;
-		}
-
-		& .quote-content.big p {
-			font-size: 1.52em; /* 1.17 * 1.3 */
-		}
-
-		& .quote-content p {
-			font-size: 1.17em; /* 0.9 * 1.3 */
-		}
-
-		& .remove-quote {
-			visibility: visible;
-		}
-	}
+.quote-content .highlight {
+	font-size: inherit;
+	font-family: inherit;
+	vertical-align: baseline;
+	background-color: #ddd;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 479px) {
-	.content-container .quote {
-		& .quote-content.small p {
-			font-size: 0.85em;
-		}
+	.quote-content.small p {
+		font-size: 0.85em;
+	}
 
-		& .quote-content.big p {
-			font-size: 1.39em;
-		}
+	.quote-content.big p {
+		font-size: 1.39em;
+	}
 
-		& .quote-content p {
-			font-size: 1.07em;
-		}
-
-		& .quote-date {
-			clear: both;
-			float: left;
-			margin-top: -16px;
-			margin-left: 38px;
-			width: 190px;
-			text-align: left;
-
-			&::before {
-				content: '';
-				margin: 0;
-			}
-		}
-
-		& .remove-quote {
-			visibility: visible;
-		}
-
-		& .source-favicon + .source-url {
-			margin-top: -1px;
-			text-decoration: underline;
-		}
+	.quote-content p {
+		font-size: 1.07em;
 	}
 }
 
-.quote.v2 {
-	& .source-favicon {
-		width: 24px;
-		height: 24px;
-		float: left;
+@media only screen and (min-width : 480px) and (max-width : 624px) {
+	.quote-content.small p {
+		font-size: .9em;
 	}
 
-	& .quote-source {
-		text-align: left;
-		width: 100%;
+	.quote-content.big p {
+		font-size: 1.52em; /* 1.17 * 1.3 */
 	}
 
-	& .metadata {
-		padding: 0 34px;
-		overflow: auto;
-		margin-top: -2px;
-		max-width: 648px;
-		display: block;
-		clear: both;
-		& a {
-			color: $quote-secondary-text-color;
-			font-weight: 300;
-			font-size: 13px;
-			text-overflow: ellipsis;
-			overflow: hidden;
-			white-space: nowrap;
-			display: block;
-			margin-top: 2px;
-		}
-
+	.quote-content p {
+		font-size: 1.17em; /* 0.9 * 1.3 */
 	}
+}
 
-	& .source-url { 
-		text-transform: none;
-		color: $quote-secondary-text-color;
-		line-height: 16px;
-		float: left;
-		font-weight: 600;
-	}
-	& .source-url + a {
-		margin-left: 42px;
-		display: block;
-		text-align: left;
-		color: #afafaf;
-		float: left;
-	}
-
-	& .source-url, .quote-date {
-		margin-top: 4px;
+@media only screen and (min-width : 624px) {
+	.quote-content.small p {
 		font-size: 16px;
+		line-height: 1.75em;
 	}
 
-	& .quote-date {
-		float: left;
-		line-height: 16px;
-		margin-left: 6px;
-		text-transform: none;
-		&::before {
-			content: "· ";
-			margin: 0;
-		};
+	.quote-content p {
+		font-size: 20px; /* 19.5px */
+		line-height: 1.8em;
+	}
+
+	.quote-content.big p {
+		font-size: 27px; /* 25.35px */
+		line-height: 1.7em;
 	}
 }

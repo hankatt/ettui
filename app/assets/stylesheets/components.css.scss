@@ -1,0 +1,66 @@
+@import "variables.css.scss";
+
+.button {
+	border: solid 1px $w-stroke-color;
+}
+
+.small.button {
+	padding: 4px 7px 2px;
+	opacity: 1;
+	max-height: 24px;
+	line-height: 16px;
+	border-radius: 12px;
+	text-align: center;
+}
+
+/* Filter count */
+
+.filter-count {
+	display: inline-block;
+	border: $w-stroke-color;
+	padding: 3px 5px 0 5px;
+	float: right;
+	min-width: 20px;
+	margin-top: 2px;
+
+	& > p {
+		font-family: "fira-mono";
+		line-height: 16px;
+		margin: 0;
+	}
+}
+
+/* Favicon */
+
+.source-favicon {
+	width: 24px;
+	height: 24px;
+	float: left;
+	margin-right: $spacing-0;
+	background-size: contain;
+}
+
+/* Sidebar arrow */
+
+.sidebar-section-title svg {
+	background-size: 18px;
+	border: none;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	right: $spacing-1;
+	top: 2px;
+	fill: $w-stroke-color;
+	display: none;
+}
+
+/* New quote symbol */
+
+.quote-source-status-new {
+	background-color: $w-signature-color;
+	width: 16px;
+	height: 16px;
+	border-radius: 12px;
+	float: right;
+	display: none;
+}

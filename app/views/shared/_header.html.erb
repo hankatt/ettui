@@ -8,7 +8,7 @@
 		    </div>
 		<% else %>
 			<div class="inline link">
-				<p>Welcome back, </p><%= link_to current_user.name || current_user.email, boards_path %>
+				<%= image_tag current_user.twitter_image_url %><%= link_to current_user.name || current_user.email, boards_path %>
 			</div>
 		<% end %>
 </header>

@@ -1,379 +1,44 @@
 @import "fonts.css.scss";
-@import	"colors.css.scss";
-@import	"properties.css.scss";
-
-	#search-filter a {
-		font-weight: 300;
-	}
-
-	.source-favicon, .filter-count, .sidebar-container, .content-container {
-		display: inline-block;
-	}
-
-	.quote, .button, .popup, .source-favicon, .filter-count {
-		border-radius: $border-radius;
-	}
-
-	.profile-name, .section-title {
-		color: $sidebar-primary-text-color;
-	}
-
-	.sidebar-list-button, .profile-description, .sidebar-item-count > p {
-		color: $sidebar-secondary-text-color;
-	}
-
-	.source-favicon {
-		width: 24px;
-		height: 24px;
-		background-size: contain;
-		background-blend-mode: multiply, normal;
-		background-color: white;
-		background-repeat: no-repeat;
-		background-position: 50%;
-		box-sizing: content-box;
-		margin-right: 7px;
-	}
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	SIDEBAR
-	OPENING BUTTON 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-	.sidebar-toggle {
-		margin-left: 44px;
-		margin-top: 44px;
-	}
-
-	.sidebar-toggle-column {
-		width: 112px;
-		height: 100%;
-		position: fixed;
-		top: 0;
-		left: 0;
-		background-color: transparent;
-		z-index: 1; /* To place it above it all so it always works. */
-
-		&:hover {
-			background-color: rgba(0, 0, 0, .05);
-			cursor: pointer;
-		}
-	}
-
-
-
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	SIDEBAR
-	CONTAINER SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-	.sidebar-container {
-		width: 380px;
-		height: 100%;
-		margin-left: -380px;
-		padding: 0;
-		background-color: $sidebar-background-color;
-		position: fixed;
-	}
-
-	.sidebar-list.status {
-		margin-bottom: 21px;
-	}
-
-	.sidebar-list.status button {
-		font-weight: 600;
-	}
-
-	.sidebar-list.status li.active button {
-		color: $quote-hover-text-color;
-	}
-
-	.sidebar-list.status .filter-count {
-	}
-
-	.sidebar-list.status li.active .filter-count {
-		border-color: transparent;
-		background-color: $quote-hover-text-color;
-		& p { color: white; }
-	}
-
-	.sidebar-list.status li .filter-count > p {
-		color: $quote-hover-text-color;
-		margin: 0;
-	}
-
-	.sidebar-list li, .sidebar-section-title, .profile-name, .profile-description {
-		padding: 0 $spacing-normal;
-	}
-
-	.sidebar-section-title svg {
-		background-size: 18px;
-		border: none;
-		width: 18px;
-		height: 18px;
-		position: absolute;
-		right: $spacing-normal;
-		top: 2px;
-		fill: $stroke-color;
-		display: none;
-	}
-
-	.sidebar-section-title:hover, .sidebar-section-title.active:hover {
-		cursor: pointer;
-		& svg {
-			fill: $sidebar-primary-text-color;
-		}
-	}
-
-	.sidebar-section-title.active svg {
-		-ms-transform: rotate(180deg); /* IE 9 */
-	    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-	    transform: rotate(180deg);
-	}
-
-	.filters-container + .filters-container {
-		margin-top: $spacing;
-	}
-
-	.search-container {
-		background-color: transparent;
-		position: relative;
-		margin: 35px auto 29px;
-		width: 100%;
-		padding: 0 $spacing-normal;
-	}
-
-	.search-container > img {
-		position: absolute;
-		top: 5px;
-	}
-
-	.search-field {
-		padding: 0px 0px 8px 29px;
-		margin-top: 2px;
-		font-size: $font-size-2;
-		font-weight: 300;
-		border-bottom: $quote-stroke;
-		width: 100%;
-	}
-
-/* 	
-	# # # # # # # # # # # # # # # # # # # #
-
-	SIDEBAR
-	LIST SPECIFICS 
-
-	# # # # # # # # # # # # # # # # # # # #
-*/
-
-	.sidebar-section-title {
-		position: relative;
-	}
-
-	.section-title {
-		line-height: 24px;
-		clear: both;
-		margin-bottom: 0;
-	}
-
-	.sidebar-list.tags {
-		padding-top: $spacing-milli;
-	}
-
-	.sidebar-list.filters {
-		padding: $spacing-milli 0;
-	}
-
-	.sidebar-list.filters li {
-		margin-bottom: 7px;
-	}
-
-	.sidebar-list.filters li .source-favicon {
-		border: solid 2px white;
-		box-sizing: border-box;
-	}
-
-
-		/* 
-			LIST HOVER STATE 
-		*/
-
-		.sidebar-list li:hover button {
-			color: $sidebar-primary-text-color;
-		}
-
-
-		/* 
-			LIST ACTIVE STATE 
-		*/
-
-		.sidebar-list li:hover {
-			cursor: pointer;
-		}
-
-		.sidebar-list.status li.disabled {
-			& .filter-count p {
-				color: $sidebar-secondary-text-color;
-			}
-		}
-
-		.sidebar-list li.active .sidebar-list-button {
-			color: $sidebar-primary-text-color;
-		}
-
-		.sidebar-list li.active .filter-count {
-			background-color: $sidebar-secondary-text-color;
-			& > p { color: #fff; }
-		}
-
-		/*
-			LIST ITEM COUNT
-		*/
-
-		.sidebar-list-button {
-			line-height: 26px;
-		}
-
-		.filter-count {
-			display: inline-block;
-			border: $sidebar-stroke-inactive;
-			padding: 3px 5px 0 5px;
-			float: right;
-			min-width: 20px;
-			margin-top: 2px;
-
-			& > p {
-				font-family: "fira-mono";
-				font-size: 15px;
-				line-height: 15px;
-				color: $sidebar-secondary-text-color;
-				margin: 0;
-			}
-		}
-
-
-
-
-		/*
-			TAGS SPECIFICS
-		*/
-
-		.sidebar-list.tags .sidebar-list-button {
-			line-height: 26px;
-		}
-
-
-
-
-/* SIDEBAR PROFILE SPECIFICS */
-	
-	.bottom-fix {
-		position: absolute;
-		width: 380px;
-		padding: 0;
-		bottom: 0;
-	}
-
-	.sidebar-section {
-		margin-top: 0;
-		padding: $spacing-small $spacing-normal;
-		border-top: solid 1px rgba(0, 0, 0, .09);
-	}
-
-	.profile-photo {
-		width: 32px;
-		border-radius: 16px;
-		float: left;
-	}
-
-	.profile-container {
-		overflow: auto;
-	}
-
-	.bottom-fix h4.profile-name {
-		color: $sidebar-primary-text-color;
-		display: block;
-		margin-left: $spacing-milli;
-		float: left;
-		padding: 0;
-		line-height: 32px;
-		font-weight: 600;
-	}
-
-	.profile-description {
-		color: $sidebar-secondary-text-color;
-		margin-top: 0;
-		margin-bottom: $spacing-small;
-		line-height: 18px;
-		text-align: center;
-	}
-
-	.bottom-fix h4 em {
-		font-style: initial;
-		color: $sidebar-primary-text-color;
-		font-weight: 600;
-	}
-
-	.bottom-fix h4 {
-		color: $sidebar-secondary-text-color;
-		font-weight: 400;
-		&.underline {
-			padding-bottom: $spacing-milli;
-			border-bottom: solid 1px $stroke-color;
-			margin-bottom: $spacing-milli;
-		}
-	}
-
-	.bottom-fix a.bookmarklet {
-		margin-left: $spacing-normal;
-	}
-
-	.sidebar-section .logout::before {
-		content: '·';
-		margin: 0 7px 0 3px;
-		color: $quote-primary-text-color;
-	}
-
-	.sidebar-section .profile-link {
-		color: $sidebar-secondary-text-color;
-		float: left;
-		width: 50%;
-		text-align: center;
-		padding: $spacing-small 0 $spacing 0;
-		border-top: $sidebar-stroke;
-		&:hover {
-			background-color: $stroke-color;
-			color: $sidebar-primary-text-color;
-		}
-		&:first-of-type {
-			border-right: $sidebar-stroke;
-		}
-	}
-
-
-
-
-/*    
-############
-
-GENERAL LAYOUT
-
-############
-*/
-
-#search-filter {
+@import	"variables.css.scss";
+
+.content-container {
+	width: 100%;
+	min-height: 100%;
+	background-color: $main-background-color;
+	padding: 0 0 $spacing-4;
+}
+
+.sidebar-toggle {
+	margin-left: 44px;
+	margin-top: 44px;
+}
+
+.sidebar-toggle-column {
+	width: 112px;
 	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	z-index: 1; /* To place it above it all so it always works. */
+
+	&:hover {
+		background-color: rgba(0, 0, 0, .05);
+		cursor: pointer;
+	}
+}
+
+.quotes-container {
+	background-color: transparent;
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 956px;
+	padding: $spacing-3 $spacing-2 0;
 }
 
 #search-filter {
+	height: 100%;
 	transition: margin-left 0.13s;
 }
 
@@ -381,9 +46,149 @@ GENERAL LAYOUT
 	margin-left: 380px;
 }
 
-.content-container {
+#search-filter .filter-count,
+#search-filter .source-favicon,
+#search-filter .quote {
+	border-radius: $border-radius;
+}
+
+.sidebar-container {
+	width: 380px;
+	height: 100%;
+	margin-left: -380px;
+	padding: 0;
+	background-color: $sidebar-background-color;
+	position: fixed;
+}
+
+.sidebar-container, .profile-container {
+	color: $w-primary-color;
+}
+
+.sidebar-list, .profile-section {
+	color: $w-secondary-color;
+}
+
+.sidebar-content {
+	padding: 0 $spacing-2;
+}
+
+/* Search */
+
+.search-field-container {
+	position: relative;
+	margin: $spacing-2 auto;
 	width: 100%;
-	min-height: 100%;
-	background-color: $main-background-color;
-	padding: 0 0 $spacing-big;
+	& img {
+		position: absolute;
+		top: 5px;
+	}
+	& .submit {
+		display: none;
+	}
+}
+
+.search-field {
+	padding: 2px 0px 6px $spacing-2;
+	font-size: $font-size-sans-2;
+	font-weight: 300;
+	border-bottom: solid 1px $w-stroke-color;
+	width: 100%;
+}
+
+/* Filters */
+
+.sidebar-list-container {
+	margin-top: $spacing-2;
+
+	& .sidebar-list {
+		padding-top: $spacing-0;
+
+		& .sidebar-list-item.active, .sidebar-list-item:hover { 
+			color: $w-primary-color;
+		}
+		& .sidebar-list-item.active .filter-count {
+			background-color: $w-secondary-color;
+			color: $sidebar-background-color;
+		}
+		& .sidebar-list-item.disabled {
+			color: $w-secondary-color;
+			& button, .filter-count {
+				color: $w-secondary-color;
+			}
+		}
+	}
+
+	& .sidebar-list-item button {
+		line-height: 26px;
+	}
+
+	& .sidebar-list-item:hover {
+		cursor: pointer;
+	}
+
+	& .sidebar-list.status .sidebar-list-item {
+		color: $w-primary-color;
+	}
+
+	& .sidebar-list.status .filter-count {
+		background-color: $w-signature-color;
+		color: $sidebar-background-color;
+	}
+
+	& .sidebar-list.status .sidebar-list-item.disabled .filter-count {
+		background-color: transparent;
+		color: $w-secondary-color;
+	}
+
+	& .sidebar-list.filters .sidebar-list-item {
+		margin-bottom: 8px;
+		color: $w-secondary-color;
+	}
+
+	& .sidebar-list.tags .sidebar-list-item {
+		margin-bottom: 4px;
+		color: $w-secondary-color;
+	}
+}
+
+/* Sidebar profile */
+	
+.profile-section-container {
+	position: absolute;
+	width: 380px;
+	padding: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.profile-container {
+	overflow: auto;
+	margin-bottom: $spacing-0;
+}
+
+.profile-container .profile-photo {
+	width: 32px;
+	border-radius: 16px;
+	float: left;
+}
+
+.profile-container .profile-name {
+	display: block;
+	margin-left: $spacing-0;
+	float: left;
+	padding: 0;
+	line-height: 32px;
+}
+
+.profile-section {
+	margin-top: 0;
+	padding: $spacing-2 $spacing-2;
+	border-top: solid 1px rgba(0, 0, 0, .09);
+	& .logout::before {
+		content: '·';
+		margin: 0 7px 0 3px;
+		font-weight: bold;
+		color: $w-secondary-color;
+	}
 }

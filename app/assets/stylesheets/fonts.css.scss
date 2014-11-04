@@ -1,13 +1,17 @@
-$font-stack:		"adriane", Georgia, serif;
-$font-stack-sans:	"jaf-bernino-sans", Helvetica, sans-serif;
+$font-family-serif:	"adriane", Georgia, serif;
+$font-family-sans:	"jaf-bernino-sans", Helvetica, sans-serif;
 
-$base-font-size:	15px;
+$font-size-sans:	15px;
+$font-size-serif:	16px;
 
-$font-size-0:		$base-font-size * .866;	/* 	14px */
-$font-size-1:		$base-font-size;		/* 	16px */
-$font-size-2:		$font-size-1 * 1.619;	/* 	26px */
-$font-size-3:		$font-size-2 * 1.619;	/* 	42px */
+$font-size-sans-0:	$font-size-sans * 0.866;
+$font-size-sans-1:	$font-size-sans;
+$font-size-sans-2:	$font-size-sans-1 * 1.619;
+$font-size-sans-3:	$font-size-sans-2 * 1.619;
 
-$line-height-quote:	1.75em;
+$font-size-serif-0:	$font-size-serif * 0.866;
+$font-size-serif-1:	$font-size-serif;
+$font-size-serif-2:	$font-size-serif-1 * 1.619;
+$font-size-serif-3:	$font-size-serif-2 * 1.619;
 
-
+$line-height-serif:	1.619em;

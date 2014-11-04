@@ -201,11 +201,26 @@
 	margin-top: 0;
 	padding: $spacing-2 $spacing-2;
 	border-top: solid 1px rgba(0, 0, 0, .09);
-	& .logout::before {
+	& .profile-name {
+		& em {
+			color: $w-primary-color;
+			font-style: inherit;
+			font-weight: 300;
+		}
+		line-height: 26px;
+		color: $w-primary-color;
+	}
+	& a {
+		display: block;
+	}
+	& a::before {
 		content: '·';
-		margin: 0 7px 0 3px;
+		margin: 0 7px 0 0px;
 		font-weight: bold;
 		color: $w-secondary-color;
+	}
+	& .logout:hover {
+		color: red;
 	}
 }
 

@@ -337,3 +337,31 @@
 		margin-left: 4px;
 	}
 }
+
+
+/* OUT OF QUOTES INFORMATION CONTAINER */
+
+.quotes-list-information-container {
+	text-align: center;
+	padding: $spacing-3 $spacing-3 0;
+	& .recommendation-link {
+		margin-bottom: $spacing-1;
+	}
+	& h1 {
+		font-weight: 300;
+		letter-spacing: -1px;
+		color: $w-primary-color;
+	}
+	& h3 {
+		font-weight: 300;
+		color: $w-secondary-color;
+	}
+	& a {
+		padding-bottom: 1px;
+		border-bottom: solid 3px $w-stroke-color;
+		&:hover {
+			color: $w-primary-color;
+			border-color: $w-signature-color;
+		}
+	}
+}

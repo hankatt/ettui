@@ -44,7 +44,6 @@ $(document).on('ready DOMChange', function() {
     });
 
     $(document).on('click', function(event) {
-
         if($(".popup").length > 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container') || $(event.target).hasClass('quote') || $(event.target).hasClass('sidebar-container') || $(event.target).hasClass('quote-content'))) {
             $(".popup").fadeOut('fast', function() {
                 $(".popup").remove();
@@ -77,7 +76,7 @@ $(document).on('ready DOMChange', function() {
     });
 
     $(".sidebar-section-title").unbind('click').bind('click', function() {
-        $(this).toggleClass('active');
+        $(this).toggleClass('open');
         list_to_toggle = $(this).siblings('.sidebar-list');
         list_to_toggle.slideToggle(100);
     });

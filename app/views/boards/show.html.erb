@@ -96,10 +96,27 @@
                 QUOTES
                             !-->
         <ol class="quotes-container">         
-            <% if !@quotes.nil? %>
+            <% if !@quotes.empty? %>
                 <div class="quotes-list">
                   <%= render(@quotes) %>
                 </div>
+            <% else %>
+              <div class="quotes-list">
+                <div class="quotes-list-information-container">
+                  <h1>You seem to be out of quotes.</h1>
+                  <h3>Here are a few suggestions of sites
+                    with memorable reads.</h3>
+                  <div class="recommendation-link">
+                    <%= link_to "medium.com", "http://www.medium.com" %>
+                  </div>
+                  <div class="recommendation-link">
+                    <%= link_to "alistapart.com", "http://www.alistapart.com" %>
+                  </div>
+                  <div class="recommendation-link">
+                    <%= link_to "thegreatdiscontent.com", "http://thegreatdiscontent.com" %>
+                  </div>
+                </div>
+              </div>
             <% end %>
         </ol>
     </div>

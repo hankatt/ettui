@@ -9,12 +9,12 @@
 }
 
 .sidebar-toggle {
-	margin-left: 44px;
-	margin-top: 44px;
+	margin-left: $spacing-3;
+	margin-top: $spacing-3;
 }
 
 .sidebar-toggle-column {
-	width: 112px;
+	width: 108px;
 	height: 100%;
 	position: fixed;
 	top: 0;
@@ -34,7 +34,7 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: 956px;
-	padding: $spacing-3 $spacing-2 0;
+	padding: $spacing-3 $spacing-3 0;
 }
 
 #search-filter {
@@ -190,5 +190,30 @@
 		margin: 0 7px 0 3px;
 		font-weight: bold;
 		color: $w-secondary-color;
+	}
+}
+
+@media only screen and (min-width : 319px) {
+	div.sidebar-toggle-column {
+		display: none;
+	}
+}
+
+@media only screen and (min-width : 940px) {
+	div.sidebar-toggle-column {
+		display: block;
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 640px) {
+	.quotes-container {
+		padding: $spacing-3 0 0;
+	}
+
+	.quotes-container .quote {
+		padding: $spacing-2 $spacing-1 $spacing-2; 
+	}
+	.quote-source-title-container {
+		max-width: 540px;
 	}
 }

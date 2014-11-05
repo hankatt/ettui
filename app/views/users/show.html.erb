@@ -1,11 +1,110 @@
-<p id="notice"><%= notice %></p>
+<%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
 
-<p>
-  <b>Username:</b>
-  <%= @user.email %>
-</p>
-<p><%= @user.token %></p>
+    <div class="sidebar-container list">
+        <div class="sidebar-content">
+            <h2>
+            <!-- SOURCES FILTER !-->
+            <div class="search-field-container">
+                <%= image_tag "search-small.png" %>
+                <%= text_field_tag :search, params[:search], :placeholder => "Type to search", :class => "search-field" %>
+                <%= submit_tag "Search", :name => nil, :class => 'submit' %>
+              </div>
+            <div class="sidebar-list-container sources">
+              <div class="sidebar-section-title">
+                  <h4 class="section-title">Sites</h4>
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
+                  <polygon id="arrow-24-icon" points="263.25,251.829 268.806,246.247 279.25,256.643 289.695,246.247 295.25,251.829 279.25,267.753 "/>
+                  </svg>
+              </div>
+              <ol class="sidebar-list filters">
+    	           <% @sources.each do |source| %>
+    	                <%= render :partial => 'shared/source', locals: { source: source } %>
+    	           <% end %>
+    	        </ol>
+            </div>
+            
+            <!-- TAGS FILTER !-->
+            <div class="sidebar-list-container tags">
+                <div class="sidebar-section-title">
+                    <h4 class="section-title">Tags</h4>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
+                    <polygon id="arrow-24-icon" points="263.25,251.829 268.806,246.247 279.25,256.643 289.695,246.247 295.25,251.829 279.25,267.753 "/>
+                    </svg>
+                </div>
+                <ol class="sidebar-list tags">
+                <% @board.owned_tags.each do |tag| %>
+                    <%= render :partial => 'shared/tag', locals: { tag: tag } %>
+                <% end %>
+              </ol>
+            </div>
 
+            <!-- PROFILE SECTION !-->
+            <% if current_user %>
+            <div class="profile-section-container">
+              <div class="profile-section">
+                <h4 class="profile-name">
+                  <em>Signed in as</em>
+                  <% if current_user.name.empty? %>
+                    <%= current_user.email %>
+                  <% else %>
+                    <%= current_user.name %>
+                  <% end %>
+                </h4>
+                <a class="bookmarklet secondary" href="javascript:(function() {
+                document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+                current_user_token = '<%= current_user.token %>';
+                })();">Your bookmarklet</a>
+                <%= link_to "Logout", logout_path, :class => "logout secondary" %>
+              </div>
+            </div>
+            <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        </div><!-- .sidebar-content !-->
+    </div><!-- .sidebar-container !-->
+
+    <div class="sidebar-toggle-column">
+        <%= image_tag "menu-icon-grey.png", :class => "sidebar-toggle" %>
+    </div>
+
+    <!--    
+    ############
+
+    CONTENT W/ QUOTES
+
+    ############
+    !-->
+    <div class="content-container">
+        <!-- 
+                QUOTES
+                            !-->
+        <ol class="quotes-container">   
+          <div class="profile-mainpage-container">
+            <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
+            <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %>'s</h4>
+            <p>collection of <%= pluralize(@board.quotes.count, 'quote') %>
+              from <%= pluralize(@sources.count, 'site') %>.</p>
+          </div>    
+            <% if !@quotes.empty? %>
+                <div class="quotes-list">
+                  <%= render(@quotes) %>
+                </div>
+            <% else %>
+              <div class="quotes-list">
+                <div class="quotes-list-information-container">
+                  <h1>You seem to be out of quotes.</h1>
+                  <h3>Here are a few sites that are popular amongst other users.</h3>
+                  <div class="recommendation-link">
+                    <%= link_to "medium.com", "http://www.medium.com" %>
+                  </div>
+                  <div class="recommendation-link">
+                    <%= link_to "alistapart.com", "http://www.alistapart.com" %>
+                  </div>
+                  <div class="recommendation-link">
+                    <%= link_to "thegreatdiscontent.com", "http://thegreatdiscontent.com" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        </ol>
+    </div>
+<% end %>

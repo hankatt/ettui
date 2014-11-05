@@ -63,12 +63,12 @@
 }
 
 .sidebar-toggle {
-	margin-left: $spacing-3;
+	margin-left: $spacing-4;
 	margin-top: $spacing-4 + $spacing-1;
 }
 
 .sidebar-toggle-column {
-	width: 108px;
+	width: 105px;
 	height: 100%;
 	position: fixed;
 	top: 0;
@@ -147,7 +147,7 @@
 }
 
 #search-filter.active {
-	margin-left: 380px;
+	margin-left: 340px;
 }
 
 #search-filter .filter-count,
@@ -157,9 +157,9 @@
 }
 
 .sidebar-container {
-	width: 380px;
+	width: 340px;
 	height: 100%;
-	margin-left: -380px;
+	margin-left: -340px;
 	padding: 0;
 	background-color: $sidebar-background-color;
 	position: fixed;
@@ -187,7 +187,7 @@
 	& img {
 		position: absolute;
 		top: 9px;
-		left: 14px;
+		left: 0px;
 	}
 	& .submit {
 		display: none;
@@ -195,29 +195,60 @@
 }
 
 .search-field {
-	padding: 10px 0px 8px 39px;
-	font-size: $font-size-sans-1;
-	font-weight: 300;
-	border: solid 1px $w-stroke-color;
+	padding: 9px 0px 6px $spacing-3;
+	border-bottom: solid 1px $w-stroke-color;
 	width: 100%;
-	line-height: 21px;
-	border-radius: 20px;
+	line-height: 28px;
+	font-size: $font-size-sans-2;
+	font-weight: 300;
+	&::-webkit-input-placeholder {
+   		color: #ccc;
+   		font-style: italic;
+   		font-weight: 300;
+   	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+		color: #ccc;
+   		font-style: italic;
+   		font-weight: 300;  
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+	   	color: #ccc;
+   		font-style: italic;
+   		font-weight: 300;
+	}
+
+	&:-ms-input-placeholder {  
+	   	color: #ccc;
+   		font-style: italic;
+   		font-weight: 300;
+	}
 }
 
 /* Filters */
 
-.sidebar-list-container {
+div.sidebar-list-container {
 	margin-top: $spacing-2;
 	clear: both;
 	& .sidebar-list {
 		padding-top: $spacing-0;
 
-		& .sidebar-list-item.active, .sidebar-list-item:hover { 
+		& .sidebar-list-item.active { 
 			color: $w-primary-color;
 		}
-		& .sidebar-list-item.active .filter-count {
-			background-color: $w-secondary-color;
-			color: $sidebar-background-color;
+		& .sidebar-list-item:hover {
+			& button { color: $w-primary-color; }
+			& .filter-count { color: $w-primary-color; }
+		}
+		& .sidebar-list-item.active {
+			& .filter-count {
+				background-color: $w-signature-color;
+				color: $sidebar-background-color;
+			}
+			& button {
+				color: $w-primary-color;
+			}
 		}
 		& .sidebar-list-item.disabled {
 			color: $w-secondary-color;
@@ -236,7 +267,7 @@
 	}
 
 	& .sidebar-list.status {
-		padding-top: 0;
+		padding-top: 5px;
 	}
 
 	& .sidebar-list.status .sidebar-list-item {

@@ -63,6 +63,8 @@
 		color: inherit;
 	}
 
+	h1, h2, h3, h4, h5, h6 { margin: 0; }
+
 	h1 {
 		font-size: $font-size-sans-3;
 	}
@@ -73,15 +75,6 @@
 
 	h4, a, p, li, button, input, label, input[type="submit"] {
 		font-size: $font-size-sans-1;
-	}
-
-	h4 {
-		font-weight: 600;
-		margin: 0;
-	}
-
-	.tertiary {
-		font-size: $font-size-sans-0;
 	}
 
 	.actions input {
@@ -116,10 +109,6 @@
 
 	h2 + p {
 		margin-top: $spacing-0;
-	}
-
-	h4, h4 a {
-		font-weight: 600;
 	}
 
 	ul, li {

@@ -14,40 +14,24 @@
 	left: 0;
 	background-color: transparent;
 	width: 100%;
-	height: 50px;
+	height: 42px;
 	border-bottom: solid 1px $w-stroke-color;
 	overflow: auto;
-	& a {
-		color: $w-secondary-color;
-	}
-	& a:hover {
-		color: $w-primary-color;
-	}
-	& a.active, a:active {
-		color: $w-signature-color;
-	}
-	& .logo-container {
-		float: left;
-		margin-top: 12px;
-		position: absolute;
-		margin-left: $spacing-3;
-	}
 }
 
 .header-link, .horizontal-profile-container .profile-name {
-	line-height: 50px;
+	line-height: 44px;
 }
 .header-link {
 	float: left;
+	height: 42px;
 	padding: 0 16px;
-	border-left: solid 1px $w-stroke-color;
-	font-weight: 600;
-	color: $w-secondary-color;
-	&:last-of-type {
-		border-right: solid 1px $w-stroke-color;
-	}
+	color: $w-primary-color;
 	&:hover {
 		background-color: rgba(0, 0, 0, .03);
+	}
+	&:active {
+		color: $w-signature-color;
 	}
 	&.active {
 		color: $w-signature-color;
@@ -60,27 +44,27 @@
 		float: left;
 		width: 28px;
 		height: 28px;
-		margin-top: 10px;
+		margin-top: 7px;
 		border-radius: 14px;
 		margin-right: 7px;
 	}
 
 	& .profile-name {
 		float: left;
-		font-weight: 300;
+		&:active { color: $w-signature-color; }
 	}
 }
 
 .center-container {
 	width: 100%;
 	max-width: 720px;
-	margin: 0 auto;
+	margin: 0 auto $spacing-3 auto;
 	overflow-y: auto;
 }
 
 .sidebar-toggle {
 	margin-left: $spacing-3;
-	margin-top: $spacing-4 + $spacing-2;
+	margin-top: $spacing-4 + $spacing-1;
 }
 
 .sidebar-toggle-column {
@@ -350,6 +334,10 @@
 @media only screen and (min-width : 940px) {
 	div.sidebar-toggle-column {
 		display: block;
+	}
+
+	.horizontal-profile-container {
+		padding-right: 0;
 	}
 }
 

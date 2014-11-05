@@ -1,4 +1,0 @@
-<% active = active_board.id.eql?(this_board.id) ? 'active' : '' %>
-<%= link_to this_board, :class => "board-link" do %>
-	<li class="<%= active %> board-<%= this_board.id %>"> <%= this_board.name %></li>
-<% end %>

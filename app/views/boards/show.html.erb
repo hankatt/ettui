@@ -1,5 +1,5 @@
+<%= render :partial => 'shared/boards_header' %>
 <%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter" do %>
-
     <div class="sidebar-container list">
         <div class="sidebar-content">
             <h2>
@@ -33,7 +33,7 @@
               </div>
               <ol class="sidebar-list filters">
     	           <% @sources.each do |source| %>
-    	                <%= render :partial => 'source', locals: { source: source } %>
+    	                <%= render :partial => 'shared/source', locals: { source: source } %>
     	           <% end %>
     	        </ol>
             </div>
@@ -48,7 +48,7 @@
                 </div>
                 <ol class="sidebar-list tags">
                 <% @board.owned_tags.each do |tag| %>
-                    <%= render :partial => 'tag', locals: { tag: tag } %>
+                    <%= render :partial => 'shared/tag', locals: { tag: tag } %>
                 <% end %>
               </ol>
             </div>
@@ -57,14 +57,6 @@
             <% if current_user %>
             <div class="profile-section-container">
               <div class="profile-section">
-                <h4 class="profile-name">
-                  <em>Signed in as</em>
-                  <% if current_user.name.empty? %>
-                    <%= current_user.email %>
-                  <% else %>
-                    <%= current_user.name %>
-                  <% end %>
-                </h4>
                 <a class="bookmarklet secondary" href="javascript:(function() {
                 document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
                 current_user_token = '<%= current_user.token %>';
@@ -92,13 +84,15 @@
         <!-- 
                 QUOTES
                             !-->
-        <ol class="quotes-container">   
-          <div class="profile-mainpage-container">
-            <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
-            <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %>'s</h4>
-            <p>collection of <%= pluralize(@board.quotes.count, 'quote') %>
-              from <%= pluralize(@sources.count, 'site') %>.</p>
-          </div>    
+        <ol class="quotes-container">
+          <div class="center-container">
+            <%= link_to "Home", current_user.boards.first, :class => "header-link active" %>
+            <%= link_to "Users", "#!", :class => "header-link" %>
+            <div class="horizontal-profile-container">
+              <%= image_tag current_user.twitter_image_url, :class => "profile-photo" %>
+              <%= link_to (current_user.name || current_user.email), "#!", :class => "profile-name" %>
+            </div>
+          </div>
             <% if !@quotes.empty? %>
                 <div class="quotes-list">
                   <%= render(@quotes) %>
@@ -123,25 +117,3 @@
         </ol>
     </div>
 <% end %>
-  
-
-
-
-
-
-
-
-<!--
-          <ul class="header-boards-navigation">
-            <% @user.boards.each do |board| %>
-              <%= render "board_link", active_board: @board, this_board: board %> 
-            <% end %>
-            <!--
-            <a href="#!" onclick="toggle_new_board()"><li class="add-board">Create a new board</li></a>
-
-            <% form_tag boards_path do %>
-              <%= text_field_tag :name, params[:name], :placeholder => "Name your board.." %>
-              <%= submit_tag %>
-            <% end %>
-          </ul>
-          !-->

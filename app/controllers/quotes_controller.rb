@@ -206,6 +206,8 @@ class QuotesController < ApplicationController
   def show
 
     @quote = Quote.find(params[:id])
+    @board = @quote.boards.first
+    
 
     respond_to do |format|
       format.html

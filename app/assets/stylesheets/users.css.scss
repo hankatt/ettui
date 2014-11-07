@@ -96,7 +96,7 @@ header p, .splash-container p, .splash-container h2 {
 	width: 32px;
 	height: 32px;
 	box-sizing: content-box;
-	background: #fff image-url('logo_new.jpg') no-repeat;
+	background: #fff image-url('logo_new_color.png') no-repeat;
 	background-size: 100%;
 }
 
@@ -106,8 +106,7 @@ header p, .splash-container p, .splash-container h2 {
 
 header .inline.link {
 	float: right;
-	height: 32px;
-	padding-top: 8px;
+	line-height: 32px;
 	&.profile {
 		padding-top: 0;
 	}

@@ -7,7 +7,7 @@
 		        <p>Have an account?</p><%= link_to " Sign in", login_path %>
 		    </div>
 		<% else %>
-			<div class="inline link">
+			<div class="inline link profile">
 				<%= image_tag current_user.twitter_image_url %><%= link_to current_user.name || current_user.email, boards_path, :class => "profile-name" %>
 			</div>
 		<% end %>

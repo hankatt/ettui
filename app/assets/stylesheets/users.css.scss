@@ -107,14 +107,12 @@ header p, .splash-container p, .splash-container h2 {
 header .inline.link {
 	float: right;
 	height: 32px;
-}
-
-header .inline.link a {
-	float: right;
+	padding-top: 8px;
 }
 
 header a.profile-name {
 	margin-top: 7px;
+	float: right;
 }
 
 header .inline.link img {

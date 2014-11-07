@@ -52,9 +52,15 @@ div.error_explanation ul {
 .splash-container h1 {
 	font-weight: 300;
 	letter-spacing: -1px;
-	margin: 0 auto $spacing-2;
-	font-size: 41px;
-	line-height: 49px;
+	margin: 0 auto $spacing-4;
+	font-size: 40px;
+	line-height: 47	px;
+	& em {
+		font-size: inherit;
+		font-weight: inherit;
+		font-style: inherit;
+		color: $w-secondary-color;
+	}
 }
 
 .splash-container h2 {
@@ -73,8 +79,8 @@ div.error_explanation ul {
 header {
 	overflow: auto;
 	position: relative;
-	margin: 0 0 $spacing-4 0;
-	padding-top: $spacing-4;
+	margin: 0 0 $spacing-6 0;
+	padding-top: $spacing-5;
 }
 
 header p, .splash-container p, .splash-container h2 {
@@ -87,10 +93,10 @@ header p, .splash-container p, .splash-container h2 {
 }
 
 #logo-container > div {
-	width: 112px;
-	height: 56px;
+	width: 32px;
+	height: 32px;
 	box-sizing: content-box;
-	background: #fff image-url('logo.jpg') no-repeat;
+	background: #fff image-url('logo_new.jpg') no-repeat;
 	background-size: 100%;
 }
 
@@ -99,18 +105,23 @@ header p, .splash-container p, .splash-container h2 {
 }
 
 header .inline.link {
-	position: absolute;
-	bottom: 15px;
-	right: 0;
+	float: right;
+	height: 32px;
+}
+
+header .inline.link a {
+	float: right;
+}
+
+header a.profile-name {
+	margin-top: 7px;
 }
 
 header .inline.link img {
-	width: 40px;
-	height: 40px;
-	border-radius: 20px;
-	position: relative;
-	top: 14px;
-	margin-right: 10px;
+	width: 32px;
+	height: 32px;
+	border-radius: 16px;
+	margin-right: $spacing-0;
 }
 
 .inline p, .inline a {
@@ -139,17 +150,18 @@ header .inline.link img {
 }
 
 .splash-container .big.button {
+	background-color: $w-signature-color;
 	border-color: $w-signature-color;
-	color: #3ec79b;
+	color: #fff;
 	margin: $spacing-3 auto 0;
 	width: 300px;
 	transition: color .13s;
+	font-size: $font-size-sans-1;
+	letter-spacing: 1px;
 }
 
 .splash-container a.button:hover {
-	background-color: $w-signature-color;
-	color: white;
-	border-color: $w-signature-color;
+	color: rgba(255, 255, 255, .53);
 }
 
 .learn-more-container {

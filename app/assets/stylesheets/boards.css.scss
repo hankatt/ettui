@@ -147,19 +147,18 @@
 }
 
 #search-filter.active {
-	margin-left: 340px;
+	margin-left: 370px;
 }
 
-#search-filter .filter-count,
 #search-filter .source-favicon,
 #search-filter .quote {
 	border-radius: $border-radius;
 }
 
 .sidebar-container {
-	width: 340px;
+	width: 370px;
 	height: 100%;
-	margin-left: -340px;
+	margin-left: -370px;
 	padding: 0;
 	background-color: $sidebar-background-color;
 	position: fixed;
@@ -175,7 +174,7 @@
 }
 
 .sidebar-content {
-	padding: 0 $spacing-2;
+	padding: 0 $spacing-3;
 }
 
 /* Search */
@@ -290,7 +289,6 @@ div.sidebar-list-container {
 	}
 
 	& .sidebar-list.tags .sidebar-list-item {
-		margin-bottom: 4px;
 		color: $w-secondary-color;
 	}
 }

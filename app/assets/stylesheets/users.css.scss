@@ -343,13 +343,6 @@ header .inline.link img {
 	line-height: 1.619em;
 }
 
-
-@media only screen and (max-width: 410px) {
-	h1.splash-title > br {
-		display: none;
-	}
-}
-
 @media only screen and (min-width : 320px) and (max-width : 630px) {
 
 	.splash-container {
@@ -362,27 +355,37 @@ header .inline.link img {
 	}
 
 	.splash-container h1 {
-		font-size: 32px;
+		font-size: 27px;
 		margin: 0 auto $spacing-2;
-		line-height: 37px;
+		line-height: 33px;
 	}
 
 	.splash-container h2 {
-		font-size: 19px;
+		font-size: 16px;
 	}
 
 	.splash-container a.big.button {
 		width: 200px;
-		font-size: 16px;
+		font-size: 14px;
+		font-weight: 400;
+		margin-top: $spacing-1;
 	}
 
 	.splash-container header {
 		padding-top: $spacing-2;
-		margin-bottom: $spacing-3;
+		margin-bottom: $spacing-4;
 	}
 
 	header .inline p, header .inline a {
 		display: block;
+	}
+
+	header .inline.link {
+		height: auto;
+		margin-top: -2px;
+		& a {
+			float: none;
+		}
 	}
 
 	div.learn-more-container {

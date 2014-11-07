@@ -108,6 +108,9 @@ header .inline.link {
 	float: right;
 	height: 32px;
 	padding-top: 8px;
+	&.profile {
+		padding-top: 0;
+	}
 }
 
 header a.profile-name {

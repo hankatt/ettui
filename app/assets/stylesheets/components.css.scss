@@ -17,12 +17,12 @@
 /* Filter count */
 
 .filter-count {
+	border-radius: 12px;
 	display: inline-block;
 	border: $w-stroke-color;
-	padding: 3px 5px 0 5px;
+	padding: 4px 8px 2px 7px;
 	float: right;
-	min-width: 20px;
-	margin-top: 2px;
+	margin-top: 0px;
 
 	& > p {
 		font-family: "fira-mono";

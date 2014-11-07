@@ -19,7 +19,7 @@ $sidebar-background-color:	$quote-background-color;
 /* ON WHITE: prefix: w- */
 
 $w-stroke-color:		rgba(0, 0, 0, .11);
-$w-primary-color:		rgba(0, 0, 0, .79);
+$w-primary-color:		rgba(0, 0, 0, .69);
 $w-secondary-color:		rgba(0, 0, 0, .39);
 $w-signature-color:		#43DAB2;
 
@@ -35,6 +35,7 @@ $spacing-2:			$spacing-1 * $proportional-constant; 	/* 20 */
 $spacing-3:			$spacing-2 * $proportional-constant; 	/* 28 */
 $spacing-4:			$spacing-3 * $proportional-constant; 	/* 40 */
 $spacing-5:			$spacing-4 * $proportional-constant; 	/* 56 */
+$spacing-6:			$spacing-5 * $proportional-constant;	/* 80 */
 
 $border-radius:				2px;
 $padding-button-secondary:	2px 5px 2px 6px;

@@ -140,13 +140,13 @@ header .inline.link img {
 .button.big {
 	border: solid 1px;
 	border-radius: 6px;
-	padding: 18px 0 14px 0;
-	display: block;
+	padding: 20px 20px 16px;
+	display: inline-block;
 	text-align: center;
-	font-weight: 600;
 	text-decoration: none;
-	text-transform: uppercase;
+	text-transform: none;
 	font-size: 20px;
+	letter-spacing: 1px;
 }
 
 .splash-container .big.button {
@@ -154,11 +154,8 @@ header .inline.link img {
 	border-color: $w-signature-color;
 	color: #fff;
 	margin: $spacing-3 auto 0;
-	width: 300px;
 	transition: color .13s;
-	font-size: $font-size-sans-1;
-	letter-spacing: 1px;
-}
+	font-size: $font-size-sans-1;}
 
 .splash-container a.button:hover {
 	color: rgba(255, 255, 255, .53);
@@ -282,10 +279,10 @@ header .inline.link img {
 
 .intro-container {
 	padding: 0 $spacing-2 $spacing-4;
+	text-align: center;
 }
 
 .progress-item {
-	text-align: center;
 	font-size: $font-size-sans-2;
 	width: $spacing-3;
 	height: $spacing-3;
@@ -293,7 +290,8 @@ header .inline.link img {
 	border: solid 1px $w-stroke-color;
 	margin: 0 auto $spacing-2; 
 	display: block;
-	line-height: 40px;
+	line-height: 28px;
+	font-weight: 300;
 }
 
 .bookmarklet-container {
@@ -318,6 +316,7 @@ header .inline.link img {
 	margin: 0 0 $spacing-2;
 	text-transform: none;
 	outline: none;
+	letter-spacing: 0px;
 	transition: scale .11s, box-shadow .11s, border-color .11s, background-color .11s;
 }
 
@@ -338,9 +337,10 @@ header .inline.link img {
 	width: 480px;
 	margin: $spacing-3 auto $spacing-4;
 	border-left: solid 4px $w-signature-color;
-	padding-left: $spacing-2;
-	font-family: "adriane";
-	line-height: 1.619em;
+	padding: $spacing-2;
+	font-family: $font-family-serif;
+	line-height: 1.7em;
+	background-color: #f6f3f0;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 630px) {

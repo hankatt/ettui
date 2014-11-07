@@ -45,6 +45,8 @@
 
 .sidebar-section-title {
 	overflow-y: auto;
+	border-bottom: solid 1px #e6e6e6;
+	padding-bottom: 7px;
 	&:hover {
 		cursor: pointer;
 		& svg {

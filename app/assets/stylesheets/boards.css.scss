@@ -5,7 +5,7 @@
 	width: 100%;
 	min-height: 100%;
 	background-color: $main-background-color;
-	padding: 0 0 $spacing-4;
+	padding: $spacing-4 0 $spacing-4;
 }
 
 .boards_header {
@@ -181,12 +181,12 @@
 
 .search-field-container {
 	position: relative;
-	margin: $spacing-2 auto;
+	margin: $spacing-3 auto;
 	width: 100%;
 	& img {
 		position: absolute;
-		top: 9px;
-		left: 0px;
+		top: $spacing-0;
+		left: $spacing-1;
 	}
 	& .submit {
 		display: none;
@@ -194,41 +194,36 @@
 }
 
 .search-field {
-	padding: 9px 0px 6px $spacing-3;
-	border-bottom: solid 1px $w-stroke-color;
+	padding: 0px 0px 0px $spacing-4;
+	border: solid 1px $w-stroke-color;
+	border-radius: 20px;
 	width: 100%;
-	line-height: 28px;
-	font-size: $font-size-sans-2;
-	font-weight: 300;
+	height: 40px;
+	line-height: 42px;
+	font-size: $font-size-sans-1;
+	font-weight: 400;
 	&::-webkit-input-placeholder {
    		color: #ccc;
-   		font-style: italic;
    		font-weight: 300;
    	}
 
 	&:-moz-placeholder { /* Firefox 18- */
-		color: #ccc;
-   		font-style: italic;
-   		font-weight: 300;  
+		color: #aaa;  
 	}
 
 	&::-moz-placeholder {  /* Firefox 19+ */
-	   	color: #ccc;
-   		font-style: italic;
-   		font-weight: 300;
+	   	color: #aaa;
 	}
 
 	&:-ms-input-placeholder {  
 	   	color: #ccc;
-   		font-style: italic;
-   		font-weight: 300;
 	}
 }
 
 /* Filters */
 
 div.sidebar-list-container {
-	margin-top: $spacing-2;
+	margin-top: $spacing-3;
 	clear: both;
 	& .sidebar-list {
 		padding-top: $spacing-0;
@@ -293,6 +288,48 @@ div.sidebar-list-container {
 	}
 }
 
+.sidebar-profile-container {
+	margin-top: $spacing-3;
+	position: relative;
+
+	& .profile-photo, .profile-name, .description {
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+		line-height: 15px;
+	}
+	& .profile-photo {
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+	}
+	& .profile-name {
+		margin-top: $spacing-0;
+		font-weight: 600;
+		text-decoration: underline;
+		text-decoration-color: $w-secondary-color;
+	}
+	& .description {
+		margin-top: $spacing-0;
+		font-weight: 300;
+		font-style: italic;
+		color: $w-secondary-color;
+	}
+	& .logo {
+		width: 24px;
+		height: 24px;
+		box-sizing: content-box;
+		background: #fff image-url('logo_new.png') no-repeat;
+		position: absolute;
+		top: 0;
+		left: 0;
+		&:hover {
+			background-image: image-url('logo_new_hover.png');
+		}
+	}
+
+}
+
 /* Sidebar profile */
 	
 .profile-section-container {
@@ -354,19 +391,11 @@ div.sidebar-list-container {
 	.boards_header .logo-container {
 		display: none;
 	}
-
-	.horizontal-profile-container {
-		padding-right: $spacing-1;
-	}
 }
 
 @media only screen and (min-width : 940px) {
 	div.sidebar-toggle-column {
 		display: block;
-	}
-
-	.horizontal-profile-container {
-		padding-right: 0;
 	}
 }
 

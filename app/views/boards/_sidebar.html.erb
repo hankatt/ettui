@@ -2,7 +2,7 @@
     <div class="sidebar-content">
         <!-- SOURCES FILTER !-->
         <div class="sidebar-profile-container">
-          <a href="/"><div class="logo"></div></a>
+          <a href="/"><div class="logo grayscale"></div></a>
           <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
           <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "profile-name" %>
           <p class="description">A collection of <%= pluralize(@board.quotes.count, 'quote') %> from <%= pluralize(@sources.count, 'site') %>.</p> 

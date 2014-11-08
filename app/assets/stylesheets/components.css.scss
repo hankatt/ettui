@@ -19,7 +19,7 @@
 .filter-count {
 	border-radius: 12px;
 	display: inline-block;
-	border: $w-stroke-color;
+	border: solid 1px transparent;
 	padding: 4px 8px 2px 7px;
 	float: right;
 	margin-top: 0px;
@@ -47,10 +47,13 @@
 	overflow-y: auto;
 	border-bottom: solid 1px #e6e6e6;
 	padding-bottom: 7px;
+	& svg {
+		opacity: 0;
+	}
 	&:hover {
 		cursor: pointer;
 		& svg {
-			display: block;
+			opacity: 1;
 		}
 	}
 }
@@ -73,9 +76,11 @@
 	width: 16px;
 	height: 16px;
 	margin-right: 3px;
+	margin-top: 1px;
 	float: right;
-	fill: $w-secondary-color;
-	display: none;
+	fill: $w-stroke-color;
+	opacity: 0;
+	transition: opacity .1s;
 }
 
 .sidebar-section-title.open svg {
@@ -93,4 +98,22 @@
 	border-radius: 12px;
 	float: right;
 	display: none;
+}
+
+.grayscale {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(1);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray; /* IE 6-9 */;
+	transition: filter .1s;
+	&:hover {
+		-webkit-filter: grayscale(0%);
+		-moz-filter: grayscale(0);
+		-ms-filter: grayscale(0%);
+		-o-filter: grayscale(0%);
+		filter: grayscale(0%);
+		filter: gray; /* IE 6-9 */;
+	}
 }

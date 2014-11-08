@@ -1,5 +1,6 @@
 @import "fonts.css.scss";
 @import	"variables.css.scss";
+@import "components.css.scss";
 
 .content-container {
 	width: 100%;
@@ -8,63 +9,9 @@
 	padding: $spacing-4 0 $spacing-4;
 }
 
-.boards_header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: transparent;
-	width: 100%;
-	height: 42px;
-	border-bottom: solid 1px $w-stroke-color;
-	overflow: auto;
-}
-
-.header-link, .horizontal-profile-container .profile-name {
-	line-height: 44px;
-}
-.header-link {
-	float: left;
-	height: 42px;
-	padding: 0 16px;
-	color: $w-primary-color;
-	&:hover {
-		background-color: rgba(0, 0, 0, .03);
-	}
-	&:active {
-		color: $w-signature-color;
-	}
-	&.active {
-		color: $w-signature-color;
-	}
-}
-
-.horizontal-profile-container {
-	float: right;
-	& .profile-photo {
-		float: left;
-		width: 28px;
-		height: 28px;
-		margin-top: 7px;
-		border-radius: 14px;
-		margin-right: 7px;
-	}
-
-	& .profile-name {
-		float: left;
-		&:active { color: $w-signature-color; }
-	}
-}
-
-.center-container {
-	width: 100%;
-	max-width: 720px;
-	margin: 0 auto $spacing-3 auto;
-	overflow-y: auto;
-}
-
 .sidebar-toggle {
 	margin-left: $spacing-4;
-	margin-top: $spacing-4 + $spacing-1;
+	margin-top: $spacing-4 + $spacing-2;
 }
 
 .sidebar-toggle-column {
@@ -90,38 +37,6 @@
 	max-width: 956px;
 	padding: 0 $spacing-3 0;
 	color: $w-secondary-color;
-}
-
-.quotes-container-metadata {
-	width: 100%;
-	max-width: 720px;
-	margin: 0 auto;
-	overflow-y: auto;
-}
-
-.quotes-container-title {
-	max-width: 720px;
-	margin: 0 auto;
-	font-size: 14px;
-	line-height: 24px;
-	float: left;
-}
-
-.quotes-container-profile {
-	float: right;
-	text-align: center;
-	& .profile-photo {
-		width: 24px;
-		height: 24px;
-		border-radius: 12px;
-		float: left;
-	}
-	& .profile-name {
-		float: left;
-		font-size: 14px;
-		margin-left: 7px;
-		line-height: 24px;
-	}
 }
 
 .profile-mainpage-container {
@@ -155,28 +70,6 @@
 	border-radius: $border-radius;
 }
 
-.sidebar-container {
-	width: 370px;
-	height: 100%;
-	margin-left: -370px;
-	padding: 0;
-	background-color: $sidebar-background-color;
-	position: fixed;
-	border-right: solid 1px $w-stroke-color;
-}
-
-.sidebar-container, .profile-container {
-	color: $w-primary-color;
-}
-
-.sidebar-list, .profile-section {
-	color: $w-secondary-color;
-}
-
-.sidebar-content {
-	padding: 0 $spacing-3;
-}
-
 /* Search */
 
 .search-field-container {
@@ -200,7 +93,6 @@
 	width: 100%;
 	height: 40px;
 	line-height: 42px;
-	font-size: $font-size-sans-1;
 	font-weight: 400;
 	&::-webkit-input-placeholder {
    		color: #ccc;
@@ -222,69 +114,76 @@
 
 /* Filters */
 
-div.sidebar-list-container {
+.sidebar-container {
+	width: 370px;
+	height: 100%;
+	margin-left: -370px;
+	padding: 0;
+	background-color: $sidebar-background-color;
+	position: fixed;
+	border-right: solid 1px $w-stroke-color;
+	font-size: $font-size-sans-1;
+	color: $w-primary-color;
+}
+
+.sidebar-list-item,
+.description,
+.filter-count,
+.profile-section {
+	color: $w-secondary-color;
+}
+
+.sidebar-content {
+	padding: 0 $spacing-3;
+}
+
+.sidebar-list-container {
 	margin-top: $spacing-3;
-	clear: both;
 	& .sidebar-list {
 		padding-top: $spacing-0;
 
-		& .sidebar-list-item.active { 
-			color: $w-primary-color;
+		& .sidebar-list-item {
+			transition: color .1s, opacity .1s, background-color .1s, border-color .1s;
+			& button {
+				line-height: 26px;
+			}
+		}
+		& 	.sidebar-list-item.active,
+			.sidebar-list-item:hover button,
+			.sidebar-list-item:hover .filter-count { 
+				color: $w-primary-color;
 		}
 		& .sidebar-list-item:hover {
-			& button { color: $w-primary-color; }
-			& .filter-count { color: $w-primary-color; }
+			cursor: pointer;
+			& .filter-count { 
+				border-color: $w-stroke-color;
+			}
 		}
 		& .sidebar-list-item.active {
 			& .filter-count {
 				background-color: $w-signature-color;
 				color: $sidebar-background-color;
 			}
-			& button {
-				color: $w-primary-color;
+			&:hover .filter-count { 
+				border-color: transparent;
 			}
 		}
-		& .sidebar-list-item.disabled {
-			color: $w-secondary-color;
-			& button, .filter-count {
-				color: $w-secondary-color;
-			}
-		}
-	}
-
-	& .sidebar-list-item button {
-		line-height: 26px;
-	}
-
-	& .sidebar-list-item:hover {
-		cursor: pointer;
 	}
 
 	& .sidebar-list.status {
 		padding-top: 5px;
 	}
 
-	& .sidebar-list.status .sidebar-list-item {
-		color: $w-primary-color;
+	& .sidebar-list-item.disabled {
+		pointer-events: none;
 	}
 
-	& .sidebar-list.status .filter-count {
-		background-color: $w-signature-color;
-		color: $sidebar-background-color;
-	}
-
-	& .sidebar-list.status .sidebar-list-item.disabled .filter-count {
+	& .sidebar-list-item.disabled .filter-count {
 		background-color: transparent;
-		color: $w-secondary-color;
 	}
 
 	& .sidebar-list.filters .sidebar-list-item {
 		margin-bottom: 8px;
-		color: $w-secondary-color;
-	}
-
-	& .sidebar-list.tags .sidebar-list-item {
-		color: $w-secondary-color;
 	}
 }
 
@@ -305,26 +204,29 @@ div.sidebar-list-container {
 	}
 	& .profile-name {
 		margin-top: $spacing-0;
-		font-weight: 600;
-		text-decoration: underline;
-		text-decoration-color: $w-secondary-color;
 	}
 	& .description {
 		margin-top: $spacing-0;
-		font-weight: 300;
 		font-style: italic;
-		color: $w-secondary-color;
 	}
 	& .logo {
 		width: 24px;
 		height: 24px;
 		box-sizing: content-box;
-		background: #fff image-url('logo_new.png') no-repeat;
+		background: #fff image-url('logo_new_hover.png') no-repeat;
 		position: absolute;
 		top: 0;
 		left: 0;
+		opacity: .33;
+		-webkit-opacity: .33;
+		-moz-opacity: .33;
+		-o-opacity: .33;
+		transition: opacity .1s;
 		&:hover {
-			background-image: image-url('logo_new_hover.png');
+			opacity: 1;
+			-webkit-opacity: 1;
+			-moz-opacity: 1;
+			-o-opacity: 1;
 		}
 	}
 
@@ -334,47 +236,16 @@ div.sidebar-list-container {
 	
 .profile-section-container {
 	position: absolute;
-	width: 380px;
+	width: 100%;
 	padding: 0;
 	bottom: 0;
 	left: 0;
 }
 
-.profile-container {
-	overflow: auto;
-	margin-bottom: $spacing-0;
-}
-
-.profile-container .profile-photo {
-	width: 32px;
-	border-radius: 16px;
-	float: left;
-}
-
-.profile-container .profile-name {
-	display: block;
-	margin-left: $spacing-0;
-	float: left;
-	padding: 0;
-	line-height: 32px;
-}
-
 .profile-section {
 	margin-top: 0;
 	padding: $spacing-2 $spacing-2;
-	border-top: solid 1px rgba(0, 0, 0, .09);
-	& .profile-name {
-		& em {
-			color: $w-primary-color;
-			font-style: inherit;
-			font-weight: 300;
-		}
-		line-height: 26px;
-		color: $w-primary-color;
-	}
-	& a {
-		display: block;
-	}
+	border-top: solid 1px $w-stroke-color;
 	& a::before {
 		content: '·';
 		margin: 0 7px 0 0px;

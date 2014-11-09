@@ -147,7 +147,7 @@
 		& 	.sidebar-list-item.active,
 			.sidebar-list-item:hover button,
 			.sidebar-list-item:hover .filter-count { 
-				color: $t-primary-color;
+				color: $t-hover-color;
 		}
 		& .sidebar-list-item:hover {
 			cursor: pointer;
@@ -156,6 +156,9 @@
 			}
 		}
 		& .sidebar-list-item.active {
+			& button {
+				color: $t-hover-color;
+			}
 			& .filter-count {
 				background-color: $t-signature-color;
 				color: $sidebar-background-color;
@@ -176,7 +179,7 @@
 	& .sidebar-list-item.active.disabled {
 		pointer-events: auto;
 		& button {
-			color: $t-primary-color;
+			color: $t-hover-color;
 		}
 	}
 

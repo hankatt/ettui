@@ -2,13 +2,13 @@
     <div class="sidebar-content">
         <!-- SOURCES FILTER !-->
         <div class="sidebar-profile-container">
-          <a href="/"><div class="logo grayscale"></div></a>
+          <a href="/"><div class="logo"></div></a>
           <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
           <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "profile-name" %>
           <p class="description">A collection of <%= pluralize(@board.quotes.count, 'quote') %> from <%= pluralize(@sources.count, 'site') %>.</p> 
         </div>
         <div class="search-field-container">
-            <%= image_tag "search-small.png" %>
+            <%= image_tag "search-turq.png" %>
             <%= text_field_tag :search, params[:search], :placeholder => "Type to search", :class => "search-field" %>
             <%= submit_tag "Search", :name => nil, :class => 'submit' %>
           </div>

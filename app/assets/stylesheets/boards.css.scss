@@ -39,23 +39,6 @@
 	color: $w-secondary-color;
 }
 
-.profile-mainpage-container {
-	padding: $spacing-2 0;
-	width: 100%;
-	text-align: center;
-	& .profile-photo {
-		width: 32px;
-		height: 32px;
-		border-radius: 16px;
-		margin: 0 auto;
-	}
-	& p {
-		color: $w-secondary-color;
-		font-weight: 300;
-		font-style: italic;
-	}
-}
-
 #search-filter {
 	height: 100%;
 	transition: margin-left 0.13s;
@@ -74,12 +57,13 @@
 
 .search-field-container {
 	position: relative;
-	margin: $spacing-3 auto;
+	margin: $spacing-4 auto $spacing-2;
 	width: 100%;
 	& img {
 		position: absolute;
-		top: $spacing-0;
-		left: $spacing-1;
+		top: 10px;
+		left: 13px;
+		height: 21px;
 	}
 	& .submit {
 		display: none;
@@ -88,27 +72,28 @@
 
 .search-field {
 	padding: 0px 0px 0px $spacing-4;
-	border: solid 1px $w-stroke-color;
-	border-radius: 20px;
+	border-bottom: solid 1px $t-stroke-color;
 	width: 100%;
 	height: 40px;
 	line-height: 42px;
-	font-weight: 400;
+	font-weight: 300;
+	background-color: $t-stroke-color;
+	border-radius: 3px;
+	font-size: $font-size-sans-2;
 	&::-webkit-input-placeholder {
-   		color: #ccc;
-   		font-weight: 300;
+   		color: $t-secondary-color;
    	}
 
 	&:-moz-placeholder { /* Firefox 18- */
-		color: #aaa;  
+		color: $t-secondary-color;
 	}
 
 	&::-moz-placeholder {  /* Firefox 19+ */
-	   	color: #aaa;
+	   	color: $t-secondary-color;
 	}
 
 	&:-ms-input-placeholder {  
-	   	color: #ccc;
+	   	color: $t-secondary-color;
 	}
 }
 
@@ -121,16 +106,18 @@
 	padding: 0;
 	background-color: $sidebar-background-color;
 	position: fixed;
-	border-right: solid 1px $w-stroke-color;
 	font-size: $font-size-sans-1;
-	color: $w-primary-color;
+	color: $t-primary-color;
+	& a:hover {
+		color: $t-primary-color;
+	}
 }
 
 .sidebar-list-item,
 .description,
 .filter-count,
 .profile-section {
-	color: $w-secondary-color;
+	color: $t-secondary-color;
 }
 
 .sidebar-content {
@@ -138,30 +125,38 @@
 }
 
 .sidebar-list-container {
-	margin-top: $spacing-3;
+	margin-top: $spacing-2;
 	& .sidebar-list {
 		padding-top: $spacing-0;
 
 		& .sidebar-list-item {
 			transition: color .1s, opacity .1s, background-color .1s, border-color .1s;
 			& button {
-				line-height: 26px;
+				line-height: 30px;
+			}
+			& .source-favicon {
+				background-size: 24px;
+				background-repeat: no-repeat;
+				background-color: #fff;
+				background-position: 50%;
+				width: 28px;
+				height: 28px;
 			}
 		}
 		& 	.sidebar-list-item.active,
 			.sidebar-list-item:hover button,
 			.sidebar-list-item:hover .filter-count { 
-				color: $w-primary-color;
+				color: $t-primary-color;
 		}
 		& .sidebar-list-item:hover {
 			cursor: pointer;
 			& .filter-count { 
-				border-color: $w-stroke-color;
+				border-color: $t-stroke-color;
 			}
 		}
 		& .sidebar-list-item.active {
 			& .filter-count {
-				background-color: $w-signature-color;
+				background-color: $t-signature-color;
 				color: $sidebar-background-color;
 			}
 			&:hover .filter-count { 
@@ -172,10 +167,23 @@
 
 	& .sidebar-list.status {
 		padding-top: 5px;
+		& button, .filter-count {
+			color: #fff;
+		}
+	}
+
+	& .sidebar-list-item.active.disabled {
+		pointer-events: auto;
+		& button {
+			color: $t-primary-color;
+		}
 	}
 
 	& .sidebar-list-item.disabled {
 		pointer-events: none;
+		& button, .filter-count {
+			color: $t-secondary-color;
+		}
 	}
 
 	& .sidebar-list-item.disabled .filter-count {
@@ -204,6 +212,7 @@
 	}
 	& .profile-name {
 		margin-top: $spacing-0;
+		font-weight: 300;
 	}
 	& .description {
 		margin-top: $spacing-0;
@@ -213,21 +222,11 @@
 		width: 24px;
 		height: 24px;
 		box-sizing: content-box;
-		background: #fff image-url('logo_new_hover.png') no-repeat;
+		background: transparent image-url('logo_turq.png') no-repeat;
 		position: absolute;
+		background-size: 100%;
 		top: 0;
 		left: 0;
-		opacity: .33;
-		-webkit-opacity: .33;
-		-moz-opacity: .33;
-		-o-opacity: .33;
-		transition: opacity .1s;
-		&:hover {
-			opacity: 1;
-			-webkit-opacity: 1;
-			-moz-opacity: 1;
-			-o-opacity: 1;
-		}
 	}
 
 }
@@ -250,11 +249,26 @@
 		content: '·';
 		margin: 0 7px 0 0px;
 		font-weight: bold;
-		color: $w-secondary-color;
+		color: $t-secondary-color;
 	}
-	& .logout:hover {
-		color: red;
-	}
+}
+
+
+.profile-mainpage-container{
+	padding: $spacing-2 0;
+	width: 100%;
+	text-align: center
+}
+.profile-mainpage-container .profile-photo{
+	width:32px;
+	height:32px;
+	border-radius:16px;
+	margin:0 auto;
+}
+.profile-mainpage-container p{
+	color: $w-secondary-color;
+	font-weight:300;
+	font-style:italic
 }
 
 @media only screen and (min-width : 319px) {

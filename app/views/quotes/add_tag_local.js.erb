@@ -18,7 +18,7 @@ quote_tags_container	= $(".quote.q-<%= @quote.id %>").find('.quote-tags');
 	tag_count = <%= @tag.context_count %>
 
 	if (tag_count == 1)
-		sidebar_tags_container.append("<%= escape_javascript(render :partial => 'boards/tag', locals: { tag: @tag }) %>");
+		sidebar_tags_container.append("<%= escape_javascript(render :partial => 'shared/tag', locals: { tag: @tag }) %>");
 	else {
 		sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
 		sidebar_tag.find(".filter-count p").text(tag_count);

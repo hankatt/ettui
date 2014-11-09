@@ -213,7 +213,6 @@
 	}
 	& .profile-name {
 		margin-top: $spacing-0;
-		font-weight: 300;
 	}
 	& .description {
 		margin-top: $spacing-0;
@@ -223,7 +222,7 @@
 		width: 24px;
 		height: 24px;
 		box-sizing: content-box;
-		background: transparent image-url('logo_turq.png') no-repeat;
+		background: transparent image-url('logo_grey.png') no-repeat;
 		position: absolute;
 		background-size: 100%;
 		top: 0;

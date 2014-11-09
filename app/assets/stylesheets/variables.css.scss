@@ -14,20 +14,20 @@ $proportional-constant: 1.414;
 
 $main-background-color:		rgb(246, 243, 240);
 $quote-background-color:	rgb(255, 255, 255);
-$sidebar-background-color:	#21CBA2;
+$sidebar-background-color:	rgba(161, 160, 159, 1);
 
 /* ON WHITE: prefix: w- */
 
 $w-stroke-color:		rgba(0, 0, 0, .11);
-$w-primary-color:		rgba(0, 0, 0, .69);
+$w-primary-color:		rgba(0, 0, 0, .83);
 $w-secondary-color:		rgba(0, 0, 0, .39);
 $w-signature-color:		#43DAB2;
 
 /* ON TURQOUISE: prefix: t- */
 
-$t-stroke-color:	#1CB690;
-$t-primary-color:	#fff;
-$t-secondary-color:	#1a8e71;
+$t-stroke-color:	rgba(255, 255, 255, .19);
+$t-primary-color:	rgba(255, 255, 255, .97);
+$t-secondary-color:	rgba(255, 255, 255, .51); /* #c9c6c1 */
 $t-signature-color: #fff;
 
 /*

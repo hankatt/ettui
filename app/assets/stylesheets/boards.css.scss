@@ -128,11 +128,12 @@
 	margin-top: $spacing-2;
 	& .sidebar-list {
 		padding-top: $spacing-0;
-
+		font-weight: 300;
 		& .sidebar-list-item {
 			transition: color .1s, opacity .1s, background-color .1s, border-color .1s;
 			& button {
 				line-height: 30px;
+				color: $t-primary-color;
 			}
 			& .source-favicon {
 				background-size: 24px;
@@ -168,7 +169,7 @@
 	& .sidebar-list.status {
 		padding-top: 5px;
 		& button, .filter-count {
-			color: #fff;
+			color: $t-primary-color;
 		}
 	}
 

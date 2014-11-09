@@ -133,7 +133,6 @@
 			transition: color .1s, opacity .1s, background-color .1s, border-color .1s;
 			& button {
 				line-height: 30px;
-				color: $t-primary-color;
 			}
 			& .source-favicon {
 				background-size: 24px;
@@ -147,7 +146,7 @@
 		& 	.sidebar-list-item.active,
 			.sidebar-list-item:hover button,
 			.sidebar-list-item:hover .filter-count { 
-				color: $t-hover-color;
+				color: $t-primary-color;
 		}
 		& .sidebar-list-item:hover {
 			cursor: pointer;
@@ -157,7 +156,7 @@
 		}
 		& .sidebar-list-item.active {
 			& button {
-				color: $t-hover-color;
+				color: $t-primary-color;
 			}
 			& .filter-count {
 				background-color: $t-signature-color;
@@ -179,7 +178,7 @@
 	& .sidebar-list-item.active.disabled {
 		pointer-events: auto;
 		& button {
-			color: $t-hover-color;
+			color: $t-primary-color;
 		}
 	}
 

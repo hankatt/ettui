@@ -128,9 +128,16 @@
 		padding-top: $spacing-0;
 		font-weight: 300;
 		& .sidebar-list-item {
+			position: relative;
+			overflow-y: auto;
 			transition: color .1s, opacity .1s, background-color .1s, border-color .1s;
 			& button {
 				line-height: 30px;
+				position: absolute;
+				left: 0;
+				padding-left: 37px;
+				width: 100%;
+				text-align: left;
 			}
 			& .source-favicon {
 				background-size: 24px;
@@ -171,6 +178,17 @@
 		& button, .filter-count {
 			color: $t-primary-color;
 		}
+		& button h4 {
+			line-height: 30px;
+		}
+		& .source-favicon {
+			background-size: auto;
+			background-color: transparent;
+		}
+	}
+
+	& .sidebar-list.tags button, .sidebar-list.status button {
+		padding-left: 0;
 	}
 
 	& .sidebar-list-item.active.disabled {

@@ -109,13 +109,14 @@ $(document).on('ready DOMChange', function() {
         Checkbox functionality for the source filters 
     */
 
-    $(".sidebar-list li").unbind('click').bind('click', function(e) {
+    $(".sidebar-list-item").unbind('click').bind('click', function(e) {
         // Mark selection as active
         $(this).toggleClass('active');
 
         // Set checkbox to: Checked
         checkbox = $(this).children('[type="checkbox"]');
-        checkbox.prop('checked', !checkbox.prop('checked'));
+        checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
+        console.log('checkbox: ' + checkbox.prop('checked'));
     });
 
 });

@@ -21,7 +21,7 @@
 		color: $w-secondary-color;
 		overflow-y: hidden;
 		& h4, p, a {
-			font-size: 14px;
+			font-size: $font-size-sans-1;
 			margin: 0;	
 		}
 	}
@@ -352,12 +352,12 @@
 		margin-bottom: $spacing-1;
 	}
 	& h1 {
-		font-weight: 300;
+		font-weight: 200;
 		letter-spacing: -1px;
 		color: $w-primary-color;
 	}
 	& h3 {
-		font-weight: 300;
+		font-weight: 200;
 		color: $w-secondary-color;
 	}
 	& a {

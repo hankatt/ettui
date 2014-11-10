@@ -50,21 +50,21 @@ div.error_explanation ul {
 }
 
 .splash-container h1 {
-	font-weight: 300;
+	font-weight: 700;
 	letter-spacing: -1px;
 	margin: 0 auto $spacing-4;
 	font-size: 40px;
-	line-height: 47	px;
+	line-height: 47px;
 	& em {
+		line-height: inherit;
 		font-size: inherit;
 		font-weight: inherit;
 		font-style: inherit;
-		color: $w-secondary-color;
+		color: rgba(0, 0, 0, .29);
 	}
 }
 
 .splash-container h2 {
-	letter-spacing: -1px;
 	font-weight: 300;
 }
 
@@ -363,10 +363,11 @@ header .inline.link img {
 
 	.splash-container h2 {
 		font-size: 16px;
+		letter-spacing: -1px;
 	}
 
 	.splash-container a.big.button {
-		width: 200px;
+		width: 204px;
 		font-size: 14px;
 		font-weight: 400;
 		margin-top: $spacing-1;

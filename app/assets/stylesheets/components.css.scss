@@ -20,14 +20,14 @@
 	border-radius: 12px;
 	display: inline-block;
 	border: solid 1px transparent;
-	padding: 3px 7px 1px 6px;
+	padding: 2px 5px 1px 5px;
 	float: right;
-	margin-top: 0px;
+	margin-top: 3px;
 	margin-right: 1px;
 
 	& > p {
 		font-family: "fira-mono";
-		line-height: 18px;
+		line-height: 16px;
 		margin: 0;
 	}
 }

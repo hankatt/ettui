@@ -80,7 +80,7 @@
 	height: 40px;
 	line-height: 42px;
 	border-radius: 0;
-	font-weight: 300;
+	font-weight: 200;
 	font-size: $font-size-sans-2;
 	&::-webkit-input-placeholder {
    		color: $t-secondary-color;
@@ -131,7 +131,7 @@
 	margin-top: $spacing-2;
 	& .sidebar-list {
 		padding-top: $spacing-0;
-		font-weight: 300;
+		font-weight: 400;
 		& .sidebar-list-item {
 			position: relative;
 			overflow-y: hidden;
@@ -236,10 +236,12 @@
 	}
 	& .profile-name {
 		margin-top: $spacing-0;
+		letter-spacing: 1px;
 	}
 	& .description {
 		margin-top: $spacing-0;
 		font-style: italic;
+		font-weight: 200;
 	}
 	& .logo {
 		width: 24px;
@@ -308,7 +310,7 @@
 }
 .profile-mainpage-container p{
 	color: $w-secondary-color;
-	font-weight:300;
+	font-weight: 400;
 	font-style:italic
 }
 

@@ -27,6 +27,9 @@
 		background-color: rgba(0, 0, 0, .05);
 		cursor: pointer;
 	}
+	& img {
+		display: block !important;
+	}
 }
 
 .quotes-container {
@@ -76,6 +79,7 @@
 	width: 100%;
 	height: 40px;
 	line-height: 42px;
+	border-radius: 0;
 	font-weight: 300;
 	font-size: $font-size-sans-2;
 	&::-webkit-input-placeholder {
@@ -102,6 +106,7 @@
 	height: 100%;
 	margin-left: -370px;
 	padding: 0;
+	z-index: 2;
 	background-color: $sidebar-background-color;
 	position: fixed;
 	font-size: $font-size-sans-1;
@@ -129,7 +134,7 @@
 		font-weight: 300;
 		& .sidebar-list-item {
 			position: relative;
-			overflow-y: auto;
+			overflow-y: hidden;
 			transition: color .1s, opacity .1s, background-color .1s, border-color .1s;
 			& button {
 				line-height: 30px;
@@ -247,6 +252,24 @@
 		left: 0;
 	}
 
+	& .sidebar-close {
+		width: 24px;
+		height: 24px;
+		box-sizing: content-box;
+		background: transparent image-url('menu-close.png') no-repeat;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-size: 11px;
+		background-position: 50%;
+		border: solid 1px $t-stroke-color;
+		border-radius: 3px;
+		&:hover {
+			cursor: pointer;
+			border-color: $t-secondary-color;
+		}
+	}
+
 }
 
 /* Sidebar profile */
@@ -292,13 +315,81 @@
 @media only screen and (min-width : 319px) {
 	div.sidebar-toggle-column,
 	.boards_header .logo-container {
-		display: none;
+		display: block;
 	}
 }
 
 @media only screen and (min-width : 940px) {
 	div.sidebar-toggle-column {
 		display: block;
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 1023px) {
+
+	.content-container {
+		padding-top: $spacing-5;
+	}
+	.sidebar-toggle-column:hover {
+		background-color: transparent;
+	}
+	.sidebar-toggle-column img {
+		margin-top: $spacing-3;
+		margin-left: $spacing-1;
+	}
+	#search-filter {
+		position: relative;
+		overflow-x: hidden;
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		& .sidebar-container, .content-container {
+			transition: transform .1s ease-out;
+			-webkit-transition: -webkit-transform .1s ease-out;
+		}
+	}
+
+	#search-filter.active {
+		margin-left: 0;
+		& .sidebar-container, .content-container {
+			transform: translate3d(320px,0,0);
+			-webkit-transform: translate3d(320px,0,0);
+		}
+	}
+
+	.sidebar-container {
+		width: 100%;
+		max-width: 320px;
+		margin-left: -320px;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.sidebar-content {
+		padding: 0 $spacing-1;
+	}
+
+	.profile-section-container {
+		position: relative;
+		margin: $spacing-3 0 0;
+	}
+
+	.profile-section .bookmarklet {
+		display: none;
+	}
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1023px) {
+
+	.sidebar-toggle-column img {
+		margin-left: $spacing-3;
+	}
+
+	.sidebar-close {
+		display: none;
+	}
+
+	.sidebar-content {
+		padding: 0 $spacing-1;
 	}
 }
 

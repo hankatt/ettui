@@ -18,15 +18,13 @@ $(document).on('ready DOMChange', function() {
 
     //ini();
 
-    $(window).resize(function () {
-        if($(document).outerWidth() < 936 && $("#search-filter").hasClass('active'))
-            $("#search-filter").removeClass('active');
+    $(".sidebar-close").unbind('click').bind('click', function(event) {
+        $("#search-filter").removeClass('active');
     });
 
     $(".sidebar-toggle-column, .sidebar-toggle").on('click', function(event) {
         if(!$("#search-filter").hasClass('active')) {
             $("#search-filter").addClass('active');
-            $(".sidebar-toggle-column").hide();
             $(".sidebar-toggle").fadeOut(70);
         }
     });

@@ -256,6 +256,8 @@ header .inline.link img {
 	text-align: center;
 }
 
+
+
 .intro-container h2 {
 	width: 100%;
 	max-width: 480px;
@@ -275,7 +277,9 @@ header .inline.link img {
 }
 
 .intro-container {
-	padding: 0 $spacing-2 $spacing-4;
+	padding: 0 0 $spacing-4;
+	max-width: 480px;
+	margin: 0 auto;
 	text-align: center;
 }
 
@@ -340,6 +344,82 @@ header .inline.link img {
 	background-color: #f6f3f0;
 }
 
+/*
+	
+
+	BOOKMARKLET.HTML.ERB
+
+
+*/
+
+#mobile {
+
+	& .bookmarklet-container {
+		padding: $spacing-2;
+		background-color: $w-stroke-color;
+		border-radius: 0;
+	}
+
+	& code {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		float: left;
+		width: 100%;
+		overflow: hidden;
+	}
+}
+
+.segmented-control-container {
+	width: 292px;
+	margin: $spacing-4 auto;
+	overflow: auto;
+	display: inline-block;
+	border-radius: 7px;
+	border: solid 1px $w-signature-color;
+}
+
+.segment-control {
+	float: left;
+	width: 50%;
+	color: $w-secondary-color;
+	transition: background-color .2s ease-out;
+	& h4 {
+		width: auto;
+		margin: $spacing-0 0;
+	}
+	&:first-of-type {
+		border-right: solid 1px $w-signature-color;;
+	}
+	&:hover {
+		color: $w-signature-color;
+		cursor: pointer;
+	}
+	&.active {
+		background-color: $w-signature-color;
+		color: white;
+		&:hover {
+			color: $t-primary-color;
+		}
+	}
+}
+
+.segmented-content-viewport {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.segmented-content-container {
+	width: calc(100% * 2 + 20px);
+}
+
+.segmented-content {
+	float: left;
+	margin-left: 20px;
+	&:first-of-type {
+		margin-left: 0;
+	}
+}
+
 @media only screen and (min-width : 320px) and (max-width : 630px) {
 
 	.splash-container {
@@ -374,6 +454,22 @@ header .inline.link img {
 		margin-bottom: $spacing-4;
 	}
 
+	.segmented-content-viewport {
+		width: 292px;
+		margin: 0 auto;
+	}
+
+	.segmented-content {
+		width: 292px;
+		transition: transform .2s ease-out;
+		transition: -webkit-transform .2s ease-out;
+		padding-bottom: $spacing-4;
+	}
+
+	.segment-control {
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
 	header .inline p, header .inline a {
 		display: block;
 	}
@@ -398,6 +494,11 @@ header .inline.link img {
 		margin-bottom: $spacing-3;
 	}
 
+	.intro-container h4 {
+		max-width: 292px;
+		width: 100%;
+	}
+
 	.intro-container blockquote {
 		width: 100%;
 		max-width: 320px;
@@ -406,7 +507,7 @@ header .inline.link img {
 
 	.bookmarklet-container {
 		padding: $spacing-2;
-		max-width: 320px;
+		max-width: 292px;
 	}
 
 	.bookmarklet-container a.big.button, .bookmarklet-container p {

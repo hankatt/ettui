@@ -17,9 +17,31 @@
 $(document).on('ready DOMChange', function() {
 
     //ini();
+    document.addEventListener("touchstart", function(){}, true);
 
     $(".sidebar-close").unbind('click').bind('click', function(event) {
         $("#search-filter").removeClass('active');
+    });
+
+    $(".segment-control").unbind('click').bind('click', function(e) {
+        $(this).addClass('active');
+        $(".segment-control").not(this).removeClass('active');
+
+        index = $(this).index();
+        contentContainer = $(this).parent().siblings('.segmented-content-viewport');
+
+        sc = contentContainer.find('.segmented-content:eq(' +index +')');
+        scrollDistance = sc.width() + 20;
+        if($(window).width() < 768) contentContainer.addClass('mobile');
+        if(contentContainer.hasClass('mobile')) {
+            contentContainers = contentContainer.find('.segmented-content');
+            contentContainers.css('transform', 'translateX(-' +(scrollDistance * index) +'px)');
+        } else {
+            contentContainer.animate({
+                scrollLeft : scrollDistance * index
+            }, 200);
+        }
+
     });
 
     $(".sidebar-toggle-column, .sidebar-toggle").on('click', function(event) {

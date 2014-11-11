@@ -236,7 +236,7 @@
 
 @media only screen and (min-width : 481px) and (max-width : 640px) {
 
-	.quote .quote-source-date {
+	.quote .quote-source-date, .quote.unread .quote-source-date {
 		display: none;
 	}
 

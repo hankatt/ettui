@@ -31,11 +31,11 @@
         	<div class="segmented-content">
         		<div id="mobile">
 			        <h3 class="progress-item">1</h3>
-		        	<h4>Create a bookmark on your phone, preferably in favorites.</h4>
+		        	<h4>Create a bookmark of this page and name it Noted.</h4>
 		        	<h3 class="progress-item">2</h3>
-		        	<h4>Paste this in.</h4>
+		        	<h4>Highlight and copy the code below.<br/>Edit the bookmark you just added and paste this code instead of the URL.</h4>
 		        	<div class="bookmarklet-container">
-			            <code>
+			            <code id="bookmarkletCode">
 			              	javascript:(function() {
 				            document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
 				            current_user_token = '<%= current_user.token %>';

@@ -140,6 +140,9 @@ $(document).on('ready DOMChange', function() {
 
     $("#selectBookmarkletCode").on('click', function() {
         selectText('bookmarkletCode');
+        selection = window.getSelection().anchorNode.textContent;
+        $(this).addClass('selected');
+        $("#selectBookmarkletCode").text("The code is now selected.");
     });
 
 });

@@ -1,5 +1,5 @@
 <h1>Welcome <%= current_user.email || current_user.name %>!</h1>
-<h2>Below you will find everything you need to set up and use your bookmarklet.</h2>
+<h2>Here's everything you need to set up and use your bookmarklet.</h2>
 	<div class="intro-container"> 
     <div class="segmented-control-container">
     	<div class="segment-control active">
@@ -30,7 +30,7 @@
 			          Talent is Overrated by Geoffrey Colvin. It has nothing to do with design, but rather teaches them about work ethic and purpose. The real path to great perfomance is a matter of choice.
 			        </blockquote>
 			        <%= link_to continue_path, class: "big button" do %>
-			          Continue to my board
+			          Continue to your board
 			        <% end %>
 			    </div>
         	</div>
@@ -39,7 +39,7 @@
 			        <h3 class="progress-item">1</h3>
 		        	<h4>Create a bookmark of this page and name it Noted.</h4>
 		        	<h3 class="progress-item">2</h3>
-		        	<h4>Highlight and copy the code below.<br/>Edit the bookmark you just added and paste this code instead of the URL.</h4>
+		        	<h4>Highlight and copy the code below.<br/>Then edit the bookmark you added and paste the code instead of the URL.</h4>
 		        	<div class="bookmarklet-container">
 			            <code id="bookmarkletCode">
 			              	javascript:(function() {
@@ -49,7 +49,7 @@
 			            </code>
 			        </div>
 			        <%= link_to continue_path, class: "big button" do %>
-			          Continue to my board
+			          Continue to your board
 			        <% end %>
 			    </div>
         	</div>

@@ -129,9 +129,6 @@ $(document).on('ready DOMChange', function() {
         Checkbox functionality for the source filters 
     */
 
-    $(".sidebar-list-item button").on('click', function(e) {
-    });
-
     $(".sidebar-list-item").unbind('click').bind('click', function(e) {
         // Mark selection as active
         $(this).toggleClass('active');
@@ -141,7 +138,30 @@ $(document).on('ready DOMChange', function() {
         checkbox.prop('checked', !checkbox.prop('checked'));
     });
 
+    $("#selectBookmarkletCode").on('click', function() {
+        selectText('bookmarkletCode');
+    });
+
 });
+
+function selectText(element) {
+    var doc = document,
+        text = doc.getElementById(element),
+        range,
+        selection;
+
+    if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+    } else if (window.getSelection) {
+        selection = window.getSelection();        
+        range = document.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
 
 function updateTag(params) {
     $.ajax({

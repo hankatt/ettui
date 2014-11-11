@@ -276,9 +276,6 @@ header .inline.link img {
 	width: 320px;
 	text-align: center;
 	color: $w-primary-color;
-	& + .progress-item {
-		margin-top: $spacing-4;
-	}
 }
 
 .intro-container {
@@ -287,6 +284,10 @@ header .inline.link img {
 	margin: 0 auto;
 	text-align: center;
 }
+
+.intro-container h4 + .progress-item, .bookmarklet-container + .progress-item {
+		margin-top: $spacing-4;
+	}
 
 .progress-item {
 	font-size: $font-size-sans-2;

@@ -275,6 +275,7 @@ header .inline.link img {
 	margin: $spacing-2 auto;
 	width: 320px;
 	text-align: center;
+	color: $w-primary-color;
 	& + .progress-item {
 		margin-top: $spacing-4;
 	}
@@ -311,8 +312,8 @@ header .inline.link img {
 }
 
 .bookmarklet-container .big.button {
-	background-color: $w-stroke-color;
-	color: white;
+	background-color: transparent;
+	color: $w-primary-color;
 	transform: scale(1.0);
 	border-style: dashed;
 	border-color: rgb(159, 157, 155);
@@ -390,12 +391,16 @@ header .inline.link img {
 		border-right: solid 1px $w-signature-color;;
 	}
 	&:hover {
-		color: $w-signature-color;
+		& h4 {
+			color: $w-primary-color;
+		}
 		cursor: pointer;
 	}
 	&.active {
 		background-color: $w-signature-color;
-		color: white;
+		& h4 {
+			color: white;
+		}
 		&:hover {
 			color: $t-primary-color;
 		}
@@ -403,6 +408,7 @@ header .inline.link img {
 	& h4 {
 		line-height: 17px;
 		padding-top: 3px;
+		color: $w-secondary-color;
 	}
 }
 
@@ -439,7 +445,7 @@ header .inline.link img {
 
 	.splash-container h1 {
 		font-size: 27px;
-		margin: 0 auto $spacing-3;
+		margin: 0 auto 6px;
 		line-height: 33px;
 	}
 
@@ -452,7 +458,11 @@ header .inline.link img {
 		width: auto;
 		font-size: 15px;
 		font-weight: 400;
-		margin-top: $spacing-3;
+		margin-top: $spacing-4;
+	}
+
+	.bookmarklet-container a.big.button {
+		margin-top: 0;
 	}
 
 	.splash-container header {

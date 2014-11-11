@@ -16,6 +16,18 @@ class UsersController < ApplicationController
       end
   end
 
+  def bookmarklet
+    @user = User.find(session[:user_id]) unless session[:user_id].nil?
+
+    respond_to do |format|
+        if @user
+            format.html # bookmarklet.html.erb
+        else
+            format.html { redirect_to root_url }
+        end
+    end
+  end
+
   # GET /users/new
   # GET /users/new.json
   def new

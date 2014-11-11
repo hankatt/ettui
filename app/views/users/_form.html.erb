@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
   <%= f.hidden_field :new_user, :value => true %>
   <div class="first field">
-    <%= f.text_field :email, :placeholder => "Electronic mail address" %>
+    <%= f.text_field :email, :placeholder => "Electronic mail address", :type => "email" %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="field">

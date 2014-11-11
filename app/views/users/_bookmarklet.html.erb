@@ -1,0 +1,52 @@
+<h1>Hello <%= current_user.email || current_user.name %>.</h1>
+<h2>Below you will find everything you need to set up and use your bookmarklet.</h2>
+	<div class="intro-container"> 
+    <div class="segmented-control-container">
+    	<div class="segment-control active">
+    		<h4>Desktop</h4>
+    	</div>
+    	<div class="segment-control">
+    		<h4>Mobile</h4>
+    	</div>
+    </div>
+    <div class="segmented-content-viewport">
+        <div class="segmented-content-container">
+        	<div class="segmented-content">
+        		<div id="desktop">
+			    	<h3 class="progress-item">1</h3>
+			        <div class="bookmarklet-container">
+			            <a class="big button" href="javascript:(function() {
+			            document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+			            current_user_token = '<%= current_user.token %>';
+			            })();">Drag me to your bookmarks bar</a>
+			            <p>
+			              The bookmarks bar is located below the address bar.
+			            </p>
+			        </div>
+			        <%= link_to continue_path, class: "big button" do %>
+			          Go back to my board
+			        <% end %>
+			    </div>
+        	</div>
+        	<div class="segmented-content">
+        		<div id="mobile">
+			        <h3 class="progress-item">1</h3>
+		        	<h4>Create a bookmark on your phone, preferably in favorites.</h4>
+		        	<h3 class="progress-item">2</h3>
+		        	<h4>Paste this in.</h4>
+		        	<div class="bookmarklet-container">
+			            <code>
+			              	javascript:(function() {
+				            document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+				            current_user_token = '<%= current_user.token %>';
+				            })();
+			            </code>
+			        </div>
+			        <%= link_to continue_path, class: "big button" do %>
+			          Go back to my board
+			        <% end %>
+			    </div>
+        	</div>
+      </div>
+  </div>
+</div>

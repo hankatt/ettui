@@ -408,6 +408,7 @@ header .inline.link img {
 
 .segmented-content-container {
 	width: calc(100% * 2 + 20px);
+	overflow-y: hidden;
 }
 
 .segmented-content {

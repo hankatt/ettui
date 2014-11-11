@@ -415,6 +415,8 @@ header .inline.link img {
 .segmented-content {
 	float: left;
 	margin-left: 20px;
+	transition: transform .2s ease-out;
+	transition: -webkit-transform .2s ease-out;
 	&:first-of-type {
 		margin-left: 0;
 	}
@@ -433,18 +435,18 @@ header .inline.link img {
 
 	.splash-container h1 {
 		font-size: 27px;
-		margin: 0 auto $spacing-2;
+		margin: 0 auto $spacing-3;
 		line-height: 33px;
 	}
 
 	.splash-container h2 {
-		font-size: 16px;
-		letter-spacing: -1px;
+		font-size: $font-size-sans-1;
 	}
 
 	.splash-container a.big.button {
-		width: 204px;
-		font-size: 14px;
+		min-width: 200px;
+		width: auto;
+		font-size: 15px;
 		font-weight: 400;
 		margin-top: $spacing-1;
 	}
@@ -461,8 +463,6 @@ header .inline.link img {
 
 	.segmented-content {
 		width: 292px;
-		transition: transform .2s ease-out;
-		transition: -webkit-transform .2s ease-out;
 		padding-bottom: $spacing-4;
 	}
 
@@ -474,11 +474,13 @@ header .inline.link img {
 		display: block;
 	}
 
-	header .inline.link {
+	header .profile.inline.link {
 		height: auto;
-		margin-top: -2px;
 		& a {
-			float: none;
+			margin-top: 7px;
+		}
+		& a, img {
+			float: left;
 		}
 	}
 
@@ -524,5 +526,9 @@ header .inline.link img {
 		width: 100%;
 		max-width: 280px;
 	}
+
+}
+
+@media only screen and (min-width : 480) and (max-width : 630px) {
 
 }

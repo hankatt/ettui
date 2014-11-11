@@ -50,9 +50,8 @@ div.error_explanation ul {
 }
 
 .splash-container h1 {
-	font-weight: 700;
 	letter-spacing: -1px;
-	margin: 0 auto $spacing-4;
+	margin: 0 auto $spacing-0;
 	font-size: 40px;
 	line-height: 47px;
 	& em {
@@ -61,6 +60,10 @@ div.error_explanation ul {
 		font-weight: inherit;
 		font-style: inherit;
 		color: rgba(0, 0, 0, .29);
+	}
+
+	& + div {
+		margin-top: $spacing-3;
 	}
 }
 
@@ -150,7 +153,7 @@ header .inline.link img {
 	background-color: $w-signature-color;
 	border-color: $w-signature-color;
 	color: #fff;
-	margin: $spacing-3 auto 0;
+	margin: $spacing-4 auto;
 	transition: color .13s;
 	font-size: $font-size-sans-1;}
 
@@ -272,6 +275,9 @@ header .inline.link img {
 	margin: $spacing-2 auto;
 	width: 320px;
 	text-align: center;
+	& + .progress-item {
+		margin-top: $spacing-4;
+	}
 }
 
 .intro-container {
@@ -286,42 +292,37 @@ header .inline.link img {
 	width: $spacing-3;
 	height: $spacing-3;
 	border-radius: $spacing-3 / 2;
-	border: solid 1px $w-stroke-color;
-	margin: 0 auto $spacing-2; 
+	background-color: $w-stroke-color;
+	color: $w-primary-color;
+	margin: $spacing-2 auto; 
 	display: block;
-	line-height: 28px;
-	font-weight: 300;
+	line-height: 30px;
+	font-weight: 400;
 }
 
 .bookmarklet-container {
 	overflow: auto;
-	background-color: $w-signature-color;
+	background-color: $w-stroke-color;
 	border-radius: 6px;
 	width: 100%;
 	max-width: 480px;
 	padding: $spacing-2 105px;
-	margin: $spacing-2 auto $spacing-4;
+	margin: $spacing-2 auto 0;
 }
 
 .bookmarklet-container .big.button {
-	background-color: $w-signature-color;
+	background-color: $w-stroke-color;
 	color: white;
-	width: 260px;
 	transform: scale(1.0);
 	border-style: dashed;
-	border-color: rgb(58, 166, 141);
-	font-weight: 500;
-	font-size: $font-size-sans-1;
+	border-color: rgb(159, 157, 155);
 	margin: 0 0 $spacing-2;
-	text-transform: none;
-	outline: none;
-	letter-spacing: 0px;
 	transition: scale .11s, box-shadow .11s, border-color .11s, background-color .11s;
 }
 
 .bookmarklet-container .big.button:hover {
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .11);
-	background-color: #91ECCF;
+	background-color: $w-signature-color;
 	border-color: transparent;
 	color: #fff;
 	transform: scale(1.01);
@@ -369,7 +370,7 @@ header .inline.link img {
 
 .segmented-control-container {
 	width: 292px;
-	margin: $spacing-4 auto;
+	margin: $spacing-4 auto $spacing-2;
 	overflow: auto;
 	display: inline-block;
 	border-radius: 7px;
@@ -398,6 +399,10 @@ header .inline.link img {
 		&:hover {
 			color: $t-primary-color;
 		}
+	}
+	& h4 {
+		line-height: 17px;
+		padding-top: 3px;
 	}
 }
 
@@ -447,7 +452,7 @@ header .inline.link img {
 		width: auto;
 		font-size: 15px;
 		font-weight: 400;
-		margin-top: $spacing-1;
+		margin-top: $spacing-3;
 	}
 
 	.splash-container header {
@@ -524,6 +529,7 @@ header .inline.link img {
 	.intro-container a.big.button {
 		width: 100%;
 		max-width: 280px;
+		letter-spacing: 0;
 	}
 
 }

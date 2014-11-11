@@ -256,12 +256,10 @@ header .inline.link img {
 	text-align: center;
 }
 
-
-
 .intro-container h2 {
 	width: 100%;
 	max-width: 480px;
-	margin: 0 auto $spacing-4;
+	margin: 0 auto $spacing-2;
 }
 
 .intro-container h2 > em {
@@ -303,6 +301,14 @@ header .inline.link img {
 	max-width: 480px;
 	padding: $spacing-2 105px;
 	margin: $spacing-2 auto $spacing-4;
+}
+
+#selectBookmarkletCode {
+	padding: 10px 14px 7px;
+	border: solid 1px $w-signature-color;
+	color: $w-signature-color;
+	border-radius: 3px;
+	margin-bottom: -10px;
 }
 
 .bookmarklet-container .big.button {

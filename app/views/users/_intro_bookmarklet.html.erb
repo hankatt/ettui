@@ -14,6 +14,7 @@
         	<div class="segmented-content">
         		<div id="desktop">
 			    	<h3 class="progress-item">1</h3>
+			    	<h4>Drag the button below to your bookmarks bar.</h4>
 			        <div class="bookmarklet-container">
 			            <a class="big button" href="javascript:(function() {
 			            document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
@@ -24,7 +25,7 @@
 			            </p>
 			        </div>
 			        <h3 class="progress-item">2</h3>
-			        <h2>Highlight the text below and try your new bookmarklet.</h2>
+			        <h4>Highlight the text below and try your new bookmarklet.</h4>
 			        <blockquote>
 			          Talent is Overrated by Geoffrey Colvin. It has nothing to do with design, but rather teaches them about work ethic and purpose. The real path to great perfomance is a matter of choice.
 			        </blockquote>
@@ -36,11 +37,12 @@
         	<div class="segmented-content">
         		<div id="mobile">
 			        <h3 class="progress-item">1</h3>
-		        	<h4>Create a bookmark on your phone, preferably in favorites.</h4>
+		        	<h4>Create a bookmark of this page and name it Noted.</h4>
 		        	<h3 class="progress-item">2</h3>
-		        	<h4>Paste this in.</h4>
+		        	<h4>Highlight and copy the code below.<br/>Edit the bookmark you just added and paste this code instead of the URL.</h4>
+		        	<button id="selectBookmarkletCode">Click to highlight the code below.</button>
 		        	<div class="bookmarklet-container">
-			            <code>
+			            <code id="bookmarkletCode">
 			              	javascript:(function() {
 				            document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
 				            current_user_token = '<%= current_user.token %>';

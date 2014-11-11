@@ -290,7 +290,7 @@
 
 .profile-section {
 	margin-top: 0;
-	padding: $spacing-2 0;
+	padding: $spacing-2 0 $spacing-2 $spacing-1;
 	border-top: solid 1px $w-stroke-color;
 	& a:first-of-type:before {	
 		content: '';
@@ -380,6 +380,10 @@
 	.profile-section-container {
 		position: relative;
 		margin: $spacing-3 0 0;
+	}
+
+	.profile-section {
+		padding-left: 0;
 	}
 }
 

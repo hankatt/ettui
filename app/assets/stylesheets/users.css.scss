@@ -62,7 +62,7 @@ div.error_explanation ul {
 		color: rgba(0, 0, 0, .29);
 	}
 
-	& + div {
+	& + div, .button {
 		margin-top: $spacing-3;
 	}
 }
@@ -445,7 +445,7 @@ header .inline.link img {
 
 	.splash-container h1 {
 		font-size: 27px;
-		margin: 0 auto 6px;
+		margin: 0 auto 10px;
 		line-height: 33px;
 	}
 

@@ -63,6 +63,7 @@ jquery.onload = function() {
 			}, 670, function() {
 				$("#noted-new-tag").focus();
 			});
+			$(".noted-logo, .noted-close").addClass('visible');
 		}, 2000);
 
 		$(".noted-tag").click(function() {
@@ -121,6 +122,8 @@ createAndAppendBookmarkletContainer = function() {
 	popup = document.createElement("div");
 	popup.className = popup.className + "noted-bookmarklet";
 	$(popup).append('<div class="noted-spinner"></div>');
+	$(popup).append('<a href="https://notedapp.herokuapp.com" target="_blank"><img src="bookmarklet_logo.png" class="noted-logo" /></a>');
+	$(popup).append('<a href="#!" onclick="closeNoted()"><img src="bookmarklet_close.png" class="noted-close" /></a>');
 	$(popup).append('<h1 class="status-message"></h1>');
 	$(popup).append('<h1 class="sub-message"></h1>');
 	document.body.appendChild(popup);

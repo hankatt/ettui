@@ -43,7 +43,7 @@
 	transition: max-height .67s ease-out;
 	font-family: "Open Sans", Helvetica, sans-serif;
 	font-weight: 300;
-	font-size: 15px;
+	font-size: 14px;
 	text-align: center;
 	color: #9e9c98;
 }
@@ -53,6 +53,29 @@
 		left: 20px;
 		top: 20px;
 	}
+}
+
+.noted-bookmarklet .noted-logo,
+.noted-bookmarklet .noted-close {
+	opacity: 0;
+	transition: opacity .83s;
+	margin-top: 20px;
+}
+
+.noted-bookmarklet .noted-logo.visible,
+.noted-bookmarklet .noted-close.visible {
+	display: block;
+	opacity: 1;
+}
+
+.noted-bookmarklet .noted-logo {
+	float: left;
+	margin-left: 20px;
+}
+
+.noted-bookmarklet .noted-close.visible {
+	float: right;
+	margin-right: 20px;
 }
 
 .noted-bookmarklet .status-message,
@@ -75,21 +98,23 @@
 
 .noted-bookmarklet .status-message {
 	font-weight: 600;
-	margin-top: 28px;
-	margin-bottom: 3px;
-	font-size: 21px;
+	margin-top: 40px;
+	margin-bottom: 5px;
+	font-size: 20px;
+	clear: both;
 }
 
 .noted-bookmarklet .sub-message {
 	text-align: center;
 	margin-bottom: 28px;
 	margin-top: 0;
+	font-weight: 300;
+	line-height: 14px;
 }
 
 .noted-bookmarklet .noted-content-container {
 	overflow: auto;
 	display: none;
-	opacity: 0;
 }
 
 
@@ -103,6 +128,11 @@
 	border-bottom: solid 1px #595857;
 	transition: color .06s ease-out;
 	margin: 0;
+	font-weight: 300;
+}
+
+.noted-bookmarklet .noted-tag:hover {
+	cursor: pointer;
 }
 
 .noted-bookmarklet .noted-tag:first-of-type {
@@ -126,9 +156,11 @@
 	padding: 0px 14px;
 	box-sizing: border-box;
 	text-align: center;
-	margin: 20px 0;
+	margin: 20px auto;
 	border-radius: 3px;
 	outline: transparent;
+	box-shadow: none;
+	font-weight: 300;
 }
 
 .noted-bookmarklet input#noted-new-tag:hover {
@@ -149,4 +181,5 @@
 	padding: 6px 10px 8px;
 	text-decoration: none;
 	border-radius: 3px;
+	font-weight: 300;
 }

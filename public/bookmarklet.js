@@ -72,7 +72,6 @@ jquery.onload = function() {
 					ncc = $(".noted-content-container");
 					ncc.append("<div class='tag-container'></div>");
 					ncc.append("<div class='add-tag-container'></div>");
-					ncc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
 					ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
 
 					// Add container and inputs for adding a new tag

@@ -1,6 +1,6 @@
 WebFontConfig = {
 	google: { 
-		families: [ 'Crimson+Text::latin', 'Open+Sans:600:latin' ]
+		families: [ 'Open+Sans:300,600:latin' ]
 	}
 };
 
@@ -15,7 +15,7 @@ WebFontConfig = {
 })();
 
 jquery = document.createElement("script");
-jquery.className = "noted-function";
+jquery.className = "noted-temporary-function-tbr";
 jquery.src = "https://code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
@@ -33,6 +33,7 @@ jquery.onload = function() {
 	$(function() {
 		if(document.getSelection().toString() === "") {
 			alert("Empty selection.");
+			closeNoted();
 		} else {
 			var params = {
 				user_token: current_user_token,

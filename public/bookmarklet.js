@@ -81,8 +81,9 @@ jquery.onload = function() {
 					$("#noted-new-tag").focus();
 
 					/* Append tags to popup */
-					for(i = 0; i < data.tags.length; i++)
+					for(i = 0; i < data.tags.length; i++) {
 						$(".tag-container").append(createElementWithClass("li", "noted-tag tid-" +data.tags[i].id, data.tags[i].name));
+					}
 
 					setTimeout(function() {
 						/* Remove loading spinner */
@@ -176,7 +177,7 @@ jquery.onload = function() {
 				$(".sub-message").html(data.submessage);
 
 				if(data.add === true)
-					$(".tag-container").append(createElementWithClass("li", "noted-tag selected tid-" +data.tag.name, data.tag.name));
+					$(".tag-container").append(createElementWithClass("li", "noted-tag selected tid-" +data.tag.id, data.tag.name));
 				
 				if(data.update === true)
 					$(".tag-container > .tid-" +data.tag.id).addClass('selected');

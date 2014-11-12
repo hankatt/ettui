@@ -50,8 +50,9 @@ jquery.onload = function() {
 
 		/* Append existing tags to popup */
 		
-		for(i = 0; i < 6; i++)
+		for(i = 0; i < 6; i++) {
 			$(".tag-container").append(createElementWithClass("li", "noted-tag", "test"));
+		}
 
 		setTimeout(function() {
 			/* Remove loading spinner */
@@ -111,7 +112,6 @@ createAndAppendBookmarkletContainer = function() {
 	popup.className = popup.className + "noted-bookmarklet";
 	$(popup).append('<div class="noted-spinner"></div>');
 	$(popup).append('<a href="https://notedapp.herokuapp.com" target="_blank"><div class="noted-logo"></div></a>');
-	$(popup).append('<a href="#!" onclick="closeNoted()"><div class="noted-close"></div></a>');
 	$(popup).append('<h1 class="status-message"></h1>');
 	$(popup).append('<h1 class="sub-message"></h1>');
 	document.body.appendChild(popup);

@@ -1,6 +1,6 @@
 WebFontConfig = {
 	google: { 
-		families: [ 'Crimson+Text::latin', 'Open+Sans:600:latin' ]
+		families: [ 'Open+Sans:300,600:latin' ]
 	}
 };
 

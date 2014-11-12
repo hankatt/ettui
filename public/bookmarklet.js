@@ -146,7 +146,8 @@ jquery.onload = function() {
 
 					$("#noted-new-tag-submit").on('click', function(e) {
 						new_tag = $(this).siblings('#noted-new-tag');
-						
+						console.log("new tag name:");
+						console.log(new_tag.val());
 						var params = {
 							user_token: current_user_token,
 							qid: session_data.qid,

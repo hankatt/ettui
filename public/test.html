@@ -1,4 +1,15 @@
-<a class="big button" href="javascript:(function() {
-			            document.body.appendChild(document.createElement('script')).src='http://localhost:3000/bookmarklet_test.js';
+<!DOCTYPE html>
+<html>
+<head>
+	<title>noted</title>
+	<script type="text/javascript" src="//use.typekit.net/vcm8wta.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1.0">
+</head>
+<body>
+	<a class="big button" href="javascript:(function() {
+			            document.body.appendChild(document.createElement('script')).src='http://192.168.1.65:3000/bookmarklet_test.js';
 			            current_user_token = '<%= current_user.token %>';
 			            })();">Drag me to your bookmarks bar</a>
+</body>
+</html>

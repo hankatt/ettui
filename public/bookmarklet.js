@@ -71,8 +71,14 @@ jquery.onload = function() {
 					notedBookmarklet.append("<div class='noted-content-container'></div>");
 					ncc = $(".noted-content-container");
 					ncc.append("<div class='tag-container'></div>");
+					ncc.append("<div class='add-tag-container'></div>");
 					ncc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
 					ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
+
+					// Add container and inputs for adding a new tag
+					atc = $(".noted-content-container .add-tag-container");
+					atc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
+					atc.append("<input type='submit' id='noted-new-tag-submit' value='Add'>");
 					$("#noted-new-tag").focus();
 
 					/* Append tags to popup */
@@ -137,6 +143,23 @@ jquery.onload = function() {
 							document.body.appendChild(jsonpScript);
 						}
 					});
+
+					$("#noted-new-tag-submit").on('click', function(e) {
+						new_tag = $(this).siblings('#noted-new-tag');
+						
+						var params = {
+							user_token: current_user_token,
+							qid: session_data.qid,
+							tag: new_tag.val(),
+							callback: "added"
+						}
+
+						/* Execute JSONP call using script tag. */
+						jsonpScript = document.createElement("script");
+						jsonpScript.className = "noted-temporary-function-tbr";
+						jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
+						document.body.appendChild(jsonpScript);
+					});
 				}
 			}
 		};
@@ -184,8 +207,8 @@ createAndAppendBookmarkletContainer = function() {
 	popup = document.createElement("div");
 	popup.className = popup.className + "noted-bookmarklet";
 	$(popup).append('<div class="noted-spinner"></div>');
-	$(popup).append('<a href="https://notedapp.herokuapp.com" target="_blank"><img src="https://notedapp.herokuapp.com/bookmarklet_logo.png" class="noted-logo" /></a>');
-	$(popup).append('<a href="#!" onclick="closeNoted()"><img src="https://notedapp.herokuapp.com/bookmarklet_close.png" class="noted-close" /></a>');
+	$(popup).append('<a href="https://notedapp.herokuapp.com" target="_blank"><div class="noted-logo"></div></a>');
+	$(popup).append('<a href="#!" onclick="closeNoted()"><div class="noted-close"></div></a>');
 	$(popup).append('<h1 class="status-message"></h1>');
 	$(popup).append('<h1 class="sub-message"></h1>');
 	document.body.appendChild(popup);

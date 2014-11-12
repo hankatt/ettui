@@ -28,24 +28,33 @@
 }
 
 .noted-bookmarklet {
+	-webkit-overflow-scrolling: touch;
+	-webkit-font-smoothing: antialiased;
 	width: calc(100% - 40px);
 	max-width: 360px;
 	max-height: 147px;
-	background-color: #3d3c3a;
+	background-color: #242322;
 	z-index: 20000;
 	position: fixed;
 	top: 120px;
 	left: calc(50% - 180px);
 	opacity: 1;
-	padding-bottom: 28px;
+	padding-bottom: 20px;
 	box-shadow: 0 0 61px rgba(0, 0, 0, 0.23);
-	-webkit-font-smoothing: antialiased;
-	transition: max-height .67s ease-out;
+	transition: max-height 1s ease-out;
 	font-family: "Open Sans", Helvetica, sans-serif;
 	font-weight: 300;
 	font-size: 14px;
 	text-align: center;
 	color: #9e9c98;
+}
+
+.noted-bookmarklet .noted-logo.visible,
+.noted-bookmarklet .noted-close.visible,
+.noted-bookmarklet .noted-tag,
+.noted-bookmarklet #noted-close-btn,
+.noted-bookmarklet input {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 @media only screen and (min-width : 280px) and (max-width : 400px) {
@@ -66,16 +75,36 @@
 .noted-bookmarklet .noted-close.visible {
 	display: block;
 	opacity: 1;
+	background-size: contain;
 }
 
 .noted-bookmarklet .noted-logo {
 	float: left;
 	margin-left: 20px;
+	height: 24px;
+	width: 24px;
+	background: transparent url('http://notedapp.herokuapp.com/bookmarklet_logo.png') no-repeat;
 }
 
-.noted-bookmarklet .noted-close.visible {
+.noted-bookmarklet .noted-close {
 	float: right;
 	margin-right: 20px;
+	height: 19px;
+	width: 19px;
+	background-size: 19px;
+	background: transparent url('http://notedapp.herokuapp.com/bookmarklet_close.png') no-repeat;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    /* Retina-specific stuff here */
+
+    .noted-bookmarklet .noted-logo {
+    	background-image: url('http://notedapp.herokuapp.com/bookmarklet_logo@2x.png');
+    }
+
+    .noted-bookmarklet .noted-close {
+    	background-image: url('http://notedapp.herokuapp.com/bookmarklet_close@2x.png');
+    }
 }
 
 .noted-bookmarklet .status-message,
@@ -106,7 +135,7 @@
 
 .noted-bookmarklet .sub-message {
 	text-align: center;
-	margin-bottom: 28px;
+	margin-bottom: 20px;
 	margin-top: 0;
 	font-weight: 300;
 	line-height: 14px;
@@ -120,15 +149,16 @@
 
 .noted-bookmarklet .noted-tag {
 	width: 100%;
-	height: 36px;
-	line-height: 36px;
+	height: 28px;
+	line-height: 28px;
 	background-color: transparent;
 	text-transform: lowercase;
 	list-style-type: none;
-	border-bottom: solid 1px #595857;
+	border-bottom: solid 1px #333130;
 	transition: color .06s ease-out;
 	margin: 0;
 	font-weight: 300;
+	font-size: 12px;
 }
 
 .noted-bookmarklet .noted-tag:hover {
@@ -136,21 +166,30 @@
 }
 
 .noted-bookmarklet .noted-tag:first-of-type {
-	border-top: solid 1px #595857;
+	border-top: solid 1px #333130;
 }
 
 .noted-bookmarklet .noted-tag.selected {
-	background-color: #595857;
+	background-color: #333130;
 }
 
 .noted-bookmarklet .noted-tag:before {
 	content: '#';
 }
 
-.noted-bookmarklet input#noted-new-tag {
+.noted-bookmarklet .add-tag-container {
 	width: calc(100% - 40px);
+	margin: 0 auto;
+	overflow: auto;
+}
+
+.noted-bookmarklet input#noted-new-tag,
+.noted-bookmarklet input#noted-new-tag-submit {
 	height: 36px;
 	line-height: 36px;
+}
+
+.noted-bookmarklet input#noted-new-tag {
 	border: none;
 	background-color: rgba(0, 0, 0, .19);
 	padding: 0px 14px;
@@ -161,22 +200,45 @@
 	outline: transparent;
 	box-shadow: none;
 	font-weight: 300;
+	float: left;
+	width: calc(100% - 50px);
 }
 
-.noted-bookmarklet input#noted-new-tag:hover {
+.noted-bookmarklet input#noted-new-tag-submit {
+	-webkit-appearance: none;
+	color: #f6f3f0;
+	background-color: #333130;
+	border: none;
+	line-height: 35px;
+	width: 45px;
+	height: 35px;
+	border-radius: 3px;
+	margin: 20px 0;
+	padding: 0 10px;
+	float: right;
+	text-align: center;
+}
+
+.noted-bookmarklet input#noted-new-tag-submit:active {
+	outline: none;
+}
+
+.noted-bookmarklet input#noted-new-tag:hover,
+.noted-bookmarklet input#noted-new-tag-submit:hover,
+.noted-bookmarklet #noted-close-btn {
 	background-color: rgba(0, 0, 0, .29);
 }
 
 .noted-bookmarklet input#noted-new-tag::-webkit-input-placeholder {  
    font-style: italic;
-   color: #595857;
+   color: #333130;
 }
 
 .noted-bookmarklet #noted-close-btn {
 	display: inline-block;
 	text-align: center;
 	border: none;
-	background-color: #595857;
+	background-color: #333130;
 	margin: 0 auto;
 	padding: 6px 10px 8px;
 	text-decoration: none;

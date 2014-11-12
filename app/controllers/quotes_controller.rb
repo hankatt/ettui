@@ -103,8 +103,8 @@ class QuotesController < ApplicationController
       # Find the quote we are adding tags to
       @quote = Quote.find(params[:qid])
 
-      # Extract the tag
-      tag = URI.unescape(params[:tag])
+      # Extract the tag (important to downcase for searchability further down)
+      tag = URI.unescape(params[:tag]).downcase
 
       # Flags used in local_add_tag.js.erb, to decide what to do with the UI
       @flags = { :update => false, :add => false }
@@ -117,6 +117,7 @@ class QuotesController < ApplicationController
 
       # If the tag does not already have the tag: Add it.
       if !@quote.has_tag(tag)
+
         # Attach tag to the quote owned by the user's board
         tags = @quote.append_tag(tag)
 
@@ -129,7 +130,7 @@ class QuotesController < ApplicationController
       if @board.save
 
         @quote.reload # Update quote when tag is saved
-        @tag = @quote.tags.find_by_name(URI.unescape(params[:tag])) # Retrieve the actual tag
+        @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag
 
         # General callback data set
         data = { 

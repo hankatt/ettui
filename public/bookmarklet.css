@@ -107,6 +107,10 @@
 	font-weight: 300;
 }
 
+.noted-bookmarklet .noted-tag:hover {
+	cursor: pointer;
+}
+
 .noted-bookmarklet .noted-tag:first-of-type {
 	border-top: solid 1px #595857;
 }

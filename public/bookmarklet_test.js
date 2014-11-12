@@ -103,7 +103,7 @@ jquery.onload = function() {
 createElementWithClass = function(element_type, element_class, element_text) {
 	elem = document.createElement(element_type);
 	elem.className = elem.className + element_class;
-	elem.innerText = element_text;
+	elem.innerHTML = element_text;
 	return elem.outerHTML;
 }
 
@@ -112,6 +112,7 @@ createAndAppendBookmarkletContainer = function() {
 	popup.className = popup.className + "noted-bookmarklet";
 	$(popup).append('<div class="noted-spinner"></div>');
 	$(popup).append('<a href="https://notedapp.herokuapp.com" target="_blank"><div class="noted-logo"></div></a>');
+	$(popup).append('<a href="#!" onclick="closeNoted()"><div class="noted-close"></div></a>');
 	$(popup).append('<h1 class="status-message"></h1>');
 	$(popup).append('<h1 class="sub-message"></h1>');
 	document.body.appendChild(popup);

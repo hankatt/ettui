@@ -199,7 +199,7 @@ jquery.onload = function() {
 createElementWithClass = function(element_type, element_class, element_text) {
 	elem = document.createElement(element_type);
 	elem.className = elem.className + element_class;
-	elem.innerText = element_text;
+	elem.innerHTML = element_text;
 	return elem.outerHTML;
 }
 

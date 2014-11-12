@@ -1,0 +1,132 @@
+WebFontConfig = {
+	google: { 
+		families: [ 'Open+Sans:300,600:latin' ]
+	}
+};
+
+(function() {
+	var wf = document.createElement('script');
+	wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	  '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	wf.type = 'text/javascript';
+	wf.async = 'true';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(wf, s);
+})();
+
+jquery = document.createElement("script");
+jquery.className = "noted-function";
+jquery.src = "http://code.jquery.com/jquery-2.1.1.min.js";
+document.body.appendChild(jquery);
+
+css = document.createElement("link");
+css.className = "noted-temporary-function-tbr";
+css.href = "http://localhost:3000/bookmarklet_test.css";
+css.type = "text/css";
+css.rel = "stylesheet";
+document.body.appendChild(css);
+
+jquery.onload = function() {
+	popup = "", jsonpScript = "";
+	session_data = {};
+
+	$(function() {
+		/* Defines the look of the popup being created when you click the bookmarklet. */
+		createAndAppendBookmarkletContainer();
+		notedBookmarklet = $(".noted-bookmarklet");
+
+		console.log("AAA");
+		/* Add HTML semantics for the tags */
+		notedBookmarklet.append("<div class='noted-content-container'></div>");
+		ncc = $(".noted-content-container");
+		ncc.append("<div class='tag-container'></div>");
+		ncc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
+		ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
+		$("#noted-new-tag").focus();
+
+		/* Append tags to popup */
+		
+		for(i = 0; i < 6; i++)
+			$(".tag-container").append(createElementWithClass("li", "noted-tag", "test"));
+
+		setTimeout(function() {
+			/* Remove loading spinner */
+			$(".noted-spinner").remove();
+
+			/* Output callback status messages */
+			$(".status-message").html("Quote saved.");
+			$(".sub-message").html("Add some tags below.");
+
+			notedBookmarklet.css('max-height', $(this).height() + ncc.height());
+			ncc.show().animate({
+				opacity: 1
+			}, 670, function() {
+				$("#noted-new-tag").focus();
+			});
+		}, 2000);
+
+		$(".noted-tag").click(function() {
+			$(this).addClass('selected');
+		});
+
+		/* Define function that deals with JSONP callback */
+		quoteCallback = function status(data) {
+
+			/* Deal with response */
+			if(data && data.message) {
+				if(data.action === "tags") {
+
+					/* Save q.id for later access */
+					session_data.qid = data.qid;
+
+					$(".noted-tag").click(function() {
+
+						$(this).addClass('selected');
+
+						var params = {
+							user_token: current_user_token,
+							qid: session_data.qid,
+							tag: $(this).text(),
+							callback: "added"
+						}
+
+						/* Execute JSONP call using script tag. */
+						jsonpScript = document.createElement("script");
+						jsonpScript.className = "noted-temporary-function-tbr";
+						jsonpScript.src =  "//localhost:3000/add/tag_remotely/?" + jQuery.param(params);
+						document.body.appendChild(jsonpScript);
+					});
+
+					$("#noted-new-tag").keyup(function (e) {
+					    if (e.keyCode == 13) {
+							new_tag = $(this);
+							$(".tag-container").append(createElementWithClass("li", "noted-tag selected", new_tag.val()));
+						}
+					});
+				}
+			}
+		};
+
+	});
+};
+
+createElementWithClass = function(element_type, element_class, element_text) {
+	elem = document.createElement(element_type);
+	elem.className = elem.className + element_class;
+	elem.innerText = element_text;
+	return elem.outerHTML;
+}
+
+createAndAppendBookmarkletContainer = function() {
+	popup = document.createElement("div");
+	popup.className = popup.className + "noted-bookmarklet";
+	$(popup).append('<div class="noted-spinner"></div>');
+	$(popup).append('<h1 class="status-message"></h1>');
+	$(popup).append('<h1 class="sub-message"></h1>');
+	document.body.appendChild(popup);
+}
+
+closeNoted = function() {
+	$(".noted-bookmarklet").remove();
+	$(".noted-temporary-function-tbr").remove();
+}

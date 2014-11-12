@@ -34,7 +34,7 @@
 	max-width: 360px;
 	max-height: 147px;
 	background-color: #242322;
-	z-index: 100000000;
+	z-index: 999999999;
 	position: fixed;
 	top: 120px;
 	left: calc(50% - 180px);

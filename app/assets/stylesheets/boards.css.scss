@@ -97,8 +97,9 @@
 	width: 100%;
 	height: 36px;
 	border-radius: 18px;
+	font-family: $font-family-serif;
 	font-weight: 400;
-	background-color: #f6f3f0;
+	border: solid 1px $t-stroke-color;
 	line-height: 36px;
 	&::-webkit-input-placeholder {
    		color: $t-secondary-color;
@@ -186,8 +187,8 @@
 				color: $t-primary-color;
 			}
 			& .filter-count {
-				background-color: $t-primary-color;
-				color: $sidebar-background-color;
+				background-color: $t-stroke-color;
+				color: $t-primary-color;
 			}
 			&:hover .filter-count { 
 				border-color: transparent;

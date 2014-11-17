@@ -20,16 +20,16 @@
 	border-radius: 12px;
 	display: inline-block;
 	border: solid 1px transparent;
-	padding: 4px 7px 4px 6px;
+	padding: 5px 7px 4px 6px;
 	float: right;
-	margin-top: 3px;
+	margin-top: 1px;
 	margin-right: 1px;
 
 	& > p {
 		-webkit-font-feature-settings: 'tnum';
 		-moz-font-feature-settings: 'tnum';
 		-ms-font-feature-settings: 'tnum';
-		font-family: $font-family-sans;
+		font-family: $font-family-serif;
 		line-height: 12px;
 		margin: 0;
 		letter-spacing: -1px;

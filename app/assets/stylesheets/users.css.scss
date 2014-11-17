@@ -54,11 +54,13 @@ div.error_explanation ul {
 	margin: 0 auto $spacing-0;
 	font-size: 40px;
 	line-height: 47px;
+	font-weight: bold;
 	& em {
 		line-height: inherit;
 		font-size: inherit;
 		font-weight: inherit;
 		font-style: inherit;
+		font-family: inherit;
 		color: rgba(0, 0, 0, .29);
 	}
 
@@ -146,7 +148,6 @@ header .inline.link img {
 	text-decoration: none;
 	text-transform: none;
 	font-size: 20px;
-	letter-spacing: 1px;
 }
 
 .splash-container .big.button {

@@ -6,7 +6,21 @@
 	width: 100%;
 	min-height: 100%;
 	background-color: $main-background-color;
-	padding: $spacing-4 0 $spacing-4;
+	padding: ($spacing-4 + 4) 0 $spacing-4;
+	position: relative;
+}
+
+.sidebar-toggle-column {
+	width: 105px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	z-index: 1; /* To place it above it all so it always works. */
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .sidebar-toggle {
@@ -14,22 +28,27 @@
 	margin-top: $spacing-4 + $spacing-2;
 }
 
-.sidebar-toggle-column {
-	width: 105px;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: transparent;
-	z-index: 1; /* To place it above it all so it always works. */
+.sidebar-close {
+	display: none;
+}
 
-	&:hover {
-		background-color: rgba(0, 0, 0, .05);
-		cursor: pointer;
-	}
-	& img {
-		display: block !important;
-	}
+.icon {
+	width: 25px;
+	height: 25px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 50%;
+}
+
+#search-filter .icon-menu {
+	position: relative;
+	top: 3px;
+	background-image: image-url('menu-icon-grey.png');
+}
+
+#search-filter.active .icon-menu {
+	top: 0;
+	background-image: image-url('menu-close.png');
 }
 
 .quotes-container {
@@ -60,13 +79,13 @@
 
 .search-field-container {
 	position: relative;
-	margin: $spacing-4 auto $spacing-2;
+	margin: $spacing-2 auto $spacing-2;
 	width: 100%;
 	& img {
 		position: absolute;
-		top: 10px;
-		left: 0px;
-		height: 21px;
+		top: 9px;
+		left: 11px;
+		height: 20px;
 	}
 	& .submit {
 		display: none;
@@ -74,14 +93,13 @@
 }
 
 .search-field {
-	padding: 0px 0px 0px 24px;
-	border-bottom: solid 1px $t-stroke-color;
+	padding: 0px 0px 0px $spacing-4;
 	width: 100%;
-	height: 40px;
-	line-height: 42px;
-	border-radius: 0;
-	font-weight: 200;
-	font-size: $font-size-sans-2;
+	height: 36px;
+	border-radius: 18px;
+	font-weight: 400;
+	background-color: #f6f3f0;
+	line-height: 36px;
 	&::-webkit-input-placeholder {
    		color: $t-secondary-color;
    	}
@@ -137,20 +155,19 @@
 			overflow-y: hidden;
 			transition: color .1s, opacity .1s, background-color .1s, border-color .1s;
 			& button {
-				line-height: 30px;
+				line-height: 28px;
 				position: absolute;
 				left: 0;
-				padding-left: 37px;
+				padding-left: 34px;
 				width: 100%;
 				text-align: left;
 			}
 			& .source-favicon {
-				background-size: 24px;
 				background-repeat: no-repeat;
 				background-color: #fff;
 				background-position: 50%;
-				width: 28px;
-				height: 28px;
+				width: 24px;
+				height: 24px;
 			}
 		}
 		& 	.sidebar-list-item.active,
@@ -169,8 +186,8 @@
 				color: $t-primary-color;
 			}
 			& .filter-count {
-				background-color: $t-stroke-color;
-				color: $t-primary-color;
+				background-color: $t-primary-color;
+				color: $sidebar-background-color;
 			}
 			&:hover .filter-count { 
 				border-color: transparent;
@@ -179,7 +196,7 @@
 	}
 
 	& .sidebar-list.status {
-		padding-top: 5px;
+		padding-top: 0;
 		& button, .filter-count {
 			color: $t-primary-color;
 		}
@@ -219,63 +236,8 @@
 	}
 
 	& .sidebar-list.filters .sidebar-list-item {
-		margin-bottom: 8px;
+		margin-bottom: 9px;
 	}
-}
-
-.sidebar-profile-container {
-	margin-top: $spacing-3;
-	position: relative;
-
-	& .profile-photo, .profile-name, .description {
-		display: block;
-		text-align: center;
-		margin: 0 auto;
-		line-height: 15px;
-	}
-	& .profile-photo {
-		width: 40px;
-		height: 40px;
-		border-radius: 20px;
-	}
-	& .profile-name {
-		margin-top: $spacing-0;
-		letter-spacing: 1px;
-	}
-	& .description {
-		margin-top: $spacing-0;
-		font-style: italic;
-		font-weight: 200;
-	}
-	& .logo {
-		width: 24px;
-		height: 24px;
-		box-sizing: content-box;
-		background: transparent image-url('logo_grey.png') no-repeat;
-		position: absolute;
-		background-size: 100%;
-		top: 0;
-		left: 0;
-	}
-
-	& .sidebar-close {
-		width: 24px;
-		height: 24px;
-		box-sizing: content-box;
-		background: transparent image-url('menu-close.png') no-repeat;
-		position: absolute;
-		top: 0;
-		right: 0;
-		background-size: 11px;
-		background-position: 50%;
-		border: solid 1px $t-stroke-color;
-		border-radius: 3px;
-		&:hover {
-			cursor: pointer;
-			border-color: $t-secondary-color;
-		}
-	}
-
 }
 
 /* Sidebar profile */
@@ -283,25 +245,81 @@
 .profile-section-container {
 	position: absolute;
 	width: 100%;
-	padding: 0;
+	padding: $spacing-2;
 	bottom: 0;
 	left: 0;
+	border-top: solid 1px $t-stroke-color;
 }
 
-.profile-section {
-	margin-top: 0;
-	padding: $spacing-2 0 $spacing-2 $spacing-1;
-	border-top: solid 1px $w-stroke-color;
-	& a:first-of-type:before {	
-		content: '';
-		margin: 0;
+.sidebar-container .noted-logo-container {
+	width: 100%;
+	display: block;
+	position: relative;
+	margin: $spacing-2 0;
+}
+
+.sidebar-container .noted-stroke {
+	width: 100%;
+	height: 1px;
+	background-color: #eee;
+	position: absolute;
+	top: 12px;
+	z-index: -1000;
+}
+.sidebar-container .noted-logo {
+	width: 24px;
+	height: 24px;
+	box-sizing: content-box;
+	background: $sidebar-background-color image-url('logo_new_grey.png') no-repeat 50%;
+	background-size: 24px;
+	margin: 0 auto;
+	padding: 0 $spacing-3;
+}
+
+.sidebar-profile-container {
+	margin-left: $spacing-0;
+	position: relative;
+
+	& .profile-photo, .profile-name, .description {
+		display: block;
+		margin: 0 auto;
+		line-height: 15px;
 	}
-	& a::before {
-		content: '·';
-		margin: 0 7px 0 3px;
-		font-weight: bold;
+	& .profile-photo {
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		float: left;
+		margin-right: 10px;
+	}
+	& .profile-name {
+		line-height: 16px;
+		padding-top: 3px;
+		font-weight: 500;
+	}
+	& .profile-link {
+		font-size: 14px;
 		color: $t-secondary-color;
 	}
+	& .profile-link:last-of-type::before {
+		content: "– ";
+		color: $t-secondary-color;
+		&:hover {
+			color: $t-secondary-color;
+		}
+	}
+
+	& .sidebar-close {
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
 }
 
 
@@ -323,19 +341,44 @@
 }
 
 @media only screen and (min-width : 319px) {
-	div.sidebar-toggle-column,
 	.boards_header .logo-container {
 		display: block;
 	}
+
+	#search-filter.active div.sidebar-toggle-column {
+		display: none;
+	}
 }
 
-@media only screen and (min-width : 940px) {
-	div.sidebar-toggle-column {
+@media only screen and (min-width : 1280px) {
+	div.sidebar-toggle-column, #search-filter.active div.sidebar-toggle-column {
 		display: block;
 	}
 }
 
-@media only screen and (min-width : 320px) and (max-width : 1023px) {
+@media only screen and (min-width : 320px) and (max-width : 1279px) {
+
+	.sidebar-container .noted-logo-container {
+		width: auto;
+		display: inline;
+		margin: 0;
+	}
+
+	.sidebar-container .noted-logo {
+		margin: 0;
+		padding: 0;
+		float: left;
+		overflow: auto;
+	}
+
+	.sidebar-close {
+		display: block;
+		text-align: right;
+		color: $t-primary-color;
+		&:hover {
+			cursor: pointer;
+		}
+	}
 
 	.content-container {
 		padding-top: $spacing-5;
@@ -374,7 +417,7 @@
 	}
 
 	.sidebar-content {
-		padding: 0 $spacing-1;
+		padding: $spacing-2 $spacing-1;
 	}
 
 	.profile-section-container {
@@ -387,18 +430,10 @@
 	}
 }
 
-@media only screen and (min-width : 768px) and (max-width : 1023px) {
+@media only screen and (min-width : 768px) and (max-width : 1279px) {
 
 	.sidebar-toggle-column img {
 		margin-left: $spacing-3;
-	}
-
-	.sidebar-close {
-		display: none;
-	}
-
-	.sidebar-content {
-		padding: 0 $spacing-1;
 	}
 }
 

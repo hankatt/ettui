@@ -44,30 +44,19 @@ $(document).on('ready DOMChange', function() {
 
     });
 
-    $(".sidebar-toggle-column, .sidebar-toggle").on('click', function(event) {
-        if(!$("#search-filter").hasClass('active')) {
-            $("#search-filter").addClass('active');
-            $(".sidebar-toggle").fadeOut(70);
-        }
-    });
-
-    $(window).mouseup(function(e) {
+    $(window).unbind('click').bind('click', function(e) {
         if($("#search-filter").hasClass('active')) {
-            var container = $(".sidebar-container");
+            var container = $(".sidebar-toggle-column");
             var exceptions = $(".quote");
-            if (!container.is(e.target) && container.find(e.target).length === 0 && exceptions.find(e.target).length === 0) {
-                $(".sidebar-toggle").fadeIn(70);
-                $(".sidebar-toggle-column").fadeIn();
+            if (container.is(e.target) || container.find(e.target).length > 0) {
                 $("#search-filter").removeClass('active');
             }
-        }
-    });
-
-    $(document).on('click', function(event) {
-        if($(".popup").length > 0 && ($(event.target).hasClass('content-container') || $(event.target).hasClass('quotes-container') || $(event.target).hasClass('quote') || $(event.target).hasClass('sidebar-container') || $(event.target).hasClass('quote-content'))) {
-            $(".popup").fadeOut('fast', function() {
-                $(".popup").remove();
-            });
+        } else {
+            var container = $(".sidebar-toggle-column");
+            var exceptions = $(".quote");
+            if (container.is(e.target) || container.find(e.target).length > 0) {
+                $("#search-filter").addClass('active');
+            }
         }
     });
 
@@ -146,25 +135,6 @@ $(document).on('ready DOMChange', function() {
     });
 
 });
-
-function selectText(element) {
-    var doc = document,
-        text = doc.getElementById(element),
-        range,
-        selection;
-
-    if (doc.body.createTextRange) {
-        range = document.body.createTextRange();
-        range.moveToElementText(text);
-        range.select();
-    } else if (window.getSelection) {
-        selection = window.getSelection();        
-        range = document.createRange();
-        range.selectNodeContents(text);
-        selection.removeAllRanges();
-        selection.addRange(range);
-    }
-}
 
 function updateTag(params) {
     $.ajax({

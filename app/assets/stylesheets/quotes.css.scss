@@ -92,10 +92,12 @@
 	}
 
 	.quote-actions .append-tag {
-		margin-top: -2px;
+		margin-top: -1px;
 		opacity: 0;
 		float: left;
 		transition: opacity 0.09s ease-out;
+		font-size: $font-size-sans-1 !important;
+		padding: 2px 4px;
 	}
 
 	.quote-actions:hover .append-tag {
@@ -139,8 +141,11 @@
 
 	/* TAGS */
 
-	& .quote-tags {
+	& .quote-metadata .quote-tags {
 		float: left;
+		& a {
+			font-size: $font-size-sans-1;
+		}
 	}
 
 	& .quote-tags .quote-tag {

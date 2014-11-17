@@ -1,12 +1,12 @@
 <div class="sidebar-container list">
     <div class="sidebar-content">
         <!-- SOURCES FILTER !-->
-        <div class="sidebar-profile-container">
-          <a href="/"><div class="logo"></div></a>
-          <div class="sidebar-close"></div>
-          <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
-          <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "profile-name" %>
-          <p class="description">A collection of <%= pluralize(@board.quotes.count, 'quote') %> from <%= pluralize(@sources.count, 'site') %>.</p> 
+        <a href="/" class="noted-logo-container">
+          <div class="noted-logo"></div>
+          <!--<div class="noted-stroke"></div>!-->
+        </a>
+        <div class="sidebar-close">
+          <i class="fa fa-close"></i>
         </div>
         <div class="search-field-container">
             <%= image_tag "search-grey.png" %>
@@ -60,9 +60,11 @@
         <!-- PROFILE SECTION !-->
         <% if current_user %>
         <div class="profile-section-container">
-          <div class="profile-section">
-            <%= link_to "Bookmarklet", bookmarklet_path %> 
-            <%= link_to "Logout", logout_path, :class => "logout secondary" %>
+          <div class="sidebar-profile-container">
+            <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
+            <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "profile-name" %>
+            <%= link_to "Bookmarklet", bookmarklet_path, :class => "profile-link" %> 
+            <%= link_to "Logout", logout_path, :class => "profile-link" %>
           </div>
         </div>
         <% end %>

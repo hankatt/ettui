@@ -23,18 +23,31 @@ class QuotesController < ApplicationController
         
         # Readability Parser response
         response = Net::HTTP.get_response(uri)
-        @parsed = ActiveSupport::JSON.decode(response.body)
+        parsed = ActiveSupport::JSON.decode(response.body)
+
+        # Attributes to update
+        @title = parsed["title"]
+        @author = parsed["author"]
+
+        # Validate that it is just the author
+        # Assume most names won't use more than 4 names tops
+        # Assume most names won't be that long, 34 chars tops
+        if @author.nil? || @author.scan(/\w+/).size > 4 || @author.length > 34
+          @author = nil
+        end
+
       else
-        @parsed = {}
-        @parsed["title"] = "Noted: Installing the Bookmarklet"
+        @title = "Noted: Installing the Bookmarklet"
+        @author = nil
       end
 
       @quote = Quote.new({
         :text => URI.unescape(params[:text]), 
         :user_id => @user.id, 
-        :url => URI.unescape(params[:url]), 
+        :url => url, 
         :source_id => @source.id,
-        :readability_title => @parsed["title"]
+        :readability_title => @title,
+        :readability_author => @author
       })
 
       @quote.boards << @user.boards.first

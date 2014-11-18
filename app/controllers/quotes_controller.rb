@@ -246,39 +246,10 @@ class QuotesController < ApplicationController
     end
   end
 
-  def update_quotes_with_readability_parse_data
-    
-    # URL to Readability's Parser API
-    uri = URI('http://www.readability.com/api/content/v1/parser')
-    token = '34831792edfc0cf8e42b3e82086f00970a53407b'
-
-    Quote.all.each do |quote|
-      if quote.readability_title.nil? || quote.readability_author.nil?
-        # Format params for web encoding
-        uri.query = URI.encode_www_form({:url => quote.url, :token => token })
-
-        # Readability Parser response
-        response = Net::HTTP.get_response(uri)
-        parsed = ActiveSupport::JSON.decode(response.body)
-
-        # Attributes to update
-        readability_title = parsed["title"]
-        readability_author = parsed["author"]
-
-        # Validate that it is just the author
-        # Assume most names won't use more than 4 names tops
-        # Assume most names won't be that long, 34 chars tops
-        if readability_author.nil? || readability_author.scan(/\w+/).size > 4 || readability_author.length > 34
-          readability_author = nil
-        end
-
-        # Update attributes
-        quote.update(
-          :readability_title => readability_title, 
-          :readability_author => readability_author
-        )
-
-      end
+  def update_readability_data
+    quotes = current_user.boards.first.quotes.all
+    quotes.each do |quote|
+      quote.update_readability_data
     end
 
     respond_to do |format|

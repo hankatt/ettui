@@ -29,6 +29,36 @@ class Quote < ActiveRecord::Base
 		end
 	end
 
+	def update_readability_data
+		# URL to Readability's Parser API
+    	uri = URI('http://www.readability.com/api/content/v1/parser')
+    	token = '34831792edfc0cf8e42b3e82086f00970a53407b'
+
+        # Format params for web encoding
+        uri.query = URI.encode_www_form({:url => url, :token => token })
+        
+        # Readability Parser response
+        response = Net::HTTP.get_response(uri)
+        parsed = ActiveSupport::JSON.decode(response.body)
+
+        # Attributes to update
+        title = parsed["title"]
+        author = parsed["author"]
+
+        # Validate that it is just the author
+        # Assume most names won't use more than 4 names tops
+        # Assume most names won't be that long, 34 chars tops
+        if author.nil? || author.scan(/\w+/).size > 4 || author.length > 34
+          author = nil
+        end
+
+        # Update attributes
+        update(
+          :readability_title => title, 
+          :readability_author => author
+        )
+	end
+
 	def append_tag(new_tag)
 		@tags = new_tag
 

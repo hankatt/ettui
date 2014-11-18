@@ -15,6 +15,7 @@ gem 'rails', '4.0.0'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 
 group :development, :test do

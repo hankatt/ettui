@@ -30,7 +30,7 @@
                   <%= quote.source.hostname %>
                 </p>
                 <% unless quote.readability_author.nil? then %>
-                  <p class="quote-source-author"><%= quote.readability_author %></p>
+                  <p class="quote-source-author">by <%= quote.readability_author %></p>
                 <% end %>
                 <p class="quote-source-date visible">
                   <%= quote.created_at.day.to_s << " " << quote.created_at.strftime("%B").slice(0,3) %>

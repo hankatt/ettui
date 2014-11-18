@@ -72,10 +72,6 @@
 		}
 
 		& .quote-source-status-new { opacity: 1; }
-
-		&:hover {
-			& .quote-source-status-new { opacity: 0; display: none; }
-		}
 	}
 
 	&.unread .quote-source-status-new {

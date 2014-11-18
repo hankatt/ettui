@@ -150,6 +150,9 @@
 	margin-top: $spacing-2;
 	& .sidebar-list {
 		padding-top: $spacing-0;
+		&.tags {
+			padding-top: 4px;
+		}
 		font-weight: 400;
 		& .sidebar-list-item {
 			position: relative;
@@ -159,7 +162,7 @@
 				line-height: 28px;
 				position: absolute;
 				left: 0;
-				padding-left: 34px;
+				padding-left: 31px;
 				width: 100%;
 				text-align: left;
 			}

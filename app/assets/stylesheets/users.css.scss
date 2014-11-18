@@ -61,7 +61,7 @@ div.error_explanation ul {
 		font-weight: inherit;
 		font-style: inherit;
 		font-family: inherit;
-		color: rgba(0, 0, 0, .29);
+		color: $w-signature-color;
 	}
 
 	& + div, .button {
@@ -291,12 +291,12 @@ header .inline.link img {
 	}
 
 .progress-item {
-	font-size: $font-size-sans-2;
+	font-size: $font-size-serif-1;
 	width: $spacing-3;
 	height: $spacing-3;
 	border-radius: $spacing-3 / 2;
-	background-color: $w-stroke-color;
-	color: $w-primary-color;
+	background-color: $w-signature-color;
+	color: $quote-background-color;
 	margin: $spacing-2 auto; 
 	display: block;
 	line-height: 30px;
@@ -377,7 +377,7 @@ header .inline.link img {
 	overflow: auto;
 	display: inline-block;
 	border-radius: 7px;
-	border: solid 1px $w-signature-color;
+	border: solid 1px $w-stroke-color;
 }
 
 .segment-control {
@@ -389,9 +389,6 @@ header .inline.link img {
 		width: auto;
 		margin: $spacing-0 0;
 	}
-	&:first-of-type {
-		border-right: solid 1px $w-signature-color;;
-	}
 	&:hover {
 		& h4 {
 			color: $w-primary-color;
@@ -399,12 +396,9 @@ header .inline.link img {
 		cursor: pointer;
 	}
 	&.active {
-		background-color: $w-signature-color;
+		background-color: $w-stroke-color;
 		& h4 {
-			color: white;
-		}
-		&:hover {
-			color: $t-primary-color;
+			color: $w-primary-color;
 		}
 	}
 	& h4 {

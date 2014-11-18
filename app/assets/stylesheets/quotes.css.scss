@@ -71,11 +71,9 @@
 			display: block;
 		}
 
-		& .quote-source-date { opacity: 0; }
 		& .quote-source-status-new { opacity: 1; }
 
 		&:hover {
-			& .quote-source-date { opacity: 1; }
 			& .quote-source-status-new { opacity: 0; display: none; }
 		}
 	}

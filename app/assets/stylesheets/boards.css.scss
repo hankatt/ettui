@@ -330,8 +330,13 @@
 .profile-mainpage-container{
 	padding: 0 0 $spacing-2;
 	width: 100%;
-	text-align: center
+	text-align: center;
+	& .profile-name {
+		font-size: $font-size-serif-3;
+		font-weight: bold;
+	}
 }
+
 .profile-mainpage-container .profile-photo{
 	width:32px;
 	height:32px;
@@ -452,6 +457,13 @@
 	.quotes-container {
 		padding: 0 0 0;
 	}
+
+	.profile-mainpage-container{
+		& .profile-name {
+			font-size: $font-size-serif-2;
+			font-weight: bold;
+		}
+}
 
 	.sidebar-toggle {
 		margin-left: $spacing-2;

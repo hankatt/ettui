@@ -13,6 +13,12 @@
         <div class="sidebar-toggle-column">
             <div class="sidebar-toggle icon icon-menu"></div>
         </div>
+        <div class="profile-mainpage-container">
+          <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
+          <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %>'s</h4>
+          <p>collection of <%= pluralize(@board.quotes.count, 'quote') %>
+            from <%= pluralize(@sources.count, 'site') %>.</p>
+        </div>  
         <!-- 
                 QUOTES
                             !-->

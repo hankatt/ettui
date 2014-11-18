@@ -11,7 +11,7 @@
 	max-width: 720px;
 	min-width: 320px;
 	margin: $spacing-2 auto;
-	padding: $spacing-2 $spacing-4;
+	padding: $spacing-2 $spacing-3;
 	color: $w-primary-color;
 	font-size: $font-size-sans-1;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
@@ -21,7 +21,7 @@
 		color: $w-secondary-color;
 		overflow-y: hidden;
 		& h4, p, a {
-			font-size: $font-size-serif-1;
+			font-size: 14px;
 			margin: 0;	
 		}
 	}
@@ -34,30 +34,34 @@
 	}
 
 	& .quote-source-data-container {
-		float: right;
-		position: relative;
+		& p {
+			text-align: left;
+			float: left;
+		}
+		& p::before {
+			content: " · ";
+			margin-left: 4px;
+			margin-right: 1px;
+		}
+		& p:first-of-type::before {
+			content: normal;
+			margin-left: 0;
+		}
 	}
 
 	& .quote-source-title-data-wrapper {
-		padding-left: 31px;
+		padding-left: 35px;
+		margin-top: -4px;
 	}
 
 	.quote-source-title,
 	.quote-source-date {
-		position: relative;
-		top: 2px;
 		font-family: $font-family-serif;
 	}
 
 	& .quote-source-title {
 		font-weight: bold;
 		color: $w-primary-color;
-	}
-
-	& .quote-source-date {
-		width: 100%;
-		text-align: right;
-		text-transform: none;
 	}
 
 	&.unread {
@@ -264,17 +268,17 @@
 @media only screen and (min-width : 641px) {
 
 	.quote-content.small p {
-		font-size: 16px;
+		font-size: 15px;
 		line-height: 1.7em;
 	}
 
 	.quote-content p {
 		font-size: 21px; /* 19.5px */
-		line-height: 1.8em;
+		line-height: 1.7em;
 	}
 
 	.quote-content.big p {
-		font-size: 29px; /* 25.35px */
+		font-size: 30px; /* 25.35px */
 		line-height: 1.7em;
 	}
 }

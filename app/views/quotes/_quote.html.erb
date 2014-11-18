@@ -26,7 +26,15 @@
               <% end %>
               <div class="quote-source-status-new hidden"></div>
               <div class="quote-source-data-container">
-                <p class="quote-source-date visible"><%= quote.created_at.day.to_s << ". " << quote.created_at.strftime("%B").slice(0,3) %></p>
+                <p class="quote-source-hostname">
+                  <%= quote.source.hostname %>
+                </p>
+                <% unless quote.readability_author.nil? then %>
+                  <p class="quote-source-author"><%= quote.readability_author %></p>
+                <% end %>
+                <p class="quote-source-date visible">
+                  <%= quote.created_at.day.to_s << " " << quote.created_at.strftime("%B").slice(0,3) %>
+                </p>
               </div>
             </div>
         </div>

@@ -253,7 +253,7 @@ class QuotesController < ApplicationController
     token = '34831792edfc0cf8e42b3e82086f00970a53407b'
 
     Quote.all.each do |quote|
-      if quote.readability_title.nil?
+      if quote.readability_title.nil? || quote.readability_author.nil?
         # Format params for web encoding
         uri.query = URI.encode_www_form({:url => quote.url, :token => token })
 
@@ -261,8 +261,23 @@ class QuotesController < ApplicationController
         response = Net::HTTP.get_response(uri)
         parsed = ActiveSupport::JSON.decode(response.body)
 
+        # Attributes to update
+        readability_title = parsed["title"]
+        readability_author = parsed["author"]
+
+        # Validate that it is just the author
+        # Assume most names won't use more than 4 names tops
+        # Assume most names won't be that long, 34 chars tops
+        if readability_author.nil? || readability_author.scan(/\w+/).size > 4 || readability_author.length > 34
+          readability_author = nil
+        end
+
         # Update attributes
-        quote.update_attributes(:readability_title => parsed["title"])
+        quote.update(
+          :readability_title => readability_title, 
+          :readability_author => readability_author
+        )
+
       end
     end
 

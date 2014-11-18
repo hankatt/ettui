@@ -90,11 +90,11 @@
 	}
 
 	.quote-actions .append-tag {
-		margin-top: -1px;
+		margin-top: -3px;
 		opacity: 0;
 		float: left;
 		transition: opacity 0.09s ease-out;
-		padding: 2px 4px;
+		padding: 4px 5px 2px;
 	}
 
 	.quote-actions:hover .append-tag {
@@ -166,10 +166,8 @@
 /* ACTUAL QUOTE */
 
 .quote-content p {
-	font-family: $font-family-serif;
 	margin-top: $spacing-1;
 	margin-bottom: 0;
-	font-weight: 300;
 }
 
 .quote-content .highlight {

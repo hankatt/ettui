@@ -6,7 +6,7 @@
 	width: 100%;
 	min-height: 100%;
 	background-color: $main-background-color;
-	padding: ($spacing-4 + 4) 0 $spacing-4;
+	padding: ($spacing-4 + 4) 16px $spacing-4;
 	position: relative;
 }
 
@@ -42,7 +42,7 @@
 
 #search-filter .icon-menu {
 	position: relative;
-	top: 3px;
+	top: 0px;
 	background-image: image-url('menu-icon-grey.png');
 }
 
@@ -352,15 +352,24 @@
 	#search-filter.active div.sidebar-toggle-column {
 		display: none;
 	}
-}
 
-@media only screen and (min-width : 1280px) {
-	div.sidebar-toggle-column, #search-filter.active div.sidebar-toggle-column {
-		display: block;
+	.sidebar-toggle {
+		margin-left: $spacing-3;
+		margin-top: 20px;
 	}
 }
 
-@media only screen and (min-width : 320px) and (max-width : 1279px) {
+@media only screen and (min-width : 1024px) {
+	div.sidebar-toggle-column, #search-filter.active div.sidebar-toggle-column {
+		display: block;
+	}
+
+	.sidebar-toggle {
+		margin-left: $spacing-4;
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 1023px) {
 
 	.sidebar-container .noted-logo-container {
 		width: auto;
@@ -434,7 +443,7 @@
 	}
 }
 
-@media only screen and (min-width : 768px) and (max-width : 1279px) {
+@media only screen and (min-width : 768px) and (max-width : 1023px) {
 
 	.sidebar-toggle-column img {
 		margin-left: $spacing-3;
@@ -444,6 +453,11 @@
 @media only screen and (min-width : 320px) and (max-width : 640px) {
 	.quotes-container {
 		padding: 0 0 0;
+	}
+
+	.content-container {
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.quotes-container .quote {

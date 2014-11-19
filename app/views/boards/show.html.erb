@@ -17,11 +17,11 @@
                 QUOTES
                             !-->
         <ol class="quotes-container">
-            <div class="profile-mainpage-container">
+            <!--<div class="profile-mainpage-container">
               <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
               <p>Curated by</p>
               <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %></h4>
-            </div> 
+            </div>!-->
             <% if !@quotes.empty? %>
                 <div class="quotes-list">
                   <%= render(@quotes) %>

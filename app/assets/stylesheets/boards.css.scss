@@ -377,7 +377,7 @@
 	}
 
 	.sidebar-toggle {
-		margin-top: $spacing-4 + 3;
+		margin-top: $spacing-4;
 		margin-left: $spacing-3;
 	}
 }
@@ -486,6 +486,10 @@
 @media only screen and (min-width : 320px) and (max-width : 640px) {
 	.quotes-container {
 		padding: 0 0 0;
+	}
+
+	#search-filter.active .profile-mainpage-container {
+		margin-left: $spacing-1;
 	}
 
 	.profile-mainpage-container {

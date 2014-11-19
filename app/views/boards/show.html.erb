@@ -12,17 +12,16 @@
     <div class="content-container">
         <div class="sidebar-toggle-column">
             <div class="sidebar-toggle icon icon-menu"></div>
-        </div>
-        <div class="profile-mainpage-container">
-          <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
-          <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %></h4>
-          <p>Curating this collection of <%= pluralize(@board.quotes.count, 'quote') %>
-            from <%= pluralize(@sources.count, 'site') %>.</p>
-        </div>  
+        </div> 
         <!-- 
                 QUOTES
                             !-->
         <ol class="quotes-container">
+            <div class="profile-mainpage-container">
+              <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
+              <p>Curated by</p>
+              <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %></h4>
+            </div> 
             <% if !@quotes.empty? %>
                 <div class="quotes-list">
                   <%= render(@quotes) %>

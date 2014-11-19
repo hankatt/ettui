@@ -6,7 +6,7 @@
 	width: 100%;
 	min-height: 100%;
 	background-color: $main-background-color;
-	padding: ($spacing-4 + 4) 16px $spacing-4;
+	padding: $spacing-4 0 $spacing-4;
 	position: relative;
 }
 
@@ -57,7 +57,7 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: 956px;
-	padding: 0 $spacing-3 0;
+	padding: 0 $spacing-6 0;
 	color: $w-secondary-color;
 }
 
@@ -335,25 +335,36 @@
 
 
 .profile-mainpage-container{
-	padding: 0 0 $spacing-2;
+	padding: 0;
 	width: 100%;
+	max-width: 720px;
+	margin: 0 auto;
 	text-align: center;
+	padding-bottom: 6px;
+	border-bottom: solid 1px $w-stroke-color;
 	& .profile-name {
-		font-size: $font-size-serif-1;
+		font-size: 14px;
+		line-height: 18px;
 		font-weight: bold;
+		text-align: left;
+		color: $w-primary-color;
 	}
 }
 
 .profile-mainpage-container .profile-photo{
 	width:32px;
 	height:32px;
-	border-radius:16px;
-	margin:0 auto;
+	border-radius:20px;
+	float: left;
+	margin-right: 7px;
 }
-.profile-mainpage-container p{
-	color: $w-secondary-color;
-	font-weight: 400;
-	font-style:italic
+.profile-mainpage-container p {
+	color: #999;
+	text-align: left;
+	font-size: 12px;
+	line-height: 12px;
+	letter-spacing: 1px;
+	padding-top: 2px;
 }
 
 @media only screen and (min-width : 319px) {
@@ -366,7 +377,8 @@
 	}
 
 	.sidebar-toggle {
-		margin-top: $spacing-4;
+		margin-top: $spacing-4 + 3;
+		margin-left: $spacing-3;
 	}
 }
 
@@ -376,7 +388,8 @@
 	}
 
 	.sidebar-toggle {
-		margin-left: $spacing-4;	}
+		margin-left: $spacing-4;
+	}
 }
 
 @media only screen and (min-width : 320px) and (max-width : 1023px) {
@@ -477,6 +490,8 @@
 
 	.profile-mainpage-container {
 		padding-bottom: 0;
+		margin-left: 64px;
+		border-bottom: none;
 		& .profile-name {
 			font-size: $font-size-serif-1;
 			font-weight: bold;

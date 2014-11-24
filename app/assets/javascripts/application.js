@@ -23,6 +23,15 @@ $(document).on('ready DOMChange', function() {
         $("#search-filter").removeClass('active');
     });
 
+    $(window).scroll(function() {
+        scrollTop = $(window).scrollTop();
+        if(scrollTop < 100) {
+            headerHeight = $(".quotes-header-container").outerHeight();
+            newOpacity = 1 - (2 * scrollTop / headerHeight);
+            $(".quotes-header-container").css('opacity', newOpacity);
+        }
+    });
+
     $(".segment-control").unbind('click').bind('click', function(e) {
         $(this).addClass('active');
         $(".segment-control").not(this).removeClass('active');

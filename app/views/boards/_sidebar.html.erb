@@ -1,16 +1,12 @@
 <div class="sidebar-container list">
     <div class="sidebar-content">
         <!-- SOURCES FILTER !-->
-        <a href="/" class="noted-logo-container">
-          <!--<div class="noted-logo"></div>!-->
-          <h3>Filters</h3>
-          <!--<div class="noted-stroke"></div>!-->
-        </a>
         <div class="sidebar-close">
           <i class="fa fa-close"></i>
         </div>
+        <a href="/"><div class="noted-logo"></div></a>
         <div class="search-field-container">
-            <%= image_tag "search-grey.png" %>
+            <%= image_tag "search-black.png" %>
             <%= text_field_tag :search, params[:search], :placeholder => "Type to search", :class => "search-field" %>
             <%= submit_tag "Search", :name => nil, :class => 'submit' %>
           </div>

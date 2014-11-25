@@ -10,6 +10,16 @@
     ############
     !-->
     <div class="content-container">
+        <div class="header-container">
+          <div class="header-container-logo"></div>
+          <div class="center-container">
+            <h4 class="quotes-title">Your quotes</h4>
+            <div class="profile-mainpage-container">
+              <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
+              <h4 class="profile-name"><%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first %></h4>
+            </div>
+          </div>
+        </div>
         <!-- 
                 QUOTES
                             !-->

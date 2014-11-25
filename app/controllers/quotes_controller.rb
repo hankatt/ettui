@@ -251,10 +251,7 @@ class QuotesController < ApplicationController
 
       # Variables for remove_tag.js.erb
       @flags = { :tags_remain => false }
-      puts("@tag.context_count:\n\n")
-      puts(@tag.context_count)
-      puts("\n\n")
-      if(@tag.context_count > 1)
+      if(@tag.context_count > 0)
         @flags[:tags_remain] = true
       end
       

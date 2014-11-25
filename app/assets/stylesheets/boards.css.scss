@@ -169,7 +169,6 @@
 	overflow-y: auto;
 	border-right: solid 1px $w-stroke-color;
 	position: fixed;
-	-webkit-transform: translateZ(0);
 	font-size: $font-size-sans-1;
 	color: $t-primary-color;
 	& a:hover {
@@ -288,6 +287,13 @@
 	}
 }
 
+.sidebar-content-fixed {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	padding: $spacing-3 $spacing-2;
+}
+
 @media only screen and (min-width : 319px) {
 	.boards_header .logo-container {
 		display: block;
@@ -369,8 +375,16 @@
 		}
 	}
 
-	.sidebar-content {
+	.sidebar-content,
+	.sidebar-content-fixed {
 		padding: 0 $spacing-1;
+	}
+
+	.sidebar-content-fixed {
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		padding: $spacing-3 $spacing-1;
 	}
 
 }

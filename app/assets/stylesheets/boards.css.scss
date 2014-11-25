@@ -288,9 +288,10 @@
 }
 
 .sidebar-content-fixed {
-	width: 100%;
+	width: 370px;
 	position: fixed;
 	bottom: 0;
+	border-top: solid 1px $w-stroke-color;
 	padding: $spacing-3 $spacing-2;
 }
 
@@ -382,8 +383,8 @@
 
 	.sidebar-content-fixed {
 		width: 100%;
-		position: fixed;
-		bottom: 0;
+		position: relative;
+		margin-top: $spacing-3;
 		padding: $spacing-3 $spacing-1;
 	}
 

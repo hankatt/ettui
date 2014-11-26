@@ -29,12 +29,16 @@
 		float: right;
 	}
 	& .header-container-logo {
+		display: none;
 		position: absolute;
 		left: $spacing-2;
-		height: 28px;
-		width: 24px;
-		background: transparent image-url('logo_new_color.png') no-repeat 50% 50%;
-		background-size: 24px;
+		& .fa {
+			font-size: 28px;
+			&:hover {
+				color: $w-signature-color;
+				cursor: pointer;
+			}
+		}
 	}
 }
 
@@ -287,12 +291,30 @@
 	}
 }
 
+.noted-logo {
+	height: 24px;
+	width: 24px;
+	background: transparent image-url('logo_new_color.png') no-repeat 50% 50%;
+	background-size: 24px;
+}
+
 .sidebar-content-fixed {
 	width: 370px;
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	border-top: solid 1px $w-stroke-color;
 	padding: $spacing-3 $spacing-2;
+	& .noted-logo {
+		float: left;
+	}
+	& a {
+		line-height: 26px;
+		float: right;
+		& + a {
+			margin-left: $spacing-0;
+		}
+
+	}
 }
 
 @media only screen and (min-width : 319px) {
@@ -364,6 +386,9 @@
 
 	.content-container .header-container {
 		width: 100%;
+		& .header-container-logo {
+			display: block;
+		}
 		& .center-container {
 			padding: 0 $spacing-2 0 $spacing-5;
 		}
@@ -374,6 +399,10 @@
 			text-align: center;
 			z-index: -1;
 		}
+	}
+
+	.profile-mainpage-container .profile-name {
+		display: none;
 	}
 
 	.sidebar-content,
@@ -407,9 +436,6 @@
 		padding-bottom: 0;
 		margin-left: 64px;
 		border-bottom: none;
-		& .profile-name {
-			display: none;
-		}
 	}
 
 	.content-container {

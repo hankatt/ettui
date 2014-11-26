@@ -335,10 +335,21 @@
 
 	.header-container .sidebar-content .fa {
 		display: block;
+		float: left;
+		padding-top: 6px;
 	}
 
 	#search-filter.active .header-container .header-container-logo .fa {
 		display: none;
+	}
+
+	.search-field-container {
+		width: auto;
+		padding-left: 0;
+		float: left;
+		& .search-field {
+			width: 252px;
+		}
 	}
 }
 

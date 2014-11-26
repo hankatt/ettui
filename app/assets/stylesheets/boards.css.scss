@@ -59,7 +59,6 @@
 	padding: $spacing-0 0 0;
 	& .fa {
 		font-size: 28px;
-		margin-bottom: $spacing-1;
 		display: none;
 	}
 }
@@ -330,7 +329,7 @@
 
 @media only screen and (min-width : 319px) and (max-width : 379px) {
 	.sidebar-container .header-container {
-		padding: $spacing-1 0 0;
+		padding: $spacing-0 0 0;
 	}
 
 	.header-container .sidebar-content .fa {

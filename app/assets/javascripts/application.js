@@ -19,7 +19,8 @@ $(document).on('ready DOMChange', function() {
     //ini();
     document.addEventListener("touchstart", function(){}, true);
 
-    $(".fa-bars, .header-container-logo").unbind('click').bind('click', function(event) {
+    $(".fa-bars").unbind('click').bind('click', function(event) {
+        event.stopPropagation();
         $("#search-filter").toggleClass('active');
     });
 

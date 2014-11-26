@@ -19,7 +19,7 @@ $(document).on('ready DOMChange', function() {
     //ini();
     document.addEventListener("touchstart", function(){}, true);
 
-    $(".header-container-logo").unbind('click').bind('click', function(event) {
+    $(".fa-bars").unbind('click').bind('click', function(event) {
         $("#search-filter").toggleClass('active');
     });
 

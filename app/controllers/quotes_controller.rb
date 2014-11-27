@@ -126,9 +126,7 @@ class QuotesController < ApplicationController
       }
 
       if @quote.add_tag(URI.unescape(params[:tag]).downcase)
-        @flags[:add] = true # It's new: Append to list
-      else
-        @flags[:update] = true # If exists: Update its status to 'selected'
+        @flags[:add] = true # It's new: Append it to the popup list
       end
 
       @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag

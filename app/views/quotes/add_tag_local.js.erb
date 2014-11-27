@@ -9,7 +9,7 @@ var sidebar_tags_container = $(".sidebar-list.tags");
 		sidebar_tags_container.append("<%= escape_javascript(render :partial => 'shared/tag', locals: { tag: @tag }) %>");
 	else {
 		sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
-		sidebar_tag.html("<%= escape_javascript(render :partial => 'shared/tag_data', locals: { tag: @tag })");
+		sidebar_tag.html("<%= escape_javascript(render :partial => 'shared/tag_data', locals: { tag: @tag }) %>");
 	}
 <% else %>
 	quote_tags_container.children('.t-<%= @tag.id %>').fadeOut(100, function() {

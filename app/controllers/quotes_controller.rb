@@ -121,7 +121,7 @@ class QuotesController < ApplicationController
 
       # Flags used in local_add_tag.js.erb, to decide what to do with the UI
       @flags = { 
-        :exists => false,
+        :update => false,
         :add => false
       }
 

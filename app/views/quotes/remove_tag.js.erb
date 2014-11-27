@@ -6,8 +6,8 @@ quote_tags_container.children(".t-<%= @tag.id %>").remove();
 
 <% if @tag.context_count > 0 %> // Fetch the sidebar tag and update count
 
-	sidebar_tag_count = sidebar_tags_container.children(".t-<%= @tag.id %>").find(".filter-count p");
-	sidebar_tag_count.text(<%= @tag.context_count %>);
+	sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
+	sidebar_tag.html("<%= escape_javascript(render :partial => 'shared/tag_data', locals: { tag: @tag }) %>");
 
 <% else %> // Remove from the tags list on the sidebar
 

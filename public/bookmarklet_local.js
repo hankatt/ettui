@@ -179,8 +179,7 @@ jquery.onload = function() {
 
 				if(data.add === true)
 					$(".tag-container").append(createElementWithClass("li", "noted-tag selected tid-" +data.tag.id, data.tag.name));
-				
-				if(data.update === true)
+				else
 					$(".tag-container > .tid-" +data.tag.id).addClass('selected');
 					
 				// Reset input field

@@ -1,17 +1,14 @@
 class BoardsController < ApplicationController
 
     def index
-        if session[:user_id]
-            @user = User.find(session[:user_id])
-            redirect_to @user.boards.first
-        else
-            redirect_to root_url
+        if current_user
+            @user = current_user
         end
     end
 
     def show
-        if session[:user_id]
-            @user = User.find(session[:user_id])
+        if cookies[:user_id]
+            @user = User.find(cookies[:user_id])
         else
             redirect_to root_url
         end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
               format.html # intro.html.erb
               flash[:notice] = "Logged in."
           elsif @user && !@user.new_user
-              format.html { redirect_to boards_path }
+              format.html { redirect_to @user.boards.first }
           else
               format.html { redirect_to root_url }
           end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def bookmarklet
-    @user = User.find(session[:user_id]) unless session[:user_id].nil?
+    @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
 
     respond_to do |format|
         if @user
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         # Establish a session
-        session[:user_id] = @user.id
+        cookies[:user_id] = { :value => @user.id, :expires => 3.months.from_now }
 
         # Initiate a board for the user
         @user.boards << Board.create({ user_id: @user.id, name: "My board" })
@@ -71,11 +71,11 @@ class UsersController < ApplicationController
   end
 
   def done
-    @user = User.find(session[:user_id])
+    @user = User.find(cookies[:user_id])
 
     respond_to do |format|
       if @user.update_attributes!(:new_user => false)
-        format.html { redirect_to boards_path }
+        format.html { redirect_to @user.boards.first }
       else
         format.html { redirect_to login_path }
       end

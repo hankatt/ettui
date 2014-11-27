@@ -7,12 +7,11 @@ class SessionsController < ApplicationController
   def create
   	@user = User.authenticate(params[:email], params[:password])
   	if @user
-      session[:user_id] = @user.id
-      cookies.permanent[:user_id] = @user.id
+      cookies[:user_id] = { :value => @user.id, :expires => 3.months.from_now }
       if @user.new_user
         redirect_to intro_path
       else
-        redirect_to boards_path
+        redirect_to @user.boards.first
       end
   	else
       redirect_to root_url, :notice => "Failed to authenticate!"
@@ -31,11 +30,11 @@ class SessionsController < ApplicationController
 
     # Create session if the authentication was successful
     if @user
-      session[:user_id] = @user.id
+      cookies[:user_id] = { :value => @user.id, :expires => 3.months.from_now }
       if @user.new_user
         redirect_to intro_path
       else
-        redirect_to boards_path
+        redirect_to @user.boards.first
       end
     else
       redirect_to root_url, :notice => "Failed to authenticate!"
@@ -43,7 +42,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  	session[:user_id] = nil
+  	cookies.delete(:user_id)
     redirect_to root_url, :notice => "Logged out!"
   end
 

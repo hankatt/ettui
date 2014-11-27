@@ -8,7 +8,7 @@
 		    </div>
 		<% else %>
 			<div class="inline link profile">
-				<%= image_tag current_user.twitter_image_url %><%= link_to current_user.name || current_user.email, boards_path, :class => "profile-name stay" %>
+				<%= image_tag current_user.twitter_image_url %><%= link_to current_user.name || current_user.email, current_user.boards.first, :class => "profile-name stay" %>
 			</div>
 		<% end %>
 </header>

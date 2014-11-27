@@ -67,40 +67,22 @@ class QuotesController < ApplicationController
 
   def add_tag_local
     if session[:user_id]
-      # Find users board through user session
       @board = User.find(session[:user_id]).boards.first
-
-      # Find the quote we are adding tags to
       @quote = Quote.find(params[:qid])
 
-      # Extract the tag
-      tag = URI.unescape(params[:tag])
+      # Flags used in local_add_tag.js.erb
+      @flags = { :add => false }
 
-      # Flags used in local_add_tag.js.erb, to decide what to do with the UI
-      @flags = { :flash => false, :add => false }
-
-      if @quote.has_tag(tag)
-        # Flash existing tag on quote and on popup
-        @flags[:flash] = true
-
-      else
-        # Attach tag to the quote owned by the user's board
-        tags = @quote.append_tag(tag)
-
-        # Board
-        @board.tag(@quote, :with => tags, :on => "tags" )
-        @quote.reload
-
-        # Add tag on on quote and in popup
-        @flags[:add] = true
+      if @quote.add_tag(URI.unescape(params[:tag]).downcase)
+        @flags[:add] = true # Tag is new, add to UI
       end
+
+      @tag = @quote.tags.find_by_name(URI.unescape(params[:tag]).downcase)
+      @tag.update_tag_count_on(@board)
     end
 
     respond_to do |format|
       if @board.save
-        # Set @tag to represent the Tag object (for local_add_tag.js.erb)
-        @tag = @quote.tags.find_by_name(URI.unescape(params[:tag]))
-        @tag.set_context_count(@board)
         format.js
       else
         data = { :message => "Tagging failed." }
@@ -109,11 +91,29 @@ class QuotesController < ApplicationController
     end
   end
 
+    def remove_tag
+    @quote = Quote.find(params[:id])
+    @tag = @quote.tags.find(params[:tag_id])
+    @board = @quote.boards.first
+
+    # Remove the tag
+    @quote.remove_tag(@tag.name)
+
+    # Count tag occurences on @board
+    @tag.update_tag_count_on(@board)
+
+    # Render remove_tag.js.erb
+    respond_to do |format|
+
+      if @board.save
+        format.js
+      end
+    end
+  end
+
   def add_tag_remote
     if params[:user_token]
       @board = User.find_by_token(params[:user_token]).boards.first
-
-      # Find the quote we are adding tags to
       @quote = Quote.find(params[:qid])
 
       # Extract the tag (important to downcase for searchability further down)
@@ -122,28 +122,19 @@ class QuotesController < ApplicationController
       # Flags used in local_add_tag.js.erb, to decide what to do with the UI
       @flags = { :update => false, :add => false }
 
-      if @board.owns_tag(tag)
-        @flags[:update] = true  # If it exists:   Update its status to 'selected'
+      if @quote.add_tag(URI.unescape(params[:tag]).downcase)
+        @flags[:add] = true # It's new: Append to list
       else
-        @flags[:add] = true     # If it is new:   Append it to the list
+        @flags[:update] = true # If exists: Update its status to 'selected'
       end
 
-      # If the tag does not already have the tag: Add it.
-      if !@quote.has_tag(tag)
+      @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag
+      @tag.update_tag_count_on(@board)
 
-        # Attach tag to the quote owned by the user's board
-        tags = @quote.append_tag(tag)
-
-        # Update tags on the quote
-        @board.tag(@quote, :with => tags, :on => "tags")
-      end
     end
 
     respond_to do |format|
       if @board.save
-
-        @quote.reload # Update quote when tag is saved
-        @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag
 
         # General callback data set
         data = { 
@@ -226,37 +217,6 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-    end
-  end
-
-  def remove_tag
-    @quote = Quote.find(params[:id])
-    @tag = @quote.tags.find(params[:tag_id])
-    @board = @quote.boards.first
-
-     # Remove tag from quote
-    tags = @quote.remove_tag(@tag)
-
-    # Apply the new tags list to @quote and board
-    @board.tag(@quote, :with => tags, :on => "tags")
-
-    @quote.reload # Reload @quote to get latest tag count
-
-    # Render remove_tag.js.erb
-    respond_to do |format|
-
-      if @board.save
-        # Set context count
-        @tag.set_context_count(@board)
-
-        # Variables for remove_tag.js.erb
-        @flags = { :tags_remain => false }
-        if(@tag.context_count > 0)
-          @flags[:tags_remain] = true
-        end
-        
-        format.js
-      end
     end
   end
 

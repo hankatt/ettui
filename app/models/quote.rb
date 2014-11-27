@@ -59,27 +59,46 @@ class Quote < ActiveRecord::Base
         )
 	end
 
-	def append_tag(new_tag)
-		@tags = new_tag
+	def add_tag(tag)
 
-		tags.each do |tag|
-			@tags << ", " << tag.name
+		# Helps determine if add is successful
+		tag_list_count = tag_list.count
+
+		# Try to add 'tag'
+		tag_list.add(tag)
+		save
+		reload
+
+		if(tag_list.count > tag_list_count)
+			# Update the relationship to the board
+			update_board_ownership(self)
 		end
 
-		return @tags
+		return tag_list.count > tag_list_count
 	end
 
-	def remove_tag(tag_to_remove)
-		@tags = ""
+	def remove_tag(tag)
 
-		tags.each do |tag|
-			unless tag.name == tag_to_remove.name
-				@tags << ", " << tag.name
-			end
+		# Helps determine if remove is successful
+		tag_list_count = tag_list.count
+
+		# Try to add new_tag
+		tag_list.remove(tag)
+		save
+		reload
+
+		if(tag_list.count < tag_list_count)
+			# Update the relationship to the board
+			update_board_ownership(self)
 		end
 
-		@tags = @tags[2..-1]
+		return tag_list.count < tag_list_count
+	end
 
-		return @tags
+	private
+	def update_board_ownership(quote)
+		board = quote.boards.first
+		board.tag(quote, :with => quote.tag_list, :on => "tags")
+		board.reload
 	end
 end

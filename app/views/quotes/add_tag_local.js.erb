@@ -1,29 +1,20 @@
-// Render a new #tag (x) based on the _tag.html.erb partial
-quote_tags_container	= $(".quote.q-<%= @quote.id %>").find('.quote-tags');
+var quote_tags_container = $(".quote.q-<%= @quote.id %>").find('.quote-tags');
+var sidebar_tags_container = $(".sidebar-list.tags");
 
-<% if @flags[:flash] %>
-
-	// Flash shit.
-	quote_tags_container.children('.quote-tag.t-<%= @tag.id %>').fadeOut(100, function() {
-		$(this).fadeIn(100);
-	});
-
-<% elsif @flags[:add] %>
-
-	// UPDATE QUOTE:
+<% if @flags[:add] %>
 	quote_tags_container.append("<%= escape_javascript(render :partial => 'quotes/tag', locals: { quote: @quote, tag: @tag }) %>");
 
-	// UPDATE SIDEBAR:
-	sidebar_tags_container = $(".sidebar-list.tags");
 	tag_count = <%= @tag.context_count %>
-
-	if (tag_count == 1)
+	if (tag_count === 1)
 		sidebar_tags_container.append("<%= escape_javascript(render :partial => 'shared/tag', locals: { tag: @tag }) %>");
 	else {
 		sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
 		sidebar_tag.find(".filter-count p").text(tag_count);
 	}
-	
+<% else %>
+	quote_tags_container.children('.t-<%= @tag.id %>').fadeOut(100, function() {
+		$(this).fadeIn(100);
+	});
 <% end %>
 
 // Trigger DOMChange to assure jQuery events trigger on newly appended tag

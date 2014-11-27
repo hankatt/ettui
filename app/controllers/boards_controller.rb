@@ -33,7 +33,7 @@ class BoardsController < ApplicationController
 
         # Define tag count specifically for this board
         @board.owned_tags.each do |tag|
-            tag.set_context_count(@board)
+            tag.update_tag_count_on(@board)
         end
 
         respond_to do |format|

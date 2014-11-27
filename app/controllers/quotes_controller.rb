@@ -125,20 +125,16 @@ class QuotesController < ApplicationController
         :add => false
       }
 
-      if @quote.add_tag(URI.unescape(params[:tag]).downcase)
-        # Tag has been added to the quote:
-        # - Mark it on the popup list
-        # OR
-        # - Add it to the popup list
-        if @board.owns_tag(tag)
-          # @flags[:add] = false aka Mark it on the popup list
-        else
-          # Add it to the popup
-          @flags[:add] = true
-        end
-      else
-        # Since it could not be added, it must exist
+      # If the quote exist on the board, it will be on the popup,
+      # thus we just :update its status on the popup
+      if @board.owns_tag(tag)
         @flags[:update] = true
+      end
+
+      if @quote.add_tag(URI.unescape(params[:tag]).downcase)
+        # If the tag was successfully added to the quote,
+        # this confirms it.
+        @flags[:add] = true
       end
 
       @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag
@@ -159,7 +155,7 @@ class QuotesController < ApplicationController
         }
 
         # Case dependent callback data
-        if @flags[:update]
+        if @flags[:update] && !@flags[:add]
           data[:message] = "exists!"
           data[:submessage] = "It has been selected."
         end

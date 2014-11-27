@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   	@user = User.authenticate(params[:email], params[:password])
   	if @user
       session[:user_id] = @user.id
+      cookies.permanent[:user_id] = @user.id
       if @user.new_user
         redirect_to intro_path
       else
@@ -31,6 +32,7 @@ class SessionsController < ApplicationController
     # Create session if the authentication was successful
     if @user
       session[:user_id] = @user.id
+      cookies.permanent[:user_id] = @user.id
       if @user.new_user
         redirect_to intro_path
       else

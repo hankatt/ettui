@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
     # Create session if the authentication was successful
     if @user
       session[:user_id] = @user.id
-      cookies.permanent[:user_id] = @user.id
       if @user.new_user
         redirect_to intro_path
       else
@@ -45,7 +44,6 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:user_id] = nil
-    cookies.delete :user_id
     redirect_to root_url, :notice => "Logged out!"
   end
 

@@ -120,7 +120,10 @@ class QuotesController < ApplicationController
       tag = URI.unescape(params[:tag]).downcase
 
       # Flags used in local_add_tag.js.erb, to decide what to do with the UI
-      @flags = { :update => false, :add => false }
+      @flags = { 
+        :update => false,
+        :add => false
+      }
 
       if @quote.add_tag(URI.unescape(params[:tag]).downcase)
         @flags[:add] = true # It's new: Append to list
@@ -147,10 +150,10 @@ class QuotesController < ApplicationController
 
         # Case dependent callback data
         if @flags[:update]
-          data[:message] = "exists."
-          data[:submessage] = "It has been selected below."
+          data[:message] = "is selected!"
+          data[:submessage] = "Close this popup when done."
         elsif @flags[:add]
-          data[:message] = "added!"
+          data[:message] = "is added!"
           data[:submessage] = "Close this popup when done."
         end
 

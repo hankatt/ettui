@@ -126,11 +126,11 @@ class QuotesController < ApplicationController
       }
 
       if @quote.add_tag(URI.unescape(params[:tag]).downcase)
-        if @board.owns_tag(tag)
-          @flags[:add] = false # It's not new: Mark it on the popup list
-        else
+        if !@board.owns_tag(tag)
           @flags[:add] = true # It's new: Append it to the popup list
         end
+      else
+        @flags[:update] = true
       end
 
       @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag
@@ -143,20 +143,17 @@ class QuotesController < ApplicationController
 
         # General callback data set
         data = { 
-          :message => "exists.", 
-          :submessage => "It is already selected.", 
+          :message => "is added!", 
+          :submessage => "Close this popup when done.", 
           :tag => @tag, 
           :add => @flags[:add], 
           :update => @flags[:update]
         }
 
         # Case dependent callback data
-        if @flags[:add]
-          data[:message] = "is added!"
-          data[:submessage] = "Close this popup when done."
-        elsif @flags[:add]
-          data[:message] = "is selected!"
-          data[:submessage] = "Close this popup when done."
+        if @flags[:update]
+          data[:message] = "exists!"
+          data[:submessage] = "It has been selected."
         end
 
         # Do the callback

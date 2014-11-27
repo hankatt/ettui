@@ -429,9 +429,13 @@
 		width: 100%;
 		& .header-container-logo {
 			display: block;
+			left: $spacing-1;
+		}
+		& .profile-mainpage-container .profile-photo {
+			margin-right: 0;
 		}
 		& .center-container {
-			padding: 0 $spacing-2 0 $spacing-5;
+			padding: 0 $spacing-1 0 $spacing-5;
 		}
 		& .quotes-title {
 			position: absolute;

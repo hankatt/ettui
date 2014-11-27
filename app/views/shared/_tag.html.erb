@@ -1,5 +1,3 @@
-<li class="sidebar-list-item t-<%= tag.id %>">
-	<%= check_box_tag "tag_ids[]", tag.id, false, :id => "tag_ids_#{tag.id}" %>
-	<button class="sidebar-list-button"><%= tag.name.truncate(30) %></button>
-	<div class="filter-count"><p><%= tag.context_count %></p></div>
-</li>
+<%= check_box_tag "tag_ids[]", tag.id, false, :id => "tag_ids_#{tag.id}" %>
+<button class="sidebar-list-button"><%= tag.name.truncate(30) %></button>
+<div class="filter-count"><p><%= tag.context_count %></p></div>

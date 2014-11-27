@@ -1,16 +1,18 @@
-quote_tags_container = $(".quote.q-<%= @quote.id %>").find('.quote-tags');
-sidebar_tags_container = $(".sidebar-list.tags");
+var quote_tags_container = $(".quote.q-<%= @quote.id %>").find('.quote-tags');
+var sidebar_tags_container = $(".sidebar-list.tags");
 
 // Remove @tag from @quote
 quote_tags_container.children(".t-<%= @tag.id %>").remove();
 
-<% if @flags[:tags_remain] %>
-	// Fetch the sidebar tag and update count
-	sidebar_tag = sidebar_tags_container.children(".t-<%= @tag.id %>");
-	sidebar_tag.find(".filter-count p").text(<%= @tag.context_count %>);
-<% else %>
-	// Remove from the tags list on the sidebar
+<% if @tag.context_count > 0 %> // Fetch the sidebar tag and update count
+
+	sidebar_tag_count = sidebar_tags_container.children(".t-<%= @tag.id %>").find(".filter-count p");
+	sidebar_tag_count.text(<%= @tag.context_count %>);
+
+<% else %> // Remove from the tags list on the sidebar
+
 	sidebar_tags_container.children(".t-<%= @tag.id %>").remove();
+	
 <% end %>
 
 // Trigger DOMChange to assure jQuery events trigger on newly appended tag

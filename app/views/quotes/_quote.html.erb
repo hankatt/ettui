@@ -46,7 +46,7 @@
       <div class="quote-actions">
           <ul class="quote-tags">
             <% if quote.tags.any? %>
-              <% quote.tags.each do |tag| %>
+              <% quote.tags.uniq.each do |tag| %>
                 <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
               <% end %>
             <% end %>

@@ -50,9 +50,7 @@
             </div>
             <ol class="sidebar-list tags">
             <% @board.owned_tags.each do |tag| %>
-              <li class="sidebar-list-item t-<%= tag.id %>">
                 <%= render :partial => 'shared/tag', locals: { tag: tag } %>
-              </li>
             <% end %>
           </ol>
         </div>

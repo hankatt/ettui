@@ -157,6 +157,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    if current_user
+      @user = current_user
+    end
+    
+    respond_to do |format|
+      if cookies[:user_id] || session[:user_id]
+        format.html { redirect_to boards_path }
+      else
+        format.html
+      end
+    end
+  end
+
   private
   # Using a private method to encapsulate the permissible parameters is
   # just a good pattern since you'll be able to reuse the same permit

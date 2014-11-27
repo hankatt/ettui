@@ -17,6 +17,7 @@
 
 $(function() {
     FastClick.attach(document.body);
+    $.stayInWebApp('.stay');
 });
 
 $(document).on('ready DOMChange', function() {

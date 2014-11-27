@@ -18,7 +18,7 @@
             <h4 class="quotes-title">Your quotes</h4>
             <div class="profile-mainpage-container">
               <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
-              <h4 class="profile-name"><%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first %></h4>
+              <h4 class="profile-name"><%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "stay" %></h4>
             </div>
           </div>
         </div>

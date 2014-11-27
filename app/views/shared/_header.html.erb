@@ -4,11 +4,11 @@
 		</a>
 		<% if !current_user %>
 		    <div class="inline link">
-		        <p>Have an account?</p><%= link_to " Sign in", login_path %>
+		        <p>Have an account?</p><%= link_to " Sign in", login_path, :class => "stay" %>
 		    </div>
 		<% else %>
 			<div class="inline link profile">
-				<%= image_tag current_user.twitter_image_url %><%= link_to current_user.name || current_user.email, boards_path, :class => "profile-name" %>
+				<%= image_tag current_user.twitter_image_url %><%= link_to current_user.name || current_user.email, boards_path, :class => "profile-name stay" %>
 			</div>
 		<% end %>
 </header>

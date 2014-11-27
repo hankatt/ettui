@@ -3,7 +3,7 @@
   <div class="login-signup-container">
           <h1>Welcome back.</h1>
         <div class="twitter-container">
-          <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button" do %>
+          <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
             <span class="socicon">a</span>Sign in using Twitter
           <% end %>
         </div>
@@ -11,7 +11,7 @@
           <%= render "login_form" %>
         </div>
         <div class="inline link">
-            <p>Create an account?</p><%= link_to " Sign up", signup_path %>
+            <p>Create an account?</p><%= link_to " Sign up", signup_path, :class => "stay" %>
         </div>
   </div>
 </div>

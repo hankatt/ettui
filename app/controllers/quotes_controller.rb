@@ -130,6 +130,7 @@ class QuotesController < ApplicationController
           @flags[:add] = false # It's not new: Mark it on the popup list
         else
           @flags[:add] = true # It's new: Append it to the popup list
+        end
       end
 
       @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag
@@ -150,11 +151,11 @@ class QuotesController < ApplicationController
         }
 
         # Case dependent callback data
-        if @flags[:update]
-          data[:message] = "is selected!"
+        if @flags[:add]
+          data[:message] = "is added!"
           data[:submessage] = "Close this popup when done."
         elsif @flags[:add]
-          data[:message] = "is added!"
+          data[:message] = "is selected!"
           data[:submessage] = "Close this popup when done."
         end
 

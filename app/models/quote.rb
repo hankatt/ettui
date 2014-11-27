@@ -78,6 +78,8 @@ class Quote < ActiveRecord::Base
 			end
 		end
 
+		@tags = @tags[2..-1]
+
 		return @tags
 	end
 end

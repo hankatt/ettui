@@ -177,9 +177,12 @@ jquery.onload = function() {
 				$(".status-message").html("#" +data.tag.name +" " +data.message);
 				$(".sub-message").html(data.submessage);
 
-				if(data.add === true)
+				// If the tag is new and it does not previously exist, append.
+				// If it is new and does previously exist, select it.
+				// Else do nothing.
+				if(data.add === true && data.update === false)
 					$(".tag-container").append(createElementWithClass("li", "noted-tag selected tid-" +data.tag.id, data.tag.name));
-				else
+				else if(data.add === true && data.update === true)
 					$(".tag-container > .tid-" +data.tag.id).addClass('selected');
 					
 				// Reset input field

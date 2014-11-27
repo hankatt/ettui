@@ -121,15 +121,23 @@ class QuotesController < ApplicationController
 
       # Flags used in local_add_tag.js.erb, to decide what to do with the UI
       @flags = { 
-        :update => false,
+        :exists => false,
         :add => false
       }
 
       if @quote.add_tag(URI.unescape(params[:tag]).downcase)
-        if !@board.owns_tag(tag)
-          @flags[:add] = true # It's new: Append it to the popup list
+        # Tag has been added to the quote:
+        # - Mark it on the popup list
+        # OR
+        # - Add it to the popup list
+        if @board.owns_tag(tag)
+          # @flags[:add] = false aka Mark it on the popup list
+        else
+          # Add it to the popup
+          @flags[:add] = true
         end
       else
+        # Since it could not be added, it must exist
         @flags[:update] = true
       end
 

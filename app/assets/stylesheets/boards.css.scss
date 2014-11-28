@@ -116,7 +116,7 @@
 	background-color: transparent;
 	position: relative;
 	color: $w-secondary-color;
-	padding-top: $spacing-6 !important;
+	padding-top: $spacing-5 !important;
 }
 
 .quotes-container,
@@ -302,8 +302,14 @@
 .noted-logo {
 	height: 24px;
 	width: 24px;
-	background: transparent image-url('logo_new_color.png') no-repeat 50% 50%;
+	background: transparent image-url('logo_24x24@1x.png') no-repeat 50% 50%;
 	background-size: 24px;
+}
+
+@media only screen and (-webkit-device-pixel-ratio : 2) {
+	.noted-logo {
+		background-image: image-url('logo_24x24@2x.png');
+	}
 }
 
 .sidebar-content-fixed {

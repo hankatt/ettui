@@ -96,8 +96,14 @@ header p, .splash-container p, .splash-container h2 {
 	width: 32px;
 	height: 32px;
 	box-sizing: content-box;
-	background: transparent image-url('logo_new_color.png') no-repeat;
+	background: transparent image-url('logo_32x32@1x.png') no-repeat;
 	background-size: 100%;
+}
+
+@media only screen and (-webkit-device-pixel-ratio : 2) {
+	#logo-container > div {
+		background-image: image-url('logo_32x32@2x.png');
+	}
 }
 
 .inline.link {
@@ -136,6 +142,10 @@ header .inline.link img {
 .splash-container a:hover {
 	color: $w-signature-color;
 	border-color: $w-signature-color;
+}
+
+.splash-container .bookmarklet-intro-title {
+	margin-top: $spacing-4;
 }
 
 .button.big {

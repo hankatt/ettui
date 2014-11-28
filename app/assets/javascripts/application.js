@@ -22,6 +22,16 @@ $(function() {
 
 $(document).on('ready DOMChange', function() {
 
+    if($(window).width() < 640)
+        $("#search-filter").removeClass('active');
+    
+    $(window).resize(function() {
+        if($(this).width() < 640)
+            $("#search-filter").removeClass('active');
+        else
+            $("#search-filter").addClass('active');
+    });
+
     //ini();
     document.addEventListener("touchstart", function(){}, true);
 

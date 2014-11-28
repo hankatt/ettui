@@ -18,13 +18,12 @@
 $(function() {
     FastClick.attach(document.body);
     $.stayInWebApp('.stay');
+    if($(window).width() < 640)
+        $("#search-filter").removeClass('active');
 });
 
 $(document).on('ready DOMChange', function() {
 
-    if($(window).width() < 640)
-        $("#search-filter").removeClass('active');
-    
     $(window).resize(function() {
         if($(this).width() < 640)
             $("#search-filter").removeClass('active');

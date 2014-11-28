@@ -4,6 +4,14 @@ class BoardsController < ApplicationController
         if current_user
             @user = current_user
         end
+
+        respond_to do |format|
+            if current_user
+                format.html { redirect_to current_user.boards.first }
+            else
+                format.html { redirect_to root }
+            end
+        end
     end
 
     def show

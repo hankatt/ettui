@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
 
+  def index
+    respond_to do |format|
+      if current_user
+        format.html { redirect_to current_user.boards.first }
+      else
+        format.html
+      end
+    end
+  end
+
   def intro
       @user = User.find(session[:user_id]) unless session[:user_id].nil?
       record_user_activity

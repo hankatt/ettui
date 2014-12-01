@@ -16,7 +16,7 @@
 
 .header-container {
 	position: relative;
-	padding: $spacing-1 0;
+	padding: $spacing-1 0 11px;
 	overflow-y: auto;
 	background-color: $w-primary-color;
 	color: white;
@@ -58,6 +58,7 @@
 
 .sidebar-container .header-container {
 	background-color: rgba(0, 0, 0, .89);
+	padding-bottom: 14px;
 	& .fa {
 		font-size: 28px;
 		display: none;
@@ -73,8 +74,12 @@
 		float: left;
 		width: 28px;
 		height: 28px;
-		border-radius: 14px;
+		border-radius: 17px;
 		margin-right: 6px;
+		padding: 3px;
+		box-sizing: content-box;
+		background-color: #fff;
+		margin-top: -3px;
 	}
 	& .profile-name {
 		line-height: 28px;

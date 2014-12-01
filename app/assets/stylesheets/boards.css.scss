@@ -393,11 +393,11 @@
 	.search-field-container {
 		& img {
 			left: $spacing-2;
-			top: 1px;
+			top: 0px;
 		}
 		& .search-field {
 			padding-left: 24px;
-			line-height: 24px;
+			line-height: 22px;
 			padding-top: 0;
 		}
 	}

@@ -109,7 +109,6 @@ class UsersController < ApplicationController
   end
 
   def update_all_user_omniauth_data
-
     # Update all users before this was implemented
     User.where(["updated_at < ?", "2014-10-31 12:00:00"]).each do |user|
       if !user.uid.blank?
@@ -135,7 +134,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
         @user = User.find(params[:id])
         @board = @user.boards.first
         @quotes = @board.complex_find_by(params)

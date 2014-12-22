@@ -34,7 +34,7 @@ $(document).on('ready DOMChange', function() {
     //ini();
     document.addEventListener("touchstart", function(){}, true);
 
-    $(".fa-bars").unbind('click').bind('click', function(event) {
+    $(".header-container-logo").unbind('click').bind('click', function(event) {
         event.stopPropagation();
         $("#search-filter").toggleClass('active');
     });

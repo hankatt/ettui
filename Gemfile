@@ -7,6 +7,9 @@ gem 'acts-as-taggable-on'
 # Remove 300ms tap event delay for touch devices
 gem 'fastclick-rails'
 
+# Icon font
+gem 'evil_icons'
+
 # Ruby version
 ruby '2.0.0'
 

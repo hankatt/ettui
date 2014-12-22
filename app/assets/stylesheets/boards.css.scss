@@ -100,6 +100,10 @@
 	-webkit-text-stroke: 1px $w-secondary-color;
 }
 
+.sidebar-content .icon {
+	display: none;
+}
+
 .icon {
 	width: 25px;
 	height: 25px;
@@ -345,19 +349,24 @@
 }
 
 @media only screen and (min-width : 319px) and (max-width : 379px) {
-	.header-container .sidebar-content .fa {
+	.header-container .sidebar-content .icon {
 		display: block;
-		float: left;
-		line-height: 20px;
 	}
 
 	#search-filter.active .header-container .header-container-logo .fa {
 		display: none;
 	}
 
+	.sidebar-content {
+		padding-right: 0 !important;
+		float: left;
+	}
+
 	.search-field-container {
-		width: auto;
-		padding-left: 0;
+		width: calc(100% - 50px);
+		padding-left: 0px !important;
+		margin-left: 5px;
+		border-left: solid 1px rgba(255, 255, 255, .17);
 		float: left;
 		& .search-field {
 			width: calc(100% - 37px);

@@ -58,7 +58,6 @@
 
 .sidebar-container .header-container {
 	background-color: rgba(0, 0, 0, .89);
-	padding-bottom: 14px;
 	& .fa {
 		font-size: 28px;
 		display: none;
@@ -144,6 +143,7 @@
 	position: relative;
 	margin: 0;
 	width: 100%;
+	font-size: 0;
 	& img {
 		position: absolute;
 		top: 4px;
@@ -156,8 +156,8 @@
 }
 
 .search-field {
-	padding: 3px 0px 0px ($spacing-3 - 4px);
-	width: 100%;
+	padding: 4px 0px 0px 0px;
+	width: calc(100% - 30px);
 	line-height: 25px;
 	font-family: $font-family-serif;
 	font-size: $font-size-sans-1;
@@ -400,11 +400,6 @@
 			left: $spacing-1;
 			top: 0px;
 		}
-		& .search-field {
-			padding-left: 24px;
-			line-height: 22px;
-			padding-top: 0;
-		}
 	}
 
 	.quotes-container {
@@ -417,8 +412,8 @@
 		margin-left: -320px;
 		overflow-y: scroll;
 		& .header-container {
-			padding-top: 18px;
-			padding-bottom: 15px;
+			padding-top: 13px;
+			padding-bottom: 12px;
 		}
 	}
 

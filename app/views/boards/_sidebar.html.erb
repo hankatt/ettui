@@ -4,7 +4,7 @@
         <i class="fa fa-bars"></i>
       </div>
       <div class="search-field-container">
-        <%= image_tag "search-white.png" %>
+        <%= evil_icon 'ei-search', size: :s %>
         <%= text_field_tag :search, params[:search], :placeholder => "Type to search", :class => "search-field" %>
         <%= submit_tag "Search", :name => nil, :class => 'submit' %>
       </div>
@@ -29,9 +29,7 @@
         <div class="sidebar-list-container sources">
           <div class="sidebar-section-title">
               <h4 class="section-title">Sites</h4>
-              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
-              <polygon id="arrow-24-icon" points="263.25,251.829 268.806,246.247 279.25,256.643 289.695,246.247 295.25,251.829 279.25,267.753 "/>
-              </svg>
+              <%= evil_icon 'ei-chevron-down', size: :s %>
           </div>
           <ol class="sidebar-list filters">
 	           <% @sources.each do |source| %>
@@ -44,8 +42,7 @@
         <div class="sidebar-list-container tags">
             <div class="sidebar-section-title">
                 <h4 class="section-title">Tags</h4>
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="18px" height="18px" viewBox="262.75 239.5 33 33" enable-background="new 262.75 239.5 33 33" xml:space="preserve">
-                <polygon id="arrow-24-icon" points="263.25,251.829 268.806,246.247 279.25,256.643 289.695,246.247 295.25,251.829 279.25,267.753 "/>
+                <%= evil_icon 'ei-chevron-down', size: :s %>
                 </svg>
             </div>
             <ol class="sidebar-list tags">

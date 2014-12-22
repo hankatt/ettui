@@ -143,17 +143,19 @@
 
 /* Search */
 
+.search-field-container .icon--ei-search {
+	margin-left: -6px;
+}
+
+.header-container-logo .icon--ei-navicon {
+	margin-left: -5px;
+}
+
 .search-field-container {
 	position: relative;
 	margin: 0;
 	width: 100%;
 	font-size: 0;
-	& img {
-		position: absolute;
-		top: 4px;
-		left: $spacing-2;
-		height: 20px;
-	}
 	& .submit {
 		display: none;
 	}
@@ -407,13 +409,6 @@
 		& .sidebar-container, .content-container {
 			transform: translate3d(320px,0,0);
 			-webkit-transform: translate3d(320px,0,0);
-		}
-	}
-
-	.search-field-container {
-		& img {
-			left: $spacing-1;
-			top: 0px;
 		}
 	}
 

@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     respond_to do |format|
-      if session[:user_id]
+      if current_user
         format.html { redirect_to boards_path }
       else
         format.html # new.html.erb

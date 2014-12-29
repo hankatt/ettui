@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def intro
-      @user = User.find(session[:user_id]) unless session[:user_id].nil?
+      @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
       record_user_activity
 
       respond_to do |format|

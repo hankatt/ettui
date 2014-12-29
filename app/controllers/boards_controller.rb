@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
             if current_user
                 format.html { redirect_to current_user.boards.first }
             else
-                format.html { redirect_to root }
+                format.html { redirect_to root_url }
             end
         end
     end

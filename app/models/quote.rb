@@ -4,6 +4,8 @@ class Quote < ActiveRecord::Base
 	has_and_belongs_to_many :boards
 	belongs_to :source
 
+	delegate :favicon, to: :source
+
 	# Returns quotes created inbetween a given datetime range
 	def self.range(from, til)
 		where("created_at > ? AND created_at < ?", from, til)
@@ -92,13 +94,57 @@ class Quote < ActiveRecord::Base
 			update_board_ownership(self)
 		end
 
-		return tag_list.count < tag_list_count
+		tag_list.count < tag_list_count
+	end
+
+	def truncated_readability_title
+		readability_title.truncate(64)
+	end
+
+	def unique_tags
+		tags.uniq
+	end
+
+	def classes_for(user)
+	  if new_since_last(user)
+	    default_classes << " unread"
+	  else
+	    default_classes
+	  end
+	end
+
+	def default_classes
+	  "quote q-#{id}"
+	end
+
+	def new_since_last(user)
+		created_at > user.last_active_at
+	end
+
+	def font_size
+		case
+		when text.length < 111
+			"small"
+		when text.length > 193
+			"big"
+		else
+			""
+		end
+	end
+
+	def source_date
+		"#{created_at_day} #{created_at.strftime("%b")}"
+	end
+	
+	def created_at_day
+		created_at.day
 	end
 
 	private
-	def update_board_ownership(quote)
-		board = quote.boards.first
-		board.tag(quote, :with => quote.tag_list, :on => "tags")
-		board.reload
-	end
+
+		def update_board_ownership(quote)
+			board = quote.boards.first
+			board.tag(quote, :with => quote.tag_list, :on => "tags")
+			board.reload
+		end
 end

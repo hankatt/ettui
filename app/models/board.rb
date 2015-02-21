@@ -3,6 +3,7 @@ class Board < ActiveRecord::Base
     acts_as_tagger
 	has_and_belongs_to_many :quotes
 	has_and_belongs_to_many :users, :join_table => :subscriptions
+  has_many :tags, through: :quotes
 
 	def complex_find_by(params)
         if params[:search] && params[:source_ids] && params[:tag_ids]
@@ -38,7 +39,7 @@ class Board < ActiveRecord::Base
         end
     end
 
-    def tag_count(tag)
-        owned_taggings.where(:tag_id => tag.id).count
-    end
+  def tag_count tag
+    tags.where(name: tag.name).count
+  end
 end

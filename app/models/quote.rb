@@ -3,6 +3,7 @@ class Quote < ActiveRecord::Base
 	acts_as_taggable
 	has_and_belongs_to_many :boards
 	belongs_to :source
+  has_and_belongs_to_many :tags
 
 	delegate :favicon, to: :source
 

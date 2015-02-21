@@ -26,7 +26,7 @@
       <div class="quote-actions">
           <ul class="quote-tags">
             <% quote.unique_tags.each do |tag| %>
-              <%= render 'quotes/tag', locals: { quote: quote, tag: tag } %>
+              <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
             <% end %>
           </ul>
           <%= link_to I18n.t(".add_a_tag"), "/tag/#new", :class => "append-tag small button", :title => "Add tag" %>

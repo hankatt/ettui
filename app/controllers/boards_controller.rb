@@ -37,9 +37,9 @@ class BoardsController < ApplicationController
         @sources = Source.where(:id => @board.quotes.pluck(:source_id))
 
         # Define tag count specifically for this board
-        @board.owned_tags.each do |tag|
-            tag.update_tag_count_on(@board)
-        end
+        #@board.owned_tags.each do |tag|
+        #   tag.update_tag_count_on(@board)
+        #end
 
         respond_to do |format|
             format.html # show.html.erb

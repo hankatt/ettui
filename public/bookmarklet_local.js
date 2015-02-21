@@ -16,12 +16,12 @@ WebFontConfig = {
 
 jquery = document.createElement("script");
 jquery.className = "noted-function";
-jquery.src = "https://code.jquery.com/jquery-2.1.1.min.js";
+jquery.src = "http://code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
 css = document.createElement("link");
 css.className = "noted-temporary-function-tbr";
-css.href = "http://192.168.1.65:3000/bookmarklet.css";
+css.href = "http://localhost:3001/bookmarklet.css";
 css.type = "text/css";
 css.rel = "stylesheet";
 try {
@@ -54,7 +54,7 @@ jquery.onload = function() {
 			/* Execute JSONP call using script tag. */
 			jsonpScript = document.createElement("script");
 			jsonpScript.className = jsonpScript.className + "noted-temporary-function-tbr";
-			jsonpScript.src =  "//192.168.1.65:3000/add/quote/?" + jQuery.param(params);
+			jsonpScript.src =  "//localhost:3001/add/quote/?" + jQuery.param(params);
 			document.body.appendChild(jsonpScript);
 		}
 
@@ -124,7 +124,7 @@ jquery.onload = function() {
 						/* Execute JSONP call using script tag. */
 						jsonpScript = document.createElement("script");
 						jsonpScript.className = "noted-temporary-function-tbr";
-						jsonpScript.src =  "//192.168.1.65:3000/add/tag_remotely/?" + jQuery.param(params);
+						jsonpScript.src =  "//localhost:3001/add/tag_remotely/?" + jQuery.param(params);
 						document.body.appendChild(jsonpScript);
 					});
 
@@ -142,7 +142,7 @@ jquery.onload = function() {
 							/* Execute JSONP call using script tag. */
 							jsonpScript = document.createElement("script");
 							jsonpScript.className = "noted-temporary-function-tbr";
-							jsonpScript.src =  "//192.168.1.65:3000/add/tag_remotely/?" + jQuery.param(params);
+							jsonpScript.src =  "//localhost:3001/add/tag_remotely/?" + jQuery.param(params);
 							document.body.appendChild(jsonpScript);
 						}
 					});
@@ -160,7 +160,7 @@ jquery.onload = function() {
 						/* Execute JSONP call using script tag. */
 						jsonpScript = document.createElement("script");
 						jsonpScript.className = "noted-temporary-function-tbr";
-						jsonpScript.src =  "//192.168.1.65:3000/add/tag_remotely/?" + jQuery.param(params);
+						jsonpScript.src =  "//localhost:3001/add/tag_remotely/?" + jQuery.param(params);
 						document.body.appendChild(jsonpScript);
 					});
 				}

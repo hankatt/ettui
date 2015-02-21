@@ -1,1 +1,1 @@
-ActsAsTaggableOn::Tag.send(:include, Well::TagExtend)
+# ActsAsTaggableOn::Utils.send(:include, Well::TagExtend)

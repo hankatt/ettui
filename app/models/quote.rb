@@ -141,10 +141,9 @@ class Quote < ActiveRecord::Base
 	end
 
 	private
-
-		def update_board_ownership(quote)
-			board = quote.boards.first
-			board.tag(quote, :with => quote.tag_list, :on => "tags")
-			board.reload
-		end
+	def update_board_ownership(quote)
+		board = quote.boards.first
+		board.tag(quote, :with => quote.tag_list, :on => "tags")
+		board.reload
+	end
 end

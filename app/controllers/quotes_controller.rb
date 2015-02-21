@@ -78,7 +78,7 @@ class QuotesController < ApplicationController
       end
 
       @tag = @quote.tags.find_by_name(URI.unescape(params[:tag]).downcase)
-      @tag.update_tag_count_on(@board)
+      # @tag.update_tag_count_on(@board)
     end
 
     respond_to do |format|
@@ -100,7 +100,7 @@ class QuotesController < ApplicationController
     @quote.remove_tag(@tag.name)
 
     # Count tag occurences on @board
-    @tag.update_tag_count_on(@board)
+    # @tag.update_tag_count_on(@board)
 
     # Render remove_tag.js.erb
     respond_to do |format|
@@ -138,7 +138,7 @@ class QuotesController < ApplicationController
       end
 
       @tag = @quote.tags.find_by_name(tag) # Retrieve the actual tag
-      @tag.update_tag_count_on(@board)
+      # @tag.update_tag_count_on(@board)
 
     end
 

@@ -6,16 +6,8 @@ class SessionsController < ApplicationController
 
   def create
   	@user = User.authenticate(params[:email], params[:password])
-  	if @user
-      cookies[:user_id] = { :value => @user.id, :expires => 3.months.from_now }
-      if @user.new_user
-        redirect_to intro_path
-      else
-        redirect_to @user.boards.first
-      end
-  	else
-      redirect_to root_url, :notice => "Failed to authenticate!"
-    end
+    
+  	create_cookies_for @user
   end
 
   def create_with_omniauth
@@ -29,16 +21,7 @@ class SessionsController < ApplicationController
     )
 
     # Create session if the authentication was successful
-    if @user
-      cookies[:user_id] = { :value => @user.id, :expires => 3.months.from_now }
-      if @user.new_user
-        redirect_to intro_path
-      else
-        redirect_to @user.boards.first
-      end
-    else
-      redirect_to root_url, :notice => "Failed to authenticate!"
-    end
+    create_cookies_for @user
   end
 
   def destroy
@@ -47,4 +30,17 @@ class SessionsController < ApplicationController
     redirect_to root_url, :notice => "Logged out!"
   end
 
+private
+  def create_cookies_for user
+    if user
+      cookies[:user_id] = { :value => user.id, :expires => 3.months.from_now }
+      if user.new_user
+        redirect_to intro_path
+      else
+        redirect_to user.boards.first
+      end
+    else
+      redirect_to root_url, :notice => "Failed to authenticate!"
+    end
+  end
 end

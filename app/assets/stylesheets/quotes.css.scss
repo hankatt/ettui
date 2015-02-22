@@ -10,7 +10,7 @@
 	background-color: white;
 	min-width: 320px;
 	margin: $spacing-2 auto;
-	padding: $spacing-1 $spacing-3;
+	padding: $spacing-1 $spacing-3 $spacing-0;
 	color: $w-primary-color;
 	font-size: $font-size-sans-1;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
@@ -29,9 +29,37 @@
 	}
 
 	& .quote-metadata.tags {
-		border-top: solid 1px #ddd;
+		/*border-top: solid 1px #ddd;*/
   		padding-top: $spacing-1;
-  		margin-top: $spacing-1;
+	}
+
+	& .quote-metadata.tags .new_tag {
+		opacity: 0;
+	}
+
+	& .quote-metadata.tags:hover .new_tag {
+		opacity: 1;
+	}
+
+	& .new_tag {
+		position: relative;
+		top: -5px;
+		font-size: 0;
+
+		& input {
+			padding: 2px 5px 3px;
+			border: solid 1px #ddd;
+		}
+
+		& input[type="text"] {
+  			font-size: 14px;
+		}
+
+		& input[type="submit"] {
+			background-color: #ddd;
+			color: #666;
+			display: none;
+		}
 	}
 
 	& .quote-metadata.source {
@@ -39,7 +67,8 @@
 	}
 
 	& .quote-metadata.source p,
-	  .quote-tag a
+	  .quote-tag a,
+	  .new_tag input
 	 {
 		font-size: 14px;
 		font-weight: 100;

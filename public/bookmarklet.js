@@ -35,7 +35,7 @@ try {
 jquery.onload = function() {
 	popup = "", jsonpScript = "";
 	session_data = {};
-
+	
 	$(function() {
 		if(document.getSelection().toString() === "") {
 			alert("Empty selection.");
@@ -63,91 +63,71 @@ jquery.onload = function() {
 
 
 		/* Define function that deals with JSONP callback */
-		quoteCallback = function status(data) {
+		quoteCallback = function success(data) {
 
 			/* Deal with response */
 			if(data && data.message) {
-				if(data.action === "tags") {
+				/* Add HTML semantics for the tags */
+				notedBookmarklet.append("<div class='noted-content-container'></div>");
+				ncc = $(".noted-content-container");
+				ncc.append("<div class='tag-container'></div>");
+				ncc.append("<div class='add-tag-container'></div>");
+				ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
 
-					/* Add HTML semantics for the tags */
-					notedBookmarklet.append("<div class='noted-content-container'></div>");
-					ncc = $(".noted-content-container");
-					ncc.append("<div class='tag-container'></div>");
-					ncc.append("<div class='add-tag-container'></div>");
-					ncc.append("<a href='#!' onclick='closeNoted()' id='noted-close-btn'>Close window</a>");
+				// Add container and inputs for adding a new tag
+				atc = $(".noted-content-container .add-tag-container");
+				atc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
+				atc.append("<input type='submit' id='noted-new-tag-submit' value='Add'>");
+				$("#noted-new-tag").focus();
 
-					// Add container and inputs for adding a new tag
-					atc = $(".noted-content-container .add-tag-container");
-					atc.append("<input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>");
-					atc.append("<input type='submit' id='noted-new-tag-submit' value='Add'>");
-					$("#noted-new-tag").focus();
+				/* Append tags to popup */
+				for(i = 0; i < data.quote.tags.length; i++) {
+					$(".tag-container").append(createElementWithClass("li", "noted-tag tid-" +data.quote.tags[i].id, data.quote.tags[i].name));
+				}
 
-					/* Append tags to popup */
-					for(i = 0; i < data.tags.length; i++) {
-						$(".tag-container").append(createElementWithClass("li", "noted-tag tid-" +data.tags[i].id, data.tags[i].name));
+				setTimeout(function() {
+					/* Remove loading spinner */
+					$(".noted-spinner").remove();
+
+					/* Output callback status messages */
+					$(".status-message").html(data.message);
+					$(".sub-message").html(data.submessage);
+
+					notedBookmarklet.css('max-height', $(this).height() + ncc.height());
+					ncc.show().animate({
+						opacity: 1
+					}, 670, function() {
+						$("#noted-new-tag").focus();
+					});
+
+					$(".noted-logo, .noted-close").addClass('visible');
+
+				}, 2000);
+
+				/* Save q.id for later access */
+				session_data.qid = data.quote.id;
+
+				$(".noted-tag").click(function() {
+
+					$(this).addClass('selected');
+
+					var params = {
+						user_token: current_user_token,
+						qid: session_data.qid,
+						tag: $(this).text(),
+						callback: "added"
 					}
 
-					setTimeout(function() {
-						/* Remove loading spinner */
-						$(".noted-spinner").remove();
+					/* Execute JSONP call using script tag. */
+					jsonpScript = document.createElement("script");
+					jsonpScript.className = "noted-temporary-function-tbr";
+					jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
+					document.body.appendChild(jsonpScript);
+				});
 
-						/* Output callback status messages */
-						$(".status-message").html(data.message);
-						$(".sub-message").html(data.submessage);
-
-						notedBookmarklet.css('max-height', $(this).height() + ncc.height());
-						ncc.show().animate({
-							opacity: 1
-						}, 670, function() {
-							$("#noted-new-tag").focus();
-						});
-
-						$(".noted-logo, .noted-close").addClass('visible');
-
-					}, 2000);
-
-					/* Save q.id for later access */
-					session_data.qid = data.qid;
-
-					$(".noted-tag").click(function() {
-
-						$(this).addClass('selected');
-
-						var params = {
-							user_token: current_user_token,
-							qid: session_data.qid,
-							tag: $(this).text(),
-							callback: "added"
-						}
-
-						/* Execute JSONP call using script tag. */
-						jsonpScript = document.createElement("script");
-						jsonpScript.className = "noted-temporary-function-tbr";
-						jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
-						document.body.appendChild(jsonpScript);
-					});
-
-					$("#noted-new-tag").keyup(function (e) {
-					    if (e.keyCode == 13) {
-							new_tag = $(this);
-
-							var params = {
-								user_token: current_user_token,
-								qid: session_data.qid,
-								tag: new_tag.val(),
-								callback: "added"
-							}
-
-							/* Execute JSONP call using script tag. */
-							jsonpScript = document.createElement("script");
-							jsonpScript.className = "noted-temporary-function-tbr";
-							jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
-							document.body.appendChild(jsonpScript);
-						}
-					});
-
-					$("#noted-new-tag-submit").on('click', function(e) {
-						new_tag = $(this).siblings('#noted-new-tag');
+				$("#noted-new-tag").keyup(function (e) {
+				    if (e.keyCode == 13) {
+						new_tag = $(this);
 
 						var params = {
 							user_token: current_user_token,
@@ -161,8 +141,25 @@ jquery.onload = function() {
 						jsonpScript.className = "noted-temporary-function-tbr";
 						jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
 						document.body.appendChild(jsonpScript);
-					});
-				}
+					}
+				});
+
+				$("#noted-new-tag-submit").on('click', function(e) {
+					new_tag = $(this).siblings('#noted-new-tag');
+
+					var params = {
+						user_token: current_user_token,
+						qid: session_data.qid,
+						tag: new_tag.val(),
+						callback: "added"
+					}
+
+					/* Execute JSONP call using script tag. */
+					jsonpScript = document.createElement("script");
+					jsonpScript.className = "noted-temporary-function-tbr";
+					jsonpScript.src =  "//notedapp.herokuapp.com/add/tag_remotely/?" + jQuery.param(params);
+					document.body.appendChild(jsonpScript);
+				});
 			}
 		};
 
@@ -210,11 +207,18 @@ createElementWithClass = function(element_type, element_class, element_text) {
 createAndAppendBookmarkletContainer = function() {
 	popup = document.createElement("div");
 	popup.className = popup.className + "noted-bookmarklet";
-	$(popup).append('<div class="noted-spinner"></div>');
+	$(popup).html('
+		<div class="noted-spinner"></div>
+		<a href="https://notedapp.herokuapp.com" target="_blank"><div class="noted-logo"></div></a>
+		<a href="#!" onclick="closeNoted()"><div class="noted-close"></div></a>
+		<h1 class="status-message"></h1>
+		<h1 class="sub-message"></h1>
+	');
+/*	$(popup).append('<div class="noted-spinner"></div>');
 	$(popup).append('<a href="https://notedapp.herokuapp.com" target="_blank"><div class="noted-logo"></div></a>');
 	$(popup).append('<a href="#!" onclick="closeNoted()"><div class="noted-close"></div></a>');
 	$(popup).append('<h1 class="status-message"></h1>');
-	$(popup).append('<h1 class="sub-message"></h1>');
+	$(popup).append('<h1 class="sub-message"></h1>');*/
 	document.body.appendChild(popup);
 }
 

@@ -21,21 +21,6 @@ class Quote < ActiveRecord::Base
 	def self.filter_by_text(filter_text)
 		where("text LIKE ?", "%#{filter_text}%")
 	end
-	
-	# Returns quotes created inbetween a given datetime range
-	def self.range(from, til)
-		where("created_at > ? AND created_at < ?", from, til)
-	end
-
-	# Returns quotes from the past week
-	def self.from_past_week
-		where("created_at >= ?", Date.today.prev_week)
-	end
-
-	# Returns quotes from the past month
-	def self.from_past_month
-		where("created_at >= ?", Date.today.prev_month)
-	end
 
 	def has_tag(tag_name)
 		if tags.empty?
@@ -149,17 +134,7 @@ class Quote < ActiveRecord::Base
 	end
 
 	def source_date
-		"#{created_at_day} #{created_at.strftime("%b")}"
-	end
-	
-	def created_at_day
-		created_at.day
+		"#{created_at.day} #{created_at.strftime("%b")}"
 	end
 
-	private
-	def update_board_ownership(quote)
-		board = quote.boards.first
-		board.tag(quote, :with => quote.tag_list, :on => "tags")
-		board.reload
-	end
 end

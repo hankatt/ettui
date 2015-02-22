@@ -3,7 +3,7 @@
         <%= image_tag quote.favicon, :class => "source-favicon" %>
           <h4 class="quote-source-title">
             <% if quote.readability_title %>
-              <%= link_to quote.url, quote.truncated_readability_title %>
+              <%= link_to quote.truncated_readability_title, quote.url %>
             <% else %>
               <%= link_to quote.url, quote.url %>
             <% end %>

@@ -141,7 +141,7 @@ class Quote < ActiveRecord::Base
 		case
 		when text.length < 111
 			"big"
-		when text.length > 193
+		when text.length > 243
 			"small"
 		else
 			""

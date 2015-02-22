@@ -1,12 +1,27 @@
 class Quote < ActiveRecord::Base
 
-	acts_as_taggable
 	has_and_belongs_to_many :boards
 	belongs_to :source
-  has_and_belongs_to_many :tags
+  	has_and_belongs_to_many :tags
 
 	delegate :favicon, to: :source
 
+	def self.in_board(board)
+		board.quotes
+	end
+
+	def self.filter_by_source_ids(source_ids)
+		if source_ids.empty?
+			all
+		else
+			where(source_id: source_ids)
+		end
+	end
+
+	def self.filter_by_text(filter_text)
+		where("text LIKE ?", "%#{filter_text}%")
+	end
+	
 	# Returns quotes created inbetween a given datetime range
 	def self.range(from, til)
 		where("created_at > ? AND created_at < ?", from, til)

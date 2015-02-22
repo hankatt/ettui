@@ -66,8 +66,8 @@ class QuotesController < ApplicationController
   end
 
   def add_tag_local
-    if session[:user_id]
-      @board = User.find(session[:user_id]).boards.first
+    if cookies[:user_id]
+      @board = User.find(cookies[:user_id]).boards.first
       @quote = Quote.find(params[:qid])
 
       # Flags used in local_add_tag.js.erb
@@ -106,7 +106,7 @@ class QuotesController < ApplicationController
     respond_to do |format|
 
       if @board.save
-        format.js
+        format.html { redirect_to boards_path }
       end
     end
   end
@@ -173,12 +173,13 @@ class QuotesController < ApplicationController
   end
 
   def append_tag_input
-    if session[:user_id]
+    if cookies[:user_id]
       # Find the quote we are adding tags to
       @quote = Quote.find(params[:id])
+      @user = User.find(cookies[:user_id])
 
       # Parse out unused tags (used to suggest tags based on previous taggings)
-      all_tags = User.find(session[:user_id]).boards.first.owned_tags
+      all_tags = @user.boards.first.owned_tags
       @unused_tags = all_tags.reject{|x| (@quote.tags.pluck(:id).uniq).include? x.id} # Filter out used tags
     end
 
@@ -234,6 +235,22 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to boards_path, notice: 'All quotes successfully updated.' }
+    end
+  end
+
+  def filter
+    @search = Search.new params[:search]
+    @board = Board.find(params[:board_id])
+
+    # Post.where(published: true).joins(:comments).merge( Comment.where(spam: false) )
+
+    @quotes = Quote.in_board(@board).filter_by_text(@search.query).filter_by_source_ids(@search.source_ids).joins(:tags).merge(Tag.filter_by_ids(@search.tag_ids))
+    Rails.logger.debug("got quotes: #{@quotes.map(&:id)}")
+    @sources = Source.where(:id => @board.quotes.pluck(:source_id))
+    @unread = []
+    respond_to do |format|
+      format.html { render "boards/show" }
+      #format.json { render json: @quotes }
     end
   end
 

@@ -1,6 +1,6 @@
-<%= form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter", :class => "active" do %>
+<%# form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter", :class => "active" do %>
     
-    <%= render "sidebar" %>
+    <%= render "boards/sidebar" %>
 
     <!--    
     ############
@@ -49,4 +49,4 @@
             <% end %>
         </ol>
     </div>
-<% end %>
+<%# end %>

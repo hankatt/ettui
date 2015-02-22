@@ -1,4 +1,4 @@
 <li class="quote-tag t-<%= tag.id %>">
 	<%= link_to tag.name, "#!", :class => "tag" %>
-	<%= link_to " x", remove_tag_path(tag.id, quote.id), :remote => true, :class => "remove-tag" %>
+	<%= link_to " x", board_quote_tag_path(@board, quote, tag), method: :delete, :class => "remove-tag" %>
 </li>

@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 require 'rubygems'
 
-# Tagging gem
-gem 'acts-as-taggable-on'
-
 # Remove 300ms tap event delay for touch devices
 gem 'fastclick-rails'
 
@@ -11,7 +8,7 @@ gem 'fastclick-rails'
 gem 'evil_icons'
 
 # Ruby version
-ruby '2.0.0'
+ruby '2.1.4'
 
 gem 'rails', '4.0.0'
 

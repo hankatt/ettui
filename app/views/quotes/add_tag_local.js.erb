@@ -4,7 +4,7 @@ var sidebar_tags_container = $(".sidebar-list.tags");
 <% if @flags[:add] %>
 	quote_tags_container.append("<%= escape_javascript(render :partial => 'quotes/tag', locals: { quote: @quote, tag: @tag }) %>");
 
-	tag_count = <%= @tag.context_count %>
+	tag_count = <%= @tag.count %>
 	if (tag_count === 1)
 		sidebar_tags_container.append("<%= escape_javascript(render :partial => 'shared/tag', locals: { tag: @tag }) %>");
 	else {

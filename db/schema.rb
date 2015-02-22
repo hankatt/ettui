@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118091723) do
+ActiveRecord::Schema.define(version: 20150221104443) do
 
   create_table "boards", force: true do |t|
     t.string   "name"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20141118091723) do
     t.string   "readability_title"
     t.string   "readability_author"
   end
+
+  create_table "quotes_tags", id: false, force: true do |t|
+    t.integer "tag_id"
+    t.integer "quote_id"
+  end
+
+  add_index "quotes_tags", ["quote_id"], name: "index_quotes_tags_on_quote_id"
+  add_index "quotes_tags", ["tag_id"], name: "index_quotes_tags_on_tag_id"
 
   create_table "sources", force: true do |t|
     t.string   "hostname"
@@ -62,11 +70,8 @@ ActiveRecord::Schema.define(version: 20141118091723) do
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
 
   create_table "tags", force: true do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string "name", null: false
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email"

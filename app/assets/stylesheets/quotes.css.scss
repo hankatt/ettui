@@ -28,6 +28,12 @@
 		padding-bottom: $spacing-1;
 	}
 
+	& .quote-metadata.tags {
+		border-top: solid 1px #ddd;
+  		padding-top: $spacing-1;
+  		margin-top: $spacing-1;
+	}
+
 	& .quote-metadata.source {
 		margin-top: -1px;
 	}

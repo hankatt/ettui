@@ -10,7 +10,7 @@
 	background-color: white;
 	min-width: 320px;
 	margin: $spacing-2 auto;
-	padding: $spacing-2 $spacing-3;
+	padding: $spacing-1 $spacing-3;
 	color: $w-primary-color;
 	font-size: $font-size-sans-1;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
@@ -21,29 +21,44 @@
 	& .quote-metadata {
 		color: $w-secondary-color;
 		overflow-y: hidden;
-		& h4, p, a {
-			font-size: 14px;
-			margin: 0;	
-		}
+	}
+
+	& .quote-title-container {
+		border-bottom: solid 1px #ddd;
+		padding-bottom: $spacing-1;
+	}
+
+	& .quote-metadata.source {
+		margin-top: -3px;
+	}
+
+	& .quote-metadata.source p,
+	  .quote-tag a
+	 {
+		font-size: 14px;
+		font-weight: 100;
+		-webkit-font-smoothing: subpixel-antialiased;
+		color: #aaa;
+	}
+
+	& .quote-metadata * {
+		display: inline-block;
 	}
 
 	/* SOURCE */
 
-	& .quote-source-title-container {
-		width: 100%;
-		float: left;
-		& .source-favicon {
-			width: 32px;
-			height: 32px;
-		}
+	& .source-favicon {
+		width: 32px;
+		height: 32px;
+		margin-top: 3px;
+		margin-right: 10px;
 	}
 
 	& .quote-source-data-container {
-		margin-top: -2px;
 		& p {
 			text-align: left;
 			float: left;
-			font-size: 13px;
+			font-size: 14px;
 		}
 		& p::before {
 			content: " · ";
@@ -57,20 +72,28 @@
 	}
 
 	& .quote-source-title-data-wrapper {
-		padding-left: $spacing-4;
+		overflow-x: auto;
+		overflow-y: hidden;
 		margin-top: -2px;
 	}
 
-	.quote-source-title,
-	.quote-source-date {
+	& .quote-source-title-container {
+		width: 100%;
+		float: left;
+	}
+
+	& .quote-source-title *, .quote-content * {
 		font-family: $font-family-serif;
 	}
 
-	& a.quote-source-title {
-		font-family: "effra", sans-serif;
+	& .quote-source-title a {
 		color: $w-primary-color;
-		font-size: 15px;
-		
+		font-size: 16px;
+		line-height: 16px;
+	}
+
+	.quote-content {
+		padding: 24px 0;
 	}
 
 	&.unread {
@@ -161,14 +184,8 @@
 		&:hover a {
 			color: $w-signature-color;
 		};
-		&:hover .remove-tag {
-			color: $w-secondary-color;
-		}
 		&:hover .remove-tag:hover {
-			color: $w-signature-color;
-		}
-		& a {
-			color: $w-secondary-color;
+			color: red;
 		}
 	}
 }

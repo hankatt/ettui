@@ -10,7 +10,7 @@ Well::Application.routes.draw do
   get 'add/tag_remotely' => "quotes#add_tag_remote"
   get 'add/tag_locally' => "quotes#add_tag_local"
   get 'add/tag_input' => "quotes#append_tag_input"
-  get 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"
+  delete 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"
   get 'users/omniauth/update' => "users#update_all_user_omniauth_data", :as => "omniauth_update"
   get 'quotes/readability/update' => 'quotes#update_readability_data'
   get 'users/done' => "users#done", :as => "continue"
@@ -19,9 +19,12 @@ Well::Application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :quotes
-  resources :boards
-
+  resources :boards do
+    resources :quotes do
+      get :filter, on: :collection
+      resources :tags, only: [:destroy, :create]
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -6,8 +6,8 @@ class BoardsController < ApplicationController
         end
 
         respond_to do |format|
-            if current_user
-                format.html { redirect_to current_user.boards.first }
+            if @user
+                format.html { redirect_to @user.boards.first }
             else
                 format.html { redirect_to root_url }
             end
@@ -15,35 +15,19 @@ class BoardsController < ApplicationController
     end
 
     def show
-        if cookies[:user_id]
-            @user = User.find(cookies[:user_id])
-        else
-            redirect_to root_url
-        end
-
         @board = Board.find(params[:id])
 
-        # complex_find_by(parameters, only new quotes (true/false), when user was last seen)
-        if params && params[:unread] == "true"
-            @quotes = @board.unread(@user.last_active_at)
-            record_user_activity
-            @nothingUnread = true
-        else
-            @unread = @board.unread(@user.last_active_at)
-            @quotes = @board.complex_find_by(params)
-        end
+        @search = Search.new(params[:search]) 
+
+        @quotes = @board.quotes
+        @unread = []
 
         # Get a list of all sources for this users quotes
         @sources = Source.where(:id => @board.quotes.pluck(:source_id))
 
-        # Define tag count specifically for this board
-        #@board.owned_tags.each do |tag|
-        #   tag.update_tag_count_on(@board)
-        #end
-
         respond_to do |format|
             format.html # show.html.erb
-            format.js # show.js.erb
+            # format.js # show.js.erb
             format.json { render json: @quotes }
         end
     end

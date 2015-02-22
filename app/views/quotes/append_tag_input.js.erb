@@ -38,7 +38,7 @@ $(window).unbind('keyup').bind('keyup', function(e) {
 
         // Add the new tag
         $.ajax({
-            url: "//notedapp.herokuapp.com/add/tag_locally",
+            url: "//localhost:3001/add/tag_locally",
             dataType: "script",
             data: jQuery.param(params)
         });

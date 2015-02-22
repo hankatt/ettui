@@ -1,36 +1,37 @@
 <li class="<%= quote.classes_for(current_user) %>" data-qid="<%= quote.id %>">
-    <div class="quote-metadata">
-        <div class="quote-source-title-container">
-            <%= image_tag quote.favicon, :class => "source-favicon" %>
-            <div class="quote-source-title-data-wrapper">
-              <% if quote.readability_title %>
-                <%= link_to quote.truncated_readability_title, quote.url, :class => "quote-source-title" %>
-              <% else %>
-                <%= link_to quote.url, :class => "quote-source-title" %>
-              <% end %>
-              <div class="quote-source-status-new hidden"></div>
-              <div class="quote-source-data-container">
-                <p class="quote-source-hostname"><%= quote.source.hostname %></p>
-                <% if quote.readability_author %>
-                  <p class="quote-source-author">by <%= quote.readability_author %></p>
-                <% end %>
-                <p class="quote-source-date visible"><%= quote.source_date %></p>
-              </div>
-            </div>
-        </div>
+    <div class="quote-title-container">
+        <%= image_tag quote.favicon, :class => "source-favicon" %>
+          <h4 class="quote-source-title">
+            <% if quote.readability_title %>
+              <%= link_to quote.url, quote.truncated_readability_title %>
+            <% else %>
+              <%= link_to quote.url, quote.url %>
+            <% end %>
+          </h4>
+          <div class="is-unread hidden"></div>
+          <div class="quote-metadata source">
+            <p><%= quote.source.hostname %></p> · 
+            <% if quote.readability_author %>
+              <p>by <%= quote.readability_author %></p>
+            <% end %>
+            <p><%= quote.source_date %></p>
+          </div>
     </div>
     <div class="quote-content <%= quote.font_size %>">
-      <p><%= quote.text %></p>
+      <h1><%= quote.text %></h1>
     </div>
     <div class="quote-metadata">
-      <div class="quote-actions">
-          <ul class="quote-tags">
-            <% quote.unique_tags.each do |tag| %>
-              <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
-            <% end %>
-          </ul>
-          <%= link_to I18n.t(".add_a_tag"), "/tag/#new", :class => "append-tag small button", :title => "Add tag" %>
+      <div class="quote-tags">
+        <ul>
+        <% quote.unique_tags.each do |tag| %>
+            <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
+        <% end %>
+        </ul>
+          <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote) do |f| %>
+            <%= f.text_field :name %>
+            <%= f.submit %> 
+          <% end %>
         </div>
-        <%= link_to "· · ·", quote, :class => "small button view" %>
+        <%= link_to "· · ·", board_quote_path(@board, quote), :class => "small button view" %>
       </div>
   </li>

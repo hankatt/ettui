@@ -96,7 +96,7 @@ $(document).on('ready DOMChange', function() {
         };
 
         $.ajax({
-            url: "//notedapp.herokuapp.com/add/tag_input",
+            url: "//localhost:3001/add/tag_input",
             dataType: "script",
             data: jQuery.param(params)
         });
@@ -163,7 +163,7 @@ $(document).on('ready DOMChange', function() {
 
 function updateTag(params) {
     $.ajax({
-        url: "//notedapp.herokuapp.com/add/tag_locally",
+        url: "//localhost:3001/add/tag_locally",
         dataType: "script",
         data: jQuery.param(params)
     });

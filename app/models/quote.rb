@@ -140,9 +140,9 @@ class Quote < ActiveRecord::Base
 	def font_size
 		case
 		when text.length < 111
-			"small"
-		when text.length > 193
 			"big"
+		when text.length > 193
+			"small"
 		else
 			""
 		end

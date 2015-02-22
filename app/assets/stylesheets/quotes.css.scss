@@ -286,17 +286,17 @@
 
 @media only screen and (min-width : 641px) {
 
-	.quote-content.small p {
+	.quote-content.small * {
 		font-size: 15px;
 		line-height: 1.7em;
 	}
 
-	.quote-content p {
+	.quote-content * {
 		font-size: 22px; /* 19.5px */
 		line-height: 1.55em;
 	}
 
-	.quote-content.big p {
+	.quote-content.big * {
 		font-size: 30px; /* 25.35px */
 		line-height: 1.4em;
 	}

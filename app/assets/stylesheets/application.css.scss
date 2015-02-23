@@ -34,9 +34,9 @@
 	}
 
 	.container {
-		width: 100%;
+		width: calc(100% - 370px);
 		height: 100%;
-		margin: 0 auto;
+		margin: 0 auto 0 370px;
 	}
 
 	.fa {
@@ -158,6 +158,6 @@
 		width: 30px;
 		height: 31px;
 		& > svg {
-			fill: $t-primary-color;
+			fill: $w-primary-color;
 		}
 	}

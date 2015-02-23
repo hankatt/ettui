@@ -1,7 +1,9 @@
 class TagsController < ApplicationController
-	before_action :find_quote
 
 	def create
+
+		@quote = Quote.find(params[:quote_id])
+
 		# Ensure all tags are lowercase
 		tag_params[:name] = tag_params[:name].downcase
 
@@ -21,6 +23,8 @@ class TagsController < ApplicationController
 	end
 
 	def destroy
+		@quote = Quote.find(params[:quote_id])
+
 		tag = Tag.find(params[:id])
 
 		if tag.last_instance?
@@ -38,7 +42,7 @@ class TagsController < ApplicationController
 		if params[:user_token]
 
 			@user = User.find_by_token(params[:user_token])
-			@quote = Quote.find(params[:qid])
+			@quote = Quote.find(params[:quote_id])
 			@board = @user.boards.first
 
 			# Flags used to decide what to do with the UI
@@ -49,7 +53,6 @@ class TagsController < ApplicationController
 
 			# Important to downcase for searchability
 			new_tag_name = URI.unescape(params[:tag]).downcase
-
 			@tag = Tag.find_or_initialize_by(name: new_tag_name)
 
 			if @tag.new_record? && @tag.valid?
@@ -77,12 +80,10 @@ class TagsController < ApplicationController
 			if @flags[:update]
 				data = { 
 					:message => "has been selected.", 
-					:submessage => ""
-				}
-			else
-				data = { 
-					:message => "Tagging failed.", 
-					:submessage => "You can also add tags on your board."
+					:submessage => "",
+					:tag => @tag, 
+					:add => @flags[:add], 
+					:update => @flags[:update]
 				}
 			end
 
@@ -94,9 +95,5 @@ class TagsController < ApplicationController
 private
 	def tag_params
 		params.require(:tag).permit(:name)
-	end
-
-	def find_quote
-		@quote = Quote.find(params[:quote_id])
 	end
 end

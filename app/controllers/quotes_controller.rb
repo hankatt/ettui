@@ -11,13 +11,20 @@ class QuotesController < ApplicationController
       # @source = Source.find_or_create_by(:hostname => url_to_host_name(params[:url], :favicon => URI.unescape(params[:favicon])))
       @source = Source.find_by_hostname(url_to_hostname(params[:url])) || Source.create!(:hostname => url_to_hostname(params[:url]), :favicon => URI.unescape(params[:favicon]))
 
+      Rails.logger.debug "____________________________________"
+      Rails.logger.debug "@user"
+      Rails.logger.debug @user.to_yaml
+      Rails.logger.debug "____________________________________"
+      Rails.logger.debug "@source"
+      Rails.logger.debug @source.to_yaml
+      Rails.logger.debug "____________________________________"
       # Create a quote and connect it to the created source
       if @user && @source
 
         # URL to parse with the Parser API
         readability_response = ReadabilityParser.parse_url(params[:url])
         readability_title = readability_response["title"]
-        readability_author = parreadability_responsesed["readability_response"]
+        readability_author = readability_response["author"]
 
         # Validate that it is just the author
         # Assume most names won't use more than 4 names tops
@@ -27,32 +34,40 @@ class QuotesController < ApplicationController
         end
 
         # Build quote to save
-        @quote = @user.boards.first.quotes.new({
-          :text => URI.unescape(params[:text]), 
+        @quote = Quote.new({
+          :text => URI.unescape(params[:text]),
           :url => URI.unescape(params[:url]), 
           :readability_title => readability_title,
           :readability_author => readability_author,
+          :user_id => @user.id,
           :source_id => @source.id
         })
-      end
-    end
 
-    respond_to do |format|
-      if @quote.save
-        data = { 
-          :message => "The quote was saved.", 
-          :submessage => "Adding tags help you to easily find it again.",
-          :quote => @quote.to_json(include: :tags),
-        }
+        respond_to do |format|
+          if @quote.save
 
-        format.json { render json: data, callback: "success" }
+            @board = @user.boards.first
+            @board.quotes << @quote
+
+            data = { 
+              :message => "The quote was saved.", 
+              :submessage => "Adding tags help you to easily find it again.",
+              :quote => @quote,
+              :tags => @board.tags.uniq
+            }
+
+            format.json { render json: data, callback: "success" }
+          end
+        end
       else
-        data = {
-          :message => "Could Not save the quote.",
-          :submessage => "Please try again later.",
-        }
+        respond_to do |format|
+          data = {
+            :message => "Could Not save the quote.",
+            :submessage => "Please try again later."
+          }
 
-        format.json { render json: data, callback: "fail" }
+          format.json { render json: data, callback: "success" }
+        end
       end
     end
   end
@@ -68,15 +83,14 @@ class QuotesController < ApplicationController
   end
 
   def filter
-    @search = Search.new params[:search]
+    @search = Search.new(params[:search])
     @board = Board.find(params[:board_id])
-
-    # Post.where(published: true).joins(:comments).merge( Comment.where(spam: false) )
-
-    @quotes = Quote.in_board(@board).filter_by_text(@search.query).filter_by_source_ids(@search.source_ids).joins(:tags).merge(Tag.filter_by_ids(@search.tag_ids))
-
     @sources = Source.where(:id => @board.quotes.pluck(:source_id))
     @unread = []
+
+    # Fetch the Quotes according to the Search query, Source filters and Tag filters
+    @quotes = Quote.in_board(@board).filter_by_text(@search.query).filter_by_source_ids(@search.source_ids).joins(:tags).merge(Tag.filter_by_ids(@search.tag_ids))
+
     respond_to do |format|
       format.html { render "boards/show" }
       #format.json { render json: @quotes }

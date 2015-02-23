@@ -7,7 +7,7 @@ Well::Application.routes.draw do
   get "users/intro" => "users#intro", :as => "intro"
   get "users/bookmarklet" => "users#bookmarklet", :as => "bookmarklet"
   get 'add/quote' => "quotes#add_quote"
-  get 'add/tag_remotely' => "quotes#add_tag_remote"
+  get 'add/tag_remotely' => "tags#add_tag_remote"
   get 'add/tag_locally' => "quotes#add_tag_local"
   get 'add/tag_input' => "quotes#append_tag_input"
   delete 'tag/:tag_id/:id/remove' => "quotes#remove_tag", :as => "remove_tag"

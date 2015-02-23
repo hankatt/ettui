@@ -12,7 +12,7 @@ class ReadabilityParser
 		READABILITY_URI.query = URI.encode_www_form({:url => url, :token => READABILITY_TOKEN })
 
 		# Readability Parser response
-		response = Net::HTTP.get_response(uri)
+		response = Net::HTTP.get_response(READABILITY_URI)
 		parsed = ActiveSupport::JSON.decode(response.body)
 
 		# Returns parsed

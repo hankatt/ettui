@@ -85,7 +85,6 @@ jquery.onload = function() {
 		document.body.appendChild(popup);
 		bookmarklet = $(".noted-bookmarklet");
 
-
 		/*
 		
 			WHEN A QUOTE HAS BEEN ADDED

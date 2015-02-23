@@ -19,16 +19,16 @@ $sidebar-background-color:	$main-background-color; //rgb(221, 217, 213);
 /* ON WHITE: prefix: w- */
 
 $w-stroke-color:		rgba(0, 0, 0, .1);
-$w-primary-color:		rgba(0, 0, 0, .83);
-$w-secondary-color:		rgba(0, 0, 0, .39);
+$w-primary-color:		#333;
+$w-secondary-color:		#999;
 $w-highlight-color: 	#f6f3f0;
 $w-signature-color:		#00DEA6;
 
 /* ON TURQOUISE: prefix: t- */
 
 $t-stroke-color:	rgba(0, 0, 0, .1);
-$t-primary-color:	rgba(255, 255, 255, .83);
-$t-secondary-color:	rgba(255, 255, 255, .39); /* #c9c6c1 */
+$t-primary-color:	#ccc;
+$t-secondary-color:	#666; /* #c9c6c1 */
 $t-signature-color: #fff;
 
 /*

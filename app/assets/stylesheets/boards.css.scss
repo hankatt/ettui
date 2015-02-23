@@ -24,7 +24,6 @@
 		font-weight: lighter;
 		letter-spacing: 1px;
 		color: #ddd;
-		-webkit-font-smoothing: subpixel-antialiased;
 	}
 	& .profile-mainpage-container {
 		float: right;
@@ -220,6 +219,11 @@
 
 .sidebar-list {
 	clear: both;
+}
+
+.sidebar-list-button {
+	font-weight: lighter;
+	color: #999;
 }
 
 .sidebar-section-title .icon.icon--s {

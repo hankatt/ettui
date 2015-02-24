@@ -19,7 +19,11 @@ class Quote < ActiveRecord::Base
 	end
 
 	def self.filter_by_text(filter_text)
-		where("text LIKE ?", "%#{filter_text}%")
+		if filter_text.length < 1
+			all
+		else
+			where("text LIKE ?", "%#{filter_text}%")
+		end
 	end
 
 	def has_tag(tag_name)

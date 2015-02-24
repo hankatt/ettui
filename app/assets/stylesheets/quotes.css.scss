@@ -118,6 +118,7 @@
 
 	& .quote-source-title *, .quote-content * {
 		font-family: $font-family-serif;
+		-webkit-font-smoothing: antialiased;
 	}
 
 	& .quote-source-title a {

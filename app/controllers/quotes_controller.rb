@@ -89,7 +89,10 @@ class QuotesController < ApplicationController
     @unread = []
 
     # Fetch the Quotes according to the Search query, Source filters and Tag filters
-    @quotes = Quote.in_board(@board).filter_by_text(@search.query).filter_by_source_ids(@search.source_ids).joins(:tags).merge(Tag.filter_by_ids(@search.tag_ids))
+    @quotes = Quote.in_board(@board).filter_by_text(@search.query).filter_by_source_ids(@search.source_ids)
+    if !@search.tag_ids.empty?
+      @quotes = @quotes.joins(:tags).merge(Tag.filter_by_ids(@search.tag_ids))
+    end
 
     respond_to do |format|
       format.html { render "boards/show" }

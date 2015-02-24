@@ -23,7 +23,7 @@
 		line-height: 28px;
 		font-weight: lighter;
 		letter-spacing: 1px;
-		color: #ddd;
+
 	}
 	& .profile-mainpage-container {
 		float: right;
@@ -54,17 +54,6 @@
 	top: 0;
 }
 
-.sidebar-container .header-container {
-	& .fa {
-		font-size: 28px;
-		display: none;
-		&:hover {
-			color: $w-signature-color;
-			cursor: pointer;
-		}
-	}
-}
-
 .profile-mainpage-container {
 	& .profile-photo {
 		float: left;
@@ -81,9 +70,7 @@
 		line-height: 28px;
 		overflow-x: auto;
 		color: $t-secondary-color;
-		&:hover {
-			color: $t-primary-color;
-		}
+		font-weight: lighter;
 		& a { font-family: "effra"; }
 	}
 }
@@ -165,14 +152,14 @@
 }
 
 .search-field {
-	padding: 4px 0px 0px 0px;
+	padding: 3px 0px 0px 0px;
 	width: calc(100% - 27px);
-	line-height: 25px;
+	line-height: 24px;
 	display: inline-block;
-	font-family: $font-family-serif;
-	font-size: $font-size-sans-1;
+	font-size: $font-size-sans-2;
+	font-weight: lighter;
 	background-color: transparent;
-	color: $w-signature-color;
+	color: $w-primary-color;
 	&::-webkit-input-placeholder {
    		color: $w-secondary-color;
    	}
@@ -192,14 +179,16 @@
 
 /* Sidebar arrow */
 
+.sidebar-list-container .sidebar-section-title:hover {
+	cursor: pointer;
+}
+
 .sidebar-section-title {
 	overflow-y: hidden;
-	padding-bottom: 3px;
 	& svg {
 		opacity: 0;
 	}
 	&:hover {
-		cursor: pointer;
 		& svg {
 			opacity: 1;
 		}
@@ -209,7 +198,6 @@
 	float: left;
 	color: $w-primary-color;
 	font-size: $font-size-sans-2;
-	font-weight: lighter;
 	font-family: "effra", sans-serif;
 	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
     -moz-user-select: none; /* mozilla browsers */
@@ -224,6 +212,11 @@
 .sidebar-list-button {
 	font-weight: lighter;
 	color: #999;
+	line-height: 22px;
+}
+
+.sidebar-section-title:hover .icon.icon--s {
+	display: inline-block;
 }
 
 .sidebar-section-title .icon.icon--s {
@@ -239,10 +232,11 @@
 
 .sidebar-section-title.open .icon.icon--s {
 	transform: rotate(180deg);
+	display: inline-block;
 	& svg {
 		fill: $w-primary-color;
+		opacity: 1;
 	}
-	opacity: 1;
 }
 
 /* Filters */

@@ -15,7 +15,7 @@
         </div>
         <!-- SOURCES FILTER !-->
         <div class="sidebar-list-container">
-          <ol class="sidebar-list status">
+          <ol class="status">
             <% if @unread.count > 0 %>
               <li class="sidebar-list-item">
             <% else %>
@@ -23,7 +23,7 @@
             <% end %>
               <%= check_box_tag "unread", true, false, :id => "filter-unread" %>
               <button class="section-title">
-                <h4>Unread quotes</h4>
+                Unread quotes
               </button>
               <div class="filter-count"><p><%= @unread.count %></p></div>
             </li>
@@ -34,7 +34,7 @@
               <h4 class="section-title">Sites</h4>
               <%= evil_icon 'ei-chevron-down', size: :s %>
           </div>
-          <ol class="sidebar-list filters">
+          <ol class="filters">
 	           <% @sources.each do |source| %>
 	                <%= render :partial => 'shared/source', locals: { source: source } %>
 	           <% end %>
@@ -43,15 +43,15 @@
         
         <!-- TAGS FILTER !-->
         <div class="sidebar-list-container tags">
-            <div class="sidebar-section-title">
-                <h4 class="section-title">Tags</h4>
-                <%= evil_icon 'ei-chevron-down', size: :s %>
-                </svg>
-            </div>
-            <ol class="sidebar-list tags">
-            <% @board.tags.uniq.each do |tag| %>
-                <%= render :partial => 'shared/tag', locals: { tag: tag } %>
-            <% end %>
+          <div class="sidebar-section-title">
+              <h4 class="section-title">Tags</h4>
+              <%= evil_icon 'ei-chevron-down', size: :s %>
+              </svg>
+          </div>
+          <ol class="tags">
+          <% @board.tags.uniq.each do |tag| %>
+              <%= render :partial => 'shared/tag', locals: { tag: tag } %>
+          <% end %>
           </ol>
         </div>
     </div><!-- .sidebar-content !-->

@@ -4,12 +4,11 @@ class TagsController < ApplicationController
 
 		@quote = Quote.find(params[:quote_id])
 
-		# Ensure all tags are lowercase
-		tag_params[:name] = tag_params[:name].downcase
 
 		tag = Tag.find_or_initialize_by(tag_params)
 
 		if tag.new_record? && tag.valid?
+			tag.name.downcase!
 			tag.save
 		else
 			# validations failed so you should let the user know

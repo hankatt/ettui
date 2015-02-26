@@ -66,41 +66,41 @@ class Quote < ActiveRecord::Base
         )
 	end
 
-	def add_tag(tag)
+	# def add_tag(tag)
 
-		# Helps determine if add is successful
-		tag_list_count = tag_list.count
+	# 	# Helps determine if add is successful
+	# 	tag_list_count = tag_list.count
 
-		# Try to add 'tag'
-		tag_list.add(tag)
-		save
-		reload
+	# 	# Try to add 'tag'
+	# 	tag_list.add(tag)
+	# 	save
+	# 	reload
 
-		if(tag_list.count > tag_list_count)
-			# Update the relationship to the board
-			update_board_ownership(self)
-		end
+	# 	if(tag_list.count > tag_list_count)
+	# 		# Update the relationship to the board
+	# 		update_board_ownership(self)
+	# 	end
 
-		return tag_list.count > tag_list_count
-	end
+	# 	return tag_list.count > tag_list_count
+	# end
 
-	def remove_tag(tag)
+	# def remove_tag(tag)
 
-		# Helps determine if remove is successful
-		tag_list_count = tag_list.count
+	# 	# Helps determine if remove is successful
+	# 	tag_list_count = tag_list.count
 
-		# Try to add new_tag
-		tag_list.remove(tag)
-		save
-		reload
+	# 	# Try to add new_tag
+	# 	tag_list.remove(tag)
+	# 	save
+	# 	reload
 
-		if(tag_list.count < tag_list_count)
-			# Update the relationship to the board
-			update_board_ownership(self)
-		end
+	# 	if(tag_list.count < tag_list_count)
+	# 		# Update the relationship to the board
+	# 		update_board_ownership(self)
+	# 	end
 
-		tag_list.count < tag_list_count
-	end
+	# 	tag_list.count < tag_list_count
+	# end
 
 	def truncated_readability_title
 		readability_title.truncate(64)

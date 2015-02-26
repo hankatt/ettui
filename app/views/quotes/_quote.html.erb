@@ -14,6 +14,7 @@
           <% end %>
           <p><%= quote.source_date %></p>
         </div>
+        <%= link_to (evil_icon 'ei-trash', size: :s), board_quote_path(@board, quote), method: :delete %>
   </div>
 
   <div class="quote-content <%= quote.font_size %>">

@@ -100,4 +100,14 @@ class QuotesController < ApplicationController
     end
   end
 
+  def destroy
+    @quote = Quote.find(params[:id])
+
+    respond_to do |format|
+      if @quote.destroy
+        format.html { redirect_to boards_path }
+      end
+    end
+  end
+
 end

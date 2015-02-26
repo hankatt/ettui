@@ -68,11 +68,12 @@
 
 .quote-content {
 	margin: $spacing-2 0 $spacing-4;
-	font-weight: lighter;
 }
 
 .quote-content * {
 	font-size: 23px;
+	font-family: $font-family-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
 .quote-content.small * {

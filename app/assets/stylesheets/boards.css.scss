@@ -30,6 +30,15 @@
 .header-container .quotes-title,
 .header-container .profile-name {
 	line-height: 32px;
+}
+
+.header-container .quotes-title,
+.header-container .profile-name,
+.search-field,
+.sidebar-list-container ol li a,
+.sidebar-list-container ol li button,
+.sidebar-list-container li .filter-count,
+.sidebar-list-button {
 	font-weight: lighter;
 }
 
@@ -75,7 +84,6 @@
 .search-field {
 	padding: 3px 0px 0px 0px;
 	font-size: $font-size-sans-2;
-	font-weight: lighter;
 	color: $w-primary-color;
 	&::-webkit-input-placeholder {
    		color: $w-secondary-color;
@@ -93,6 +101,40 @@
 	}
 }
 
+.sidebar-list-container .favicon {
+	background-size: 24px;
+	width: 24px;
+	height: 24px;
+	float: left;
+}
+
+.sidebar-list-container.sources ol li a {
+	margin-left: 10px;
+}
+
+.sidebar-list-container ol li {
+	margin-bottom: 10px;
+}
+
+.sidebar-list-container.tags ol li {
+	margin-bottom: 6px;
+}
+
+.sidebar-list-container li .filter-count {
+	float: right;
+
+	background-color: transparent;
+	width: 21px;
+	text-align: center;
+	color: $w-secondary-color;
+	padding-top: 0px;
+	border-radius: 3px;
+}
+
+.sidebar-list-container li.active .filter-count {
+	background-color: #C0BCAF;
+	color: white;
+}
 /* Sidebar arrow */
 
 .sidebar-list-container .sidebar-section-title:hover {
@@ -101,15 +143,17 @@
 
 .sidebar-section-title {
 	overflow-y: hidden;
-	& svg {
-		opacity: 0;
-	}
-	&:hover {
-		& svg {
-			opacity: 1;
-		}
-	}
+	margin-bottom: $spacing-0;
 }
+
+.sidebar-section-title svg {
+		opacity: 0;
+}
+
+.sidebar-section-title:hover svg {
+		opacity: 1;
+}
+
 .sidebar-section-title h4.section-title {
 	float: left;
 	color: $w-primary-color;
@@ -122,7 +166,6 @@
 }
 
 .sidebar-list-button {
-	font-weight: lighter;
 	color: #999;
 	line-height: 22px;
 }

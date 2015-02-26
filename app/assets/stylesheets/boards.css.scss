@@ -2,137 +2,62 @@
 @import	"variables.css.scss";
 @import "components.css.scss";
 
-.content-container {
-	width: 100%;
-	min-height: 100%;
-	padding: 0 0 $spacing-4;
-	position: relative;
-}
-
 .header-container {
-	position: relative;
-	padding: $spacing-1 $spacing-2 11px;
-	overflow-y: auto;
+	position: fixed;
+	left: 0;
+	width: 100%;
+	overflow-y: hidden;
 	background-color: $w-primary-color;
 	color: white;
 	height: 56px;
-	& .quotes-title {
-		font-family: "effra";
-		float: left;
-		font-size: $font-size-sans-2;
-		line-height: 28px;
-		font-weight: lighter;
-		letter-spacing: 1px;
-
-	}
-	& .profile-mainpage-container {
-		float: right;
-	}
-	& .header-container-logo {
-		display: none;
-		position: absolute;
-		left: $spacing-2;
-		& .fa {
-			font-size: 28px;
-			&:hover {
-				color: $w-signature-color;
-				cursor: pointer;
-			}
-		}
-	}
+	z-index: 3;
+	padding-top: 11px;
 }
 
-.header-container-logo:hover, .header-container:hover {
-	cursor: pointer;
+.header-container .quotes-title.filters {
+	margin-left: 20px;
 }
 
-.content-container .header-container {
-	-webkit-transform: translateZ(0);
-	position: fixed;
-	width: calc(100% - 370px);
-	z-index: 99999;
-	top: 0;
+.header-container .quotes-title {
+	float: left;
 }
 
-.profile-mainpage-container {
-	& .profile-photo {
-		float: left;
-		width: 28px;
-		height: 28px;
-		border-radius: 17px;
-		margin-right: 6px;
-		padding: 3px;
-		box-sizing: content-box;
-		background-color: #fff;
-		margin-top: -3px;
-	}
-	& .profile-name {
-		line-height: 28px;
-		overflow-x: auto;
-		color: $t-secondary-color;
-		font-weight: lighter;
-		& a { font-family: "effra"; }
-	}
-}
-
-.sidebar-close {
-	display: none;
-	text-align: right;
+.header-container .profile-mainpage-container,
+.header-container .profile-name {
 	float: right;
-	color: $w-secondary-color;
-	-webkit-text-fill-color: $main-background-color; 
-	-webkit-text-stroke: 1px $w-secondary-color;
 }
 
-.sidebar-content .icon {
-	display: none;
+.header-container .quotes-title,
+.header-container .profile-name {
+	line-height: 32px;
+	font-weight: lighter;
 }
 
-.icon {
-	width: 25px;
-	height: 25px;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position: 50%;
+.header-container .quotes-title {
+	font-size: $font-size-sans-2;
 }
 
-.icon-menu {
-	background-image: image-url('menu-icon-grey.png');
+.header-container .profile-name {
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	font-size: $font-size-sans-1;
+	color: $t-secondary-color;
 }
 
-.container.active .icon-menu {
-	top: 0;
-	background-image: image-url('menu-close.png');
-}
-
-.sidebar-container .source-favicon,
-.sidebar-container .quote {
-	border-radius: $border-radius;
-}
-
-.quotes-container {
-	background-color: transparent;
-	position: relative;
-	color: $w-secondary-color;
-	padding-top: $spacing-5 !important;
-}
-
-.quotes-container,
-.center-container {
-	width: 100%;
-	padding: 0 112px 0;
-	margin: 0 auto;
-	max-width: 956px;
+.header-container .profile-photo {
+	width: 28px;
+	height: 28px;
+	border-radius: 17px;
+	margin-right: 6px;
+	padding: 3px;
+	box-sizing: content-box;
+	background-color: #fff;
 }
 
 /* Search */
 
 .search-field-container .icon--ei-search {
 	margin-left: -6px;
-}
-
-.header-container-logo .icon--ei-navicon {
-	margin-left: -5px;
 }
 
 .search-field-container {
@@ -147,23 +72,14 @@
 	}
 }
 
-.sidebar-content form .icon {
-	display: inline-block;
-}
-
 .search-field {
 	padding: 3px 0px 0px 0px;
-	width: calc(100% - 27px);
-	line-height: 24px;
-	display: inline-block;
 	font-size: $font-size-sans-2;
 	font-weight: lighter;
-	background-color: transparent;
 	color: $w-primary-color;
 	&::-webkit-input-placeholder {
    		color: $w-secondary-color;
    	}
-
 	&:-moz-placeholder { /* Firefox 18- */
 		color: $w-secondary-color;
 	}
@@ -205,10 +121,6 @@
     -ms-user-select: none; /* IE10+ */
 }
 
-.sidebar-list {
-	clear: both;
-}
-
 .sidebar-list-button {
 	font-weight: lighter;
 	color: #999;
@@ -242,15 +154,14 @@
 /* Filters */
 
 .sidebar-container {
-	width: 370px;
+	width: $sidebar-width;
 	height: 100%;
-	margin-left: -370px;
-	padding: 0;
-	z-index: 999999999;
+	padding: 56px 0 0 0;
+	z-index: 1;
 	overflow-y: auto;
 	position: fixed;
+	left: 0;
 	background-color: $sidebar-background-color;
-	font-size: $font-size-sans-1;
 	color: $w-secondary-color;
 	& a:hover {
 		color: $w-primary-color;
@@ -365,224 +276,5 @@
 
 	& .sidebar-list.filters .sidebar-list-item {
 		margin-bottom: 10px;
-	}
-}
-
-.noted-logo {
-	height: 24px;
-	width: 24px;
-	background: transparent image-url('logo_24x24@1x.png') no-repeat 50% 50%;
-	background-size: 24px;
-}
-
-@media only screen and (-webkit-device-pixel-ratio : 2) {
-	.noted-logo {
-		background-image: image-url('logo_24x24@2x.png');
-	}
-}
-
-.sidebar-content-fixed {
-	width: 370px;
-	position: absolute;
-	bottom: 0;
-	padding: $spacing-3 $spacing-2;
-	& .noted-logo {
-		float: left;
-	}
-	& a {
-		line-height: 26px;
-		float: right;
-		& + a {
-			margin-left: $spacing-0;
-		}
-
-	}
-}
-
-@media only screen and (min-width : 319px) {
-	.boards_header .logo-container {
-		display: block;
-	}
-}
-
-@media only screen and (min-width : 319px) and (max-width : 379px) {
-	.header-container .sidebar-content .icon {
-		display: block;
-	}
-
-	#search-filter.active .header-container .header-container-logo .fa {
-		display: none;
-	}
-
-	.header-container .sidebar-content {
-		width: auto;
-		padding-right: 0;
-		padding-left: 10px;
-	}
-
-	.sidebar-content {
-		width: 100%;
-		float: left;
-	}
-
-	.search-field-container {
-		width: calc(100% - 50px);
-		padding-left: 6px !important;
-		margin-left: 10px;
-		border-left: solid 1px rgba(255, 255, 255, .17);
-		float: left;
-		& .search-field {
-			width: calc(100% - 37px);
-		}
-	}
-}
-
-@media only screen and (min-width : 380px) {
-	.header-container .header-container-logo .fa {
-		display: block;
-	}
-}
-
-@media only screen and (min-width : 320px) and (max-width : 1023px) {
-
-	#search-filter {
-		margin-left: 0;
-		position: relative;
-		overflow-x: hidden;
-		transform: translate3d(0,0,0);
-		-webkit-transform: translate3d(0,0,0);
-		& .sidebar-container, .content-container {
-			-webkit-transition: all 230ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
-		   	-moz-transition: all 230ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
-		      -o-transition: all 230ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
-		         transition: all 230ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
-		}
-	}
-
-	#search-filter.active {
-		margin-left: 0;
-		& .sidebar-container, .content-container {
-			transform: translate3d(320px,0,0);
-			-webkit-transform: translate3d(320px,0,0);
-		}
-	}
-
-	.quotes-container {
-		padding: 0;
-	}
-
-	.sidebar-container {
-		width: 100%;
-		max-width: 320px;
-		margin-left: -320px;
-		overflow-y: scroll;
-		& .header-container {
-			padding-top: 13px;
-			padding-bottom: 12px;
-		}
-	}
-
-	#search-filter.active {
-		& .content-container .header-container {
-			width: 100%;
-		}
-
-		& .content-container .quotes-container .quote {
-			max-width: 100%;
-		}
-		& .quotes-container {
-			padding: 0 0 0 $spacing-2;
-		}
-	}
-
-	#search-filter .content-container .quotes-container .quote {
-		max-width: calc(100% - 40px);
-		border-radius: 0;
-	}
-
-	.content-container .header-container {
-		width: 100%;
-		& .header-container-logo {
-			display: block;
-			left: $spacing-1;
-		}
-		& .profile-mainpage-container .profile-photo {
-			margin-right: 0;
-		}
-		& .center-container {
-			padding: 0 $spacing-1 0 $spacing-5;
-		}
-		& .quotes-title {
-			position: absolute;
-			width: 100%;
-			left: 0;
-			text-align: center;
-			z-index: -1;
-		}
-	}
-
-	.profile-mainpage-container .profile-name {
-		display: none;
-	}
-
-	.sidebar-content,
-	.sidebar-content-fixed,
-	.search-field-container {
-		padding: 0 $spacing-1;
-	}
-
-	.sidebar-content-fixed {
-		width: 100%;
-		position: relative;
-		margin: $spacing-3 0;
-		padding-top: $spacing-3;
-		padding-bottom: $spacing-3;
-	}
-
-}
-
-@media only screen and (min-width : 320px) and (max-width : 640px) {
-	.quotes-container {
-		padding: 0 0 0;
-	}
-
-	.sidebar-close {
-		display: block;
-	}
-
-	#search-filter.active .profile-mainpage-container {
-		margin-left: $spacing-1;
-	}
-
-	.profile-mainpage-container {
-		padding-bottom: 0;
-		margin-left: 64px;
-		border-bottom: none;
-	}
-
-	.content-container {
-		padding-left: 0;
-		padding-right: 0;
-	}
-
-	.quotes-container .quote {
-		padding: $spacing-2 $spacing-1 $spacing-1; 
-	}
-}
-
-@media only screen and (min-width : 360px) {
-	.content-container .header-container .header-container-logo {
-		left: $spacing-2;
-	}
-
-	.header-container .profile-mainpage-container {
-		margin-right: 6px;
-	}
-}
-
-@media only screen and (min-width : 1024px) and (max-width : 1190px) {
-	.center-container,
-	.quotes-container {
-		padding: 0px 62px 0;
 	}
 }

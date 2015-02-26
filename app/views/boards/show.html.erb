@@ -1,52 +1,12 @@
-<%# form_tag board_path(@board.id), :method => 'get', :remote => true, :id => "search-filter", :class => "active" do %>
-    
-    <%= render "boards/sidebar" %>
+<%= render "boards/header" %>
+<%= render "boards/sidebar" %>
 
-    <!--    
-    ############
-
-    CONTENT W/ QUOTES
-
-    ############
-    !-->
-    <div class="content-container">
-        <div class="header-container">
-          <div class="header-container-logo">
-            <%= evil_icon 'ei-navicon', size: :s %>
-          </div>
-          <div class="center-container">
-            <h4 class="quotes-title">Your quotes</h4>
-            <div class="profile-mainpage-container">
-              <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
-              <h4 class="profile-name"><%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "stay" %></h4>
-            </div>
-          </div>
-        </div>
-        <!-- 
-                QUOTES
-                            !-->
-        <ol class="quotes-container">
-            <% if !@quotes.empty? %>
-                <div class="quotes-list">
-                  <%= render(@quotes) %>
-                </div>
-            <% else %>
-              <div class="quotes-list">
-                <div class="quotes-list-information-container">
-                  <h1>You seem to be out of quotes.</h1>
-                  <h3>Here are a few sites that are popular amongst other users.</h3>
-                  <div class="recommendation-link">
-                    <%= link_to "medium.com", "http://www.medium.com" %>
-                  </div>
-                  <div class="recommendation-link">
-                    <%= link_to "alistapart.com", "http://www.alistapart.com" %>
-                  </div>
-                  <div class="recommendation-link">
-                    <%= link_to "thegreatdiscontent.com", "http://thegreatdiscontent.com" %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+<div class="quotes-container center-container">
+    <% if !@quotes.empty? %>
+        <ol>
+          <%= render(@quotes) %>
         </ol>
-    </div>
-<%# end %>
+    <% else %>
+        <%= render "boards/out_of_quotes" %>
+    <% end %>
+</div>

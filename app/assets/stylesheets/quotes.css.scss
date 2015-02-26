@@ -73,15 +73,18 @@
 .quote-content * {
 	font-size: 23px;
 	font-family: $font-family-serif;
+	line-height: 1.5em;
 	-webkit-font-smoothing: antialiased;
 }
 
 .quote-content.small * {
 	font-size: 17px;
+	line-height: 1.7em;
 }
 
 .quote-content.big * {
 	font-size: 35px;
+	line-height: 1.3em;
 }
 
 .quote-tag {

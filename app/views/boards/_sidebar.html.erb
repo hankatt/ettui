@@ -2,12 +2,12 @@
     <div class="sidebar-content">
         <div class="search-field-container">
           <%= form_for @search, url: filter_board_quotes_path(@board), method: :get do |f| %>
-          <%@search.tag_ids.each do |id|%>
+          <% @search.tag_ids.each do |id|%>
             <%= hidden_field_tag "search[tag_ids][]", id %>
-          <%end%>
-          <%@search.source_ids.each do |id|%>
+          <% end %>
+          <% @search.source_ids.each do |id|%>
             <%= hidden_field_tag "search[source_ids][]", id %>
-          <%end%>
+          <% end %>
             <%= evil_icon 'ei-search', size: :s %>
             <%= f.text_field :query, :placeholder => "Type to search", :class => "search-field" %>
             <%= f.submit "Search", :class => 'submit' %>

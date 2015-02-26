@@ -21,6 +21,7 @@
 
 .quote {
 	/* General size and look of a quote */
+	position: relative;
 	background-color: white;
 	min-width: 320px;
 	margin: $spacing-4 auto;
@@ -39,6 +40,27 @@
 	margin-right: 10px;
 	width: 32px;
 	height: 32px;
+}
+
+.quote .icon {
+	position: absolute;
+	top: 14px;
+	right: 21px;
+	width: 32px;
+	height: 32px;
+}
+
+.quote .icon svg {
+	fill: #ddd;
+	opacity: 0;
+}
+
+.quote:hover .icon svg {
+	opacity: 1;
+}
+
+.quote:hover .icon:hover svg {
+	fill: #f22;
 }
 
 .quote-source-title {

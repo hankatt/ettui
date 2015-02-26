@@ -1,10 +1,6 @@
 <div class="sidebar-container list">
-    <div class="header-container">
-      <h4 class="quotes-title">Filters</h4>
-    </div>
     <div class="sidebar-content">
         <div class="search-field-container">
-          <%= evil_icon 'ei-navicon', size: :s %>
           <%= form_for @search, url: filter_board_quotes_path(@board), method: :get do |f| %>
           <%@search.tag_ids.each do |id|%>
             <%= hidden_field_tag "search[tag_ids][]", id %>

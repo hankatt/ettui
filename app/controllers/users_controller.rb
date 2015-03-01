@@ -137,13 +137,16 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @board = @user.boards.first
 
-
         respond_to do |format|
             format.html # show.html.erb
             format.js # show.js.erb
             format.json { render json: @quotes }
         end
     end
+
+  def update_twitter_data
+
+  end
 
   # DELETE /users/1
   # DELETE /users/1.json

@@ -6,19 +6,13 @@ class SessionsController < ApplicationController
 
   def create
   	@user = User.authenticate(params[:email], params[:password])
-    
+
   	create_cookies_for @user
   end
 
   def create_with_omniauth
     auth = request.env["omniauth.auth"]
     @user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-
-    # Setting the Twitter user
-    Twitter::Client.new(
-      oauth_token: auth.credentials.token,
-      oauth_token_secret: auth.credentials.secret,
-    )
 
     # Create session if the authentication was successful
     create_cookies_for @user

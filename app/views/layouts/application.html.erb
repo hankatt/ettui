@@ -87,7 +87,7 @@
 <% end -%>
 !-->
 
-<div class="container">
+<div class="container <%= "no-sidebar" unless params[:controller].eql?("boards") %>">
 	<%= yield %>
 </div>
 

@@ -15,3 +15,65 @@ div.error_explanation ul {
 	list-style: none;
 	}
 }
+
+.profile-container {
+	border: solid 1px $w-stroke-color;
+	border-bottom: none;
+	background-color: white;
+	padding: $spacing-4 0;
+	margin-top: $spacing-2;
+}
+
+.profile-data {
+	text-align: center;
+	width: 480px;
+}
+
+.profile-container img {
+	border-radius: 32px;
+	margin: 0 auto;
+	border: solid 4px #fff;
+	box-shadow: 0 0 5px #CBC9C2;
+}
+
+.profile-container h1,
+.profile-container p {
+	font-weight: lighter;
+}
+
+.profile-container p {
+	width: 50%;
+	min-width: 360px;
+	margin: 0 auto;
+	color: $w-secondary-color;
+}
+
+.profile-infographics {
+	padding: $spacing-2 $spacing-4;
+	height: 100px;
+	background-color: $t-signature-color;
+}
+
+.graph {
+	font-size: $font-size-sans-4;
+	line-height: $font-size-sans-4;
+	color: white;
+	font-weight: lighter;
+	float: left;
+	width: 33%;
+}
+
+.graph h3 {
+	font-size: $font-size-sans-0;
+	color: rgba(0, 0, 0, .41);
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.profile-data.links {
+	margin-top: $spacing-2;
+}
+
+.profile-data.links a + a::before {
+	content: " · ";
+}

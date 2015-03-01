@@ -63,6 +63,18 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def quote_count
+		boards.first.quotes.count
+	end
+
+	def source_count
+		boards.first.quotes.pluck(:source_id).uniq.count
+	end
+
+	def tag_count
+		boards.first.tags.uniq.count
+	end
+
 	# Generates and sets a token for the new user
 	private
 	def initialize_user

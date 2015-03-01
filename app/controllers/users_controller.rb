@@ -136,15 +136,7 @@ class UsersController < ApplicationController
   def show
         @user = User.find(params[:id])
         @board = @user.boards.first
-        @quotes = @board.complex_find_by(params)
 
-        # Get a list of all sources for this users quotes
-        @sources = Source.where(:id => @board.quotes.pluck(:source_id))
-
-        # Define tag count specifically for this board
-        @board.owned_tags.each do |tag|
-            tag.set_context_count(@board)
-        end
 
         respond_to do |format|
             format.html # show.html.erb

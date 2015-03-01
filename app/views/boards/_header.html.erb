@@ -1,7 +1,9 @@
 <div class="header-container">
-  <h4 class="quotes-title filters">Filters</h4>
+  <%= left_header_element %>
   <div class="center-container">
-    <h4 class="quotes-title quotes">Quotes</h4>
+    <h4 class="quotes-title quotes">
+    	<%= @right_title %>
+    </h4>
     <div class="profile-mainpage-container">
       <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
       <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "profile-name" %>

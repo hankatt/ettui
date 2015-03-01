@@ -25,6 +25,8 @@ class BoardsController < ApplicationController
         # Get a list of all sources for this users quotes
         @sources = Source.where(:id => @board.quotes.pluck(:source_id))
 
+        set_titles("Filters", "Quotes")
+
         respond_to do |format|
             format.html # show.html.erb
             # format.js # show.js.erb

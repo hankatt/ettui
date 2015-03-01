@@ -161,9 +161,9 @@ div.error_explanation ul {
 
 .splash-container .splash-title {
 	margin-top: $spacing-5;
-	margin-bottom: $spacing-3;
+	margin-bottom: $spacing-2;
 	font-size: 51px;
-	line-height: $spacing-5;
+	line-height: 64px !important;
 }
 
 .splash-container .splash-title em {
@@ -180,7 +180,7 @@ div.error_explanation ul {
 
 .splash-container .splash-description + .button {
 	display: inline-block;
-	margin-top: $spacing-3;
+	margin-top: $spacing-4;
 	font-size: 16px;
 	text-transform: none;
 	padding: $spacing-2;

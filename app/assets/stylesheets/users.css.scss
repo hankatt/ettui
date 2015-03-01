@@ -76,3 +76,113 @@ div.error_explanation ul {
 .profile-data.links a + a::before {
 	content: " · ";
 }
+
+.splash-container {
+	background-image: image-url("splash_background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: right top;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+}
+
+.splash-container header {
+	background-color: transparent;
+	overflow: auto;
+	padding: 0 $spacing-5;
+}
+
+.splash-container header .noted-logo {
+	color: white;
+	position: relative;
+	top: auto;
+	bottom: auto;
+	float: left;
+	margin-top: 10px;
+	background-color: transparent;
+}
+
+.splash-container header a:not(.noted-logo) {
+	float: right;
+	color: white;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-weight: bolder;
+	margin-top: 13px;
+	-webkit-font-smoothing: antialiased;
+}
+
+.splash-container header .noted-logo {
+	background-image: image-url("logo_striped_72x72@1x.png");
+	background-size: 72px;
+	height: 72px;
+	background-position: 0 50%;
+	line-height: 72px;
+	padding-left: 91px;
+	margin-top: 0;
+}
+
+.button {
+	padding: $spacing-1;
+	border: solid 1px #fff;
+	border-radius: 1000px;
+	font-weight: bold !important;
+}
+
+.button.primary {
+	background-color: #fff;
+	color: $w-primary-color !important;
+}
+
+.splash-container header a + a {
+	margin-right: $spacing-0;
+}
+
+.splash-container .splash-title,
+.splash-container .splash-description,
+.splash-container .splash-description + .button {
+	margin-left: $spacing-5;
+	font-weight: lighter;
+}
+
+.splash-container .splash-title,
+.splash-container .splash-title em,
+.splash-container .splash-description {
+	-webkit-font-smoothing: antialiased;
+}
+
+.splash-container .splash-title,
+.splash-container .splash-description {
+	color: white;
+}
+
+.splash-container .splash-title {
+	margin-top: $spacing-5;
+	margin-bottom: $spacing-3;
+	font-size: 51px;
+	line-height: $spacing-5;
+}
+
+.splash-container .splash-title em {
+	line-height: inherit;
+	color: #ffd802;
+}
+
+.splash-container .splash-description {
+	font-size: 17px;
+	width: 100%;
+	max-width: 480px;
+	min-width: 280px;
+}
+
+.splash-container .splash-description + .button {
+	display: inline-block;
+	margin-top: $spacing-3;
+	font-size: 16px;
+	text-transform: none;
+	padding: $spacing-2;
+	letter-spacing: 1px;
+}

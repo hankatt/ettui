@@ -4,21 +4,6 @@
 @import	"variables.css.scss";
 @import "components.css.scss";
 
-
-.container.no-sidebar {
-	& .center-container {
-		padding-left: 84px;
-		margin: 0 auto;
-	}
-}
-
-.center-container {
-	padding-left: calc(370px + 84px);
-	max-width: 720px;
-	box-sizing: content-box;
-	padding-right: 84px;
-}
-
 .quotes-container {
 	padding-top: 76px;
 }

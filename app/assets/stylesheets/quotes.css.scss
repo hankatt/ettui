@@ -72,6 +72,7 @@
 
 .quote-metadata * {
 	display: inline-block;
+	overflow-y: hidden;
 }
 
 .quote-metadata a,
@@ -107,13 +108,9 @@
 	background-color: $t-stroke-color;
 }
 
-.quote-metadata #new_tag {
-	position: relative;
-	top: -4px;
-}
-
 .quote-tag {
 	margin-right: 10px;
+	line-height: 6px;
 }
 
 .tag::before,
@@ -141,6 +138,7 @@
 	-webkit-font-smoothing: subpixel-antialiased;
 
 	opacity: 0;
+	height: 26px;
 }
 
 .quote #tag_name + input {

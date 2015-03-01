@@ -18,7 +18,7 @@
   </div>
 
   <div class="quote-content <%= quote.font_size %>">
-    <h1><%= quote.text %></h1>
+    <h1><%= raw quote.highlight(@search.query) %></h1>
   </div>
 
   <div class="quote-metadata">

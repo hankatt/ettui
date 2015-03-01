@@ -110,7 +110,7 @@ class UsersController < ApplicationController
 
   def update_all_user_omniauth_data
     # Update all users before this was implemented
-    User.where(["updated_at < ?", "2014-10-31 12:00:00"]).each do |user|
+    User.where(["updated_at < ?", Time.now]).each do |user|
       if !user.uid.blank?
 
         # Fetch user's Twitter data

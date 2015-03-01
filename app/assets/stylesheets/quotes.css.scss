@@ -31,7 +31,7 @@
 }
 
 .quote-source-container {
-	border-bottom: solid 1px #ddd;
+	border-bottom: solid 1px $w-stroke-color;
 	padding-bottom: $spacing-1;
 }
 
@@ -110,6 +110,10 @@
 	line-height: 1.3em;
 }
 
+.quote-content em {
+	background-color: $t-stroke-color;
+}
+
 .quote-metadata #new_tag {
 	position: relative;
 	top: -4px;
@@ -137,7 +141,7 @@
 }
 
 .quote #tag_name {
-	border: solid 1px #ddd;
+	border: solid 1px $w-stroke-color;
 	border-radius: 3px;
 	padding: 3px 6px;
 	color: $w-primary-color;

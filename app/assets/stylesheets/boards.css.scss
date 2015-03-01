@@ -84,6 +84,7 @@
 .search-field {
 	padding: 3px 0px 0px 0px;
 	font-size: $font-size-sans-2;
+	font-family: $font-family-serif;
 	color: $w-primary-color;
 	&::-webkit-input-placeholder {
    		color: $w-secondary-color;
@@ -132,9 +133,47 @@
 }
 
 .sidebar-list-container li.active .filter-count {
-	background-color: #C0BCAF;
+	background-color: $w-signature-color;
+	color: $t-primary-color;
+}
+
+.noted-logo {
+	background-image: image-url('N_logo_24x24@1x.png');
+	background-size: 24px;
+	background-position: 18px 50%;
+	background-repeat: no-repeat;
+	display: block;
+	width: 0;
+	height: 57px;	
+	line-height: 59px;
+
+	/* Make the Noted text fit in.. */
+	padding-right: 68px;
+	padding-left: 60px;
+	font-size: 12px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #fff;
+
+	/* Make the box pretty */
+	/*border: solid 1px rgba(0, 0, 0, .1);*/
+	border-radius: 3px;
+	background-color: $t-signature-color;
+
+	/* Positioning it */
+	position: absolute;
+	bottom: 38px;
+}
+
+.sidebar-container .noted-logo:hover {
 	color: white;
 }
+
+.sidebar-list-container li.active a {
+	color: $w-primary-color;
+}
+
 /* Sidebar arrow */
 
 .sidebar-list-container .sidebar-section-title:hover {
@@ -142,8 +181,8 @@
 }
 
 .sidebar-section-title {
-	overflow-y: hidden;
 	margin-bottom: $spacing-0;
+	overflow: hidden;
 }
 
 .sidebar-section-title svg {
@@ -154,11 +193,14 @@
 		opacity: 1;
 }
 
-.sidebar-section-title h4.section-title {
+.sidebar-list-container.sources .sidebar-section-title {
+	margin-bottom: 13px;
+}
+
+.sidebar-section-title .section-title {
 	float: left;
 	color: $w-primary-color;
 	font-size: $font-size-sans-2;
-	font-family: "effra", sans-serif;
 	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
@@ -227,6 +269,7 @@
 
 .sidebar-list-container {
 	padding-top: $spacing-2;
+	overflow-y: hidden;
 	& .sidebar-list {
 		padding-top: $spacing-0;
 		&.tags {

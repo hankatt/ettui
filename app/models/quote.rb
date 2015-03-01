@@ -122,6 +122,10 @@ class Quote < ActiveRecord::Base
 	  "quote q-#{id}"
 	end
 
+	def highlight query
+		text.gsub(/#{query}/, "<em>#{query}</em>")
+	end
+
 	def new_since_last(user)
 		created_at > user.last_active_at
 	end

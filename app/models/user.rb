@@ -75,6 +75,10 @@ class User < ActiveRecord::Base
 		boards.first.tags.uniq.count
 	end
 
+	def name_or_email
+		name || email
+	end
+
 	# Generates and sets a token for the new user
 	private
 	def initialize_user

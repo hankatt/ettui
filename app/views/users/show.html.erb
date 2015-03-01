@@ -3,8 +3,8 @@
 <div class="quotes-container center-container">
     <div class="profile-data profile-container">
       <img src="<%= @user.twitter_image_url %>"/>
-      <h1><%= @user.name %></h1>
-      <p><%= @user.twitter_description %></p>
+      <h1><%= @user.name_or_email %></h1>
+      <p><%= @user.twitter_description || "No description" %></p>
     </div>
     <div class="profile-data profile-infographics">
       <div class="graph">

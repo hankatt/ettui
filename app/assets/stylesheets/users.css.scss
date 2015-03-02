@@ -187,6 +187,132 @@ div.error_explanation ul {
 	letter-spacing: 1px;
 }
 
+@media screen and (min-width : 319px) {
+	.splash-container {
+		background-size: 920px;
+		background-position: 0px 0px;
+		text-align: center;
+	}
+
+	.splash-container header {
+		padding: 0 $spacing-0;
+	}
+
+	.splash-container header .primary.button {
+		display: none;
+	}
+
+	.splash-container .splash-title, 
+	.splash-container .splash-description, 
+	.splash-container .splash-description + .button {
+		margin-left: $spacing-0;
+		margin-right: $spacing-0;
+	}
+
+	.splash-container .splash-title,
+	.splash-container .splash-description + .button {
+		margin-top: $spacing-2;
+	}
+
+	.splash-container .splash-title,
+	.splash-container .splash-description {
+		text-align: center;
+		margin: 0 auto;
+		max-width: 360px;
+	}
+
+	.splash-container .splash-title {
+		margin-bottom: $spacing-0;
+		margin-top: $spacing-2;
+		font-size: 26px;
+		line-height: 34px !important;
+		font-weight: normal;
+	}
+
+	.splash-container .splash-description {
+		text-align: center;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+
+@media screen and (min-width : 479px) {
+	.splash-container {
+		background-size: 820px;
+		background-position: -40px 0px;
+		text-align: left;
+	}
+
+	.splash-container header {
+		padding: 0 $spacing-2;
+	}
+
+	.splash-container header .primary.button {
+		display: block;
+	}
+
+	.splash-container .splash-title, 
+	.splash-container .splash-description, 
+	.splash-container .splash-description + .button {
+		margin-left: $spacing-2;
+	}
+
+	.splash-container .splash-title,
+	.splash-container .splash-description + .button {
+		margin-top: $spacing-2;
+		max-width: none;
+	}
+
+	.splash-container .splash-title {
+		margin-bottom: $spacing-0;
+		font-size: 27px;
+		line-height: 34px !important;
+		font-weight: normal;
+		text-align: left;
+	}
+
+	.splash-container .splash-description {
+		max-width: 320px;
+		text-align: left;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+@media screen and (min-width : 567px) {
+	.splash-container {
+		background-size: 880px;
+		background-position: -20px 0px;
+	}
+
+	.splash-container header {
+		padding: 0 $spacing-3;
+	}
+
+	.splash-container .splash-title, 
+	.splash-container .splash-description, 
+	.splash-container .splash-description + .button {
+		margin-left: $spacing-3;
+	}
+
+	.splash-container .splash-title,
+	.splash-container .splash-description + .button {
+		margin-top: $spacing-3;
+	}
+
+	.splash-container .splash-title {
+		margin-bottom: $spacing-1;
+		font-size: 33px;
+		line-height: 42px !important;
+		font-weight: lighter;
+	}
+
+	.splash-container .splash-description {
+		max-width: 320px;
+	}
+}
+
 @media screen and (min-width : 767px) {
 	.splash-container {
 		background-size: 1280px;

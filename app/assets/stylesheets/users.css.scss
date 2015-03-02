@@ -280,6 +280,12 @@ div.error_explanation ul {
 	}
 }
 
+@media screen and (max-height : 380px) {
+	.splash-container .splash-description + .button {
+		display: none;
+	}
+}
+
 @media screen and (min-width : 567px) {
 	.splash-container {
 		background-size: 880px;
@@ -324,10 +330,15 @@ div.error_explanation ul {
 		margin-bottom: $spacing-1;
 		font-size: 33px;
 		line-height: 42px !important;
+		font-weight: lighter;
 	}
 
 	.splash-container .splash-description {
 		max-width: 320px;
+	}
+
+	.splash-container .splash-description + .button {
+		display: inline-block;
 	}
 }
 

@@ -18,35 +18,12 @@
 $(function() {
     FastClick.attach(document.body);
     $.stayInWebApp('.stay');
-    if($(window).width() < 769)
-        $("#search-filter").removeClass('active');
 });
 
 $(document).on('ready DOMChange', function() {
 
-    $(window).resize(function() {
-        if($(this).width() < 769)
-            $("#search-filter").removeClass('active');
-        else
-            $("#search-filter").addClass('active');
-    });
-
     //ini();
     document.addEventListener("touchstart", function(){}, true);
-
-    $(".icon--ei-navicon").unbind('click').bind('click', function(event) {
-        event.stopPropagation();
-        $("#search-filter").toggleClass('active');
-    });
-
-    $(window).scroll(function() {
-        scrollTop = $(window).scrollTop();
-        if(scrollTop < 100) {
-            headerHeight = $(".quotes-header-container").outerHeight();
-            newOpacity = 1 - (2 * scrollTop / headerHeight);
-            $(".quotes-header-container").css('opacity', newOpacity);
-        }
-    });
 
     $(".segment-control").unbind('click').bind('click', function(e) {
         $(this).addClass('active');
@@ -69,46 +46,6 @@ $(document).on('ready DOMChange', function() {
 
     });
 
-    $(window).unbind('click').bind('click', function(e) {
-        if($("#search-filter").hasClass('active')) {
-            var container = $(".sidebar-toggle-column");
-            var exceptions = $(".quote");
-            if (container.is(e.target) || container.find(e.target).length > 0) {
-                $("#search-filter").removeClass('active');
-            }
-        } else {
-            var container = $(".sidebar-toggle-column");
-            var exceptions = $(".quote");
-            if (container.is(e.target) || container.find(e.target).length > 0) {
-                $("#search-filter").addClass('active');
-            }
-        }
-    });
-
-    $("a.append-tag").unbind('click').bind('click', function(event) {
-        // Don't follow through on the link
-        event.stopPropagation();
-        event.preventDefault();
-
-        // Necessary param for the query
-        params = { 
-            id: $(this).parents('.quote').data('qid')
-        };
-
-        $.ajax({
-            url: "//localhost:3001/add/tag_input",
-            dataType: "script",
-            data: jQuery.param(params)
-        });
-
-    });
-
-    $(".quote.unread").mouseenter(function() {
-        $(this).find('.symbol-new').fadeOut(200, function() {
-            $(this).parents(".quote.unread").removeClass("unread");
-        });
-    });
-
     $(".sidebar-section-title").unbind('click').bind('click', function() {
         $(this).toggleClass('open');
         list_to_toggle = $(this).siblings('.sidebar-list');
@@ -116,55 +53,4 @@ $(document).on('ready DOMChange', function() {
     });
 
 
-    /* 
-        ADD new custom tag,
-        BUT make sure it's not already used on the current quote. (server-side)
-    */
-
-    $(".popup-new-tag-submit").unbind('click').bind('click', function (e) {
-        e.preventDefault();
-        inputfield = $(this).siblings(".popup-new-tag");
-
-        updateTag({
-            qid: inputfield.data('qid'),
-            tag: inputfield.val()
-        });
-
-        //if(tag_exists)
-            //Reset input field
-            //Flash the tag on the quote to highlight its presence
-    });
-
-    $("#search").keypress(function() {
-        $(".sidebar-list li").unbind('click');
-    });
-
-    /* 
-        Checkbox functionality for the source filters 
-    */
-
-    $(".sidebar-list-item").unbind('click').bind('click', function(e) {
-        // Mark selection as active
-        $(this).toggleClass('active');
-
-        // Set checkbox to: Checked
-        checkbox = $(":checkbox", this);
-        checkbox.prop('checked', !checkbox.prop('checked'));
-    });
-
-    $("#selectBookmarkletCode").on('click', function() {
-        selectText('bookmarkletCode');
-        selection = window.getSelection().anchorNode.textContent;
-        $(this).addClass('selected');
-        $("#selectBookmarkletCode").text("The code is now selected.");
-    });
-
 });
-
-function updateTag(params) {
-    $.ajax({
-        url: "//localhost:3001/add/tag_locally",
-        dataType: "script",
-        data: jQuery.param(params)
-    });
-}

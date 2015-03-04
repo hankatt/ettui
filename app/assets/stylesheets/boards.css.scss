@@ -231,10 +231,14 @@
 }
 
 .sidebar-section-title .section-title {
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 6px;
 	float: left;
 	color: $w-primary-color;
-	font-size: $font-size-sans-2;
-	font-weight: lighter;
+	font-weight: normal;
 	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */

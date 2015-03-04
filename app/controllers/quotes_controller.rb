@@ -94,6 +94,8 @@ class QuotesController < ApplicationController
       @quotes = @quotes.joins(:tags).merge(Tag.filter_by_ids(@search.tag_ids))
     end
 
+    set_titles("Filters", "Quotes")
+
     respond_to do |format|
       format.html { render "boards/show" }
       #format.json { render json: @quotes }

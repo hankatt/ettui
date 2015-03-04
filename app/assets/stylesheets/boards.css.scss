@@ -144,11 +144,25 @@
 	float: right;
 
 	background-color: transparent;
-	width: 21px;
+	padding: 0 6px;
 	text-align: center;
 	color: $w-secondary-color;
 	padding-top: 0px;
 	border-radius: 3px;
+	line-height: 20px;
+	border: solid 1px transparent;
+}
+
+.sidebar-list-container li:hover {
+	cursor: pointer;
+}
+
+.sidebar-list-container li:hover:not(.active) .filter-count {
+	border: solid 1px $t-stroke-color;
+}
+
+.sidebar-list-container li:hover:not(.active) .sidebar-list-button {
+	color: $w-primary-color;
 }
 
 .sidebar-list-container li.active .filter-count {

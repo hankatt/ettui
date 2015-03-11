@@ -1,15 +1,13 @@
 <%= render "shared/header" %>
 <div class="login-signup-container">
-        <h1>Sign up and get started.</h1>
+        <h1>Register your account.</h1>
       <div class="twitter-container">
         <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
-          <span class="socicon">a</span>Sign up using Twitter
+          Connect using Twitter
         <% end %>
       </div>
       <div class="email-container">
+        <h4>Or sign up using email</h4>
         <%= render "form" %>
-      </div>
-      <div class="inline link">
-          <p>Have an account?</p><%= link_to "Sign in", login_path, :class => "stay" %>
       </div>
 </div>

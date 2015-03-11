@@ -1,19 +1,13 @@
-<div class="splash-container">
-  <%= render "shared/header" %>
-  <div class="login-signup-container">
-          <h1>Welcome back.</h1>
-        <div class="twitter-container">
-          <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
-            <span class="socicon">a</span>Sign in using Twitter
-          <% end %>
-        </div>
-        <div class="email-container">
-          <%= render "login_form" %>
-        </div>
-        <div class="inline link">
-            <p>Create an account?</p><%= link_to " Sign up", signup_path, :class => "stay" %>
-        </div>
-  </div>
+<%= render "shared/header" %>
+<div class="login-signup-container">
+        <h1>Welcome back.</h1>
+      <div class="twitter-container">
+        <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
+          Connect using Twitter
+        <% end %>
+      </div>
+      <div class="email-container">
+        <h4>Or sign in using email</h4>
+        <%= render "login_form" %>
+      </div>
 </div>
-
-<!--<%= render "shared/footer" %>!-->

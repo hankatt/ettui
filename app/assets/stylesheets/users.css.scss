@@ -310,6 +310,63 @@ div.error_explanation ul {
 	float: left;
 }
 
+/* # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+	END OF SPLASH ROWS
+
+
+	--
+
+
+	Start of SIGN UP
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # */
+
+.login-signup-container {
+	padding: $spacing-5 0;
+}
+
+.login-signup-container h1 {
+	font-weight: lighter;
+}
+
+.login-signup-container .email-container {
+
+}
+
+.twitter-container {
+	padding: $spacing-2 0;
+}
+
+.twitter-container .primary.button {
+	display: inline-block;
+	padding: $spacing-2 $spacing-4;
+	background-color: #55acee;
+	color: #fff !important;
+	font-weight: normal !important;
+}
+
+.login-signup-container form {
+	margin-top: $spacing-2;
+	& input {
+		margin-bottom: $spacing-0;
+		border: solid 1px $w-stroke-color;
+		border-radius: 3px;
+		padding: $spacing-0 $spacing-1;
+		width: 280px;
+		text-align: center;
+	}
+
+	& input:hover {
+		border-color: #bbb !important;
+	}
+
+	& input:focus {
+		border-color: #000 !important;
+	}
+}
+
 @media screen and (min-width : 319px) {
 	.splash-container {
 		background-size: 920px;
@@ -366,7 +423,6 @@ div.error_explanation ul {
 		display: none;
 	}
 }
-
 
 @media screen and (min-width : 479px) {
 	.splash-container {
@@ -500,7 +556,7 @@ div.error_explanation ul {
 	.splash-container {
 		padding-bottom: 0;
 	}
-	
+
 	.landing-page-header {
 		padding: 0 $spacing-6;
 	}
@@ -527,7 +583,7 @@ div.error_explanation ul {
 
 @media screen and (min-width : 1441px) {
     .splash-container {
-    	max-width: 1440px;
+    	max-width: 1680px;
     	margin: 0 auto;
     }
 }

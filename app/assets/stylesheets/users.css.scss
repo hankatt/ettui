@@ -78,23 +78,27 @@ div.error_explanation ul {
 }
 
 .splash-container {
-	background-image: image-url("splash_background.jpg");
+	background-image: image-url("splash_background_2@1x.jpg");
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: 100% 0%;
-	height: 100%;
+
+	position: relative;
+
 	width: 100%;
 	
 	margin: 0 auto;
 }
 
-.splash-container header {
+.splash-container .landing-page-header {
 	background-color: transparent;
+}
+
+.landing-page-header {
+	background-color: $w-primary-color;
 	overflow: auto;
 	padding: 0 $spacing-5;
 }
 
-.splash-container header .noted-logo {
+.landing-page-header .noted-logo {
 	color: white;
 	position: relative;
 	top: auto;
@@ -104,7 +108,7 @@ div.error_explanation ul {
 	background-color: transparent;
 }
 
-.splash-container header a:not(.noted-logo) {
+.landing-page-header a:not(.noted-logo) {
 	float: right;
 	color: white;
 	font-size: 11px;
@@ -113,9 +117,19 @@ div.error_explanation ul {
 	font-weight: bolder;
 	margin-top: 13px;
 	-webkit-font-smoothing: antialiased;
+	-webkit-transition: background-color .1s;
+
+	&:not(.primary):hover {
+		background-color: rgba(255, 255, 255, .2);
+	}
+
+	&.primary:hover {
+		background-color: rgba(255, 255, 255, .8);
+		border-color: rgba(255, 255, 255, .2);
+	}
 }
 
-.splash-container header .noted-logo {
+.landing-page-header .noted-logo {
 	background-image: image-url("logo_striped_72x72@1x.png");
 	background-size: 72px;
 	height: 72px;
@@ -137,7 +151,7 @@ div.error_explanation ul {
 	color: $w-primary-color !important;
 }
 
-.splash-container header a + a {
+.landing-page-header a + a {
 	margin-right: $spacing-0;
 }
 
@@ -187,6 +201,115 @@ div.error_explanation ul {
 	letter-spacing: 1px;
 }
 
+.learn-more {
+	width: 180px;
+	height: 180px;
+	border-radius: 180px;
+	border: solid 1px #fff;
+	background: transparent;
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-left: -90px;
+	margin-bottom: -90px;
+}
+
+.learn-more p {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 106px;
+	letter-spacing: 3px;
+}
+
+/* # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+	END OF SPLASH HEADER
+
+
+	--
+
+
+	Start of DESCRIPTIONS
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # */
+
+.splash-row-container,
+.splash-row {
+	overflow-y: auto;
+}
+
+.splash-row-container {
+	width: 100%;
+	background-color: #fff;
+	padding: ($spacing-6 + $spacing-4) 0;
+}
+
+.splash-row-container:nth-of-type(3) {
+	background-color: #f6f3f0;
+	& .splash-row .column {
+		border: none;
+	}
+}
+
+.splash-row {
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.splash-row .column {
+	width: 50%;
+	min-width: 320px;
+	background-color: transparent;
+	float: left;
+}
+
+.splash-row .column div {
+	padding-left: $spacing-5;
+	text-align: left;
+
+	& h1 {
+		font-size: $font-size-sans-4;
+		line-height: 1.2em;
+		font-weight: lighter;
+	}
+
+	& p {
+		margin-top: $spacing-1;
+		font-weight: lighter;
+		color: $w-secondary-color;
+		line-height: 1.5em;
+	}
+
+	& em {
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+		background-color: #ffcc00;
+		color: $w-primary-color;
+	}
+}
+
+.splash-row .column.right {
+	float: right;
+}
+
+.splash-row .column.image {
+	padding-top: 0;
+	border: solid 1px $w-stroke-color;
+}
+
+.splash-row .column img {
+	float: right;
+}
+
+.splash-row .column.right img {
+	float: left;
+}
+
 @media screen and (min-width : 319px) {
 	.splash-container {
 		background-size: 920px;
@@ -194,11 +317,11 @@ div.error_explanation ul {
 		text-align: center;
 	}
 
-	.splash-container header {
+	.landing-page-header {
 		padding: 0 $spacing-0;
 	}
 
-	.splash-container header .primary.button {
+	.landing-page-header .primary.button {
 		display: none;
 	}
 
@@ -236,23 +359,27 @@ div.error_explanation ul {
 	}
 
 	.splash-container .splash-description + .button {
-		margin-top: $spacing-3;
+		margin: $spacing-3 0 $spacing-3;
+	}
+
+	.learn-more {
+		display: none;
 	}
 }
 
 
 @media screen and (min-width : 479px) {
 	.splash-container {
-		background-size: 820px;
+		background-size: 840px;
 		background-position: -40px 0px;
 		text-align: left;
 	}
 
-	.splash-container header {
+	.landing-page-header {
 		padding: 0 $spacing-2;
 	}
 
-	.splash-container header .primary.button {
+	.landing-page-header .primary.button {
 		display: block;
 	}
 
@@ -291,11 +418,12 @@ div.error_explanation ul {
 
 @media screen and (min-width : 567px) {
 	.splash-container {
-		background-size: 880px;
+		background-size: 940px;
 		background-position: -20px 0px;
+		padding-bottom: 40px;
 	}
 
-	.splash-container header {
+	.landing-page-header {
 		padding: 0 $spacing-3;
 	}
 
@@ -342,11 +470,11 @@ div.error_explanation ul {
 
 @media screen and (min-width : 1079px) {
 	.splash-container {
-		background-size: contain;
-		background-position: 100% 0%;
+		background-size: cover;
+		background-position: 53% -50px;
 	}
 
-	.splash-container header {
+	.landing-page-header {
 		padding: 0 $spacing-5;
 	}
 
@@ -369,7 +497,11 @@ div.error_explanation ul {
 
 @media screen and (min-width : 1279px) {
 
-	.splash-container header {
+	.splash-container {
+		padding-bottom: 0;
+	}
+	
+	.landing-page-header {
 		padding: 0 $spacing-6;
 	}
 
@@ -387,6 +519,10 @@ div.error_explanation ul {
 	.splash-container .splash-description + .button {
 	  margin-top: $spacing-4;
 	}
+
+	.learn-more {
+		display: block;
+	}
 }
 
 @media screen and (min-width : 1441px) {
@@ -394,4 +530,11 @@ div.error_explanation ul {
     	max-width: 1440px;
     	margin: 0 auto;
     }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+	.splash-container {
+		background-image: image-url("splash_background_2@2x.jpg");
+		background-size: 50%;
+	}
 }

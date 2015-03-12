@@ -20,7 +20,7 @@ $(function() {
     $.stayInWebApp('.stay');
 });
 
-/*$(window).resize(function() {
+$(window).resize(function() {
     window_width = $(window).width();
     if(window_width < 1280) {
         $(".splash-container").removeAttr('style');
@@ -28,12 +28,12 @@ $(function() {
         $(".splash-container").height($(window).height());
         $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))
     }
-});*/
+});
 
 $(document).on('ready DOMChange', function() {
 
-   /* $(".splash-container").height($(window).height());
-    $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))*/
+    $(".splash-container").height($(window).height());
+    $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))
     //ini();
     document.addEventListener("touchstart", function(){}, true);
 

@@ -324,38 +324,59 @@ div.error_explanation ul {
 # # # # # # # # # # # # # # # # # # # # # # # # # # */
 
 .login-signup-container {
-	padding: $spacing-5 0;
 	text-align: center;
+	padding: $spacing-4;
+	max-width: 380px;
+	margin: 0 auto 0;
+	box-sizing: content-box;
+	background-color: #fff;
 }
 
 .login-signup-container h1 {
+	font-size: $font-size-sans-4;
 	font-weight: lighter;
+	letter-spacing: -1px;
+	line-height: $font-size-sans-4;
 }
 
-.login-signup-container .email-container {
-
+.login-signup-container h1 + h4 {
+	line-height: $font-size-sans-4;
+	color: $w-secondary-color;
+	padding-bottom: $spacing-3;
+	margin-bottom: $spacing-0;
+	border-bottom: solid 1px $w-stroke-color;
+	margin: 0;
 }
 
-.twitter-container {
-	padding: $spacing-2 0;
+.login-signup-container h4 {
+	margin: $spacing-2 0px;
 }
 
-.twitter-container .primary.button {
+.login-signup-container .primary.button {
 	display: inline-block;
 	padding: $spacing-2 $spacing-4;
-	background-color: #55acee;
+	width: auto;
+}
+
+.login-signup-container .button {
 	color: #fff !important;
-	font-weight: normal !important;
+	-webkit-font-smoothing: antialiased;
+	background-color: $w-primary-color;
+	border: none;
+	margin: $spacing-2 0 0;
+}
+
+.twitter-container .button {
+	background-color: #55acee;
 }
 
 .login-signup-container form {
-	margin-top: $spacing-2;
-	& input {
+	& input:not(.button) {
 		margin-bottom: $spacing-0;
 		border: solid 1px $w-stroke-color;
 		border-radius: 3px;
 		padding: $spacing-0 $spacing-1;
-		width: 280px;
+		width: 100%;
 		text-align: center;
 	}
 

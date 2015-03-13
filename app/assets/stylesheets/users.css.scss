@@ -143,12 +143,12 @@ div.error_explanation ul {
 	padding: $spacing-1;
 	border: solid 1px #fff;
 	border-radius: 1000px;
-	font-weight: bold !important;
+	font-weight: bold;
 }
 
 .button.primary {
 	background-color: #fff;
-	color: $w-primary-color !important;
+	color: $w-primary-color;
 }
 
 .landing-page-header a + a {
@@ -323,61 +323,91 @@ div.error_explanation ul {
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # */
 
+.landing-page-header.center .noted-logo {
+	background-position: 50% 50%;
+	width: 100%;
+	margin: $spacing-3 0;
+}
+
 .login-signup-container {
 	text-align: center;
-	padding: $spacing-4;
-	max-width: 380px;
+	height: calc(100% - 185px);
 	margin: 0 auto 0;
+	padding: 0 $spacing-1;
 	box-sizing: content-box;
-	background-color: #fff;
+	background-color: $w-primary-color;
+}
+
+.login-signup-container .form-container {
+	width: 100%;
+	max-width: 340px;
+	margin: 0 auto;
+	border: solid 1px #222;
+	padding: $spacing-4;
+}
+
+.login-signup-container h1,
+.login-signup-container h4 {
+	-webkit-font-smoothing: antialiased;
+	font-weight: lighter;
+}
+
+.login-signup-container .button,
+.login-signup-container input,
+.login-signup-container label {
+	-webkit-font-smoothing: antialiased;
+	font-weight: normal;
 }
 
 .login-signup-container h1 {
 	font-size: $font-size-sans-4;
-	font-weight: lighter;
 	letter-spacing: -1px;
 	line-height: $font-size-sans-4;
+	color: $t-primary-color;
 }
 
 .login-signup-container h1 + h4 {
-	line-height: $font-size-sans-4;
-	color: $w-secondary-color;
-	padding-bottom: $spacing-3;
-	margin-bottom: $spacing-0;
+	color: $t-secondary-color;
 	border-bottom: solid 1px $w-stroke-color;
-	margin: 0;
+	margin-bottom: $spacing-3;
 }
 
 .login-signup-container h4 {
-	margin: $spacing-2 0px;
-}
-
-.login-signup-container .primary.button {
-	display: inline-block;
-	padding: $spacing-2 $spacing-4;
-	width: auto;
+	margin: $spacing-1 0;
+	color: $t-secondary-color;
 }
 
 .login-signup-container .button {
-	color: #fff !important;
-	-webkit-font-smoothing: antialiased;
-	background-color: $w-primary-color;
+	display: inline-block;
+	padding: $spacing-2 $spacing-4;
+	width: 100%;
 	border: none;
-	margin: $spacing-2 0 0;
+	border-radius: 3px;
 }
 
-.twitter-container .button {
+.login-signup-container .twitter.button {
 	background-color: #55acee;
+	color: #fff;
 }
 
 .login-signup-container form {
 	& input:not(.button) {
 		margin-bottom: $spacing-0;
-		border: solid 1px $w-stroke-color;
+		background-color: #222;
 		border-radius: 3px;
-		padding: $spacing-0 $spacing-1;
+		padding: $spacing-1;
 		width: 100%;
 		text-align: center;
+		color: $t-primary-color;
+		margin-bottom: $spacing-1;
+	}
+
+	& label {
+		color: $t-secondary-color;
+		font-size: 14px;
+		display: inline-block;
+		margin-bottom: 5px;
+		display: none;
 	}
 
 	& input:hover {
@@ -386,6 +416,22 @@ div.error_explanation ul {
 
 	& input:focus {
 		border-color: #000 !important;
+	}
+
+	& ::-webkit-input-placeholder {
+	   color: #444;
+	}
+
+	& :-moz-placeholder { /* Firefox 18- */
+	   color: red;  
+	}
+
+	& ::-moz-placeholder {  /* Firefox 19+ */
+	   color: red;  
+	}
+
+	& :-ms-input-placeholder {  
+	   color: red;  
 	}
 }
 

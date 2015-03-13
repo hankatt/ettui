@@ -1,14 +1,18 @@
-<%= render "shared/header" %>
+<header class="landing-page-header center">
+     <a href="/" class="noted-logo"></a>
+</header>
 <div class="login-signup-container">
-    <h1>Welcome.</h1>
-    <h4>Sign up below to get started.</h4>
-      <div class="twitter-container">
-        <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
-          Connect using Twitter
-        <% end %>
-      </div>
-      <div class="email-container">
-        <h4>Or using email</h4>
-        <%= render "form" %>
-      </div>
+  <h1>Register account.</h1>
+  <h4>The account is, and always will be, free.</h4>
+  <div class="form-container">
+    <div class="twitter-container">
+      <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
+        Connect using Twitter
+      <% end %>
+    </div>
+    <div class="email-container">
+      <h4>Or using email</h4>
+      <%= render "form" %>
+    </div>
+  </div>
 </div>

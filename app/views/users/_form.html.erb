@@ -1,15 +1,18 @@
 <%= form_for(@user) do |f| %>
   <%= f.hidden_field :new_user, :value => true %>
   <div class="first field">
+    <%= f.label :email %>
     <%= f.text_field :email, :placeholder => "Electronic mail address", :type => "email" %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="field">
+    <%= f.label :password %>
     <%= f.password_field :password, :placeholder => "Password", :class => 'sec' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="last field">
-    <%= f.password_field :password_confirmation, :placeholder => "Password confirmation", :class => 'thi' %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :placeholder => "Password again", :class => 'thi' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="actions">

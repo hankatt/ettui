@@ -110,7 +110,6 @@ div.error_explanation ul {
 
 .landing-page-header a:not(.noted-logo) {
 	float: right;
-	color: white;
 	font-size: 11px;
 	text-transform: uppercase;
 	letter-spacing: 3px;
@@ -121,6 +120,14 @@ div.error_explanation ul {
 
 	&:not(.primary):hover {
 		background-color: rgba(255, 255, 255, .2);
+	}
+
+	&.primary.button {
+		color: $w-primary-color;
+	}
+
+	&.button {
+		color: white;
 	}
 
 	&.primary:hover {
@@ -198,7 +205,7 @@ div.error_explanation ul {
 	font-size: 16px;
 	text-transform: none;
 	padding: $spacing-2;
-	letter-spacing: 1px;
+	font-weight: normal;
 }
 
 .learn-more {

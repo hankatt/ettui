@@ -20,32 +20,32 @@ $(function() {
     $.stayInWebApp('.stay');
 });
 
-$(window).resize(function() {
-    window_width = $(window).width();
-    if(window_width < 1280) {
-        $(".splash-container").removeAttr('style');
-    } else if(window_width > 1280) {
-        $(".splash-container").height($(window).height());
-        $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))
-    }
-});
+// $(window).resize(function() {
+//     window_width = $(window).width();
+//     if(window_width < 1280) {
+//         $(".splash-container").removeAttr('style');
+//     } else if(window_width > 1280) {
+//         $(".splash-container").height($(window).height());
+//         $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))
+//     }
+// });
 
 $(document).on('ready DOMChange', function() {
 
-    $(".splash-container").height($(window).height());
-    $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))
+    // $(".splash-container").height($(window).height());
+    // $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))
     //ini();
     document.addEventListener("touchstart", function(){}, true);
 
     $(".segment-control").unbind('click').bind('click', function(e) {
-        $(this).addClass('active');
-        $(".segment-control").not(this).removeClass('active');
+        $(this).addClass('is-selected');
+        $(".segment-control").not(this).removeClass('is-selected');
 
         index = $(this).index();
         contentContainer = $(this).parent().siblings('.segmented-content-viewport');
 
         sc = contentContainer.find('.segmented-content:eq(' +index +')');
-        scrollDistance = sc.width() + 20;
+        scrollDistance = sc.width();
         if($(window).width() < 768) contentContainer.addClass('mobile');
         if(contentContainer.hasClass('mobile')) {
             contentContainers = contentContainer.find('.segmented-content');
@@ -53,7 +53,7 @@ $(document).on('ready DOMChange', function() {
         } else {
             contentContainer.animate({
                 scrollLeft : scrollDistance * index
-            }, 200);
+            }, 100);
         }
 
     });

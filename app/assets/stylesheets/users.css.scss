@@ -601,8 +601,9 @@ div.error_explanation ul {
 
 @media screen and (min-width : 1079px) {
 	.splash-container {
-		background-size: cover;
-		background-position: 53% -50px;
+		background-size: auto calc(100% + 50px);
+ 		background-position: 53% -50px;
+ 		height: 100%;
 	}
 
 	.landing-page-header {
@@ -623,6 +624,129 @@ div.error_explanation ul {
 
 	.splash-container .splash-description {
 		max-width: 380px;
+	}
+
+	.learn-more {
+		display: block;
+	}
+}
+
+.segmented-control-container {
+	font-size: 0;
+	margin-bottom: $spacing-3;
+}
+
+.segment-control {
+	width: 140px;
+	color: $w-secondary-color;
+	border-color: #444;
+	border-top: solid 1px #444;
+	border-bottom: solid 1px #444;
+	display: inline-block;
+	&:first-of-type {
+		border-top-left-radius: 50px;
+		border-bottom-left-radius: 50px;
+		border: solid 1px;
+		border-color: #444;
+	}
+	&:last-of-type {
+		border-top-right-radius: 50px;
+		border-bottom-right-radius: 50px;
+		border: solid 1px;
+		border-color: #444;
+	}
+	&:nth-child(2):nth-last-child(1) {
+		border-left: none;
+	}
+}
+
+.segment-control {
+	&:hover {
+		background-color: #161616;
+		cursor: pointer;
+	}
+	&:active {
+		background-color: #222;
+	}
+	&.is-selected {
+		background-color: #444;
+		color: #fff;
+	}
+}
+
+.segment-control h4 {
+	color: inherit;
+}
+
+.segmented-content-viewport {
+	width: 100%;
+	max-width: 320px;
+	margin: 0 auto;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+.segmented-content-container {
+	width: 640px;
+}
+
+.segmented-content {
+	width: 100%;
+	max-width: 320px;
+	float: left;
+	padding-bottom: $spacing-0;
+}
+
+.segmented-content {
+	& p, h1, h2, h3, h4, h5, h6 {
+		color: white;
+		font-weight: lighter;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+
+.segmented-content .secondary.button {
+	color: white;
+	width: auto;
+	border-radius: 50px;
+	border: solid 1px #444;
+	margin-top: $spacing-4;
+}
+
+.segmented-content .bookmarklet-container {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.segmented-content .bookmarklet-container p {
+	color: $t-secondary-color;
+}
+
+.segmented-content .bookmarklet-container code {
+	white-space: nowrap;
+	background-color: #ffd802;
+	padding: $spacing-2 0 $spacing-2 $spacing-1;
+	line-height: $spacing-6;
+	-webkit-font-smoothing: antialiased;
+}
+
+.segmented-content .bookmarklet-container .button:hover {
+	cursor: move;
+	box-shadow: 0 0 25px #000;
+	color: $w-primary-color;
+	-webkit-transform: scale(1.02);
+}
+
+.segmented-content .bookmarklet-container .button {
+	background: #ffd802;
+	margin: $spacing-3 0 $spacing-0;
+	color: #746F10;
+	width: 280px;
+	-webkit-transform: scale(1);
+	-webkit-transition: -webkit-transform .1s, box-shadow .1s;
+
+	&:active {
+		background: #DAB800;
 	}
 }
 
@@ -649,10 +773,6 @@ div.error_explanation ul {
 
 	.splash-container .splash-description + .button {
 	  margin-top: $spacing-4;
-	}
-
-	.learn-more {
-		display: block;
 	}
 }
 

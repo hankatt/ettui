@@ -18,7 +18,7 @@
 	background-color: white;
 	min-width: 320px;
 	margin: $spacing-4 auto;
-	padding: $spacing-2 $spacing-3 $spacing-1;
+	padding: $spacing-1 $spacing-2 $spacing-1;
 	font-size: $font-size-sans-1;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 	border-radius: 3px;
@@ -26,7 +26,7 @@
 
 .quote-source-container {
 	border-bottom: solid 1px $w-stroke-color;
-	padding-bottom: ($spacing-0 / 2);
+	padding-bottom: ($spacing-0 / 2 + 1);
 }
 
 .quote .favicon {
@@ -68,6 +68,10 @@
 	color: $w-secondary-color;
 }
 
+.quote-metadata {
+	font-size: 0;
+}
+
 .quote-metadata * {
 	display: inline-block;
 	overflow-y: hidden;
@@ -82,7 +86,7 @@
 }
 
 .quote-content {
-	margin: $spacing-1 0 $spacing-3;
+	margin: $spacing-1 0 $spacing-2;
 }
 
 .quote-content * {

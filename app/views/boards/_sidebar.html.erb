@@ -1,8 +1,5 @@
 <div class="sidebar-container list">
     <div class="sidebar-content">
-      <div class="sidebar-section-title no-underline">
-              <h4 class="section-title">Search in quotes</h4>
-          </div>
         <div class="search-field-container">
           <%= form_for @search, url: filter_board_quotes_path(@board), method: :get do |f| %>
           <% @search.tag_ids.each do |id|%>

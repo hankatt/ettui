@@ -108,32 +108,10 @@ div.error_explanation ul {
 	background-color: transparent;
 }
 
-.landing-page-header a:not(.noted-logo) {
+.landing-page-header .button {
 	float: right;
-	font-size: 11px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	font-weight: bolder;
 	margin-top: 13px;
-	-webkit-font-smoothing: antialiased;
 	-webkit-transition: background-color .1s;
-
-	&:not(.primary):hover {
-		background-color: rgba(255, 255, 255, .2);
-	}
-
-	&.primary.button {
-		color: $w-primary-color;
-	}
-
-	&.button {
-		color: white;
-	}
-
-	&.primary:hover {
-		background-color: rgba(255, 255, 255, .8);
-		border-color: rgba(255, 255, 255, .2);
-	}
 }
 
 .landing-page-header .noted-logo {
@@ -151,11 +129,26 @@ div.error_explanation ul {
 	border: solid 1px #fff;
 	border-radius: 1000px;
 	font-weight: bold;
+	color: white;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: bolder;
+	-webkit-font-smoothing: antialiased;
+	&:hover {
+		background-color: rgba(255, 255, 255, .2);
+		color: white;
+	}
 }
 
 .button.primary {
 	background-color: #fff;
 	color: $w-primary-color;
+	-webkit-font-smoothing: subpixel-antialiased;
+	&:hover {
+		background-color: rgba(255, 255, 255, .8);
+		border-color: rgba(255, 255, 255, .2);
+	}
 }
 
 .landing-page-header a + a {
@@ -163,8 +156,7 @@ div.error_explanation ul {
 }
 
 .splash-container .splash-title,
-.splash-container .splash-description,
-.splash-container .splash-description + .button {
+.splash-container .splash-description {
 	margin-left: $spacing-5;
 	font-weight: lighter;
 }
@@ -202,10 +194,7 @@ div.error_explanation ul {
 .splash-container .splash-description + .button {
 	display: inline-block;
 	margin-top: $spacing-4;
-	font-size: 16px;
-	text-transform: none;
 	padding: $spacing-2;
-	font-weight: normal;
 }
 
 .learn-more {
@@ -618,8 +607,8 @@ div.error_explanation ul {
 
 	.splash-container .splash-title {
 		margin-top: $spacing-4;
-		font-size: 43px;
-		line-height: 50px !important;
+		font-size: 45px;
+		line-height: 51px !important;
 	}
 
 	.splash-container .splash-description {

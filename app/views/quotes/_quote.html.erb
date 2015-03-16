@@ -8,9 +8,11 @@
           <%= link_to quote.url, quote.url, :class => "quote-source-title" %>
         <% end %>
         <div class="quote-metadata">
-          <p><%= quote.source.hostname %></p> · 
+          <p><%= quote.source.hostname %></p>
+          <span> · </span> 
           <% if quote.readability_author %>
-            <p>by <%= quote.readability_author %></p> · 
+            <p>by <%= quote.readability_author %></p>
+            <span> · </span> 
           <% end %>
           <p><%= quote.source_date %></p>
         </div>

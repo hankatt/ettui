@@ -1,5 +1,8 @@
 <div class="sidebar-container list">
     <div class="sidebar-content">
+      <div class="sidebar-section-title no-underline">
+              <h4 class="section-title">Search in quotes</h4>
+          </div>
         <div class="search-field-container">
           <%= form_for @search, url: filter_board_quotes_path(@board), method: :get do |f| %>
           <% @search.tag_ids.each do |id|%>
@@ -31,7 +34,7 @@
         </div>
         <div class="sidebar-list-container sources">
           <div class="sidebar-section-title">
-              <h4 class="section-title">Sites</h4>
+              <h4 class="section-title">Filter by sites</h4>
               <%= evil_icon 'ei-chevron-down', size: :s %>
           </div>
           <ol class="filters">
@@ -44,7 +47,7 @@
         <!-- TAGS FILTER !-->
         <div class="sidebar-list-container tags">
           <div class="sidebar-section-title">
-              <h4 class="section-title">Tags</h4>
+              <h4 class="section-title">Filter by tags</h4>
               <%= evil_icon 'ei-chevron-down', size: :s %>
               </svg>
           </div>

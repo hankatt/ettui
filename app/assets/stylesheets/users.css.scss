@@ -431,6 +431,12 @@ div.error_explanation ul {
 	}
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+	.splash-container {
+		background-image: image-url("splash_background_2@2x.jpg");
+	}
+}
+
 @media screen and (min-width : 319px) {
 	.splash-container {
 		background-size: 920px;
@@ -770,11 +776,4 @@ div.error_explanation ul {
     	max-width: 1680px;
     	margin: 0 auto;
     }
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-	.splash-container {
-		background-image: image-url("splash_background_2@2x.jpg");
-		background-size: 100%;
-	}
 }

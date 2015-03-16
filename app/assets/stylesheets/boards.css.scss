@@ -92,8 +92,9 @@
 	width: 100%;
 	font-size: 0;
 	border-radius: 3px;
-	padding: 5px 10px;
+	padding: 8px $spacing-1;
 	border: solid 1px $w-stroke-color;
+	background-color: white;
 	& .submit {
 		display: none;
 	}
@@ -284,7 +285,8 @@
 	overflow-y: auto;
 	position: fixed;
 	left: 0;
-	background-color: $sidebar-background-color;
+	background-color: #F5F4EE;
+	box-shadow: 1px 0 5px rgba(0, 0, 0, .1);
 	color: $w-secondary-color;
 	& a:hover {
 		color: $w-primary-color;
@@ -293,7 +295,7 @@
 
 .sidebar-content {
 	height: 100%;
-	border-right: solid 1px #ddd;
+	/*border-right: solid 1px #ddd;*/
 	padding: $spacing-2;
 
 }

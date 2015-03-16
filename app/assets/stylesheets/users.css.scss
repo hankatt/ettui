@@ -352,7 +352,6 @@ div.error_explanation ul {
 .login-signup-container input,
 .login-signup-container label {
 	-webkit-font-smoothing: antialiased;
-	font-weight: normal;
 }
 
 .login-signup-container h1 {
@@ -379,11 +378,14 @@ div.error_explanation ul {
 	width: 100%;
 	border: none;
 	border-radius: 3px;
+	font-size: 12px;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 .login-signup-container .twitter.button {
 	background-color: #55acee;
 	color: #fff;
+	-webkit-font-smoothing: antialiased;
 }
 
 .login-signup-container form {

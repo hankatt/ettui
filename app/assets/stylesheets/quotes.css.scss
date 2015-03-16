@@ -21,24 +21,25 @@
 	padding: $spacing-2 $spacing-3 $spacing-1;
 	font-size: $font-size-sans-1;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+	border-radius: 3px;
 }
 
 .quote-source-container {
 	border-bottom: solid 1px $w-stroke-color;
-	padding-bottom: $spacing-1;
+	padding-bottom: ($spacing-0 / 2);
 }
 
 .quote .favicon {
-	float: left;
-	margin-right: 10px;
+	float: right;
+	margin: 0;
 	width: 32px;
 	height: 32px;
 }
 
 .quote .icon {
 	position: absolute;
-	top: 14px;
-	right: 21px;
+	bottom: $spacing-1;
+	right: $spacing-2;
 	width: 32px;
 	height: 32px;
 }
@@ -57,10 +58,10 @@
 }
 
 .quote-source-title {
-	font-family: $font-family-serif;
-	font-size: $font-size-sans-1 - 1;
+	font-size: $font-size-sans-1;
 	line-height: $font-size-sans-1 + 1;
 	display: block;
+	-webkit-font-smoothing: antialiased;
 }
 
 .quote-source-container .quote-metadata {
@@ -70,7 +71,6 @@
 .quote-metadata * {
 	display: inline-block;
 	overflow-y: hidden;
-	font-family: "ff-meta-web-serif-pro";
 }
 
 .quote-metadata a,
@@ -78,17 +78,18 @@
 .quote-metadata input {
 	font-weight: lighter;
 	color: $w-secondary-color;
-	font-size: $font-size-sans-1 - 1;
+	font-size: $font-size-sans-1;
 }
 
 .quote-content {
-	margin: $spacing-1 0 $spacing-4;
+	margin: $spacing-1 0 $spacing-3;
 }
 
 .quote-content * {
 	font-size: 28px;
 	font-family: $font-family-serif;
 	line-height: 1.5em;
+	-webkit-font-smoothing: antialiased;
 }
 
 .quote-content.small * {

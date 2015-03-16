@@ -163,8 +163,12 @@
 }
 
 .sidebar-list-container li.active .filter-count {
-	background-color: $w-signature-color;
+	background-color: $w-primary-color;
 	color: $t-primary-color;
+}
+
+.sidebar-list-container li.active a {
+	color: $w-primary-color;
 }
 
 .noted-logo {
@@ -199,10 +203,6 @@
 .sidebar-container .noted-logo:hover {
 	background-color: #fff;
 	color: $w-secondary-color;
-}
-
-.sidebar-list-container li.active a {
-	color: $w-primary-color;
 }
 
 /* Sidebar arrow */
@@ -242,8 +242,9 @@
 }
 
 .sidebar-list-button {
-	color: $w-primary-color;
+	color: $w-secondary-color;
 	line-height: 22px;
+	-webkit-font-smoothing: antialiased;
 }
 
 .sidebar-section-title:hover .icon.icon--s {

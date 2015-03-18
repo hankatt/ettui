@@ -110,6 +110,26 @@
 	line-height: 1.25em;
 }
 
+.quote-content.big h1::first-letter {
+	font-size: 38px;
+	float: none;
+	line-height: 1.25em;
+	margin-right: 0;
+	margin-top: 0;
+	text-transform: none;
+}
+
+.quote-content.big h1::before {
+	content: '“';
+	color: $w-stroke-color;
+	font-size: 3.66em;
+	line-height: .5em;
+	position: relative;
+	top: .24em;
+	margin-right: .24em;
+	float: left;
+}
+
 .quote-content h1::first-letter {
 	font-size: 3.08em;
 	float: left;
@@ -125,15 +145,6 @@
 	line-height: 0.48em;
 	margin-right: $spacing-0;
 	margin-top: .32em;
-	text-transform: uppercase;
-}
-
-.quote-content.big h1::first-letter {
-	font-size: 2.86em;
-	float: left;
-	line-height: .6em;
-	margin-right: $spacing-1;
-	margin-top: .18em;
 	text-transform: uppercase;
 }
 

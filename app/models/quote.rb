@@ -123,7 +123,7 @@ class Quote < ActiveRecord::Base
 	end
 
 	def highlight query
-		if query.eql?("")
+		if query.eql?("") || query.nil?
 			text
 		else
 			text.gsub(/#{query}/, "<em>#{query}</em>")

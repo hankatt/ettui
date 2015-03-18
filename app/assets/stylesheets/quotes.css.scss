@@ -94,20 +94,47 @@
 }
 
 .quote-content * {
-	font-size: 28px;
+	font-size: 27px;
 	font-family: $font-family-serif;
-	line-height: 1.5em;
+	line-height: 1.45em;
 	-webkit-font-smoothing: antialiased;
 }
 
 .quote-content.small * {
-	font-size: 20px;
-	line-height: 1.7em;
+	font-size: 19px;
+	line-height: 1.65em;
 }
 
 .quote-content.big * {
-	font-size: 39px;
-	line-height: 1.3em;
+	font-size: 38px;
+	line-height: 1.25em;
+}
+
+.quote-content h1::first-letter {
+	font-size: 3.08em;
+	float: left;
+	line-height: .58em;
+	margin-right: $spacing-0;
+	margin-top: .23em;
+	text-transform: uppercase;
+}
+
+.quote-content.small h1::first-letter {
+	font-size: 3.32em;
+	float: left;
+	line-height: 0.48em;
+	margin-right: $spacing-0;
+	margin-top: .32em;
+	text-transform: uppercase;
+}
+
+.quote-content.big h1::first-letter {
+	font-size: 2.86em;
+	float: left;
+	line-height: .6em;
+	margin-right: $spacing-1;
+	margin-top: .18em;
+	text-transform: uppercase;
 }
 
 .quote-content em {

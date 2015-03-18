@@ -2,6 +2,7 @@
 <%= render "boards/sidebar" %>
 
 <div class="quotes-container center-container">
+	<h1 class="quotes-container-title">All quotes</h1>
     <% if !@quotes.empty? %>
         <ol>
           <%= render(@quotes) %>

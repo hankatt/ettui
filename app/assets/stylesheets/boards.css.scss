@@ -82,6 +82,22 @@
 
 /* Search */
 
+.sidebar-container {
+	width: $sidebar-width;
+	height: 100%;
+	padding: 56px 0 0 0;
+	z-index: 1;
+	overflow-y: auto;
+	position: fixed;
+	left: 0;
+	background-color: #E2DFD4;
+	box-shadow: 1px 0 5px rgba(0, 0, 0, .1);
+	color: $w-secondary-color;
+	& a:hover {
+		color: $w-primary-color;
+	}
+}
+
 .search-field-container .icon--ei-search {
 	margin-left: -6px;
 }
@@ -94,7 +110,7 @@
 	border-radius: 3px;
 	padding: 8px $spacing-1;
 	border: solid 1px $w-stroke-color;
-	background-color: white;
+	background-color: transparent;
 	& .submit {
 		display: none;
 	}
@@ -276,22 +292,6 @@
 }
 
 /* Filters */
-
-.sidebar-container {
-	width: $sidebar-width;
-	height: 100%;
-	padding: 56px 0 0 0;
-	z-index: 1;
-	overflow-y: auto;
-	position: fixed;
-	left: 0;
-	background-color: #F5F4EE;
-	box-shadow: 1px 0 5px rgba(0, 0, 0, .1);
-	color: $w-secondary-color;
-	& a:hover {
-		color: $w-primary-color;
-	}
-}
 
 .sidebar-content {
 	height: 100%;

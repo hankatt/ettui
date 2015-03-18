@@ -123,7 +123,11 @@ class Quote < ActiveRecord::Base
 	end
 
 	def highlight query
-		text.gsub(/#{query}/, "<em>#{query}</em>")
+		if query.eql?("")
+			text
+		else
+			text.gsub(/#{query}/, "<em>#{query}</em>")
+		end
 	end
 
 	def new_since_last(user)

@@ -1,4 +1,7 @@
 <div class="sidebar-container list">
+    <div class="header-element">
+      <%= left_header_element %>
+    </div>
     <div class="sidebar-content">
         <div class="search-field-container">
           <%= form_for @search, url: filter_board_quotes_path(@board), method: :get do |f| %>
@@ -14,7 +17,7 @@
           <% end %>
         </div>
         <!-- SOURCES FILTER !-->
-        <div class="sidebar-list-container">
+        <!-- <div class="sidebar-list-container">
           <ol class="status">
             <% if @unread.count > 0 %>
               <li class="sidebar-list-item">
@@ -28,7 +31,7 @@
               <p class="filter-count"><%= @unread.count %></p>
             </li>
           </ol>
-        </div>
+        </div> -->
         <div class="sidebar-list-container sources">
           <div class="sidebar-section-title">
               <h4 class="section-title">Filter by sites</h4>

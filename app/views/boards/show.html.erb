@@ -1,8 +1,15 @@
-<%= render "boards/header" %>
 <%= render "boards/sidebar" %>
 
-<div class="quotes-container center-container">
-	<h1 class="quotes-container-title">All quotes</h1>
+<div class="quotes-container">
+	<div class="center-container">
+		<div class="header-element">
+			<h4 class="header-title"><%= @right_title %></h4>
+		</div>
+		<div class="header-element profile">
+			<%= image_tag @board.users.first.twitter_image_url, :class => "profile-image" %>
+			<%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first %>
+		</div>
+	</div>
     <% if !@quotes.empty? %>
         <ol>
           <%= render(@quotes) %>

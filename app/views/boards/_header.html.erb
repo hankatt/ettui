@@ -1,12 +1,17 @@
-<div class="header-container">
-  <%= left_header_element %>
-  <div class="center-container">
-    <h4 class="quotes-title quotes">
-    	<%= @right_title %>
-    </h4>
-    <div class="profile-mainpage-container">
-      <%= image_tag @board.users.first.twitter_image_url, :class => "profile-photo" %>
-      <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first, :class => "profile-name" %>
-    </div>
+<header>
+  <div class="header-element sidebar">
+      <%= left_header_element %>
+      <p>Showing all 21 quotes</p>
   </div>
-</div>
+  <div class="header-element quotes">
+      <h2 class="header-title"><%= @right_title %></h2>
+      <!-- <h4>from<h4>
+      <p class="active-filter">nytimes.com</p>
+      <p class="active-filter">strindbergsmuseet.se</p>
+      <p class="active-filter">google.com</p> -->
+  </div>
+  <div class="header-element profile">
+      <%= image_tag @board.users.first.twitter_image_url %>
+      <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first %>
+  </div>
+</header>

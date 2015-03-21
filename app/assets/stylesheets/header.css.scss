@@ -1,0 +1,50 @@
+@import "variables.css.scss";
+@import "fonts.css.scss";
+
+.sidebar-container .header-title {
+	padding-left: $spacing-2;
+}
+
+.center-container,
+.quote {
+	width: 100%;
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.profile-image {
+	border-radius: 48px;
+	width: 32px;
+}
+
+.profile-image + a {
+	vertical-align: top;
+	display: inline;
+	line-height: 32px;
+	margin-left: 4px;
+}
+
+.header-element * {
+	-webkit-font-smoothing: antialiased;
+}
+
+.header-element {
+	background-color: transparent;
+	height: 94px;
+	padding-top: $spacing-3;
+}
+
+.header-element .header-title {
+	font-size: $font-size-serif-3;
+	font-family: $font-family-serif;
+}
+
+.quotes-container .header-element {
+	float: left;
+	color: salmon;
+}
+
+.quotes-container .header-element.profile {
+	float: right;
+	padding-top: $spacing-3 + 7;
+}

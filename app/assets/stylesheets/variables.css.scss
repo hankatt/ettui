@@ -22,14 +22,14 @@ $w-stroke-color:		rgba(0, 0, 0, .1);
 $w-primary-color:		#111;
 $w-secondary-color:		#999;
 $w-highlight-color: 	#f6f3f0;
-$w-signature-color:		#7BB8F2;
+$w-signature-color:		salmon;
 
 /* ON TURQOUISE: prefix: t- */
 
 $t-stroke-color:	rgba(0, 0, 0, .1);
 $t-primary-color:	#fff;
 $t-secondary-color:	#777; /* #c9c6c1 */
-$t-signature-color: #7BB8F2;
+$t-signature-color: salmon;
 
 /*
 	###	
@@ -51,8 +51,17 @@ $padding-button-primary: 	0px;
 
 /*
 	###	
-	SIDEBAR: Sidebar width
+	SIDEBAR
 	###
 */
 
 $sidebar-width: 370px;
+
+/*
+	###	
+	HEADER
+	###
+*/
+
+$header-height: 94px;
+

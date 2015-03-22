@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   helper :header
-  
+
   def index
     respond_to do |format|
       if current_user
@@ -139,7 +139,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @board = @user.boards.first
 
-        set_titles("Back to board", "Settings")
+        set_titles("« Back to board", "Settings")
 
         respond_to do |format|
             format.html # show.html.erb

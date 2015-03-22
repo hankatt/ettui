@@ -4,6 +4,10 @@
 @import	"variables.css.scss";
 @import "components.css.scss";
 
+.no-sidebar  .quotes-container {
+	padding-left: $spacing-5;
+}
+
 .quotes-container {
 	padding-left: $sidebar-width + $spacing-5;
 	padding-right: $spacing-5;
@@ -61,7 +65,7 @@
 }
 
 .quote:hover .icon:hover svg {
-	fill: #f22;
+	fill: salmon;
 }
 
 .quote-source-title {
@@ -156,7 +160,7 @@
 }
 
 .quote-content em {
-	background-color: $t-stroke-color;
+	background-color: #F4EFE6;
 }
 
 .quote-tag {

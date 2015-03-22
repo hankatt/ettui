@@ -39,6 +39,11 @@
 	font-family: $font-family-serif;
 }
 
+.no-sidebar .header-element.sidebar {
+	float: left;
+	margin-left: $spacing-2;
+}
+
 .quotes-container .header-element {
 	float: left;
 	color: salmon;
@@ -47,4 +52,12 @@
 .quotes-container .header-element.profile {
 	float: right;
 	padding-top: $spacing-3 + 7;
+}
+
+.header-element.sidebar {
+	width: $sidebar-width;
+}
+
+.no-sidebar .header-element.sidebar {
+	width: auto;
 }

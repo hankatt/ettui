@@ -60,4 +60,14 @@
 
 .no-sidebar .header-element.sidebar {
 	width: auto;
+	position: fixed;
+}
+
+.no-sidebar .header-element.center {
+	text-align: center;
+}
+
+.header-element.transparent {
+	background-color: $main-background-color;
+	color: salmon;
 }

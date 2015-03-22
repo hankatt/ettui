@@ -1,6 +1,9 @@
 <div class="header-element sidebar">
   <%= left_header_element %>
 </div>
+<div class="header-element center transparent">
+  <h4 class="header-title"><%= @right_title %></h4>
+</div>
 <div class="quotes-container">
     <div class="profile-data profile-container">
       <img src="<%= @user.twitter_image_url %>"/>

@@ -24,7 +24,7 @@
 	/* General size and look of a quote */
 	position: relative;
 	background-color: white;
-	min-width: 320px;
+	min-width: 300px;
 	max-width: 720px;
 	margin-bottom: $spacing-4;
 	padding: $spacing-2 $spacing-3 $spacing-1;
@@ -121,26 +121,6 @@
 	line-height: 1.25em;
 }
 
-.quote-content.big h1::first-letter {
-	font-size: 38px;
-	float: none;
-	line-height: 1.25em;
-	margin-right: 0;
-	margin-top: 0;
-	text-transform: none;
-}
-
-.quote-content.big h1::before {
-	content: '“';
-	color: $w-stroke-color;
-	font-size: 3.66em;
-	line-height: .5em;
-	position: relative;
-	top: .24em;
-	margin-right: .16em;
-	float: left;
-}
-
 /*.quote-content h1::first-letter {
 	font-size: 3.08em;
 	float: left;
@@ -149,15 +129,6 @@
 	margin-top: .23em;
 	text-transform: uppercase;
 }*/
-
-.quote-content.small h1::first-letter {
-	font-size: 3.32em;
-	float: left;
-	line-height: 0.48em;
-	margin-right: $spacing-0;
-	margin-top: .32em;
-	text-transform: uppercase;
-}
 
 .quote-content em {
 	background-color: #F4EFE6;

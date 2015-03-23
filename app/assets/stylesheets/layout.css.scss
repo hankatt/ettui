@@ -6,7 +6,7 @@
 }
 
 .quotes-container {
-	padding-left: $sidebar-width + $spacing-5;
+	padding-left: $spacing-5;
 	padding-right: $spacing-5;
 }
 
@@ -68,4 +68,18 @@
 	top: .24em;
 	margin-right: .16em;
 	float: left;
+}
+
+.sidebar-container {
+	display: none;
+}
+
+@media screen and (min-width : 1024px) {
+	.sidebar-container {
+		display: block;
+	}
+
+	.quotes-container {
+		padding-left: $sidebar-width + $spacing-5;
+	}
 }

@@ -9,78 +9,32 @@
 }
 
 .quotes-container {
-	padding-left: $sidebar-width + $spacing-5;
-	padding-right: $spacing-5;
 	padding-bottom: $spacing-6;
 	background-color: #F4EFE6;
 	min-height: 100%;
-}
-
-.quote:first-of-type {
-	margin-top: 0;
 }
 
 .quote {
 	/* General size and look of a quote */
 	position: relative;
 	background-color: white;
-	min-width: 300px;
-	max-width: 720px;
 	margin-bottom: $spacing-4;
 	padding: $spacing-2 $spacing-3 $spacing-1;
-	font-size: $font-size-sans-1;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, .21);
 	border-radius: 3px;
 	overflow-y: hidden;
-	clear: both;
 }
 
 .quote-source-container {
 	border-bottom: solid 1px $w-stroke-color;
-	padding-bottom: $spacing-2 - 2;
+	padding-bottom: $spacing-2;
 }
 
-.quote .favicon {
-	float: right;
-	margin: 0;
-	width: 32px;
-	height: 32px;
-}
-
-.quote .icon {
-	position: absolute;
-	bottom: $spacing-1;
-	right: $spacing-2;
-	width: 32px;
-	height: 32px;
-}
-
-.quote .icon svg {
-	fill: #ddd;
-	opacity: 0;
-}
-
-.quote:hover .icon svg {
-	opacity: 1;
-}
-
-.quote:hover .icon:hover svg {
-	fill: salmon;
-}
-
-.quote-source-title {
+.quote-source-title,
+.quote-metadata a,
+.quote-metadata p,
+.quote-metadata input  {
 	font-size: $font-size-sans-1;
-	line-height: $font-size-sans-1 + 1;
-	display: block;
-/*	-webkit-font-smoothing: antialiased;*/
-}
-
-.quote-source-container .quote-metadata {
-	color: $w-secondary-color;
-}
-
-.quote-metadata {
-	font-size: 0;
 }
 
 .quote-metadata span {
@@ -90,14 +44,38 @@
 .quote-metadata * {
 	display: inline-block;
 	overflow-y: hidden;
+	color: $w-secondary-color;
+	font-weight: lighter;
 }
 
-.quote-metadata a,
-.quote-metadata p,
-.quote-metadata input {
-	font-weight: lighter;
-	color: $w-secondary-color;
-	font-size: $font-size-sans-1;
+.quote .favicon,
+.quote .icon {
+	width: 32px;
+	height: 32px;
+}
+
+.quote .favicon {
+	float: right;
+	margin: 3px 0 0;
+}
+
+.quote .icon {
+	position: absolute;
+	bottom: $spacing-1;
+	right: $spacing-2;
+
+	& svg {
+		fill: #ddd;
+		opacity: 0;
+	}
+
+	&:hover svg {
+		fill: salmon;
+	}
+}
+
+.quote:hover .icon svg {
+	opacity: 1;
 }
 
 .quote-content {
@@ -105,72 +83,48 @@
 }
 
 .quote-content * {
-	font-size: 27px;
 	font-family: $font-family-serif;
-	line-height: 1.45em;
 	-webkit-font-smoothing: antialiased;
 }
 
-.quote-content.small * {
-	font-size: 19px;
-	line-height: 1.65em;
-}
-
-.quote-content.big * {
-	font-size: 38px;
-	line-height: 1.25em;
-}
-
-/*.quote-content h1::first-letter {
-	font-size: 3.08em;
-	float: left;
-	line-height: .58em;
-	margin-right: $spacing-0;
-	margin-top: .23em;
-	text-transform: uppercase;
-}*/
-
 .quote-content em {
-	background-color: #F4EFE6;
+	background-color: $main-background-color;
 }
 
 .quote-tag {
-	margin-right: 10px;
+	margin-right: $spacing-0;
 	line-height: 6px;
-}
-
-.tag::before,
-.sidebar-list-container.tags ol li a::before {
-	content: '#';
 }
 
 .tag + .remove-tag {
 	margin-left: 3px;
 }
 
-.quote-metadata:hover #tag_name {
-	opacity: .33;
-}
-
-.quote-metadata #tag_name:focus {
-	opacity: 1;
-}
-
-.quote #tag_name {
+.quote input#tag_name {
 	border: solid 1px $w-stroke-color;
 	border-radius: 3px;
 	padding: 3px 6px;
-	color: $w-primary-color;
-	-webkit-font-smoothing: subpixel-antialiased;
-
 	opacity: 0;
 	height: 26px;
 }
 
-.quote #tag_name + input {
+.quote-metadata:hover input#tag_name {
+	opacity: .33;
+}
+
+.quote-metadata:hover input#tag_name:focus,
+input#tag_name:focus {
+	opacity: 1;
+}
+
+input#tag_name + input {
 	display: none;
 }
 
+.tag::before,
+.sidebar-list-item.tag .list-item-title::before {
+	content: '#';
+}
 
 
 /* OUT OF QUOTES INFORMATION CONTAINER */

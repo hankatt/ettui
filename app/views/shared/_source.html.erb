@@ -1,5 +1,5 @@
 <li class="sidebar-list-item <%= @search.source_classes(source) %>" >
-	<div class="favicon" style="background-image: url('<%= source.favicon %>');"></div>
-	<%= link_to source.hostname.truncate(30), filter_board_quotes_path(@board, @search.update_params_for(source)), class: "sidebar-list-button" %>
-	<p class="filter-count"><%= source.count_for(@board) %></p>
+	<div class="list-item-icon" style="background-image: url('<%= source.favicon %>');"></div>
+	<%= link_to source.hostname.truncate(30), filter_board_quotes_path(@board, @search.update_params_for(source)), class: "list-item-title" %>
+	<p class="list-item-count"><%= source.count_for(@board) %></p>
 </li>

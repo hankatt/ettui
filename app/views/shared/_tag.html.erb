@@ -1,4 +1,4 @@
-<li class="sidebar-list-item t-<%= tag.id %> <%= @search.tag_classes(tag) %>">
-	<%= link_to tag.name.truncate(30), filter_board_quotes_path(@board, @search.update_params_for(tag)), class: "sidebar-list-button" %>
-	<p class="filter-count"><%= tag.count_for(@board) %></p>
+<li class="sidebar-list-item <%= @search.tag_classes(tag) %>">
+	<%= link_to tag.name.truncate(30), filter_board_quotes_path(@board, @search.update_params_for(tag)), class: "list-item-title" %>
+	<p class="list-item-count"><%= tag.count_for(@board) %></p>
 </li>

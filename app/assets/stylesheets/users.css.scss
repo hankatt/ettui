@@ -100,8 +100,12 @@ div.error_explanation ul {
 	background-color: transparent;
 }
 
+.landing-page-header,
+.login-signup-container {
+	background-color: $w-signature-color;
+}
+
 .landing-page-header {
-	background-color: $w-primary-color;
 	overflow: auto;
 	padding: 0 $spacing-5;
 }
@@ -339,14 +343,13 @@ div.error_explanation ul {
 	margin: 0 auto 0;
 	padding: 0 $spacing-1;
 	box-sizing: content-box;
-	background-color: $w-primary-color;
 }
 
 .login-signup-container .form-container {
 	width: 100%;
 	max-width: 340px;
 	margin: 0 auto;
-	border: solid 1px #222;
+	border: solid 1px #D55E50;
 	padding: $spacing-4;
 }
 
@@ -369,15 +372,22 @@ div.error_explanation ul {
 	color: $t-primary-color;
 }
 
+.login-signup-container h4,
+.login-signup-container h1 + h4,
+.form-container {
+	color: #81362D;
+	border-color: #81362D;
+}
+.login-signup-container form input:not(.button) {
+	background-color: #81362D; 
+}
+
 .login-signup-container h1 + h4 {
-	color: $t-secondary-color;
-	border-bottom: solid 1px $w-stroke-color;
 	margin-bottom: $spacing-3;
 }
 
 .login-signup-container h4 {
 	margin: $spacing-1 0;
-	color: $t-secondary-color;
 }
 
 .login-signup-container .button {
@@ -399,7 +409,6 @@ div.error_explanation ul {
 .login-signup-container form {
 	& input:not(.button) {
 		margin-bottom: $spacing-0;
-		background-color: #222;
 		border-radius: 3px;
 		padding: $spacing-1;
 		width: 100%;
@@ -425,7 +434,7 @@ div.error_explanation ul {
 	}
 
 	& ::-webkit-input-placeholder {
-	   color: #444;
+	   color: #64251E;
 	}
 
 	& :-moz-placeholder { /* Firefox 18- */

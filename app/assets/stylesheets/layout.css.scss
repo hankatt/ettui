@@ -36,17 +36,14 @@
 }
 
 .quote-content * {
-	font-size: 27px;
 	line-height: 1.45em;
 }
 
 .quote-content.small * {
-	font-size: 19px;
 	line-height: 1.65em;
 }
 
 .quote-content.big * {
-	font-size: 38px;
 	line-height: 1.25em;
 }
 
@@ -59,19 +56,105 @@
 	text-transform: uppercase;
 }
 
-.quote-content.big h1::before {
-	content: '“';
-	color: $w-stroke-color;
-	font-size: 3.66em;
-	line-height: .5em;
-	position: relative;
-	top: .24em;
-	margin-right: .16em;
-	float: left;
+.sidebar-container,
+.header-element.profile a {
+	display: none;
 }
 
-.sidebar-container {
-	display: none;
+.header-element.profile img {
+	margin-right: 0;
+}
+
+@media screen and (min-width : 320px) {
+
+	.center-container .header-element {
+		padding: $spacing-3 $spacing-2;
+		&.profile { padding-top: $spacing-3 + 6; }
+	}
+
+	.quotes-container {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.quote {
+		margin-bottom: $spacing-3;
+		padding: $spacing-2 $spacing-2 $spacing-1;
+		border-radius: 0px;
+	}
+
+	.quote-content * {
+		font-size: 19px;
+	}
+
+	.quote-content.small * {
+		font-size: 14px;
+	}
+
+	.quote-content.big * {
+		font-size: 27px;
+	}
+}
+
+@media screen and (min-width : 480px) {
+
+	.center-container .header-element {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.header-element.profile a {
+		display: inline;
+	}
+
+	.header-element.profile img {
+		margin-right: 5px;
+	}
+
+	.quotes-container {
+		padding-left: $spacing-3;
+		padding-right: $spacing-3;
+	}
+
+	.quote {
+		padding: $spacing-2 $spacing-3 $spacing-1;
+		border-radius: 3px;
+	}
+}
+
+@media screen and (min-width : 640px) {
+	.quotes-container {
+		padding-left: $spacing-5;
+		padding-right: $spacing-5;
+	}
+
+	.quote {
+		margin-bottom: $spacing-4;
+		padding: $spacing-2 $spacing-3 $spacing-1;
+	}
+
+	.quote-content * {
+		font-size: 27px;
+	}
+
+	.quote-content.small * {
+		font-size: 19px;
+	}
+
+	.quote-content.big * {
+		font-size: 38px;
+	}
+
+	.quote-content.big h1::before {
+		content: '“';
+		color: $w-stroke-color;
+		font-size: 3.66em;
+		line-height: .5em;
+		position: relative;
+		top: .24em;
+		margin-right: .16em;
+		float: left;
+	}
 }
 
 @media screen and (min-width : 1024px) {
@@ -81,5 +164,6 @@
 
 	.quotes-container {
 		padding-left: $sidebar-width + $spacing-5;
+		padding-right: $spacing-5;
 	}
 }

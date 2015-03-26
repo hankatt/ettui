@@ -82,12 +82,12 @@
 		padding: $spacing-2;
 	}
 
-	.quote-content *,
 	.quote-content.big * {
 		font-size: 23px;
 		line-height: 1.35em;
 	}
 
+	.quote-content *,
 	.quote-content.small * {
 		font-size: 16px;
 	}

@@ -20,6 +20,7 @@
 	background-color: white;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, .21);
 	overflow-y: hidden;
+	border-radius: 2px;
 }
 
 .quote-source-container {
@@ -76,7 +77,7 @@
 }
 
 .quote-content {
-	margin: $spacing-1 0 ($spacing-1 / 2);
+	margin: $spacing-1 0 7px;
 }
 
 .quote-content * {

@@ -1,0 +1,136 @@
+/* Search */
+
+.c-sidebar_container {
+	padding: 59px 28px 0;
+	font-family: "soleil";
+}
+
+.c-sidebar_container__header,
+.c-sidebar_container__list li {
+	display: flex;
+	justify-content: space-between;
+}
+
+.c-sidebar_container__search {
+	width: 100%;
+	border-radius: 3px;
+	border: solid 1px $w-stroke-color;
+	.submit {
+		display: none;
+	}
+}
+
+.c-sidebar_container__search .icon {
+	top: 4px;
+	left: 4px;
+}
+
+.c-sidebar_container__search input[type="text"] {
+	vertical-align: top;
+	line-height: 38px;
+}
+
+/*
+
+	SIDEBAR HEADER
+	
+	h4
+
+*/
+
+.c-sidebar_container__header {
+	margin-bottom: 10px;
+}
+
+.c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {
+	margin-top: 28px;
+}
+
+.c-sidebar_container__header h4 {
+	font-weight: bold;
+}
+
+/*
+
+	SIDEBAR LIST ITEM
+
+	ol > li
+
+*/
+
+.c-sidebar_container__list .c-quote__favicon {
+	margin-right: 5px;
+}
+
+.c-sidebar_container__list li a {
+	flex-grow: 1;
+}
+
+.c-sidebar_container__count {
+	min-width: 24px;
+	padding: 0px 6px 1px;
+	text-align: center;
+	border-radius: 3px;
+	border: solid 1px transparent;
+}
+
+
+/*
+
+
+	HOVER & BEHAVIORAL STATES
+
+
+*/
+
+.sidebar-section-header {
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+.c-sidebar_container__header:hover,
+.c-sidebar_container__list li:hover {
+	cursor: pointer;
+}
+
+.c-sidebar_container__list li:hover {
+	.c-sidebar_container__count {
+		border: solid 1px #ddd;
+	}
+}
+
+/*
+
+	VISUAL THEME
+
+*/
+
+.t-white {
+	.c-sidebar_container__list li a,
+	.c-sidebar_container__search input[type="text"] {
+		letter-spacing: -1px;
+	}
+
+	.c-sidebar_container__list li a,
+	.c-sidebar_container__count {
+		line-height: 22px;
+	}
+
+	.c-sidebar_container__search, 
+	.c-sidebar_container__list li a {
+		color: #999;
+	}
+
+	.c-sidebar_container__list li.is-active {
+		a {
+			color: $w-signature-color;
+		}
+		
+		.c-sidebar_container__count {
+			background-color: $w-signature-color;
+			color: $t-primary-color;
+		}
+	}
+}

@@ -19,13 +19,13 @@ class BoardsController < ApplicationController
 
         @search = Search.new(params[:search]) 
 
-        @quotes = @board.quotes
+        @quotes = @board.quotes.reverse_order
         @unread = []
 
         # Get a list of all sources for this users quotes
         @sources = Source.where(:id => @board.quotes.pluck(:source_id))
 
-        set_titles("Search & filter", "Your quotes")
+        set_titles("", "Your quotes")
 
         respond_to do |format|
             format.html # show.html.erb

@@ -1,37 +1,41 @@
-<li class="<%= quote.classes_for(current_user) %>">
-  <div class="quote-source-container">
-      <%= image_tag quote.favicon, :class => "favicon" %>
-        <% if quote.readability_title %>
-          <%= link_to quote.truncated_readability_title, quote.url, :class => "quote-source-title" %>
-        <% else %>
-          <%= link_to quote.url, quote.url, :class => "quote-source-title" %>
-        <% end %>
-        <div class="quote-metadata">
-          <p><%= quote.source.hostname %></p>
-          <span> · </span> 
-          <% if quote.readability_author %>
-            <p>by <%= quote.readability_author %></p>
-            <span> · </span> 
-          <% end %>
-          <p><%= quote.source_date %></p>
-        </div>
-        <%= link_to (evil_icon 'ei-trash', size: :s), board_quote_path(@board, quote), method: :delete %>
+<div class="<%= quote.classes_for(current_user) %>">
+  <div class="c-quote__metadata c-quote__metadata--primary">
+        <p class="c-quote__timestamp"><%= quote.source_date %></p>
+        <%= link_to (evil_icon 'ei-trash', size: :s), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
   </div>
 
-  <div class="quote-content <%= quote.font_size %>">
+  <!-- Quote !-->
+  <div class="c-quote__content <%= quote.font_size %>">
     <h1><%= raw quote.highlight(@search.query) %></h1>
   </div>
 
-  <div class="quote-metadata">
-      <ul>
+  <!-- Tags !-->
+  <div class="c-quote__tags">
+      <ul class="u-inline-block">
         <% quote.unique_tags.each do |tag| %>
             <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
         <% end %>
       </ul>
-      <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote) do |f| %>
-        <%= f.text_field :name, placeholder: "New tag title" %>
-        <%= f.submit "Add" %> 
+      <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote), :class => "c-tag_form" do |f| %>
+        <%= f.text_field :name, placeholder: "New tag title", :class => "c-tag_form__input" %>
+        <%= f.submit "Add", :class => "c-tag_form__button" %> 
       <% end %>
   </div>
-  
-</li>
+
+   <!-- Title and Favicon !-->
+   <div class="c-quote__metadata c-quote__metadata--secondary">
+  <% if quote.readability_title %>
+    <%= link_to quote.truncated_readability_title, quote.url, :class => "c-quote__title" %>
+  <% else %>
+    <%= link_to quote.url, quote.url, :class => "c-quote__title" %>
+  <% end %>
+  <% if quote.readability_author %>
+    &nbsp;
+    <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p> 
+  <% end %>
+  <!--
+  <p><%= quote.source.hostname %></p>
+  !-->
+  <%= image_tag quote.favicon, :class => "c-quote__favicon" %>  
+  </div>
+</div>

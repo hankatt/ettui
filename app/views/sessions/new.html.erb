@@ -1,14 +1,17 @@
-<div class="o-authentication t-black">
-  <header>
-       <a href="/" class="c-noted-logo"></a>
-  </header>
-  <div class="o-form_container">
-    <h1>Welcome back</h1>
-    <h4>Sign in using e-mail or through Twitter.</h4>
-    <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
-      Connect using Twitter
-    <% end %>
-    <h4>Or e-mail</h4>
-    <%= render "login_form" %>
+<div class="o-overlay">
+  <div class="c-modal__window">
+    <div class="modal__content">
+      <%= image_tag "logo_striped_black_72x72@1x.png" %>
+      <h1>
+        Welcome back. Log in below.
+      </h1>
+      <%= link_to "/auth/twitter?image_size=original", :class => "button" do %>
+        <%= image_tag "twitter_white_25x20@1x.png" %>Connect using Twitter
+      <% end %>
+      <%= render "login_form" %>
+      <p>Don't have an account?
+        <%= link_to "Sign up", signup_path %>
+      </p>
+    </div>
   </div>
 </div>

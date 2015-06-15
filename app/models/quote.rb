@@ -119,7 +119,7 @@ class Quote < ActiveRecord::Base
 	end
 
 	def default_classes
-	  "quote q-#{id}"
+	  "c-quote q-#{id}"
 	end
 
 	def highlight query
@@ -136,9 +136,9 @@ class Quote < ActiveRecord::Base
 
 	def font_size
 		case
-		when text.length < 111
+		when text.length < 140
 			"big"
-		when text.length > 243
+		when text.length > 280
 			"small"
 		else
 			""

@@ -1,15 +1,4 @@
-<div class="o-authentication t-black">
-  <header>
-       <a href="/" class="c-noted-logo"></a>
-  </header>
-  <div class="o-form_container">
-    <h1>Sign up</h1>
-    <h4>Creating an account is simple and free.</h4>
-    <%= link_to "/auth/twitter?image_size=original", class: "twitter primary button stay" do %>
-      Connect using Twitter
-    <% end %>
-    <h4>Or using email</h4>
-    <%= render "form" %>
-    </div>
-  </div>
+<div class="o-overlay m-scene">
+  <%# render "sign_up" %>
+  <%= render "sign_up_email" %>
 </div>

@@ -3,6 +3,11 @@
 .c-sidebar_container {
 	padding: 59px 28px 118px;
 	font-family: "soleil";
+
+	/* To enable scrolling of a fixed element. */
+	top: 0;
+	bottom: 0;
+	overflow-y: auto;
 }
 
 .c-sidebar_container__header,

@@ -21,13 +21,13 @@ class Search
 
 	def source_classes source
 		classes = ["source"]
-		classes << "active" if source_ids.include?(source.id.to_s)
+		classes << "is-active" if source_ids.include?(source.id.to_s)
 		classes.join(" ")
 	end
 
 	def tag_classes tag
-		classes = ["tag"]
-		classes << "active" if tag_ids.include?(tag.id.to_s)
+		classes = ["c-tag"]
+		classes << "is-active" if tag_ids.include?(tag.id.to_s)
 		classes.join(" ")
 	end
 	

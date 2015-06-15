@@ -1,4 +1,4 @@
-bookmarklet_server_host = "localhost:3001"
+bookmarklet_server_host = "localhost:3000"
 
 WebFontConfig = {
 	google: { 

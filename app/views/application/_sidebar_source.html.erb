@@ -1,0 +1,6 @@
+<li class="<%= @search.source_classes(filter_item) %>" >
+	<img class="c-quote__favicon" src="<%= filter_item.favicon %>"></img>
+	<%= link_to filter_item.hostname.truncate(30), filter_board_quotes_path(@board, @search.update_params_for(filter_item))
+	%>
+	<p class="c-sidebar_container__count"><%= filter_item.count_for(@board) %></p>
+</li>

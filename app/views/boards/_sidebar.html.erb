@@ -1,61 +1,34 @@
-<div class="sidebar-container l-sidebar">
-<div class="header-element">
-  <%= left_header_element %>
-</div>
-<div class="search-field-container">
-  <%= form_for @search, url: filter_board_quotes_path(@board), method: :get do |f| %>
-  <% @search.tag_ids.each do |id|%>
-    <%= hidden_field_tag "search[tag_ids][]", id %>
-  <% end %>
-  <% @search.source_ids.each do |id|%>
-    <%= hidden_field_tag "search[source_ids][]", id %>
-  <% end %>
-    <%= evil_icon 'ei-search', size: :s %>
-    <%= f.text_field :query, :placeholder => "Type to search", :class => "search-field" %>
-    <%= f.submit "Search", :class => 'submit' %>
-  <% end %>
-</div>
-<!-- SOURCES FILTER !-->
-<!-- <div class="sidebar-list-container">
-  <ol class="status">
-    <% if @unread.count > 0 %>
-      <li class="sidebar-list-item">
-    <% else %>
-      <li class="sidebar-list-item disabled">
-    <% end %>
-      <%= check_box_tag "unread", true, false, :id => "filter-unread" %>
-      <button class="section-title">
-        Unread quotes
-      </button>
-      <p class="filter-count"><%= @unread.count %></p>
-    </li>
-  </ol>
-</div> -->
-<div class="sidebar-list-container sources">
-  <div class="sidebar-section-header">
-      <h4 class="section-title">Filter by sites</h4>
-      <%= evil_icon 'ei-chevron-down', size: :s %>
-  </div>
-  <ol class="filters">
-     <% @sources.each do |source| %>
-          <%= render :partial => 'shared/source', locals: { source: source } %>
-     <% end %>
-  </ol>
-</div>
+<div class="c-sidebar_container">
+    <div class="c-sidebar_container__header">
+        <h4>Search</h4>
+    </div>
+    <%= render :partial => "sidebar_search_field" %>
+    
+    <!-- SOURCES !-->
+    <div class="c-sidebar_container__header">
+        <h4>Filter by sites</h4>
+        <%= evil_icon 'ei-chevron-down', size: :s %>
+    </div>
+    <%= render :partial => "sidebar_filter_list",
+        locals: {
+            filters: @sources
+        }
+    %>
 
-<!-- TAGS FILTER !-->
-<div class="sidebar-list-container tags">
-  <div class="sidebar-section-header">
-      <h4 class="section-title">Filter by tags</h4>
-      <%= evil_icon 'ei-chevron-down', size: :s %>
-  </div>
-  <ol>
-  <% @board.tags.uniq.each do |tag| %>
-      <%= render :partial => 'shared/tag', locals: { tag: tag } %>
-  <% end %>
-  </ol>
+    <!-- TAGS !-->
+    <div class="c-sidebar_container__header">
+        <h4>Filter by tags</h4>
+        <%= evil_icon 'ei-chevron-down', size: :s %>
+    </div>
+    <%= render :partial => "sidebar_filter_list",
+        locals: {
+            filters: @board.unique_tags,
+        }
+    %>
+    
+    <!-- PROFILE !-->
+    <!--<div class="header-element profile">
+    <%= image_tag @board.users.first.twitter_image_url, :class => "profile-image" %>
+    <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first %>
+    </div>!-->
 </div>
-<div class="sidebar-list-container links">
-  <a href="/" class="sidebar-logo noted-logo">Noted</a>
-</div>
-</div><!-- .sidebar-container !-->

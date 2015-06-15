@@ -13,6 +13,10 @@ class Board < ActiveRecord::Base
     	tags.where(name: tag.name).count
     end
 
+    def unique_tags
+        tags.uniq
+    end
+
     def source_count source
     	sources.where(id: source.id).count
     end

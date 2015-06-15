@@ -15,21 +15,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(function() {
-    FastClick.attach(document.body);
-    $.stayInWebApp('.stay');
-});
-
-// $(window).resize(function() {
-//     window_width = $(window).width();
-//     if(window_width < 1280) {
-//         $(".splash-container").removeAttr('style');
-//     } else if(window_width > 1280) {
-//         $(".splash-container").height($(window).height());
-//         $(".splash-container").css('background-size', ('auto '+($(window).height() + 51) +'px'))
-//     }
-// });
-
 $(document).on('ready DOMChange', function() {
 
     // $(".splash-container").height($(window).height());

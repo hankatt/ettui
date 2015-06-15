@@ -43,8 +43,9 @@
 
 */
 
-.c-sidebar_container__header {
-	margin-bottom: 10px;
+.c-sidebar_container__header,
+.c-sidebar_container__list li {
+	margin-bottom: 5px;
 }
 
 .c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {
@@ -121,10 +122,6 @@
 	.c-sidebar_container__list li a,
 	.c-sidebar_container__search input[type="text"] {
 		letter-spacing: -1px;
-	}
-
-	.c-sidebar_container__list li {
-		margin-bottom: 5px;
 	}
 
 	.c-sidebar_container__list li a,

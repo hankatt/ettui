@@ -22,14 +22,6 @@
 
 /* Visual Design */
 
-.c-quote__metadata--primary > .c-quote__timestamp {
-	text-transform: uppercase;
-	font-size: 14px;
-	font-weight: normal;
-	letter-spacing: 1px;
-	color: #aaa;
-}
-
 .c-quote__tags .c-tag__name {
 	color: salmon;
 }
@@ -129,7 +121,7 @@ a.c-quote__title:hover {
 
 .c-quote__content h1 {
 	font-size: 28px;
-	line-height: 1.4em;
+	line-height: 1.35em;
 }
 
 .c-quote__content.small h1 {

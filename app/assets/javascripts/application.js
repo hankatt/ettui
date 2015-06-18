@@ -19,11 +19,18 @@ $(document).on('ready DOMChange', function() {
 
 });
 
+scrollingDistance = 0;
 $(document).on({
     mouseenter: function() {
+        scrollingDistance = $(document).scrollTop();
         $(".container").addClass('is-scroll_locked');
+        distanceFromLeft = $(".container").width() - $(".c-sidebar_container").outerWidth() - $(".o-content_container").outerWidth()
+        $(".o-content_container").css('left', distanceFromLeft/2);
+        $(".o-content_container").css('top', -scrollingDistance);
     },
     mouseleave: function() {
+        console.log("mouseleave sd: " +scrollingDistance);
         $(".container").removeClass('is-scroll_locked');
+        $(document).scrollTop(scrollingDistance);
     }
 }, ".c-sidebar_container"); 

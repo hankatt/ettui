@@ -126,8 +126,26 @@ class Quote < ActiveRecord::Base
 		if query.eql?("") || query.nil?
 			text
 		else
-			text.gsub(/#{query}/, "<em>#{query}</em>")
+			text.gsub(/#{query}/, "<mark>#{query}</mark>")
 		end
+
+		if text.length > 280
+			em_start_index = em_end_index = em_word_count = 0
+			em_final_word_count = 4 # Number of words to emphasize
+			text.length.times do |i|
+				if text.at(i).eql?(" ")
+					em_word_count = em_word_count + 1
+					if em_word_count.eql?(em_final_word_count)
+						em_end_index = i
+						break
+					end
+				end
+			end
+			text.insert(em_end_index, "</em>")
+			text.insert(em_start_index, "<em>")
+		end
+
+		text
 	end
 
 	def new_since_last(user)

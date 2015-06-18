@@ -32,6 +32,7 @@
 }
 
 .c-quote__content h1,
+.c-quote__content h1 mark,
 .c-quote__metadata > p em,
 .c-quote__metadata > .c-quote__title,
 .c-quote__metadata > .c-quote__author {
@@ -51,7 +52,18 @@
 }
 
 .c-quote__content h1 em {
+	font-size: 13px;
+    font-family: "soleil";
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.c-quote__content h1 mark {
 	border-bottom: solid salmon 6px;
+	background-color: transparent;
+	color: inherit;
+	font-family: inherit;
 }
 
 .c-quote__tags {
@@ -133,14 +145,4 @@ a.c-quote__title:hover {
 .c-quote__content.small h1 {
 	font-size: 20px;
 	line-height: 1.5em;
-}
-
-.c-quote__content.small h1::before {
-    content: "“";
-    font-size: 80px;
-    line-height: 0px;
-    padding-top: 0px;
-    position: relative;
-    bottom: -40px;
-    left: -6px;
 }

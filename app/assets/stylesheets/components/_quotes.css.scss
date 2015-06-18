@@ -11,6 +11,11 @@
 	width: 100%;
 }
 
+.c-quote__metadata--primary {
+	/* Reduce space between timestamp and quote content */
+	margin-bottom: -20px;
+}
+
 .c-quote__tags {
 	display: flex;
 	justify-content: flex-end;
@@ -53,6 +58,7 @@
 	border-bottom: solid 1px #ccc;
 	padding-bottom: 14px; 	/* Space above the line */
 	margin-bottom: 14px;	/* Space below the line */
+	margin-top: 20px;	/* Space between quote content and tags */
 }
 
 .c-quote__metadata > .c-quote__title,

@@ -12,6 +12,9 @@ ruby '2.1.4'
 
 gem 'rails', '4.0.0'
 
+# CSS Auto prefixer
+gem "autoprefixer-rails"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

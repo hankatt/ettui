@@ -22,7 +22,7 @@
 	border-radius: 3px;
 	border: solid 1px $w-stroke-color;
 	input[type="text"] {
-		font-size: 16px;
+		font-size: 18px;
 		font-weight: 300;
 	}
 	.submit {
@@ -50,7 +50,7 @@
 
 .c-sidebar_container__header,
 .c-sidebar_container__list li {
-	margin-bottom: 5px;
+	margin-bottom: 6px;
 }
 
 .c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {
@@ -63,6 +63,7 @@
 	font-size: 13px;
 	font-weight: bold;
 	letter-spacing: 1px;
+	color: #999;
 }
 
 .c-sidebar_container__header .icon {
@@ -79,7 +80,7 @@
 
 .c-sidebar_container__list .c-quote__favicon {
 	margin-right: 6px;
-	margin-top: 1px;
+	margin-top: 3px;
 	height: 16px;
 }
 
@@ -88,10 +89,10 @@
 }
 
 .c-sidebar_container__count {
-	min-width: 22px;
-	height: 22px;
+	min-width: 21px;
+	height: 21px;
 	line-height: 18px;
-	padding: 0px 6px 1px;
+	padding: 0px 6px;
 	text-align: center;
 	border-radius: 3px;
 	border: solid 1px transparent;
@@ -145,7 +146,7 @@
 .t-white {
 
 	.c-sidebar_container__list li a {
-		line-height: 18px;
+		line-height: 21px;
 	}
 
 	.c-sidebar_container__list li a,
@@ -155,10 +156,6 @@
 
 	.c-sidebar_container__count {
 		color: #9f9f9f;
-	}
-
-	.c-sidebar_container__header {
-		color: #999;
 	}
 
 	.c-sidebar_container__list li.is-active {

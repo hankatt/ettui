@@ -20,10 +20,10 @@ $(document).on('ready DOMChange', function() {
 });
 
 $(document).on({
-    mouseenter(function() {
+    mouseenter: function() {
         $(".container").addClass('is-scroll_locked');
-    }),
-    mouseleave(function() {
+    },
+    mouseleave: function() {
         $(".container").removeClass('is-scroll_locked');
-    });
+    }
 }, ".c-sidebar_container"); 

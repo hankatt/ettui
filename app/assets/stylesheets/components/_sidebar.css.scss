@@ -155,6 +155,7 @@
 	.c-sidebar_container__list li a,
 	.c-sidebar_container__count {
 		font-weight: 300;
+		-webkit-font-smoothing: subpixel-antialiased;
 	}
 
 	.c-sidebar_container__count {

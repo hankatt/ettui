@@ -134,3 +134,13 @@ a.c-quote__title:hover {
 	font-size: 20px;
 	line-height: 1.5em;
 }
+
+.c-quote__content.small h1::before {
+    content: "“";
+    font-size: 80px;
+    line-height: 0px;
+    padding-top: 0px;
+    position: relative;
+    bottom: -40px;
+    left: -6px;
+}

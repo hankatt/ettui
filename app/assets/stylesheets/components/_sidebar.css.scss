@@ -48,9 +48,12 @@
 
 */
 
-.c-sidebar_container__header,
+.c-sidebar_container__header {
+	margin-bottom: 5px;
+}
+
 .c-sidebar_container__list li {
-	margin-bottom: 6px;
+	margin-bottom: 10px;
 }
 
 .c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {

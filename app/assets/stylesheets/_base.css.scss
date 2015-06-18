@@ -17,7 +17,9 @@ body, html {
 	}
 
 	.container.is-scroll_locked {
-		overflow-y: hidden;
+		.o-content_container {
+			position: fixed;
+		}
 	}
 
 	.fa {

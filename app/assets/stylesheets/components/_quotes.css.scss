@@ -51,6 +51,27 @@
 	color: #333;
 }
 
+/* 	
+	If browsers don't support font-features-settings
+	or font-variant, this while apply to them.
+
+	For example iOS Safari.
+*/
+.c-quote__content.small h1 em {
+	font-size: 13px;
+    font-family: "soleil";
+    text-transform: uppercase;
+    font-weight: 800;
+    color: blue;
+    letter-spacing: 1px;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* 	
+	If browsers support font-variant: small-caps,
+	but not font-feature-settings,
+	this while apply to them.
+*/
 @supports(font-variant: small-caps) {
 	.c-quote__content.small h1 em {
 		font-size: 17px;
@@ -63,6 +84,10 @@
 	}
 }
 
+/* 	
+	If browsers support font-features-settings,
+	this while apply to them.
+*/
 @supports(font-feature-settings: 'smcp') {
     .c-quote__content.small h1 em {
         font-variant: normal;
@@ -80,16 +105,6 @@
 		font-feature-settings:"smcp" 1;
     }
 }
-
-/*.c-quote__content.small h1 em {
-	font-size: 13px;
-    font-family: "soleil";
-    text-transform: uppercase;
-    font-weight: 800;
-    color: blue;
-    letter-spacing: 1px;
-	-webkit-font-smoothing: subpixel-antialiased;
-}*/
 
 .c-quote__content h1 mark {
 	border-bottom: solid salmon 6px;

@@ -93,12 +93,7 @@
 	    font-family: "soleil";
 	    text-transform: lowercase;
 	    font-weight: 600;
-	    letter-spacing: 1px;
-	    -moz-font-feature-settings:"smcp" 1; 
-		-moz-font-feature-settings:"smcp=1"; 
-		-ms-font-feature-settings:"smcp" 1; 
-		-o-font-feature-settings:"smcp" 1; 
-		-webkit-font-feature-settings:"smcp" 1; 
+	    letter-spacing: 1px; 
 		font-feature-settings:"smcp" 1;
     }
 }
@@ -173,11 +168,6 @@ a.c-quote__title:hover {
 	font-size: 40px;
 	line-height: 1.3em;
 	letter-spacing: -1px;
-	-moz-font-feature-settings:"dlig" 1; 
-	-moz-font-feature-settings:"dlig=1"; 
-	-ms-font-feature-settings:"dlig" 1; 
-	-o-font-feature-settings:"dlig" 1; 
-	-webkit-font-feature-settings:"dlig" 1; 
 	font-feature-settings:"dlig" 1;
 }
 

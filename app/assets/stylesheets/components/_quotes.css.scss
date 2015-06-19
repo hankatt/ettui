@@ -51,28 +51,6 @@
 	color: #333;
 }
 
-.c-quote__content.small h1 em {
-	font-size: 12px;
-    font-family: "soleil";
-    text-transform: uppercase;
-    font-weight: 800;
-    color: blue;
-    letter-spacing: 1px;
-	-webkit-font-smoothing: subpixel-antialiased;
-}
-
-@supports(font-variant: small-caps) {
-	.c-quote__content.small h1 em {
-		font-size: 17px;
-	    font-family: "soleil";
-	    color: red;
-	    font-variant: small-caps;
-	    text-transform: lowercase;
-	    font-weight: 600;
-	    letter-spacing: 1px;
-	}
-}
-
 @supports(font-feature-settings: 'smcp') {
     .c-quote__content.small h1 em {
         font-variant: normal;
@@ -88,6 +66,28 @@
 		-webkit-font-feature-settings:"smcp" 1; 
 		font-feature-settings:"smcp" 1;
     }
+}
+
+@supports(font-variant: small-caps) {
+	.c-quote__content.small h1 em {
+		font-size: 17px;
+	    font-family: "soleil";
+	    color: red;
+	    font-variant: small-caps;
+	    text-transform: lowercase;
+	    font-weight: 600;
+	    letter-spacing: 1px;
+	}
+}
+
+.c-quote__content.small h1 em {
+	font-size: 13px;
+    font-family: "soleil";
+    text-transform: uppercase;
+    font-weight: 800;
+    color: blue;
+    letter-spacing: 1px;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 .c-quote__content h1 mark {

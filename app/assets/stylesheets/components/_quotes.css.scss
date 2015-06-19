@@ -51,23 +51,6 @@
 	color: #333;
 }
 
-@supports(font-feature-settings: 'smcp') {
-    .c-quote__content.small h1 em {
-        font-variant: normal;
-        font-size: 15px;
-	    font-family: "soleil";
-	    text-transform: lowercase;
-	    font-weight: 600;
-	    letter-spacing: 1px;
-	    -moz-font-feature-settings:"smcp" 1; 
-		-moz-font-feature-settings:"smcp=1"; 
-		-ms-font-feature-settings:"smcp" 1; 
-		-o-font-feature-settings:"smcp" 1; 
-		-webkit-font-feature-settings:"smcp" 1; 
-		font-feature-settings:"smcp" 1;
-    }
-}
-
 @supports(font-variant: small-caps) {
 	.c-quote__content.small h1 em {
 		font-size: 17px;
@@ -80,7 +63,25 @@
 	}
 }
 
-.c-quote__content.small h1 em {
+@supports(font-feature-settings: 'smcp') {
+    .c-quote__content.small h1 em {
+        font-variant: normal;
+        font-size: 15px;
+	    font-family: "soleil";
+	    text-transform: lowercase;
+	    font-weight: 600;
+	    color: purple;
+	    letter-spacing: 1px;
+	    -moz-font-feature-settings:"smcp" 1; 
+		-moz-font-feature-settings:"smcp=1"; 
+		-ms-font-feature-settings:"smcp" 1; 
+		-o-font-feature-settings:"smcp" 1; 
+		-webkit-font-feature-settings:"smcp" 1; 
+		font-feature-settings:"smcp" 1;
+    }
+}
+
+/*.c-quote__content.small h1 em {
 	font-size: 13px;
     font-family: "soleil";
     text-transform: uppercase;
@@ -88,7 +89,7 @@
     color: blue;
     letter-spacing: 1px;
 	-webkit-font-smoothing: subpixel-antialiased;
-}
+}*/
 
 .c-quote__content h1 mark {
 	border-bottom: solid salmon 6px;

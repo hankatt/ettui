@@ -146,6 +146,7 @@
 	.c-sidebar_container__list li a,
 	.c-sidebar_container__count {
 		font-weight: 300;
+		color: #999;
 		-webkit-font-smoothing: subpixel-antialiased;
 	}
 
@@ -162,5 +163,9 @@
 			background-color: $w-signature-color;
 			color: $t-primary-color;
 		}
+	}
+
+	.c-sidebar_container__list li:hover a {
+		color: #333;
 	}
 }

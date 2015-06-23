@@ -13,7 +13,7 @@
 
 .c-quote__metadata--primary {
 	/* Reduce space between timestamp and quote content */
-	margin-bottom: -18px;
+	margin-bottom: 23px;
 }
 
 .c-quote__tags {
@@ -164,6 +164,12 @@
 	opacity: 1;
 }
 
+.c-sidebar_container__header .fa,
+.c-quote__remove .fa {
+	line-height: 24px;
+    font-size: 22px;
+}
+
 .c-quote__remove {
 	opacity: 0;
 }
@@ -174,6 +180,7 @@
 
 .c-quote:hover .c-quote__remove:hover {
 	opacity: 1;
+	color: salmon;
 }
 
 a.c-quote__title:hover {

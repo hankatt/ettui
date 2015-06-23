@@ -16,7 +16,10 @@
 //= require_tree .
 
 $(document).on('ready DOMChange', function() {
-
+    $(".js-toggle-sidebar").on('click', function() {
+        list_to_toggle = $(this).next('ol');
+        list_to_toggle.slideToggle('fast');
+    });
 });
 
 scrollingDistance = 0;
@@ -29,7 +32,6 @@ $(document).on({
         $(".o-content_container").css('top', -scrollingDistance);
     },
     mouseleave: function() {
-        console.log("mouseleave sd: " +scrollingDistance);
         $(".container").removeClass('is-scroll_locked');
         $(document).scrollTop(scrollingDistance);
     }

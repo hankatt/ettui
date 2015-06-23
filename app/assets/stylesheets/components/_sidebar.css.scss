@@ -18,7 +18,7 @@
 
 .c-sidebar_container__search {
 	width: 100%;
-	margin-top: 14px;
+	margin-top: $spacing-1;
 	border-radius: 3px;
 	border: solid 1px $w-stroke-color;
 	input[type="text"] {
@@ -55,10 +55,12 @@
 
 .c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {
 	margin-top: $spacing-4;
+	margin-bottom: $spacing-0;
 }
 
-.c-sidebar_container__header .icon {
-	opacity: 0;
+.c-sidebar_container__header .fa {
+	opacity: .1;
+	padding-right: 4px;
 }
 
 /*
@@ -109,6 +111,10 @@
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
+}
+
+.c-sidebar_container__header:hover .fa {
+	opacity: 1;
 }
 
 .c-sidebar_container__header:hover,

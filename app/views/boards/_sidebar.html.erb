@@ -5,9 +5,9 @@
     <%= render :partial => "sidebar_search_field" %>
     
     <!-- SOURCES !-->
-    <div class="c-sidebar_container__header">
+    <div class="c-sidebar_container__header js-toggle-sidebar">
         <h4>Filter by sites</h4>
-        <%= evil_icon 'ei-chevron-down', size: :s %>
+        <%= fa_icon 'angle-down' %>
     </div>
     <%= render :partial => "sidebar_filter_list",
         locals: {
@@ -16,9 +16,9 @@
     %>
 
     <!-- TAGS !-->
-    <div class="c-sidebar_container__header">
+    <div class="c-sidebar_container__header js-toggle-sidebar">
         <h4>Filter by tags</h4>
-        <%= evil_icon 'ei-chevron-down', size: :s %>
+        <%= fa_icon 'angle-down' %>
     </div>
     <%= render :partial => "sidebar_filter_list",
         locals: {

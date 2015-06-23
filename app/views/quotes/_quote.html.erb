@@ -1,7 +1,7 @@
 <div class="<%= quote.classes_for(current_user) %>">
   <div class="c-quote__metadata c-quote__metadata--primary">
         <p class="c-quote__timestamp"><%= quote.source_date %></p>
-        <%= link_to (evil_icon 'ei-trash', size: :s), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
+        <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
   </div>
 
   <!-- Quote !-->

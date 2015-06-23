@@ -5,7 +5,7 @@ require 'rubygems'
 gem 'fastclick-rails'
 
 # Icon font
-gem 'evil_icons'
+gem "font-awesome-rails"
 
 # Ruby version
 ruby '2.1.4'

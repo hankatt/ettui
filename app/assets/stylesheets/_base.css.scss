@@ -37,15 +37,21 @@ body, html {
 		-webkit-margin-after: 0;
 		margin: 0;
 		padding: 0;
-		/* 	Optimizes kerning when changing letter-spacing,
+		box-sizing: border-box;
+		/*
+			Helps render fonts 'properly', more light.
+			For Chrome/Firefox on OSX.
+		*/
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		/*  
+			Optimizes kerning when changing letter-spacing,
 			as chancing letter-spacing disables default
 			kerning and wrecks tracking.
 		*/
-		text-rendering: optimizeLegibility;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		box-sizing: border-box;
-		font-feature-settings:"liga" 1;
+		//text-rendering: optimizeLegibility;
+		font-kerning: normal;
+		font-feature-settings:"liga" 1, "kern" 1;
 	}
 
 	button,

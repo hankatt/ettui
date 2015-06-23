@@ -13,7 +13,7 @@
 
 .c-quote__metadata--primary {
 	/* Reduce space between timestamp and quote content */
-	margin-bottom: -20px;
+	margin-bottom: -18px;
 }
 
 .c-quote__tags {
@@ -29,6 +29,8 @@
 
 .c-quote__tags .c-tag__name {
 	color: salmon;
+	letter-spacing: -0.25px;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 .c-quote__content h1,
@@ -107,6 +109,10 @@
 	    letter-spacing: 1px; 
 		font-feature-settings:"smcp" 1;
     }
+}
+
+.c-quote__timestamp {
+	font-weight: 400;
 }
 
 

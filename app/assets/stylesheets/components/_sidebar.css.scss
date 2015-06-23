@@ -1,7 +1,7 @@
 /* Search */
 
 .c-sidebar_container {
-	padding: 62px 28px 124px;
+	padding: 60px $spacing-2 120px;
 	font-family: "soleil";
 
 	/* To enable scrolling of a fixed element. */
@@ -24,6 +24,7 @@
 	input[type="text"] {
 		font-size: 18px;
 		font-weight: 300;
+		font-family: "adobe-text-pro", serif;
 	}
 	.submit {
 		display: none;
@@ -145,6 +146,7 @@
 
 	.c-sidebar_container__list li a,
 	.c-sidebar_container__count {
+		letter-spacing: -0.25px;
 		font-weight: 300;
 		color: #999;
 		-webkit-font-smoothing: subpixel-antialiased;

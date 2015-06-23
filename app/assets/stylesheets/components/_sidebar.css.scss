@@ -31,9 +31,11 @@
 	}
 }
 
-.c-sidebar_container__search .icon {
-	top: 4px;
-	left: 4px;
+.c-sidebar_container__search .fa {
+	line-height: 38px;
+    padding-left: 10px;
+    padding-right: 1px;
+    font-size: 17px;
 }
 
 .c-sidebar_container__search input[type="text"] {

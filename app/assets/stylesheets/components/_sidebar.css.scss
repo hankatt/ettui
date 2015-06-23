@@ -29,6 +29,9 @@
 	.submit {
 		display: none;
 	}
+	&:hover {
+		border-color: #bbb;
+	}
 }
 
 .c-sidebar_container__search .fa {

@@ -71,7 +71,7 @@
     font-family: "soleil";
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0.75px;
 }
 
 
@@ -85,11 +85,12 @@
 	.c-quote__timestamp,
 	.c-sidebar_container__header h4 {
 		font-size: 17px;
-	    font-family: "soleil";
-	    font-variant: small-caps;
+		font-kerning: normal;
+		font-variant: small-caps;
+	    font-variant-caps: all-small-caps;
+	    font-weight: 800;
+
 	    text-transform: lowercase;
-	    font-weight: 600;
-	    letter-spacing: 1px;
 	}
 }
 
@@ -103,18 +104,12 @@
     .c-sidebar_container__header h4 {
         font-variant: normal;
         font-size: 15px;
-	    font-family: "soleil";
-	    text-transform: lowercase;
-	    font-weight: 600;
-	    letter-spacing: 1px; 
-		font-feature-settings:"smcp" 1;
+		font-feature-settings:"smcp" 1, "c2sc" 1;
+		font-weight: 600;
+
+		text-transform: none;
     }
 }
-
-.c-quote__timestamp {
-	font-weight: 400;
-}
-
 
 .c-quote__content h1 mark {
 	border-bottom: solid salmon 6px;

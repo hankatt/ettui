@@ -1,15 +1,6 @@
-.c-sidebar_container {
-	position: fixed;
-	width: 280px;
-}
-
-.t-white .c-sidebar_container {
-	background-color: #f8f5f3;
-}
-
 .o-content_container {
-	margin-left: calc(8vw + 280px);
-	padding: ($spacing-3+15) $spacing-6 $spacing-6;
+	margin-left: 30vw; /* 22 + 8 */
+	padding: ($spacing-3+15) 4vw $spacing-6;
 }
 
 .t-white .o-content_container {
@@ -51,10 +42,11 @@
 	color: inherit;
 }
 
-.o-content_container h1 {
+.o-content_container__title {
 	font-size: 30px;
 	font-weight: 800;
 	letter-spacing: -1px;
+	margin-top: 44px;
 }
 
 

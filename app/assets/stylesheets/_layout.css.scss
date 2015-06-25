@@ -1,11 +1,39 @@
 .c-sidebar_container {
 	position: fixed;
-	width: 320px;
+	width: 280px;
+}
+
+.t-white .c-sidebar_container {
+	background-color: #f8f5f3;
 }
 
 .o-content_container {
-	margin-left: 320px;
-	padding: $spacing-3 $spacing-6 0;
+	margin-left: calc(8vw + 280px);
+	padding: ($spacing-3+15) $spacing-6 $spacing-6;
+}
+
+.t-white .o-content_container {
+	background-color: #fff;
+}
+
+.o-content_container h1,
+.o-quotes_container {
+	min-width: 480px;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.o-quotes_container .c-quote {
+	margin-bottom: 0px;
+}
+
+.no-sidebar .quotes-container {
+	padding-left: $spacing-5;
+}
+
+.no-sidebar .o-sidebar_container {
+	display: none;
 }
 
 .o-sidebar_container h1,
@@ -26,27 +54,7 @@
 .o-content_container h1 {
 	font-size: 30px;
 	font-weight: 800;
-	margin: 15px 0 18px 0;
 	letter-spacing: -1px;
-}
-
-.o-content_container h1,
-.o-quotes_container {
-	max-width: 570px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.o-quotes_container .c-quote {
-	margin-bottom: 0px;
-}
-
-.no-sidebar .quotes-container {
-	padding-left: $spacing-5;
-}
-
-.no-sidebar .o-sidebar_container {
-	display: none;
 }
 
 

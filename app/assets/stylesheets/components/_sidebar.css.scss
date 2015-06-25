@@ -1,8 +1,9 @@
 /* Search */
 
 .c-sidebar_container {
-	padding: 60px $spacing-2 120px;
+	padding: 60px 4vw 120px;
 	font-family: "soleil";
+	box-sizing: content-box;
 
 	/* To enable scrolling of a fixed element. */
 	top: 0;
@@ -57,6 +58,7 @@
 
 .c-sidebar_container__list li {
 	margin-bottom: 8px;
+	overflow-y: hidden;
 }
 
 .c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {

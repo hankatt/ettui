@@ -70,6 +70,12 @@
 	overflow-y: hidden;
 }
 
+.c-sidebar_container__list li a {
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
 .c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {
 	margin-top: $spacing-4;
 	margin-bottom: $spacing-0;

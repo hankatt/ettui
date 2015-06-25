@@ -1,7 +1,16 @@
 /* Search */
 
 .c-sidebar_container {
+	position: fixed;
+	width: 22vw;
 	padding: 60px 4vw 120px;
+}
+
+.t-white .c-sidebar_container {
+	background-color: #f8f5f3;
+}
+
+.c-sidebar_container {
 	font-family: "soleil";
 	box-sizing: content-box;
 

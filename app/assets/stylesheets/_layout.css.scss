@@ -1,65 +1,65 @@
 .o-full_screen {
-	width: 100%;
-	max-width: 1024px;
+  width: 100%;
+  max-width: 1024px;
 }
 
 .o-full_screen--centered {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 .o-half_screen {
-	width: 50%;
-	float: left;
-	+ .o-half_screen {
-		float: right;
-	}
+  width: 50%;
+  float: left;
+  + .o-half_screen {
+    float: right;
+  }
 }
 
 .container {
-	display: flex;
+  display: flex;
 }
 
 .o-content_container {
-	width: 100%;
-	margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .o-content_container,
 .c-sidebar_container {
-	/* Make itself scrollable */
-	display: inline-block;
-	vertical-align: top;
-	height: 100%;
-	min-height: 100%;
-	overflow-y: scroll;
+  /* Make itself scrollable */
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  min-height: 100%;
+  overflow-y: scroll;
 }
 
 .t-white .o-content_container {
-	background-color: #fff;
+  background-color: #fff;
 }
 
 .o-content_container h1,
 .o-quotes_container {
-	min-width: 480px;
-	max-width: 600px;
-	margin-left: auto;
-	margin-right: auto;
+  min-width: 480px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .o-quotes_container {
-	padding-bottom: 132px;
+  padding-bottom: 132px;
 }
 
 .o-quotes_container .c-quote {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .no-sidebar .o-content_container {
-	margin-left: 0;
+  margin-left: 0;
 }
 
 .no-sidebar .c-sidebar_container {
-	display: none;
+  display: none;
 }
 
 .o-sidebar_container h1,
@@ -67,41 +67,41 @@
 .o-sidebar_container a,
 .o-sidebar_container li,
 .o-content_container * {
-	font-family: $font-family-sans;
-	font-weight: 400;
-	-webkit-font-smoothing: antialiased;
+  font-family: $font-family-sans;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 
 .o-content_container em {
-	font-family: inherit;
-	color: inherit;
+  font-family: inherit;
+  color: inherit;
 }
 
 .o-content_container__title {
-	font-size: 30px;
-	font-weight: 800;
-	letter-spacing: -1px;
-	padding-top: 44px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  padding-top: 44px;
 }
 
 .o-centering_wrapper {
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100%;
-	padding: 80px 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 80px 0;
 }
 
 .c-test_data {
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	width: 200px;
-	text-align: center;
-	padding: 26px;
-	font-family: "Soleil";
-	letter-spacing: -0.25px;
-	background-color: green;
-	color: white;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  text-align: center;
+  padding: 26px;
+  font-family: "Soleil";
+  letter-spacing: -0.25px;
+  background-color: green;
+  color: white;
 }

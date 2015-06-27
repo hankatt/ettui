@@ -1,42 +1,42 @@
 .c-tag__name {
-	line-height: 26px;
-	font-weight: 300;
+  line-height: 26px;
+  font-weight: 300;
 }
 
 .c-tag__name::before {
-	content: "#";
+  content: "#";
 }
 
 .c-tag_form__input {
-	border: solid 1px #ddd;
-	border-radius: 3px;
-	width: 120px;
-	padding: 0px 6px 2px;
-	margin: 0 8px 0 0;
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  width: 120px;
+  padding: 0px 6px 2px;
+  margin: 0 8px 0 0;
 }
 
 .c-tag__delete {
-	opacity: 0;
+  opacity: 0;
 }
 
 .c-tag:hover .c-tag__delete {
-	opacity: 1;
+  opacity: 1;
 }
 
 .c-tag_form__input {
-	line-height: 24px;
+  line-height: 24px;
 }
 
 .c-tag_form__button {
-	display: none;
+  display: none;
 }
 
 /* Hover states */
 
 .c-quote__tags > .c-tag_form {
-	opacity: 0;
+  opacity: 0;
 }
 
 .c-quote__tags:hover > .c-tag_form {
-	opacity: 1;
+  opacity: 1;
 }

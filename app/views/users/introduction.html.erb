@@ -1,0 +1,43 @@
+
+  <div class="c-introduction">
+    <h1 class="c-introduction__title">Installing your boomarklet.</h1>
+    <h2 class="c-introduction__title--section">Desktop</h2>
+    <p>Drag the button below to your bookmarks bar.</p>
+      <% if Rails.env.development? %>
+        <a class="c-introduction__bookmarklet" href="javascript:(function() {
+        document.body.appendChild(document.createElement('script')).src='http://localhost:3000/bookmarklet_local.js';
+        current_user_token = '<%= current_user.token %>';
+        })();">Ettúi Bookmarklet</a>
+      <% elsif Rails.env.production? %>
+        <a class="c-introduction__bookmarklet" href="javascript:(function() {
+        document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+        current_user_token = '<%= current_user.token %>';
+        })();">Ettúi Bookmarklet</a>
+      <% end %>
+    <h2 class="c-introduction__title--section">Mobile</h2>
+    <p>Create a bookmark of this page and name it 'Save to Noted'.</p>
+    <p>Then highlight and copy the code below.</p>
+    <div class="c-introduction__bookmarklet c-introduction__bookmarklet--mobile">
+      <code>
+        javascript:(function() {
+        document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+        current_user_token = '<%= current_user.token %>';
+        })();
+      </code>
+    </div>
+    <p>At last edit the bookmark you added and replace its URL with the code you copied.</p>
+    <div class="c-introduction__divider"></div>
+    <h2 class="c-introduction__title--section">Now let's try using it.</h2>
+    <p>Highlight the text below and click on the bookmarklet.</p>
+    <blockquote class="c-introduction__quote">
+      “The mistakes, errors, dead-ends, and wrong turns you make are going to be more important than the projects that just turned out okay.”
+    </blockquote>
+    <%= link_to "Continue to my board.", continue_path, :class => "c-introduction__button" %>
+    <div class="c-test_data">
+    <% if current_user %>
+      <h6><%= current_user.name %></h6>
+      <%= link_to "Logout", logout_path %>
+    <% end %>
+    </div>
+  </div>
+

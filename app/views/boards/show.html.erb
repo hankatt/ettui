@@ -4,11 +4,17 @@
 	<h1 class="o-content_container__title"><%= @right_title %></h1>
 	<div class="o-quotes_container">
 		<% if !@quotes.empty? %>
-        	<ol>
-	        	<%= render(@quotes) %>
-	        </ol>
+      	<ol>
+        	<%= render(@quotes) %>
+        </ol>
     	<% else %>
-	        <%= render "boards/out_of_quotes" %>
+        <%= render "boards/out_of_quotes" %>
 	    <% end %>
 	</div>
+</div>
+<div class="c-test_data">
+	<% if current_user %>
+	  <h6><%= current_user.name %></h6>
+	  <%= link_to "Logout", logout_path %>
+	<% end %>
 </div>

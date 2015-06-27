@@ -2,7 +2,7 @@ class Quote < ActiveRecord::Base
 
 	has_and_belongs_to_many :boards
 	belongs_to :source
-  	has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags
 
 	delegate :favicon, to: :source
 
@@ -65,42 +65,6 @@ class Quote < ActiveRecord::Base
           :readability_author => author
         )
 	end
-
-	# def add_tag(tag)
-
-	# 	# Helps determine if add is successful
-	# 	tag_list_count = tag_list.count
-
-	# 	# Try to add 'tag'
-	# 	tag_list.add(tag)
-	# 	save
-	# 	reload
-
-	# 	if(tag_list.count > tag_list_count)
-	# 		# Update the relationship to the board
-	# 		update_board_ownership(self)
-	# 	end
-
-	# 	return tag_list.count > tag_list_count
-	# end
-
-	# def remove_tag(tag)
-
-	# 	# Helps determine if remove is successful
-	# 	tag_list_count = tag_list.count
-
-	# 	# Try to add new_tag
-	# 	tag_list.remove(tag)
-	# 	save
-	# 	reload
-
-	# 	if(tag_list.count < tag_list_count)
-	# 		# Update the relationship to the board
-	# 		update_board_ownership(self)
-	# 	end
-
-	# 	tag_list.count < tag_list_count
-	# end
 
 	def truncated_readability_title
 		readability_title.truncate(64)

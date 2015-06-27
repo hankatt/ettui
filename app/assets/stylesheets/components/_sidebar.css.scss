@@ -1,9 +1,9 @@
 /* Search */
 
 .c-sidebar_container {
-	position: fixed;
-	width: 22vw;
-	padding: 60px 4vw 120px;
+	width: 33%;
+	min-width: 320px;
+	padding: 60px 46px 120px;
 }
 
 .t-white .c-sidebar_container {
@@ -12,12 +12,11 @@
 
 .c-sidebar_container {
 	font-family: "soleil";
-	box-sizing: content-box;
 
-	/* To enable scrolling of a fixed element. */
-	top: 0;
-	bottom: 0;
-	overflow-y: auto;
+	// /* To enable scrolling of a fixed element. */
+	// top: 0;
+	// bottom: 0;
+	// overflow-y: auto;
 }
 
 .c-sidebar_container__header,

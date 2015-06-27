@@ -21,18 +21,3 @@ $(document).on('ready DOMChange', function() {
         list_to_toggle.slideToggle('fast');
     });
 });
-
-scrollingDistance = 0;
-$(document).on({
-    mouseenter: function() {
-        scrollingDistance = $(document).scrollTop();
-        $(".container").addClass('is-scroll_locked');
-        distanceFromLeft = $(".container").width() - $(".c-sidebar_container").outerWidth() - $(".o-content_container").outerWidth()
-        $(".o-content_container").css('left', distanceFromLeft/2);
-        $(".o-content_container").css('top', -scrollingDistance);
-    },
-    mouseleave: function() {
-        $(".container").removeClass('is-scroll_locked');
-        $(document).scrollTop(scrollingDistance);
-    }
-}, ".c-sidebar_container"); 

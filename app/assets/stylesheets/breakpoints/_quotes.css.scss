@@ -10,10 +10,52 @@
   
 }
 
-@media screen and (min-width : 1024px) {
-  
+@media screen and (min-width : 960px) {
+  .c-quote__content.big h1 {
+    font-size: 2.4em;
+    line-height: 1.25em;
+  }
+
+  .c-quote__content h1 {
+    font-size: 1.6em;
+    line-height: 1.4em;
+  }
+
+  .c-quote__content.small h1 {
+    font-size: 1em;
+    line-height: 1.5em;
+    letter-spacing: -0.25px;
+  }
+
+  .c-quote__content.small h1 em,
+  .c-quote__timestamp {
+    font-size: .875em;
+  }
 }
 
-@media screen and (min-width : 1280px) {
+@media screen and (min-width : 1180px) {
+  .c-quote__content.big h1 {
+    font-size: 2.4em;
+    line-height: 1.25em;
+  }
 
+  .c-quote__content h1 {
+    font-size: 1.6em;
+    line-height: 1.35em;
+  }
+
+  .c-quote__timestamp {
+    font-size: 1em;
+  }
+
+  .c-quote__content.small {
+    font-size: 1.2em;
+  }
+  .c-quote__content.small h1 {
+    line-height: 1.5em;
+  }
+
+  .c-quote__content.small h1 em {
+    font-size: .8125em;
+  }
 }

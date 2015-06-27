@@ -192,7 +192,7 @@ div.error_explanation ul {
 	position: relative;
 
 	width: 100%;
-	
+
 	margin: 0 auto;
 }
 
@@ -486,7 +486,7 @@ div.error_explanation ul {
 	border-color: #81362D;
 }
 .login-signup-container form input:not(.button) {
-	background-color: #81362D; 
+	background-color: #81362D;
 }
 
 .login-signup-container h1 + h4 {
@@ -545,15 +545,15 @@ div.error_explanation ul {
 	}
 
 	& :-moz-placeholder { /* Firefox 18- */
-	   color: red;  
+	   color: red;
 	}
 
 	& ::-moz-placeholder {  /* Firefox 19+ */
-	   color: red;  
+	   color: red;
 	}
 
-	& :-ms-input-placeholder {  
-	   color: red;  
+	& :-ms-input-placeholder {
+	   color: red;
 	}
 }
 
@@ -578,8 +578,8 @@ div.error_explanation ul {
 		display: none;
 	}
 
-	.splash-container .splash-title, 
-	.splash-container .splash-description, 
+	.splash-container .splash-title,
+	.splash-container .splash-description,
 	.splash-container .splash-description + .button {
 		margin-left: $spacing-0;
 		margin-right: $spacing-0;
@@ -635,8 +635,8 @@ div.error_explanation ul {
 		display: block;
 	}
 
-	.splash-container .splash-title, 
-	.splash-container .splash-description, 
+	.splash-container .splash-title,
+	.splash-container .splash-description,
 	.splash-container .splash-description + .button {
 		margin-left: $spacing-2;
 	}
@@ -679,8 +679,8 @@ div.error_explanation ul {
 		padding: 0 $spacing-3;
 	}
 
-	.splash-container .splash-title, 
-	.splash-container .splash-description, 
+	.splash-container .splash-title,
+	.splash-container .splash-description,
 	.splash-container .splash-description + .button {
 		margin-left: $spacing-3;
 	}
@@ -731,8 +731,8 @@ div.error_explanation ul {
 		padding: 0 $spacing-5;
 	}
 
-	.splash-container .splash-title, 
-	.splash-container .splash-description, 
+	.splash-container .splash-title,
+	.splash-container .splash-description,
 	.splash-container .splash-description + .button {
 		margin-left: $spacing-5;
 	}
@@ -881,8 +881,8 @@ div.error_explanation ul {
 		padding: 0 $spacing-6;
 	}
 
-	.splash-container .splash-title, 
-	.splash-container .splash-description, 
+	.splash-container .splash-title,
+	.splash-container .splash-description,
 	.splash-container .splash-description + .button {
 		margin-left: $spacing-6;
 	}

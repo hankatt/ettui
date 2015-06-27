@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   # The user has successfully signed up.
   def introduction
     @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
-    
+
     # Record that the user was active
     record_user_activity
 

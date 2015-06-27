@@ -43,7 +43,7 @@ class Quote < ActiveRecord::Base
 
         # Format params for web encoding
         uri.query = URI.encode_www_form({:url => url, :token => token })
-        
+
         # Readability Parser response
         response = Net::HTTP.get_response(uri)
         parsed = ActiveSupport::JSON.decode(response.body)
@@ -61,7 +61,7 @@ class Quote < ActiveRecord::Base
 
         # Update attributes
         update(
-          :readability_title => title, 
+          :readability_title => title,
           :readability_author => author
         )
 	end

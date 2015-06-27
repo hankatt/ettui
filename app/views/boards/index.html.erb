@@ -12,7 +12,7 @@
           alert("Empty selection.");
           throw(0);
         } else {
-          
+
           text      = encodeURIComponent(document.getSelection().toString());
           url       = encodeURIComponent(document.location.href.toString());
           token     = "<%= @user.token %>";
@@ -57,7 +57,7 @@
 
         jsonp.innerHTML = callback;
         document.body.appendChild(jsonp);
-        
+
         /* CREATES POPUP */
         headline = document.createElement("h1");
         headline.id = "well-title";

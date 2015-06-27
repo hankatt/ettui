@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	before_destroy :destroy_boards
 
 	attr_accessor :password, :password_confirmation
-	
+
 	# Encrypt password before saving it to the database
 	before_save :encrypt_password
 
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 	after_save :initialize_user
 
 	has_many :quotes, dependent: :destroy
-	
+
 	# Form validations
 	validates_uniqueness_of :email, unless: :provider_or_guest?
 	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :create, unless: :guest?
@@ -37,14 +37,14 @@ class User < ActiveRecord::Base
 
 		# Create the new user
 			@user = User.new({
-				:provider => auth["provider"], 
-				:uid => auth["uid"], 
+				:provider => auth["provider"],
+				:uid => auth["uid"],
 				:name => auth["info"]["name"],
 				:twitter_image_url => auth["info"]["image"],
 				:twitter_description => auth["info"]["description"],
-				:new_user => true 
+				:new_user => true
 			})
-	    
+
 	    # Create a board and associate it to the new user
 	    @board = Board.create!(name: "My board")
 	    @user.boards << @board

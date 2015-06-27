@@ -18,7 +18,7 @@
       </ul>
       <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote), :class => "c-tag_form" do |f| %>
         <%= f.text_field :name, placeholder: "New tag title", :class => "c-tag_form__input" %>
-        <%= f.submit "Add", :class => "c-tag_form__button" %> 
+        <%= f.submit "Add", :class => "c-tag_form__button" %>
       <% end %>
   </div>
 
@@ -31,11 +31,11 @@
   <% end %>
   <% if quote.readability_author %>
     &nbsp;
-    <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p> 
+    <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p>
   <% end %>
   <!--
   <p><%= quote.source.hostname %></p>
   !-->
-  <%= image_tag quote.favicon, :class => "c-quote__favicon" %>  
+  <%= image_tag quote.favicon, :class => "c-quote__favicon" %>
   </div>
 </div>

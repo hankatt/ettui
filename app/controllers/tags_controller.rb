@@ -45,7 +45,7 @@ class TagsController < ApplicationController
 			@board = @user.boards.first
 
 			# Flags used to decide what to do with the UI
-			@flags = { 
+			@flags = {
 				:update => false,
 				:add => false
 			}
@@ -68,20 +68,20 @@ class TagsController < ApplicationController
 		end
 
 		respond_to do |format|
-			data = { 
-				:message => "has been added.", 
-				:submessage => "Close this popup when done.", 
-				:tag => @tag, 
-				:add => @flags[:add], 
+			data = {
+				:message => "has been added.",
+				:submessage => "Close this popup when done.",
+				:tag => @tag,
+				:add => @flags[:add],
 				:update => @flags[:update]
 			}
 
 			if @flags[:update]
-				data = { 
-					:message => "has been selected.", 
+				data = {
+					:message => "has been selected.",
 					:submessage => "",
-					:tag => @tag, 
-					:add => @flags[:add], 
+					:tag => @tag,
+					:add => @flags[:add],
 					:update => @flags[:update]
 				}
 			end

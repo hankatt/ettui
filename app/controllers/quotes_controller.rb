@@ -36,7 +36,7 @@ class QuotesController < ApplicationController
         # Build quote to save
         @quote = Quote.new({
           :text => URI.unescape(params[:text]),
-          :url => URI.unescape(params[:url]), 
+          :url => URI.unescape(params[:url]),
           :readability_title => readability_title,
           :readability_author => readability_author,
           :user_id => @user.id,
@@ -49,8 +49,8 @@ class QuotesController < ApplicationController
             @board = @user.boards.first
             @board.quotes << @quote
 
-            data = { 
-              :message => "The quote was saved.", 
+            data = {
+              :message => "The quote was saved.",
               :submessage => "Adding tags help you to easily find it again.",
               :quote => @quote,
               :tags => @board.tags.uniq

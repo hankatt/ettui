@@ -10,7 +10,7 @@ body, html {
 	}
 
 	html {
-		overflow-y: scroll; 
+		overflow-y: scroll;
 	}
 
 	.container {
@@ -38,7 +38,7 @@ body, html {
 		text-transform: none !important;
 	}
 
-	* { 
+	* {
 		-webkit-overflow-scrolling: touch;
 		-webkit-margin-before: 0;
 		-webkit-margin-after: 0;
@@ -51,7 +51,7 @@ body, html {
 		*/
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		/*  
+		/*
 			Optimizes kerning when changing letter-spacing,
 			as chancing letter-spacing disables default
 			kerning and wrecks tracking.
@@ -133,8 +133,8 @@ body, html {
 		overflow: auto;
 	}
 
-	input[type='checkbox'], .search-container .submit { 
-		display: none; 
+	input[type='checkbox'], .search-container .submit {
+		display: none;
 	}
 
 	.hr {

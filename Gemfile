@@ -1,22 +1,13 @@
 source 'https://rubygems.org'
-require 'rubygems'
+ruby '2.1.4'
 
 # Remove 300ms tap event delay for touch devices
 gem 'fastclick-rails'
-
-# Icon font
 gem "font-awesome-rails"
-
-# Ruby version
-ruby '2.1.4'
-
 gem 'rails', '4.0.0'
 
 # CSS Auto prefixer
 gem "autoprefixer-rails"
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
   gem 'pg'
@@ -52,26 +43,7 @@ gem 'twitter', "~> 4.8"
 group :assets do
   gem 'sass-rails',   '~> 4.0.0'
   gem 'coffee-rails', '~> 4.0.0'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platform => :ruby
-
   gem 'uglifier', '>= 1.3.0'
 end
 
 gem "jquery-rails"
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'

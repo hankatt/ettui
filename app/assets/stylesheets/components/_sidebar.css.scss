@@ -135,8 +135,14 @@
     -ms-user-select: none; /* IE10+ */
 }
 
-.c-sidebar_container__header:hover .fa {
-  opacity: 1;
+.c-sidebar_container__header:hover {
+	cursor: pointer;
+	h4 {
+		color: #333;
+	}
+	.fa {
+	  opacity: 1;
+	}
 }
 
 .c-sidebar_container__header:hover,

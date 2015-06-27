@@ -2,6 +2,52 @@ class UsersController < ApplicationController
 
   helper :header
 
+  # Updates the users :new_user attribute to false.
+  # The user has completed the introduction by clicking this button.
+  def done
+    @user = User.find(cookies[:user_id])
+
+    respond_to do |format|
+      if @user.update_attributes!(:new_user => false)
+        format.html { redirect_to @user.boards.first }
+      else
+        format.html { redirect_to login_path }
+      end
+    end
+  end
+
+  # Send the user to the introduction
+  # The user has successfully signed up.
+  def introduction
+    @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
+    
+    # Record that the user was active
+    record_user_activity
+
+    respond_to do |format|
+        if @user && @user.new_user
+            format.html # intro.html.erb
+        elsif @user && !@user.new_user
+            format.html { redirect_to @user.boards.first }
+        else
+            format.html { redirect_to root_url }
+        end
+    end
+  end
+
+  # The user needs their bookmarklet.
+  def bookmarklet
+    @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
+    respond_to do |format|
+        if @user
+            format.html # bookmarklet.html.erb
+        else
+            format.html { redirect_to root_url }
+        end
+    end
+  end
+
+  # New users go to the landing page, signed in users to go their boards
   def index
     respond_to do |format|
       if current_user
@@ -9,34 +55,6 @@ class UsersController < ApplicationController
       else
         format.html
       end
-    end
-  end
-
-  def intro
-      @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
-      record_user_activity
-
-      respond_to do |format|
-          if @user && @user.new_user
-              format.html # intro.html.erb
-              flash[:notice] = "Logged in."
-          elsif @user && !@user.new_user
-              format.html { redirect_to @user.boards.first }
-          else
-              format.html { redirect_to root_url }
-          end
-      end
-  end
-
-  def bookmarklet
-    @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
-
-    respond_to do |format|
-        if @user
-            format.html # bookmarklet.html.erb
-        else
-            format.html { redirect_to root_url }
-        end
     end
   end
 
@@ -63,18 +81,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = user_params ? User.new(user_params) : User.new_guest
 
     respond_to do |format|
       if @user.save
         # Establish a session
         cookies[:user_id] = { :value => @user.id, :expires => 3.months.from_now }
 
-        # Initiate a board for the user
-        @user.boards << Board.create({ user_id: @user.id, name: "My board" })
-
         # What happens after the save is complete
-        format.html { redirect_to intro_path, :notice => "You successfully signed up." }
+        format.html { redirect_to introduction_path, :notice => "You successfully signed up." }
       else
         format.html { render action: "new", :notice => "A user with that email address already exists. If it's you, please try the login page." }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -82,14 +97,19 @@ class UsersController < ApplicationController
     end
   end
 
-  def done
-    @user = User.find(cookies[:user_id])
+  def create_guest_user
+    @user = User.new_guest_user
 
     respond_to do |format|
-      if @user.update_attributes!(:new_user => false)
-        format.html { redirect_to @user.boards.first }
+      if @user.save
+        # Establish a session
+        cookies[:user_id] = { :value => @user.id, :expires => 1.day.from_now }
+
+        # What happens after the save is complete
+        format.html { redirect_to introduction_path, :notice => "You successfully signed up." }
       else
-        format.html { redirect_to login_path }
+        format.html { render action: "new", :notice => "A user with that email address already exists. If it's you, please try the login page." }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -107,6 +127,31 @@ class UsersController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def show
+        @user = User.find(params[:id])
+        @board = @user.boards.first
+
+        set_titles("« Back to board", "Settings")
+
+        respond_to do |format|
+            format.html # show.html.erb
+            format.js # show.js.erb
+            format.json { render json: @quotes }
+        end
+    end
+
+  # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to signup_path }
+      format.json { head :no_content }
     end
   end
 
@@ -132,35 +177,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
         format.html { redirect_to boards_path, notice: 'User was successfully updated.' }
-    end
-  end
-
-  def show
-        @user = User.find(params[:id])
-        @board = @user.boards.first
-
-        set_titles("« Back to board", "Settings")
-
-        respond_to do |format|
-            format.html # show.html.erb
-            format.js # show.js.erb
-            format.json { render json: @quotes }
-        end
-    end
-
-  def update_twitter_data
-
-  end
-
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to signup_path }
-      format.json { head :no_content }
     end
   end
 

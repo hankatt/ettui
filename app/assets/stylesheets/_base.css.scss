@@ -5,6 +5,10 @@ body, html {
 		width: 100%;
 	}
 
+	img {
+		vertical-align: middle;
+	}
+
 	html {
 		overflow-y: scroll; 
 	}
@@ -17,8 +21,11 @@ body, html {
 	}
 
 	.container.is-scroll_locked {
+		// .o-content_container {
+		// 	position: fixed;
+		// }
 		.o-content_container {
-			position: fixed;
+			overflow-y: hidden;
 		}
 	}
 

@@ -2,6 +2,109 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.c-landing_page {
+	font-family: "soleil", sans-serif;
+	margin-top: 80px;
+	border-bottom: solid 1px #EAE7E1;
+}
+
+.c-landing_page__footer {
+	flex-grow: 1;
+	justify-content: center;
+
+    background-color: #f8f5f3;
+    text-align: center;
+    padding-top: 46px;
+}
+
+.c-landing_page__footer_title {
+	font-family: "soleil", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-feature-settings: "smcp", "c2sc";
+    color: rgba(0, 0, 0, .5);
+    letter-spacing: 1px;
+    font-size: 12px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+
+
+
+.c-landing_page__title {
+	font-weight: 600;
+    /* font-feature-settings: "smcp", "c2sc"; */
+
+    letter-spacing: -.05em;
+
+    font-size: 3em;
+    line-height: 1.1em;
+
+    color: salmon;
+
+    max-width: 480px;
+}
+
+.c-landing_page__title--primary {
+	font-kerning: auto;
+	display: inline;
+}
+
+.c-landing_page__title--secondary {
+	color: black;
+}
+
+.c-landing_page__cta {
+	font-size: .875em;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	font-feature-settings: "smcp", "c2sc";
+
+	padding: 13px 28px 15px;
+	border-radius: 45px;
+	background-color: salmon;
+	color: white;
+
+	display: inline-block;
+}
+
+.c-landing_page__cta {
+	&:hover {
+		cursor: pointer;
+		color: rgba(255, 255, 255, .67);
+	}
+}
+
+.c-landing_page__cta--secondary {
+	border: solid 1px #EAE7E1;
+	background-color: transparent;
+	color: rgba(0, 0, 0, .5);
+}
+
+.c-landing_page__cta--secondary {
+	&:hover {
+		cursor: pointer;
+		color: rgba(0, 0, 0, .33);
+	}
+}
+
+/* Object for taking up 50% of the screen. */
+.o-half_screen {
+	.c-landing_page__title--primary {
+		margin-top: 46px;
+		display: inline-block;
+	}
+	.c-landing_page__title--secondary {
+		padding-bottom: 46px;
+		margin-bottom: 27px;
+		border-bottom: solid 1px #EAE7E1;
+	}
+
+	.c-landing_page__image {
+		width: 100%;
+	}
+}
+
 div.error_explanation ul {
 	display: none;
 	-webkit-padding-start: 0px;

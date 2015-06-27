@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
 	# Establish relation to quotes
 	has_and_belongs_to_many :boards, :join_table => :subscriptions
+	before_destroy :destroy_boards
 
 	attr_accessor :password, :password_confirmation
 	
@@ -11,12 +12,17 @@ class User < ActiveRecord::Base
 	# If save was successful, set a token for the user
 	after_save :initialize_user
 
+	has_many :quotes, dependent: :destroy
 	
 	# Form validations
-	validates_uniqueness_of :email, :unless => :provider
-	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :create
+	validates_uniqueness_of :email, unless: :provider_or_guest?
+	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :create, unless: :guest?
 	validates_presence_of :email, :password, :password_confirmation, :unless => :provider, on: :update, allow_blank: true
-	validates_confirmation_of :password, :unless => :provider
+	validates_confirmation_of :password, unless: :provider_or_guest?
+
+	def provider_or_guest?
+		provider? || guest?
+	end
 
 	# Encrypts and stores the provided password
 	def encrypt_password
@@ -30,14 +36,14 @@ class User < ActiveRecord::Base
 	def self.create_with_omniauth(auth)
 
 		# Create the new user
-  		@user = User.new({
-  			:provider => auth["provider"], 
-  			:uid => auth["uid"], 
-  			:name => auth["info"]["name"],
-  			:twitter_image_url => auth["info"]["image"],
-  			:twitter_description => auth["info"]["description"],
-  			:new_user => true 
-  		})
+			@user = User.new({
+				:provider => auth["provider"], 
+				:uid => auth["uid"], 
+				:name => auth["info"]["name"],
+				:twitter_image_url => auth["info"]["image"],
+				:twitter_description => auth["info"]["description"],
+				:new_user => true 
+			})
 	    
 	    # Create a board and associate it to the new user
 	    @board = Board.create!(name: "My board")
@@ -51,6 +57,17 @@ class User < ActiveRecord::Base
 
 	    # Return user
 	    @user
+	end
+
+	def self.new_guest_user
+		user = User.new
+
+		user.guest = true
+    user.new_user = true
+    user.name = "Kim 'Demo' Chi"
+    user.twitter_image_url = "https://randomuser.me/api/portraits/med/women/84.jpg"
+
+    user
 	end
 
 	# Authenticates the user
@@ -93,6 +110,15 @@ class User < ActiveRecord::Base
 
 			# We now have a token, so lets set it
 			self.update(token: token)
+
+      # Initiate a board for the user
+      self.boards << Board.create({ user_id: self.id, name: "My board" })
+		end
+	end
+
+	def destroy_boards
+		boards.each do |board|
+			board.destroy unless board.has_subscribers?
 		end
 	end
 end

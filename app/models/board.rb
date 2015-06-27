@@ -20,4 +20,8 @@ class Board < ActiveRecord::Base
     def source_count source
     	sources.where(id: source.id).count
     end
+
+    def has_subscribers?
+        users.count > 1
+    end
 end

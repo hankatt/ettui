@@ -1,5 +1,50 @@
-<div class="splash-container">
+<!--<div class="splash-container">
 	<%= render "shared/header" %>
 	<%= render "splash" %>
 </div>
 <%= render "descriptions" %>
+!-->
+<div class="c-landing_page o-full_screen o-full_screen--centered u-clearfix">
+	<div class="o-half_screen">
+		<h1 class="c-landing_page__title c-landing_page__title--primary">
+			This is Ettúi.
+		</h1>
+		<h1 class="c-landing_page__title c-landing_page__title--secondary">
+			A personal archive for<br/> memorable quotes.
+		</h1>
+		<a href="#!" class="c-landing_page__cta c-landing_page__cta--secondary">Read more</a>
+		<%= link_to "Try our demo", create_guest_user_path, method: :post, :class => "c-landing_page__cta" %>
+	</div>
+	<div class="o-half_screen u-text-align-center">
+		<%= image_tag "landing_page-image@2x.png", :alt => "Ettui product image.", :class => "c-landing_page__image" %>
+	</div>
+</div>
+<footer class="c-landing_page__footer">
+	<p class="c-landing_page__footer_title">Copyright(C) 2015 Henrik Wiberg, Hannes Gustafsson</p>
+</footer>
+<!--<a class="c-landing_page__cta" href="#!">Try it with a demo user</a>
+<ul class="c-landing_page__list">
+	<li>
+		<h3>
+			Forget about copy and paste.
+		</h3>
+		<p>
+			A simple tool enables you to save highlighted text right from your browser. This allows you to keep focus on what you are reading.
+		</p>
+	</li>
+	<li>
+		<h3>
+			Any device, any time, anywhere.
+		</h3>
+		<p>
+			Noted works wherever bookmarks work. That includes computers, tablets and phones.
+		</p>
+	</li>
+	<li>
+		<h3>
+			Find quotes you can't remember.
+		</h3>
+		<p>
+			We've created a search and filtering system that helps you find what you are looking for, even when your archive grows large.
+		</p>
+	</li>

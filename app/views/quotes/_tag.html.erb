@@ -1,4 +1,4 @@
 <li class="c-tag t-<%= tag.id %>">
-	<%= link_to tag.name, "#!", :class => "c-tag__name" %>
-	<%= link_to " x", board_quote_tag_path(@board, quote, tag), method: :delete, :class => "c-tag__delete" %>
+  <%= link_to tag.name, "#!", :class => "c-tag__name" %>
+  <%= link_to " x", board_quote_tag_path(@board, quote, tag), method: :delete, :class => "c-tag__delete" %>
 </li>

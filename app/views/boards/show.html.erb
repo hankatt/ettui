@@ -1,20 +1,20 @@
 <%= render "boards/sidebar" %>
 
 <div class="o-content_container">
-	<h1 class="o-content_container__title"><%= @right_title %></h1>
-	<div class="o-quotes_container">
-		<% if !@quotes.empty? %>
-      	<ol>
-        	<%= render(@quotes) %>
+  <h1 class="o-content_container__title"><%= @right_title %></h1>
+  <div class="o-quotes_container">
+    <% if !@quotes.empty? %>
+        <ol>
+          <%= render(@quotes) %>
         </ol>
-    	<% else %>
+      <% else %>
         <%= render "boards/out_of_quotes" %>
-	    <% end %>
-	</div>
+      <% end %>
+  </div>
 </div>
 <div class="c-test_data">
-	<% if current_user %>
-	  <h6><%= current_user.name %></h6>
-	  <%= link_to "Logout", logout_path %>
-	<% end %>
+  <% if current_user %>
+    <h6><%= current_user.name %></h6>
+    <%= link_to "Logout", logout_path %>
+  <% end %>
 </div>

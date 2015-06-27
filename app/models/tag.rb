@@ -6,11 +6,11 @@ class Tag < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def self.filter_by_ids(ids)
-  	if ids.empty?
-  		all.uniq # We don't know why we need to run .uniq here but if not, we get duplicates or triplets or worse.
-  	else
-  		where(id: ids)
-  	end
+    if ids.empty?
+      all.uniq # We don't know why we need to run .uniq here but if not, we get duplicates or triplets or worse.
+    else
+      where(id: ids)
+    end
   end
 
   def count_for board

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>noted</title>
-	<script type="text/javascript" src="//use.typekit.net/vcm8wta.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<%= stylesheet_link_tag    "application", :media => "all" %>
-	<%= javascript_include_tag "application" %>
-	<%= csrf_meta_tags %>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" />
+  <title>noted</title>
+  <script type="text/javascript" src="//use.typekit.net/vcm8wta.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" />
 
-	<!-- Run in full-screen mode. -->
+  <!-- Run in full-screen mode. -->
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <!-- Make the status bar black with white text. -->
@@ -22,14 +22,14 @@
     <!-- Disable phone number detection. -->
     <meta name="format-detection" content="telephone=no">
 
-	<!-- Homescreen icon images -->
+  <!-- Homescreen icon images -->
 
-	<link rel="apple-touch-icon" href="/apple-touch-icon-iphone.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon-iphone.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png">
 
-	<!-- Startup images -->
+  <!-- Startup images -->
 
     <!-- iOS 6 & 7 iPad (retina, portrait) -->
     <link href="/apple-touch-startup-image-1536x2008.png"
@@ -81,12 +81,12 @@
 <body class="t-white">
 <!--
 <% flash.each do |name, msg| -%>
-	<%= content_tag :div, msg, class: name %>
+  <%= content_tag :div, msg, class: name %>
 <% end -%>
 !-->
 
 <div id="smooth" class="container <%= "no-sidebar" unless params[:controller].eql?("boards") || params[:action].eql?("filter") %>">
-	<%= yield %>
+  <%= yield %>
 </div>
 
 </body>

@@ -1,18 +1,18 @@
 <div class="c-modal__window">
-	<div class="modal__content">
-		<%= image_tag "logo_striped_black_72x72@1x.png" %>
-		<h1>
-			Just an email and a password.
-		</h1>
-		<%= render "form" %>
-		<p class="secondary">
-			By signing up you agree to the<br/>
-			<%= link_to "Privacy Policy", "#!" %> and
-			<%= link_to "Terms of Service", "#!" %>
-		</p>
-		<p>
-			Already have an account?
-			<%= link_to "Log in", login_path %>
-		</p>
-	</div>
+  <div class="modal__content">
+    <%= image_tag "logo_striped_black_72x72@1x.png" %>
+    <h1>
+      Just an email and a password.
+    </h1>
+    <%= render "form" %>
+    <p class="secondary">
+      By signing up you agree to the<br/>
+      <%= link_to "Privacy Policy", "#!" %> and
+      <%= link_to "Terms of Service", "#!" %>
+    </p>
+    <p>
+      Already have an account?
+      <%= link_to "Log in", login_path %>
+    </p>
+  </div>
 </div>

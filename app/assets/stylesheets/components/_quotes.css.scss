@@ -1,36 +1,36 @@
 .c-quote {
-	width: 100%;
-	padding: 28px 0;
+  width: 100%;
+  padding: 28px 0;
 }
 
 .c-quote__metadata {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-	/* Flex does not automatically set width: 100 */
-	width: 100%;
+  /* Flex does not automatically set width: 100 */
+  width: 100%;
 }
 
 .c-quote__metadata--primary {
-	/* Reduce space between timestamp and quote content */
-	margin-bottom: 23px;
+  /* Reduce space between timestamp and quote content */
+  margin-bottom: 23px;
 }
 
 .c-quote__tags {
-	display: flex;
-	justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .c-quote__tags form {
-	order: -1;
+  order: -1;
 }
 
 /* Visual Design */
 
 .c-quote__tags .c-tag__name {
-	color: salmon;
-	letter-spacing: -0.25px;
-	-webkit-font-smoothing: subpixel-antialiased;
+  color: salmon;
+  letter-spacing: -0.25px;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .c-quote__content h1,
@@ -38,36 +38,36 @@
 .c-quote__metadata > p em,
 .c-quote__metadata > .c-quote__title,
 .c-quote__metadata > .c-quote__author {
-	font-family: $font-family-serif;
+  font-family: $font-family-serif;
 }
 
 .c-quote__content {
-	margin-top: -15px;
-	margin-bottom: -13px;
+  margin-top: -15px;
+  margin-bottom: -13px;
 }
 
 .c-quote__content h1 {
-	letter-spacing: 0;
-	line-height: 1.5em;
-	font-weight: normal;
-	color: #333;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  font-weight: normal;
+  color: #333;
 }
 
 .c-sidebar_container__header h4,
 .c-quote__timestamp {
-	color: #999;
+  color: #999;
 }
 
 /*
-	If browsers don't support font-features-settings
-	or font-variant, this while apply to them.
+  If browsers don't support font-features-settings
+  or font-variant, this while apply to them.
 
-	For example iOS Safari.
+  For example iOS Safari.
 */
 .c-quote__content.small h1 em,
 .c-quote__timestamp,
 .c-sidebar_container__header h4 {
-	font-size: 13px;
+  font-size: 13px;
     font-family: "soleil";
     text-transform: uppercase;
     font-weight: 600;
@@ -76,25 +76,25 @@
 
 
 /*
-	If browsers support font-variant: small-caps,
-	but not font-feature-settings,
-	this while apply to them.
+  If browsers support font-variant: small-caps,
+  but not font-feature-settings,
+  this while apply to them.
 */
 @supports(font-variant: small-caps) {
-	.c-quote__content.small h1 em,
-	.c-quote__timestamp,
-	.c-sidebar_container__header h4 {
-		font-size: 17px;
-		font-variant: small-caps;
-	    font-weight: 800;
+  .c-quote__content.small h1 em,
+  .c-quote__timestamp,
+  .c-sidebar_container__header h4 {
+    font-size: 17px;
+    font-variant: small-caps;
+      font-weight: 800;
 
-	    text-transform: lowercase;
-	}
+      text-transform: lowercase;
+  }
 }
 
 /*
-	If browsers support font-features-settings,
-	this while apply to them.
+  If browsers support font-features-settings,
+  this while apply to them.
 */
 @supports(font-feature-settings: 'smcp') {
     .c-quote__content.small h1 em,
@@ -102,102 +102,102 @@
     .c-sidebar_container__header h4 {
         font-variant: normal;
         font-size: 15px;
-		font-feature-settings:"smcp" 1, "c2sc" 1;
-		font-variant-caps: all-small-caps;
-		font-weight: 600;
+    font-feature-settings:"smcp" 1, "c2sc" 1;
+    font-variant-caps: all-small-caps;
+    font-weight: 600;
 
-		text-transform: none;
+    text-transform: none;
     }
 }
 
 .c-quote__content h1 mark {
-	border-bottom: solid salmon 6px;
-	background-color: transparent;
-	color: inherit;
-	font-family: inherit;
+  border-bottom: solid salmon 6px;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
 }
 
 .c-quote__tags {
-	border-bottom: solid 1px #ccc;
-	padding-bottom: 14px; 	/* Space above the line */
-	margin-bottom: 14px;	/* Space below the line */
-	margin-top: 20px;	/* Space between quote content and tags */
+  border-bottom: solid 1px #ccc;
+  padding-bottom: 14px;   /* Space above the line */
+  margin-bottom: 14px;  /* Space below the line */
+  margin-top: 20px;  /* Space between quote content and tags */
 }
 
 .c-quote__metadata > .c-quote__title,
 .c-quote__metadata > .c-quote__author {
-	font-size: 16px;
-	font-style: italic;
-	color: #aaa;
+  font-size: 16px;
+  font-style: italic;
+  color: #aaa;
 }
 
 .c-quote__metadata > .c-quote__title {
-	border-bottom: solid 1px #ccc;
-	border-bottom-style: dotted;
+  border-bottom: solid 1px #ccc;
+  border-bottom-style: dotted;
 }
 
 .c-quote__metadata > .c-quote__author {
-	flex-grow: 1;
-	& em {
-		font-style: normal;
-	}
+  flex-grow: 1;
+  & em {
+    font-style: normal;
+  }
 }
 
 .c-quote__favicon {
-	height: 20px;
+  height: 20px;
 }
 
 
 /* Hover states */
 
 .c-quote__tags > form {
-	opacity: 0;
+  opacity: 0;
 }
 
 .c-quote__tags:hover > form {
-	opacity: 1;
+  opacity: 1;
 }
 
 .c-sidebar_container__header .fa,
 .c-quote__remove .fa {
-	line-height: 24px;
+  line-height: 24px;
     font-size: 22px;
 }
 
 .c-quote__remove {
-	opacity: 0;
+  opacity: 0;
 }
 
 .c-quote:hover .c-quote__remove {
-	opacity: .1;
+  opacity: .1;
 }
 
 .c-quote:hover .c-quote__remove:hover {
-	opacity: 1;
-	color: salmon;
+  opacity: 1;
+  color: salmon;
 }
 
 a.c-quote__title:hover {
-	color: #000;
+  color: #000;
 }
 
 /* Break points */
 
 .c-quote__content.big h1 {
-	font-size: 40px;
-	line-height: 1.25em;
-	letter-spacing: -1px;
-	font-feature-settings:"dlig" 1;
-	font-variant-ligatures: discretionary-ligatures
+  font-size: 40px;
+  line-height: 1.25em;
+  letter-spacing: -1px;
+  font-feature-settings:"dlig" 1;
+  font-variant-ligatures: discretionary-ligatures
 }
 
 .c-quote__content h1 {
-	font-size: 28px;
-	line-height: 1.35em;
-	letter-spacing: -0.25px;
+  font-size: 28px;
+  line-height: 1.35em;
+  letter-spacing: -0.25px;
 }
 
 .c-quote__content.small h1 {
-	font-size: 20px;
-	line-height: 1.5em;
+  font-size: 20px;
+  line-height: 1.5em;
 }

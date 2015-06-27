@@ -1,20 +1,20 @@
 <div class="c-modal__window">
-	<div class="modal__content">
-		<%= image_tag "logo_striped_black_72x72@1x.png" %>
-		<h1>
-		  An email and a password and you're good to go.
-		</h1>
-		<%= link_to "/auth/twitter?image_size=original", :class => "button" do %>
-		  <%= image_tag "twitter_white_25x20@1x.png" %>Connect using Twitter
-		<% end %>
-		<%= link_to "Sign up using email", "#!", :class => "button" %>
-		<p class="secondary">
-		  By signing up you agree to the<br/>
-		  <%= link_to "Privacy Policy", "#!" %> and
-		  <%= link_to "Terms of Service", "#!" %>
-		</p>
-		<p>Already have an account?
-		  <%= link_to "Log in", login_path %>
-		</p>
-	</div>
+  <div class="modal__content">
+    <%= image_tag "logo_striped_black_72x72@1x.png" %>
+    <h1>
+      An email and a password and you're good to go.
+    </h1>
+    <%= link_to "/auth/twitter?image_size=original", :class => "button" do %>
+      <%= image_tag "twitter_white_25x20@1x.png" %>Connect using Twitter
+    <% end %>
+    <%= link_to "Sign up using email", "#!", :class => "button" %>
+    <p class="secondary">
+      By signing up you agree to the<br/>
+      <%= link_to "Privacy Policy", "#!" %> and
+      <%= link_to "Terms of Service", "#!" %>
+    </p>
+    <p>Already have an account?
+      <%= link_to "Log in", login_path %>
+    </p>
+  </div>
 </div>

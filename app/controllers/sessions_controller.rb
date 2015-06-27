@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	@user = User.authenticate(params[:email], params[:password])
+    @user = User.authenticate(params[:email], params[:password])
 
-  	create_cookies_for @user
+    create_cookies_for @user
   end
 
   def create_with_omniauth
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-  	cookies.delete(:user_id)
+    cookies.delete(:user_id)
     redirect_to root_url, :notice => "Logged out!"
   end
 

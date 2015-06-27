@@ -1,66 +1,66 @@
 /*
-	###
-	CONSTANTS: On white prefix 'w-'
-	###
+  ###
+  CONSTANTS: On white prefix 'w-'
+  ###
 */
 
 $proportional-constant: 1.414;
 
 /*
-	###
-	COLORS: On white prefix 'w-'
-	###
+  ###
+  COLORS: On white prefix 'w-'
+  ###
 */
 
-$main-background-color:		#F4EFE6;
-$quote-background-color:	rgb(255, 255, 255);
-$sidebar-background-color:	$main-background-color; //rgb(221, 217, 213);
+$main-background-color:    #F4EFE6;
+$quote-background-color:  rgb(255, 255, 255);
+$sidebar-background-color:  $main-background-color; //rgb(221, 217, 213);
 
 /* ON WHITE: prefix: w- */
 
-$w-stroke-color:		rgba(0, 0, 0, .1);
-$w-primary-color:		#111;
-$w-secondary-color:		#999;
-$w-highlight-color: 	#f6f3f0;
-$w-signature-color:		salmon;
+$w-stroke-color:    rgba(0, 0, 0, .1);
+$w-primary-color:    #111;
+$w-secondary-color:    #999;
+$w-highlight-color:   #f6f3f0;
+$w-signature-color:    salmon;
 
 /* ON TURQOUISE: prefix: t- */
 
-$t-stroke-color:	rgba(0, 0, 0, .1);
-$t-primary-color:	#fff;
-$t-secondary-color:	#777; /* #c9c6c1 */
+$t-stroke-color:  rgba(0, 0, 0, .1);
+$t-primary-color:  #fff;
+$t-secondary-color:  #777; /* #c9c6c1 */
 $t-signature-color: salmon;
 
 /*
-	###
-	VARIABLES: Multiples of 1.414
-	###
+  ###
+  VARIABLES: Multiples of 1.414
+  ###
 */
 
-$spacing-0:			10px;									/* 10 */
-$spacing-1:			$spacing-0 * $proportional-constant; 	/* 14 */
-$spacing-2:			$spacing-1 * $proportional-constant; 	/* 20 */
-$spacing-3:			$spacing-2 * $proportional-constant; 	/* 28 */
-$spacing-4:			$spacing-3 * $proportional-constant; 	/* 40 */
-$spacing-5:			$spacing-4 * $proportional-constant; 	/* 56 */
-$spacing-6:			$spacing-5 * $proportional-constant;	/* 80 */
+$spacing-0:      10px;                  /* 10 */
+$spacing-1:      $spacing-0 * $proportional-constant;   /* 14 */
+$spacing-2:      $spacing-1 * $proportional-constant;   /* 20 */
+$spacing-3:      $spacing-2 * $proportional-constant;   /* 28 */
+$spacing-4:      $spacing-3 * $proportional-constant;   /* 40 */
+$spacing-5:      $spacing-4 * $proportional-constant;   /* 56 */
+$spacing-6:      $spacing-5 * $proportional-constant;  /* 80 */
 
-$border-radius:				2px;
-$padding-button-secondary:	2px 5px 2px 6px;
-$padding-button-primary: 	0px;
+$border-radius:        2px;
+$padding-button-secondary:  2px 5px 2px 6px;
+$padding-button-primary:   0px;
 
 /*
-	###
-	SIDEBAR
-	###
+  ###
+  SIDEBAR
+  ###
 */
 
 $sidebar-width: 370px;
 
 /*
-	###
-	HEADER
-	###
+  ###
+  HEADER
+  ###
 */
 
 $header-height: 94px;

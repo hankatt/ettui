@@ -1,13 +1,13 @@
 <div class="user-form">
-	<%= form_tag sessions_path do %>
-		<div class="field">
-			<%= text_field_tag :email, params[:email], :placeholder => "Electronic mail address" %>
-		</div>
-		<div class="field">
-			<%= password_field_tag :password, params[:id], :placeholder => "Password" %>
-		</div>
-		<div class="actions">
-			<%= submit_tag "Log in using email", :id => "submit_login", :class => "stay button" %>
-		</div>
-	<% end %>
+  <%= form_tag sessions_path do %>
+    <div class="field">
+      <%= text_field_tag :email, params[:email], :placeholder => "Electronic mail address" %>
+    </div>
+    <div class="field">
+      <%= password_field_tag :password, params[:id], :placeholder => "Password" %>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Log in using email", :id => "submit_login", :class => "stay button" %>
+    </div>
+  <% end %>
 </div>

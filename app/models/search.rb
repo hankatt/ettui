@@ -30,7 +30,7 @@ class Search
 		classes << "is-active" if tag_ids.include?(tag.id.to_s)
 		classes.join(" ")
 	end
-	
+
 private
 	def update_params_for_tag(tag)
 		Rails.logger.debug("KLLKJLKJLKJLKJLKJLKJKJLKJ #{tag_ids}")

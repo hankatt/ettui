@@ -14,24 +14,24 @@ li {
   list-style-type: none;
 }
 
-.clearfix:after { 
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden; 
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 
-.clearfix { 
-  display: inline-block;  
+.clearfix {
+  display: inline-block;
 }
 
-* html .clearfix {  
-  height: 1%;  
+* html .clearfix {
+  height: 1%;
 } /* Hides from IE-mac \*/
 
-.clearfix {  
-  display: block;  
+.clearfix {
+  display: block;
 }
 
 /**

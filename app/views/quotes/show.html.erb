@@ -5,13 +5,13 @@
             <h4 class="profile-name"><%= @board.users.first.name || @board.users.first.email %></h4>
             <p>Added this quote on <%= @quote.created_at.day.to_s << ". " << @quote.created_at.strftime("%B") %>
             </p>
-        </div>    
+        </div>
     	<div class="options">
         	<%= link_to "< Back to the board", boards_path, :class => "small button" %>
         	<% if @quote.boards.first.user_id.eql?(current_user.id) %>
 	    		<%= link_to "Delete this quote", @quote, method: :delete, :class => "small button remove" %>
 	    	<% end %>
-		</div>        
+		</div>
         <% if !@quote.nil? %>
             <div class="quotes-list">
               <%= render @quote %>

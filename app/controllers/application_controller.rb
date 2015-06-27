@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	private
-	
+
 	def record_user_activity
 		if current_user
 			current_user.touch :last_active_at

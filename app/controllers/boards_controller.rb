@@ -17,7 +17,7 @@ class BoardsController < ApplicationController
     def show
         @board = Board.find(params[:id])
 
-        @search = Search.new(params[:search]) 
+        @search = Search.new(params[:search])
 
         @quotes = @board.quotes.reverse_order
         @unread = []
@@ -45,7 +45,7 @@ class BoardsController < ApplicationController
 
     def update
         @board = Board.find(params[:id])
-        
+
         respond_to do |format|
             if @board.update_attributes(board_params)
                 format.js # update.js.erb

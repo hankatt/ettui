@@ -2,7 +2,7 @@
 	<% filters.each do |filter| %>
 		<%= render :partial =>
 			"sidebar_#{filter.class.name.downcase}",
-			locals: { 
+			locals: {
 				filter_item: filter
 			}
 		%>

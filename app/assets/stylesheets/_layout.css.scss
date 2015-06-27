@@ -16,7 +16,11 @@
 }
 
 .container {
-  display: flex;
+  display: flex;;
+}
+
+body.index .container {
+	flex-direction: column;
 }
 
 .o-content_container {

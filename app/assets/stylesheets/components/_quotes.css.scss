@@ -71,7 +71,7 @@
     font-family: "soleil";
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 0.75px;
+    letter-spacing: 1px;
 }
 
 
@@ -86,7 +86,7 @@
   .c-sidebar_container__header h4 {
     font-size: 17px;
     font-variant: small-caps;
-      font-weight: 800;
+      font-weight: 400;
 
       text-transform: lowercase;
   }
@@ -104,7 +104,7 @@
         font-size: 15px;
     font-feature-settings:"smcp" 1, "c2sc" 1;
     font-variant-caps: all-small-caps;
-    font-weight: 600;
+    font-weight: 400;
 
     text-transform: none;
     }

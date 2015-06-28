@@ -3,7 +3,7 @@ Well::Application.routes.draw do
   root :to => "users#index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
+  get "signup(/:signup_type)" => "users#new", :as => "signup"
   get "users/introduction" => "users#introduction", :as => "introduction"
   get "users/bookmarklet" => "users#bookmarklet", :as => "bookmarklet"
   get 'add/quote' => "quotes#add_quote"
@@ -14,7 +14,7 @@ Well::Application.routes.draw do
   get 'users/omniauth/update' => "users#update_all_user_omniauth_data", :as => "omniauth_update"
   get 'quotes/readability/update' => 'quotes#update_readability_data'
   get 'users/done' => "users#done", :as => "continue"
-  post '/' => "users#create_guest_user", :as => "create_guest_user"
+  get '/demo' => "users#demo", :as => "demo"
 
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 

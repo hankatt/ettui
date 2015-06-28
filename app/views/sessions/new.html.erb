@@ -1,12 +1,12 @@
 <div class="o-overlay">
   <div class="c-modal__window">
     <div class="modal__content">
-      <%= image_tag "logo_striped_black_72x72@1x.png" %>
+      <%= link_to (image_tag "ettui-lfs-temp-logo.jpg"), root_path %>
       <h1>
-        Welcome back. Log in below.
+        Hello, welcome back.
       </h1>
       <%= link_to "/auth/twitter?image_size=original", :class => "button" do %>
-        <%= image_tag "twitter_white_25x20@1x.png" %>Connect using Twitter
+        <%= fa_icon 'twitter' %> Connect using Twitter
       <% end %>
       <%= render "login_form" %>
       <p>Don't have an account?

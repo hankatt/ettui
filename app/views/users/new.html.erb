@@ -1,4 +1,7 @@
 <div class="o-overlay m-scene">
-  <%# render "sign_up" %>
-  <%= render "sign_up_email" %>
+  <% if params[:signup_type].eql?("email") %>
+    <%= render "sign_up_email" %>
+  <% else %>
+    <%= render "sign_up" %>
+  <% end %>
 </div>

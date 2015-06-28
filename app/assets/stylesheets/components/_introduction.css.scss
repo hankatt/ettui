@@ -1,13 +1,90 @@
+.c-introduction ol,
+.c-introduction ul {
+  font-size: 15px;
+}
+
+.c-introduction li {
+  font-size: inherit;
+}
+
+.c-introduction__logo-link img {
+  mix-blend-mode: darken;
+  width: 25%;
+  margin-bottom: 26px;
+}
+
+.c-segment_controller__option {
+  display: inline-block;
+  border: solid 1px #ddd;
+  font-feature-settings: "smcp", "c2sc";
+  letter-spacing: 1px;
+  padding: 15px 26px 17px;
+  color: rgba(0, 0, 0, .5);
+  &:hover {
+    color: rgba(0, 0, 0, .8);
+  }
+}
+
+.c-introduction__section {
+  display: block;
+
+  & + & {
+    display: none;
+  }
+}
+
+.c-introduction__section.js-section--tryout {
+  display: none;
+}
+
+.c-segment_controller__option {
+  & + & {
+    border-bottom: solid 1px #ddd;
+    border-top: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+    border-left: none;
+  }
+
+  &:first-of-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  &:last-of-type {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+
+.c-segment_controller__option.is-active {
+  background-color: rgba(0, 0, 0, .5);
+  border-color: rgba(0, 0, 0, .5);
+  color: white;
+}
+
+.c-introduction {
+  .c-segment_controller {
+
+  }
+
+  .c-segment_controller__option.is-active {
+    background-color: salmon;
+    border-color: salmon;
+    color: white;
+  }
+}
+
 .c-introduction {
   font-family: "soleil", sans-serif;
   width: 100%;
   max-width: 640px;
-  padding: 46px 46px 138px;
+  padding: 92px 46px 138px;
   border-radius: 4px;
   text-align: center;
   background-color: #f8f5f3;
   margin: 0 auto;
   overflow-y: auto;
+  min-height: 100%;
 }
 
 .c-introduction {
@@ -18,16 +95,48 @@
   h2 {
     font-size: 24px;
   }
+
+  h3 {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -.5px;
+  }
 }
 
 .c-introduction__title {
-  font-weight: 100%;
-  letter-spacing: -.15vw;
+    font-size: 32px;
+    font-family: "adobe-text-pro";
+    letter-spacing: -.05vw;
+    margin-bottom: 26px;
 }
 
 .c-introduction__title--section {
   margin-top: 26px;
-  letter-spacing: -1px;
+  letter-spacing: -.5px;
+  font-weight: 300;
+}
+
+.c-introduction__step_list li {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.c-introduction__step_title {
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  line-height: 28px;
+  border-radius: 32px;
+  border: solid 2px salmon;
+  margin: 26px auto 8px;
+  color: salmon;
+  font-weight: bold;
+  font-feature-settings: "smcp", "c2sc";
+}
+
+.c-introduction__description,
+.c-introduction__step_list li {
+  color: rgba(0, 0, 0, .5);
 }
 
 .c-introduction__divider {
@@ -39,13 +148,10 @@
 
 .c-introduction p {
   letter-spacing: -.25px;
-  color: #aaa;
-  margin-top: 0;
-  font-weight: 100;
 }
 
 .c-introduction__bookmarklet {
-  margin: 12px 0;
+  margin: 16px 0 0;
   padding: 25px 46px 27px;
   background-color: rgba(0, 0, 0, .1);
   display: inline-block;

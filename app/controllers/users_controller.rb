@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
         if @user && @user.new_user
-            format.html # intro.html.erb
+            format.html # introduction.html.erb
         elsif @user && !@user.new_user
             format.html { redirect_to @user.boards.first }
         else
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def create_guest_user
+  def demo
     @user = User.new_guest_user
 
     respond_to do |format|

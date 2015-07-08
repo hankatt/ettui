@@ -9,13 +9,6 @@ class QuotesController < ApplicationController
       # @source = Source.find_or_create_by(:hostname => url_to_host_name(params[:url], :favicon => URI.unescape(params[:favicon])))
       @source = Source.find_by_hostname(url_to_hostname(params[:url])) || Source.create!(:hostname => url_to_hostname(params[:url]), :favicon => URI.unescape(params[:favicon]))
 
-      # Rails.logger.debug "____________________________________"
-      # Rails.logger.debug "@user"
-      # Rails.logger.debug @user.to_yaml
-      # Rails.logger.debug "____________________________________"
-      # Rails.logger.debug "@source"
-      # Rails.logger.debug @source.to_yaml
-      # Rails.logger.debug "____________________________________"
       # Create a quote and connect it to the created source
       if @user && @source
 

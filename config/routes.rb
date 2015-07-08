@@ -1,6 +1,5 @@
 Well::Application.routes.draw do
 
-  root :to => "users#index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup(/:signup_type)" => "users#new", :as => "signup"
@@ -26,4 +25,5 @@ Well::Application.routes.draw do
       resources :tags, only: [:destroy, :create]
     end
   end
+  root :to => "users#index"
 end

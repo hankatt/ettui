@@ -4,7 +4,7 @@ Well::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup(/:signup_type)" => "users#new", :as => "signup"
   get "users/introduction" => "users#introduction", :as => "introduction"
-  get "users/bookmarklet" => "users#bookmarklet", :as => "bookmarklet"
+  get "users/bookmarklet" => "bookmarklet#show", :as => "bookmarklet"
   get 'add/quote' => "quotes#add_quote"
   get 'add/tag_remotely' => "tags#add_tag_remote"
   get 'add/tag_locally' => "quotes#add_tag_local"

@@ -1,0 +1,22 @@
+<%= render "header" %>
+<div class="c-landing_page o-full_screen o-full_screen--centered u-clearfix">
+  <div class="o-half_screen">
+    <h1 class="c-landing_page__title">
+      A personal archive for<br/> memorable quotes.
+    </h1>
+    <%= link_to "Try our demo", demo_path, :class => "c-button c-button--secondary" %>
+    <%= link_to "Create an account", signup_path, :class => "c-button c-button--primary" %>
+  </div>
+  <div class="o-half_screen u-text-align-center">
+    <%= image_tag "landing_page-image@2x.png", :alt => "Ettui product image.", :class => "c-landing_page__image" %>
+  </div>
+</div>
+<footer class="c-landing_page__footer">
+  <p class="c-landing_page__footer_title">Copyright(C) 2015 Henrik Wiberg, Hannes Gustafsson</p>
+</footer>
+<% if current_user %>
+  <div class="c-test_data">
+      <h6><%= current_user.name %></h6>
+      <%= link_to "Logout", logout_path %>
+  </div>
+<% end %>

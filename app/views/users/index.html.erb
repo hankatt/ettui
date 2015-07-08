@@ -1,13 +1,11 @@
+<%= render "header" %>
 <div class="c-landing_page o-full_screen o-full_screen--centered u-clearfix">
   <div class="o-half_screen">
-    <h1 class="c-landing_page__title c-landing_page__title--primary">
-      This is Ettúi.
-    </h1>
-    <h1 class="c-landing_page__title c-landing_page__title--secondary">
+    <h1 class="c-landing_page__title">
       A personal archive for<br/> memorable quotes.
     </h1>
-    <%= link_to "Create your account", signup_path, :class => "c-landing_page__cta c-landing_page__cta--secondary" %>
-    <%= link_to "Try our demo", demo_path, :class => "c-landing_page__cta" %>
+    <%= link_to "Try our demo", demo_path, :class => "c-button c-button--secondary" %>
+    <%= link_to "Create an account", signup_path, :class => "c-button c-button--primary" %>
   </div>
   <div class="o-half_screen u-text-align-center">
     <%= image_tag "landing_page-image@2x.png", :alt => "Ettui product image.", :class => "c-landing_page__image" %>

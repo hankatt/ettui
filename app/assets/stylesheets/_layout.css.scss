@@ -1,3 +1,8 @@
+.c-sidebar_container::-webkit-scrollbar,
+.o-content_container::-webkit-scrollbar {
+	display: none;
+}
+
 .o-body {
   width: 100%;
   height: 100%;

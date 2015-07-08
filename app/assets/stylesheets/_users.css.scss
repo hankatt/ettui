@@ -3,66 +3,56 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .c-landing_page {
-  font-family: "soleil", sans-serif;
+  font-family: $font-family-sans;
   margin-top: 80px;
-  border-bottom: solid 1px #EAE7E1;
+  border-bottom: solid 1px $border--on-white;
 }
 
 .c-landing_page__footer {
   flex-grow: 1;
   justify-content: center;
 
-    background-color: #f8f5f3;
-    text-align: center;
-    padding-top: 46px;
+  background-color: $signature-color;
+  text-align: center;
+  padding-top: 46px;
 }
 
 .c-landing_page__footer_title {
-  font-family: "soleil", sans-serif;
+  font-family: $font-family-sans;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 100;
     font-feature-settings: "smcp", "c2sc";
-    color: rgba(0, 0, 0, .5);
+    color: rgba(255, 255, 255, .33);
     letter-spacing: 1px;
     font-size: 12px;
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
 }
 
 
 
 .c-landing_page__title {
-  font-weight: 100;
-    /* font-feature-settings: "smcp", "c2sc"; */
-
-    letter-spacing: -.05em;
-
-    font-size: 3em;
-    line-height: 1.1em;
-
-    color: salmon;
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+    line-height: 2.5rem;
+    font-weight: 100;
 
     max-width: 480px;
-}
-
-.c-landing_page__title--primary {
-  font-kerning: auto;
-  display: inline;
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
 }
 
 .c-landing_page__title--secondary {
-  color: #4E4E4C;
+  color: $secondary--on-white;
 }
 
 .c-landing_page__cta {
   font-size: .875em;
-  font-weight: 600;
   letter-spacing: 0.05em;
   font-feature-settings: "smcp", "c2sc";
 
   padding: 13px 28px 15px;
   border-radius: 45px;
-  background-color: salmon;
+  background-color: #222;
   color: white;
 
   display: inline-block;
@@ -71,7 +61,8 @@
 .c-landing_page__cta {
   &:hover {
     cursor: pointer;
-    color: rgba(255, 255, 255, .67);
+    background-color: salmon;
+    color: white;
   }
 }
 
@@ -84,7 +75,8 @@
 .c-landing_page__cta--secondary {
   &:hover {
     cursor: pointer;
-    color: rgba(0, 0, 0, .33);
+    background-color: transparent;
+    color: salmon;
   }
 }
 
@@ -96,8 +88,6 @@
   }
   .c-landing_page__title--secondary {
     padding-bottom: 46px;
-    margin-bottom: 27px;
-    border-bottom: solid 1px #EAE7E1;
   }
 
   .c-landing_page__image {

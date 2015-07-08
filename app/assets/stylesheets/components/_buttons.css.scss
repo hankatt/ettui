@@ -1,0 +1,67 @@
+.c-button {
+  height: 40px;
+  line-height: 38px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-family: "soleil", sans-serif;
+  font-feature-settings: "smcp", "c2sc";
+  text-align: center;
+  display: inline-block;
+  border-radius: 40px;
+  color: #262626;
+}
+
+.c-header_ctas__container {
+  .c-button + .c-button {
+    margin-left: 10px;
+  }
+}
+
+.c-button--primary {
+  background-color: salmon;
+  color: white;
+  &:hover {
+    background-color: salmon;
+    color: white;
+  }
+}
+
+.c-button--secondary {
+  border: solid 1px #EAE7E1;
+  &:hover {
+    color: salmon;
+  }
+}
+
+.c-button--tertiary {
+  &:hover {
+    color: salmon;
+  }
+}
+
+/* 
+
+
+    HEADER SPECIFIC
+
+
+*/
+
+.c-header__container .c-button {
+  border: none;
+  background-color: transparent;
+  & + .c-button {
+    margin-left: 0;
+  }
+}
+
+.c-header__container {
+  .c-button--primary {
+    color: #262626;
+  }
+
+  .c-button--secondary,
+  .c-button--tertiary {
+    color: rgba(0, 0, 0, .33);
+  }
+}

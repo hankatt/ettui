@@ -1,86 +1,93 @@
-<div class="o-body">
-  <div class="c-introduction">
-    <%= link_to (image_tag "ettui-lfs-temp-logo.jpg"), root_path, :class => "c-introduction__logo-link" %>
-    <h1 class="c-introduction__title">Installing your boomarklet.</h1>
-     <!--
+<div class="o-beige-background">
+  <div class="o-body">
+    <div class="c-introduction">
+      <%= link_to (image_tag "ettui-lfs-temp-logo.jpg", :class => "c-ettui_logo"), root_path %>
+       <!--
 
-      Segment navigation controller
+        Segment navigation controller
 
-    !-->
-    <div class="c-segment_controller">
-      <ol class="c-segment_controller__list">
-        <li class="c-segment_controller__option is-active" data-target="js-section--desktop">Computer</li><li class="c-segment_controller__option" data-target="js-section--mobile">Phone/Tablet</li>
-      </ol>
-    </div>
-    <!--
+      !-->
+      <div class="c-segment_controller">
+        <ol class="c-segment_controller__list">
+          <li class="c-segment_controller__option is-active" data-target="js-section--desktop">Computer</li><li class="c-segment_controller__option" data-target="js-section--mobile">Phone/Tablet</li>
+        </ol>
+      </div>
+      <!--
 
-      Desktop
+        Desktop
 
-    !-->
-    <div class="c-introduction__section js-section--desktop">
-      <h3 class="c-introduction__title--section">Get started with Ettúi on your desktop or laptop computer.</h3>
-      <% if Rails.env.development? %>
-        <a class="c-introduction__bookmarklet" href="javascript:(function() {
-        document.body.appendChild(document.createElement('script')).src='http://localhost:3000/bookmarklet_local.js';
-        current_user_token = '<%= current_user.token %>';
-        })();">Ettúi Bookmarklet</a>
-      <% elsif Rails.env.production? %>
-        <a class="c-introduction__bookmarklet" href="javascript:(function() {
-        document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
-        current_user_token = '<%= current_user.token %>';
-        })();">Ettúi Bookmarklet</a>
-      <% end %>
-       <p class="c-introduction__description">Drag this button to your bookmarks bar.</p>
-       <%= link_to "Continue to my board.", continue_path, :class => "c-introduction__button" %>
-       <!-- <a href="#!" class="c-introduction__button c-introduction__button--next">Try out the bookmarklet</a> -->
-    </div>
-    <!--
+      !-->
+      <div class="c-introduction__section js-section--desktop">
+        <h2 class="c-introduction__title--section">Get started on your computer.</h2>
+        <ul class="c-introduction__step_list">
+          <li>
+            <p class="c-introduction__step_title">1</p>
+            Drag the button below to your bookmarks bar.
+          </li>
+        </ul>
+        <% if Rails.env.development? %>
+          <a class="c-introduction__bookmarklet" href="javascript:(function() {
+          document.body.appendChild(document.createElement('script')).src='http://localhost:3000/bookmarklet_local.js';
+          current_user_token = '<%= current_user.token %>';
+          })();">Ettúi Bookmarklet</a>
+        <% elsif Rails.env.production? %>
+          <a class="c-introduction__bookmarklet" href="javascript:(function() {
+          document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+          current_user_token = '<%= current_user.token %>';
+          })();">Ettúi Bookmarklet</a>
+        <% end %>
+         <p class="c-introduction__description">The bookmarks bar is located below the address bar.</p>
+         <%= link_to "Continue to my board", continue_path, :class => "c-button c-button--primary" %>
+         <!-- <a href="#!" class="c-introduction__button c-introduction__button--next">Try out the bookmarklet</a> -->
+      </div>
+      <!--
 
-      Mobile
+        Mobile
 
-    !-->
-    <div class="c-introduction__section js-section--mobile">
-      <h3 class="c-introduction__title--section">Get started with Ettúi on your mobile device.</h3>
-      <ul class="c-introduction__step_list">
-        <li>
-          <p class="c-introduction__step_title">1</p>
-          Create a new bookmark and give it a name, i.e. Save to Ettúi.
-        </li><li>
-          <p class="c-introduction__step_title">2</p>
-            Copy the javascript snippet below using 'Select All' or something similar.
-            <div class="c-introduction__bookmarklet c-introduction__bookmarklet--mobile">
-              <code>
-                javascript:(function() {
-                document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
-                current_user_token = '<%= current_user.token %>';
-                })();
-              </code>
-            </div>
-        </li><li>
-          <p class="c-introduction__step_title">3</p>
-          Now choose to Edit the bookmark you just created and paste the javascript snippet.
-        </li>
-      </ul>
-      <%= link_to "Continue to my board.", continue_path, :class => "c-introduction__button" %>
-      <!-- <a href="#!" class="c-introduction__button c-introduction__button--next">Try out the bookmarklet</a> -->
-    </div>
-    <!--
+      !-->
+      <div class="c-introduction__section js-section--mobile">
+        <h2 class="c-introduction__title--section">Get started on your mobile device.</h2>
+        <ul class="c-introduction__step_list">
+          <li>
+            <p class="c-introduction__step_title">1</p>
+            Create a new bookmark and give it a name, i.e. Save to Ettúi.
+          </li><li>
+            <p class="c-introduction__step_title">2</p>
+              Copy the javascript snippet below using 'Select All' or something similar.
+              <div class="c-introduction__bookmarklet c-introduction__bookmarklet--mobile">
+                <code>
+                  javascript:(function() {
+                  document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+                  current_user_token = '<%= current_user.token %>';
+                  })();
+                </code>
+              </div>
+          </li><li>
+            <p class="c-introduction__step_title">3</p>
+            Now choose to Edit the bookmark you just created and paste the javascript snippet.
+          </li>
+        </ul>
+        <%= link_to "Continue to my board", continue_path, :class => "c-button c-button--primary" %>
+        <!-- <a href="#!" class="c-introduction__button c-introduction__button--next">Try out the bookmarklet</a> -->
+      </div>
+      <!--
 
-      Tryout
+        Tryout
 
-    !-->
-    <div class="c-introduction__section js-section--tryout">
-      <h2 class="c-introduction__title--section">Now let's try using it.</h2>
-      <p>Highlight the text below and click on the bookmarklet.</p>
-      <blockquote class="c-introduction__quote">
-        “The mistakes, errors, dead-ends, and wrong turns you make are going to be more important than the projects that just turned out okay.”
-      </blockquote>
-      <%= link_to "Continue to my board.", continue_path, :class => "c-introduction__button" %>
-      <div class="c-test_data">
-      <% if current_user %>
-        <h6><%= current_user.name %></h6>
-        <%= link_to "Logout", logout_path %>
-      <% end %>
+      !-->
+      <div class="c-introduction__section js-section--tryout">
+        <h2 class="c-introduction__title--section">Now let's try using it.</h2>
+        <p>Highlight the text below and click on the bookmarklet.</p>
+        <blockquote class="c-introduction__quote">
+          “The mistakes, errors, dead-ends, and wrong turns you make are going to be more important than the projects that just turned out okay.”
+        </blockquote>
+        <%= link_to "Continue to my board", continue_path, :class => "c-button c-button--primary" %>
+        <div class="c-test_data">
+        <% if current_user %>
+          <h6><%= current_user.name %></h6>
+          <%= link_to "Logout", logout_path %>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>

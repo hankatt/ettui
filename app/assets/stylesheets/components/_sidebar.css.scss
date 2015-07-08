@@ -97,6 +97,7 @@
   margin-right: 6px;
   margin-top: 3px;
   height: 16px;
+  mix-blend-mode: darken;
 }
 
 .c-sidebar_container__list li a {
@@ -167,15 +168,6 @@
   VISUAL THEME
 
 */
-
-.c-sidebar_container.t-beige {
-  background-color: #F5F3EB;
-    box-shadow: inset 0px 0px 6px #CEC8B1;
-
-    .c-quote__favicon {
-      mix-blend-mode: darken;
-    }
-}
 
 .t-white {
   .c-sidebar_container__list li a {

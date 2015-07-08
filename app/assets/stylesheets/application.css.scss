@@ -16,18 +16,20 @@
 /* ! Layout for desktop version   */
 /* ============================== */
 
-@import  "variables";
+@import "variables";
 @import "utility";
 @import "fonts";
 @import "normalize";
 @import "base";
 
 @import "layout";
-@import "header";
+@import "components/colors";
 @import "components/tag";
 @import "components/quotes";
 @import "components/sidebar";
 @import "components/introduction";
+@import "components/header";
+@import "components/buttons";
 
 @import "breakpoints/quotes";
 

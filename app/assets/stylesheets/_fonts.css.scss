@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'EksellDisplayWeb-Large';
+    src:  asset-url('EksellDisplayWeb-Large.eot'),
+          asset-url('EksellDisplayWeb-Large.otf') format('opentype'),
+          asset-url('EksellDisplayWeb-Large.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+$font-family-display: "EksellDisplayWeb-Large", "adobe-text-pro", Georgia, serif;
 $font-family-serif:  "adobe-text-pro", Georgia, serif;
 $font-family-sans:  "soleil", Helvetica, sans-serif;
 

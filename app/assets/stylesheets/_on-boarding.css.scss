@@ -15,7 +15,7 @@
 }
 
 .c-modal__window img {
-  width: 100px;
+  height: 36px;
 }
 
 .c-modal__window a,
@@ -29,13 +29,16 @@
 
 .c-modal__window h1,
 .c-modal__window a,
-.c-modal__window p {
+.c-modal__window p,
+.c-modal__window .field input {
   font-family: "adobe-text-pro";
   color: #262626;
 }
 
 .c-modal__window h1 {
-  line-height: 1.2em;
+  line-height: 1.1em;
+  font-size: 1.619rem;
+  letter-spacing: -.5px;
 }
 
 .c-modal__window p.secondary,
@@ -86,11 +89,14 @@
 }
 
 .c-modal__window .field input {
-  font-family: "soleil", sans-serif;
-  border: solid 2px #262626;
+  border: solid 2px #ddd;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   margin-bottom: 5px;
+  &:active,
+  &:focus {
+    border-color: #262626;
+  }
 }
 
 .c-modal__window .field .field_with_errors input {

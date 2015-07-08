@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
 
+  # TODO refactor to use resourceful route
   def add_quote
     if params[:user_token]
       # Find user

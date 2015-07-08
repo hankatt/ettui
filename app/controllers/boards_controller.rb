@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[:id])
+    @board = Board.find(board_params[:id])
 
     @search = Search.new(params[:search])
 
@@ -35,7 +35,7 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(:name => params[:name])
+    @board = Board.new(:name => board_params[:name])
 
     if @board.save
       current_user.boards << @board # Connect the new board to the current users boards.

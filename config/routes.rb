@@ -4,7 +4,7 @@ Well::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup(/:signup_type)" => "users#new", :as => "signup"
   get "users/introduction" => "users#introduction", :as => "introduction"
-  get "users/bookmarklet" => "users#bookmarklet", :as => "bookmarklet"
+  get "users/bookmarklet" => "bookmarklet#show", :as => "bookmarklet"
   get 'add/quote' => "quotes#add_quote"
   get 'add/tag_remotely' => "tags#add_tag_remote"
   get 'add/tag_locally' => "quotes#add_tag_local"
@@ -17,7 +17,7 @@ Well::Application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 
-  resources :users
+  resources :users, except: :index
   resources :sessions, only: [:new, :create, :destroy]
   resources :boards, except: :update do
     resources :quotes, only: [:destroy, :show] do
@@ -25,5 +25,5 @@ Well::Application.routes.draw do
       resources :tags, only: [:destroy, :create]
     end
   end
-  root :to => "users#index"
+  root :to => "welcome#index"
 end

@@ -33,29 +33,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # The user needs their bookmarklet.
-  def bookmarklet
-    @user = User.find(cookies[:user_id]) unless cookies[:user_id].nil?
-    respond_to do |format|
-        if @user
-            format.html # bookmarklet.html.erb
-        else
-            format.html { redirect_to root_url }
-        end
-    end
-  end
-
-  # New users go to the landing page, signed in users to go their boards
-  def index
-    respond_to do |format|
-      if current_user
-        format.html { redirect_to current_user.boards.first }
-      else
-        format.html
-      end
-    end
-  end
-
   # GET /users/new
   # GET /users/new.json
   def new

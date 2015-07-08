@@ -19,7 +19,7 @@ Well::Application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :boards do
+  resources :boards, except: :update do
     resources :quotes do
       get :filter, on: :collection
       resources :tags, only: [:destroy, :create]

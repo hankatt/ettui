@@ -1,5 +1,9 @@
 <div class="header-element sidebar">
-  <%= left_header_element %>
+    <% if params[:controller].eql?("users") %>
+        <%= link_to @left_title, boards_path, :class => "header-title" %>
+    <% else %>
+        <%=  content_tag :h4, @left_title, :class => "header-title" %>
+    <% end %>
 </div>
 <div class="header-element center transparent">
   <h4 class="header-title"><%= @right_title %></h4>

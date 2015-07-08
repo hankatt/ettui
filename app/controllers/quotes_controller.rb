@@ -1,7 +1,5 @@
 class QuotesController < ApplicationController
 
-  include QuotesHelper
-
   def add_quote
     if params[:user_token]
       # Find user
@@ -112,4 +110,11 @@ class QuotesController < ApplicationController
     end
   end
 
+private
+  def url_to_hostname(url)
+    if URI.parse(url).host.nil?
+      url = URI.unescape(url)
+    end
+    URI.parse(url).host.sub(/\Awww\./, '')
+  end
 end

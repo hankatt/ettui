@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  helper :header
-
   # Updates the users :new_user attribute to false.
   # The user has completed the introduction by clicking this button.
   def done

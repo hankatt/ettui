@@ -42,16 +42,6 @@ class BoardsController < ApplicationController
     end
   end
 
-  def update
-    @board = Board.find(params[:id])
-
-    respond_to do |format|
-      if @board.update_attributes(board_params)
-        format.js # update.js.erb
-      end
-    end
-  end
-
 private
   # Using a private method to encapsulate the permissible parameters is
   # just a good pattern since you'll be able to reuse the same permit

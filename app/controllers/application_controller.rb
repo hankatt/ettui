@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
   end
 
-  private
-
   def record_user_activity
     if current_user
       current_user.touch :last_active_at

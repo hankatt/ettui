@@ -2,7 +2,7 @@
   height: 40px;
   line-height: 38px;
   padding: 0 20px;
-  font-size: 14px;
+  font-size: .9375rem;
   font-family: "soleil", sans-serif;
   font-feature-settings: "smcp", "c2sc";
   text-align: center;
@@ -18,10 +18,10 @@
 }
 
 .c-button--primary {
-  background-color: salmon;
+  background-color: $signature-color;
   color: white;
   &:hover {
-    background-color: salmon;
+    background-color: $signature-color;
     color: white;
   }
 }
@@ -29,13 +29,20 @@
 .c-button--secondary {
   border: solid 1px #EAE7E1;
   &:hover {
-    color: salmon;
+    color: $signature-color;
   }
 }
 
 .c-button--tertiary {
   &:hover {
-    color: salmon;
+    color: $signature-color;
+  }
+}
+
+.c-button--small {
+  color: $secondary--on-white;
+  &:hover {
+    color: $signature-color;
   }
 }
 
@@ -57,11 +64,11 @@
 
 .c-header__container {
   .c-button--primary {
-    color: #262626;
+    color: $primary--on-white;
   }
 
   .c-button--secondary,
   .c-button--tertiary {
-    color: rgba(0, 0, 0, .33);
+    color: $secondary--on-white;
   }
 }

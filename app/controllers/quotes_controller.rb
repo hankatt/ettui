@@ -90,7 +90,6 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       format.html { render "boards/show" }
-      #format.json { render json: @quotes }
     end
   end
 

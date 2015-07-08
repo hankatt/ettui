@@ -45,17 +45,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # New users go to the landing page, signed in users to go their boards
-  def index
-    respond_to do |format|
-      if current_user
-        format.html { redirect_to current_user.boards.first }
-      else
-        format.html
-      end
-    end
-  end
-
   # GET /users/new
   # GET /users/new.json
   def new

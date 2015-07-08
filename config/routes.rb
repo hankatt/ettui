@@ -17,7 +17,7 @@ Well::Application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 
-  resources :users
+  resources :users, except: :index
   resources :sessions, only: [:new, :create, :destroy]
   resources :boards, except: :update do
     resources :quotes, only: [:destroy, :show] do
@@ -25,5 +25,5 @@ Well::Application.routes.draw do
       resources :tags, only: [:destroy, :create]
     end
   end
-  root :to => "users#index"
+  root :to => "welcome#index"
 end

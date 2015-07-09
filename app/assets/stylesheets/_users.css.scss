@@ -4,15 +4,14 @@
 
 .c-landing_page {
   font-family: $font-family-sans;
-  margin-top: 80px;
-  border-bottom: solid 1px $border--on-white;
+  margin-top: 3rem;
 }
 
 .c-landing_page__footer {
   flex-grow: 1;
   justify-content: center;
 
-  background-color: $signature-color;
+  background-color: $primary--on-white;
   text-align: center;
   padding-top: 46px;
 }
@@ -28,24 +27,24 @@
 }
 
 .c-landing_page__title {
-  font-family: $font-family-sans;
-    font-size: 2.2rem;
-    letter-spacing: -.5px;
-    line-height: 3.1rem;
+    font-family: $font-family-display;
+    font-size: 3rem;
+    letter-spacing: 0;
+    line-height: 3.6rem;
     font-weight: 100;
     max-width: 410px;
     &:first-of-type {
-      margin-top: 2.2rem;
+      margin-top: 3rem;
     }
     &:last-of-type {
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.32rem;
     }
 }
 
 .c-landing_page__text {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 100;
-  line-height: 1.78rem;
+  line-height: 2.2rem;
   max-width: 410px;
   color: $secondary--on-white;
   &:last-of-type {
@@ -58,17 +57,17 @@
 }
 
 /* Object for taking up 50% of the screen. */
-.o-half_screen {
-  .c-landing_page__title--primary {
-    margin-top: 46px;
-    display: inline-block;
-  }
-  .c-landing_page__title--secondary {
-    padding-bottom: 46px;
+.o-half_screen { 
+  .c-button:last-of-type {
+    margin-bottom: 3rem;
   }
 
   .c-landing_page__image {
     width: 100%;
+  }
+
+  img {
+    border-bottom: solid 1px $border--on-white;
   }
 }
 

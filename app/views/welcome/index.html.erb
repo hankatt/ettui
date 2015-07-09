@@ -5,13 +5,18 @@
        You should always have the great things you’ve read with you.
     </h1>
     <p class="c-landing_page__text">    
-      Ettúi is a browser-based tool made to easily save & catalogue those gems, so that they’re accessible from anywhere—at any time.
+      That is why we designed a browser-based tool to easily save & catalogue those gems, so that they’re accessible from anywhere—at any time.
     </p>
     <%= link_to "Try our demo", demo_path, :class => "c-button c-button--secondary" %>
     <%= link_to "Create an account", signup_path, :class => "c-button c-button--primary" %>
   </div>
   <div class="o-half_screen u-text-align-center">
-    <%= image_tag "landing_page-image@2x.png", :alt => "Ettui product image.", :class => "c-landing_page__image" %>
+    <div class="c-ipad_outline c-ipad_outline__shadow">
+      <div class="c-ipad_outline__camera"></div>
+      <%= image_tag "landing_page-image--bare@2x.png", :alt => "Ettui product image.", :class => "c-landing_page__image" %>
+      <div class="c-ipad_outline__button"></div>
+      <div class="c-ipad_outline__button_center"></div>
+    </div>
   </div>
 </div>
 <!-- <footer class="c-landing_page__footer">

@@ -40,7 +40,7 @@
 }
 
 .c-button--small {
-  color: $secondary--on-white;
+  color: $secondary--text--on-white;
   &:hover {
     color: $signature-color;
   }
@@ -69,6 +69,6 @@
 
   .c-button--secondary,
   .c-button--tertiary {
-    color: $secondary--on-white;
+    color: $secondary--text--on-white;
   }
 }

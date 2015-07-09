@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(board_params[:id])
+    @board = Board.find(params[:id])
 
     @search = Search.new(params[:search])
 
@@ -47,7 +47,7 @@ private
   # just a good pattern since you'll be able to reuse the same permit
   # list between create and update. Also, you can specialize this method
   # with per-user checking of permissible attributes.
-  def board_params
-    params.require(:board).permit(:name, :description)
-  end
+  # def board_params
+  #   params.require(:board).permit(:id, :name, :description)
+  # end
 end

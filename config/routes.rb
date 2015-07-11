@@ -14,6 +14,7 @@ Well::Application.routes.draw do
   get 'quotes/readability/update' => 'quotes#update_readability_data'
   get 'users/done' => "users#done", :as => "continue"
   get '/demo' => "users#demo", :as => "demo"
+  get '/boards/demo' => "boards#demo", :as => "boards_demo"
 
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
   get "/boards/:id" => "boards#show"

@@ -25,10 +25,14 @@
   order: -1;
 }
 
+.c-tag + .c-tag {
+  margin-left: .25rem;
+}
+
 /* Visual Design */
 
 .c-quote__tags .c-tag__name {
-  color: salmon;
+  color: $signature-color;
   letter-spacing: -0.25px;
   -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -126,6 +130,7 @@
 
 .c-quote__metadata > .c-quote__title,
 .c-quote__metadata > .c-quote__author {
+  @extend %truncate;
   font-size: 16px;
   font-style: italic;
   color: #aaa;
@@ -145,6 +150,8 @@
 
 .c-quote__favicon {
   height: 20px;
+  width: 20px;
+  margin-left: 20px;
 }
 
 

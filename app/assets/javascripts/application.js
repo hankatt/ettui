@@ -11,6 +11,12 @@ $(document).on('ready DOMChange', function() {
     $(".c-segment_controller__option").on('click', toggleHidden);
 });
 
+$(window).load(function() {
+    $(".md-body .md-screen iframe").animate({
+        opacity: 1
+    }, 300);
+});
+
 function toggleHidden() {
     li = $(this);
     li.addClass('is-active');

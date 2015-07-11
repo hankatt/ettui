@@ -111,7 +111,8 @@ class Quote < ActiveRecord::Base
   end
 
   def new_since_last(user)
-    created_at > user.last_active_at
+    #created_at > user.last_active_at
+    false
   end
 
   def font_size

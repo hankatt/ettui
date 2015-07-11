@@ -1,5 +1,101 @@
-@media screen and (min-width : 320px) {
+@media screen and (min-width : 240px) {
 
+  .o-content_container__title {
+    font-size: 1.5rem;
+  }
+  .o-content_container__title {
+    text-align: center;
+  }
+
+  .c-sidebar_container {
+    display: none;
+  }
+
+  .o-content_container {
+    padding: 0 28px;
+  }
+
+  .o-content_container h1, .o-quotes_container {
+    min-width: 240px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .c-quote__content.big h1 {
+    font-size: 18px;
+    line-height: 1.25em;
+  }
+
+  .c-quote__content h1 {
+    font-size: 13px;
+    line-height: 1.4em;
+  }
+
+  .c-quote__content.small h1 {
+    font-size: 10px;
+    line-height: 1.5em;
+    letter-spacing: 0;
+  }
+
+  .c-quote__content.small h1 em,
+  .c-quote__timestamp,
+  .c-tag__name {
+    font-size: 8px;
+  }
+
+  .c-quote__metadata > .c-quote__title,
+  .c-quote__metadata > .c-quote__author {
+    font-size: 8px;
+  }
+
+  .c-quote__metadata {
+    line-height: 12px;
+  }
+
+  .c-quote__metadata > .c-quote__favicon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .c-quote__tags {
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 0px;
+    margin-bottom: 7px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width : 340px) {
+  .c-quote__content.big h1 {
+    font-size: 29px;
+  }
+
+  .c-quote__content h1 {
+    font-size: 20px;
+  }
+
+  .c-quote__content.small h1 {
+    font-size: 14.5px;
+  }
+
+  .c-quote__content.small h1 em,
+  .c-quote__timestamp,
+  .c-tag__name {
+    font-size: 12.7px;
+  }
+
+  .c-quote__metadata > .c-quote__title,
+  .c-quote__metadata > .c-quote__author {
+    font-size: 14.5px;
+  }
+
+  .c-quote__tags {
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    margin-top: 20px;
+  }
 }
 
 @media screen and (min-width : 480px) {
@@ -10,7 +106,28 @@
 
 }
 
+@media screen and (min-width : 769px) {
+  .o-content_container__title {
+    text-align: left;
+  }
+
+  .o-content_container h1,
+  .o-quotes_container {
+    min-width: 480px;
+    max-width: 600px;
+  }
+}
+
 @media screen and (min-width : 960px) {
+
+  .c-sidebar_container {
+    display: block;
+  }
+
+  .o-content_container__title {
+    font-size: 2rem;
+  }
+
   .c-quote__content.big h1 {
     font-size: 32px;
     line-height: 1.25em;
@@ -29,6 +146,15 @@
 
   .c-quote__content.small h1 em,
   .c-quote__timestamp {
+    font-size: 14px;
+  }
+
+  .c-quote__metadata > .c-quote__title,
+  .c-quote__metadata > .c-quote__author {
+    font-size: 14px;
+  }
+
+  .c-tag__name {
     font-size: 14px;
   }
 }

@@ -9,7 +9,7 @@
 password_salt = BCrypt::Engine.generate_salt
 password_hash = BCrypt::Engine.hash_secret("test", password_salt)
 demo_user = User.find_or_create_by({
-  email: "demo@ettui.com",
+  email: "board@ettui.com",
   password_salt: password_salt,
   password_hash: password_hash,
   twitter_image_url: "https://randomuser.me/api/portraits/med/women/24.jpg",

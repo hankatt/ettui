@@ -12,22 +12,12 @@
       <%= link_to "Create an account", signup_path, :class => "c-button c-button--primary" %>
     </div>
     <div class="o-half_screen u-text-align-center">
-      <div class="md-device-preview">
-        <div class="md-ipad md-white-device">
-          <div class="md-body">
-            <div class="md-front-camera"></div>
-            <div class="md-screen">
-              <iframe src="http://localhost:3000/boards/demo" width="768" height="1024"></iframe>
-            </div>
-            <button class="md-home-button"></button>
-          </div>
-        </div>
+      <div class="c-landing_page__image_viewport">
+        <%= image_tag "device-ipadmini-outlined.svg", :class => "c-landing_page__image" %>
+        <iframe src="/boards/demo"></iframe>
       </div>
     </div>
   </div>
-  <!-- <footer class="c-landing_page__footer">
-    <p class="c-landing_page__footer_title">Copyright(C) 2015 Henrik Wiberg, Hannes Gustafsson</p>
-  </footer> -->
   <% if current_user %>
     <div class="c-test_data">
         <h6><%= current_user.name %></h6>
@@ -35,3 +25,7 @@
     </div>
   <% end %>
 </div>
+<footer class="c-landing_page__footer">
+  <h1 class="c-ettui-logo">ettúi.</h1>
+  <p class="c-landing_page__footer_title">Copyright(C) 2015 Henrik Wiberg, Hannes Gustafsson</p>
+</footer>

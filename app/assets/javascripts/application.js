@@ -12,7 +12,7 @@ $(document).on('ready DOMChange', function() {
 });
 
 $(window).load(function() {
-    $(".md-body .md-screen iframe").animate({
+    $(".c-landing_page__image_viewport iframe").animate({
         opacity: 1
     }, 300);
 });

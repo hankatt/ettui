@@ -116,6 +116,11 @@
     min-width: 480px;
     max-width: 600px;
   }
+
+  .c-quote__metadata > .c-quote__favicon {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media screen and (min-width : 960px) {

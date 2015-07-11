@@ -8,12 +8,20 @@
 }
 
 .c-landing_page__footer {
-  flex-grow: 1;
+  flex-shrink: 0;
   justify-content: center;
+  box-sizing: border-box;
 
-  background-color: $primary--on-white;
+  background-image: linear-gradient(111deg, #6AE8C5, #33EA8B);
+  color: white;
+
   text-align: center;
-  padding-top: 46px;
+  padding: 80px 0;
+
+  .c-ettui-logo {
+    color: white;
+    margin-bottom: 20px;
+  }
 }
 
 .c-landing_page__footer_title {
@@ -21,7 +29,7 @@
     text-transform: uppercase;
     font-weight: 100;
     font-feature-settings: "smcp", "c2sc";
-    color: rgba(255, 255, 255, .33);
+    color: white;
     letter-spacing: 1px;
     font-size: 12px;
 }
@@ -78,8 +86,24 @@
     margin-left: .75rem;
   }
 
+  .c-landing_page__image_viewport {
+    position: relative;
+    width: 86.5%;
+    float: right;
+    iframe {
+      opacity: 0;
+      position: absolute;
+      top: 10.4%;
+      left: 6%;
+      width: 88%;
+      height: 79.2%;
+      border: solid 1px #ccc;
+    }
+  }
+
   .c-landing_page__image {
     width: 100%;
+    border: none;
   }
 
   img {
@@ -100,48 +124,6 @@ div.error_explanation ul {
   color: #000;
   list-style: none;
   }
-}
-
-.t-theme1,
-.t-theme2 {
-  .md-device-preview {
-  font-size: 7px;
-  width: 100%;
-  height: 454px;
-  .md-ipad {
-    position: absolute;
-    right: 0;
-    .md-body {
-      //background-image: linear-gradient(111deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-      border: solid 1px rgba(0, 0, 0, 0.1);
-      //box-shadow: .175rem 0.3rem .9rem rgba(0, 0, 0, 0.2);
-      background-color: rgba(255, 255, 255, .5);
-      .md-screen {
-        box-shadow: none;
-        background-color: transparent;
-        iframe {
-          opacity: 0;
-          width: 100%;
-          height: 100%;
-          border: solid 2px rgba(0, 0, 0, .1);
-        }
-      }
-      .md-home-button {
-        background: linear-gradient(111deg, #E2E2D1, #FBFBF2);
-        border: solid 1px rgba(0, 0 ,0, .1);
-        &::after {
-          border-color: #C1C3B7;
-        }
-      }
-    }
-  }
-}
-
-.md-ipad.md-glare:before {
-  background: linear-gradient(292deg, rgba(255, 255, 255, 0) 50%, rgba(247, 248, 240, 0.025) 50%, rgba(250, 245, 252, 0.08));
-  left: 0.625em;
-  border-radius: 3.125em 0 0 0;
-}
 }
 
 .t-theme1 {

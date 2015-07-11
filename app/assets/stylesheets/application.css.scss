@@ -16,6 +16,9 @@
 /* ! Layout for desktop version   */
 /* ============================== */
 
+@import "placeholders/truncate";
+@import "components/colors";
+@import "vendor/devices.min";
 @import "variables";
 @import "utility";
 @import "fonts";
@@ -23,7 +26,6 @@
 @import "base";
 
 @import "layout";
-@import "components/colors";
 @import "components/tag";
 @import "components/quotes";
 @import "components/sidebar";

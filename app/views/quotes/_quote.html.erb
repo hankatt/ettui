@@ -1,7 +1,9 @@
 <div class="<%= quote.classes_for(current_user) %>">
   <div class="c-quote__metadata c-quote__metadata--primary">
         <p class="c-quote__timestamp"><%= quote.source_date %></p>
-        <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
+        <% if current_user && params[:action].eql?("show") %>
+          <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
+        <% end %>
   </div>
 
   <!-- Quote !-->
@@ -16,9 +18,11 @@
             <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
         <% end %>
       </ul>
-      <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote), :class => "c-tag_form" do |f| %>
-        <%= f.text_field :name, placeholder: "New tag title", :class => "c-tag_form__input" %>
-        <%= f.submit "Add", :class => "c-tag_form__button" %>
+      <% if current_user && params[:action].eql?("show") %>
+        <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote), :class => "c-tag_form" do |f| %>
+          <%= f.text_field :name, placeholder: "New tag title", :class => "c-tag_form__input" %>
+          <%= f.submit "Add", :class => "c-tag_form__button" %>
+        <% end %>
       <% end %>
   </div>
 

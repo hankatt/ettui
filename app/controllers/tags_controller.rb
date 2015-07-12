@@ -69,8 +69,8 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       data = {
-        :message => "has been added.",
-        :submessage => "Close this popup when done.",
+        :message => "The tag was added.",
+        :submessage => "was added to the list below.",
         :tag => @tag,
         :add => @flags[:add],
         :update => @flags[:update]
@@ -78,8 +78,8 @@ class TagsController < ApplicationController
 
       if @flags[:update]
         data = {
-          :message => "has been selected.",
-          :submessage => "",
+          :message => "The tag was added.",
+          :submessage => "has been marked as selected.",
           :tag => @tag,
           :add => @flags[:add],
           :update => @flags[:update]

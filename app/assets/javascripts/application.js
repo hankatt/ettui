@@ -29,7 +29,7 @@ function toggleHidden() {
     siblings = $("." +targetClass).siblings('.c-introduction__section');
 
     // Selecting and showing the section to show
-    siblings.fadeOut('fast', function() {
+    siblings.fadeOut(200, function() {
         $("." +targetClass).delay(250).fadeIn();
     });
 }

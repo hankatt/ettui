@@ -3,11 +3,14 @@
 .c-sidebar_container {
   width: 33%;
   min-width: 320px;
-  padding: 60px 46px 120px;
+  padding: 3.75rem 46px;
+  // justify-content: space-between;
 }
 
 .t-white .c-sidebar_container {
   background-color: #f8f5f3;
+  background-image: linear-gradient(111deg, #FBFAF6, #F7F2E9);
+  box-shadow: inset -1px 0px 6px rgba(0, 0, 0, .1);
 }
 
 .c-sidebar_container {
@@ -19,6 +22,21 @@
   // overflow-y: auto;
 }
 
+.c-sidebar_container .c-ettui-logo {
+  @supports(-webkit-background-clip: text) {
+    color: transparent;
+    background-image: linear-gradient(111deg, #33ea8b, #00A751); //linear-gradient(111deg, #FFC440, #ff6899);
+    -webkit-background-clip: text;
+  }
+  color: $signature-color;
+  font-size: 2rem;
+  margin-top: auto;
+}
+
+.c-sidebar_container__list:last-of-type {
+  margin-bottom: 2rem;
+}
+
 .c-sidebar_container__header,
 .c-sidebar_container__list li {
   display: flex;
@@ -28,7 +46,7 @@
 .c-sidebar_container__search {
   width: 100%;
   margin-top: $spacing-1;
-  margin-bottom: 45px;
+  margin-bottom: 8px;
   border-radius: 3px;
   border: solid 1px $w-stroke-color;
   input[type="text"] {

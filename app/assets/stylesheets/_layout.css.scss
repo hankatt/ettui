@@ -98,11 +98,12 @@ body.index .container {
 }
 
 .o-content_container__title {
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 2rem;
+  font-weight: 100;
   letter-spacing: -1px;
-  padding-top: 44px;
+  padding-top: 2.5625rem;
   color: $signature-color;
+  font-kerning: auto;
 }
 
 .o-centering_wrapper {

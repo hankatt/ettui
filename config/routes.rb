@@ -17,7 +17,7 @@ Well::Application.routes.draw do
   get '/boards/demo' => "boards#demo", :as => "boards_demo"
 
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
-  get "/boards/:id" => "boards#show"
+
   resources :users, except: :index
   resources :sessions, only: [:new, :create, :destroy]
   resources :boards, except: :update do

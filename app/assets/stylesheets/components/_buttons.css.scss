@@ -3,12 +3,14 @@
   line-height: 37px;
   padding: 0 1.25rem;
   font-size: .875rem;
+  font-weight: 400;
   font-family: "soleil", sans-serif;
   font-feature-settings: "smcp", "c2sc";
   text-align: center;
   display: inline-block;
   border-radius: 40px;
   color: #262626;
+  transition: all .15s;
 }
 
 .c-header_ctas__container {

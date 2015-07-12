@@ -14,17 +14,11 @@
 
 .c-modal__window .c-ettui-logo {
   font-family: $font-family-display;
-  @supports(-webkit-background-clip: text) {
-    color: transparent;
-    background-image: linear-gradient(111deg, #6AE8C5, #33EA8B); //linear-gradient(111deg, #FFC440, #ff6899);
-    -webkit-background-clip: text;
-  }
-  color: $signature-color;
+  background-image: none;
+  border: none;
+  text-decoration: none;
+  color: $primary--on-white;
   font-size: 2rem;
-}
-
-.c-modal__window img {
-  height: 36px;
 }
 
 .c-modal__window a,
@@ -65,6 +59,11 @@
   font-kerning: normal;
 }
 
+.c-modal__window .button.twitter {
+  background-color: $twitter-color;
+  background-image: linear-gradient(111deg, #5FB1F1, $twitter-color);
+}
+
 .c-modal__window .button,
 .c-modal__window input {
   width: 100%;
@@ -73,7 +72,7 @@
   line-height: 50px;
   border-radius: 2px;
   padding: 0 14px;
-  margin: 10px auto;
+  margin: .625rem auto;
 
   text-decoration: none;
   text-align: center;
@@ -82,7 +81,7 @@
 .c-modal__window .button,
 .c-modal__window .actions input {
   display: block;
-  background-color: #262626;
+  background-color: $primary--on-white;
   color: white;
   width: 320px;
 
@@ -122,20 +121,20 @@
 }
 
 .c-modal__window a + h1 {
-  margin-top: 21px;
+  margin-top: 1rem;
 }
 
 .c-modal__window h1 + .button {
-  margin-top: 26px;
+  margin-top: 1.619rem;
 }
 
 .c-modal__window h1 + form {
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 .c-modal__window p.secondary + p,
 .c-modal__window div + p {
-  margin-top: 27px;
+  margin-top: 1.619rem;
 }
 
 .c-modal__window,

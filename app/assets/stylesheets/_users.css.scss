@@ -190,6 +190,9 @@ div.error_explanation ul {
     background-color: transparent;
     color: $secondary--text--on-white;
     //text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    &:hover {
+      color: $signature-color;
+    }
   }
 
   .c-landing_page__title:last-of-type {
@@ -204,11 +207,18 @@ div.error_explanation ul {
     background-image: linear-gradient(111deg, #6AE8C5, #33EA8B);
     background-color: #FF7BA6;
     color: white;
+    &:hover {
+      color: rgba(255, 255, 255, .67);
+    }
   }
 
   .c-button--secondary {
-    color: #38C795;
-    border-color: #4EE9A8;
+    color: $secondary--text--on-white;
+    border-color: $secondary--title--on-white;
+    &:hover {
+      color: #38C795;
+      border-color: #4EE9A8;
+    }
   }
 
   .o-half_screen .c-ipad_outline {

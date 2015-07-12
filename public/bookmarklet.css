@@ -30,15 +30,15 @@
 .noted-bookmarklet {
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
-  width: calc(100% - 40px);
-  max-width: 360px;
-  background-color: #242322;
+  width: 100%;
+  max-width: 320px;
+  background-color: #fff;
   z-index: 999999999;
   position: fixed;
   top: 120px;
   left: calc(50% - 180px);
   opacity: 1;
-  padding-bottom: 20px;
+  padding: 33px 0 37px;
   box-shadow: 0 0 61px rgba(0, 0, 0, 0.23);
   transition: max-height 1s ease-out;
   font-family: "Open Sans", Helvetica, sans-serif;
@@ -107,7 +107,6 @@
 }
 
 .noted-bookmarklet .status-message,
-.noted-bookmarklet .sub-message,
 .noted-bookmarklet .noted-tag,
 .noted-bookmarklet input {
   font-family: inherit;
@@ -116,28 +115,30 @@
   color: inherit;
 }
 
-.noted-bookmarklet .status-message,
-.noted-bookmarklet .noted-tag:hover,
-.noted-bookmarklet .noted-tag.selected,
+.noted-bookmarklet .sub-message,
+.noted-bookmarklet .noted-tag,
 .noted-bookmarklet #noted-close-btn,
 .noted-bookmarklet input {
-  color: #f6f3f0;
+  color: #343230;
 }
 
 .noted-bookmarklet .status-message {
+  color: #38C795;
   font-weight: 600;
-  margin-top: 40px;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   font-size: 20px;
   clear: both;
+  letter-spacing: -1px;
 }
 
 .noted-bookmarklet .sub-message {
+  color: #8C8B89;
   text-align: center;
   margin-bottom: 20px;
   margin-top: 0;
   font-weight: 300;
-  line-height: 14px;
+  line-height: 13px;
+  font-size: 13px;
 }
 
 .noted-bookmarklet .noted-content-container {
@@ -150,10 +151,11 @@
   width: 100%;
   height: 28px;
   line-height: 28px;
+  overflow-y: hidden;
   background-color: transparent;
   text-transform: lowercase;
   list-style-type: none;
-  border-bottom: solid 1px #333130;
+  border-top: solid 1px #E7E5E3;
   transition: color .06s ease-out;
   margin: 0;
   font-weight: 300;
@@ -162,14 +164,23 @@
 
 .noted-bookmarklet .noted-tag:hover {
   cursor: pointer;
+  color: #38C795;
 }
 
-.noted-bookmarklet .noted-tag:first-of-type {
-  border-top: solid 1px #333130;
+.noted-bookmarklet .noted-tag:last-of-type {
+  border-bottom: solid 1px #E7E5E3;
 }
 
 .noted-bookmarklet .noted-tag.selected {
-  background-color: #333130;
+  background-color: #E7E5E3;
+  border-top: solid 1px #E7E5E3;
+  color: #343230;
+  & + .noted-tag.selected {
+    border-top: solid 1px #D0C9C2;
+  }
+  & + .noted-tag {
+    border-top: solid 1px #E7E5E3;
+  }
 }
 
 .noted-bookmarklet .noted-tag:before {
@@ -189,33 +200,33 @@
 }
 
 .noted-bookmarklet input#noted-new-tag {
-  border: none;
-  background-color: rgba(0, 0, 0, .19);
+  border: solid 1px #E7E5E3;
   padding: 0px 14px;
   box-sizing: border-box;
-  text-align: center;
   margin: 20px auto;
-  border-radius: 3px;
+  border-radius: 2px;
   outline: transparent;
   box-shadow: none;
-  font-weight: 300;
   float: left;
-  width: calc(100% - 50px);
+  width: calc(100% - 70px);
+  font-size: 12px;
+  background-color: transparent;
 }
 
 .noted-bookmarklet input#noted-new-tag-submit {
   -webkit-appearance: none;
-  color: #f6f3f0;
-  background-color: #333130;
+  font-weight: bold;
+  color: #38C795;
   border: none;
   line-height: 35px;
-  width: 45px;
+  width: 60px;
   height: 35px;
-  border-radius: 3px;
+  border-radius: 2px;
   margin: 20px 0;
   padding: 0 10px;
   float: right;
   text-align: center;
+  font-size: 12px;
 }
 
 .noted-bookmarklet input#noted-new-tag-submit:active {
@@ -225,7 +236,7 @@
 .noted-bookmarklet input#noted-new-tag:hover,
 .noted-bookmarklet input#noted-new-tag-submit:hover,
 .noted-bookmarklet #noted-close-btn {
-  background-color: rgba(0, 0, 0, .29);
+  border-color: rgba(0, 0, 0, .29);
 }
 
 .noted-bookmarklet input#noted-new-tag::-webkit-input-placeholder {  
@@ -233,15 +244,25 @@
    color: #333130;
 }
 
+.noted-bookmarklet .noted-logo,
+.noted-bookmarklet .noted-close {
+  display: none;
+}
+
 .noted-bookmarklet #noted-close-btn {
   display: inline-block;
   text-align: center;
   border: none;
-  background-color: #333130;
+  background-color: #38C795;
   margin: 0 auto;
-  padding: 6px 10px 8px;
+  padding: 6px 28px 8px;
   text-decoration: none;
-  border-radius: 3px;
-  font-weight: 300;
-  line-height: 15px;
+  border-radius: 2px;
+  font-weight: bold;
+  line-height: 29px;
+  color: white;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 28px;
 }

@@ -70,6 +70,31 @@ class Quote < ActiveRecord::Base
     readability_title.truncate(64)
   end
 
+  def self.create_through_bookmarklet(params, user, source)
+    # URL to parse with the Parser API
+    readability_response = ReadabilityParser.parse_url(params[:url])
+    readability_title = readability_response["title"]
+    readability_author = readability_response["author"]
+
+    # Validate that it is just the author
+    # Assume most names won't use more than 4 names tops
+    # Assume most names won't be that long, 34 chars tops
+    if readability_author.nil? || readability_author.scan(/\w+/).size > 4 || readability_author.length > 34
+      readability_author = nil
+    end
+
+    # Build quote to save
+    new_quote = Quote.new({
+      :text => URI.unescape(params[:text]),
+      :url => URI.unescape(params[:url]),
+      :readability_title => readability_title,
+      :readability_author => readability_author,
+      :user_id => user.id,
+      :source_id => source.id
+    })
+    
+  end
+
   def unique_tags
     tags.uniq
   end

@@ -80,6 +80,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def board
+    boards.first
+  end
+
+  def unique_tags
+    board.tags.uniq
+  end
+
   def quote_count
     boards.first.quotes.count
   end

@@ -42,52 +42,35 @@ class TagsController < ApplicationController
 
       @user = User.find_by_token(params[:user_token])
       @quote = Quote.find(params[:quote_id])
-      @board = @user.boards.first
-
-      # Flags used to decide what to do with the UI
-      @flags = {
-        :update => false,
-        :add => false
-      }
+      @board = @user.board
 
       # Important to downcase for searchability
-      new_tag_name = URI.unescape(params[:tag]).downcase
-      @tag = Tag.find_or_initialize_by(name: new_tag_name)
+      @tag = Tag.find_or_initialize_by(name: URI.unescape(params[:tag]).downcase)
 
       if @tag.new_record? && @tag.valid?
         @tag.save
-
-        # Tells the Bookmarklet Tag list to append the tag
-        @flags[:add] = true
+        @tag.is_new = true
       else
-        # Tells the Bookmarklet Tag list to update the tag status
-        @flags[:update] = true
+        @tag.is_existing = true
       end
 
       @quote.tags << @tag
     end
 
-    respond_to do |format|
-      data = {
-        :message => "The tag was added.",
-        :submessage => "was added to the list below.",
-        :tag => @tag,
-        :add => @flags[:add],
-        :update => @flags[:update]
-      }
 
-      if @flags[:update]
-        data = {
-          :message => "The tag was added.",
-          :submessage => "has been marked as selected.",
-          :tag => @tag,
-          :add => @flags[:add],
-          :update => @flags[:update]
-        }
-      end
+    respond_to do |format|
+      @tags = @user.unique_tags # Get all the users unique tags from the users board
+      (@tags & @quote.tags).each do |tag| tag.is_existing = true end
+      # @tags.detect{ |tag| tag.id == @tag.id }.is_existing = true
+      html = render_to_string(:partial => "bookmarklet/content", layout: false, locals: {
+        tags: @tags,
+        tag: @tag,
+        title: "Added the tag ##{@tag.name}.",
+        subtitle: "Tags help you to easily find quotes later."
+      })
 
       # Respond with data{…} sent to the function added(…) in the bookmarklet
-      format.json { render json: data, callback: "added"}
+      format.json { render json: { :html => html }, callback: "added"}
     end
   end
 

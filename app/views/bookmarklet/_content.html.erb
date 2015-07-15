@@ -1,0 +1,23 @@
+<div class="noted-content-container">
+  <h1 class="status-message"><%= title %></h1>
+  <h1 class="sub-message"><%= subtitle %></h1>
+
+  <!-- Only render the tag-container if there are tags. !-->
+  <% if tags.any? %>
+    <div class='tag-container'>
+      <% if @tag.present? %>
+        <% if @tag.is_new %>
+          <%= raw ApplicationController.new.render_to_string(:partial => 'bookmarklet/tag', layout: false, locals: { tag: @tag }) %>
+        <% end %>
+      <% end %>
+      <% tags.each do |tag| %>
+        <%= raw ApplicationController.new.render_to_string(:partial => 'bookmarklet/tag', layout: false, locals: { tag: tag }) %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class='add-tag-container'>
+    <input type='text' id='noted-new-tag' placeholder='Type a new tag and press enter'>
+    <input type='submit' id='noted-new-tag-submit' value='Add tag'>
+  </div>
+  <a href='#!' onclick='closeBookmarkletWindow()' id='noted-close-btn'>Close window</a>
+</div>

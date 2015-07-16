@@ -40,7 +40,7 @@ class BoardsController < ApplicationController
     # Get a list of all sources for this users quotes
     @sources = Source.where(:id => @board.quotes.pluck(:source_id))
 
-    set_titles("", "Your quotes")
+    set_titles("", "Recent quotes.")
 
     respond_to do |format|
       format.html # show.html.erb

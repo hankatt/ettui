@@ -15,3 +15,17 @@
   height: 60px;
   max-width: 840px;
 }
+
+.c-profile_image {
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, .1);
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+
+  img {
+    border-radius: 40px;
+    height: 40px;
+  }
+}

@@ -32,7 +32,7 @@
     </div>
     <div class="c-sidebar_container__row">
         <% if current_user %>
-            <%= link_to image_tag(current_user.twitter_image_url), filter_board_quotes_path(current_user.boards.first), :class => "c-profile_image" %>
+            <%= link_to image_tag(current_user.twitter_image_url), root_path, :class => "c-profile_image" %>
             <%= link_to "Logout", logout_path, :class => "c-button c-button--small" %>
         <% end %>
         <%= link_to "ettúi", root_url, :class => "c-ettui-logo" %>

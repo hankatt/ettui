@@ -66,8 +66,24 @@ body.index .container {
   margin-right: auto;
 }
 
-.o-quotes_container {
+.o-quotes_container + .o-quotes_container {
   padding-bottom: 132px;
+}
+
+.o-quotes_container.u-text-align-center > * {
+  text-align: center;
+}
+
+.o-quotes_container .c-sidebar_container__search {
+  border: none;
+  border-bottom: solid 1px #ddd;
+  border-radius: 0;
+  text-align: left;
+}
+
+.o-quotes_container .c-sidebar_container__search .fa {
+  float: right;
+  color: $secondary--title--on-white;
 }
 
 .o-quotes_container .c-quote {
@@ -98,14 +114,34 @@ body.index .container {
 }
 
 .o-content_container__title {
-  font-family: $font-family-display;
-  font-size: 3rem;
-  line-height: 3rem;
-  letter-spacing: 0px;
-  padding-top: 2.3rem;
-  margin-bottom: 1.5rem;
-  color: $signature-color;
+  font-family: $font-family-sans;
+  font-size: 1rem;
+  color: $secondary--title--on-white;
   font-kerning: auto;
+  & em {
+    color: $secondary--title--on-white;
+  }
+}
+
+.o-content_container__subtitle {
+  font-weight: 100;
+  font-size: 18px;
+  color: $secondary--title--on-white;
+  margin-top: .5rem;
+  letter-spacing: -.25px;
+  & em {
+    color: $primary--on-white;
+  }
+}
+
+.o-quotes_container__title {
+  letter-spacing: -1px;
+  font-weight: 100;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+  font-family: $font-family-sans;
+  color: $secondary--title--on-white;
 }
 
 .o-centering_wrapper {

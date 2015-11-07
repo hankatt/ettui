@@ -31,7 +31,7 @@ private
       if user.new_user
         redirect_to intro_path
       else
-        redirect_to user.boards.first
+        redirect_to filter_board_quotes_path(user.boards.first)
       end
     else
       redirect_to root_url, :notice => "Failed to authenticate!"

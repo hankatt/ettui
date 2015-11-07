@@ -73,18 +73,23 @@ class UsersController < ApplicationController
   end
 
   def demo
-    @user = User.new_guest_user
+    if cookies[:user_id]
+      @user = User.find(cookies[:user_id])
+    else
+      @user = User.new_guest_user
+    end
 
     respond_to do |format|
-      if @user.save
-        # Establish a session
-        cookies[:user_id] = { :value => @user.id, :expires => 1.day.from_now }
+      if @user.new_user
+        if @user.save
+          # Establish a session
+          cookies[:user_id] = { :value => @user.id, :expires => 1.day.from_now }
 
-        # What happens after the save is complete
-        format.html { redirect_to introduction_path, :notice => "You successfully signed up." }
+          # What happens after the save is complete
+          format.html { redirect_to introduction_path, :notice => "You successfully signed up." }
+        end
       else
-        format.html { render action: "new", :notice => "A user with that email address already exists. If it's you, please try the login page." }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { redirect_to filter_board_quotes(@user.boards.first) }
       end
     end
   end

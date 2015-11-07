@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_filter :record_user_activity
 
   def demo
     # Log in demo user
@@ -6,45 +7,14 @@ class BoardsController < ApplicationController
     @quotes = @user.boards.first.quotes.all
     @search = Search.new(params[:search])
 
+    @unread = Quote.since(current_user.last_active_at)
+
     respond_to do |format|
       if @user
         format.html
       else
         format.html { redirect_to root_url }
       end
-    end
-  end
-
-  def index
-    if current_user
-      @user = current_user
-    end
-
-    respond_to do |format|
-      if @user
-        format.html { redirect_to @user.boards.first }
-      else
-        format.html { redirect_to root_url }
-      end
-    end
-  end
-
-  def show
-    @board = Board.find(params[:id])
-
-    @search = Search.new(params[:search])
-
-    @quotes = @board.quotes.reverse_order
-    @unread = []
-
-    # Get a list of all sources for this users quotes
-    @sources = Source.where(:id => @board.quotes.pluck(:source_id))
-
-    set_titles("", "Recent quotes.")
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @quotes }
     end
   end
 

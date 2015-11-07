@@ -25,7 +25,18 @@
             filters: @board.unique_tags,
         }
     %>
-    <%= link_to "ettúi", root_url, :class => "c-ettui-logo" %>
+
+    <div class="c-sidebar_container__header js-toggle-sidebar">
+        <h4>Signed in as</h4>
+        <%= fa_icon 'angle-down' %>
+    </div>
+    <div class="c-sidebar_container__row">
+        <% if current_user %>
+            <%= link_to image_tag(current_user.twitter_image_url), filter_board_quotes_path(current_user.boards.first), :class => "c-profile_image" %>
+            <%= link_to "Logout", logout_path, :class => "c-button c-button--small" %>
+        <% end %>
+        <%= link_to "ettúi", root_url, :class => "c-ettui-logo" %>
+    </div>
     <!-- PROFILE !-->
     <!--<div class="header-element profile">
     <%= image_tag @board.users.first.twitter_image_url, :class => "profile-image" %>

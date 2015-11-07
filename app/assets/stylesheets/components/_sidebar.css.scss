@@ -20,6 +20,17 @@
   // top: 0;
   // bottom: 0;
   // overflow-y: auto;
+  .c-tag + .c-tag {
+    margin-left: 0;
+  }
+}
+
+.c-sidebar_container__row {
+  margin-top: .5rem;
+  .c-button {
+    float: right;
+    padding: 0;
+  }
 }
 
 .c-sidebar_container .c-ettui-logo {
@@ -31,6 +42,9 @@
   color: $signature-color;
   font-size: 2rem;
   margin-top: auto;
+  text-align: center;
+  display: block;
+  margin-top: 3rem;
 }
 
 .c-sidebar_container__list:last-of-type {
@@ -64,9 +78,9 @@
 
 .c-sidebar_container__search .fa {
   line-height: 38px;
-    padding-left: 10px;
-    padding-right: 1px;
-    font-size: 17px;
+  padding-left: 10px;
+  padding-right: 1px;
+  font-size: 17px;
 }
 
 .c-sidebar_container__search input[type="text"] {

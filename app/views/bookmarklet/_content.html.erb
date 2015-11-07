@@ -5,11 +5,6 @@
   <!-- Only render the tag-container if there are tags. !-->
   <% if tags.any? %>
     <div class='tag-container'>
-      <% if @tag.present? %>
-        <% if @tag.is_new %>
-          <%= raw ApplicationController.new.render_to_string(:partial => 'bookmarklet/tag', layout: false, locals: { tag: @tag }) %>
-        <% end %>
-      <% end %>
       <% tags.each do |tag| %>
         <%= raw ApplicationController.new.render_to_string(:partial => 'bookmarklet/tag', layout: false, locals: { tag: tag }) %>
       <% end %>

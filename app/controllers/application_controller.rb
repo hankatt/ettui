@@ -5,11 +5,10 @@ class ApplicationController < ActionController::Base
 
   def set_titles left, right
     @left_title = left
-    @right_title = right
+    @quotes_container_title = right
   end
 
 private
-
   def current_user
     @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
   end

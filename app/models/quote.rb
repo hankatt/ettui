@@ -1,5 +1,7 @@
 class Quote < ActiveRecord::Base
 
+  scope :since, ->(date) { where("created_at > ?", date) }
+  
   has_and_belongs_to_many :boards
   belongs_to :source
   has_and_belongs_to_many :tags
@@ -18,8 +20,12 @@ class Quote < ActiveRecord::Base
     end
   end
 
+  def self.new_quote_count(user)
+    where("created_at > ?", user.last_active_at).count
+  end
+
   def self.filter_by_text(filter_text)
-    if filter_text.length < 1
+    if filter_text.blank?
       all
     else
       where("text LIKE ?", "%#{filter_text}%")
@@ -136,8 +142,7 @@ class Quote < ActiveRecord::Base
   end
 
   def new_since_last(user)
-    #created_at > user.last_active_at
-    false
+    created_at > user.last_active_at
   end
 
   def font_size

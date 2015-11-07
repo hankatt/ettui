@@ -107,7 +107,7 @@ jquery.onload = function() {
         text: encodeURIComponent(document.getSelection().toString()),
         url: encodeURIComponent(document.location.href.toString()),
         favicon: getFaviconURL(),
-        callback: "success"
+        callback: "quote__added"
       };
       // Use Script element injection to send the quote to the Ettúi server
       jsonpScript = document.createElement("script");
@@ -137,7 +137,7 @@ jquery.onload = function() {
 
 
         */
-        quote_callback__added = function success(data) {
+        quote_callback__added = function quote__added(data) {
           if(data) {
             session_data.quote_id = data.quote_id
             bookmarklet.append(data.html);
@@ -191,7 +191,7 @@ jquery.onload = function() {
 
 
       */
-      tag_callback__added = function added(data) {
+      tag_callback__added = function tag__added(data) {
         if(data) {
           bookmarklet.children('.noted-content-container').remove();
           bookmarklet.append(data.html);
@@ -236,7 +236,7 @@ addTag = function(tag_name) {
   params = {
     user_token: current_user_token,
     quote_id: session_data.quote_id,
-    callback: "added",
+    callback: "tag__added",
     tag: tag_name
   }
   jsonpScript = document.createElement("script");

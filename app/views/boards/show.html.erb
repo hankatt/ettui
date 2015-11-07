@@ -1,6 +1,8 @@
 <%= render "boards/sidebar" %>
 <div class="o-content_container">
-  <h1 class="o-content_container__title"><%= @right_title %></h1>
+  <div class="o-title_container">
+    <h1 class="o-content_container__title"><%= @quotes_container_title %></h1>
+  </div>
   <div class="o-quotes_container">
     <% if !@quotes.empty? %>
         <ol>

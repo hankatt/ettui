@@ -3,6 +3,10 @@ class Search
 
   attr_accessor :query, :tag_ids, :source_ids
 
+  def query
+    @query || ""
+  end
+
   def tag_ids
     @tag_ids || []
   end
@@ -31,10 +35,14 @@ class Search
     classes.join(" ")
   end
 
+  def empty?
+    query.empty? && tag_ids.empty? && source_ids.empty?
+  end
+
 private
   def update_params_for_tag(tag)
-    Rails.logger.debug("KLLKJLKJLKJLKJLKJLKJKJLKJ #{tag_ids}")
-    Rails.logger.debug("#{tag.id.to_s} IS IN tag_ids: #{tag_ids.include?(tag.id.to_s)}")
+    # Rails.logger.debug("KLLKJLKJLKJLKJLKJLKJKJLKJ #{tag_ids}")
+    # Rails.logger.debug("#{tag.id.to_s} IS IN tag_ids: #{tag_ids.include?(tag.id.to_s)}")
     if tag_ids.include?(tag.id.to_s)
       # deselect tag
       reverse_merge(to_params, {"search"=>{"tag_ids"=>[tag.id.to_s]}})

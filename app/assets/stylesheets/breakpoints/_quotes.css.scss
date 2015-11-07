@@ -49,17 +49,12 @@
     font-size: 8px;
   }
 
-  .c-quote__metadata {
-    line-height: 12px;
-  }
-
   .c-quote__metadata > .c-quote__favicon {
     width: 10px;
     height: 10px;
   }
 
   .c-quote__tags {
-    border-bottom: solid 1px #ccc;
     padding-bottom: 0px;
     margin-bottom: 7px;
     margin-top: 10px;
@@ -91,7 +86,6 @@
   }
 
   .c-quote__tags {
-    border-bottom: solid 1px #ccc;
     padding-bottom: 14px;
     margin-bottom: 14px;
     margin-top: 20px;
@@ -131,7 +125,9 @@
   }
 
   .o-content_container__title {
-    font-size: 3rem;
+    padding-top: 3.675rem;
+    padding-bottom: 1.375rem;
+    font-size: 1rem;
   }
 
   .c-quote__content.big h1 {
@@ -185,5 +181,11 @@
   .c-quote__content.small h1 em,
   .c-quote__timestamp {
     font-size: 15px;
+  }
+
+  .c-quote__tags {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    margin-top: 10px;
   }
 }

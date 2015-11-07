@@ -1,9 +1,23 @@
 <div class="<%= quote.classes_for(current_user) %>">
-  <div class="c-quote__metadata c-quote__metadata--primary">
-        <p class="c-quote__timestamp"><%= quote.source_date %></p>
-        <% if current_user && params[:action].eql?("show") %>
-          <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
-        <% end %>
+   <!-- Title and Favicon !-->
+  <div class="c-quote__metadata__container">
+    <div class="c-quote__metadata c-quote__metadata--secondary">
+      <%= image_tag quote.favicon, :class => "c-quote__favicon" %>
+      <% if quote.readability_title %>
+        <%= link_to quote.truncated_readability_title, quote.url, :class => "c-quote__title" %>
+      <% else %>
+        <%= link_to quote.url, quote.url, :class => "c-quote__title" %>
+      <% end %>
+      <% if quote.readability_author %>
+        <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p>
+      <% end %>
+    </div>
+    <div class="c-quote__metadata c-quote__metadata--primary">
+      <p class="c-quote__timestamp"><%= quote.source_date %></p>
+      <% if current_user && params[:action].eql?("show") %>
+        <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
+      <% end %>
+    </div>
   </div>
 
   <!-- Quote !-->
@@ -24,22 +38,5 @@
           <%= f.submit "Add", :class => "c-tag_form__button" %>
         <% end %>
       <% end %>
-  </div>
-
-   <!-- Title and Favicon !-->
-   <div class="c-quote__metadata c-quote__metadata--secondary">
-  <% if quote.readability_title %>
-    <%= link_to quote.truncated_readability_title, quote.url, :class => "c-quote__title" %>
-  <% else %>
-    <%= link_to quote.url, quote.url, :class => "c-quote__title" %>
-  <% end %>
-  <% if quote.readability_author %>
-    &nbsp;
-    <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p>
-  <% end %>
-  <!--
-  <p><%= quote.source.hostname %></p>
-  !-->
-  <%= image_tag quote.favicon, :class => "c-quote__favicon" %>
   </div>
 </div>

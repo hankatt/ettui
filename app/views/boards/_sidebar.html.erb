@@ -26,10 +26,7 @@
         }
     %>
 
-    <div class="c-sidebar_container__header js-toggle-sidebar">
-        <h4>Signed in as</h4>
-        <%= fa_icon 'angle-down' %>
-    </div>
+    <div class="c-sidebar_container__divider"></div>
     <div class="c-sidebar_container__row">
         <% if current_user %>
             <%= link_to image_tag(current_user.twitter_image_url), root_path, :class => "c-profile_image" %>

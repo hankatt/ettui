@@ -122,34 +122,15 @@
   For example iOS Safari.
 */
 .c-quote__content.small h1 em,
+.c-quote__content.small h1 em mark,
 .c-quote__timestamp,
 .c-sidebar_container__header h4,
 .o-content_container__title {
   font-size: 13px;
-    font-family: "soleil";
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-
-/*
-  If browsers support font-variant: small-caps,
-  but not font-feature-settings,
-  this while apply to them.
-*/
-@supports(font-variant: small-caps) {
-  .c-quote__content.small h1 em,
-  .c-quote__content.small h1 em mark,
-  .c-quote__timestamp,
-  .c-sidebar_container__header h4,
-  .o-content_container__title {
-    font-size: 17px;
-    font-variant: small-caps;
-      font-weight: 400;
-
-      text-transform: lowercase;
-  }
+  font-family: "soleil";
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 /*
@@ -170,6 +151,46 @@
       text-transform: none;
     }
 }
+
+/*
+  Targets only Safari 9.0+ to fix the issue with Safari being -webkit-
+  and support the font-feature-setting 'smcp' above, but not rendering
+  it properly. This bypasses that and adds the rendering for browsers
+  that do not support modern font-feature-settings.
+
+*/
+@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+  .c-quote__content.small h1 em,
+  .c-quote__content.small h1 em mark,
+  .c-quote__timestamp,
+  .c-sidebar_container__header h4,
+  .o-content_container__title {
+    font-size: 13px !important;
+    font-family: "soleil";
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+// /*
+//   If browsers support font-variant: small-caps,
+//   but not font-feature-settings,
+//   this while apply to them.
+// */
+// @supports(font-variant: small-caps) {
+//   .c-quote__content.small h1 em,
+//   .c-quote__content.small h1 em mark,
+//   .c-quote__timestamp,
+//   .c-sidebar_container__header h4,
+//   .o-content_container__title {
+//     font-size: 15px;
+//     font-variant: all-small-caps;
+//     font-weight: 400;
+//     text-transform: lowercase;
+//   }
+// }
 
 .c-quote__content h1 mark {
   border-bottom: solid $signature-color 1px;

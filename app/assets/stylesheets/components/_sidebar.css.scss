@@ -45,6 +45,7 @@
   text-align: center;
   display: block;
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .c-sidebar_container__list:last-of-type {
@@ -55,6 +56,10 @@
 .c-sidebar_container__list li {
   display: flex;
   justify-content: space-between;
+}
+
+.c-sidebar_container > * {
+  flex-shrink: 0;
 }
 
 .c-sidebar_container__search {

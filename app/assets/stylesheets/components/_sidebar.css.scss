@@ -3,7 +3,7 @@
 .c-sidebar_container {
   width: 33%;
   min-width: 320px;
-  padding: 3.75rem 46px;
+  padding: 3.75rem 2rem;
   // justify-content: space-between;
 }
 
@@ -130,6 +130,7 @@
 div + .c-sidebar_container__header,
 ol + .c-sidebar_container__header {
   margin-top: 1.7rem;
+  margin-bottom: .5rem;
 }
 
 /*
@@ -253,16 +254,16 @@ ol + .c-sidebar_container__header {
 
 @media (min-width : 320px) {
   .c-sidebar_container {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: -320px;
+    transition: left .2s;
     &.is-open {
-      position: absolute;
-      top: 0;
       left: 0;
-      opacity: 1;
-      display: block;
       box-shadow: 10px 0 30px rgba(0, 0, 0, .15);
       z-index: 1;
       padding-top: 0;
+      transition: left .2s;
       .icon-menu:after {
         content: "Close"
       }
@@ -283,6 +284,8 @@ ol + .c-sidebar_container__header {
 
 @media (min-width : 1024px) {
   .c-sidebar_container {
+    left: 0;
+    position: relative;
     padding-top: 3.75rem;
     &.is-open {
       position: relative;
@@ -290,7 +293,10 @@ ol + .c-sidebar_container__header {
       left: 0;
       opacity: 1;
       box-shadow: none;
-      padding-top: inherit;
+      padding-top: 3.75rem;
     }
+  }
+  .icon-menu {
+    display: none;
   }
 }

@@ -2,6 +2,7 @@
 
   .o-content_container__title {
     margin-top: 1.7rem;
+    margin-bottom: 1rem;
   }
 
   .icon-menu {
@@ -57,7 +58,7 @@
   }
 
   .c-quote__content.small h1 {
-    font-size: 14.5px;
+    font-size: 16px;
   }
 
   .c-quote__metadata > .c-quote__title,
@@ -76,8 +77,11 @@
 
 }
 
-@media screen and (min-width : 640px) {
-
+@media screen and (min-width : 768px) {
+  .c-quote {
+    width: 100%;
+    padding: 14px 0;
+  }
 }
 
 @media screen and (min-width : 769px) {
@@ -99,6 +103,11 @@
 }
 
 @media screen and (min-width : 960px) {
+
+  .c-quote {
+    width: 100%;
+    padding: 20px 0;
+  }
 
   .c-sidebar_container {
     display: flex;
@@ -150,6 +159,12 @@
 }
 
 @media screen and (min-width : 1180px) {
+
+  .c-quote {
+    width: 100%;
+    padding: 28px 0;
+  }
+
   .c-quote__content.big h1 {
     font-size: 40px;
     line-height: 1.25em;

@@ -142,7 +142,8 @@
     .c-quote__content.small h1 em mark,
     .c-quote__timestamp,
     .c-sidebar_container__header h4,
-    .o-content_container__title {
+    .o-content_container__title,
+    .icon-menu {
       font-variant: normal;
       font-size: 15px;
       font-feature-settings:"smcp" 1, "c2sc" 1;
@@ -164,7 +165,8 @@
   .c-quote__content.small h1 em mark,
   .c-quote__timestamp,
   .c-sidebar_container__header h4,
-  .o-content_container__title {
+  .o-content_container__title,
+  .icon-menu {
     font-size: 13px !important;
     font-family: "soleil";
     text-transform: uppercase;

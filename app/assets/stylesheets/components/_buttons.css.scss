@@ -74,3 +74,24 @@
     color: $secondary--text--on-white;
   }
 }
+
+.icon-menu {
+  position: relative;
+  padding-left: 28px;
+  font-family: $font-family-sans;
+}
+.icon-menu:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 20px;
+  height: 4px;
+  border-top: 10px double #000;
+  border-bottom: 3px solid #000;
+  margin-right: 10px;
+}
+
+.icon-menu:after {
+  content: "Filters"
+}

@@ -1,22 +1,20 @@
 @media screen and (min-width : 240px) {
 
   .o-content_container__title {
-    font-size: 1.5rem;
-  }
-  .o-content_container__title {
-    text-align: center;
     margin-top: 1.7rem;
   }
 
-  .c-sidebar_container {
-    display: none;
+  .icon-menu {
+    margin-top: 1.7rem;
   }
 
   .o-content_container {
     padding: 0 28px;
   }
 
-  .o-content_container h1, .o-quotes_container {
+  .o-content_container h1,
+  .o-quotes_container,
+  .icon-menu {
     min-width: 240px;
     max-width: 600px;
     margin-left: auto;
@@ -51,8 +49,6 @@
   }
 
   .c-quote__metadata > .c-quote__favicon {
-    width: 10px;
-    height: 10px;
   }
 
   .c-quote__tags {
@@ -103,12 +99,12 @@
 
 @media screen and (min-width : 769px) {
   .o-content_container__title {
-    margin-top: 0;
     text-align: left;
   }
 
   .o-content_container h1,
-  .o-quotes_container {
+  .o-quotes_container,
+  .icon-menu {
     min-width: 480px;
     max-width: 600px;
   }
@@ -126,8 +122,13 @@
     flex-direction: column;
   }
 
+  .icon-menu {
+    display: none;
+  }
+
   .o-content_container__title {
-    padding-top: 3.7125rem;
+    margin-top: 0;
+    padding-top: 3.7rem;
     padding-bottom: 1.375rem;
     font-size: 1rem;
   }

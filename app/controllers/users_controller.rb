@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes!(:new_user => false)
-        format.html { redirect_to @user.boards.first }
+        format.html { redirect_to filter_board_quotes_path(@user.boards.first) }
       else
         format.html { redirect_to login_path }
       end
@@ -23,10 +23,8 @@ class UsersController < ApplicationController
     record_user_activity
 
     respond_to do |format|
-        if @user && @user.new_user
+        if @user
             format.html # introduction.html.erb
-        elsif @user && !@user.new_user
-            format.html { redirect_to @user.boards.first }
         else
             format.html { redirect_to root_url }
         end

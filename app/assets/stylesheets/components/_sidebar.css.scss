@@ -76,6 +76,9 @@
   input[type="text"] {
     font-size: 18px;
     font-weight: 300;
+    vertical-align: top;
+    line-height: 38px;
+    width: calc(100% - 35px);
     font-family: "adobe-text-pro", serif;
   }
   .submit {
@@ -91,11 +94,6 @@
   padding-left: 10px;
   padding-right: 1px;
   font-size: 17px;
-}
-
-.c-sidebar_container__search input[type="text"] {
-  vertical-align: top;
-  line-height: 38px;
 }
 
 /*

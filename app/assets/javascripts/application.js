@@ -14,8 +14,7 @@ $(document).on('ready DOMChange', function() {
     });
 
     $(".c-segment_controller__option").on('click', toggleHidden);
-
-    $("#main-container").smoothState();
+    
 });
 
 $(window).load(function() {

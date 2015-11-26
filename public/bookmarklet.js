@@ -2,7 +2,8 @@
 
 
       Bookmarklet Structure
-      Updated 20150715
+      Latest    20151126
+      Previous  20150715
 
 
       1. Supporting assets
@@ -59,7 +60,9 @@ WebFontConfig = {
 */
 jquery = document.createElement("script");
 jquery.className = "noted-temporary-function-tbr";
-jquery.src = "http://code.jquery.com/jquery-2.1.1.min.js";
+// jquery.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+//     '://code.jquery.com/jquery-2.1.1.min.js';
+jquery.src = "//code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
 /*
@@ -80,7 +83,7 @@ try {
 } catch(e) {
   console.log(e);
   err__ = e;
-  alert("This page does not allow noted to load its stylesheet.")
+  alert("This page does not allow Ettúi to load its stylesheet.")
 }
 
 // When jQuery has been loaded, start processing the quote

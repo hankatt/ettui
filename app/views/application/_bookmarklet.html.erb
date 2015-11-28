@@ -6,7 +6,11 @@
   <% if tags.any? %>
     <div class='tag-container'>
       <% tags.each do |tag| %>
-        <%= raw ApplicationController.new.render_to_string(:partial => 'bookmarklet/tag', layout: false, locals: { tag: tag }) %>
+        <% if tag.is_existing %>
+          <li class="noted-tag tid-<%= tag.id %> selected"><%= tag.name %></li>
+        <% else %>
+          <li class="noted-tag tid-<%= tag.id %>"><%= tag.name %></li>
+        <% end %>
       <% end %>
     </div>
   <% end %>

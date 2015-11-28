@@ -37,7 +37,7 @@
           })();">Ettúi Bookmarklet</a>
         <% end %>
          <p class="c-introduction__description">The bookmarks bar is located below the address bar.</p>
-         <%= link_to "Continue to my board", continue_path, :class => "c-button c-button--primary" %>
+         <%= link_to "Continue to my board", introduction_finish_path, class: "c-button c-button--primary" %>
          <!-- <a href="#!" class="c-introduction__button c-introduction__button--next">Try out the bookmarklet</a> -->
       </div>
       <!--
@@ -66,7 +66,7 @@
             Now choose to Edit the bookmark you just created and paste the javascript snippet.
           </li>
         </ul>
-        <%= link_to "Continue to my board", continue_path, :class => "c-button c-button--primary" %>
+        <%= link_to "Continue to my board", introduction_finish_path, class: "c-button c-button--primary" %>
         <!-- <a href="#!" class="c-introduction__button c-introduction__button--next">Try out the bookmarklet</a> -->
       </div>
       <!--
@@ -80,7 +80,7 @@
         <blockquote class="c-introduction__quote">
           “The mistakes, errors, dead-ends, and wrong turns you make are going to be more important than the projects that just turned out okay.”
         </blockquote>
-        <%= link_to "Continue to my board", continue_path, :class => "c-button c-button--primary" %>
+        <%= link_to "Continue to my board", introduction_finish_path, class: "c-button c-button--primary" %>
         <!-- <div class="c-test_data">
         <% if current_user %>
           <h6><%= current_user.name %></h6>

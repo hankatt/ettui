@@ -3,16 +3,18 @@
     <div class="modal__content">
       <%= link_to "ettúi", '/', class: "c-ettui-logo" %>
       <h1>
-        You're one step away<br/>from your personal archive.
+        All the great things<br/>you've read, in one place.
       </h1>
-      <%= render "form" %>
+      <%= link_to "/auth/twitter?image_size=original", class: "button twitter" do %>
+        <%= fa_icon 'twitter twitter' %> Connect using Twitter
+      <% end %>
+      <%= link_to "Sign up using email", new_user_path, class: "button" %>
       <p class="secondary">
         By signing up you agree to the<br/>
         <%= link_to "Privacy Policy", "#!" %> and
         <%= link_to "Terms of Service", "#!" %>
       </p>
-      <p>
-        Already have an account?
+      <p>Already have an account?
         <%= link_to "Log in", login_path %>
       </p>
     </div>

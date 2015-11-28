@@ -1,16 +1,12 @@
 <div class="header-element sidebar">
     <% if params[:controller].eql?("users") %>
-        <%= link_to @left_title, boards_path, :class => "header-title" %>
+        <%= link_to @left_title, board_path(current_user.board)
     <% else %>
-        <%=  content_tag :h4, @left_title, :class => "header-title" %>
+        <%=  content_tag :h4, @left_title, class: "header-title" %>
     <% end %>
 </div>
 <div class="header-element quotes">
     <h2 class="header-title"><%= @right_title %></h2>
-    <!-- <h4>from<h4>
-    <p class="active-filter">nytimes.com</p>
-    <p class="active-filter">strindbergsmuseet.se</p>
-    <p class="active-filter">google.com</p> -->
 </div>
 <div class="header-element profile">
     <%= image_tag @board.users.first.twitter_image_url %>

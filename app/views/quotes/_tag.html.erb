@@ -1,7 +1,0 @@
-<li class="c-tag t-<%= tag.id %>">
-  <%= link_to tag.name, "#!", :class => "c-tag__name" %>
-  
-  <% if current_user && params[:action].eql?("show") %>
-    <%= link_to " x", board_quote_tag_path(@board, quote, tag), method: :delete, :class => "c-tag__delete" %>
-    <% end %>
-</li>

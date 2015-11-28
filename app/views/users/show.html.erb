@@ -1,8 +1,8 @@
 <div class="header-element sidebar">
     <% if params[:controller].eql?("users") %>
-        <%= link_to @left_title, boards_path, :class => "header-title" %>
+        <%= link_to @left_title, board_path(current_user.board)
     <% else %>
-        <%=  content_tag :h4, @left_title, :class => "header-title" %>
+        <%=  content_tag :h4, @left_title, class: "header-title" %>
     <% end %>
 </div>
 <div class="header-element center transparent">
@@ -30,7 +30,5 @@
     </div>
     <div class="profile-data links">
       <%= link_to "Sign out", logout_path %>
-      <%= link_to "Boomarklet", bookmarklet_path %>
-      <%= link_to "Update Twitter data", omniauth_update_path %>
     </div>
 </div>

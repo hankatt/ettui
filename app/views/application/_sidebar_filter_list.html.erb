@@ -1,6 +1,6 @@
 <ol class="c-sidebar_container__list">
   <% filters.each do |filter| %>
-    <%= render :partial =>
+    <%= render partial:
       "sidebar_#{filter.class.name.downcase}",
       locals: {
         filter_item: filter

@@ -1,21 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :record_user_activity
-
-  def set_titles left, right
-    @left_title = left
-    @quotes_container_title = right
-  end
+  helper_method :current_user
 
 private
   def current_user
-    @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def record_user_activity
-    if current_user
-      current_user.touch :last_active_at
-    end
+  def authorize
+    redirect_to login_path unless current_user
   end
 end

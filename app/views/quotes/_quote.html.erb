@@ -2,11 +2,11 @@
    <!-- Title and Favicon !-->
   <div class="c-quote__metadata__container">
     <div class="c-quote__metadata c-quote__metadata--secondary">
-      <%= image_tag quote.favicon, :class => "c-quote__favicon" %>
+      <%= image_tag quote.favicon, class: "c-quote__favicon" %>
       <% if quote.readability_title %>
-        <%= link_to quote.truncated_readability_title, quote.url, :class => "c-quote__title" %>
+        <%= link_to quote.truncated_readability_title, quote.url, class: "c-quote__title" %>
       <% else %>
-        <%= link_to quote.url, quote.url, :class => "c-quote__title" %>
+        <%= link_to quote.url, quote.url, class: "c-quote__title" %>
       <% end %>
       <% if quote.readability_author %>
         <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p>
@@ -15,7 +15,7 @@
     <div class="c-quote__metadata c-quote__metadata--primary">
       <p class="c-quote__timestamp"><%= quote.source_date %></p>
       <% if current_user && params[:action].eql?("show") %>
-        <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, :class => "u-block c-quote__remove" %>
+        <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, class: "u-block c-quote__remove" %>
       <% end %>
     </div>
   </div>
@@ -29,13 +29,13 @@
   <div class="c-quote__tags">
       <ul class="u-inline-block">
         <% quote.unique_tags.each do |tag| %>
-            <%= render :partial => 'quotes/tag', locals: { quote: quote, tag: tag } %>
+            <%= render partial: 'tags/tag', locals: { quote: quote, tag: tag } %>
         <% end %>
       </ul>
       <% if current_user && params[:action].eql?("show") %>
-        <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote), :class => "c-tag_form" do |f| %>
-          <%= f.text_field :name, placeholder: "New tag title", :class => "c-tag_form__input" %>
-          <%= f.submit "Add", :class => "c-tag_form__button" %>
+        <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote), class: "c-tag_form" do |f| %>
+          <%= f.text_field :name, placeholder: "New tag title", class: "c-tag_form__input" %>
+          <%= f.submit "Add", class: "c-tag_form__button" %>
         <% end %>
       <% end %>
   </div>

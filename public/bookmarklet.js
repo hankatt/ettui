@@ -115,7 +115,7 @@ jquery.onload = function() {
       // Use Script element injection to send the quote to the Ettúi server
       jsonpScript = document.createElement("script");
       jsonpScript.className = jsonpScript.className + "noted-temporary-function-tbr";
-      jsonpScript.src =  "//" +bookmarklet_server_host +"/add/quote/?" + jQuery.param(params);
+      jsonpScript.src =  "//" +bookmarklet_server_host +"/quote_creation?" + jQuery.param(params);
       document.body.appendChild(jsonpScript);
 
       /*
@@ -244,7 +244,7 @@ addTag = function(tag_name) {
   }
   jsonpScript = document.createElement("script");
   jsonpScript.className = "noted-temporary-function-tbr";
-  jsonpScript.src =  "//" +bookmarklet_server_host +"/add/tag_remotely/?" + jQuery.param(params);
+  jsonpScript.src =  "//" +bookmarklet_server_host +"/tag_creation?" + jQuery.param(params);
   document.body.appendChild(jsonpScript);
 }
 

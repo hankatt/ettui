@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :authorize
 
   def create
 
@@ -16,9 +17,7 @@ class TagsController < ApplicationController
 
     @quote.tags << tag
 
-    respond_to do |format|
-      format.html { redirect_to boards_path }
-    end
+    redirect_to board_path(current_user.board)
   end
 
   def destroy
@@ -32,44 +31,7 @@ class TagsController < ApplicationController
       @quote.tags.delete(tag)
     end
 
-    respond_to do |format|
-      format.html { redirect_to boards_path }
-    end
-  end
-
-  def add_tag_remote
-    if params[:user_token]
-
-      @user = User.find_by_token(params[:user_token])
-      @quote = Quote.find(params[:quote_id])
-      @board = @user.board
-
-      # Important to downcase for searchability
-      @tag = Tag.find_or_initialize_by(name: URI.unescape(params[:tag]).downcase)
-
-      if @tag.new_record? && @tag.valid?
-        @tag.save
-        @tag.is_new = true
-      else
-        @tag.is_existing = true
-      end
-      @quote.tags << @tag
-      @tags = @user.unique_tags # Get all the users unique tags from the users board
-    end
-
-
-    respond_to do |format|
-      (@tags & @quote.tags).each do |tag| tag.is_existing = true end
-      # @tags.detect{ |tag| tag.id == @tag.id }.is_existing = true
-      html = render_to_string(:partial => "bookmarklet/content", layout: false, locals: {
-        tags: @tags,
-        title: "Added the tag ##{@tag.name}.",
-        subtitle: "Tags help you to easily find quotes later."
-      })
-
-      # Respond with data{…} sent to the function added(…) in the bookmarklet
-      format.json { render json: { :html => html }, callback: params[:callback]}
-    end
+    redirect_to board_path(current_user.board)
   end
 
 private

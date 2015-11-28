@@ -45,20 +45,20 @@ private
     # Rails.logger.debug("#{tag.id.to_s} IS IN tag_ids: #{tag_ids.include?(tag.id.to_s)}")
     if tag_ids.include?(tag.id.to_s)
       # deselect tag
-      reverse_merge(to_params, {"search"=>{"tag_ids"=>[tag.id.to_s]}})
+      reverse_merge(to_params, {"search" => {"tag_ids" => [tag.id.to_s]}})
     else
       # select tag
-      merge(to_params, {"search"=>{"tag_ids"=>[tag.id.to_s]}})
+      merge(to_params, {"search" => {"tag_ids" => [tag.id.to_s]}})
     end
   end
 
   def update_params_for_source(source)
     if source_ids.include?(source.id.to_s)
       # deselect tag
-      reverse_merge(to_params, {"search"=>{"source_ids"=>[source.id.to_s]}})
+      reverse_merge(to_params, {"search" => {"source_ids" => [source.id.to_s]}})
     else
       # select tag
-      merge(to_params, {"search"=>{"source_ids"=>[source.id.to_s]}})
+      merge(to_params, {"search" => {"source_ids" => [source.id.to_s]}})
     end
   end
 
@@ -93,7 +93,7 @@ private
   def to_params
     {
       "search" => {
-        "query"=> query,
+        "query" => query,
         "tag_ids" => tag_ids,
         "source_ids" => source_ids
       }

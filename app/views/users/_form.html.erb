@@ -1,21 +1,18 @@
 <%= form_for(@user) do |f| %>
-  <%= f.hidden_field :new_user, :value => true %>
+  <%= f.hidden_field :new_user, value: true %>
   <div class="first field">
-    <!--<%= f.label :email %>!-->
-    <%= f.text_field :email, :placeholder => "Electronic mail address", :type => "email" %>
+    <%= f.text_field :email, placeholder: "Electronic mail address", type: "email" %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="field">
-    <!--<%= f.label :password %>!-->
-    <%= f.password_field :password, :placeholder => "Password", :class => 'sec' %>
+    <%= f.password_field :password, placeholder: "Password", class: 'sec' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="last field">
-    <!--<%= f.label :password_confirmation %>!-->
-    <%= f.password_field :password_confirmation, :placeholder => "Password again", :class => 'thi' %>
+    <%= f.password_field :password_confirmation, placeholder: "Password again", class: 'thi' %>
     <p class="validation"><%= @user.errors[:email].first %></p>
   </div>
   <div class="actions">
-    <%= f.submit "Sign up with e–mail", :class => "stay button" %>
+    <%= f.submit "Sign up with e–mail", class: "stay button" %>
   </div>
 <% end %>

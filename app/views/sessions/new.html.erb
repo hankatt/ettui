@@ -1,14 +1,14 @@
 <div class="o-overlay t-theme2">
   <div class="c-modal__window">
     <div class="modal__content">
-      <%= link_to "ettúi", '/', :class => "c-ettui-logo" %>
+      <%= link_to "ettúi", '/', class: "c-ettui-logo" %>
       <h1>
         Hello, welcome back.
       </h1>
-      <%= link_to "/auth/twitter?image_size=original", :class => "button twitter" do %>
+      <%= link_to "/auth/twitter?image_size=original", class: "button twitter" do %>
         <%= fa_icon 'twitter' %> Connect using Twitter
       <% end %>
-      <%= render "login_form" %>
+      <%= render "form" %>
       <p>Don't have an account?
         <%= link_to "Sign up", signup_path %>
       </p>

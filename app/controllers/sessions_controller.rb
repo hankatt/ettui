@@ -29,16 +29,16 @@ class SessionsController < ApplicationController
       create_cookies_for @user
     end
 
-    redirect_to :back
+    redirect_logged_in(@user)
   end
 
 private
   def create_cookies_for user
-    session[:user_id] = { value: user.id, expires: 3.months.from_now }
+    session[:user_id] = user.id
   end
   def redirect_logged_in(user)
     if user.new_user
-      redirect_to intro_path
+      redirect_to introduction_start_path
     else
       redirect_to board_path(user.board)
     end

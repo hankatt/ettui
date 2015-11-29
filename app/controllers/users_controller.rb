@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       # Establish a session
-      session[:user_id] = { value: @user.id, expires: 3.months.from_now }
+      session[:user_id] = @user.id
 
       # What happens after the save is complete
       redirect_to introduction_start_path, notice: "You successfully signed up."

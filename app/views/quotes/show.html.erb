@@ -1,0 +1,11 @@
+<div class="container--full-size beige flex direction--column space-between center--vertical quote--show">
+	<%= link_to "ettúi.", root_url, class: "c-ettui-logo" %>
+	<% if @quote %>
+		<%= render @quote %>
+	<% end %>
+	<div class="quote-author centered">
+		<h3 class="subtitle subtitle--all-caps">Curated by</h3>
+	    <%= image_tag @user.twitter_image_url, class: "c-profile_image" %>
+	    <h3 class="subtitle"><%= @user.name %></h3>
+	</div>
+</div>

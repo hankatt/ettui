@@ -1,5 +1,7 @@
 .c-quote {
   width: 100%;
+  max-width: 600px;
+  font-family: "soleil";
 }
 
 .c-quote__metadata__container {
@@ -36,7 +38,6 @@
   .c-quote__title,
   .c-quote__author {
     font-weight: 100;
-    -webkit-font-smoothing: subpixel-antialiased;
   }
 
   .c-quote__timestamp {
@@ -88,7 +89,6 @@
 .c-quote__author {
   color: $signature-color;
   letter-spacing: -0.25px;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .c-quote__content h1,
@@ -124,11 +124,12 @@
 .c-quote__content.small h1 em mark,
 .c-quote__timestamp,
 .c-sidebar_container__header h4,
-.o-content_container__title {
+.o-content_container__title,
+.c-button--small {
   font-size: 13px;
   font-family: "soleil";
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 1px;
 }
 
@@ -142,12 +143,13 @@
     .c-quote__timestamp,
     .c-sidebar_container__header h4,
     .o-content_container__title,
-    .icon-menu {
+    .icon-menu,
+    .c-button--small {
       font-variant: normal;
       font-size: 15px;
       font-feature-settings:"smcp" 1, "c2sc" 1;
       font-variant-caps: all-small-caps;
-      font-weight: 400;
+      font-weight: 300;
       text-transform: none;
     }
 }
@@ -165,13 +167,13 @@
   .c-quote__timestamp,
   .c-sidebar_container__header h4,
   .o-content_container__title,
-  .icon-menu {
+  .icon-menu,
+  .c-button--small {
     font-size: 13px !important;
     font-family: "soleil";
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 1px;
-    -webkit-font-smoothing: subpixel-antialiased;
   }
 
   .c-quote__timestamp {
@@ -250,4 +252,40 @@ a.c-quote__title:hover {
 .c-quote__content.small h1 {
   font-size: 20px;
   line-height: 1.5em;
+}
+
+.quote--show {
+
+  .c-ettui-logo {
+    margin: 3rem 0;
+  }
+  .quote-author {
+    margin: 3rem 0;
+  }
+}
+
+/*
+
+  <div class="quote-author">
+    <h3 class="subtitle subtitle--all-caps">Curated by</h3>
+      <%= image_tag @user.twitter_image_url, class: "c-profile_image" %>
+      <h3 class="subtitle"><%= @user.name %></h3>
+  </div>
+
+*/
+
+.quote-author {
+  &.centered {
+    text-align: center;
+  }
+  .subtitle {
+    margin: 1rem auto;
+    &.subtitle--all-caps {
+      color: $secondary--text--on-white;
+    }
+  }
+  img {
+    width: auto;
+    height: auto;
+  }
 }

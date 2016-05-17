@@ -27,8 +27,7 @@
         }
     %>
 
-    <div class="c-sidebar_container__divider"></div>
-    <div class="c-sidebar_container__row">
+    <div class="c-sidebar_container__row final">
         <% if current_user %>
             <%= link_to image_tag(current_user.twitter_image_url), root_path, class: "c-profile_image" %>
             <%= link_to "Logout", logout_path, class: "c-button c-button--small" %>

@@ -39,7 +39,7 @@
     color: $signature-color;
     font-size: 2.7rem;
     letter-spacing: -2px;
-    font-weight: 100;
+    font-weight: 400;
     // font-family: $font-family-display;
     // font-size: 3rem;
     // letter-spacing: 0;
@@ -55,9 +55,9 @@
 }
 
 .c-landing_page__text {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 100;
-  line-height: 2rem;
+  line-height: 1.619rem;
   letter-spacing: -.25px;
   max-width: 410px;
   color: $secondary--text--on-white;

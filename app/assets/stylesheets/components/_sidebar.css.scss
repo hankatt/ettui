@@ -31,6 +31,9 @@
     float: right;
     padding: 0;
   }
+  &.final {
+    margin-top: 5rem;
+  }
 }
 
 .c-sidebar_container__divider {
@@ -224,10 +227,8 @@ ol + .c-sidebar_container__header {
 
   .c-sidebar_container__list li a,
   .c-sidebar_container__count {
-    letter-spacing: -0.25px;
     font-weight: 300;
     color: #999;
-    -webkit-font-smoothing: subpixel-antialiased;
   }
 
   .c-sidebar_container__count {

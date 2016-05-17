@@ -1,5 +1,5 @@
 class CreateWithOmni
-  def create(auth)
+  def self.create(auth)
     # Create the new user
     @user = User.new({
       provider: auth["provider"],

@@ -61,6 +61,10 @@ class Quote < ActiveRecord::Base
   end
 
   def highlight query
+    query = query
+    if query.empty?
+      query = ""
+    end
     QuoteHighlighter.hilight(self, query)
   end
 

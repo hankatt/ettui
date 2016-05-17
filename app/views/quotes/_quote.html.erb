@@ -22,7 +22,15 @@
 
   <!-- Quote !-->
   <div class="c-quote__content <%= quote.font_size %>">
-    <h1><%= raw quote.highlight(@search.query) %></h1>
+    <%= link_to board_quote_path(@board, quote) do %>
+      <h1>
+        <% if @search.nil? %>
+          <%= raw quote.highlight("") %>
+        <% else %>
+         <%= raw quote.highlight(@search.query) %>
+        <% end %>
+      </h1>
+    <% end %>
   </div>
 
   <!-- Tags !-->

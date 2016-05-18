@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :authorize
+  before_action :authorize, except: :show 
 
   def show
     @quote = Quote.find(params[:id])

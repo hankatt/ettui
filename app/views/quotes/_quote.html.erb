@@ -14,7 +14,7 @@
     </div>
     <div class="c-quote__metadata c-quote__metadata--primary">
       <p class="c-quote__timestamp"><%= quote.source_date %></p>
-      <% if current_user && params[:action].eql?("show") %>
+      <% if current_user && action_name.eql?("show") %>
         <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, class: "u-block c-quote__remove" %>
       <% end %>
     </div>
@@ -22,7 +22,7 @@
 
   <!-- Quote !-->
   <div class="c-quote__content <%= quote.font_size %>">
-    <%= link_to board_quote_path(@board, quote) do %>
+    <% if controller_name.eql?("quotes") %>
       <h1>
         <% if @search.nil? %>
           <%= raw quote.highlight("") %>
@@ -30,6 +30,16 @@
          <%= raw quote.highlight(@search.query) %>
         <% end %>
       </h1>
+    <% else %>
+        <%= link_to board_quote_path(@board, quote) do %>
+          <h1>
+            <% if @search.nil? %>
+              <%= raw quote.highlight("") %>
+            <% else %>
+             <%= raw quote.highlight(@search.query) %>
+            <% end %>
+          </h1>
+        <% end %>
     <% end %>
   </div>
 
@@ -40,7 +50,7 @@
             <%= render partial: 'tags/tag', locals: { quote: quote, tag: tag } %>
         <% end %>
       </ul>
-      <% if current_user && params[:action].eql?("show") %>
+      <% if current_user && action_name.eql?("show") %>
         <%= form_for quote.tags.build, url: board_quote_tags_path(@board, quote), class: "c-tag_form" do |f| %>
           <%= f.text_field :name, placeholder: "New tag title", class: "c-tag_form__input" %>
           <%= f.submit "Add", class: "c-tag_form__button" %>

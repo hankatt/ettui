@@ -45,6 +45,8 @@ class Quote < ActiveRecord::Base
   end
 
   def new_since_last(user)
+    return false unless user
+    
     created_at > user.last_active_at
   end
 

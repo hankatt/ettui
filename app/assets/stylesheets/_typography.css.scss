@@ -1,3 +1,8 @@
+.subtitle,
+.subtitle--all-caps {
+  font-family: "soleil", sans-serif;
+}
+
 .subtitle {
 	font-size: 15px;
 	font-weight: 300;
@@ -6,14 +11,24 @@
 /*
   If browsers don't support font-features-settings
   or font-variant, this while apply to them.
-
-  For example iOS Safari.
 */
 
-.subtitle--all-caps {
-	font-size: 13px;
-	text-transform: uppercase;
-  	letter-spacing: 1px;
+@supports not (font-feature-settings: 'smcp') {
+  .subtitle--all-caps {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    font-weight: 300;
+  }
+}
+
+@supports not (font-variant-caps: all-small-caps) {
+  .subtitle--all-caps {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    font-weight: 300;
+  }
 }
 
 /*
@@ -25,8 +40,20 @@
       font-variant: normal;
       font-size: 15px;
       font-feature-settings:"smcp" 1, "c2sc" 1;
+      text-transform: none;
+    }
+}
+/*
+  If browsers support font-variant-caps,
+  this while apply to them.
+*/
+@supports(font-variant-caps: all-small-caps) {
+    .subtitle--all-caps {
+      font-variant: normal;
+      font-size: 15px;
       font-variant-caps: all-small-caps;
       text-transform: none;
+      letter-spacing: .75px;
     }
 }
 
@@ -37,14 +64,14 @@
   that do not support modern font-feature-settings.
 
 */
-@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
-  .subtitle--all-caps {
-    font-size: 13px !important; // Overrides previous font-size: 15px;
-    text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 1px;
-  }
-}
+// @supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+//   .subtitle--all-caps {
+//     font-size: 13px; // Overrides previous font-size: 15px;
+//     text-transform: uppercase;
+//     font-weight: 300;
+//     letter-spacing: 1px;
+//   }
+// }
 
 /*
   If browsers don't support font-features-settings
@@ -56,14 +83,11 @@
 .c-quote__content.small h1 em mark,
 .c-quote__timestamp,
 .c-sidebar_container__header h4,
-.o-content_container__title,
-.c-button--small,
-.subtitle--all-caps {
+.c-button--small {
   font-size: 13px;
   font-family: "soleil";
   text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 1px;
+  letter-spacing: .75px;
 }
 
 /*
@@ -75,44 +99,61 @@
     .c-quote__content.small h1 em mark,
     .c-quote__timestamp,
     .c-sidebar_container__header h4,
-    .o-content_container__title,
     .icon-menu,
     .c-button--small {
       font-variant: normal;
       font-size: 15px;
       font-feature-settings:"smcp" 1, "c2sc" 1;
-      font-variant-caps: all-small-caps;
-      font-weight: 300;
       text-transform: none;
+      letter-spacing: .75px;
     }
 }
 
 /*
-  Targets only Safari 9.0+ to fix the issue with Safari being -webkit-
-  and support the font-feature-setting 'smcp' above, but not rendering
-  it properly. This bypasses that and adds the rendering for browsers
-  that do not support modern font-feature-settings.
-
+  If browsers support font-variant-caps,
+  this while apply to them.
 */
-@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
-  .c-quote__content.small h1 em,
-  .c-quote__content.small h1 em mark,
-  .c-quote__timestamp,
-  .c-sidebar_container__header h4,
-  .o-content_container__title,
-  .icon-menu,
-  .c-button--small {
-    font-size: 13px !important;
-    font-family: "soleil";
-    text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 1px;
-  }
-
-  .c-quote__timestamp {
-    line-height: 2.2;
-  }
+@supports(font-variant-caps: all-small-caps) {
+    .c-quote__content.small h1 em,
+    .c-quote__content.small h1 em mark,
+    .c-quote__timestamp,
+    .c-sidebar_container__header h4,
+    .icon-menu,
+    .c-button--small {
+      font-variant: normal;
+      font-size: 15px;
+      font-variant-caps: all-small-caps;
+      text-transform: none;
+      letter-spacing: .75px;
+    }
 }
+
+// /*
+//   Targets only Safari 9.0+ to fix the issue with Safari being -webkit-
+//   and support the font-feature-setting 'smcp' above, but not rendering
+//   it properly. This bypasses that and adds the rendering for browsers
+//   that do not support modern font-feature-settings.
+
+// */
+// @supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+//   .c-quote__content.small h1 em,
+//   .c-quote__content.small h1 em mark,
+//   .c-quote__timestamp,
+//   .c-sidebar_container__header h4,
+//   .o-content_container__title,
+//   .icon-menu,
+//   .c-button--small {
+//     font-size: 13px !important;
+//     font-family: "soleil";
+//     text-transform: uppercase;
+//     font-weight: 300;
+//     letter-spacing: 1px;
+//   }
+
+//   .c-quote__timestamp {
+//     line-height: 2.2;
+//   }
+// }
 
 // /*
 //   If browsers support font-variant: small-caps,

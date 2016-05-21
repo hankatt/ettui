@@ -4,7 +4,7 @@ ruby '2.2.1'
 # Remove 300ms tap event delay for touch devices
 gem 'fastclick-rails'
 gem "font-awesome-rails"
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.0'
 
 # CSS Auto prefixer
 gem "autoprefixer-rails"
@@ -17,7 +17,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
 end
@@ -36,7 +36,8 @@ gem 'rack-jsonp'
 gem 'omniauth-twitter'
 
 # To handle Twitter correspondence
-gem 'twitter', "~> 4.8" 
+# gem 'twitter', "~> 4.8"
+gem 'twitter', "~> 5.16"  
 
 # Gems used only for assets and not required
 # in production environments by default.

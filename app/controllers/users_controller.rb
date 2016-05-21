@@ -47,9 +47,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @board = @user.board
-
-    @left_title = "« Back to board"
-    @quotes_container_title = "Settings"
   end
 
   def destroy

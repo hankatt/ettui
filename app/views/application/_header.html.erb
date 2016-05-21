@@ -4,7 +4,7 @@
     <div class="c-header_ctas__container">
       <% if current_user %>
         <%= link_to "Logout", logout_path, class: "subtitle--all-caps c-header__link" %>
-        <%= link_to image_tag(current_user.twitter_image_url), board_path(current_user.boards.first), class: "c-profile_image c-header__link" %>
+        <%= link_to image_tag(current_user.twitter_image_url), board_path(current_user.boards.first), class: "c-profile_image" %>
       <% else %>
         <%= link_to "Try our demo", demo_path, class: "subtitle--all-caps c-header__link" %>
         <%= link_to "Sign in", login_path, class: "subtitle--all-caps c-header__link" %>

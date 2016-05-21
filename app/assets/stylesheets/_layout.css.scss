@@ -129,35 +129,11 @@ body.index .container {
 .o-sidebar_container li,
 .o-content_container * {
   font-family: $font-family-sans;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
 }
 
 .o-content_container em {
   font-family: inherit;
   color: inherit;
-}
-
-.o-content_container__title {
-  font-family: $font-family-sans;
-  font-size: 1rem;
-  font-weight: 300;
-  color: $secondary--title--on-white;
-  font-kerning: auto;
-  & em {
-    color: $secondary--title--on-white;
-  }
-}
-
-.o-content_container__subtitle {
-  font-weight: 100;
-  font-size: 18px;
-  color: $secondary--title--on-white;
-  margin-top: .5rem;
-  letter-spacing: -.25px;
-  & em {
-    color: $primary--on-white;
-  }
 }
 
 .o-quotes_container__title {

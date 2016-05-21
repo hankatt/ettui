@@ -11,7 +11,9 @@
       <% if current_user.nil? %>
         <%= link_to "Try our demo", demo_path, class: "c-button c-button--secondary" %>
       <% end %>
-      <%= link_to "Create an account", signup_path, class: "c-button c-button--primary" %>
+      <%= link_to signup_path, class: "c-button c-button--primary" do %>
+        <p>Create an account</p>
+      <% end %>
     </div>
     <div class="o-half_screen u-text-align-center">
       <div class="c-landing_page__image_viewport">

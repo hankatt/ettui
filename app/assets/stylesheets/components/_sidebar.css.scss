@@ -27,9 +27,11 @@
 
 .c-sidebar_container__row {
   margin-top: .5rem;
-  .c-button {
+  .subtitle--all-caps {
     float: right;
+    line-height: 40px;
     padding: 0;
+    color: #999;
   }
   &.final {
     margin-top: 5rem;

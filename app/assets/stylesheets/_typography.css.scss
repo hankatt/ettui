@@ -8,6 +8,10 @@
 	font-weight: 300;
 }
 
+.subtitle--secondary {
+  color: $w-secondary-color;
+}
+
 /*
   If browsers don't support font-features-settings
   or font-variant, this while apply to them.
@@ -80,10 +84,7 @@
   For example iOS Safari.
 */
 .c-quote__content.small h1 em,
-.c-quote__content.small h1 em mark,
-.c-quote__timestamp,
-.c-sidebar_container__header h4,
-.c-button--small {
+.c-quote__content.small h1 em mark {
   font-size: 13px;
   font-family: "soleil";
   text-transform: uppercase;
@@ -97,10 +98,7 @@
 @supports(font-feature-settings: 'smcp') {
     .c-quote__content.small h1 em,
     .c-quote__content.small h1 em mark,
-    .c-quote__timestamp,
-    .c-sidebar_container__header h4,
-    .icon-menu,
-    .c-button--small {
+    .icon-menu {
       font-variant: normal;
       font-size: 15px;
       font-feature-settings:"smcp" 1, "c2sc" 1;
@@ -116,10 +114,7 @@
 @supports(font-variant-caps: all-small-caps) {
     .c-quote__content.small h1 em,
     .c-quote__content.small h1 em mark,
-    .c-quote__timestamp,
-    .c-sidebar_container__header h4,
-    .icon-menu,
-    .c-button--small {
+    .icon-menu {
       font-variant: normal;
       font-size: 15px;
       font-variant-caps: all-small-caps;

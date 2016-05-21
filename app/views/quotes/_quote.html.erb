@@ -13,7 +13,7 @@
       <% end %>
     </div>
     <div class="c-quote__metadata c-quote__metadata--primary">
-      <p class="c-quote__timestamp"><%= quote.source_date %></p>
+      <p class="c-quote__timestamp subtitle--all-caps subtitle--secondary"><%= quote.source_date %></p>
       <% if current_user && action_name.eql?("show") %>
         <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, class: "u-block c-quote__remove" %>
       <% end %>

@@ -105,7 +105,7 @@
 
   SIDEBAR HEADER
 
-  h4
+  .subtitle--all-caps
 
 */
 
@@ -116,8 +116,8 @@
 
 .c-sidebar_container__list li a {
   text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow-x: hidden;
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 
 .c-sidebar_container__header:nth-child(1) ~.c-sidebar_container__header {
@@ -184,14 +184,20 @@ ol + .c-sidebar_container__header {
 
 .sidebar-section-header {
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+}
+
+.c-sidebar_container__header {
+  .subtitle--all-caps {
+    color: #999;
+  }
 }
 
 .c-sidebar_container__header:hover {
 	cursor: pointer;
-	h4 {
+	.subtitle--all-caps {
 		color: #333;
 	}
 	.fa {

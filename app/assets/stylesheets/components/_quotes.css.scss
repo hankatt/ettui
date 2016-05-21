@@ -39,10 +39,6 @@
   .c-quote__author {
     font-weight: 100;
   }
-
-  .c-quote__timestamp {
-    color: $secondary--title--on-white;
-  }
 }
 
 .c-quote__content {
@@ -106,12 +102,6 @@
   line-height: 1.5em;
   font-weight: normal;
   color: #333;
-}
-
-.c-sidebar_container__header h4,
-.c-quote__timestamp {
-  color: #999;
-  font-weight: 100;
 }
 
 .c-quote__content h1 mark {

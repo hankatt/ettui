@@ -1,13 +1,13 @@
 <div class="c-sidebar_container">
     <div class="icon-menu js-toggle-menu"></div>
     <div class="c-sidebar_container__header">
-        <h4>Search</h4>
+        <h1 class="subtitle--all-caps">Search</h1>
     </div>
     <%= render partial: "sidebar_search_field" %>
 
     <!-- SOURCES !-->
     <div class="c-sidebar_container__header js-toggle-sidebar">
-        <h4>Filter by sites</h4>
+        <h1 class="subtitle--all-caps">Filter by sites</h1>
         <%= fa_icon 'angle-down' %>
     </div>
     <%= render partial: "sidebar_filter_list",
@@ -18,7 +18,7 @@
 
     <!-- TAGS !-->
     <div class="c-sidebar_container__header js-toggle-sidebar">
-        <h4>Filter by tags</h4>
+        <h1 class="subtitle--all-caps">Filter by tags</h1>
         <%= fa_icon 'angle-down' %>
     </div>
     <%= render partial: "sidebar_filter_list",

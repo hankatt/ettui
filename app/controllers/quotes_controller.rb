@@ -3,7 +3,8 @@ class QuotesController < ApplicationController
 
   def show
     @quote = Quote.find(params[:id])
-    @user = @quote.boards.first.users.first
+    @board = @quote.boards.first
+    @user = @board.users.first
   end
 
   def destroy

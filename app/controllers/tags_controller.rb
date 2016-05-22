@@ -5,7 +5,6 @@ class TagsController < ApplicationController
 
     @quote = Quote.find(params[:quote_id])
 
-
     tag = Tag.find_or_initialize_by(tag_params)
 
     if tag.new_record? && tag.valid?
@@ -21,6 +20,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    
     @quote = Quote.find(params[:quote_id])
 
     tag = Tag.find(params[:id])

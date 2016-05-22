@@ -1,5 +1,6 @@
 class IntroductionController < ApplicationController
   before_action :authorize
+
   def start
     current_user.touch :last_active_at
   end
@@ -9,7 +10,7 @@ class IntroductionController < ApplicationController
       redirect_to board_path(current_user.board)
     else
       # could not update new user -> should probably let user
-      # know and rediret
+      # know and redirect
     end
   end
 end

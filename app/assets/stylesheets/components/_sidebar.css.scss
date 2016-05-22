@@ -263,14 +263,15 @@ ol + .c-sidebar_container__header {
   .c-sidebar_container {
     position: absolute;
     top: 0;
-    left: -320px;
-    transition: left .2s;
+    left: 0;
+    transform: translate3d(-320px, 0, 0);
+    transition: transform .2s;
     &.is-open {
-      left: 0;
+      transform: translate3d(0, 0, 0);
       box-shadow: 10px 0 30px rgba(0, 0, 0, .15);
       z-index: 1;
       padding-top: 0;
-      transition: left .2s;
+      transition: transform .2s;
       .icon-menu:after {
         content: "Close"
       }
@@ -283,9 +284,18 @@ ol + .c-sidebar_container__header {
 
 @media (min-width : 960px) {
   .c-sidebar_container {
+    left: 0;
+    position: relative;
+    transform: translate3d(0, 0, 0);
     .icon-menu + div {
         margin-top: 0;
     }
+    .icon-menu {
+      display: none;
+    }
+  }
+  .icon-menu {
+    display: none;
   }
 }
 
@@ -302,8 +312,5 @@ ol + .c-sidebar_container__header {
       box-shadow: none;
       padding-top: 3.75rem;
     }
-  }
-  .icon-menu {
-    display: none;
   }
 }

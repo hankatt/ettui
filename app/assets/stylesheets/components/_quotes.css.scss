@@ -87,8 +87,8 @@
   letter-spacing: -0.25px;
 }
 
-.c-quote__content h1,
-.c-quote__content h1 mark,
+h1.c-quote__content,
+h1.c-quote__content mark,
 .c-quote__metadata > p em {
   font-family: $font-family-serif;
 }
@@ -97,21 +97,21 @@
   font-style: italic;
 }
 
-.c-quote__content h1 {
+h1.c-quote__content {
   letter-spacing: 0;
   line-height: 1.5em;
   font-weight: normal;
   color: #333;
 }
 
-.c-quote__content h1 mark {
+h1.c-quote__content mark {
   border-bottom: solid $signature-color 1px;
   background-color: transparent;
   color: #28B96E;
   font-family: inherit; 
 }
 
-.c-quote__content.big h1 mark {
+h1.c-quote__content.big mark {
   font-feature-settings: "dlig" 1;
 }
 
@@ -123,7 +123,8 @@
 
 .c-quote__remove {
   opacity: 0;
-  display: none;
+  float: left;
+  // display: none;
 }
 
 .c-quote:hover .c-quote__remove {
@@ -141,7 +142,7 @@ a.c-quote__title:hover {
 
 /* Break points */
 
-.c-quote__content h1 a {
+h1.c-quote__content a {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -149,20 +150,20 @@ a.c-quote__title:hover {
   font-weight: inherit;
 }
 
-.c-quote__content.big h1 {
+h1.c-quote__content.big {
   font-size: 40px;
   line-height: 1.25em;
   font-feature-settings:"dlig" 1;
   font-variant-ligatures: discretionary-ligatures
 }
 
-.c-quote__content h1 {
+h1.c-quote__content {
   font-size: 28px;
   line-height: 1.35em;
   letter-spacing: -0.25px;
 }
 
-.c-quote__content.small h1 {
+h1.c-quote__content.small {
   font-size: 20px;
   line-height: 1.5em;
 }

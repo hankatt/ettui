@@ -6,9 +6,9 @@
   </div>
   <div class="o-quotes_container">
     <% if !@quotes.empty? %>
-        <ol>
+        <ul>
           <%= render(@quotes) %>
-        </ol>
+        </ul>
       <% else %>
         <%= render "boards/out_of_quotes" %>
       <% end %>

@@ -2,33 +2,30 @@ class TagsController < ApplicationController
   before_action :authorize
 
   def create
-
     @quote = Quote.find(params[:quote_id])
+    @tag = Tag.find_or_initialize_by(tag_params)
 
-    tag = Tag.find_or_initialize_by(tag_params)
-
-    if tag.new_record? && tag.valid?
-      tag.name.downcase!
-      tag.save
+    if @tag.new_record? && @tag.valid?
+      @tag.name.downcase!
+      @tag.save
     else
       # validations failed so you should let the user know
     end
 
+    # Add it to the quotes set of tags
     @quote.tags << tag
 
     redirect_to board_path(current_user.board)
   end
 
-  def destroy
-    
+  def destroy    
     @quote = Quote.find(params[:quote_id])
+    @tag = Tag.find(params[:id])
 
-    tag = Tag.find(params[:id])
-
-    if tag.last_instance?
-      tag.destroy
+    if @tag.last_instance?
+      @tag.destroy
     else
-      @quote.tags.delete(tag)
+      @quote.tags.delete(@tag)
     end
 
     redirect_to board_path(current_user.board)

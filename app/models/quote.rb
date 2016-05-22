@@ -36,8 +36,12 @@ class Quote < ActiveRecord::Base
     tags.map(&:name).include?(tag_name)
   end
 
-  def truncated_readability_title
-    readability_title.truncate(64)
+  def title
+    if readability_title
+      readability_title
+    else
+      quote.url
+    end
   end
 
   def unique_tags
@@ -58,14 +62,21 @@ class Quote < ActiveRecord::Base
     end
   end
 
+  def excerpt
+
+  end
+
   def default_classes
     "c-quote q-#{id}"
   end
 
-  def highlight query
-    query = query
-    if query.empty?
+  def highlight search_query
+    if search_query.nil?
       query = ""
+    end
+
+    if search_query
+      query = search_query
     end
     QuoteHighlighter.hilight(self, query)
   end

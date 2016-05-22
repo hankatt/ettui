@@ -141,6 +141,14 @@ a.c-quote__title:hover {
 
 /* Break points */
 
+.c-quote__content h1 a {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
 .c-quote__content.big h1 {
   font-size: 40px;
   line-height: 1.25em;

@@ -3,47 +3,29 @@
   <div class="c-quote__metadata__container">
     <div class="c-quote__metadata c-quote__metadata--secondary">
       <%= image_tag quote.favicon, class: "c-quote__favicon" %>
-      <% if quote.readability_title %>
-        <%= link_to quote.truncated_readability_title, quote.url, class: "c-quote__title" %>
-      <% else %>
-        <%= link_to quote.url, quote.url, class: "c-quote__title" %>
-      <% end %>
+      <%= link_to quote.title, quote.url, class: "c-quote__title" %>
       <% if quote.readability_author %>
         <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p>
       <% end %>
     </div>
     <div class="c-quote__metadata c-quote__metadata--primary">
-      <p class="c-quote__timestamp subtitle--all-caps subtitle--secondary"><%= quote.source_date %></p>
-      <% if current_user && controller_name.eql?("quotes") %>
-        <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, class: "u-block c-quote__remove" %>
-      <% end %>
+      <p class="c-quote__timestamp subtitle--all-caps subtitle--secondary">
+        <%= quote.source_date %>
+      </p>
     </div>
   </div>
 
   <!-- Quote !-->
   <div class="c-quote__content <%= quote.font_size %>">
-    <% if controller_name.eql?("quotes") %>
-      <h1>
-        <% if @search.nil? %>
-          <%= raw quote.highlight("") %>
-        <% else %>
-         <%= raw quote.highlight(@search.query) %>
-        <% end %>
-      </h1>
-    <% else %>
-        <%= link_to board_quote_path(@board, quote) do %>
-          <h1>
-            <% if @search.nil? %>
-              <%= raw quote.highlight("") %>
-            <% else %>
-             <%= raw quote.highlight(@search.query) %>
-            <% end %>
-          </h1>
-        <% end %>
-    <% end %>
+        <h1>
+          <%= link_to_if(controller_name.eql?("boards"), (raw quote.highlight(@search.query)), board_quote_path(@board, quote)) %>
+        </h1>
   </div>
 
   <!-- Tags !-->
+  <% if current_user && controller_name.eql?("quotes") %>
+    <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, class: "u-block c-quote__remove" %>
+  <% end %>
   <div class="c-quote__tags">
       <ul class="u-inline-block">
         <% quote.unique_tags.each do |tag| %>

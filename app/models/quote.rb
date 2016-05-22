@@ -40,7 +40,7 @@ class Quote < ActiveRecord::Base
     if readability_title
       readability_title
     else
-      quote.url
+      url
     end
   end
 

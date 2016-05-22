@@ -138,8 +138,7 @@
     letter-spacing: 0;
   }
 
-  .c-quote__content.small h1 em,
-  .c-quote__timestamp {
+  .c-quote__content.small h1 em {
     font-size: 14px;
   }
 
@@ -156,6 +155,10 @@
   .c-tag__name {
     font-size: 14px;
   }
+
+  .c-quote__remove {
+    margin-top: 20px;
+  }
 }
 
 @media screen and (min-width : 1180px) {
@@ -163,6 +166,10 @@
   .c-quote {
     width: 100%;
     padding: 28px 0;
+  }
+
+  .c-quote__remove {
+    margin-top: 12px;
   }
 
   .c-quote__content.big h1 {
@@ -182,8 +189,7 @@
     letter-spacing: 0;
   }
 
-  .c-quote__content.small h1 em,
-  .c-quote__timestamp {
+  .c-quote__content.small h1 em {
     font-size: 15px;
   }
 

@@ -2,6 +2,6 @@
   <%= link_to tag.name, "#!", class: "c-tag__name" %>
 
   <% if current_user && params[:action].eql?("show") %>
-    <%= link_to " x", board_quote_tag_path(@board, quote, tag), method: :delete, class: "c-tag__delete" %>
+    <%= link_to " x", board_quote_tag_path(@board, quote, tag), method: :delete, class: "c-tag__delete", title: "Delete this tag." %>
     <% end %>
 </li>

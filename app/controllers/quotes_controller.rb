@@ -5,6 +5,7 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:id])
     @board = @quote.boards.first
     @user = @board.users.first
+    @search = Search.new
   end
 
   def destroy

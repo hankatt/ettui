@@ -1,0 +1,4 @@
+<%= form_for quote.tags.build, url: board_quote_tags_path(board, quote), class: "c-tag_form" do |f| %>
+  <%= f.text_field :name, placeholder: "New tag title", class: "c-tag_form__input" %>
+  <%= f.submit "Add", class: "c-tag_form__button" %>
+<% end %>

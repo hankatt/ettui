@@ -1,0 +1,24 @@
+<div class="t-theme2">
+  <div class="o-body">
+    <div class="c-introduction">
+      <%= link_to root_path do %>
+        <h1 class="c-ettui-logo">ettúi</h1>
+      <% end %>
+<!--       <h2 class="c-introduction__title--section">
+        …so what do you do with it?
+      </h2> -->
+      <div class="c-introduction__section js-section--desktop">
+        <ul class="c-introduction__step_list">
+          <li>
+            Try Ettúi by highlighting the quote below<br/>and then clicking your new Ettúi “bookmarklet”.
+          </li>
+        </ul>
+        <p class="c-introduction__quote">
+          “A journey of thousand miles begins with a single step.”
+        </p>
+         <%= link_to introduction_finish_path, class: "c-button c-button--primary" do %>
+          <h3 class="subtitle--all-caps">Continue to your board.</h3>
+         <% end %>
+      </div>
+  </div>
+</div>

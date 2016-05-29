@@ -5,6 +5,10 @@ class IntroductionController < ApplicationController
     current_user.touch :last_active_at
   end
 
+  def trying_it
+
+  end
+
   def finish
     if current_user.update_attributes(new_user: false)
       redirect_to board_path(current_user.board)

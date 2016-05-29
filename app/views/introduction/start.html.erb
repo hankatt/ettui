@@ -23,7 +23,7 @@
       <div class="c-introduction__section js-section--desktop">
         <ul class="c-introduction__step_list">
           <li>
-            <p class="c-introduction__step_title subtitle--all-caps">1</p>
+<!--             <p class="c-introduction__step_title subtitle--all-caps">1</p> -->
             Drag the button below to your bookmarks bar.
           </li>
         </ul>
@@ -38,9 +38,9 @@
           current_user_token = '<%= current_user.token %>';
           })();">Ettúi Bookmarklet</a>
         <% end %>
-         <p class="c-introduction__description">The bookmarks bar is located below the address bar.</p>
-         <%= link_to introduction_finish_path, class: "c-button c-button--primary" do %>
-          <h3 class="subtitle--all-caps">Continue to my board</h3>
+         <p class="c-introduction__description">The bookmarks bar is located below the address bar. By the way, Safari & Chrome users can press CMD+Shift+B to display it.</p>
+         <%= link_to introduction_trying_it_path, class: "c-button c-button--primary" do %>
+          <h3 class="subtitle--all-caps">Let's try it out.</h3>
          <% end %>
       </div>
       <!--
@@ -69,8 +69,8 @@
             Now choose to Edit the bookmark you just created and paste the javascript snippet.
           </li>
         </ul>
-        <%= link_to introduction_finish_path, class: "c-button c-button--primary" do %>
-          <h3 class="subtitle--all-caps">Continue to my board</h3>
+        <%= link_to introduction_trying_it_path, class: "c-button c-button--primary" do %>
+          <h3 class="subtitle--all-caps">Let's try it out.</h3>
         <% end %>
       </div>
     </div>

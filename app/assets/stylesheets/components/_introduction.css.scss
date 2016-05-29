@@ -17,11 +17,16 @@
 .c-introduction__section {
   display: block;
   max-width: 420px;
-  margin: 0 auto;
+  margin: 2rem auto 0;
 
   & + & {
     display: none;
   }
+}
+
+.c-introduction__section .c-button {
+  height: 50px;
+  line-height: 48px;
 }
 
 .c-introduction__section.js-section--tryout {
@@ -61,11 +66,11 @@
   }
 }
 
-.t-theme2 .c-introduction .c-ettui-logo {
-  background-image: none;
-  background-color: $primary--on-white;
-  text-decoration: none;
-}
+// .t-theme2 .c-introduction .c-ettui-logo {
+//   background-image: none;
+//   background-color: $primary--on-white;
+//   text-decoration: none;
+// }
 
 .c-introduction .c-segment_controller {
   margin-top: 1.619rem;
@@ -92,7 +97,7 @@
 }
 
 .c-introduction__step_list li {
-  font-size: 1rem;
+  font-size: .875rem;
 }
 
 .c-introduction__step_title {
@@ -110,7 +115,7 @@
 }
 
 .c-introduction__description {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .c-introduction__description,
@@ -126,7 +131,7 @@
 }
 
 .c-introduction__bookmarklet {
-  margin: 16px 0 0;
+  margin: 1rem 0 0;
   padding: 25px 46px 27px;
   background-image: linear-gradient(111deg, rgb(106, 232, 197), rgb(51, 234, 139));
   background-color: $signature-color;
@@ -171,18 +176,19 @@
   margin-top: 42px;
   &.c-button--primary {
     background-image: none;
-    background-color: $primary--on-white;
-    color: white;
+    border: solid 1px rgba(0, 0, 0, .2);
+    background: transparent;
+    color: $primary--on-white;
   }
 }
 
 
 .c-introduction__quote {
   font-family: "adobe-text-pro";
-  font-size: 24px;
-  line-height: 1.3em;
-  margin: 26px 0 46px 0;
-  padding: 26px 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin: 1.5rem 0 1.5rem 0;
+  padding: 1.5rem 0;
   border-top: solid 1px rgba(0, 0, 0, .1);
   border-bottom: solid 4px rgba(0, 0, 0, .1);
 }

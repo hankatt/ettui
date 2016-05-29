@@ -9,6 +9,7 @@ Well::Application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 
   get "introduction/start"
+  get "introduction/trying_it"
   get "introduction/finish"
   get "quote_creation", controller: "jsonp"
   get "tag_creation", controller: "jsonp"

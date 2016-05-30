@@ -192,8 +192,8 @@
   font-size: 1.619rem;
   line-height: 1.333;
   letter-spacing: -.5px;
-  margin: 1.619rem 0;
+  margin: 1.619rem 0 .5rem;
   padding: 1.619rem 0;
   border-top: solid 1px rgba(0, 0, 0, .1);
-  border-bottom: solid 4px rgba(0, 0, 0, .1);
+  border-bottom: solid 4px $signature-color;
 }

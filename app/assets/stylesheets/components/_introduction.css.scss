@@ -17,7 +17,7 @@
 .c-introduction__section {
   display: block;
   max-width: 420px;
-  margin: 2rem auto 0;
+  margin: 0 auto 0;
 
   & + & {
     display: none;
@@ -39,8 +39,10 @@
 
 .c-introduction {
   .c-segment_controller__option.is-active {
-    border-bottom: solid 3px $primary--on-white;
-    color: $primary--on-white;
+    border-bottom: solid 3px #34C387;
+    color: #34C387;
+    // border-bottom: solid 3px $primary--on-white;
+    // color: $primary--on-white;
   }
 }
 
@@ -60,10 +62,6 @@
   h1 {
     font-size: 42px;
   }
-
-  h2 {
-    font-size: 30px;
-  }
 }
 
 // .t-theme2 .c-introduction .c-ettui-logo {
@@ -71,10 +69,6 @@
 //   background-color: $primary--on-white;
 //   text-decoration: none;
 // }
-
-.c-introduction .c-segment_controller {
-  margin-top: 1.619rem;
-}
 
 .c-introduction__title {
     letter-spacing: -1px;
@@ -85,19 +79,28 @@
 }
 
 .c-introduction__title--section {
-  margin-top: 1rem;
-  font-weight: 100;
-  font-family: "soleil";
-  letter-spacing: -1px;
+  margin-top: 1.619rem;
+  font-weight: 900;
   line-height: 2rem;
+  font-size: 1rem;
+  color: $primary--on-white;
+  + div {
+    margin-top: 1rem;
+  }
 }
 
 .c-introduction__description {
   color: rgba(0, 0, 0, .33);
 }
 
+.c-introduction__section .c-introduction__step_list {
+  margin-top: 1.619rem;
+}
+
 .c-introduction__step_list li {
   font-size: .875rem;
+  color: $primary--on-white;
+  font-weight: 100;
 }
 
 .c-introduction__step_title {
@@ -118,8 +121,7 @@
   margin-top: 1rem;
 }
 
-.c-introduction__description,
-.c-introduction__step_list li {
+.c-introduction__description {
   font-family: "adobe-text-pro", serif;
 }
 

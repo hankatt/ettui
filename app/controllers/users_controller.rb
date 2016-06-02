@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, except: [:new, :create, :demo, :reset_password]
+  before_action :authorize, except: [:new, :create, :demo, :reset_password, :request_password_reset]
 
   def new
     @user = User.new
@@ -77,11 +77,15 @@ class UsersController < ApplicationController
 
   def update_password
     @user = User.find(params[:id])
-    password = params[:password]
 
-    @user.update_password(password)
-    if @user.save
-      redirect_to login_path, :notice => "Your password is updated."
+    if @user.password_reset_sent_at < 1.hour.ago
+      @user.update_password(params[:password])
+
+      if @user.save
+        redirect_to login_path, :notice => "Your password is updated."
+      end
+    else
+      redirect_to request_password_reset_path, :notice => "Your opportunity to reset your password has expired. Please try again."
     end
   end
 

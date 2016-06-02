@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+class UserMailer < ActionMailer::Base
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -26,14 +26,8 @@ class UserMailer < ApplicationMailer
     mail(
 	    :from		=> 'services@ettui.com',
 		:to      	=> user_email,
-		:template_id => 678431,
-		:template_model => {
-			"product_name"=>"ettui.com",
-			"name"=>user_name,
-			"action_url"=>"http://localhost:3000/reset/#{user_reset_token}",
-			"sender_name"=>"Henrik",
-			"product_address_line1"=>"https://www.ettui.com"
-		}
+		:subject => "Password reset requested at Ettúi.com",
+		:tag => "reset-password"
 	)
   end
 end

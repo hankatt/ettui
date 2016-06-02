@@ -1,11 +1,11 @@
 <div class="<%= quote.classes_for(current_user) %>">
    <!-- Title and Favicon !-->
   <div class="c-quote__metadata__container">
-    <div class="c-quote__metadata c-quote__metadata--secondary">
+    <div class="c-quote__metadata c-quote__metadata--title-and-author c-quote__metadata--secondary">
       <%= image_tag quote.favicon, class: "c-quote__favicon" %>
-      <%= link_to quote.title, quote.url, class: "c-quote__title" %>
-      <% if quote.readability_author %>
-        <p class="c-quote__author"><em>by</em> <%= quote.readability_author %></p>
+      <%= link_to quote.url, class: "c-quote__title is-truncated" do %>
+        <%= quote.title %>
+        <%= " by #{quote.readability_author}" unless quote.readability_author.nil? %>
       <% end %>
     </div>
     <div class="c-quote__metadata c-quote__metadata--primary">

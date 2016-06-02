@@ -56,15 +56,15 @@ class UsersController < ApplicationController
     redirect_to signup_path
   end
 
+  def request_password_reset
+  end
+
   def send_password_reset
     @user = User.find_by(email: params[:email])
     
     if @user.send_password_reset
       redirect_to login_path, :notice => "A link where you can reset your password has been sent to your mail."
     end
-  end
-
-  def request_password_reset
   end
 
   def reset_password

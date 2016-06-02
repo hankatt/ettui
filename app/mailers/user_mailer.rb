@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
   	client.deliver_with_template(
   		:from		=> 'services@ettui.com',
   		:to      	=> user_email,
-		:template_id => 678431,
+		:template_id => 678341,
 		:template_model => {
 			"product_name"=>"ettui.com",
 			"name"=>user_name,

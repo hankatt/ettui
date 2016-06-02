@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <div class="c-status_message success"><%= flash[:notice] %></div>
+<% end %>
 <div class="o-overlay t-theme2">
   <div class="c-modal__window">
     <div class="modal__content">

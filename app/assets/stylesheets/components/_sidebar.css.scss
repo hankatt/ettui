@@ -17,11 +17,6 @@
 
 .c-sidebar_container {
   font-family: "soleil";
-
-  // /* To enable scrolling of a fixed element. */
-  // top: 0;
-  // bottom: 0;
-  // overflow-y: auto;
   .c-tag + .c-tag {
     margin-left: 0;
   }
@@ -41,6 +36,12 @@
     justify-content: flex-end;
     display: flex;
     align-items: center;
+  }
+}
+
+.c-sidebar_container__row.final {
+  .c-ettui-logo {
+    margin-bottom: 0;
   }
 }
 

@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
   		:template_model => { 
   			"product_name"=>"ettui.com", 
   			"name"=>user_name, 
-  			"action_url" => "localhost:3000/reset/#{user_reset_token}", 
+  			"action_url" => "https://www.ettui.com/reset/#{user_reset_token}", 
   			"sender_name" => "Henrik", 
   			"product_address_line1" => "https://www.ettui.com"
   		}

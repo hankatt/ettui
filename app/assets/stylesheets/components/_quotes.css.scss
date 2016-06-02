@@ -9,6 +9,15 @@
   justify-content: space-between;
 }
 
+.c-quote__metadata--title-and-author {
+  flex-grow: 1;
+}
+
+.c-quote__timestamp {
+  line-height: 18px;
+  width: 50px;
+}
+
 .c-quote__metadata {
   .c-quote__favicon {
     height: 20px;
@@ -19,20 +28,30 @@
     color: $signature-color;
   }
 
+  .c-quote__title.is-truncated {
+    max-width: calc(100% - 40px);
+  }
+
+  .is-truncated {
+    @extend %truncate;
+  }
+
   .c-quote__favicon + .c-quote__title {
-    margin-left: 3px;
+    margin-left: .5rem;
   }
 
   .c-quote__title,
   .c-quote__author {
-    @extend %truncate;
-    line-height: 20px;
+    line-height: 18px;
     display: inline-block;
     vertical-align: bottom;
   }
 
   .c-quote__author {
     color: $secondary--text--on-white;
+    &::before {
+      content: "\00a0 ";
+    }
   }
 
   .c-quote__title,
@@ -42,10 +61,10 @@
 }
 
 .c-quote__content {
-  margin: 14px 0 0;
+  margin: 1rem 0 0;
   border-top: solid 1px #e3e3e3;
   border-bottom: solid 1px #e3e3e3;
-  padding: 14px 0;
+  padding: .875rem 0;
   &.small {
 
   }

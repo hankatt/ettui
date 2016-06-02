@@ -4,6 +4,8 @@
   width: 33%;
   min-width: 320px;
   padding: 3.75rem 2rem;
+  display: flex;
+  flex-direction: column;
   // justify-content: space-between;
 }
 
@@ -28,13 +30,17 @@
 .c-sidebar_container__row {
   margin-top: .5rem;
   .subtitle--all-caps {
-    float: right;
+    display: block;
     line-height: 40px;
     padding: 0;
     color: #999;
   }
   &.final {
-    margin-top: 5rem;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
   }
 }
 

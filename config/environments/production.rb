@@ -60,8 +60,18 @@ Well::Application.configure do
   # Email with Postmark
   config.action_mailer.default_url_options = { host: 'ettui.com' }
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { :api_key => ENV["POSTMARK_API_TOKEN"] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV["POSTMARK_SMTP_SERVER"],
+    port:                 25,
+    domain:               'ettui.com',
+    user_name:            ENV["POSTMARK_API_TOKEN"],
+    password:             ENV["POSTMARK_API_TOKEN"],
+    authentication:       :cram_md5,
+    enable_starttls_auto: true
+  }
+  # config.action_mailer.delivery_method = :postmark
+  # config.action_mailer.postmark_settings = { :api_key => ENV["POSTMARK_API_TOKEN"] }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)

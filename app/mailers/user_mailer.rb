@@ -6,13 +6,10 @@ class UserMailer < ActionMailer::Base
   #   en.user_mailer.password_reset.subject
   #
   def password_reset(user)
-  	puts("Password Reset User Email" << user.email)
   	user_email = user.email
   	user_name = user.name || user.email
   	user_reset_token = user.password_reset_token
   	postmark_template_id = "678341"
-
-  	puts("Postmark Template ID: " + postmark_template_id)
 
   	client = Postmark::ApiClient.new(ENV["POSTMARK_API_TOKEN"])
   	client.deliver_with_template(:from=>'services@ettui.com', :to=>user_email, :template_id => postmark_template_id, :template_model => { 

@@ -14,6 +14,9 @@ Well::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Email with Postmark
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default charset: 'utf-8'
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              ENV["POSTMARK_SMTP_SERVER"],

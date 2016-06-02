@@ -9,6 +9,10 @@ gem 'rails', '4.2.0'
 # CSS Auto prefixer
 gem "autoprefixer-rails"
 
+# Email service Postmark
+gem 'postmark-rails', '~> 0.12.0'
+gem 'postmark'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

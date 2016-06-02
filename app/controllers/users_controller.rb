@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, except: [:new, :create, :demo]
+  before_action :authorize, except: [:new, :create, :demo, :reset_password]
 
   def new
     @user = User.new
@@ -54,6 +54,35 @@ class UsersController < ApplicationController
     @user.destroy
 
     redirect_to signup_path
+  end
+
+  def send_password_reset
+    @user = User.find_by(email: params[:email])
+    
+    if @user.send_password_reset
+      redirect_to login_path, :notice => "Your password is updated."
+    end
+  end
+
+  def request_password_reset
+  end
+
+  def reset_password
+    if params[:password_reset_token]
+      @user = User.find_by(password_reset_token: params[:password_reset_token])
+    else
+      redirect_to request_password_reset_path, :notice => "Your password could not be reset. Please try again."
+    end
+  end
+
+  def update_password
+    @user = User.find(params[:id])
+    password = params[:password]
+
+    @user.update_password(password)
+    if @user.save
+      redirect_to login_path, :notice => "Your password is updated."
+    end
   end
 
   private

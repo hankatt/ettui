@@ -13,6 +13,18 @@ Well::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
+  # Send email with Postmark
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV["POSTMARK_SMTP_SERVER"],
+    port:                 25,
+    domain:               'ettui.com',
+    user_name:            ENV["POSTMARK_API_TOKEN"],
+    password:             ENV["POSTMARK_API_TOKEN"],
+    authentication:       :cram_md5,
+    enable_starttls_auto: true
+  }
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 

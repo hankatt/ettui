@@ -44,6 +44,17 @@ class User < ActiveRecord::Base
     name || email
   end
 
+  def update_password(password)
+    self.password = password
+  end
+
+  def send_password_reset
+    self.password_reset_token = SecureRandom.hex(13)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self)
+  end
+
   # Generates and sets a token for the new user
   private
   def initialize_user

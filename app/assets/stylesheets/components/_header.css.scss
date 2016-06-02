@@ -1,3 +1,19 @@
+.c-status_message {
+  width: 100%;
+  padding: 1rem 0 2.25rem;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #BDB7AA;
+  color: white;
+  letter-spacing: 0.25px;
+  font-family: "adobe-text-pro";
+}
+
+.c-status_message.success {
+  background-color: #2fd67f;
+  color: white;
+}
+
 .c-ettui-logo {
   font-family: $font-family-display;
   font-size: 1.75rem;

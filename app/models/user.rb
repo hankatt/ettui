@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
     self.password_reset_token = SecureRandom.hex(13)
     self.password_reset_sent_at = Time.zone.now
     save!
-    UserMailer.password_reset(self.id)
+    UserMailer.password_reset(self)
   end
 
   # Generates and sets a token for the new user

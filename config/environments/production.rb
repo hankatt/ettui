@@ -57,6 +57,12 @@ Well::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
+  # Email with Postmark
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { :api_key => ENV["POSTMARK_API_TOKEN"] }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true

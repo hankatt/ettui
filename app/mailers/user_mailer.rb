@@ -15,9 +15,9 @@ class UserMailer < ActionMailer::Base
   	client.deliver_with_template(:from=>'services@ettui.com', :to=>user_email, :template_id => postmark_template_id, :template_model => { 
   			"product_name"=>"ettui.com", 
   			"name"=>user_name, 
-  			"action_url" => "https://www.ettui.com/reset/#{user_reset_token}", 
+  			"action_url" => "http://www.ettui.com/reset/#{user_reset_token}", 
   			"sender_name" => "Henrik", 
-  			"product_address_line1" => "https://www.ettui.com"
+  			"product_address_line1" => "http://www.ettui.com"
   		})
   end
 end

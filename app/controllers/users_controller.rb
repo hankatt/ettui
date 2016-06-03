@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   def update_password
     @user = User.find(params[:id])
 
-    if (@user.password_reset_sent_at.hour - 1.hour.ago) > 0
+    if (@user.password_reset_sent_at - 1.hour.ago) > 0
       @user.update_password(params[:password])
 
       if @user.save

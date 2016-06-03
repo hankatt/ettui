@@ -90,7 +90,7 @@
 </head>
 <body class="t-white <%= params[:action] if params[:controller].eql?("welcome") %>">
 
-<div id="smooth" class="container">
+<div id="smooth" class="container <%= params[:controller] %>-<%= params[:action] %>">
   <%= yield %>
 </div>
 

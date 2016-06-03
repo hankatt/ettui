@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   def send_password_reset
     @user = User.find_by(email: params[:email])
     @user.send_password_reset
-    
+
     redirect_to login_path, :notice => "A link where you can reset your password has been sent to your mail."
   end
 
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   def update_password
     @user = User.find(params[:id])
 
-    if @user.password_reset_sent_at < 1.hour.ago
+    if (@user.password_reset_sent_at.hour - 1.hour.ago) > 0
       @user.update_password(params[:password])
 
       if @user.save

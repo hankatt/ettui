@@ -61,9 +61,12 @@ class UsersController < ApplicationController
 
   def send_password_reset
     @user = User.find_by(email: params[:email])
-    @user.send_password_reset
-
-    redirect_to login_path, :notice => "A link where you can reset your password has been sent to your mail."
+    if @user
+      @user.send_password_reset
+      redirect_to login_path, :notice => "A link where you can reset your password has been sent to your mail."
+    else
+      redirect_to request_password_reset_path, :notice => "Your password could not be reset. Please try again."
+    end
   end
 
   def reset_password

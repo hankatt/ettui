@@ -15,10 +15,10 @@
 
 .c-modal__window .c-ettui-logo {
   font-family: $font-family-display;
-  background-image: none;
-  border: none;
-  text-decoration: none;
-  color: $primary--on-white;
+  // background-image: none;
+  // border: none;
+  // text-decoration: none;
+  // color: $primary--on-white;
   font-size: 2rem;
 }
 
@@ -130,6 +130,10 @@
 
 .c-modal__window h1 + form {
   margin-top: 1rem;
+}
+
+.c-modal__window h1 + p {
+  margin: 1rem 0;
 }
 
 .c-modal__window p.secondary + p,

@@ -9,15 +9,18 @@ class UserMailer < ActionMailer::Base
   	user_email = user.email
   	user_name = user.name || user.email
   	user_reset_token = user.password_reset_token
-  	postmark_template_id = "678341"
 
   	client = Postmark::ApiClient.new(ENV["POSTMARK_API_TOKEN"])
-  	client.deliver_with_template(:from=>'services@ettui.com', :to=>user_email, :template_id => postmark_template_id, :template_model => { 
-  			"product_name"=>"ettui.com", 
-  			"name"=>user_name, 
-  			"action_url" => "http://www.ettui.com/reset/#{user_reset_token}", 
-  			"sender_name" => "Henrik", 
-  			"product_address_line1" => "http://www.ettui.com"
+  	client.deliver_with_template(
+      :from           =>  'services@ettui.com',
+      :to             =>  user_email,
+      :template_id    =>  678341,
+      :template_model => { 
+        "product_name"  => "ettui.com", 
+        "name"          => user_name, 
+        "action_url"    => "http://www.ettui.com/reset/#{user_reset_token}", 
+        "sender_name"   => "Henrik", 
+        "product_address_line1" => "http://www.ettui.com"
   		})
   end
 end

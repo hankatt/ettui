@@ -10,14 +10,14 @@ class SessionsController < ApplicationController
       create_cookies_for(authentication.user)
       redirect_logged_in(authentication.user)
     else
-      redirect_to new_session_path, notice: "Failed to authenticate!"
+      redirect_to new_session_path
     end
   end
 
   def destroy
     session[:user_id] = nil
     session.delete(:user_id)
-    redirect_to root_url, notice: "Logged out!"
+    redirect_to root_url
   end
 
   def create_with_omniauth

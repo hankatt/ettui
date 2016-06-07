@@ -8,6 +8,7 @@
     </div>
     <div class="actions">
       <%= submit_tag "Log in using email", id: "submit_login", class: "stay button" %>
+      <%= link_to "Forgot password?", request_password_reset_path, :class => "input-support-action" %>
     </div>
   <% end %>
 </div>

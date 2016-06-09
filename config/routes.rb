@@ -1,4 +1,6 @@
 Well::Application.routes.draw do
+  mount LetsencryptPlugin::Engine, at: '/'  # It must be at root level
+  
   root to: "welcome#index"
 
   get "logout" => "sessions#destroy", as: "logout"

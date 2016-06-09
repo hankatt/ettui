@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602193325) do
+ActiveRecord::Schema.define(version: 20160609211641) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20160602193325) do
   create_table "boards_quotes", id: false, force: :cascade do |t|
     t.integer "board_id", null: false
     t.integer "quote_id", null: false
+  end
+
+  create_table "letsencrypt_plugin_challenges", force: :cascade do |t|
+    t.text     "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quotes", force: :cascade do |t|

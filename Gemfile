@@ -4,7 +4,7 @@ ruby '2.2.1'
 # Remove 300ms tap event delay for touch devices
 gem 'fastclick-rails'
 gem "font-awesome-rails"
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.5'
 
 # CSS Auto prefixer
 gem "autoprefixer-rails"
@@ -29,6 +29,9 @@ end
 # Support for attr_accessor removed in Rails 4.0.0, this gem adds support. Other gems ease the transition to 4.0.0.
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+
+# SSL
+gem 'letsencrypt_plugin'
 
 # Used for encrypting the users password
 gem 'bcrypt', :require => "bcrypt"

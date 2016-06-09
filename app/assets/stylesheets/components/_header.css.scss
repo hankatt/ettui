@@ -15,10 +15,11 @@
 }
 
 .c-ettui-logo {
-  font-family: $font-family-display;
-  font-size: 1.75rem;
-  color: $primary--on-white;
-  letter-spacing: -.5px;
+  font-family: $font-family-display !important;
+  font-size: 1.75rem !important;
+  color: $primary--on-white !important;
+  letter-spacing: -.5px !important;
+  text-decoration: none !important;
 }
 
 .c-header__container {

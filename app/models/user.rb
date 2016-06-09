@@ -46,6 +46,8 @@ class User < ActiveRecord::Base
 
   def update_password(password)
     self.password = password
+    self.password_reset_token = nil
+    self.password_reset_sent_at = nil
   end
 
   def send_password_reset

@@ -1,0 +1,88 @@
+.legal-wrapper {
+    background-image: linear-gradient(111deg, rgb(249, 248, 244), rgb(239, 229, 211));
+    background-size: cover;
+}
+
+.legal {
+
+    width: 100%;
+    max-width: 480px;
+    padding: 3rem 1.5rem;
+    margin: 2rem auto;
+    font-family: "soleil", sans-serif;
+    font-size: 16px;
+
+    h1 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: .75rem;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: .0625rem;
+    }
+
+    h3 {
+        font-size: .75rem;
+        margin-bottom: .25rem;
+    }
+
+    h4 {
+        font-size: .75rem;
+        margin-bottom: .125rem;
+    }
+
+    p + h2,
+    .c-ettui-logo + h1 {
+        margin-top: 1rem;
+    }
+
+    a,
+    p {
+        font-family: "adobe-text-pro";
+        font-size: .875rem;
+        line-height: 1.5;
+    }
+
+    p + p {
+        margin-top: .5rem;
+    }
+
+    ul,
+    li {
+        font-size: .875rem;
+        font-family: "adobe-text-pro", serif;
+        line-height: 1.5;
+        padding-left: .375rem;
+        list-style-type: circle;
+        list-style-position: outside;
+        overflow: inherit;
+        margin-left: .75rem;
+    }
+
+    ul {
+        overflow: initial;
+        font-size: .875rem;
+        margin: 1rem 0;
+        padding: 0 1rem;
+
+    }
+
+    li {
+        margin-top: .5rem;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    .c-ettui-logo {
+        text-align: center;
+        display: block;
+    }
+}

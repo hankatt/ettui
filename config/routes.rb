@@ -12,6 +12,8 @@ Well::Application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 
+  get "legal/tos"
+  get "legal/pp"
   get "introduction/start"
   get "introduction/trying_it"
   get "introduction/finish"

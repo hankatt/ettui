@@ -1,7 +1,7 @@
 default: &default
   endpoint: 'https://acme-v01.api.letsencrypt.org/'
   email: 'henrik@ettui.com'
-  domain: 'ettui.com www.ettui.com'
+  domain: 'ettui.com www.ettui.com notedapp.herokuapp.com'
 
   # in Rails.root, path to private key
   private_key: 'key/keyfile.pem'

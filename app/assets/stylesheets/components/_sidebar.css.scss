@@ -2,7 +2,8 @@
 
 .c-sidebar_container {
   width: 33%;
-  min-width: 320px;
+  min-width: 300px;
+  max-width: 400px;
   padding: 3.75rem 2rem;
   display: flex;
   flex-direction: column;

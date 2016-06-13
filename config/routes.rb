@@ -15,6 +15,7 @@ Well::Application.routes.draw do
 
   get "legal/tos"
   get "legal/pp"
+  get "demo/complete" => "users#complete", as: "completion"
   get "introduction/start", as: "introduction"
   get "introduction/trying_it"
   get "introduction/finish"

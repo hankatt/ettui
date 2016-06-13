@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, except: [:new, :create, :demo, :reset_password, :update_password, :send_password_reset, :request_password_reset]
+  before_action :authorize, except: [:new, :create, :update, :complete, :demo, :reset_password, :update_password, :send_password_reset, :request_password_reset]
 
   def new
     @user = User.new
@@ -16,7 +16,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to :back, notice: "User details were updated."
+      # If we're finalizing a demo user
+      if @user.guest? && @user.email
+        @user.create_password_reset_token
+        redirect_to reset_password_path(@user.password_reset_token)
+      else
+        redirect_to :back, notice: "User details were updated."
+      end
     else
       redirect_to :back, notice: "Details could not be updated."
     end
@@ -30,7 +36,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
 
       # What happens after the save is complete
-      redirect_to introduction_start_path, notice: "You successfully signed up."
+      redirect_to introduction_path, notice: "You successfully signed up."
     else
       render action: "new", notice: "A user with that email address already exists. If it's you, please try the login page."
     end
@@ -46,16 +52,31 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
 
         # What happens after the save is complete
-        redirect_to introduction_start_path, notice: "You successfully signed up."
+        redirect_to introduction_path
       end
     else
       redirect_to board_quotes(@user.board)
     end
   end
 
+  def complete
+    if current_user && current_user.guest?
+      @user = current_user
+      render "complete", notice: "Complete your demo account."
+    else
+      redirect_to root_path, notice: "You need to be signed in as demo user view that page."
+    end
+  end
+
   def show
-    @user = User.find(params[:id])
-    @board = @user.board
+    if current_user && current_user.guest?
+      redirect_to completion_path, notice: "Complete your demo account to fully use Ettúi."
+    elsif current_user
+      @user = User.find(params[:id])
+      @board = @user.board
+    else
+      redirect_to root_path, notice: "You need to sign in to view that page."
+    end
   end
 
   def destroy
@@ -108,7 +129,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
                                  :token, :uid, :provider, :name, :new_user,
-                                 :twitter_image_url, :twitter_description)
+                                 :twitter_image_url, :twitter_description, :guest)
   end
 
 end

@@ -1,7 +1,7 @@
 <% if flash[:notice] %>
-  <div class="c-status_message"><%= flash[:notice] %></div>
+  <div class="c-status_message green"><%= flash[:notice] %></div>
 <% end %>
-<div class="o-content_container">
+<div class="o-content_container t-theme2">
   <div class="o-title_container">
     <h1 class="o-content_container__title">
       <%= link_to "« BACK TO QUOTES", board_path(@user.board), :class => "subtitle subtitle--all-caps signature-color" %>
@@ -20,6 +20,8 @@
          <%= f.text_field :name %>
          <%= f.label :twitter_description, "Description", :class => "subtitle subtitle--all-caps" %>
          <%= f.text_area :twitter_description %>
+         <%= f.label :twitter_image_url, "Profile image", :class => "subtitle subtitle--all-caps" %>
+         <%= f.text_field :twitter_image_url %>
          <%= f.submit "Update details", :class => "c-button subtitle subtitle--all-caps" %>
         <% end %>
       </div>

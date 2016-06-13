@@ -1,3 +1,19 @@
+.c-status_message.finalize_demo {
+  background-color: $signature-color;
+  color: white;
+  border: solid 1px;
+  height: 40px;
+  width: 100%;
+  max-width: 260px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0;
+  line-height: 38px;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+}
+
 .c-quote {
   width: 100%;
   max-width: 600px;

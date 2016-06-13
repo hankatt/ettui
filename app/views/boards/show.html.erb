@@ -1,5 +1,10 @@
 <%= render "boards/sidebar" %>
 <div class="o-content_container">
+  <% if current_user.guest? %>
+    <div class="c-status_message finalize_demo">
+      <%= link_to "Finalize your demo account here", completion_path %>
+    </div>
+  <% end %>
   <div class="icon-menu js-toggle-menu"></div>
   <div class="o-title_container">
     <h1 class="o-content_container__title subtitle--all-caps subtitle--secondary">Listing <%= @quotes_container_title %></h1>

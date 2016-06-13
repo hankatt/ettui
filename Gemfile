@@ -30,9 +30,6 @@ end
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 
-# SSL
-gem 'letsencrypt_plugin'
-
 # Used for encrypting the users password
 gem 'bcrypt', :require => "bcrypt"
 

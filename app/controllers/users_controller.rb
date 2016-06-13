@@ -13,6 +13,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to :back, notice: "User details were updated."
+    else
+      redirect_to :back, notice: "Details could not be updated."
+    end
+  end
+
   def create
     @user = user_params ? User.new(user_params) : User.new_guest
 

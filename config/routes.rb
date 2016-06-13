@@ -1,6 +1,5 @@
 Well::Application.routes.draw do
-  mount LetsencryptPlugin::Engine, at: '/'  # It must be at root level
-  
+ 
   root to: "welcome#index"
 
   get "logout" => "sessions#destroy", as: "logout"
@@ -16,12 +15,12 @@ Well::Application.routes.draw do
 
   get "legal/tos"
   get "legal/pp"
-  get "introduction/start"
+  get "introduction/start", as: "introduction"
   get "introduction/trying_it"
   get "introduction/finish"
   get "quote_creation", controller: "jsonp"
   get "tag_creation", controller: "jsonp"
-  resources :users, except: [:index, :update]
+  resources :users, except: [:index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :boards, only: [:show] do
     resources :quotes, only: [:destroy, :show] do

@@ -9,6 +9,7 @@
 .c-modal__window {
   text-align: center;
   padding: 40px;
+  width: 100%;
   max-width: 520px;
   margin-top: -8rem;
 }
@@ -83,7 +84,8 @@
   display: block;
   background-color: $primary--on-white;
   color: white;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
 
   & img {
     position: relative;

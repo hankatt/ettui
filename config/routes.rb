@@ -13,6 +13,10 @@ Well::Application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_with_omniauth"
 
+  # TODO: A welcome view:
+  # "Welcome to Ettúi, {let's get started}"
+  # get "welcome" => "welcome#index", as: "welcome"
+
   get "legal/tos"
   get "legal/pp"
   get "demo/complete" => "users#complete", as: "completion"

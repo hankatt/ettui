@@ -41,6 +41,10 @@
   padding-left: 1rem;
 }
 
+.c-header__link + .c-profile_image {
+  margin-left: .5rem;
+}
+
 .c-profile_image {
   border-radius: 40px;
   background-color: rgba(0, 0, 0, .1);

@@ -12,6 +12,8 @@
   width: 100%;
   max-width: 520px;
   margin-top: -8rem;
+  display: flex;
+  justify-content: center;
 }
 
 .c-modal__window .c-ettui-logo {
@@ -77,6 +79,19 @@
 
   text-decoration: none;
   text-align: center;
+  &.c-button {
+    font-family: $font-family-sans;
+  }
+}
+
+.modal__content {
+  max-width: 360px;
+  width: 100%;
+}
+
+.modal__content form + p {
+  margin-top: .625rem;
+  color: $secondary--text--on-white;
 }
 
 .c-modal__window .button,

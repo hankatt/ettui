@@ -71,10 +71,8 @@
 }
 
 .profile-section .c-button {
-	border-radius: 5px;
-	border: solid 1px $signature-color;
-	color: $signature-color;
 	margin-top: 1rem;
+	font-size: .875rem;
 }
 
 .profile-container {
@@ -132,7 +130,7 @@
 	width: 100%;
 	max-width: 380px;
 	text-align: center;
-	input,
+	input[type="text"],
 	textarea {
 		text-align: center;
 		font-size: 1rem;
@@ -194,6 +192,7 @@
 	label {
 		color: $primary--on-white;
 	}
+	margin-bottom: 2rem;
 }
 
 .profile-title {

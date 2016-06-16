@@ -164,6 +164,24 @@ div.error_explanation ul {
   }
 }
 
+.c-button--primary {
+  background-image: linear-gradient(111deg, #6AE8C5, #33EA8B);
+  background-color: #FF7BA6;
+  color: white;
+  &:hover {
+    color: rgba(255, 255, 255, .67);
+  }
+}
+
+.c-button--secondary {
+  color: $secondary--text--on-white;
+  border-color: $secondary--title--on-white;
+  &:hover {
+    color: #38C795;
+    border-color: #4EE9A8;
+  }
+}
+
 .t-theme2 {
   background-image: linear-gradient(111deg, #F9F8F4, #EFE5D3);
   background-size: cover;
@@ -197,24 +215,6 @@ div.error_explanation ul {
 
   .c-landing_page__text {
     color: rgba(0, 0, 0, .4);
-  }
-
-  .c-button--primary {
-    background-image: linear-gradient(111deg, #6AE8C5, #33EA8B);
-    background-color: #FF7BA6;
-    color: white;
-    &:hover {
-      color: rgba(255, 255, 255, .67);
-    }
-  }
-
-  .c-button--secondary {
-    color: $secondary--text--on-white;
-    border-color: $secondary--title--on-white;
-    &:hover {
-      color: #38C795;
-      border-color: #4EE9A8;
-    }
   }
 
   .o-half_screen .c-ipad_outline {

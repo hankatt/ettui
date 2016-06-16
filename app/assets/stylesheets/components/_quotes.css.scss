@@ -31,7 +31,8 @@
 
 .c-quote__timestamp {
   line-height: 18px;
-  width: 50px;
+  width: 52px;
+  text-align: right;
 }
 
 .c-quote__metadata {
@@ -188,8 +189,10 @@ h1.c-quote__content a {
 h1.c-quote__content.big {
   font-size: 40px;
   line-height: 1.25em;
-  font-feature-settings:"dlig" 1;
-  font-variant-ligatures: discretionary-ligatures
+  a {
+    font-feature-settings:"dlig" 1;
+    font-variant-ligatures: discretionary-ligatures;
+  }
 }
 
 h1.c-quote__content {

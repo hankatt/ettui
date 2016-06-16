@@ -29,7 +29,7 @@
 
     <div class="c-sidebar_container__row final u-text-align-center">
         <% if current_user %>
-            <%= link_to image_tag(current_user.twitter_image_url), current_user, class: "c-profile_image" %>
+            <%= link_to image_tag(current_user.twitter_image_url), profile_path, class: "c-profile_image" %>
             <%= link_to "Logout", logout_path, class: "subtitle--all-caps" %>
         <% end %>
         <%= link_to "ettúi", root_url, class: "c-ettui-logo" %>

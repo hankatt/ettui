@@ -2,8 +2,54 @@
 	color: $signature-color;
 }
 
-.o-title_container {
-	margin-bottom: 5rem;
+// .o-title_container {
+// 	margin-bottom: 5rem;
+// }
+
+.c-sidebar_container.profile .profile-section {
+  margin-bottom: 1rem;
+}
+
+.c-sidebar_container.profile .c-sidebar_container__list li {
+	margin-bottom: 0;
+}
+
+.t-white .c-sidebar_container__list li .c-section__link {
+	text-align: center;
+	padding: 1rem 0;
+	color: $signature-color;
+}
+
+.users-profile {
+	flex-direction: row;
+	.content-menu {
+		&::after {
+			content: "Menu";
+		}
+	}
+	.c-sidebar_container {
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.c-sidebar_container__list {
+		margin: 1rem auto 2rem;
+		li {
+			margin-bottom: 0;
+		}
+	}
+	.profile-section.profile-link-back {
+		margin-bottom: 0;
+		display: flex;
+		flex-direction: column;
+		.c-button {
+		}
+	}
+	.settings-title {
+		text-align: center;
+		color: $signature-color;
+		font-size: 1rem;
+		font-weight: 900;
+	}
 }
 
 .profile-container {
@@ -37,7 +83,7 @@
 	}
 	h1 {
 		font-size: 1rem;
-		font-weight: bold;
+		font-weight: 900;
 	}
 	p {
 		line-height: 1.5;
@@ -56,14 +102,11 @@
 	display: flex;
 	margin: 0 auto;
 	& + & {
-		margin-top: 2rem;
+		margin-top: 2.25rem;
+		padding-top: 2rem;
+		border-top: solid 1px #e5e5e5;
+		margin-bottom: 8rem;
 	}
-}
-
-.profile-section:nth-child(even) {
-	background: rgba(255, 255, 255, .5);
-    padding: 2rem;
-    border-radius: 10px;
 }
 
 .profile-section .section-title {
@@ -112,8 +155,7 @@
 		margin-top: 0;
 	}
 	.c-button {
-		padding: 0;
-		width: 200px;
+		padding: 0 1.25rem;
 		line-height: 35px;
     	padding-bottom: 2px;
     	align-self: center;

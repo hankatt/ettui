@@ -68,11 +68,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def profile
+
+    @section = params[:section] || "settings"
+
     if current_user && current_user.guest?
+      @user = current_user
       redirect_to completion_path, notice: "Complete your demo account to fully use Ettúi."
     elsif current_user
-      @user = User.find(params[:id])
+      @user = current_user
       @board = @user.board
     else
       redirect_to root_path, notice: "You need to sign in to view that page."
@@ -87,6 +91,10 @@ class UsersController < ApplicationController
   end
 
   def request_password_reset
+    if current_user
+      @user = current_user
+      render :notice => "You are about to request a new password for #{@user.name || @user.email}"
+    end
   end
 
   def send_password_reset

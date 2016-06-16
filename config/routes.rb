@@ -5,6 +5,7 @@ Well::Application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
   get "login" => "sessions#new", as: "login"
   get "signup" => "signup#index"
+  get "profile/(:section)" => "users#profile", as: "profile"
   get 'demo' => "users#demo", as: "demo"
   get 'users/request_password_reset' => 'users#request_password_reset', as: "request_password_reset"
   post 'users/send_password_reset' => 'users#send_password_reset', as: "send_password_reset"
@@ -25,7 +26,7 @@ Well::Application.routes.draw do
   get "introduction/finish"
   get "quote_creation", controller: "jsonp"
   get "tag_creation", controller: "jsonp"
-  resources :users, except: [:index]
+  resources :users, except: [:index, :profile]
   resources :sessions, only: [:new, :create, :destroy]
   resources :boards, only: [:show] do
     resources :quotes, only: [:destroy, :show] do

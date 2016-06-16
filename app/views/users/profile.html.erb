@@ -1,0 +1,91 @@
+<% if flash[:notice] %>
+  <div class="c-status_message green"><%= flash[:notice] %></div>
+<% end %>
+<div class="c-sidebar_container">
+  <div class="icon-menu js-toggle-menu"></div>
+  <div class="profile-section profile-data profile-container">
+    <img src="<%= @user.twitter_image_url %>"/>
+    <h1><%= @user.name_or_email %></h1>
+    <p><%= @user.twitter_description || "No description" %></p>
+    <ul class="c-sidebar_container__list">
+      <li>
+        <%= link_to "Account details", profile_path(:settings), class: "c-section__link" %>
+      </li>
+      <li>
+        <%= link_to "Bookmarklet", profile_path(:bookmarklet), class: "c-section__link" %>
+      </li>
+      <li>
+        <%= link_to "Reset password", profile_path(:reset_password), class: "c-section__link" %>
+      </li>
+    </ul>
+  </div>
+  <div class="profile-section profile-data profile-link-back">
+    <%= link_to "Back to your Quotes", board_path(@user.board), class: "c-button" %>
+    <%= link_to "ettúi", root_url, class: "c-ettui-logo" %>
+  </div>
+</div>
+<div class="o-content_container">
+  <div class="icon-menu js-toggle-menu content-menu"></div>
+  <div class="o-title_container">
+    <% if @section.eql?("settings") %>
+      <h1 class="o-content_container__title settings-title">
+        Account details.
+      </h1>
+      <div class="o-quotes_container">
+        <div class="profile-section profile-details">
+          <%= form_for @user do |f| %>
+           <%= f.label :email, "Your e-mail", :class => "subtitle subtitle--all-caps" %>
+           <%= f.text_field :email, :placeholder => "No e-mail set" %>
+           <%= f.label :name, "Your name", :class => "subtitle subtitle--all-caps" %>
+           <%= f.text_field :name %>
+           <%= f.label :twitter_description, "Description", :class => "subtitle subtitle--all-caps" %>
+           <%= f.text_area :twitter_description %>
+           <%= f.label :twitter_image_url, "Profile image", :class => "subtitle subtitle--all-caps" %>
+           <%= f.text_field :twitter_image_url %>
+           <%= f.submit "Update details", :class => "c-button subtitle subtitle--all-caps" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% if @section.eql?("reset_password") %>
+      <h1 class="o-content_container__title settings-title">
+        Reset password.
+      </h1>
+      <div class="o-quotes_container">
+        <div class="profile-section profile-bookmarklet">
+          <p>
+            Click the link below to request a new password for your account.
+          </p>
+          <%= link_to "Request a new password", request_password_reset_path, :class => "c-button subtitle subtitle--all-caps" %>
+        </div>
+      </div>
+    <% end %>
+    <% if @section.eql?("bookmarklet") %>
+      <h1 class="o-content_container__title settings-title">
+        Bookmarklet.
+      </h1>
+      <div class="o-quotes_container">
+        <div class="profile-section profile-bookmarklet">
+          <p>
+            If you need to re-install your bookmarklet, please refer to<br/>Ettúi's <%= link_to "installation instructions", introduction_path %>.
+          </p>
+        </div>
+      </div>
+    <% end %>
+      <!-- <div class="profile-section profile-data profile-infographics">
+        <div class="graph">
+          <p class="subtitle subtitle--all-caps">Quotes</p>
+          <h1><%= @user.quote_count %></h1>
+        </div>
+        <div class="graph">
+          <p class="subtitle subtitle--all-caps">Sites</p>
+          <h1><%= @user.source_count %></h1>
+        </div>
+        <div class="graph">
+          <p class="subtitle subtitle--all-caps">Tags</p>
+          <h1><%= @user.tag_count %></h1>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

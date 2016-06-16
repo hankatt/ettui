@@ -1,32 +1,24 @@
 <% if flash[:notice] %>
-	<div class="c-status_message c-status_message--signature">
-		<%= flash[:notice] %>
-	</div>
+  <div class="c-status_message success"><%= flash[:notice] %></div>
 <% end %>
-<div class="o-content_container t-theme2">
-  <div class="o-title_container">
-  	<h1 class="profile-title"><%= link_to "ettúi", '/', class: "c-ettui-logo" %></h1>
-    <h1 class="profile-title">
-    	Make this account yours.
-    </h1>
-    <p class="profile-title profile-title--pitch">
-    	Completing this demo account enables you to keep using your bookmarklet and access the quotes saved with it.
-    </p>
-    <div class="o-quotes_container">
-      <div class="profile-section profile-data profile-container">
-        <img src="<%= @user.twitter_image_url %>"/>
-        <h1><%= @user.name_or_email %></h1>
-        <p><%= @user.twitter_description || "No description" %></p>
-      </div>
-      <div class="profile-section profile-details naked">
+<div class="o-overlay t-theme2">
+  <div class="c-modal__window">
+    <div class="modal__content">
+      <%= link_to "ettúi", :back, class: "c-ettui-logo" %>
+      <h1>
+        Make the demo yours.
+      </h1>
+      <p>
+        In order to connect this account with you, we need your e-mail address. It is only used to manage your account.
+      </p>
+      <div class="profile-details naked">
         <%= form_for @user do |f| %>
-         <%= f.label :email, "Your e-mail", :class => "subtitle subtitle--all-caps" %>
-         <%= f.text_field :email, :placeholder => "No e-mail set" %>
-         <%= f.submit "Confirm account", :class => "c-button subtitle subtitle--all-caps" %>
+         <%= f.text_field :email, :placeholder => "Your e-mail address" %>
+         <%= f.submit "Confirm account", :class => "button" %>
         <% end %>
-      </div>
-      <div class="profile-section profile-details">
-        <p>You can edit remaining user details after confirming.</p>
+        <p>
+          After this you'll be able to set a password.  
+        </p>
       </div>
     </div>
   </div>

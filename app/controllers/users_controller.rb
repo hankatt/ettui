@@ -43,10 +43,10 @@ class UsersController < ApplicationController
   end
 
   def demo
-    redirect_to root_path if current_user
-    @user = CreateGuest.create
-
-    if @user.new_user
+    if current_user
+      redirect_to board_path(current_user.board)
+    else
+      @user = CreateGuest.create
       if @user.save
         # Establish a session
         session[:user_id] = @user.id
@@ -54,8 +54,6 @@ class UsersController < ApplicationController
         # What happens after the save is complete
         redirect_to introduction_path
       end
-    else
-      redirect_to board_quotes(@user.board)
     end
   end
 

@@ -1,4 +1,4 @@
-<div class="c-sidebar_container">
+<div class="c-sidebar_container t-white">
     <div class="icon-menu js-toggle-menu"></div>
     <div class="c-sidebar_container__header">
         <h1 class="subtitle--all-caps">Search</h1>
@@ -29,8 +29,8 @@
 
     <div class="c-sidebar_container__row final u-text-align-center">
         <% if current_user %>
-            <%= link_to image_tag(current_user.twitter_image_url), profile_path, class: "c-profile_image" %>
-            <%= link_to "Logout", logout_path, class: "subtitle--all-caps" %>
+            <%= link_to image_tag(current_user.twitter_image_url, class: "a-profile_image"), profile_path %>
+            <%= link_to "Logout", logout_path, class: "subtitle--all-caps c-button--text--secondary" %>
         <% end %>
         <%= link_to "ettúi", root_url, class: "c-ettui-logo" %>
     </div>

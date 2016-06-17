@@ -1,0 +1,102 @@
+.a-profile_image {
+  border-radius: 40px;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-item--half {
+	width: 50%;
+}
+
+.t-theme2 {
+  background-image: linear-gradient(111deg, #F9F8F4, #EFE5D3);
+  background-size: cover;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.c-ettui-logo {
+  @supports(-webkit-background-clip: text) {
+    color: transparent !important;
+    background-image: linear-gradient(111deg, #6AE8C5, #33EA8B); //linear-gradient(111deg, #FFC440, #ff6899);
+    -webkit-background-clip: text;
+  }
+  font-family: $font-family-display !important;
+  color: $signature-color !important;
+  font-size: 1.8rem !important;
+  letter-spacing: -.046875rem !important;
+  text-align: center;
+  &:hover {
+    opacity: .7 !important;
+    color: transparent !important;
+  }
+  text-decoration: none !important;
+}
+
+.c-button {
+	display: inline-flex;
+	line-height: 2.5rem;
+	padding: 0 1.5rem;
+	letter-spacing: 0;
+	justify-content: center;
+	border-radius: 2.5rem;
+	color: $primary--on-white;
+	transition: all .15s;
+	font-weight: 400;
+}
+
+.c-button--primary {
+	background-image: linear-gradient(111deg, #6AE8C5, #33EA8B);
+	background-color: $signature-color;
+	color: white !important;
+	&:hover {
+		color: rgba(255, 255, 255, .85);
+	}
+}
+
+.c-button--secondary {
+  border: solid 1px $signature-color;
+  color: $signature-color;
+  &:hover {
+	color: $signature-color;
+  }
+}
+
+.c-button--tertiary {
+  border: solid 1px rgba(0, 0, 0, .15);
+  &:hover {
+    color: $signature-color;
+  }
+}
+
+.c-button--text--primary {
+  border: transparent;
+  color: $signature-color;
+  &:hover {
+  	color: $signature-color;
+  }
+}
+
+.c-button--text--secondary {
+  border: transparent;
+  color: $primary--on-white;
+  &:hover {
+  	color: $signature-color;
+  }
+}
+
+a.secondary {
+	color: $secondary--text--on-white;
+}

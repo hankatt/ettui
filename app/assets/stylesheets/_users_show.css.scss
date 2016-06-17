@@ -1,23 +1,5 @@
-.signature-color {
-	color: $signature-color;
-}
-
-// .o-title_container {
-// 	margin-bottom: 5rem;
-// }
-
 .c-sidebar_container.profile .profile-section {
   margin-bottom: 1rem;
-}
-
-.c-sidebar_container.profile .c-sidebar_container__list li {
-	margin-bottom: 0;
-}
-
-.t-white .c-sidebar_container__list li .c-section__link {
-	text-align: center;
-	padding: 1rem 0;
-	color: $signature-color;
 }
 
 .users-profile {
@@ -33,9 +15,6 @@
 	}
 	.c-sidebar_container__list {
 		margin: 1rem auto 2rem;
-		li {
-			margin-bottom: 0;
-		}
 	}
 	.profile-section.profile-link-back {
 		margin-bottom: 0;
@@ -46,7 +25,7 @@
 		text-align: center;
 		color: $signature-color;
 		font-size: 1rem;
-		font-weight: 900;
+		font-weight: bold;
 	}
 }
 
@@ -64,26 +43,13 @@
 	font-family: $font-family-serif;
 }
 
-.profile-details form .c-button {
-	margin-top: 2rem;
-}
-
-.profile-section p a {
-	color: $signature-color;
-}
-
-.profile-section .c-button {
-	margin-top: 1rem;
-	font-size: .875rem;
-}
-
 .profile-container {
 	h1, p {
 		margin-top: .5rem;
 	}
 	h1 {
 		font-size: 1rem;
-		font-weight: 900;
+		font-weight: bold;
 	}
 	p {
 		line-height: 1.5;
@@ -101,12 +67,24 @@
 	max-width: 480px;
 	display: flex;
 	margin: 0 auto;
-	& + & {
-		margin-top: 2.25rem;
-		padding-top: 2rem;
-		border-top: solid 1px #e5e5e5;
-		margin-bottom: 8rem;
+	a {
+		color: $signature-color;
 	}
+	.c-button--primary,
+	.c-button--secondary {
+		margin-top: 2rem;
+	}
+}
+
+.c-sidebar_container .profile-section {
+	& + & {
+		margin-top: 2rem;
+		border-top: solid 1px #e5e5e5;
+	}
+}
+
+.profile-section .c-button + .c-ettui-logo {
+	margin-top: 2rem;
 }
 
 .profile-section .section-title {

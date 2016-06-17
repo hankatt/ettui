@@ -13,9 +13,9 @@ class TagsController < ApplicationController
     end
 
     # Add it to the quotes set of tags
-    @quote.tags << tag
+    @quote.tags << @tag
 
-    redirect_to board_path(current_user.board)
+    redirect_to :back
   end
 
   def destroy    
@@ -28,7 +28,7 @@ class TagsController < ApplicationController
       @quote.tags.delete(@tag)
     end
 
-    redirect_to board_path(current_user.board)
+    redirect_to :back
   end
 
 private

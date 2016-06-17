@@ -13,7 +13,8 @@
       </p>
       <div class="profile-details naked">
         <%= form_for @user do |f| %>
-         <%= f.text_field :email, :placeholder => "Your e-mail address" %>
+          <%= f.hidden_field :guest, :value => false %>
+          <%= f.text_field :email, :placeholder => "Your e-mail address" %>
          <%= f.submit "Confirm account", :class => "button" %>
         <% end %>
         <p>

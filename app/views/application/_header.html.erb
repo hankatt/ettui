@@ -1,14 +1,12 @@
-<header class="c-header">
-  <div class="c-header__container">
-    <h1 class="c-ettui-logo">ettúi.</h1>
-    <div class="c-header_ctas__container">
-      <% if current_user %>
-        <%= link_to "Logout", logout_path, class: "subtitle--all-caps c-header__link" %>
-        <%= link_to image_tag(current_user.twitter_image_url), board_path(current_user.boards.first), class: "c-profile_image" %>
-      <% else %>
-        <%= link_to "Try our demo", demo_path, class: "subtitle--all-caps c-header__link" %>
-        <%= link_to "Sign in", login_path, class: "subtitle--all-caps c-header__link" %>
-      <% end %>
-    </div>
+<header>
+  <h1 class="c-ettui-logo">ettúi.</h1>
+  <div>
+    <% if current_user %>
+      <%= link_to "Logout", logout_path, class: "subtitle--all-caps header__link secondary" %>
+      <%= link_to image_tag(current_user.twitter_image_url, class: "a-profile_image"), board_path(current_user.boards.first) %>
+    <% else %>
+      <%= link_to "Try our demo", demo_path, class: "subtitle--all-caps header__link secondary" %>
+      <%= link_to "Sign in", login_path, class: "subtitle--all-caps header__link secondary" %>
+    <% end %>
   </div>
 </header>

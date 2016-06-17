@@ -9,13 +9,13 @@
     <p><%= @user.twitter_description || "No description" %></p>
     <ul class="c-sidebar_container__list">
       <li>
-        <%= link_to "Account details", profile_path(:settings), class: "c-section__link" %>
+        <%= link_to "Account details", profile_path(:settings), class: "c-button c-button--text--primary" %>
       </li>
       <li>
-        <%= link_to "Bookmarklet", profile_path(:bookmarklet), class: "c-section__link" %>
+        <%= link_to "Bookmarklet", profile_path(:bookmarklet), class: "c-button c-button--text--primary" %>
       </li>
       <li>
-        <%= link_to "Reset password", profile_path(:reset_password), class: "c-section__link" %>
+        <%= link_to "Reset password", profile_path(:reset_password), class: "c-button c-button--text--primary" %>
       </li>
     </ul>
   </div>

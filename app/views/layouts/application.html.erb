@@ -88,9 +88,9 @@
     </script>
     <script src="//cdn.zarget.com/56941/61363.js"></script>
 </head>
-<body class="t-white <%= params[:action] if params[:controller].eql?("welcome") %>">
+<body class="<%= params[:action] if params[:controller].eql?("welcome") %>">
 
-<div id="smooth" class="container <%= params[:controller] %>-<%= params[:action] %>">
+<div class="container <%= params[:controller] %>-<%= params[:action] %>">
   <%= yield %>
 </div>
 

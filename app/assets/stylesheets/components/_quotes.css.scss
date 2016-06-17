@@ -44,7 +44,7 @@
   }
 
   .c-quote__title {
-    color: $signature-color;
+    color: $secondary--text--on-white;
   }
 
   .c-quote__title.is-truncated {
@@ -67,15 +67,9 @@
   }
 
   .c-quote__author {
-    color: $secondary--text--on-white;
     &::before {
       content: "\00a0 ";
     }
-  }
-
-  .c-quote__title,
-  .c-quote__author {
-    font-weight: 100;
   }
 }
 
@@ -121,7 +115,7 @@
 .c-quote__tags .c-tag__name,
 .c-quote__title,
 .c-quote__author {
-  color: $signature-color;
+  color: $secondary--text--on-white;
   letter-spacing: -0.25px;
 }
 
@@ -169,13 +163,10 @@ h1.c-quote__content.big mark {
   opacity: .1;
 }
 
+.c-quote__title:hover,
 .c-quote:hover .c-quote__remove:hover {
   opacity: 1;
   color: $signature-color;
-}
-
-a.c-quote__title:hover {
-  color: #000;
 }
 
 /* Break points */

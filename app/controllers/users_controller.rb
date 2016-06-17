@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       # If we're finalizing a demo user
-      if @user.guest? && @user.email
+      if user_params[:guest].eql?("false")
         @user.create_password_reset_token
         redirect_to reset_password_path(@user.password_reset_token)
       else

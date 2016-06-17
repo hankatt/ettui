@@ -1,24 +1,22 @@
 <div class="t-theme2">
   <%= render "header" %>
-  <div class="c-landing_page o-full_screen o-full_screen--centered u-clearfix">
-    <div class="o-half_screen">
+  <main class="flex-row c-landing_page">
+    <div class="flex-item--half">
       <h1 class="c-landing_page__title">
          You should always have the great things you’ve read with you.
       </h1>
-      <p class="c-landing_page__text">    
+      <p class="c-landing_page__text">  
         That is why we designed a service to easily save & catalogue those gems, so that they’re accessible from anywhere—at any time.
       </p>
       <% if current_user.nil? %>
         <%= link_to "Try our demo", demo_path, class: "c-button c-button--secondary" %>
       <% end %>
-      <%= link_to signup_path, class: "c-button c-button--primary" do %>
-        <p>Create an account</p>
-      <% end %>
+      <%= link_to "Create an account", signup_path, class: "c-button c-button--primary" %>
     </div>
-    <div class="o-half_screen u-text-align-center">
-      <div class="c-landing_page__image_viewport">
-        <%= image_tag "device-ipadmini-outlined.svg", class: "c-landing_page__image" %>
-        <%= image_tag "ettui-ipad-2.png", class: "content" %>
+    <div class="flex-item--half">
+      <div class="c-viewport">
+        <%= image_tag "device-ipadmini-outlined.svg", class: "c-viewport__frame" %>
+        <%= image_tag "ettui-ipad-2.png", class: "c-viewport__content" %>
       </div>
     </div>
   </div>

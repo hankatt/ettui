@@ -1,0 +1,104 @@
+.welcome-index {
+	.c-button + .c-button {
+		margin-left: .5rem;
+	}
+}
+
+header,
+main {
+	margin: 0 auto;
+	max-width: 840px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 60px;
+}
+
+header + main {
+	margin-top: 3rem;
+	margin-bottom: 5rem;
+}
+
+.header__link {
+  margin-left: 1rem;
+}
+
+.c-landing_page {
+	height: calc(100vh - 60px - 128px);
+	min-height: 536px;
+}
+
+.c-landing_page__title + .c-landing_page__text {
+	margin-top: 1.1rem;
+}
+
+.c-landing_page__title,
+.c-landing_page__text {
+	font-weight: 300;
+	padding-right: 3.5rem;
+}
+
+.c-landing_page__title {
+    font-size: 2.3rem;
+    letter-spacing: -0.0625rem;
+    line-height: 1.25;
+    margin-top: 3rem;
+    color: $primary--on-white;
+}
+
+.c-landing_page__text {
+  font-size: 1rem;
+  line-height: 1.619rem;
+  letter-spacing: -.25px;
+  color: $secondary--text--on-white;
+}
+
+.c-landing_page__text + .c-button {
+	margin-top: 2.3rem;
+}
+
+.c-viewport {
+	float: right;
+	position: relative;
+	width: 86.5%;
+	.c-viewport__frame {
+	    width: 100%;
+	    border: none;
+    }
+	.c-viewport__content {
+		position: absolute;
+		top: 10.4%;
+		left: 6%;
+		width: 88%;
+		height: 79.2%;
+		border: solid 1px #ccc;
+	}
+}
+
+.c-landing_page__footer {
+  justify-content: center;
+  background-image: linear-gradient(111deg, #6AE8C5, #33EA8B);
+  color: transparent;
+  text-align: center;
+  padding: 80px 0;
+  box-shadow: inset 0 1px .25rem rgba(0, 0, 0, .2);
+
+  .c-ettui-logo {
+    margin-bottom: 1.25rem;
+    text-shadow: 0 0px .125rem rgba(0, 0, 0, .1);
+  }
+}
+
+.c-landing_page__footer_title {
+  font-family: $font-family-sans;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-feature-settings: "smcp", "c2sc";
+    text-shadow: 0 0px .0625rem rgba(0, 0, 0, .2);
+    letter-spacing: 1px;
+    font-size: 12px;
+}

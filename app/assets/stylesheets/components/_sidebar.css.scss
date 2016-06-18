@@ -27,6 +27,7 @@
     color: #999;
   }
   &.final {
+    overflow: auto;
     flex-grow: 1;
     flex-direction: column;
     justify-content: flex-end;

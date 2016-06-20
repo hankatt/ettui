@@ -30,6 +30,9 @@
     <div class="c-sidebar_container__row final u-text-align-center">
         <% if current_user %>
             <%= link_to image_tag(current_user.twitter_image_url, class: "a-profile_image"), profile_path %>
+            <% if current_user.guest? %>
+                <%= link_to "Demo", completion_path, class: "a-label", title: "Make this demo account yours." %>
+            <% end %>
             <%= link_to "Logout", logout_path, class: "subtitle--all-caps c-button--text--secondary" %>
         <% end %>
         <%= link_to "ettúi", root_url, class: "c-ettui-logo" %>

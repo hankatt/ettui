@@ -100,3 +100,18 @@
 a.secondary {
 	color: $secondary--text--on-white;
 }
+
+.a-label {
+  font-size: .625rem;
+  letter-spacing: .0625rem;
+  padding: .125rem .375rem;
+  border: solid 1px $signature-color;
+  border-radius: 3px;
+  color: $signature-color;
+  text-transform: uppercase;
+  transition: background-color .2s, color .2s;
+  &:hover {
+    background-color: $signature-color;
+    color: white;
+  }
+}

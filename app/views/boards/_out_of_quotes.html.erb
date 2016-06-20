@@ -1,7 +1,7 @@
-<div class="quotes-list">
+<!-- <div class="quotes-list">
   <div class="quotes-list-information-container">
-    <h1>You seem to be out of quotes.</h1>
-    <h3>Here are a few sites that are popular amongst other users.</h3>
+    <h1>Adding your first quote is simple.</h1>
+    <h5>Highlight any text and click your Ettúi bookmarklet. If you want to give it a try straight away, many people find the following pages worthwhile.</h5>
     <div class="recommendation-link">
       <%= link_to "medium.com", "http://www.medium.com" %>
     </div>
@@ -11,5 +11,49 @@
     <div class="recommendation-link">
       <%= link_to "thegreatdiscontent.com", "http://thegreatdiscontent.com" %>
     </div>
+  </div>
+</div>
+ -->
+ <div>
+   <!-- Title and Favicon !-->
+  <div class="c-quote__metadata__container">
+    <div class="c-quote__metadata c-quote__metadata--title-and-author c-quote__metadata--secondary">
+      <%= image_tag "/favicon.ico", class: "c-quote__favicon" %>
+      <%= link_to "#!", class: "c-quote__title is-truncated" do %>
+        <%= "Getting started with Ettúi." %>
+      <% end %>
+    </div>
+    <div class="c-quote__metadata c-quote__metadata--primary">
+      <p class="c-quote__timestamp subtitle--all-caps subtitle--secondary" title="Date of creation.">
+        19 Mar
+      </p>
+    </div>
+  </div>
+
+  <!-- Quote !-->
+  <h1 class="c-quote__content small">
+    <div class="quotes-list-information-container">
+      <p>Adding your first quotes is as simple as highlighting text and clicking your Ettúi bookmarklet. If you want to give it a try straight away, many people find the following pages worthwhile:</p>
+      <div class="recommendation-link">
+        <%= link_to "medium.com", "http://www.medium.com" %>
+      </div>
+      <div class="recommendation-link">
+        <%= link_to "alistapart.com", "http://www.alistapart.com" %>
+      </div>
+      <div class="recommendation-link">
+        <%= link_to "thegreatdiscontent.com", "http://thegreatdiscontent.com" %>
+      </div>
+    </div>
+  </h1>
+
+  <div class="c-quote__tags">
+      <ul class="u-inline-block">
+        <li class="c-tag">
+          <p class="c-tag__name">addingyourfirstquote</p>
+        </li>
+        <li class="c-tag">
+          <p class="c-tag__name">removesthisone</p>
+        </li>
+      </ul>
   </div>
 </div>

@@ -33,6 +33,9 @@
     justify-content: flex-end;
     display: flex;
     align-items: center;
+    a + a {
+      margin-top: .5rem;
+    }
   }
 }
 

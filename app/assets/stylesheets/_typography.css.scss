@@ -47,18 +47,25 @@
       text-transform: none;
     }
 }
+
 /*
   If browsers support font-variant-caps,
   this while apply to them.
 */
 @supports(font-variant-caps: all-small-caps) {
-    .subtitle--all-caps {
-      font-variant: normal;
-      font-size: 15px;
-      font-variant-caps: normal; //all-small-caps; makes it too small…
-      text-transform: none;
-      letter-spacing: .75px;
-    }
+  .subtitle--all-caps { //Falling back to using fake small-caps due to all-small-caps rendering in disproportionate/too small size.
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    font-weight: 400;
+  }
+    // .subtitle--all-caps {
+    //   font-variant: normal;
+    //   font-size: 15px;
+    //   font-variant-caps: all-small-caps; //all-small-caps; makes it too small…
+    //   text-transform: uppercase;
+    //   letter-spacing: .75px;
+    // }
 }
 
 /*

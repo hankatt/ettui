@@ -151,19 +151,17 @@
   border-top: solid 1px #34d287;
 }
 
-.noted-bookmarklet .noted-tag:hover + .noted-tag {
-  border-top: solid 1px #34d287;
-}
-
 .noted-bookmarklet .noted-tag.selected {
   background-image: -webkit-linear-gradient(339deg, #6ae8c5, #33ea8b);
   background-image: linear-gradient(111deg, #6ae8c5, #33ea8b);
   background-color: #2fd67f;
   border-top: solid 1px #34d287;
   color: #fff;
-  & + .noted-tag {
-    border-top: solid 1px #34d287;
-  }
+}
+
+.noted-bookmarklet .noted-tag:hover + .noted-tag,
+.noted-bookmarklet .noted-tag.selected + .noted-tag {
+  border-top: solid 1px #34d287;
 }
 
 .noted-bookmarklet .noted-tag:before {
@@ -260,6 +258,7 @@
   font-size: 14px;
   letter-spacing: .5px;
   height: 40px;
+  box-sizing: border-box;
 }
 
 .noted-bookmarklet #noted-close-btn:hover {

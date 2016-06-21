@@ -55,7 +55,7 @@
     .subtitle--all-caps {
       font-variant: normal;
       font-size: 15px;
-      font-variant-caps: all-small-caps;
+      font-variant-caps: normal; //all-small-caps; makes it too small…
       text-transform: none;
       letter-spacing: .75px;
     }

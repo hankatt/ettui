@@ -228,6 +228,11 @@ h1.c-quote__content {
 h1.c-quote__content.small {
   font-size: 20px;
   line-height: 1.5em;
+  em {
+    text-transform: uppercase;
+    font-feature-settings: "c2sc" 1, "smcp" 1;
+    font-variant: small-caps;
+  }
 }
 
 .quote--show {

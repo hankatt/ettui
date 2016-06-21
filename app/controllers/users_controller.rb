@@ -76,6 +76,7 @@ class UsersController < ApplicationController
     elsif current_user
       @user = current_user
       @board = @user.board
+      render "profile", notice: nil
     else
       redirect_to root_path, notice: "You need to sign in to view that page."
     end

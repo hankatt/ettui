@@ -17,6 +17,16 @@ $(document).on('ready DOMChange', function() {
     
 });
 
+$(window).scroll(function() {
+    scrollDistance = $(this).scrollTop();
+    if(scrollDistance > 50) {
+        $(".c-landing_page__footer").addClass('glow');
+    }
+    if(scrollDistance < 10) {
+        $(".c-landing_page__footer").removeClass('glow');
+    }
+});
+
 $(window).load(function() {
     $(".c-landing_page__image_viewport iframe").animate({
         opacity: 1

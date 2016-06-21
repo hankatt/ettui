@@ -1,4 +1,4 @@
-@import '//fonts.googleapis.com/css?family=Ek+Mukta:300';
+@import 'https://fonts.googleapis.com/css?family=Ek+Mukta:300';
 
 .noted-spinner {
   width: 30px;
@@ -55,7 +55,7 @@
 
 .noted-bookmarklet .noted-content-container {
   overflow: auto;
-  display: none;
+  display: block; // DEFAULT IS display: none;
 }
 
 .noted-bookmarklet .noted-logo.visible,

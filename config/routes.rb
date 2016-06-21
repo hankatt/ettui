@@ -16,8 +16,8 @@ Well::Application.routes.draw do
 
   # TODO: A welcome view:
   # "Welcome to Ettúi, {let's get started}"
-  # get "welcome" => "welcome#index", as: "welcome"
 
+  get "bookmarklet/preview" => "jsonp#preview", as: "bookmarklet_preview"
   get "legal/tos"
   get "legal/pp"
   get "demo/complete" => "users#complete", as: "completion"

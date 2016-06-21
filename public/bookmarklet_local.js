@@ -2,11 +2,12 @@
 
 
       Bookmarklet Structure
-      Updated 20150715
+      Latest    20160621
+      Previous  20151126
 
 
       1. Supporting assets
-        1.1 Include WebFonts
+        (1.1 Include WebFonts // Deprecated 20160621 (@imported in .css))
         1.2 Include jQuery
         1.3 Include Ettúi CSS
       2. Save quote & define with callbacks
@@ -26,29 +27,6 @@
 */
 
 bookmarklet_server_host = "localhost:3000"
-
-/*
-
-
-    1.1 Include WebFonts
-
-
-*/
-WebFontConfig = {
-  google: { 
-    families: [ 'Open+Sans:300,600:latin' ]
-  }
-};
-
-(function() {
-  var wf = document.createElement('script');
-  wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-  wf.type = 'text/javascript';
-  wf.async = 'true';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(wf, s);
-})();
 
 /*
 

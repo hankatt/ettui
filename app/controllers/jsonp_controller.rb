@@ -66,4 +66,12 @@ class JsonpController < ApplicationController
       end
     end
   end
+
+  def preview
+    if current_user
+      @tags = current_user.unique_tags
+    else
+      redirect_to :root
+    end
+  end
 end

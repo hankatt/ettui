@@ -58,6 +58,7 @@
     text-transform: uppercase;
     letter-spacing: .75px;
     font-weight: 400;
+    font-feature-settings:"smcp" 0, "c2sc" 0;
   }
     // .subtitle--all-caps {
     //   font-variant: normal;

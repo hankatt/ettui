@@ -6,6 +6,9 @@ gem 'fastclick-rails'
 gem 'font-awesome-rails'
 gem 'rails', '4.2.5'
 
+# Simplifying HTTP requests
+gem 'rest-client'
+
 # CSS Auto prefixer
 gem "autoprefixer-rails"
 

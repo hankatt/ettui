@@ -1,3 +1,26 @@
+class ContentParser
+
+  # URL to Readability's Parser API
+  PARSER_URI = URI('https://mercury.postlight.com/parser')
+  PARSER_TOKEN = 'YuMAgDBR7CoaYbSqbVQyj2xMWnnuTYqBzHjsluSv'
+
+  def self.parse_url(url)
+    # URL to parse with the Parser API
+    url = URI.unescape(url)
+
+    # Format params to web form format
+    PARSER_URI.query = URI.encode_www_form({:url => url, "x-api-token" => PARSER_TOKEN })
+
+    # Readability Parser response
+    response = Net::HTTP.get_response(PARSER_URI)
+    parsed = ActiveSupport::JSON.decode(response.body)
+
+    # Returns parsed
+    parsed
+  end
+end
+
+=begin
 class ReadabilityParser
 
   # URL to Readability's Parser API
@@ -19,3 +42,4 @@ class ReadabilityParser
     parsed
   end
 end
+=end

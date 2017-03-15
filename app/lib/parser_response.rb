@@ -1,10 +1,10 @@
-class ReadabilityResponse
+class ParserResponse
   attr_reader :title, :author
 
   def initialize(url)
-    readability_response = ReadabilityParser.parse_url(url)
-    @title = readability_response["title"]
-    @author = readability_response["author"]
+    parsed_response = ContentParser.parse_url(url)
+    @title = parsed_response["title"]
+    @author = parsed_response["author"]
   end
 
   def author

@@ -9,11 +9,18 @@ class ContentParser
     url = URI.unescape(url)
 
     # Format params to web form format
-    PARSER_URI.query = URI.encode_www_form({:url => url, "x-api-token" => PARSER_TOKEN })
+    PARSER_URI.query = URI.encode_www_form(:url => url)
 
     # Readability Parser response
-    response = Net::HTTP.get_response(PARSER_URI)
-    parsed = ActiveSupport::JSON.decode(response.body)
+    req = Net::HTTP::Get.new(PARSER_URI)
+    req.add_field('x-api-token', PARSER_TOKEN)
+
+    http = Net::HTTP.new(PARSER_URI.host, PARSER_URI.port)
+    http.use_ssl = true
+      
+    res = http.request(req)
+
+    parsed = ActiveSupport::JSON.decode(res.body)
 
     # Returns parsed
     parsed

@@ -44,14 +44,15 @@ class UsersController < ApplicationController
 
   def demo
     if current_user
-      redirect_to board_path(current_user.board)
+      redirect_to board_path(current_user.board), notice: "You can't create a demo user when you are already signed in."
     else
       @user = CreateGuest.create
       if @user.save
-        # Establish a session
+
+        # Initiate a session
         session[:user_id] = @user.id
 
-        # What happens after the save is complete
+        # Introduce them to their bookmarklet
         redirect_to introduction_path
       end
     end
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
       @user = current_user
       render "complete", notice: "Complete your demo account."
     else
-      redirect_to root_path, notice: "You need to be signed in as demo user view that page."
+      redirect_to root_path, notice: "You need to be signed in as a demo user to do that."
     end
   end
 
@@ -89,6 +90,14 @@ class UsersController < ApplicationController
     redirect_to signup_path
   end
 
+  def reset_password
+    if params[:password_reset_token]
+      @user = User.find_by(password_reset_token: params[:password_reset_token])
+    else
+      redirect_to request_password_reset_path, :notice => "Your password could not be reset. Please try again."
+    end
+  end
+
   def request_password_reset
     if current_user
       @user = current_user
@@ -101,14 +110,6 @@ class UsersController < ApplicationController
     if @user
       @user.send_password_reset
       redirect_to login_path, :notice => "A link where you can reset your password has been sent to your mail."
-    else
-      redirect_to request_password_reset_path, :notice => "Your password could not be reset. Please try again."
-    end
-  end
-
-  def reset_password
-    if params[:password_reset_token]
-      @user = User.find_by(password_reset_token: params[:password_reset_token])
     else
       redirect_to request_password_reset_path, :notice => "Your password could not be reset. Please try again."
     end

@@ -12,12 +12,12 @@ class QuoteHandler
     favicon = URI.unescape(params[:favicon])
 
     source = Source.find_by(hostname: hostname) || Source.create(hostname: hostname, favicon: favicon)
-    readability_response = ReadabilityResponse.new(quote[:url])
+    content_parser_response = ParserResponse.new(quote[:url])
 
     # Complete 'quote' hash for creation
   	quote[:source_id] = source.id
-    quote[:readability_title] = readability_response.title
-    quote[:readability_author] = readability_response.author
+    quote[:readability_title] = content_parser_response.title
+    quote[:readability_author] = content_parser_response.author
 
     # Create Quote object
     @quote = Quote.new(quote)

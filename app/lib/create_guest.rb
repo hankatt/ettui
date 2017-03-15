@@ -4,7 +4,7 @@ class CreateGuest
 
     user.guest = true
     user.new_user = true
-    user.name = "Kim 'Demo' Chi"
+    user.name = "Demo User"
     user.twitter_image_url = "https://randomuser.me/api/portraits/med/women/84.jpg"
 
     user

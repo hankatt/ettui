@@ -11,14 +11,26 @@ class ContentParser
     # Format params to web form format
     PARSER_URI.query = URI.encode_www_form(:url => url)
 
-    # Readability Parser response
-    req = Net::HTTP::Get.new(PARSER_URI)
-    req.add_field('x-api-token', PARSER_TOKEN)
+    # # Readability Parser response
+    # req = Net::HTTP::Get.new(PARSER_URI)
+    # req.add_field('x-api-token', PARSER_TOKEN)
 
-    http = Net::HTTP.new(PARSER_URI.host, PARSER_URI.port)
-    http.use_ssl = true
+    # http = Net::HTTP.new(PARSER_URI.host, PARSER_URI.port)
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       
-    res = http.request(req)
+    # res = http.request(req)
+
+    request = Net::HTTP::Get.new(PARSER_URI)
+    request["X-Api-Key"] = PARSER_TOKEN
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    res = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
 
     parsed = ActiveSupport::JSON.decode(res.body)
 

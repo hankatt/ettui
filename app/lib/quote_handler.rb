@@ -17,7 +17,6 @@ class QuoteHandler
     # Complete 'quote' hash for creation
   	quote[:source_id] = source.id
     quote[:readability_title] = content_parser_response.title
-    quote[:readability_author] = content_parser_response.author
 
     # Create Quote object
     @quote = Quote.new(quote)

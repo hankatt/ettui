@@ -25,7 +25,7 @@ class ContentParser
     request["X-Api-Key"] = PARSER_TOKEN
 
     req_options = {
-      use_ssl: uri.scheme == "https",
+      use_ssl: PARSER_URI.scheme == "https",
     }
 
     res = Net::HTTP.start(PARSER_URI.hostname, PARSER_URI.port, req_options) do |http|

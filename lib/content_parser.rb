@@ -28,7 +28,7 @@ class ContentParser
       use_ssl: uri.scheme == "https",
     }
 
-    res = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+    res = Net::HTTP.start(PARSER_URI.hostname, PARSER_URI.port, req_options) do |http|
       http.request(request)
     end
 

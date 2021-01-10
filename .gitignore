@@ -16,4 +16,5 @@
 .env
 .DS_Store
 /vendor/bundle
+vendor/bundle
 .env

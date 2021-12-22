@@ -8,9 +8,6 @@
       <h1>
         Hello, welcome back.
       </h1>
-      <%= link_to "/auth/twitter?image_size=original", class: "button twitter" do %>
-        <%= fa_icon 'twitter' %> Connect using Twitter
-      <% end %>
       <%= render "form" %>
       <p>Don't have an account?
         <%= link_to "Sign up", signup_path %>

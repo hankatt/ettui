@@ -39,13 +39,6 @@ gem 'bcrypt', :require => "bcrypt"
 # App specific Rack gem to handle JSONP callbacks
 gem 'rack-jsonp'
 
-# To handle Twitter authentication
-gem 'omniauth-twitter'
-
-# To handle Twitter correspondence
-# gem 'twitter', "~> 4.8"
-gem 'twitter', "~> 5.16"
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

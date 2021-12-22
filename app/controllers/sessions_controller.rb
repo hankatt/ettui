@@ -21,18 +21,6 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  def create_with_omniauth
-    auth = request.env["omniauth.auth"]
-    @user = User.find_by(provider: auth["provider"], uid: auth["uid"]) || CreateWithOmni.create(auth)
-
-    # Create session if the authentication was successful
-    if @user
-      create_cookies_for @user
-    end
-
-    redirect_logged_in(@user)
-  end
-
 private
   def create_cookies_for user
     session[:user_id] = user.id

@@ -12,8 +12,6 @@ Well::Application.routes.draw do
   get 'reset/(:password_reset_token)' => 'users#reset_password', as: "reset_password"
   put 'users/(:id)/update_password' => 'users#update_password', as: "update_password"
 
-  get "/auth/:provider/callback" => "sessions#create_with_omniauth"
-
   # TODO: A welcome view:
   # "Welcome to Ettúi, {let's get started}"
 

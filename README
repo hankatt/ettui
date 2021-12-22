@@ -1,0 +1,13 @@
+0. requires docker so make sure installed
+
+1. build image: in repository root
+
+	docker build -t notedapp .
+
+2. run server
+
+	docker run --name notedapp --rm -v $(pwd):/usr/src/app notedapp -b 0.0.0.0
+
+3. setup db
+
+	docker exec notedapp rake db:setup

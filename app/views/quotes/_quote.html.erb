@@ -22,7 +22,8 @@
 
   <!-- Tags !-->
   <% if current_user && controller_name.eql?("quotes") %>
-    <%= link_to (fa_icon "trash-o"), board_quote_path(@board, quote), method: :delete, class: "u-block c-quote__remove", title: "Delete this quote." %>
+    <!-- (fa_icon "trash-o") !-->
+    <%= link_to "Remove", board_quote_path(@board, quote), method: :delete, class: "u-block c-quote__remove", title: "Delete this quote." %>
   <% end %>
   <div class="c-quote__tags">
       <ul class="u-inline-block">

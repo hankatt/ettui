@@ -1,4 +1,4 @@
-FROM ruby:2.6.6
+FROM ruby:3.0.3
 RUN bundle config --global frozen 1
 WORKDIR /usr/src/app
 RUN apt update && apt install -y nodejs 

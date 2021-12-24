@@ -6,7 +6,7 @@
 
 2. run server
 
-	docker run --name notedapp --rm -v $(pwd):/usr/src/app notedapp -b 0.0.0.0
+	docker run --name notedapp --rm -v $(pwd):/usr/src/app -p 3000:3000 notedapp -b 0.0.0.0
 
 3. setup db
 

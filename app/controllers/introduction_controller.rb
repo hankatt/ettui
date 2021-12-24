@@ -10,7 +10,7 @@ class IntroductionController < ApplicationController
   end
 
   def finish
-    if current_user.update_attributes(new_user: false)
+    if current_user.update(new_user: false)
       redirect_to board_path(current_user.board)
     else
       # could not update new user -> should probably let user

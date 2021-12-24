@@ -1,4 +1,5 @@
 class JsonpController < ApplicationController
+  protect_from_forgery except: [:quote_creation, :tag_creation]
   def quote_creation
     if params[:user_token]
 

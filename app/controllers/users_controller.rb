@@ -21,10 +21,10 @@ class UsersController < ApplicationController
         @user.create_password_reset_token
         redirect_to reset_password_path(@user.password_reset_token)
       else
-        redirect_to :back, notice: "User details were updated."
+        redirect_back(fallback_location: root_path, notice: "User details were updated.")
       end
     else
-      redirect_to :back, notice: "Details could not be updated."
+      redirect_back(fallback_location: root_path, notice: "Details could not be updated.")
     end
   end
 

@@ -14,7 +14,7 @@ class Board < ActiveRecord::Base
   end
 
   def unique_tags
-      tags.uniq
+      tags.distinct
   end
 
   def source_count source

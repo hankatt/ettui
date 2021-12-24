@@ -6,6 +6,7 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
 
     if current_user.board.id.eql?(@board.id)
+      params.permit!
       @search = Search.new(params[:search])
       @board = current_user.board
       @sources = Source.where(id: @board.quotes.pluck(:source_id))
@@ -17,7 +18,7 @@ class BoardsController < ApplicationController
       end
 
       # Only return uniq entries, no duplicate hits
-      @quotes = @quotes.uniq.reverse_order
+      @quotes = @quotes.distinct.reverse_order
 
       if @search.query.empty?
         @left_title = ""

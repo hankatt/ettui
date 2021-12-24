@@ -126,7 +126,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
-    pg (0.21.0)
+    pg (1.2.3)
     postmark (1.22.0)
       json
     postmark-rails (0.21.0)
@@ -229,7 +229,7 @@ DEPENDENCIES
   font-awesome-rails
   jquery-rails
   msgpack
-  pg (~> 0.15)
+  pg
   postmark
   postmark-rails
   rack-jsonp

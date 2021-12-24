@@ -17,7 +17,7 @@ gem 'postmark-rails'
 gem 'postmark'
 
 group :production do
-  gem 'pg', '~> 0.15'
+  gem 'pg'
   gem 'rails_12factor'
   gem 'unicorn'
 end

@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
-ruby '2.6.6'
+ruby '3.0.3'
 
 # Remove 300ms tap event delay for touch devices
 gem 'fastclick-rails'
 gem 'font-awesome-rails'
-gem 'rails', '4.2.10'
+gem 'rails', '~> 7.0.0'
 
 # Simplifying HTTP requests
 gem 'rest-client'
@@ -13,7 +13,7 @@ gem 'rest-client'
 gem "autoprefixer-rails"
 
 # Email service Postmark
-gem 'postmark-rails', '~> 0.12.0'
+gem 'postmark-rails'
 gem 'postmark'
 
 group :production do
@@ -23,10 +23,8 @@ group :production do
 end
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.3', '< 1.4'
-  # gem 'better_errors'
+  gem 'sqlite3', '~> 1.4'
   gem 'binding_of_caller'
-  gem 'meta_request'
 end
 
 # Support for attr_accessor removed in Rails 4.0.0, this gem adds support. Other gems ease the transition to 4.0.0.
@@ -41,10 +39,14 @@ gem 'rack-jsonp'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 4.0.3'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'uglifier', '>= 1.3.0'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier', '>= 1.3.0'
 
-gem "jquery-rails", '~> 3.1.3'
+gem "jquery-rails"
+
+gem "bootsnap"
+
+gem "msgpack"
+
+gem "webrick"

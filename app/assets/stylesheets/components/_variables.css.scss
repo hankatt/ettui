@@ -1,5 +1,26 @@
 /*
   ###
+  FROM _colors.css.scss
+  ###
+*/
+
+%truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+$signature-color: #2FD67F; //darkturquoise;
+$primary--on-white: #343230;
+$secondary--title--on-white: #acabac;
+$secondary--text--on-white: #8C8B89;
+$border--on-white: #e7e5e3;
+
+$twitter-color: #55acee;
+
+/*
+  ###
   CONSTANTS: On white prefix 'w-'
   ###
 */

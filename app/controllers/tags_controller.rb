@@ -15,7 +15,7 @@ class TagsController < ApplicationController
     # Add it to the quotes set of tags
     @quote.tags << @tag
 
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy    
@@ -28,7 +28,7 @@ class TagsController < ApplicationController
       @quote.tags.delete(@tag)
     end
 
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
 private

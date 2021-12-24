@@ -1,6 +1,6 @@
 class TagHandler
   def self.find_or_initialize(params)
-    tag = Tag.find_or_initialize_by(name: URI.unescape(params).downcase);
+    tag = Tag.find_or_initialize_by(name: CGI.unescape(params).downcase);
 
     # Update tag status for Tag List rendering purposes
     if tag.new_record? && tag.valid?

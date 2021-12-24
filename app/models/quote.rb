@@ -45,7 +45,7 @@ class Quote < ActiveRecord::Base
   end
 
   def unique_tags
-    tags.uniq
+    tags.distinct
   end
 
   def new_since_last(user)

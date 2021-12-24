@@ -4,12 +4,12 @@ class QuoteHandler
   	# Initiate 'quote' hash with known data
   	quote = {}
   	quote[:user_id] = user_id
-  	quote[:text] = URI.unescape(params[:text])
-  	quote[:url] = URI.unescape(params[:url])
+  	quote[:text] = CGI.unescape(params[:text])
+  	quote[:url] = CGI.unescape(params[:url])
 
     # Set up metadata for 'quote' hash
     hostname = HostnameParser.parse(quote[:url])
-    favicon = URI.unescape(params[:favicon])
+    favicon = CGI.unescape(params[:favicon])
 
     source = Source.find_by(hostname: hostname) || Source.create(hostname: hostname, favicon: favicon)
     content_parser_response = ParserResponse.new(quote[:url])

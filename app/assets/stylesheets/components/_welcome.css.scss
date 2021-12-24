@@ -1,6 +1,12 @@
+@import "variables", "../typography/fonts";
+
 .welcome-index {
+	.c-button {
+		margin-right: 0.5rem;
+		margin-top: 0.5rem;
+	}
 	.c-button + .c-button {
-		margin-left: .5rem;
+		margin-right: 0;
 	}
 }
 
@@ -27,44 +33,47 @@ header + main {
   margin-right: .5rem;
 }
 
-.c-landing_page {
-	height: calc(100vh - 60px - 128px);
-	min-height: 536px;
+.welcome-index .t-theme2 {
+	padding: 0 1rem;
 }
 
-.c-landing_page__title + .c-landing_page__text {
-	margin-top: 1.1rem;
+.container.welcome-index {
+	height: auto;
+}
+
+.introduction {
+	display: grid;
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr;
+}
+
+.c-landing_page__content {
+	text-align: center;;
 }
 
 .c-landing_page__title,
 .c-landing_page__text {
 	font-weight: 300;
-	padding-right: 3.5rem;
 }
 
 .c-landing_page__title {
-    font-size: 2.3rem;
+    font-size: 2rem;
     letter-spacing: -0.0625rem;
     line-height: 1.25;
-    margin-top: 3rem;
+    margin-top: 0rem;
     color: $primary--on-white;
 }
 
 .c-landing_page__text {
-  font-size: 1rem;
-  line-height: 1.619rem;
-  letter-spacing: -.25px;
-  color: $secondary--text--on-white;
-}
-
-.c-landing_page__text + .c-button {
-	margin-top: 2.3rem;
+	display: none;
 }
 
 .c-viewport {
-	float: right;
+	margin-top: 3rem;
 	position: relative;
-	width: 86.5%;
+	width: 100%;
+	max-width: 500px;
+
 	.c-viewport__frame {
 	    width: 100%;
 	    border: none;
@@ -77,6 +86,52 @@ header + main {
 		height: 79.2%;
 		border: solid 1px #ccc;
 	}
+}
+
+@media screen and (min-width: 720px) {
+	.introduction {
+		grid-auto-flow: column;
+	}
+
+	.c-landing_page__content {
+		text-align: left;
+	}
+
+	.c-landing_page__title,
+	.c-landing_page__text {
+		padding-right: 3.5rem;
+	}
+
+	.c-landing_page__title {
+		font-size: 2.3rem;
+		letter-spacing: -0.0625rem;
+		line-height: 1.25;
+		margin-top: 3rem;
+		color: $primary--on-white;
+	}
+
+	.c-landing_page__text {
+		display: flex;
+	}
+
+	.c-viewport {
+		width: 100%;
+	}
+}
+
+.c-landing_page__title + .c-landing_page__text {
+	margin-top: .5rem;
+}
+
+.c-landing_page__text {
+  font-size: 1rem;
+  line-height: 1.619rem;
+  letter-spacing: -.25px;
+  color: $secondary--text--on-white;
+}
+
+.c-landing_page__actions {
+	margin-top: 1.5rem;
 }
 
 .c-landing_page__footer {

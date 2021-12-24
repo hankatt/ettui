@@ -9,7 +9,7 @@ class Tag < ActiveRecord::Base
 
   def self.filter_by_ids(ids)
     if ids.empty?
-      all.uniq # We don't know why we need to run .uniq here but if not, we get duplicates or triplets or worse.
+      all.distinct # We don't know why we need to run .uniq here but if not, we get duplicates or triplets or worse.
     else
       where(id: ids)
     end

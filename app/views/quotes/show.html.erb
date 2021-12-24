@@ -5,6 +5,6 @@
 	<% end %>
 	<div class="quote-author centered">
 		<h3 class="subtitle subtitle--all-caps">Curated by</h3>
-	    <%= image_tag @user.twitter_image_url, class: "a-profile_image", title: @user.name %>
+	    <%= image_tag @user.twitter_image_url || "", class: "a-profile_image", title: @user.name %>
 	</div>
 </div>

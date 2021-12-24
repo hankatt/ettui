@@ -8,39 +8,39 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require_tree .
  *= require_self
- *= require font-awesome
 */
 
 /* ============================== */
 /* ! Layout for desktop version   */
 /* ============================== */
 
-@import "placeholders/truncate";
-@import "components/colors";
-@import "vendor/devices.min";
-@import "variables";
-@import "utility";
-@import "fonts";
-@import "normalize";
-@import "base";
-@import "typography";
+@import "font-awesome";
 
-@import "layout";
-@import "components/tag";
-@import "components/quotes";
-@import "components/sidebar";
-@import "components/introduction";
-@import "components/buttons";
-@import "components/flash_messages";
+@use "components/flash_messages";
+@use "components/introduction";
+@use "components/legal";
+@use "components/quotes";
+@use "components/sidebar";
+@use "components/tag";
+@use "components/variables";
+@use "components/welcome";
 
-@import "shared";
+@use "layout/base";
+@use "layout/layout";
+@use "layout/shared";
+@use "layout/truncate";
+@use "layout/utility";
 
-@import "breakpoints/quotes";
+@use "pages/bookmarklet";
+@use "pages/on-boarding";
+@use "pages/users_show";
+@use "pages/quotes";
 
-@import "welcome";
-@import "users_show";
-@import "on-boarding";
-@import "components/legal";
+@use "typography/fonts";
+@use "components/buttons";
+@use "typography/typography";
 
-@import "bookmarklet";
+@use "vendor/normalize";
+@use "vendor/devices.min";

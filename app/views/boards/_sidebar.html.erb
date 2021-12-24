@@ -32,7 +32,7 @@
             <% if current_user.twitter_image_url.nil? %>
                 <%= link_to current_user.name || current_user.email, profile_path, {:style=> 'background-color: rgba(0, 0, 0, .07); padding: 1px 6px 3px; border-radius: 8px;'}  %>
             <% else %>
-            <%= link_to image_tag(current_user.twitter_image_url, class: "a-profile_image"), profile_path %>
+                <%= link_to image_tag(current_user.twitter_image_url, class: "a-profile_image"), profile_path %>
             <% end %>
             <% if current_user.guest? %>
                 <%= link_to "Demo", completion_path, class: "a-label", title: "Make this demo account yours." %>

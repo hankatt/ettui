@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def unique_tags
-    board.tags.distinct
+    board.tags.uniq
   end
 
   def quote_count
@@ -33,11 +33,11 @@ class User < ActiveRecord::Base
   end
 
   def source_count
-    board.quotes.pluck(:source_id).distinct.count
+    board.quotes.pluck(:source_id).uniq.count
   end
 
   def tag_count
-    board.tags.distinct.count
+    board.tags.uniq.count
   end
 
   def name_or_email

@@ -2063,7 +2063,7 @@ body.index .container {
 
 /* line 24, app/assets/stylesheets/layout/_shared.css.scss */
 .t-theme2 {
-  background-image: linear-gradient(111deg, #F9F8F4, #EFE5D3);
+  background-image: linear-gradient(111deg, #FFFFFF, #F9F8F4);
   background-size: cover;
   min-height: 100%;
   height: 100%;

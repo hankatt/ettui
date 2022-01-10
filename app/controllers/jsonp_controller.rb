@@ -16,8 +16,8 @@ class JsonpController < ApplicationController
 
           html = render_to_string(partial: "bookmarklet", layout: false, locals: {
             tags: @tags,
-            title: "Saved.",
-            subtitle: "Adding tags helps you find a quote again."
+            title: "It's saved.",
+            subtitle: "Tip: Tag it to make it easier to find."
           })
         else
           callback = "failed"
@@ -36,13 +36,19 @@ class JsonpController < ApplicationController
 
   def tag_creation
     if params[:user_token]
-
-      # Ensures the Tag exists
       @tag = TagHandler.find_or_initialize(params[:tag])
-
-      # Add tag to the Quote's tags
       @quote = Quote.find(params[:quote_id])
-      @quote.tags << @tag
+
+      # Add or remove tag
+      if @quote.tags.include?(@tag)
+        if @tag.last_instance?
+          @tag.destroy
+        else
+          @quote.tags.delete(@tag)
+        end
+      else
+        @quote.tags << @tag
+      end
 
       # Get all the users unique tags from the users board
       @user = User.find_by(token: params[:user_token])

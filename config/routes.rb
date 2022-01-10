@@ -22,6 +22,8 @@ Well::Application.routes.draw do
   get "introduction/start", as: "introduction"
   get "introduction/trying_it"
   get "introduction/finish"
+  get "json_quote_creation", controller: "json"
+  get "json_tag_creation", controller: "json"
   get "quote_creation", controller: "jsonp"
   get "tag_creation", controller: "jsonp"
   resources :users, except: [:index, :profile]

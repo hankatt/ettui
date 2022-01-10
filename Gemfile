@@ -32,7 +32,7 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 
 # Used for encrypting the users password
-gem 'bcrypt', :require => "bcrypt"
+gem 'bcrypt'
 
 # App specific Rack gem to handle JSONP callbacks
 gem 'rack-jsonp'

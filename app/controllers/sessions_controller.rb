@@ -2,14 +2,28 @@ class SessionsController < ApplicationController
   def new
     @user = User.new
     render "new", notice: :nil
+    
   end
 
   def create
-    authentication = Authentication.new(params[:email], params[:password])
+
+    authentication = ""
+    
+    if params[:email].nil?
+      authenticate_with_http_basic do |email, password|
+        authentication = Authentication.new(email, password)
+      end
+    else
+      authentication = Authentication.new(params[:email], params[:password])
+    end
+    
 
     if authentication.successful?
       create_cookies_for(authentication.user)
-      redirect_logged_in(authentication.user)
+      respond_to do |format|
+        format.json { render json: { user_email: authentication.user.email, user_token: authentication.user.token, user_id: authentication.user.id } }
+        format.html { redirect_logged_in(authentication.user) }
+      end
     else
       redirect_to new_session_path
     end

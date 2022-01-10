@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
 
   # Form validations
   validates_uniqueness_of :email, unless: :provider_or_guest?
-  validates_presence_of :email, :password, :password_confirmation, unless: :provider?, on: :create_or_save, unless: :guest?
-  validates_presence_of :email, :password, :password_confirmation, unless: :provider?, on: :update, allow_blank: true
+  validates_presence_of :email, :password, :password_confirmation, on: :create_or_save, unless: :guest?
+  validates_presence_of :email, :password, :password_confirmation, on: :update, allow_blank: true
   validates_confirmation_of :password, unless: :provider_or_guest?
 
   def board

@@ -40,6 +40,16 @@
   }
 }
 
+.profile-container img,
+.c-sidebar_container__row.final .a-profile_image {
+  width: 60px;
+  height: auto;;
+  border-radius: 50%;
+  max-height: 80px;
+  border: solid 5px #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+}
+
 .c-sidebar_container__row {
   .c-ettui-logo {
     margin-bottom: 0;

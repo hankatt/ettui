@@ -9,6 +9,8 @@
     <h2 class="header-title"><%= @right_title %></h2>
 </div>
 <div class="header-element profile">
-    <%= image_tag @board.users.first.twitter_image_url %>
+    <% unless @board.users.first.twitter_image_url.nil_zero? do %>
+        <%= image_tag @board.users.first.twitter_image_url %>
+    <% end %>
     <%= link_to (@board.users.first.name || @board.users.first.email), @board.users.first %>
 </div>

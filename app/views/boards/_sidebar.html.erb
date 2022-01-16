@@ -29,11 +29,7 @@
 
     <div class="c-sidebar_container__row final u-text-align-center">
         <% if current_user %>
-            <% if current_user.twitter_image_url.empty? %>
-                <%= link_to current_user.name || current_user.email, profile_path, {:style=> 'background-color: rgba(0, 0, 0, .07); padding: 1px 6px 3px; border-radius: 8px; color: #666; font-weight: 600; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'}  %>
-            <% else %>
-                <%= link_to image_tag(current_user.twitter_image_url, class: "a-profile_image"), profile_path %>
-            <% end %>
+            <%= link_to current_user.name || current_user.email, profile_path, {:style=> 'background-color: rgba(0, 0, 0, .07); padding: 1px 6px 3px; border-radius: 8px; color: #666; font-weight: 600; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'}  %>
             <% if current_user.guest? %>
                 <%= link_to "Demo", completion_path, class: "a-label", title: "Make this demo account yours." %>
             <% end %>

@@ -23,7 +23,7 @@ class JsonController < ApplicationController
         end
 
         format.json {
-            render json: { tags: @tags, quote_id: @quote.id }
+            render json: { tags: @tags, quote_id: @quote.id, quote_url: board_path(@quote.boards.first) }
           }
       end
     end

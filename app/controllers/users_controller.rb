@@ -29,17 +29,53 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = user_params ? User.new(user_params) : User.new_guest
 
-    if @user.save
-      # Establish a session
-      session[:user_id] = @user.id
+    # A request from the bookmark will not contain params
+    respond_to do |format|
+      format.html {
+        @user = user_params ? User.new(user_params) : User.new_guest
 
-      # What happens after the save is complete
-      redirect_to introduction_path, notice: "You successfully signed up."
-    else
-      render action: "new", notice: "A user with that email address already exists. If it's you, please try the login page."
+        if @user.save
+          session[:user_id] = @user.id # Establish a session
+          redirect_to introduction_path, notice: "You successfully signed up."
+        else
+          render action: "new", notice: "A user with that email address already exists. If it's you, please try the login page."
+        end
+      }
+
+      format.json {
+        authenticate_with_http_basic do |email, password|
+          authentication = Authentication.new(email, password)
+  
+          # Decode passwords
+          passwords = Base64.decode64(password)
+          password = passwords.split(/:/, 2).first
+          password_confirmation = passwords.split(/:/, 2).last
+  
+          # Build user_params
+          user = {}
+          user[:email] = email
+          user[:password] = password
+          user[:password_confirmation] = password_confirmation
+
+          if password.eql?(password_confirmation)
+            @user = User.new(user)
+          else
+            @validation_status = 'The passwords do not match'
+          end 
+        end
+
+        if !User.where(email: @user.email).exists? && @user.save
+          session[:user_id] = @user.id # Establish a session
+          @validation_status = 'User successfully created'
+          render json: { user_email: @user.email, user_token: @user.token, user_id: @user.id, status: @validation_status }
+        else
+          render json: { user_email: '', user_token: '', user_id: '', status: @validation_status }
+        end
+      }
     end
+
+    
   end
 
   def demo
@@ -136,8 +172,7 @@ class UsersController < ApplicationController
   # with per-user checking of permissible attributes.
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-                                 :token, :uid, :provider, :name, :new_user,
-                                 :twitter_image_url, :twitter_description, :guest)
+                                 :token, :twitter_image_url, :name, :new_user, :guest)
   end
 
 end

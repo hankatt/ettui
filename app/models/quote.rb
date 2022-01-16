@@ -48,18 +48,13 @@ class Quote < ActiveRecord::Base
     tags.distinct
   end
 
-  def new_since_last(user)
-    return false unless user
-    
-    created_at > user.last_active_at
-  end
-
   def classes_for(user)
-    if new_since_last(user)
-      default_classes << " unread"
-    else
-      default_classes
-    end
+    # if new_since_last(user)
+    #   default_classes << " unread"
+    # else
+    #   default_classes
+    # end
+    default_classes
   end
 
   def excerpt

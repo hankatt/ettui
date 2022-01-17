@@ -60,17 +60,20 @@ class UsersController < ApplicationController
 
           @user = User.new(user)
           @validation_status = ''
+          @invalid = false
 
           if User.where(email: @user.email).exists?
+            @invalid = true
             @validation_status = 'This email is already registered'
           else
             if !password.eql?(password_confirmation)
+              @invalid = true
               @validation_status = 'The passwords do not match'
             end
           end
         end
 
-        if @user.save && !User.where(email: @user.email).exists? && password.eql?(password_confirmation)
+        if @user.save && !@invalid
           session[:user_id] = @user.id # Establish a session
           @validation_status = ''
           render json: { user_email: @user.email, user_token: @user.token, user_id: @user.id, status: @validation_status }

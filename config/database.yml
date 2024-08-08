@@ -19,7 +19,8 @@ test:
   timeout: 5000
 
 production:
+  <<: *default
   adapter: postgresql
-  database: db/ettui_production
+  database: db/production.sqlite3
   pool: 5
   timeout: 5000

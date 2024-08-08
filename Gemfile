@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
-ruby '3.0.3'
+ruby '3.1.6'
 
 # Remove 300ms tap event delay for touch devices
 gem 'fastclick-rails'
 gem 'font-awesome-rails'
 gem 'rails', '~> 7.0.0'
-gem 'sqlite3', '~> 1.4'
 
 # Simplifying HTTP requests
 gem 'rest-client'

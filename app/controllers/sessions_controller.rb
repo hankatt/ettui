@@ -41,7 +41,7 @@ private
   end
   def redirect_logged_in(user)
     if user.new_user
-      redirect_to introduction_start_path
+      redirect_to introduction_path
     else
       redirect_to board_path(user.board)
     end

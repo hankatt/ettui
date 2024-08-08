@@ -1,4 +1,4 @@
-class AddTwitterDescriptionToUser < ActiveRecord::Migration
+class AddTwitterDescriptionToUser < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :twitter_description, :string
   end

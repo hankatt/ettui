@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_24_171236) do
+ActiveRecord::Schema.define(version: 2021_12_24_170720) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2021_12_24_171236) do
   end
 
   create_table "boards", force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.text "description"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6
-    t.datetime "updated_at", precision: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "boards_quotes", id: false, force: :cascade do |t|
@@ -55,19 +55,19 @@ ActiveRecord::Schema.define(version: 2021_12_24_171236) do
 
   create_table "letsencrypt_plugin_challenges", force: :cascade do |t|
     t.text "response"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quotes", force: :cascade do |t|
     t.text "text"
-    t.string "url", limit: 255
+    t.string "url"
     t.integer "user_id"
     t.integer "source_id"
-    t.datetime "created_at", precision: 6
-    t.datetime "updated_at", precision: 6
-    t.string "readability_title", limit: 255
-    t.string "readability_author", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "readability_title"
+    t.string "readability_author"
   end
 
   create_table "quotes_tags", id: false, force: :cascade do |t|
@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 2021_12_24_171236) do
   end
 
   create_table "sources", force: :cascade do |t|
-    t.string "hostname", limit: 255
-    t.string "favicon", limit: 255
-    t.datetime "created_at", precision: 6
-    t.datetime "updated_at", precision: 6
+    t.string "hostname"
+    t.string "favicon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscriptions", id: false, force: :cascade do |t|
@@ -89,38 +89,27 @@ ActiveRecord::Schema.define(version: 2021_12_24_171236) do
     t.integer "user_id"
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
-    t.integer "taggable_id"
-    t.string "taggable_type", limit: 255
-    t.integer "tagger_id"
-    t.string "tagger_type", limit: 255
-    t.string "context", limit: 128
-    t.datetime "created_at", precision: 6
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  end
-
   create_table "tags", force: :cascade do |t|
-    t.string "name", limit: 255, null: false
+    t.string "name", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", limit: 255
-    t.string "password_hash", limit: 255
-    t.string "password_salt", limit: 255
-    t.string "token", limit: 255
-    t.datetime "created_at", precision: 6
-    t.datetime "updated_at", precision: 6
-    t.string "uid", limit: 255
-    t.string "provider", limit: 255
-    t.string "name", limit: 255
+    t.string "email"
+    t.string "password_hash"
+    t.string "password_salt"
+    t.string "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "uid"
+    t.string "provider"
+    t.string "name"
     t.boolean "new_user"
-    t.datetime "last_active_at", precision: 6
-    t.string "twitter_image_url", limit: 255
-    t.string "twitter_description", limit: 255
+    t.datetime "last_active_at"
+    t.string "twitter_image_url"
+    t.string "twitter_description"
     t.boolean "guest"
     t.string "password_reset_token"
-    t.datetime "password_reset_sent_at", precision: 6
+    t.datetime "password_reset_sent_at"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

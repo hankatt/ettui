@@ -5,7 +5,6 @@ ruby '3.0.3'
 gem 'fastclick-rails'
 gem 'font-awesome-rails'
 gem 'rails', '~> 7.0.0'
-gem 'sqlite3', '~> 1.4'
 
 # Simplifying HTTP requests
 gem 'rest-client'
@@ -24,7 +23,7 @@ group :production do
 end
 
 group :development, :test do
-  # gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3', '~> 1.4'
   gem 'binding_of_caller'
 end
 

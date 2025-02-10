@@ -87,6 +87,7 @@ jquery.onload = function() {
         text: encodeURIComponent(document.getSelection().toString()),
         url: encodeURIComponent(document.location.href.toString()),
         favicon: getFaviconURL(),
+        dom_title: getDOMTitle(),
         callback: "success"
       };
       // Use Script element injection to send the quote to the Ettúi server
@@ -231,6 +232,14 @@ getFaviconURL = function() {
     return encodeURIComponent(document.querySelectorAll("link[rel~=" +rel +"]")[0].href);
   else
     return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
+}
+
+getDOMTitle = function() {
+  if(document.querySelectorAll("title").length > 0) {
+    return encodeURIComponent(document.querySelectorAll("title")[0].innerText);
+  } else {
+    return encodeURIComponent(document.location.hostname);
+  }
 }
 
 closeBookmarkletWindow = function() {

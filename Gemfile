@@ -50,3 +50,5 @@ gem "bootsnap"
 gem "msgpack"
 
 gem "webrick"
+
+gem "importmap-rails", "~> 2.0"

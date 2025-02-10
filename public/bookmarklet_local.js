@@ -37,7 +37,7 @@ bookmarklet_server_host = "localhost:3000"
 */
 jquery = document.createElement("script");
 jquery.className = "noted-temporary-function-tbr";
-jquery.src = "http://code.jquery.com/jquery-2.1.1.min.js";
+jquery.src = "https://code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
 /*
@@ -49,7 +49,7 @@ document.body.appendChild(jquery);
 */
 css = document.createElement("link");
 css.className = "noted-temporary-function-tbr";
-css.href = "//" +bookmarklet_server_host +"/bookmarklet.css";
+css.href = "http://" +bookmarklet_server_host +"/bookmarklet.css";
 css.type = "text/css";
 css.rel = "stylesheet";
 
@@ -84,13 +84,19 @@ jquery.onload = function() {
         user_token: current_user_token,
         text: encodeURIComponent(document.getSelection().toString()),
         url: encodeURIComponent(document.location.href.toString()),
+        dom_title: getDOMTitle(),
         favicon: getFaviconURL(),
         callback: "success"
       };
+
+      // 20250210
+      // NOTE TO SELF CHANGE HARDCODED http:// to //
+      // ########
+
       // Use Script element injection to send the quote to the Ettúi server
       jsonpScript = document.createElement("script");
       jsonpScript.className = jsonpScript.className + "noted-temporary-function-tbr";
-      jsonpScript.src =  "//" +bookmarklet_server_host +"/quote_creation?" + jQuery.param(params);
+      jsonpScript.src =  "http://" +bookmarklet_server_host +"/quote_creation?" + jQuery.param(params);
       document.body.appendChild(jsonpScript);
 
       /*
@@ -229,6 +235,14 @@ getFaviconURL = function() {
     return encodeURIComponent(document.querySelectorAll("link[rel~=" +rel +"]")[0].href);
   else
     return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
+}
+
+getDOMTitle = function() {
+  if(document.querySelectorAll("title").length > 0) {
+    return encodeURIComponent(document.querySelectorAll("title")[0].innerText);
+  } else {
+    return encodeURIComponent(document.location.hostname);
+  }
 }
 
 closeBookmarkletWindow = function() {

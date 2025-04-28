@@ -255,7 +255,7 @@
   margin: 0 auto;
   padding: 6px 28px 8px;
   text-decoration: none;
-  border-radius: 20px;
+  border-radius: 20px !important;
   font-family: "Ek Mukta", Helvetica, sans-serif !important;
   font-weight: 400 !important;
   line-height: 30px !important;

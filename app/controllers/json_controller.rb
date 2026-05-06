@@ -1,8 +1,26 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_quote_creation, :json_tag_creation]
+    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation]
+
+    def json_quotes
+      token = ""
+      # Receiving the token as a param in the request
+      if request.headers['Authorization'].include? "Bearer"
+        pattern = /^Bearer /
+        header  = request.headers['Authorization']
+        token = header.gsub(pattern, '') if header && header.match(pattern)
+      end
+
+      @user = User.find_by(token: token)
+      
+      respond_to do |format|
+        format.json {
+          render json: { quotes: @user.board.quotes.to_json }
+        }
+      end
+      
+    end
 
     def json_quote_creation
-
       token = ""
       # Receiving the token as a param in the request
       if request.headers['Authorization'].include? "Bearer"
@@ -29,7 +47,6 @@ class JsonController < ApplicationController
     end
   
     def json_tag_creation
-
       token = ""
       # Receiving the token as a param in the request
       if request.headers['Authorization'].include? "Bearer"

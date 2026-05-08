@@ -12,10 +12,13 @@ class JsonController < ApplicationController
 
       @user = User.find_by(token: token)
       @sources = Source.where(id: @user.board.quotes.pluck(:source_id))
-      
+      sources_with_count = @sources.map do |source|
+        source.as_json.merge(count: @user.board.source_count(source))
+      end
+
       respond_to do |format|
         format.json {
-          render json: { quotes: @user.board.quotes.to_json, sources: @sources.to_json }
+          render json: { quotes: @user.board.quotes, sources: sources_with_count }
         }
       end
       

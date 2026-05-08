@@ -25,19 +25,19 @@ class User < ActiveRecord::Base
   end
 
   def unique_tags
-    board.tags.uniq
+    board&.tags&.uniq || []
   end
 
   def quote_count
-    board.quotes.count
+    board&.quotes&.count || 0
   end
 
   def source_count
-    board.quotes.pluck(:source_id).uniq.count
+    board&.quotes&.pluck(:source_id)&.uniq&.count || 0
   end
 
   def tag_count
-    board.tags.uniq.count
+    board&.tags&.uniq&.count || 0
   end
 
   def name_or_email

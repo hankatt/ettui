@@ -11,8 +11,7 @@ class JsonController < ApplicationController
       end
 
       @user = User.find_by(token: token)
-      @board = @user.board.first
-      @sources = Source.where(id: @board.quotes.pluck(:source_id))
+      @sources = Source.where(id: @user.board.quotes.pluck(:source_id))
       
       respond_to do |format|
         format.json {

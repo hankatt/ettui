@@ -1,5 +1,5 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation, :json_sign_out, :json_quote_removal]
+    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation, :json_sign_out]
 
     def json_demo
       @user = CreateGuest.create
@@ -103,20 +103,20 @@ class JsonController < ApplicationController
         header  = request.headers['Authorization']
         token = header.gsub(pattern, '') if header && header.match(pattern)
       end
-      
-      @user = User.find_by(token: token)
-      @quote = Quote.find(params[:quote_id])
 
-      respond_to do |format|
-        format.json {
-          if @user && @user.board.quotes.include?(@quote)
-            @quote.destroy
-            render json: { success: true }
-          else
-            render json: { success: false }, status: :unauthorized
-          end
-        }
-      end
+      @user = User.find_by(token: token)
+      @quote = Quote.find(params[:id])
+
+      respond_to do |format|                                                                                                 
+        format.json {                                                                                                        
+          if @user && @user.board.quotes.include?(@quote)                                                                    
+            @quote.destroy                                                                                                   
+              render json: { success: true }                                                                                   
+            else                                                                                                               
+              render json: { success: false }, status: :unauthorized                                                           
+          end                                                                                                                
+          }                                                                                                                    
+      end      
     end
   
     def json_tag_creation

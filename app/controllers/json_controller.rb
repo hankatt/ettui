@@ -1,6 +1,25 @@
 class JsonController < ApplicationController
     protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation]
 
+    def json_sign_in
+      authentication = Authentication.new(params[:email], params[:password])
+      
+      if authentication.successful?
+        # create_cookies_for(authentication.user)
+        respond_to do |format|
+          format.json { render json: { user_email: authentication.user.email, user_token: authentication.user.token, user_id: authentication.user.id } }
+        end
+      else
+        format.json { render json: { notice: "Sorry, this combo didn't check out."} }
+      end
+    end
+
+    # def json_sign_out
+    #   session[:user_id] = nil
+    #   session.delete(:user_id)
+    #   redirect_to root_url
+    # end
+
     def json_quotes
       token = ""
       # Receiving the token as a param in the request

@@ -9,7 +9,7 @@ class QuoteHandler
 
     # Set up metadata for 'quote' hash
     hostname = HostnameParser.parse(quote[:url])
-    favicon = CGI.unescape(params[:favicon])
+    favicon = CGI.unescape(params[:favicon]).split("?").first
     domTitle= CGI.unescape(params[:dom_title])
 
     source = Source.find_by(hostname: hostname) || Source.create(hostname: hostname, favicon: favicon)

@@ -1,7 +1,7 @@
 class JsonController < ApplicationController
     protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation, :json_sign_out]
 
-    def demo
+    def json_demo
       @user = CreateGuest.create
 
       if @user.save

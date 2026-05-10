@@ -105,7 +105,7 @@ class JsonController < ApplicationController
       end
 
       @user = User.find_by(token: token)
-      @quote = Quote.find(params[:id])
+      @quote = Quote.find(params[:quote_id])
 
       respond_to do |format|                                                                                                 
         format.json {                                                                                                        

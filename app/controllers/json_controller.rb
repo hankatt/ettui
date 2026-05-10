@@ -1,5 +1,5 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation]
+    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation, :json_sign_out]
 
     def json_sign_in
       authentication = Authentication.new(params[:email], params[:password])
@@ -14,11 +14,26 @@ class JsonController < ApplicationController
       end
     end
 
-    # def json_sign_out
-    #   session[:user_id] = nil
-    #   session.delete(:user_id)
-    #   redirect_to root_url
-    # end
+    def json_sign_out
+      # Receiving the token as a param in the request
+      if request.headers['Authorization'].include? "Bearer"
+        pattern = /^Bearer /
+        header  = request.headers['Authorization']
+        token = header.gsub(pattern, '') if header && header.match(pattern)
+      end
+
+      @user = User.find_by(token: token)
+
+      respond_to do |format|
+        format.json {
+          if @user
+            render json: { success: true }
+          else
+            render json: { success: false }, status: :unauthorized
+          end
+        }
+      end
+    end
 
     def json_quotes
       token = ""

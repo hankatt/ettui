@@ -1,5 +1,5 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation, :json_sign_out]
+    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation, :json_sign_out, :json_quote_removal]
 
     def json_demo
       @user = CreateGuest.create
@@ -92,6 +92,30 @@ class JsonController < ApplicationController
         format.json {
             render json: { tags: @tags, quote_id: @quote.id, quote_url: board_path(@quote.boards.first) }
           }
+      end
+    end
+
+    def json_quote_removal
+      token = ""
+      # Receiving the token as a param in the request
+      if request.headers['Authorization'].include? "Bearer"
+        pattern = /^Bearer /
+        header  = request.headers['Authorization']
+        token = header.gsub(pattern, '') if header && header.match(pattern)
+      end
+      
+      @user = User.find_by(token: token)
+      @quote = Quote.find(params[:quote_id])
+
+      respond_to do |format|
+        format.json {
+          if @user && @user.board.quotes.include?(@quote)
+            @quote.destroy
+            render json: { success: true }
+          else
+            render json: { success: false }, status: :unauthorized
+          end
+        }
       end
     end
   

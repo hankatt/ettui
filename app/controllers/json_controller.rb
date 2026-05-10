@@ -105,18 +105,19 @@ class JsonController < ApplicationController
       end
 
       @user = User.find_by(token: token)
-      @quote = Quote.find(params[:quote_id])
 
-      respond_to do |format|                                                                                                 
-        format.json {                                                                                                        
-          if @user && @user.board.quotes.include?(@quote)                                                                    
-            @quote.destroy                                                                                                   
-              render json: { success: true }                                                                                   
-            else                                                                                                               
-              render json: { success: false }, status: :unauthorized                                                           
-          end                                                                                                                
-          }                                                                                                                    
-      end      
+      respond_to do |format|
+        format.json {
+          if @user
+            quotes_to_remove = @user.board.quotes.where(id: params[:quote_ids])
+            removed_ids = quotes_to_remove.pluck(:id)
+            quotes_to_remove.destroy_all
+            render json: { success: true, removed_ids: removed_ids }
+          else
+            render json: { success: false }, status: :unauthorized
+          end
+        }
+      end
     end
   
     def json_tag_creation

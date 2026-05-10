@@ -1,16 +1,27 @@
 class JsonController < ApplicationController
     protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_tag_creation, :json_sign_out]
 
+    def demo
+      @user = CreateGuest.create
+
+      if @user.save
+        # Initiate a session
+        respond_to do |format|
+          format.json { render json: { user_token: @user.token, user_is_guest: true } }
+        end
+      end
+    end 
+
     def json_sign_in
       authentication = Authentication.new(params[:email], params[:password])
       
-      if authentication.successful?
-        # create_cookies_for(authentication.user)
-        respond_to do |format|
+      # create_cookies_for(authentication.user)
+      respond_to do |format|
+        if authentication.successful?
           format.json { render json: { user_email: authentication.user.email, user_token: authentication.user.token, user_id: authentication.user.id } }
+        else
+          format.json { render json: { notice: "Sorry, this combo didn't check out."} }
         end
-      else
-        format.json { render json: { notice: "Sorry, this combo didn't check out."} }
       end
     end
 

@@ -60,10 +60,13 @@ class JsonController < ApplicationController
       sources_with_count = @sources.map do |source|
         source.as_json.merge(count: @user.board.source_count(source))
       end
+      quotes_with_tags = @user.board.quotes.includes(:tags).map do |quote|
+        quote.as_json.merge(tags: quote.tags)
+      end
 
       respond_to do |format|
         format.json {
-          render json: { quotes: @user.board.quotes, sources: sources_with_count }
+          render json: { quotes: quotes_with_tags, sources: sources_with_count }
         }
       end
       

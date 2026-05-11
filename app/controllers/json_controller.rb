@@ -1,5 +1,5 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_sign_out]
+    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_sign_out, :json_demo_account_completion]
 
     def json_demo
       @user = CreateGuest.create
@@ -41,6 +41,41 @@ class JsonController < ApplicationController
             render json: { success: true }
           else
             render json: { success: false }, status: :unauthorized
+          end
+        }
+      end
+    end
+
+    def json_demo_account_completion
+      if request.headers['Authorization'].include? "Bearer"
+        pattern = /^Bearer /
+        header  = request.headers['Authorization']
+        token = header.gsub(pattern, '') if header && header.match(pattern)
+      end
+
+      @user = User.find_by(token: token)
+
+      respond_to do |format|
+        format.json {
+          if @user.nil?
+            render json: { success: false }, status: :unauthorized
+            next
+          end
+
+          if User.exists?(email: params[:email])
+            render json: { success: false, error: "Email already taken" }
+            next
+          end
+
+          if params[:password] != params[:password_confirmation]
+            render json: { success: false, error: "Passwords do not match" }
+            next
+          end
+
+          if @user.update(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation], guest: false)
+            render json: { success: true, user_email: @user.email }
+          else
+            render json: { success: false }
           end
         }
       end

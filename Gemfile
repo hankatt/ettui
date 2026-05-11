@@ -25,6 +25,7 @@ end
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'binding_of_caller'
+  gem 'dotenv-rails'
 end
 
 # Support for attr_accessor removed in Rails 4.0.0, this gem adds support. Other gems ease the transition to 4.0.0.
@@ -52,3 +53,5 @@ gem "msgpack"
 gem "webrick"
 
 gem "importmap-rails", "~> 2.0"
+
+gem "ruby-anthropic"

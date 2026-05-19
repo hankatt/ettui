@@ -29,6 +29,7 @@ Well::Application.routes.draw do
   get "json_quote_creation", controller: "json"
   delete "json_quote_removal", controller: "json"
   put "json_demo_account_completion", controller: "json"
+  delete "json_account_deletion", controller: "json"
   get "json_tag_creation", controller: "json"
   get "quote_creation", controller: "jsonp"
   get "tag_creation", controller: "jsonp"

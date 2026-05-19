@@ -6,20 +6,19 @@ class QuoteHandler
   	# Initiate 'quote' hash with known data
   	quote = {}
   	quote[:user_id] = user_id
-  	quote[:text] = CGI.unescape(params[:text])
+    quote[:text] = CGI.unescape(params[:text]) if params[:text].present?
   	quote[:url] = CGI.unescape(params[:url])
 
     # Set up metadata for 'quote' hash
     hostname = HostnameParser.parse(quote[:url])
     favicon = CGI.unescape(params[:favicon]).split("?").first
-    domTitle= CGI.unescape(params[:dom_title])
+    domTitle = CGI.unescape(params[:dom_title])
 
     source = Source.find_by(hostname: hostname) || Source.create(hostname: hostname, favicon: favicon)
 
     # Complete 'quote' hash for creation
   	quote[:source_id] = source.id
     if domTitle.empty?
-      # Only query Claude if we dont have anything
       quote[:readability_title] = extract_title(quote[:url])
     else
       quote[:readability_title] = domTitle

@@ -1,5 +1,5 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_sign_out, :json_demo_account_completion]
+    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_sign_out, :json_demo_account_completion, :json_account_deletion]
 
     def json_demo
       @user = CreateGuest.create
@@ -46,6 +46,31 @@ class JsonController < ApplicationController
       end
     end
 
+    def json_account_deletion
+      if request.headers['Authorization'].include? "Bearer"
+        pattern = /^Bearer /
+        header  = request.headers['Authorization']
+        token = header.gsub(pattern, '') if header && header.match(pattern)
+      end
+
+      @user = User.find_by(token: token)
+
+      respond_to do |format|
+        format.json {
+          if @user.nil?
+            render json: { success: false }, status: :unauthorized
+            next
+          end
+
+          tag_ids = @user.quotes.joins(:tags).pluck("tags.id").uniq
+          @user.destroy
+          Tag.where(id: tag_ids).left_joins(:quotes).where(quotes: { id: nil }).destroy_all
+
+          render json: { success: true }
+        }
+      end
+    end
+
     def json_demo_account_completion
       if request.headers['Authorization'].include? "Bearer"
         pattern = /^Bearer /
@@ -81,6 +106,8 @@ class JsonController < ApplicationController
       end
     end
 
+    # TODO: Broadening this function to also return Bookmarks. (A Quote without a text key)
+    # QUESTION FOR CLAUDE: Suggestion for how to refactor it to be less Quotes specific in its name?
     def json_quotes
       token = ""
       # Receiving the token as a param in the request
@@ -104,8 +131,15 @@ class JsonController < ApplicationController
           render json: { quotes: quotes_with_tags, sources: sources_with_count }
         }
       end
-      
     end
+
+    # NEW: Bookmark creation introduces a new variant of a Quote.
+    #
+    # QUESTION FOR CLAUDE: Should I make a new Bookmark model or reuse Quote?
+    # A bookmark is a Quote without a Text. It can still contain tags. It still has a source.
+    #
+    # The function returns the user's tags and a @bookmark.id so the user can append tags to the @bookmark from the UI.
+
 
     def json_quote_creation
       token = ""

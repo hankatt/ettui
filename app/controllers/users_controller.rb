@@ -138,7 +138,7 @@ class UsersController < ApplicationController
     if params[:password_reset_token]
       @user = User.find_by(password_reset_token: params[:password_reset_token])
     else
-      redirect_to request_password_reset_path, :notice => "Your password could not be reset. Please try again."
+      redirect_to request_password_reset_path, :notice => "Your password could not be reset."
     end
   end
 
@@ -153,9 +153,9 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user
       @user.send_password_reset
-      redirect_to login_path, :notice => "A link where you can reset your password has been sent to your mail."
+      redirect_to login_path, :notice => "A link to reset your password has been sent."
     else
-      redirect_to request_password_reset_path, :notice => "Your password could not be reset. Please try again."
+      redirect_to request_password_reset_path, :notice => "Your password could not be reset."
     end
   end
 
@@ -169,7 +169,7 @@ class UsersController < ApplicationController
         redirect_to login_path, :notice => "Your password is updated."
       end
     else
-      redirect_to request_password_reset_path, :notice => "Your opportunity to reset your password has expired. Please try again."
+      redirect_to request_password_reset_path, :notice => "You're window to reset has closed. You can request a new reset."
     end
   end
 

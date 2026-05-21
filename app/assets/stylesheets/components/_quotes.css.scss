@@ -119,19 +119,54 @@
   }
 }
 
-.c-quote__bookmark-indicator {
-  margin: 1rem 0 0;
-  border-top: solid 1px #e3e3e3;
-  border-bottom: solid 1px #e3e3e3;
-  padding: .875rem 0;
+.c-quote__bookmark {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
 
-  .fa-stack {
-    font-size: 1.25rem;
-    color: $signature-color;
+  .c-quote__favicon {
+    height: 20px;
+    width: 20px;
+    flex-shrink: 0;
+    mix-blend-mode: darken;
   }
+}
+
+.c-quote__bookmark-body {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.c-quote__bookmark-title {
+  font-family: $font-family-sans;
+  font-size: .875rem;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c-quote__bookmark-hostname {
+  font-family: $font-family-sans;
+  font-size: .75rem;
+  color: $secondary--text--on-white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: .125rem;
+}
+
+.c-quote__bookmark-icon {
+  flex-shrink: 0;
+  font-size: .625rem;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
 
   .fa-circle {
-    color: $signature-color;
+    color: $secondary--text--on-white;
   }
 
   .fa-bookmark {

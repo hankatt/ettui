@@ -12,7 +12,7 @@ module Well
     config.load_defaults 7.0
 
     config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { api_token: Rails.application.credentials.postmark_api_token }
+    config.action_mailer.postmark_settings = { api_token: Rails.application.credentials.postmark_api_token }
 
     # Token to salt remote sign up hashes
     config.remote_sign_up_salt = "Gb8TAeSJrppY3WgGEDzB2Ag8h957mfOmo2Fuk9OdQuM"

@@ -52,6 +52,8 @@
   line-height: 1;
 }
 
+
+
 .c-quote__metadata__container {
   display: flex;
   justify-content: space-between;
@@ -124,6 +126,7 @@
   align-items: center;
   gap: .75rem;
   width: 100%;
+  line-height: normal;
 
   .c-quote__favicon {
     height: 20px;
@@ -141,7 +144,6 @@
 .c-quote__bookmark-title {
   font-family: $font-family-sans;
   font-size: .875rem;
-  font-weight: 600;
   color: #333;
   white-space: nowrap;
   overflow: hidden;
@@ -155,7 +157,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: .125rem;
 }
 
 .c-quote__bookmark-icon {
@@ -166,7 +167,7 @@
   line-height: 20px;
 
   .fa-circle {
-    color: $secondary--text--on-white;
+    color: #cccbc7;
   }
 
   .fa-bookmark {

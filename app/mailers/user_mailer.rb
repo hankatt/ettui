@@ -1,6 +1,6 @@
 class UserMailer
   def self.password_reset(user)
-    client = Postmark::ApiClient.new(Rails.application.credentials.postmark_api_token)
+    client = Postmark::ApiClient.new(ENV["POSTMARK_API_TOKEN"])
     client.deliver(
       from:     "services@ettui.com",
       to:       user.email,

@@ -21,15 +21,21 @@ $(document).on('ready DOMChange', function() {
   $(".c-segment_controller__option").on('click', toggleHidden);
 });
 
-$(window).scroll(function() {
-  scrollDistance = $(this).scrollTop();
-  if(scrollDistance > 50) {
-      $(".c-landing_page__footer").addClass('glow');
+function updateFooterGlow() {
+  var footer = $(".c-landing_page__footer");
+  if (!footer.length) return;
+  if ($(document).height() <= $(window).height()) {
+    footer.addClass('glow');
+  } else {
+    var scrollDistance = $(window).scrollTop();
+    if (scrollDistance > 50) footer.addClass('glow');
+    if (scrollDistance < 10) footer.removeClass('glow');
   }
-  if(scrollDistance < 10) {
-      $(".c-landing_page__footer").removeClass('glow');
-  }
-});
+}
+
+$(window).scroll(updateFooterGlow);
+$(window).resize(updateFooterGlow);
+$(document).ready(updateFooterGlow);
 
 $(window).load(function() {
   $(".c-landing_page__image_viewport iframe").animate({

@@ -58,8 +58,14 @@
   flex-direction: column;
 }
 
+body.index {
+  display: flex;
+  flex-direction: column;
+}
+
 body.index .container {
 	flex-direction: column;
+  flex-grow: 1;
 }
 
 .container.boards-show {

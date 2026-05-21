@@ -58,7 +58,10 @@ class User < ActiveRecord::Base
 
   def send_password_reset
     create_password_reset_token
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self)
+  rescue Postmark::ApiInputError => e
+    Rails.logger.error "Postmark delivery failed: #{e.message}"
+    raise
   end
 
   # Generates and sets a token for the new user

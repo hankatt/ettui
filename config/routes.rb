@@ -18,6 +18,7 @@ Well::Application.routes.draw do
   get "bookmarklet/preview" => "jsonp#preview", as: "bookmarklet_preview"
   get "legal/tos"
   get "legal/pp"
+  get "legal/support"
   get "demo/complete" => "users#complete", as: "completion"
   get "introduction/start", as: "introduction"
   get "introduction/trying_it"

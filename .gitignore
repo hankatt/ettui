@@ -18,3 +18,5 @@
 /vendor/bundle
 vendor/bundle
 .env
+
+/config/master.key

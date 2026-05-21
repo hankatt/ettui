@@ -1,69 +1,123 @@
 <div class="legal-wrapper">
-	<div class='legal'>
-		<%= link_to "ettúi", '/', class: "c-ettui-logo" %>
-		<h1>Privacy Policy.</h1>
+  <div class="legal">
+    <%= link_to "ettúi", "/", class: "c-ettui-logo" %>
+    <h1>Privacy Policy.</h1>
+    <p><strong>Effective: 2026-05-19</strong></p>
 
-		<p>Your privacy is critically important to us. At Ettúi we have a few fundamental principles:</p>
+    <p>This is the privacy policy for ettúi — the iOS app, the iOS Safari Share Extension, and the website at ettui.com. It explains what data we collect, why, and what your rights are.</p>
+    <p>We tried to make this short and direct. If anything is unclear, email us at <a href="mailto:privacy@ettui.com">privacy@ettui.com</a>.</p>
 
-		<ul>
-			<li>We don't ask you for personal information unless we truly need it. (We can't stand services that ask you for things like your gender or income level for no apparent reason.)</li>
+    <h2>Who we are</h2>
+    <p>Ettúi is operated by Henrik Wiberg. You can reach us at <a href="mailto:privacy@ettui.com">privacy@ettui.com</a>.</p>
 
-			<li>We don't share your personal information with anyone except to comply with the law, develop our products, or protect our rights.</li>
+    <h2>What ettúi is for</h2>
+    <p>Ettúi lets you save highlights and bookmarks of articles you read on the web. When you select text on a page and share it through the iOS Share sheet (or paste it into the website), we save the highlight, the page's URL, and a couple of details about the page (its title and favicon) so you can find and revisit it later. If you save without selecting any text, we treat the entry as a bookmark.</p>
 
-			<li>We don't store personal information on our servers unless required for the on-going operation of one of our services.</li>
-		</ul>
+    <h2>Data we collect</h2>
 
-		<p>Below is our privacy policy which incorporates these goals: (Note, this privacy policy is available under a <a href='http://creativecommons.org/licenses/by-sa/4.0/'>Creative Commons Sharealike</a> license, which means you're more than welcome to steal it and repurpose it for your own use.)</p>
+    <h3>Account data</h3>
+    <p>When you create a <strong>full account</strong> (iOS or web):</p>
+    <ul>
+      <li><strong>Email address</strong> — used to sign in and recover your account.</li>
+      <li><strong>Password</strong> — stored hashed using a one-way cryptographic function. We never see your plain-text password.</li>
+    </ul>
+    <p>When you start a <strong>demo (guest) account</strong>:</p>
+    <ul>
+      <li>No email or password is collected.</li>
+      <li>A randomly generated session token identifies your demo account so the items you save can be associated with it.</li>
+    </ul>
 
-		<p>If you have questions about deleting or correcting your personal data please contact <a href='mailto:henrik@ettui.com'>Henrik</a>, the founder of Ettúi.</p>
+    <h3>The content you save</h3>
+    <p>For each highlight or bookmark:</p>
+    <ul>
+      <li>The <strong>highlighted text</strong> (or empty, for bookmarks).</li>
+      <li>The <strong>URL</strong> of the source page.</li>
+      <li>The <strong>page title</strong>, extracted from the page when you share it.</li>
+      <li>The <strong>favicon URL</strong> of the source.</li>
+      <li><strong>Tags</strong> you add to the item.</li>
+      <li><strong>Timestamps</strong> of when items were created.</li>
+    </ul>
 
-		<h2>Website Visitors</h2>
+    <h3>Technical and operational data</h3>
+    <p><strong>iOS app and Share Extension:</strong></p>
+    <ul>
+      <li>Your account token is stored on-device in the <strong>iOS Keychain</strong> (encrypted by iOS and protected by your device passcode/biometrics). The Share Extension reads it from a shared keychain group so it can save quotes on your behalf.</li>
+      <li>The Share Extension reads, from the page you share from: the page's URL, its title (<code>document.title</code>), the selected text (if any), and the favicon link declared in the page's HTML. Nothing else is read from the page.</li>
+      <li>Our backend logs network requests (IP address, timestamps, request paths, app version) for operations and security. These are retained for up to 30 days.</li>
+      <li>iOS-level diagnostics (crash reports) are handled by Apple and only reach us if you've opted into sharing crash data with developers via your iOS settings. They don't contain the content of your saved items.</li>
+    </ul>
+    <p><strong>Website (ettui.com):</strong></p>
+    <ul>
+      <li>The website uses <strong>cookies</strong> to keep you signed in (a session cookie) and to remember simple preferences. You can disable cookies in your browser settings, but the site won't be able to keep you signed in.</li>
+      <li>Our web server logs the standard fields any web service records: browser type, language preference, referring site, request path, IP address, and timestamps. These are retained for up to 30 days.</li>
+    </ul>
+    <p>The iOS app does <strong>not</strong> use cookies.</p>
 
-		<p>Like most website operators, Ettúi collects non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. Ettúi's purpose in collecting non-personally identifying information is to better understand how Ettúi's visitors use its website. From time to time, Ettúi may release non-personally-identifying information in the aggregate, e.g., by publishing a report on trends in the usage of its website.</p>
+    <h3>What we don't collect</h3>
+    <ul>
+      <li>We don't run ads, and we don't share data with advertising networks.</li>
+      <li>We don't sell your data.</li>
+      <li>We don't track you across other apps or websites.</li>
+      <li>We don't access your contacts, location, photos, microphone, or camera.</li>
+    </ul>
 
-		<p>Ettúi also collects potentially personally-identifying information like Internet Protocol (IP) addresses for logged in users. Ettúi only discloses logged in user and commenter IP addresses under the same circumstances that it uses and discloses personally-identifying information as described below, except that commenter IP addresses and email addresses are visible and disclosed to the administrators where the comment was left.</p>
+    <h2>How long we keep your data</h2>
+    <ul>
+      <li><strong>Full accounts</strong> — until you delete them. You can delete your account from inside the iOS app (in the filter panel, long-press your email address) or from the equivalent option on the website. Deletion is permanent and removes all your saved quotes, bookmarks, and tags.</li>
+      <li><strong>Demo (guest) accounts</strong> — automatically deleted after <strong>48 hours of inactivity</strong>.</li>
+      <li><strong>Backups</strong> — deleted account data may persist in encrypted database backups for up to <strong>7 days</strong> before being permanently purged.</li>
+      <li><strong>Server logs</strong> — retained for up to <strong>30 days</strong> for operational and security purposes.</li>
+    </ul>
 
-		<h2>Gathering of Personally-Identifying Information</h2>
+    <h2>Who has access to your data</h2>
+    <ul>
+      <li><strong>You.</strong></li>
+      <li><strong>Us</strong> (the people who operate ettúi) — for support and operations, and only when necessary.</li>
+      <li><strong>Heroku</strong> (Salesforce, Inc.) — hosts our backend infrastructure. Your data is stored on Heroku's US-based servers. Heroku acts as a sub-processor and is bound by its own privacy and security obligations.</li>
+      <li><strong>Apple</strong> — for App Store crash reports, if and only if you've opted into sharing them via iOS Settings. These don't contain the content of your saved items.</li>
+    </ul>
+    <p>We don't share your data with anyone else, except where required by law (e.g. valid legal process) or where strictly necessary to protect ourselves or our users from imminent harm.</p>
 
-		<p>Certain visitors to Ettúi’s websites choose to interact with Ettúi in ways that require Ettúi to gather personally-identifying information. The amount and type of information that Ettúi gathers depends on the nature of the interaction. For example, we ask visitors who sign up to provide an email address. Those who engage in transactions with Ettúi are asked to provide additional information, including as necessary the personal and financial information required to process those transactions. In each case, Ettúi collects such information only insofar as is necessary or appropriate to fulfill the purpose of the visitor’s interaction with Ettúi. Ettúi does not disclose personally-identifying information other than as described below. And visitors can always refuse to supply personally-identifying information, with the caveat that it may prevent them from engaging in certain website-related activities.</p>
+    <h2>International data transfers</h2>
+    <p>Our backend runs on Heroku's US-based infrastructure. If you're in the European Economic Area, the United Kingdom, or Switzerland, your personal data will be transferred to and stored in the United States. We rely on <strong>standard contractual clauses</strong> (or equivalent legal mechanisms) with our sub-processors to provide appropriate safeguards for these transfers.</p>
 
-		<h2>Aggregated Statistics</h2>
+    <h2>Your rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> — request a copy of the personal data we hold about you.</li>
+      <li><strong>Correct</strong> — ask us to fix information that's wrong.</li>
+      <li><strong>Delete</strong> — delete your account and all associated data, at any time, from within the iOS app or the website. Deletion is permanent.</li>
+      <li><strong>Export</strong> — request a JSON export of your saved content. Email <a href="mailto:privacy@ettui.com">privacy@ettui.com</a> to request one.</li>
+      <li><strong>Object</strong> — object to or restrict our processing of your data.</li>
+    </ul>
+    <p>If you're in the European Economic Area or the United Kingdom, you also have the right to lodge a complaint with your local data protection authority.</p>
+    <p>To exercise any of these rights, email <a href="mailto:privacy@ettui.com">privacy@ettui.com</a>.</p>
 
-		<p>Ettúi may collect statistics about the behavior of visitors to its websites. Ettúi may display this information publicly or provide it to others. However, Ettúi does not disclose personally-identifying information other than as described below.</p>
+    <h2>Cookies (website only)</h2>
+    <p>The website uses cookies for:</p>
+    <ul>
+      <li><strong>Session cookie</strong> (strictly necessary) — keeps you signed in. This cookie is always set and does not require your consent.</li>
+      <li><strong>Analytics cookie</strong> (optional) — we use Google Analytics to understand how people use the site in aggregate. This cookie is only set if you choose to accept it via the cookie banner. You can change your preference at any time from the cookie preferences link in the footer.</li>
+    </ul>
+    <p>We don't use advertising cookies or tracking cookies. You can disable all cookies in your browser settings; the site will continue to load but will not be able to keep you signed in.</p>
+    <p>The iOS app does not use cookies.</p>
 
-		<h2>Protection of Certain Personally-Identifying Information</h2>
+    <h2>Children</h2>
+    <p>Ettúi is not intended for anyone under <strong>13 years old</strong> (or under <strong>16</strong> if you reside in the European Economic Area). We do not knowingly collect personal data from anyone in those age groups. If you believe a child has provided us with personal data, email us at <a href="mailto:privacy@ettui.com">privacy@ettui.com</a> and we'll delete it.</p>
 
-		<p>Ettúi discloses potentially personally-identifying and personally-identifying information only to those of its employees, contractors and affiliated organizations that (i) need to know that information in order to process it on Ettúi’s behalf or to provide services available at Ettúi’s websites, and (ii) that have agreed not to disclose it to others. Some of those employees, contractors and affiliated organizations may be located outside of your home country; by using Ettúi’s websites, you consent to the transfer of such information to them. Ettúi will not rent or sell potentially personally-identifying and personally-identifying information to anyone. Other than to its employees, contractors and affiliated organizations, as described above, Ettúi discloses potentially personally-identifying and personally-identifying information only in response to a subpoena, court order or other governmental request, or when Ettúi believes in good faith that disclosure is reasonably necessary to protect the property or rights of Ettúi, third parties or the public at large. If you are a registered user of an Ettúi website and have supplied your email address, Ettúi may occasionally send you an email to tell you about new features, solicit your feedback, or just keep you up to date with what’s going on with Ettúi and our products. We primarily use our various product blogs to communicate this type of information, so we expect to keep this type of email to a minimum. If you send us a request (for example via a support email or via one of our feedback mechanisms), we reserve the right to publish it in order to help us clarify or respond to your request or to help us support other users. Ettúi takes all measures reasonably necessary to protect against the unauthorized access, use, alteration or destruction of potentially personally-identifying and personally-identifying information.</p>
+    <h2>Security</h2>
+    <ul>
+      <li>Passwords are hashed using a one-way cryptographic function before storage.</li>
+      <li>All network traffic between the iOS app, the website, and our backend uses HTTPS.</li>
+      <li>On iOS, your account token is stored in the system Keychain, which is encrypted and protected by your device passcode and biometrics.</li>
+      <li>Our backend (Heroku) provides standard infrastructure-level security and isolation.</li>
+    </ul>
+    <p>No system is perfectly secure, but we take reasonable, industry-standard steps to protect your data.</p>
 
-		<h2>Cookies</h2>
+    <h2>Changes to this policy</h2>
+    <p>If we make material changes, we'll update the <strong>Effective</strong> date at the top of this page and notify you in-app (or by email, if you have a full account) before the change takes effect. Continued use of ettúi after the effective date constitutes acceptance of the updated policy.</p>
 
-		<p>A cookie is a string of information that a website stores on a visitor’s computer, and that the visitor’s browser provides to the website each time the visitor returns. Ettúi uses cookies to help Ettúi identify and track visitors, their usage of Ettúi website, and their website access preferences. Ettúi visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using Ettúi’s websites, with the drawback that certain features of Ettúi’s websites may not function properly without the aid of cookies.</p>
-
-		<h2>Business Transfers</h2>
-
-		<p>If Ettúi, or substantially all of its assets, were acquired, or in the unlikely event that Ettúi goes out of business or enters bankruptcy, user information would be one of the assets that is transferred or acquired by a third party. You acknowledge that such transfers may occur, and that any acquirer of Ettúi may continue to use your personal information as set forth in this policy.</p>
-
-		<h2>Ads</h2>
-
-		<p>Ads appearing on any of our websites may be delivered to users by advertising partners, who may set cookies. These cookies allow the ad server to recognize your computer each time they send you an online advertisement to compile information about you or others who use your computer. This information allows ad networks to, among other things, deliver targeted advertisements that they believe will be of most interest to you. This Privacy Policy covers the use of cookies by Ettúi and does not cover the use of cookies by any advertisers.</p>
-
-		<h2>Comments</h2>
-
-		<p>Comments and other content submitted to our Akismet anti-spam service are not saved on our servers unless they were marked as false positives, in which case we store them long enough to use them to improve the service to avoid future false positives.</p>
-
-		<h2>Privacy Policy Changes</h2>
-
-		<p>Although most changes are likely to be minor, Ettúi may change its Privacy Policy from time to time, and in Ettúi’s sole discretion. Ettúi encourages visitors to frequently check this page for any changes to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.</p>
-
-		<h2>Change log:</h2>
-
-		<ul>
-			<li>
-				<em>Jan 10, 2022</em>: Generalizing IP address policy.
-			</li>
-			<li>
-				<em>June 09, 2016</em>: Initial draft.
-			</li>
-		</ul>
-	</div>
+    <h2>Contact</h2>
+    <p>Privacy questions, data requests, or complaints: <a href="mailto:privacy@ettui.com">privacy@ettui.com</a></p>
+  </div>
 </div>

@@ -1,21 +1,17 @@
 class UserMailer
   def self.password_reset(user)
     client = Postmark::ApiClient.new(ENV["POSTMARK_API_TOKEN"])
-    client.deliver(
-      from:     "services@ettui.com",
-      to:       user.email,
-      subject:  "Reset your ettúi password",
-      text_body: "Hi #{user.name || user.email},\n\n" \
-                 "Someone requested a password reset for your ettúi account.\n\n" \
-                 "Reset your password here:\n#{reset_url(user.password_reset_token)}\n\n" \
-                 "This link expires in 1 hour. If you didn't request this, you can ignore this email.\n\n" \
-                 "— Henrik at ettúi"
+    client.deliver_with_template(
+      from:           "services@ettui.com",
+      to:             user.email,
+      template_id:    45084366,
+      template_model: {
+        "product_name"          => "ettui.com",
+        "name"                  => user.name || user.email,
+        "action_url"            => "https://www.ettui.com/reset/#{user.password_reset_token}",
+        "sender_name"           => "Henrik",
+        "support_url"           => "https://www.ettui.com/legal/support"
+      }
     )
-  end
-
-  private
-
-  def self.reset_url(token)
-    "https://www.ettui.com/reset/#{token}"
   end
 end

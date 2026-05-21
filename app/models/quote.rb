@@ -62,7 +62,9 @@ class Quote < ActiveRecord::Base
   end
 
   def default_classes
-    "c-quote q-#{id}"
+    classes = "c-quote q-#{id}"
+    classes += " is-bookmark" unless text.present?
+    classes
   end
 
   def highlight search_query
@@ -77,6 +79,7 @@ class Quote < ActiveRecord::Base
   end
 
   def font_size
+    return "" unless text.present?
     case
     when text.length < 140
       "big"

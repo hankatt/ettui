@@ -15,10 +15,19 @@
     </div>
   </div>
 
-  <!-- Quote !-->
-  <h1 class="c-quote__content <%= quote.font_size %>">
-    <%= link_to_if(controller_name.eql?("boards"), (raw quote.highlight(@search.query)), board_quote_path(@board, quote)) %>
-  </h1>
+  <!-- Quote / Bookmark !-->
+  <% if quote.text.present? %>
+    <h1 class="c-quote__content <%= quote.font_size %>">
+      <%= link_to_if(controller_name.eql?("boards"), (raw quote.highlight(@search.query)), board_quote_path(@board, quote)) %>
+    </h1>
+  <% else %>
+    <div class="c-quote__bookmark-indicator">
+      <span class="fa-stack">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-bookmark fa-stack-1x fa-inverse"></i>
+      </span>
+    </div>
+  <% end %>
 
   <!-- Tags !-->
   <% if current_user && controller_name.eql?("quotes") %>

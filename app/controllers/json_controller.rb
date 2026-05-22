@@ -1,5 +1,5 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_sign_out, :json_demo_account_completion, :json_account_deletion]
+    protect_from_forgery except: [:json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_sign_out, :json_demo_account_completion, :json_account_deletion, :json_send_password_reset]
 
     def json_demo
       @user = CreateGuest.create
@@ -235,6 +235,27 @@ class JsonController < ApplicationController
       end
     end
   
+    def json_send_password_reset
+      @user = User.find_by(email: params[:email])
+
+      respond_to do |format|
+        format.json {
+          if @user.nil?
+            render json: { success: false }
+            next
+          end
+
+          begin
+            @user.send_password_reset
+            render json: { success: true }
+          rescue Postmark::ApiInputError => e
+            Rails.logger.error "Password reset delivery failed: #{e.message}"
+            render json: { success: false }
+          end
+        }
+      end
+    end
+
     def preview
       if current_user
         @tags = current_user.unique_tags

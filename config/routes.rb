@@ -23,6 +23,7 @@ Well::Application.routes.draw do
   get "introduction/start", as: "introduction"
   get "introduction/trying_it"
   get "introduction/finish"
+  post "json_send_password_reset", controller: "json"
   post "json_sign_in", controller: "json"
   post "json_sign_out", controller: "json"
   get "json_demo", controller: "json"

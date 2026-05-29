@@ -242,6 +242,10 @@ h1.c-quote__content.big mark {
     font-size: 22px;
 }
 
+.c-quote__content + .c-quote__remove {
+  margin-top: 20px;
+}
+
 .c-quote__remove {
   opacity: 0;
   float: left;

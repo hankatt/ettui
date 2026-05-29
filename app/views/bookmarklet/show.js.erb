@@ -26,7 +26,7 @@
 
 */
 
-bookmarklet_server_host = "localhost:3000"
+bookmarklet_server_host = "<%= @bookmarklet_server_host %>"
 
 /*
 
@@ -37,7 +37,9 @@ bookmarklet_server_host = "localhost:3000"
 */
 jquery = document.createElement("script");
 jquery.className = "noted-temporary-function-tbr";
-jquery.src = "https://code.jquery.com/jquery-2.1.1.min.js";
+// jquery.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+//     '://code.jquery.com/jquery-2.1.1.min.js';
+jquery.src = "//code.jquery.com/jquery-2.1.1.min.js";
 document.body.appendChild(jquery);
 
 /*
@@ -49,7 +51,7 @@ document.body.appendChild(jquery);
 */
 css = document.createElement("link");
 css.className = "noted-temporary-function-tbr";
-css.href = "http://" +bookmarklet_server_host +"/bookmarklet.css";
+css.href = "//" +bookmarklet_server_host +"/bookmarklet.css";
 css.type = "text/css";
 css.rel = "stylesheet";
 
@@ -58,7 +60,7 @@ try {
 } catch(e) {
   console.log(e);
   err__ = e;
-  alert("This page does not allow noted to load its stylesheet.")
+  alert("This page does not allow Ettúi to load its stylesheet.")
 }
 
 // When jQuery has been loaded, start processing the quote
@@ -84,19 +86,14 @@ jquery.onload = function() {
         user_token: current_user_token,
         text: encodeURIComponent(document.getSelection().toString()),
         url: encodeURIComponent(document.location.href.toString()),
-        dom_title: getDOMTitle(),
         favicon: getFaviconURL(),
+        dom_title: getDOMTitle(),
         callback: "success"
       };
-
-      // 20250210
-      // NOTE TO SELF CHANGE HARDCODED http:// to //
-      // ########
-
       // Use Script element injection to send the quote to the Ettúi server
       jsonpScript = document.createElement("script");
       jsonpScript.className = jsonpScript.className + "noted-temporary-function-tbr";
-      jsonpScript.src =  "http://" +bookmarklet_server_host +"/quote_creation?" + jQuery.param(params);
+      jsonpScript.src =  "//" +bookmarklet_server_host +"/quote_creation?" + jQuery.param(params);
       document.body.appendChild(jsonpScript);
 
       /*
@@ -230,11 +227,38 @@ addTag = function(tag_name) {
 }
 
 getFaviconURL = function() {
-  rel = "icon";
-  if(document.querySelectorAll("link[rel~=" +rel +"]").length > 0)
-    return encodeURIComponent(document.querySelectorAll("link[rel~=" +rel +"]")[0].href);
-  else
-    return encodeURIComponent("http://" +document.location.hostname +"/favicon.ico");
+  var pageUrl = document.URL;
+  var selectors = [
+    'link[rel="icon"][sizes="32x32"]',
+    'link[rel="icon"][sizes="16x16"]',
+    'link[rel="shortcut icon"]',
+    'link[rel="icon"]',
+    'link[rel="apple-touch-icon"]',
+    'link[rel="apple-touch-icon-precomposed"]'
+  ];
+
+  for (var i = 0; i < selectors.length; i++) {
+    var el = document.querySelector(selectors[i]);
+    if (el && el.getAttribute('href')) {
+      try {
+        return encodeURIComponent(new URL(el.getAttribute('href'), pageUrl).href);
+      } catch(e) {}
+    }
+  }
+
+  return encodeURIComponent('https://www.google.com/s2/favicons?domain=' + getRootDomain(pageUrl) + '&sz=32');
+}
+
+getRootDomain = function(url) {
+  var parsed = new URL(url);
+  var parts = parsed.hostname.split('.');
+  // Handle ccSLDs like co.uk, com.au — keep last 3 parts if second-to-last is short
+  var secondToLast = parts[parts.length - 2] || '';
+  var root = (parts.length > 2 && secondToLast.length > 3)
+    ? parts.slice(-2).join('.')
+    : parts.slice(-3).join('.');
+  var port = parsed.port ? ':' + parsed.port : '';
+  return parsed.protocol + '//' + root + port;
 }
 
 getDOMTitle = function() {

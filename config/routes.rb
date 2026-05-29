@@ -16,6 +16,7 @@ Well::Application.routes.draw do
   # "Welcome to Ettúi, {let's get started}"
 
   get "bookmarklet/preview" => "jsonp#preview", as: "bookmarklet_preview"
+  get "/bookmarklet.js" => "bookmarklet#show", as: "bookmarklet"
   get "legal/tos"
   get "legal/pp"
   get "legal/support"

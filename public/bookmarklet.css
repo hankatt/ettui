@@ -160,7 +160,7 @@
   background-image: linear-gradient(111deg, #6ae8c5, #33ea8b);
   background-color: #2fd67f;
   border-top: solid 1px #fff;
-  color: #fff;
+  color: #fff !important;
 }
 
 .noted-bookmarklet .noted-tag:hover + .noted-tag.selected,

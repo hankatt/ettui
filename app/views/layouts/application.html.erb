@@ -142,11 +142,35 @@
     <%= yield %>
   </div>
 
-  <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid #e0e0e0; padding:14px 24px; z-index:9999; align-items:center; justify-content:space-between; gap:16px; font-size:13px; color:#444;">
-    <p style="margin:0;">We use cookies to understand how people use Ettúi. See our <a href="/legal/pp" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
+  <div id="cookie-banner" style="
+    display: flex;
+    position: fixed;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: rgba(251, 251, 251, .9);
+    padding: 20px 24px 24px;
+    z-index: 9999;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    font-size: 13px;
+    color: rgb(68, 68, 68);
+    width: calc(100% - 30px);
+    flex-direction: column;
+    text-align: center;
+    max-width: 550px;
+    font-family: 'soleil', sans-serif;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    border-radius: clamp(7px, 2vw, 23px);
+    border: solid .5px rgba(0, 0, 0, 0.1);
+  ">
+    <p style="margin:0;">We use <strong>Google Analytics</strong> to understand how people use Ettúi in aggregate. No personal data is sold or shared with advertisers. <a href="/legal/pp#analytics" style="color:inherit; text-decoration:underline;">Learn more</a>.</p>
     <div style="display:flex; gap:8px; flex-shrink:0;">
-      <button id="cookie-decline" style="padding:6px 14px; background:none; border:1px solid #ccc; border-radius:4px; cursor:pointer; font-size:13px; color:#666;">Decline</button>
-      <button id="cookie-accept" style="padding:6px 14px; background:#333; border:1px solid #333; border-radius:4px; cursor:pointer; font-size:13px; color:#fff;">Accept</button>
+      <button id="cookie-decline" style="padding: 6px 14px 8px 14px; background:none; border:1px solid #333; border-radius:4px; cursor:pointer; font-size:13px; color:#333; font-family: 'soleil', sans-serif; font-weight: 600;">Reject all</button>
+      <button id="cookie-accept" style="padding: 6px 14px 8px 14px; background:#333; border:1px solid #333; border-radius:4px; cursor:pointer; font-size:13px; color:#fff; font-family: 'soleil', sans-serif; font-weight: 600;">Accept all</button>
     </div>
   </div>
 
@@ -159,7 +183,8 @@
 
       function setCookie(name, value, days) {
         var expires = new Date(Date.now() + days * 864e5).toUTCString();
-        document.cookie = name + '=' + value + '; expires=' + expires + '; path=/; SameSite=Lax';
+        var secure = location.protocol === 'https:' ? '; Secure' : '';
+        document.cookie = name + '=' + value + '; expires=' + expires + '; path=/; SameSite=Lax' + secure;
       }
 
       function loadGA() {

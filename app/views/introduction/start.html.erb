@@ -29,17 +29,10 @@
             Drag the button below to your bookmarks bar.
           </li>
         </ul>
-        <% if Rails.env.development? %>
-          <a class="c-introduction__bookmarklet subtitle--all-caps" href="javascript:(function() {
-          document.body.appendChild(document.createElement('script')).src='http://localhost:3000/bookmarklet_local.js';
-          current_user_token = '<%= current_user.token %>';
-          })();">Ettúi Bookmarklet</a>
-        <% elsif Rails.env.production? %>
-          <a class="c-introduction__bookmarklet subtitle--all-caps" href="javascript:(function() {
-          document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
-          current_user_token = '<%= current_user.token %>';
-          })();">Ettúi Bookmarklet</a>
-        <% end %>
+        <a class="c-introduction__bookmarklet subtitle--all-caps" href="javascript:(function() {
+        document.body.appendChild(document.createElement('script')).src='<%= bookmarklet_url %>';
+        current_user_token = '<%= current_user.token %>';
+        })();">Ettúi Bookmarklet</a>
          <p class="c-introduction__description">The bookmarks bar is located below the address bar. By the way, Safari & Chrome users can press CMD+Shift+B to display it.</p>
          <%= link_to introduction_trying_it_path, class: "c-button c-button--secondary" do %>
           Continue & try it out
@@ -61,7 +54,7 @@
               <div class="c-introduction__bookmarklet c-introduction__bookmarklet--mobile">
                 <code>
                   javascript:(function() {
-                  document.body.appendChild(document.createElement('script')).src='https://notedapp.herokuapp.com/bookmarklet.js';
+                  document.body.appendChild(document.createElement('script')).src='<%= bookmarklet_url %>';
                   current_user_token = '<%= current_user.token %>';
                   })();
                 </code>

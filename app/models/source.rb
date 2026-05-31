@@ -52,7 +52,7 @@ class Source < ActiveRecord::Base
   end
 
   def google_favicon_fallback
-    "https://www.google.com/s2/favicons?domain=#{hostname}&sz=32"
+    "https://www.google.com/s2/favicons?domain=#{hostname}&sz=64"
   end
 
   def svg_favicon?(el, href)

@@ -5,6 +5,8 @@ require "uri"
 class Source < ActiveRecord::Base
   has_many :quotes
 
+  BROWSER_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36".freeze
+
   FAVICON_SELECTORS = [
     'link[rel="icon"][sizes="32x32"]',
     'link[rel="icon"][sizes="16x16"]',
@@ -45,7 +47,13 @@ class Source < ActiveRecord::Base
   end
 
   def fetch(url)
-    RestClient::Request.execute(method: :get, url: url, timeout: 8, open_timeout: 4).body
+    RestClient::Request.execute(
+      method: :get,
+      url: url,
+      timeout: 8,
+      open_timeout: 4,
+      headers: { user_agent: BROWSER_USER_AGENT, accept: "text/html,application/xhtml+xml,*/*" }
+    ).body
   rescue => e
     Rails.logger.warn "Source#refresh_favicon fetch failed for #{url}: #{e.class}: #{e.message}"
     nil
@@ -60,7 +68,13 @@ class Source < ActiveRecord::Base
   end
 
   def favicon_url_ok?(url)
-    response = RestClient::Request.execute(method: :head, url: url, timeout: 6, open_timeout: 3)
+    response = RestClient::Request.execute(
+      method: :head,
+      url: url,
+      timeout: 6,
+      open_timeout: 3,
+      headers: { user_agent: BROWSER_USER_AGENT }
+    )
     response.code == 200 && response.headers[:content_type].to_s.start_with?("image/")
   rescue => e
     Rails.logger.warn "Source#refresh_favicon HEAD failed for #{url}: #{e.class}: #{e.message}"

@@ -19,7 +19,7 @@ class Source < ActiveRecord::Base
   end
 
   def refresh_favicon!
-    update!(favicon: detect_favicon || google_favicon_fallback)
+    update!(favicon: detect_favicon || probe_root_favicon || google_favicon_fallback)
   end
 
   private
@@ -49,6 +49,22 @@ class Source < ActiveRecord::Base
   rescue => e
     Rails.logger.warn "Source#refresh_favicon fetch failed for #{url}: #{e.class}: #{e.message}"
     nil
+  end
+
+  def probe_root_favicon
+    %w[https http].each do |scheme|
+      url = "#{scheme}://#{hostname}/favicon.ico"
+      return url if favicon_url_ok?(url)
+    end
+    nil
+  end
+
+  def favicon_url_ok?(url)
+    response = RestClient::Request.execute(method: :head, url: url, timeout: 6, open_timeout: 3)
+    response.code == 200 && response.headers[:content_type].to_s.start_with?("image/")
+  rescue => e
+    Rails.logger.warn "Source#refresh_favicon HEAD failed for #{url}: #{e.class}: #{e.message}"
+    false
   end
 
   def google_favicon_fallback

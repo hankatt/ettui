@@ -9,7 +9,7 @@ class QuoteHandler
     quote[:text] = CGI.unescape(params[:text]) if params[:text].present?
 
     if params[:source] == "non-web"
-      source = Source.find_or_create_by!(hostname: "Photo")
+      source = Source.find_or_create_by!(hostname: "From an app")
     else
       quote[:url] = CGI.unescape(params[:url])
       hostname   = HostnameParser.parse(quote[:url])

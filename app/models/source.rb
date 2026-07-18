@@ -21,7 +21,7 @@ class Source < ActiveRecord::Base
   end
 
   def refresh_favicon!
-    return if hostname == "Photo"
+    return if hostname == "From an app"
     update!(favicon: detect_favicon || probe_root_favicon || google_favicon_fallback)
   end
 

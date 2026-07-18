@@ -4,10 +4,14 @@
     <!-- Title and Favicon -->
     <div class="c-quote__metadata__container">
       <div class="c-quote__metadata c-quote__metadata--title-and-author c-quote__metadata--secondary">
-        <%= image_tag quote.favicon, class: "c-quote__favicon" %>
-        <%= link_to quote.url, class: "c-quote__title is-truncated" do %>
-          <%= quote.title %>
-          <%= " by #{quote.readability_author}" unless quote.readability_author.nil? %>
+        <% if quote.url.present? %>
+          <%= image_tag quote.favicon, class: "c-quote__favicon" %>
+          <%= link_to quote.url, class: "c-quote__title is-truncated" do %>
+            <%= quote.title %>
+            <%= " by #{quote.readability_author}" unless quote.readability_author.nil? %>
+          <% end %>
+        <% else %>
+          <span class="c-quote__title is-truncated"><%= quote.source.hostname %></span>
         <% end %>
       </div>
       <div class="c-quote__metadata c-quote__metadata--primary">

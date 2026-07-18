@@ -21,6 +21,7 @@ class Source < ActiveRecord::Base
   end
 
   def refresh_favicon!
+    return if hostname == "Photo"
     update!(favicon: detect_favicon || probe_root_favicon || google_favicon_fallback)
   end
 
@@ -35,7 +36,6 @@ class Source < ActiveRecord::Base
         el = doc.at_css(selector)
         href = el && el["href"]
         next if href.nil? || href.strip.empty?
-        next if svg_favicon?(el, href)
         begin
           return URI.join(base_url, href).to_s
         rescue URI::InvalidURIError
@@ -83,10 +83,5 @@ class Source < ActiveRecord::Base
 
   def google_favicon_fallback
     "https://www.google.com/s2/favicons?domain=#{hostname}&sz=64"
-  end
-
-  def svg_favicon?(el, href)
-    el["type"].to_s.downcase.include?("svg") ||
-      href.split("?").first.to_s.downcase.end_with?(".svg")
   end
 end

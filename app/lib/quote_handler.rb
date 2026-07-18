@@ -7,22 +7,20 @@ class QuoteHandler
   	quote = {}
   	quote[:user_id] = user_id
     quote[:text] = CGI.unescape(params[:text]) if params[:text].present?
-  	quote[:url] = CGI.unescape(params[:url])
 
-    # Set up metadata for 'quote' hash
-    hostname = HostnameParser.parse(quote[:url])
-    favicon = CGI.unescape(params[:favicon]).split("?").first
-    domTitle = CGI.unescape(params[:dom_title])
-
-    source = Source.find_by(hostname: hostname) || Source.create(hostname: hostname, favicon: favicon)
-
-    # Complete 'quote' hash for creation
-  	quote[:source_id] = source.id
-    if domTitle.empty?
-      quote[:readability_title] = extract_title(quote[:url])
+    if params[:source] == "non-web"
+      source = Source.find_or_create_by!(hostname: "Photo")
     else
-      quote[:readability_title] = domTitle
+      quote[:url] = CGI.unescape(params[:url])
+      hostname   = HostnameParser.parse(quote[:url])
+      favicon    = CGI.unescape(params[:favicon]).split("?").first
+      domTitle   = CGI.unescape(params[:dom_title])
+
+      source = Source.find_by(hostname: hostname) || Source.create(hostname: hostname, favicon: favicon)
+      quote[:readability_title] = domTitle.empty? ? extract_title(quote[:url]) : domTitle
     end
+
+  	quote[:source_id] = source.id
 
     # Create Quote object
     @quote = Quote.new(quote)

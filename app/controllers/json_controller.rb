@@ -1,5 +1,8 @@
 class JsonController < ApplicationController
-    protect_from_forgery except: [:json_demo, :json_sign_in, :json_sign_out, :json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_demo_account_completion, :json_account_deletion, :json_send_password_reset]
+    protect_from_forgery except: [:json_demo, :json_sign_in, :json_sign_out, :json_quotes, :json_quote_creation, :json_quote_removal, :json_tag_creation, :json_demo_account_completion, :json_account_deletion, :json_send_password_reset, :json_quote_summary]
+
+    before_action :authenticate_api_user!,
+                  except: [:json_sign_in, :json_demo, :json_send_password_reset, :preview]
 
     def json_demo
       @user = CreateGuest.create
@@ -26,42 +29,14 @@ class JsonController < ApplicationController
     end
 
     def json_sign_out
-      # Receiving the token as a param in the request
-      if request.headers['Authorization'].include? "Bearer"
-        pattern = /^Bearer /
-        header  = request.headers['Authorization']
-        token = header.gsub(pattern, '') if header && header.match(pattern)
-      end
-
-      @user = User.find_by(token: token)
-
       respond_to do |format|
-        format.json {
-          if @user
-            render json: { success: true }
-          else
-            render json: { success: false }, status: :unauthorized
-          end
-        }
+        format.json { render json: { success: true } }
       end
     end
 
     def json_account_deletion
-      if request.headers['Authorization'].include? "Bearer"
-        pattern = /^Bearer /
-        header  = request.headers['Authorization']
-        token = header.gsub(pattern, '') if header && header.match(pattern)
-      end
-
-      @user = User.find_by(token: token)
-
       respond_to do |format|
         format.json {
-          if @user.nil?
-            render json: { success: false }, status: :unauthorized
-            next
-          end
-
           tag_ids = @user.quotes.joins(:tags).pluck("tags.id").uniq
           @user.destroy
           Tag.where(id: tag_ids).left_joins(:quotes).where(quotes: { id: nil }).destroy_all
@@ -72,21 +47,8 @@ class JsonController < ApplicationController
     end
 
     def json_demo_account_completion
-      if request.headers['Authorization'].include? "Bearer"
-        pattern = /^Bearer /
-        header  = request.headers['Authorization']
-        token = header.gsub(pattern, '') if header && header.match(pattern)
-      end
-
-      @user = User.find_by(token: token)
-
       respond_to do |format|
         format.json {
-          if @user.nil?
-            render json: { success: false }, status: :unauthorized
-            next
-          end
-
           if User.exists?(email: params[:email])
             render json: { success: false, error: "Email already taken" }
             next
@@ -109,15 +71,6 @@ class JsonController < ApplicationController
     # TODO: Broadening this function to also return Bookmarks. (A Quote without a text key)
     # QUESTION FOR CLAUDE: Suggestion for how to refactor it to be less Quotes specific in its name?
     def json_quotes
-      token = ""
-      # Receiving the token as a param in the request
-      if request.headers['Authorization'].include? "Bearer"
-        pattern = /^Bearer /
-        header  = request.headers['Authorization']
-        token = header.gsub(pattern, '') if header && header.match(pattern)
-      end
-
-      @user = User.find_by(token: token)
       @sources = Source.where(id: @user.board.quotes.pluck(:source_id))
       sources_with_count = @sources.map do |source|
         source.as_json.merge(count: @user.board.source_count(source))
@@ -142,15 +95,6 @@ class JsonController < ApplicationController
 
 
     def json_quote_creation
-      token = ""
-      # Receiving the token as a param in the request
-      if request.headers['Authorization'].include? "Bearer"
-        pattern = /^Bearer /
-        header  = request.headers['Authorization']
-        token = header.gsub(pattern, '') if header && header.match(pattern)
-      end
-
-      @user = User.find_by(token: token)
       @quote = QuoteHandler.create_for_user(params, @user.id)
       @tags = nil
       
@@ -168,39 +112,45 @@ class JsonController < ApplicationController
     end
 
     def json_quote_removal
-      token = ""
-      # Receiving the token as a param in the request
-      if request.headers['Authorization'].include? "Bearer"
-        pattern = /^Bearer /
-        header  = request.headers['Authorization']
-        token = header.gsub(pattern, '') if header && header.match(pattern)
-      end
-
-      @user = User.find_by(token: token)
-
       respond_to do |format|
         format.json {
-          if @user
-            quotes_to_remove = @user.board.quotes.where(id: params[:quote_ids])
-            removed_ids = quotes_to_remove.pluck(:id)
-            quotes_to_remove.destroy_all
-            render json: { success: true, removed_ids: removed_ids }
-          else
-            render json: { success: false }, status: :unauthorized
-          end
+          quotes_to_remove = @user.board.quotes.where(id: params[:quote_ids])
+          removed_ids = quotes_to_remove.pluck(:id)
+          quotes_to_remove.destroy_all
+          render json: { success: true, removed_ids: removed_ids }
         }
       end
     end
   
-    def json_tag_creation
-      token = ""
-      # Receiving the token as a param in the request
-      if request.headers['Authorization'].include? "Bearer"
-        pattern = /^Bearer /
-        header  = request.headers['Authorization']
-        token = header.gsub(pattern, '') if header && header.match(pattern)
-      end
+    # Receives an on-device-generated article summary and attaches it to a quote.
+    # First-write-wins: only set if empty, so repeat syncs are idempotent no-ops.
+    def json_quote_summary
+      respond_to do |format|
+        format.json {
+          quote = @user.board.quotes.find_by(id: params[:quote_id])
+          if quote.nil?
+            render json: { success: false, error: "Quote not found" }, status: :not_found
+            next
+          end
 
+          summary = params[:summary].to_s.strip
+          if summary.blank?
+            render json: { success: false, error: "Summary is required" }, status: :unprocessable_entity
+            next
+          end
+          if summary.length > 4000
+            render json: { success: false, error: "Summary too long" }, status: :unprocessable_entity
+            next
+          end
+
+          quote.update!(readability_summary: summary) if quote.readability_summary.blank?
+
+          render json: { success: true, quote_id: quote.id, readability_summary: quote.readability_summary }
+        }
+      end
+    end
+
+    def json_tag_creation
       @tag = TagHandler.find_or_initialize(params[:tag])
       @quote = Quote.find(params[:quote_id])
 
@@ -216,7 +166,6 @@ class JsonController < ApplicationController
       end
 
       # Get all the users unique tags from the users board
-      @user = User.find_by(token: token)
       @tags = @user.unique_tags
 
       # Return a set with tags intersecting the user's tags and the quote's.
@@ -262,6 +211,21 @@ class JsonController < ApplicationController
       else
         redirect_to :root
       end
+    end
+
+    private
+
+    # Parses "Authorization: Bearer <token>"; nil-safe if the header is absent.
+    def bearer_token
+      header = request.headers['Authorization']
+      return nil unless header&.match?(/\ABearer /)
+      header.sub(/\ABearer /, '')
+    end
+
+    # Sets @user from the bearer token; halts with 401 when it's missing/invalid.
+    def authenticate_api_user!
+      @user = User.find_by(token: bearer_token)
+      render json: { success: false }, status: :unauthorized if @user.nil?
     end
   end
   

@@ -34,6 +34,7 @@ Well::Application.routes.draw do
   put "json_demo_account_completion", controller: "json"
   delete "json_account_deletion", controller: "json"
   get "json_tag_creation", controller: "json"
+  post "json_quote_summary", controller: "json"
   get "quote_creation", controller: "jsonp"
   get "tag_creation", controller: "jsonp"
   resources :users, except: [:index, :profile]

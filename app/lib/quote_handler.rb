@@ -16,7 +16,12 @@ class QuoteHandler
       favicon    = CGI.unescape(params[:favicon]).split("?").first
       domTitle   = CGI.unescape(params[:dom_title])
 
-      source = Source.find_by(hostname: hostname) || Source.create(hostname: hostname, favicon: favicon)
+      source = Source.find_by(hostname: hostname)
+      unless source
+        source = Source.new(hostname: hostname)
+        source.favicon = source.validate_favicon(favicon)
+        source.save
+      end
       quote[:readability_title] = domTitle.empty? ? extract_title(quote[:url]) : domTitle
     end
 

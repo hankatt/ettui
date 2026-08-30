@@ -22,10 +22,36 @@ class Source < ActiveRecord::Base
 
   def refresh_favicon!
     return if hostname == "From an app"
-    update!(favicon: detect_favicon || probe_root_favicon || google_favicon_fallback)
+    update!(favicon: resolve_favicon)
+  end
+
+  # Validates the favicon a client (iOS share extension or web bookmarklet) supplied and
+  # substitutes a server-resolved one when it's missing, unreachable, or a generic Google
+  # fallback. Called on Source creation so the DB always holds one canonical favicon — identical
+  # for web and iOS — instead of trusting whatever the client happened to extract.
+  def validate_favicon(candidate)
+    # Upgrade to https first: an http favicon renders on iOS but is mixed-content-blocked on the
+    # https web app, so storing https keeps both clients consistent.
+    candidate = candidate.to_s.strip.sub(%r{\Ahttp://}, "https://")
+    return candidate if candidate.present? && !google_s2?(candidate) && favicon_url_ok?(candidate)
+    resolve_favicon
   end
 
   private
+
+  # detect (declared <link>) → probe /favicon.ico → Google service, all keyed on the full hostname.
+  def resolve_favicon
+    detect_favicon || probe_root_favicon || google_favicon_fallback
+  end
+
+  # A Google s2 URL isn't a real declaration — it's the client saying "I found nothing" — so we
+  # re-resolve rather than trust it (it's often keyed on the wrong root domain and can be a blank
+  # globe we can't detect over HEAD).
+  def google_s2?(url)
+    URI(url).host.to_s.end_with?("google.com")
+  rescue URI::InvalidURIError
+    false
+  end
 
   def detect_favicon
     %w[https http].each do |scheme|

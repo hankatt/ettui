@@ -22,7 +22,10 @@ class Source < ActiveRecord::Base
 
   def refresh_favicon!
     return if hostname == "From an app"
-    update!(favicon: resolve_favicon)
+    # Reuse the current column value as the hint: a still-reachable, non-Google favicon (e.g. one a
+    # client extracted from the live page) is kept with a single request — no homepage fetch, no
+    # bot-wall noise. Only missing/Google/blank ones get fully re-resolved.
+    update!(favicon: validate_favicon(favicon))
   end
 
   # Validates the favicon a client (iOS share extension or web bookmarklet) supplied and
@@ -39,9 +42,12 @@ class Source < ActiveRecord::Base
 
   private
 
-  # detect (declared <link>) → probe /favicon.ico → Google service, all keyed on the full hostname.
+  # Probe /favicon.ico first — one lightweight request most sites answer — before fetching and
+  # parsing the homepage. Homepage GETs trip bot walls (403) on many big sites (Medium, Reddit…)
+  # while their /favicon.ico is served fine; detect_favicon still catches sites whose icon isn't at
+  # the root. Google's service is the guaranteed backstop. All keyed on the full hostname.
   def resolve_favicon
-    detect_favicon || probe_root_favicon || google_favicon_fallback
+    probe_root_favicon || detect_favicon || google_favicon_fallback
   end
 
   # A Google s2 URL isn't a real declaration — it's the client saying "I found nothing" — so we

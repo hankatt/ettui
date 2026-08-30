@@ -25,7 +25,10 @@ class User < ActiveRecord::Base
   end
 
   def unique_tags
-    board&.tags&.uniq || []
+    # Sort by id so the order is stable: without this, board.tags returns tags in association/join
+    # order, which shifts when a tag is added to a quote — making the save-sheet tag list reorder
+    # on selection. Deterministic creation order fixes it for both the app and the web.
+    (board&.tags&.uniq || []).sort_by(&:id)
   end
 
   def quote_count
